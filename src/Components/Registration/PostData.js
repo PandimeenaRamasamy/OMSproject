@@ -12,7 +12,7 @@ import './Registration.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { postDataRequest } from '../../Actions/PostDataAction';
-
+import { getDataRequest } from '../../Actions/PostDataAction';
 
 const PostDataForm = () => {
   const [restaurantNumber, setRestaurantNumber] = useState("");
@@ -113,6 +113,10 @@ const PostDataForm = () => {
     setimageclose(true)
     setFile(null)
   }
+ const  Getdata=()=>{
+  dispatch(getDataRequest());
+ }
+
 
   return (
     <>
@@ -233,6 +237,8 @@ const PostDataForm = () => {
             </form>
           </div>
         </div>
+
+        <button onClick={Getdata}>Get data</button>
       </div>
       {/* <button onClick={(e) => {
                 e.preventDefault();
