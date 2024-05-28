@@ -1,7 +1,7 @@
 // src/sagas/postDataSaga.js
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { POST_DATA_REQUEST, postDataSuccess, postDataFailure } from '../Actions/PostDataAction';
-import { GET_DATA_REQUEST, getDataSuccess, getDataFailure } from '../Actions/PostDataAction';
+import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST} from '../Actions/PostDataAction';
 
 function* postData(action) {
   try {
@@ -29,11 +29,32 @@ function* getData() {
     yield put(getDataFailure(error.message));
   }
 }
+
+function* postOnBoardingData(action) {
+  try {
+    const response = yield call(fetch, 'https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(action.payload),
+    });
+    const data = yield response.json();
+    yield put(postDataSuccess(data));
+  } catch (error) {
+    yield put(postDataFailure(error.message));
+  }
+}
+
 export function* watchPostData() {
   yield takeEvery(POST_DATA_REQUEST, postData);
 }
 
 export function* watchgetData() {
   yield takeEvery(GET_DATA_REQUEST, getData);
+}
+
+export function* onBoardPostData() {
+  yield takeEvery(POST_ONBOARDING_DATA_REQUEST, postOnBoardingData);
 }
 
