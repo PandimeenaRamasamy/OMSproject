@@ -8,8 +8,11 @@ import Restaurant from "../RestaurantDetails/Restaurant";
 import Fssai from '../../Fssai/Fssai';
 import BankDetails from '../BankDetails/BankDetails';
 import Location from '../Location/Location';
+import { useDispatch } from 'react-redux';
+import { postOnBoardingDataRequest } from '../../../Actions/PostDataAction';
 
 function Stepform() {
+  const dispatch=useDispatch()
   const [activeStep, setActiveStep] = useState(0);
    
   const [mainForm, setMainForm] = useState({});
@@ -63,7 +66,8 @@ const bankref=useRef();
         break;
    } 
    setMainForm(newformdata);
-   console.log(newformdata);
+   dispatch( postOnBoardingDataRequest(newformdata))
+   
    handleNextStep();
   }
 
