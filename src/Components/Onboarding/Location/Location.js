@@ -2,7 +2,7 @@ import React from "react";
 import "../Location/Location.css";
 import { useState } from "react";
 
-const Location = () => {
+const Location = React.forwardRef((props,ref) => {
   
   const[form,setForm]=useState({
     address:"",
@@ -11,7 +11,7 @@ const Location = () => {
     state:"",
     country:""
   })
-  console.log(form)
+  
   const[textboxes,setTextboxes]=useState([''])
 
   const handleTextBoxes=(e)=>{
@@ -96,6 +96,6 @@ const Location = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Location;
