@@ -15,11 +15,11 @@ function Stepform() {
   const [mainForm, setMainForm] = useState({});
 const restaurantdetailsref=useRef();
 const locationref=useRef();
-const Fssairef=useRef();
+
   const steps = [
     { title: 'Restaurant Details', component: <Restaurant ref={restaurantdetailsref}  />, icon: <BiNotepad className='image' /> },
     { title: 'Location', component: <Location ref={locationref}  />, icon: <CiLocationOn className='image' /> },
-    { title: 'FSSAI', component: <Fssai ref={Fssairef} />, icon: <PiNotepadBold className='image' /> },
+    { title: 'FSSAI', component: <Fssai  />, icon: <PiNotepadBold className='image' /> },
     { title: 'Bank Details', component: <BankDetails />, icon: <TfiNotepad className='image' /> },
   ];
 
@@ -48,9 +48,10 @@ const Fssairef=useRef();
     case 0:
       newformdata={...mainForm,restaurantdetails:restaurantdetailsref.current.getFormData()};
       break;
-      
-        
-      default:
+      case 1:
+        newformdata={...mainForm,Location:locationref.current.getFormData()};
+        break;
+        default:
         break;
    } 
    setMainForm(newformdata);
