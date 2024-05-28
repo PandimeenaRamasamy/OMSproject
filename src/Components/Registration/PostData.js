@@ -24,12 +24,12 @@ const PostDataForm = () => {
 
   const [Registrationform, setRegistrationform] = useState({
     restaurantName: "",
-    personName: "",
-    phonenumber:"",
+    name: "",
+    phone:"",
     email: "",
-    Designation: "",
-    GST: "",
-    file:""
+    designation: "",
+    gstNumber: "",
+    base64Image:""
   });
 
   const [imagePreview, setImagePreview] = useState(null);
@@ -58,7 +58,7 @@ const PostDataForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailValidationError = validateEmail(Registrationform.email);
-    const nameValidationError = validateName(Registrationform.restaurantName)
+    const nameValidationError = validateName(Registrationform.name)
     dispatch(postDataRequest(Registrationform));
     if (emailValidationError) {
       setEmailError(emailValidationError);
@@ -76,7 +76,7 @@ const PostDataForm = () => {
             setFile(selectedFile);
         reader.onloadend = () => {
           const base64String = reader.result.split(',')[1];
-            setRegistrationform({ ...Registrationform, file:base64String  });
+            setRegistrationform({ ...Registrationform, base64Image:base64String  });
             setImagePreview(reader.result);
         };
     }
@@ -139,9 +139,9 @@ const PostDataForm = () => {
                   Contact person name
                 </label>
                 <input type="text" className={`inputbox ${nameError ? "inputbox-error" : ""}`} placeholder="Name"
-                  value={Registrationform.personName}
+                  value={Registrationform.name}
                   onChange={(e) => {
-                    setRegistrationform({ ...Registrationform, personName: e.target.value })
+                    setRegistrationform({ ...Registrationform, name: e.target.value })
                     // setNameError(validateName(e.target.value));
                   }
                   }
@@ -158,7 +158,7 @@ const PostDataForm = () => {
                     country={restaurantNumber}
                     onChange={(value) => {
                       setRestaurantNumber(value);
-                      setRegistrationform({ ...Registrationform, phonenumber: value })
+                      setRegistrationform({ ...Registrationform, phone: value })
                     }}
                     placeholder="757443444"
                     countryCodeEditable={false}
@@ -181,9 +181,9 @@ const PostDataForm = () => {
               </div>
               <div className="labelinput-divreg">
                 <label for="cars" className="labelreg">Designation</label>
-                <select name="desig" id="desig" className="inputbox" value={Registrationform.Designation}
+                <select name="desig" id="desig" className="inputbox" value={Registrationform.designation}
                   onChange={(e) =>
-                    setRegistrationform({ ...Registrationform, Designation: e.target.value })
+                    setRegistrationform({ ...Registrationform, designation: e.target.value })
                   }>
                   <option value="Owner">Owner</option>
                   <option value="Manager">Manager</option>
@@ -194,9 +194,9 @@ const PostDataForm = () => {
                 <label htmlFor="" className="labelreg">
                   GST NUMBER
                 </label>
-                <input type="text" className="inputbox" placeholder="" value={Registrationform.GST}
+                <input type="text" className="inputbox" placeholder="" value={Registrationform.gstNumber}
                   onChange={(e) =>
-                    setRegistrationform({ ...Registrationform, GST: e.target.value })
+                    setRegistrationform({ ...Registrationform, gstNumber: e.target.value })
                   } />
               </div>
               <div className="labelinput-divreg ">

@@ -7,13 +7,12 @@ import { ImCross, ImFontSize } from "react-icons/im";
 import addphoto from '../Fssai/images/Addphotos.png'
 
 const Fssai = () => {
-    const [form, setForm] = useState({
-        BusinessLegalName: "",
-        phoneType: "",
-        email: "",
-        website: "",
-        InstagramLink: "",
-        FacebookLink: "",
+    const [fssaiform, setfssaiform] = useState({
+        Licensehadbtn: "",
+        fssaidate: "",
+        fssatregister: "",
+        base64Image:""
+        
     });
 
     const [emailError, setEmailError] = useState("");
@@ -27,16 +26,24 @@ const Fssai = () => {
             return "";
         }
     };
+    const [selectedButton, setSelectedButton] = useState('yes');
 
     const handleSubmit = (event) => {
+        setfssaiform({ ...fssaiform, Licensehadbtn: selectedButton});
         event.preventDefault();
-        const emailValidationError = validateEmail(form.email);
-        if (emailValidationError) {
-            setEmailError(emailValidationError);
-        } else {
-            setEmailError("");
-            alert(JSON.stringify(form, null, 2));
-        }
+        console.log(fssaiform);
+        // const emailValidationError = validateEmail(form.email);
+        // if (emailValidationError) {
+        //     setEmailError(emailValidationError);
+        // } else {
+        //     setEmailError("");
+        //     alert(JSON.stringify(form, null, 2));
+        // }
+
+
+
+
+
     };
 
     const [restaurantNumber, setRestaurantNumber] = useState("");
@@ -53,15 +60,16 @@ const Fssai = () => {
         }
     };
 
-    const handleWhatsappNumberChange = (value) => {
-        setWhatsappNumber(value);
-    };
+    
 
-    const [selectedButton, setSelectedButton] = useState('yes');
+   
 
     // Function to handle button click
     const handleButtonClick = (button) => {
         setSelectedButton(button);
+        // console.log("btn",selectedButton);
+        
+
     };
 
     const[imageclose,setimageclose]=useState(false)
@@ -82,16 +90,35 @@ const Fssai = () => {
     const [imagePreview, setImagePreview] = useState({addphoto});
     const [file, setFile] = useState(null);  
     const handleImage = (e) => {
-      const selectedFile = e.target.files[0];
-      if (selectedFile) {
+    //   const selectedFile = e.target.files[0];
+    //   if (selectedFile) {
+    //     setFile(selectedFile);
+    //     const reader = new FileReader();
+    //     reader.onloadend = () => {
+    //       setImagePreview(reader.result);
+    //     };
+    //     reader.readAsDataURL(selectedFile);
+    //   }
+    const selectedFile = e.target.files[0];
+    const reader = new FileReader();
+    if (selectedFile) {
         setFile(selectedFile);
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setImagePreview(reader.result);
-        };
-        reader.readAsDataURL(selectedFile);
-      }
+    reader.onloadend = () => {
+      const base64String = reader.result.split(',')[1];
+      setfssaiform({ ...fssaiform, base64Image:base64String  });
+        setImagePreview(reader.result);
     };
+}
+   if (selectedFile) {
+        reader.readAsDataURL(selectedFile);
+    }
+    };
+    
+
+
+
+
+
     return (
         <div className="main-divfssai">
             <div className="submain-divfssai">
@@ -147,19 +174,19 @@ const Fssai = () => {
                                 style={{ display: "flex", justifyContent: "space-evenly" }}
                                 className="personal-details">                            
                                 <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <label htmlFor="email" className="label">
+                                    <label htmlFor="date" className="label">
                                         FSSAI Expiration Date
                                     </label>
                                     <input
                                         type="date"
                                         className={`inputbox2 ${emailError ? "inputbox-error" : ""}`}
                                         placeholder="DD/MM/YYYY"
-                                        value={form.email}
+                                        value={fssaiform.fssaidate}
                                         onChange={(e) => {
-                                            setForm({ ...form, email: e.target.value });
-                                            setEmailError(validateEmail(e.target.value));
+                                            setfssaiform({ ...fssaiform, fssaidate: e.target.value });
+                                            
                                         }}/>
-                                    {emailError && <div style={{ color: "red" }}>{emailError}</div>}
+                                  
                                 </div>
                                 <div
                                     style={{ display: "flex", flexDirection: "column" }}
@@ -168,12 +195,12 @@ const Fssai = () => {
                                         FSSAI Register Number
                                     </label>
                                     <input
-                                        type="url"
+                                        type="text"
                                         className="inputbox2"
                                         placeholder="44335456567686"
-                                        value={form.website}
+                                        value={fssaiform.fssatregister}
                                         onChange={(e) =>
-                                            setForm({ ...form, website: e.target.value })
+                                            setfssaiform({ ...fssaiform, fssatregister: e.target.value })
                                         }/>                                    
                                 </div>
                             </div>
@@ -203,7 +230,9 @@ const Fssai = () => {
                   </div>
                   {!file &&    <img src={addphoto}  className='fornoimg' alt="" /> }                 
                 </div>
-              </div>        </form>
+              </div>      
+              <button type="submit">submit</button>
+                </form>
                 </div>
             </div>
         </div>
