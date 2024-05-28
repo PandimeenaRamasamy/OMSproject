@@ -1,0 +1,121 @@
+.main-div {
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    padding: 10px;
+  }
+  .heading {
+    font-size: 20px;
+    font-family: poppins;
+    font-weight: 600;
+    line-height: 30px;
+    color: #2f2f2f;
+    position: absolute;
+    top: 356px;
+    left: 367px;
+  }
+  .form-div {
+    width: 600px;
+    height: 432px;
+    position: absolute;
+     top: 402px; 
+    left: 367px; 
+   
+  }
+  
+  .heading-div {
+    width: 305px;
+    height: 52px;
+    margin-bottom: 10px;
+  }
+  .heading2 {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #2f2f2f;
+  }
+  .heading3 {
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #2f2f2f;
+  }
+  .input-div{
+      width: 600px;
+      height: 72px;
+      margin-bottom: 3px;
+  
+  }
+  .label{
+      font-family: Poppins;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #666666;
+  }
+  .input{
+      width: 600px;
+      height: 44px;
+      border-radius: 4px;
+      border: 1px solid #B3B3B3;
+      padding-left: 10px;
+  
+  }
+  .input-div2{
+      width: 600px;
+      height: 100px;
+      margin-bottom: 4px;
+  
+  }
+  .btn{
+      font-family: Poppins;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #67833E  ;
+      position: absolute;
+      right: 0;
+      transform: translateY(50px);
+      padding: 4px;
+  }
+  
+  .city-info-div{
+      width: 600px;
+      height: 160px;
+      }
+  
+  
+  .city-info-flex{
+      display: flex;
+      justify-content: space-evenly;
+      gap: 6px;
+  }
+  .input2{
+      width: 292px;
+      height: 44px;
+      border-radius: 4px;
+      border :1px solid #B3B3B3;
+      font-family: poppins;
+      padding-left: 3px;
+  }
+  .city-info-col{
+      display: flex;
+      flex-direction: column;
+  }
+  
+  
+  @media (max-width: 600px) {
+      .city-info-flex{
+          display: flex;  
+          flex-direction: column;
+          gap: 6px;
+      }
+   
+  
+  }
+  
+  /* Medium devices (tablets, 600px to 900px) */
+  

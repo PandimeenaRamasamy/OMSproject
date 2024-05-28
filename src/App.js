@@ -1,10 +1,30 @@
-import React from 'react'
-import PostData from './Components/PostData'
 
-const App = () => {
+import './App.css';
+import Sidenavbar from './Components/Sidenavbar/Sidenavbar'
+import Outlet from './Components/Outletnavbar/Outlet'
+
+
+
+function App() {
   return (
-    <div><PostData/></div>
-  )
+    <div >
+      {/* <Sidenavbar/>
+      <Outlet/>
+      <Footer/>
+      <Home/> */}
+       <Sidenavbar />,
+   
+       <Outlet />
+
+      
+      
+
+
+
+      
+
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,64 @@
+.outletnav{
+  
+    margin-left: 350px;
+    position: absolute;
+    top: 34px;
+   width: 70%;
+    height: 110px;
+    border-bottom: 1px solid #979797 ;
+    
+
+   
+}
+.outletnav p{
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    color: #2F2F2F;
+    font-weight: initial;
+}
+
+
+
+.navbar {
+   
+   
+    display: flex;
+   
+    width: Hug (380px)px;
+height: Hug (24px)px;
+
+gap: 62px;
+opacity: 0px;
+
+}
+
+/* List styles */
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin-top: 50px;
+   
+}
+
+/* List item styles */
+.nav-item {
+   
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* border-radius: 5px; */
+    color: rgba(0, 0, 0, 0.5); 
+   
+}
+
+/* Active category styles */
+.nav-item.active {
+    
+    border-bottom: 2px solid rgba(104, 132, 64, 1);
+   color:#67833E;
+   font-weight: bold;
+    /* Change text color if desired */
+}
+.nav1,.nav2,.nav3
+{
+    margin-left: 25px;
+}
