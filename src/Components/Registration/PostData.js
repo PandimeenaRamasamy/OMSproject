@@ -114,7 +114,7 @@ const PostDataForm = () => {
     setFile(null)
   }
  const  Getdata=()=>{
-  dispatch(getDataRequest());
+ 
  }
 
 
@@ -238,7 +238,10 @@ const PostDataForm = () => {
           </div>
         </div>
 
-        <button onClick={Getdata}>Get data</button>
+        <button onClick={()=>{
+           dispatch(getDataRequest());
+
+        }}>Get data</button>
       </div>
       {/* <button onClick={(e) => {
                 e.preventDefault();

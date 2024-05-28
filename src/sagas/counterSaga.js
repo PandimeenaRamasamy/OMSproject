@@ -5,7 +5,7 @@ import { GET_DATA_REQUEST, getDataSuccess, getDataFailure } from '../Actions/Pos
 
 function* postData(action) {
   try {
-    const response = yield call(fetch, 'https://jsonplaceholder.typicode.com/posts', {
+    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/registration', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ function* postData(action) {
 
 function* getData() {
   try {
-    const response = yield call(fetch, 'https://jsonplaceholder.typicode.com/posts');
+    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76');
     const data = yield response.json();
     yield put(getDataSuccess(data));
   } catch (error) {
