@@ -16,12 +16,13 @@ function Stepform() {
 const restaurantdetailsref=useRef();
 const locationref=useRef();
 const fssairef=useRef();
+const bankref=useRef();
 
   const steps = [
     { title: 'Restaurant Details', component: <Restaurant ref={restaurantdetailsref}  />, icon: <BiNotepad className='image' /> },
     { title: 'Location', component: <Location ref={locationref}  />, icon: <CiLocationOn className='image' /> },
     { title: 'FSSAI', component: <Fssai ref={fssairef}  />, icon: <PiNotepadBold className='image' /> },
-    { title: 'Bank Details', component: <BankDetails />, icon: <TfiNotepad className='image' /> },
+    { title: 'Bank Details', component: <BankDetails ref={bankref} />, icon: <TfiNotepad className='image' /> },
   ];
 
   
@@ -54,6 +55,9 @@ const fssairef=useRef();
         break;
         case 2:
         newformdata={...mainForm,fssai:fssairef.current.getFormData()};
+        break;
+        case 3:
+        newformdata={...mainForm,bank:bankref.current.getFormData()};
         break;
         default:
         break;
