@@ -48,7 +48,9 @@ const Fssairef=useRef();
     case 0:
       newformdata={...mainForm,restaurantdetails:restaurantdetailsref.current.getFormData()};
       break;
-      
+      case 1:
+        newformdata={...mainForm,Location:locationref.current.getFormData()};
+         break;
         
       default:
         break;
