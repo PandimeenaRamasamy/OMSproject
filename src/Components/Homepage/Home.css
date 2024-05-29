@@ -1,7 +1,8 @@
 .main
 {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    margin-left: 350px;
 }
 
 
