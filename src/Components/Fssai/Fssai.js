@@ -9,7 +9,7 @@ const Fssai = forwardRef((props, ref) => {
     isEnabled: "",
     registerNumber: "",
     expirationDate: "",
-      : ""
+    documents: ""
   });
 
   const getFormData = () => {
