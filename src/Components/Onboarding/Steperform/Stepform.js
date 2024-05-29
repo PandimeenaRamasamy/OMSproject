@@ -27,7 +27,7 @@ const bankref=useRef();
     { title: 'FSSAI', component: <Fssai ref={fssairef}  />, icon: <PiNotepadBold className='image' /> },
     { title: 'Bank Details', component: <BankDetails ref={bankref} />, icon: <TfiNotepad className='image' /> },
   ];
-
+  let newformdata={};
   
   const [visitedSteps, setVisitedSteps] = useState(new Array(steps.length).fill(false));
 
@@ -41,13 +41,9 @@ const bankref=useRef();
     setActiveStep(index);
   };
 
-  const handleNextStep = () => {
-    if (activeStep < steps.length - 1) {
-      setActiveStep(activeStep + 1);
-    }
-  };
+  
   const handleSaveAndNext=()=>{
-   let newformdata={};
+  
    switch(activeStep)
    {
     case 0:
@@ -66,10 +62,19 @@ const bankref=useRef();
         break;
    } 
    setMainForm(newformdata);
-   dispatch( postOnBoardingDataRequest(newformdata))
+   
    
    handleNextStep();
   }
+  const handleNextStep = () => {
+    if (activeStep < steps.length - 1) {
+      setActiveStep(activeStep + 1);
+      
+    }
+    else{
+      dispatch( postOnBoardingDataRequest(newformdata))
+    }
+  };
 
   const progress = ((visitedSteps.filter(step => step).length) / steps.length) * 100;
 
