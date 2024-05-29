@@ -254,7 +254,4 @@ const PostDataForm = () => {
   )
 }
 export default PostDataForm
-// <<<<<<< HEAD
-// =======
-// >>>>>>> abcd494af9af931837926032ae68c569100470ca
 
