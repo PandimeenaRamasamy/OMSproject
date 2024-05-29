@@ -3,7 +3,7 @@ import "../Location/Location.css";
 
 const Location = forwardRef((props, ref) => {
   const [form, setForm] = useState({
-    id:"1",
+   
     address: "",
     pincode: "",
     city: "",
