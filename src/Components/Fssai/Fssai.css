@@ -173,7 +173,7 @@
      .logo span{
       font-size: 14px;
       color: #979797;
-      margin-left: 30%;
+      /* margin-left: 30%; */
       margin-top: 7%;
      }
   
@@ -187,7 +187,7 @@
   
      .preview
      {
-      margin-left: 40%;
+      /* margin-left: 40%; */
       margin-top: 3%;
      }
   

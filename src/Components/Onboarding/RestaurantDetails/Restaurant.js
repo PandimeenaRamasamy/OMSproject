@@ -258,7 +258,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                   />
                 </div>
               </div>
-              <button type="submit">Submit</button>
+              {/* <button type="submit">Submit</button> */}
             </form>
           </div>
         </div>

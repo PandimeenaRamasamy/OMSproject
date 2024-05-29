@@ -234,20 +234,23 @@ const PostDataForm = () => {
         <button className='footnavbtn1' type='submit'>Save & Next</button>
         <button className='footnavbtn2'>Clear All</button>
     </div>
+    <button onClick={()=>{
+           dispatch(getDataRequest());
+
+        }}>Get data</button>
             </form>
           </div>
         </div>
 
-        <button onClick={()=>{
-           dispatch(getDataRequest());
-
-        }}>Get data</button>
+       
       </div>
       {/* <button onClick={(e) => {
                 e.preventDefault();
                 dispatch(productlist());
             }}>Product cart</button> */}
+            
      </>
+     
   )
 }
 export default PostDataForm
