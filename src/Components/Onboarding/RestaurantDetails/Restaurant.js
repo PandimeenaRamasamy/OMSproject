@@ -6,6 +6,7 @@ import validator from "validator";
 
 const Restaurant=React.forwardRef((props, ref) => {
   const [form, setForm] = useState({
+    id:"c5287e09-eb54-449e-a9c6-888fe62fa9b4",
     businessLegalName: "",
     phone: "",
     email: "",
@@ -25,6 +26,7 @@ const Restaurant=React.forwardRef((props, ref) => {
     },
     clearFormData: () => {
       setForm({
+        id:"c5287e09-eb54-449e-a9c6-888fe62fa9b4",
         businessLegalName: "",
         phone: "",
         email: "",

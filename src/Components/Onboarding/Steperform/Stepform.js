@@ -47,16 +47,16 @@ const bankref=useRef();
    switch(activeStep)
    {
     case 0:
-      newformdata={...mainForm,restaurantdetails:restaurantdetailsref.current.getFormData()};
+      newformdata={...mainForm,restaurant_details:restaurantdetailsref.current.getFormData()};
       break;
       case 1:
-        newformdata={...mainForm,Location:locationref.current.getFormData()};
+        newformdata={...mainForm,location_Details:locationref.current.getFormData()};
         break;
         case 2:
-        newformdata={...mainForm,fssai:fssairef.current.getFormData()};
+        newformdata={...mainForm,fssai_details:fssairef.current.getFormData()};
         break;
         case 3:
-        newformdata={...mainForm,bank:bankref.current.getFormData()};
+        newformdata={...mainForm,bank_details:bankref.current.getFormData()};
         break;
         default:
         break;

@@ -32,7 +32,7 @@ function* getData() {
 
 function* postOnBoardingData(action) {
   try {
-    const response = yield call(fetch, 'https://jsonplaceholder.typicode.com/posts', {
+    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/onBoarding', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
