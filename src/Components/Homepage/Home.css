@@ -9,7 +9,7 @@
 .homeoutlet
 {
     position: relative;
-    /* margin-left: 10px; */
+   
     display: flex;
     flex-direction: column;
 }
@@ -34,7 +34,7 @@
     width: 330px;
     height: 340px;
     margin-top: 150px;
-    margin-left: 50px;
+    margin-left: 100px;
 
 }
 .homeimg button{

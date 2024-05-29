@@ -7,7 +7,7 @@ const Outlet = () => {
     const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
 
   
-    const [activeCategory, setActiveCategory] = useState('All Categories');
+    const [activeCategory, setActiveCategory] = useState('Registration');
 
     
     const handleCategoryClick = (category) => {
