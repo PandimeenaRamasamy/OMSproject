@@ -6,8 +6,8 @@ import validator from "validator";
 
 const Restaurant=React.forwardRef((props, ref) => {
   const [form, setForm] = useState({
-    BusinessLegalName: "",
-    phoneType: "",
+    businessLegalName: "",
+    phone: "",
     email: "",
     website: "",
     InstagramLink: "",
@@ -25,8 +25,8 @@ const Restaurant=React.forwardRef((props, ref) => {
     },
     clearFormData: () => {
       setForm({
-        BusinessLegalName: "",
-        phoneType: "",
+        businessLegalName: "",
+        phone: "",
         email: "",
         website: "",
         InstagramLink: "",
@@ -88,7 +88,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                   placeholder="Name"
                   value={form.BusinessLegalName}
                   onChange={(e) =>
-                    setForm({ ...form, BusinessLegalName: e.target.value })
+                    setForm({ ...form, businessLegalName: e.target.value })
                   }
                 />
               </div>
@@ -104,9 +104,9 @@ const Restaurant=React.forwardRef((props, ref) => {
                       value="Mobile"
                       name="phoneType"
                       className="radio"
-                      checked={form.phoneType === "Mobile"}
+                      checked={form.phone === "Mobile"}
                       onChange={(e) =>
-                        setForm({ ...form, phoneType: e.target.value })
+                        setForm({ ...form, phone: e.target.value })
                       }
                     />
                     Mobile
@@ -117,9 +117,9 @@ const Restaurant=React.forwardRef((props, ref) => {
                       value="Landline"
                       name="phoneType"
                       className="radio"
-                      checked={form.phoneType === "Landline"}
+                      checked={form.phone === "Landline"}
                       onChange={(e) =>
-                        setForm({ ...form, phoneType: e.target.value })
+                        setForm({ ...form, phone: e.target.value })
                       }
                     />
                     Landline
@@ -258,7 +258,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                   />
                 </div>
               </div>
-              {/* <button type="submit">Submit</button> */}
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>

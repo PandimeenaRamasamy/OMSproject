@@ -6,10 +6,10 @@ import addphoto from '../Fssai/images/Addphotos.png';
 
 const Fssai = forwardRef((props, ref) => {
   const [fssaiform, setfssaiform] = useState({
-    Licensehadbtn: "",
-    fssaidate: "",
-    fssatregister: "",
-    base64Image: ""
+    isEnabled: "",
+    registerNumber: "",
+    expirationDate: "",
+      : ""
   });
 
   const getFormData = () => {
@@ -27,7 +27,7 @@ const Fssai = forwardRef((props, ref) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setfssaiform({ ...fssaiform, Licensehadbtn: selectedButton });
+    setfssaiform({ ...fssaiform, isEnabled: selectedButton });
     // Additional form validation and submission logic can be added here
   };
 
@@ -53,7 +53,7 @@ const Fssai = forwardRef((props, ref) => {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result.split(',')[1];
-        setfssaiform({ ...fssaiform, base64Image: base64String });
+        setfssaiform({ ...fssaiform, documents: base64String });
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(selectedFile);
@@ -121,8 +121,8 @@ const Fssai = forwardRef((props, ref) => {
                     type="date"
                     className="inputbox2"
                     placeholder="DD/MM/YYYY"
-                    value={fssaiform.fssaidate}
-                    onChange={(e) => setfssaiform({ ...fssaiform, fssaidate: e.target.value })}
+                    value={fssaiform.registerNumber}
+                    onChange={(e) => setfssaiform({ ...fssaiform, registerNumber: e.target.value })}
                   />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }} className="personal-details">
@@ -133,8 +133,8 @@ const Fssai = forwardRef((props, ref) => {
                     type="text"
                     className="inputbox2"
                     placeholder="44335456567686"
-                    value={fssaiform.fssatregister}
-                    onChange={(e) => setfssaiform({ ...fssaiform, fssatregister: e.target.value })}
+                    value={fssaiform.expirationDate}
+                    onChange={(e) => setfssaiform({ ...fssaiform, expirationDate: e.target.value })}
                   />
                 </div>
               </div>
