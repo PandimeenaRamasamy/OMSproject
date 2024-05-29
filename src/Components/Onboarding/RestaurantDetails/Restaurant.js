@@ -10,8 +10,8 @@ const Restaurant=React.forwardRef((props, ref) => {
     phone: "",
     email: "",
     website: "",
-    InstagramLink: "",
-    FacebookLink: "",
+    instagramLink: "",
+    facebookLink: "",
     restaurantNumber: "",
     whatsappNumber: "",
   });
@@ -237,9 +237,9 @@ const Restaurant=React.forwardRef((props, ref) => {
                     type="url"
                     className="inputbox2"
                     placeholder="Chandra.uiux"
-                    value={form.InstagramLink}
+                    value={form.instagramLink}
                     onChange={(e) =>
-                      setForm({ ...form, InstagramLink: e.target.value })
+                      setForm({ ...form, instagramLink: e.target.value })
                     }
                   />
                 </div>
@@ -251,9 +251,9 @@ const Restaurant=React.forwardRef((props, ref) => {
                     type="url"
                     className="inputbox2"
                     placeholder="chandra.com"
-                    value={form.FacebookLink}
+                    value={form.facebookLink}
                     onChange={(e) =>
-                      setForm({ ...form, FacebookLink: e.target.value })
+                      setForm({ ...form, facebookLink: e.target.value })
                     }
                   />
                 </div>
