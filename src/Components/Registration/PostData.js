@@ -226,7 +226,7 @@ const PostDataForm = () => {
 }
 
                   </div>
-               {!file && <p className='fornoimg'>No image was selected</p>
+               {!file && <p className='fornoimage'>No image was selected</p>
                     }
                 </div>
               </div>
