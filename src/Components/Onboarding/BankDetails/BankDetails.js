@@ -2,10 +2,10 @@ import React,{useState,useImperativeHandle} from 'react'
 import "./BankDetails.css"
 const BankDetails = React.forwardRef((props,ref) => {
   const[bankform,setBankform]=useState({
-  Bank_Account_Number:"",
-  Re_Account_Number:"",
-  Bank_Ifse_Code:"",
-  Account_Holder_Name:""
+ accountNumber:"",
+
+ ifscCode:"",
+  AccountHolderName:""
   })
   const getFormData = () => {
     return bankform;
@@ -22,19 +22,19 @@ const BankDetails = React.forwardRef((props,ref) => {
      <h1 className='Bank_Main_Heading'>Bank Details</h1>
      <div className='Bank_Account_Number'>
       <h1 className='Bank_First_Heading'>Bank account number</h1>
-      <input type='text' className='TypeI' onChange={(e)=>setBankform({...bankform,Bank_Account_Number:e.target.value})}></input>
+      <input type='text' className='TypeI' onChange={(e)=>setBankform({...bankform,accountNumber:e.target.value})}></input>
      </div>
      <div className='Re_Account_Number'>
       <h1 className='Bank_Second_Heading'>Re-enter account number</h1>
-      <input type='text' className='Type2' onChange={(e)=>setBankform({...bankform,Re_Account_Number:e.target.value})}></input>
+      <input type='text' className='Type2' ></input>
      </div>
      <div className='Bank_Ifse_Code'>
       <h1 className='Bank_Third_Heading'>Bank IFSE code</h1>
-      <input type='text' className='Type3' onChange={(e)=>setBankform({...bankform,Bank_Ifse_Code:e.target.value})}></input>
+      <input type='text' className='Type3' onChange={(e)=>setBankform({...bankform,ifscCode:e.target.value})}></input>
      </div>
      <div className='Account_Holder_Name'>
       <h1 className='Bank_Fourth_Heading'>Account holder name</h1>
-      <input type='text' className='Type4' onChange={(e)=>setBankform({...bankform,Account_Holder_Number:e.target.value})}></input>
+      <input type='text' className='Type4' onChange={(e)=>setBankform({...bankform,AccountHolderName:e.target.value})}></input>
      </div>
      <div >
      <button className='Account_Button '>Verify Account Details</button>
