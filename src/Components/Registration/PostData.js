@@ -25,11 +25,11 @@ const PostDataForm = () => {
   const [Registrationform, setRegistrationform] = useState({
     restaurantName: "",
     name: "",
-    phone:"",
+    phone: "",
     email: "",
     designation: "",
     gstNumber: "",
-    base64Image:""
+    base64Image: ""
   });
 
   const [imagePreview, setImagePreview] = useState(null);
@@ -69,37 +69,37 @@ const PostDataForm = () => {
       alert(JSON.stringify(Registrationform, null, 2));
     }
   };
-    const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        const reader = new FileReader();
-        if (selectedFile) {
-            setFile(selectedFile);
-        reader.onloadend = () => {
-          const base64String = reader.result.split(',')[1];
-            setRegistrationform({ ...Registrationform, base64Image:base64String  });
-            setImagePreview(reader.result);
-        };
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    const reader = new FileReader();
+    if (selectedFile) {
+      setFile(selectedFile);
+      reader.onloadend = () => {
+        const base64String = reader.result.split(',')[1];
+        setRegistrationform({ ...Registrationform, base64Image: base64String });
+        setImagePreview(reader.result);
+      };
     }
-       if (selectedFile) {
-            reader.readAsDataURL(selectedFile);
-        }
-    };
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     dispatch(postDataRequest(form));
-    // };
- 
-//   const handleImage = (e) => {
-//     const selectedFile = e.target.files[0];
-//     if (selectedFile) {
-//       setFile(selectedFile);
-//       const reader = new FileReader();
-//       reader.onloadend = () => {
-//         setImagePreview(reader.result);
-//       };
-//       reader.readAsDataURL(selectedFile);
-//     }
-//   };
+    if (selectedFile) {
+      reader.readAsDataURL(selectedFile);
+    }
+  };
+  // const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     dispatch(postDataRequest(form));
+  // };
+
+  //   const handleImage = (e) => {
+  //     const selectedFile = e.target.files[0];
+  //     if (selectedFile) {
+  //       setFile(selectedFile);
+  //       const reader = new FileReader();
+  //       reader.onloadend = () => {
+  //         setImagePreview(reader.result);
+  //       };
+  //       reader.readAsDataURL(selectedFile);
+  //     }
+  //   };
   const [imageclose, setimageclose] = useState(false)
 
 
@@ -113,9 +113,9 @@ const PostDataForm = () => {
     setimageclose(true)
     setFile(null)
   }
- const  Getdata=()=>{
- 
- }
+  const Getdata = () => {
+
+  }
 
 
   return (
@@ -223,34 +223,34 @@ const PostDataForm = () => {
                               <p>Preview</p></>
                         }
                       </div>
-}
+                    }
 
                   </div>
-               {!file && <p className='fornoimage'>No image was selected</p>
-                    }
+                  {!file && <p className='fornoimage'>No image was selected</p>
+                  }
                 </div>
               </div>
               <div className='footnav'>
-        <button className='footnavbtn1' type='submit'>Save & Next</button>
-        <button className='footnavbtn2'>Clear All</button>
-    </div>
-    <button onClick={()=>{
-           dispatch(getDataRequest());
+                <button className='footnavbtn1' type='submit'>Save & Next</button>
+                <button className='footnavbtn2'>Clear All</button>
+              </div>
+              <button onClick={() => {
+                dispatch(getDataRequest());
 
-        }}>Get data</button>
+              }}>Get data</button>
             </form>
           </div>
         </div>
 
-       
+
       </div>
       {/* <button onClick={(e) => {
                 e.preventDefault();
                 dispatch(productlist());
             }}>Product cart</button> */}
-            
-     </>
-     
+
+    </>
+
   )
 }
 export default PostDataForm
