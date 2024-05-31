@@ -34,12 +34,12 @@ const Location = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="main-div">
-      <div className="sub-div">
-        <div>
-          <h5 className="heading">Location</h5>
-        </div>
+  
+      
+          
+       
         <div className="form-div">
+        <h5 className="heading">Location</h5>
           <form>
             <div className="heading-div">
               <h1 className="heading2">Restaurant address details</h1>
@@ -114,8 +114,10 @@ const Location = forwardRef((props, ref) => {
             </div>
           </form>
         </div>
-      </div>
-    </div>
+        
+       
+   
+ 
   );
 });
 
