@@ -3,22 +3,23 @@
     padding: 0;
   }
   .main-div2 {
-    margin-left: 330px;
+   
     display: flex;
    
    
     
   }
-  .submain-div2 {
+  .submain-div2{
     transform: translateY(- 20px);
     
       /* margin-top: 30%; */
       /* border: 1px solid black; */
       position: relative;
      top: 80px;
-     left: 30px;
+     left: -700px;
+   
   
-  }
+ }
   .heading-div2 {
     position: absolute;
     top: -20px;
