@@ -13,7 +13,7 @@ const DropzoneContainer = styled.div`
   padding: 20px;
   text-align: center;
   cursor: pointer;
-  margin-bottom: 20px;
+
   width: 600px;
   height: 320px;
 `;
@@ -25,7 +25,7 @@ const UploadButton = styled.button`
 const ImageGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 30px;
 `;
 
 const ImageItem = styled.img`

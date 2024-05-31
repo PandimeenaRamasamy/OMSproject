@@ -22,9 +22,9 @@ const DropzoneContainer = styled.div`
 `;
 
 const UploadButton = styled.button`
+margin-top: 20px;
 
 
- border:none;
 `;
 
 const ImageGrid = styled.div`
