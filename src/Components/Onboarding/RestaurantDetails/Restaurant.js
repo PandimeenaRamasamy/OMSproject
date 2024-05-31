@@ -73,6 +73,7 @@ const Restaurant=React.forwardRef((props, ref) => {
 
   return (
     <>
+    
       <div className="main-div2">
         <div className="submain-div2">
           <div className="heading-div2">
@@ -88,7 +89,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                   type="text"
                   className="inputbox"
                   placeholder="Name"
-                  value={form.BusinessLegalName}
+                  value={form.businessLegalName}
                   onChange={(e) =>
                     setForm({ ...form, businessLegalName: e.target.value })
                   }

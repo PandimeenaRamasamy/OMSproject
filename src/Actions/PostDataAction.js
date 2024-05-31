@@ -7,6 +7,11 @@ export const  POST_ONBOARDING_DATA_SUCCESS="POST_ONBOARDING_DATA_SUCCESS";
 export const POST_ONBOARDING_DATA_FAILURE="POST_ONBOARDING_DATA_FAILURE"
 
 
+export const POST_DINEIN_DATA_REQUEST = 'POST_DINEIN_DATA_REQUEST';
+export const POST_DINEIN_DATA_SUCCESS="POST_DINEIN_DATA_SUCCESS";
+export const POST_DINEIN_DATA_FAILURE="POST_DINEIN_DATA_FAILURE"
+
+
 export const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
@@ -44,6 +49,33 @@ export const getDataFailure = (error) => ({
   payload: error,
 });
 
+
+
+
+
+export const postDineinDataRequest=(data)=>{
+  return{
+    type:POST_DINEIN_DATA_REQUEST,
+    payload:data
+  }
+  
+}
+
+export const postDineinDataSuccess=(response)=>{
+  return{
+    type:POST_DINEIN_DATA_SUCCESS,
+    payload:response
+  }
+  
+}
+
+export const postDineinDataFailure=(error)=>{
+  return{
+    type:POST_DINEIN_DATA_FAILURE,
+    payload:error
+  }
+  
+}
 
 
 

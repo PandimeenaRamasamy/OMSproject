@@ -1,34 +1,31 @@
-
+* {
+    margin: 0;
+    padding: 0;
+  }
   .main-div2 {
-    display: flex;
-    justify-content: start;
-    border: 2px solid red;
-    left: 400px;
-
    
- 
+   
   
+    display: flex;
+    /* border: 1px solid black; */
    
    
     
   }
   .submain-div2{
-   
-  
+    position: relative;
+    margin-left:-80%;
+    /* margin-top: 2%; */
     
-    
-
-    
-   
   
  }
   .heading-div2 {
-    position: absolute;
+    /* position: absolute; */
     top: -20px;
     left: 2px;
     width: 185.69px;
     height: 15.86px;
-    font-family: Poppins;
+    font-family: 'Poppins',sans-serif;
     font-size: 20px;
     line-height: 30px;
     color: #2f2f2f;

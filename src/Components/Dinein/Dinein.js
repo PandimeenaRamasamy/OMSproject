@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./Dinein.css";
 
+import {postDineinDataRequest} from '../../Actions/PostDataAction'
 
-const Fssai = ()=> {
+import { useDispatch } from 'react-redux';
+const Dinein = ()=> {
 
+    const dispatch = useDispatch();
 
     const [Outletdetails, setOutletdetails] = useState(
         {
+            locationId:'4d974ed6-11ff-4b79-89f2-191097b07cb9',
             dineIn: '',
             highChair: '',
             interactiveDineIn: '',
@@ -822,7 +826,11 @@ const Fssai = ()=> {
                 <br /><br /><br />
 
                 <hr />
-                <button  onSubmit={handlesubmitoutlet}>click</button>
+                <button onClick={() => {
+               dispatch(postDineinDataRequest(Outletdetails))
+
+              }}>Post data</button>
+               
             </div>
             <br />
             
@@ -832,4 +840,4 @@ const Fssai = ()=> {
     );
 };
 
-export default Fssai;
+export default Dinein;

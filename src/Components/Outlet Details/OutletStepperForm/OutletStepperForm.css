@@ -1,9 +1,10 @@
 .container {
   
     transform: translateY(200px);
+    
   }
   .sub-container {
-    width:1000px;
+    /* width:1000px; */
     position: sticky;
     left: 340px;
     height:120px;
@@ -20,6 +21,7 @@
       display: flex;
       transform: translateY(25px);
       justify-content: space-between;
+      
     
       
     }
@@ -43,7 +45,8 @@
   }
   .component-container{
     
-    width:500px;
+    width:90%
+    
    
   }
   
@@ -104,11 +107,12 @@
     position: absolute;
     top: 45px;
     z-index: -1;
-    width:1123px;     /* Maximum width */
+    width:1123px;    
     height: 2px;
     background-color: #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
+   
   }
   
   .progress-bar {
@@ -117,10 +121,10 @@
     border-radius: 5px;
   }
   
-  /* Media Queries for responsiveness */
+ 
   @media (max-width: 4000px) {
     .stepper-progress {
-      width: 950px  /* Adjust width for screens smaller than 2700px */
+      width: 950px  
     }
     .container {
      
@@ -133,7 +137,7 @@
   }
   @media (max-width: 2000px) {
     .stepper-progress {
-      width: 950px  /* Adjust width for screens smaller than 2700px */
+      width: 950px 
     }
     .container {
      
@@ -146,7 +150,7 @@
   }
   @media (max-width: 1500px) {
     .stepper-progress {
-      width:900px;  /* Adjust width for screens smaller than 2700px */
+      width:900px;  
     }
     .container {
      

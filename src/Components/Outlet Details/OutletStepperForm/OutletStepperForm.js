@@ -11,7 +11,7 @@ import { BiReceipt } from "react-icons/bi";
 import { CiImageOn } from "react-icons/ci";
 import { ImSpoonKnife } from "react-icons/im";
 import RestaurantImage from '../RestaurantImage/RestaurantImage'
-
+import Dinein from '../../Dinein/Dinein'
 
 
 
@@ -22,11 +22,7 @@ function BasicDetails()
 
 }
 
-function DineIn()
-{
-    return<h2>DineIn</h2>
 
-}
 function Pickup()
 {
     return<h2>Pickup</h2>
@@ -52,7 +48,7 @@ function Stepform() {
   const steps = [
     { title: 'Basic Details', component: <BasicDetails/>, icon: <CiUser className='image' /> },
     { title: 'Restaurant Image', component: <RestaurantImage   />, icon: <CiImageOn className='image' /> },
-    { title: 'DineIn', component: <DineIn   />, icon: <ImSpoonKnife className='image' /> },
+    { title: 'DineIn', component: <Dinein   />, icon: <ImSpoonKnife className='image' /> },
     { title: 'Pickup', component: <Pickup/>, icon: <FiShoppingBag className='image' /> },
     { title: 'Delivery', component: <Delivery/>, icon: <CiDeliveryTruck className='image' /> },
     { title: 'Kitchen', component: <Kitchen/>, icon: <GiPressureCooker className='image' /> },

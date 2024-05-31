@@ -1,7 +1,9 @@
 // src/sagas/postDataSaga.js
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { POST_DATA_REQUEST, postDataSuccess, postDataFailure } from '../Actions/PostDataAction';
-import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST} from '../Actions/PostDataAction';
+import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSuccess,postDineinDataFailure } from '../Actions/PostDataAction';
+import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST} from '../Actions/PostDataAction';
+
+
 
 function* postData(action) {
   try {
@@ -46,6 +48,26 @@ function* postOnBoardingData(action) {
   }
 }
 
+function* postDineinData(action) {
+  try {
+    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/dineIn', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(action.payload),
+    });
+    const data = yield response.json();
+    yield put(postDineinDataSuccess(data));
+  } catch (error) {
+    yield put(postDineinDataFailure(error.message));
+  }
+}
+
+
+
+
+
 export function* watchPostData() {
   yield takeEvery(POST_DATA_REQUEST, postData);
 }
@@ -56,5 +78,11 @@ export function* watchgetData() {
 
 export function* onBoardPostData() {
   yield takeEvery(POST_ONBOARDING_DATA_REQUEST, postOnBoardingData);
+}
+
+
+export function* dineinpostdata()
+{
+  yield takeEvery(POST_DINEIN_DATA_REQUEST, postDineinData);
 }
 
