@@ -7,7 +7,7 @@
     /* width:1000px; */
     position: sticky;
     left: 340px;
-    height:120px;
+    height:129px;
     border:2px solid #979797;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
     transform: scale(1.0) ;
@@ -15,6 +15,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
     padding-left: 20px;
     padding-right: 20px;
+    
   }
   
   .stepper-container {
