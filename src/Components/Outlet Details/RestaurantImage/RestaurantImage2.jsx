@@ -84,7 +84,7 @@ const RestaurantImage2 = ({imgArray}) => {
 
 
   return (
-    <div className="main-div2">
+    <div className="main-image-div2">
       <div className="imageheadingdiv2">
         <h1 className="imageheading">Restaurant Images</h1>
       </div>

@@ -101,7 +101,7 @@ const RestaurantImage = () => {
   console.log(form)
 
   return (
-    <div className='main-div'>
+    <div className='main-image-div'>
       <div className='imageheadingdiv' >
         <h1 className='imageheading'>Restaurant Image</h1>
       </div>
