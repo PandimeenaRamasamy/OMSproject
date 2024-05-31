@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./Dinein.css";
-
-import {postDineinDataRequest} from '../../Actions/PostDataAction'
-
+import { postDineinDataRequest } from '../../Actions/PostDataAction'
 import { useDispatch } from 'react-redux';
-const Dinein = ()=> {
+
+
+const Dinein = () => {
 
     const dispatch = useDispatch();
-
+    const [selectedOption, setSelectedOption] = useState('');
     const [Outletdetails, setOutletdetails] = useState(
         {
-            locationId:'4d974ed6-11ff-4b79-89f2-191097b07cb9',
+            locationId: '4d974ed6-11ff-4b79-89f2-191097b07cb9',
             dineIn: '',
             highChair: '',
             interactiveDineIn: '',
@@ -18,74 +18,55 @@ const Dinein = ()=> {
             checkin: {
                 maximumPeopleAllowedOnline: '',
                 maximumPeopleAllowedOffline: '',
-                lateShowTime:'',
-                autoCancelTime:'',
-                abandonTime:'',
+                lateShowTime: '',
+                autoCancelTime: '',
+                abandonTime: '',
                 autoAssign: ''
             },
-            reservation:{
-                minimumPeopleAllowed:'',
-                maximumPeopleAllowed:'',
-                reservationServiceTimeFrom:'',
-                reservationServiceTimeTo:'',
-                days:[],
-                bufferDays:''
+            reservation: {
+                minimumPeopleAllowed: '',
+                maximumPeopleAllowed: '',
+                reservationServiceTimeFrom: '',
+                reservationServiceTimeTo: '',
+                days: [],
+                bufferDays: ''
             }
         }
     )
 
-    const handlesubmitoutlet=(event)=>
-        {
-            event.preventDefault();
-            console.log(Outletdetails);
-        }
+    const handlesubmitoutlet = (event) => {
+        event.preventDefault();
+        console.log(Outletdetails);
+    }
 
-        const handleDayChange = (day) => {
-            // const updatedReservation = Outletdetails.reservation ? { ...Outletdetails.reservation } : { days: [] };
-            const updatedDays = Outletdetails.reservation.days.includes(day)
-              ? Outletdetails.reservation.days.filter(d => d !== day)
-              : [...Outletdetails.reservation.days, day];
-            setOutletdetails({...Outletdetails,reservation:{
-            
+    const handleDayChange = (day) => {
+        const updatedDays = Outletdetails.reservation.days.includes(day)
+            ? Outletdetails.reservation.days.filter(d => d !== day)
+            : [...Outletdetails.reservation.days, day];
+        setOutletdetails({
+            ...Outletdetails, reservation: {
+
                 ...Outletdetails.reservation,
-                days:updatedDays
-            }})
-             
-          
-             
-            };
-          
-          
+                days: updatedDays
+            }
+        })
+    };
 
-
-
-
-
-
-
-
-   
 
     const [DineinselectedButton, setDineinselectedButton] = useState('');
     const [InteractiveselectedButton, setInteractiveselectedButton] = useState('');
     const [CheckinselectedButton, setCheckinselectedButton] = useState('');
     const [ReservationinselectedButton, setReservationinselectedButton] = useState('');
-    const [Interactivedinein,setInteractivedinein]=useState('');
-    const [Mergentdigitvaliadtion,setMergentdigitvaliadtion]=useState('');
+    const [Interactivedinein, setInteractivedinein] = useState('');
+    const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState('');
 
 
-
-    
 
     const [Dineinselectedfn, setDineinselectedfn] = useState('');
     const [Interactiveselectedfn, setInteractiveselectedfn] = useState('');
     const [Checkinselectedfn, setCheckinselectedfn] = useState('');
     const [Reservationinselectedfn, setReservationinselectedfn] = useState('');
 
-
-
-
-    
 
     const handleButtonClick = (button, category) => {
         if (category === 'Dinein') {
@@ -129,45 +110,30 @@ const Dinein = ()=> {
 
         }
 
-       
-
-
     };
 
 
 
-    const Interactivefield=(enordis,button)=>{ 
+    const Interactivefield = (enordis, button) => {
         setInteractivedinein(button)
-        setOutletdetails({...Outletdetails,interactiveDineIn:enordis})
+        setOutletdetails({ ...Outletdetails, interactiveDineIn: enordis })
     }
 
-    const merchantvalidationfield=(enordis,button)=>{
+    const merchantvalidationfield = (enordis, button) => {
         setMergentdigitvaliadtion(button)
-        setOutletdetails({...Outletdetails,merchant4DigitValidation:enordis})
+        setOutletdetails({ ...Outletdetails, merchant4DigitValidation: enordis })
 
     }
 
-
-
-
-
-    const [selectedOption, setSelectedOption] = useState('');
-
-    // Handle change event
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
-    
 
 
-
-
-    // Handle form submission
     const handleSubmit2 = (event) => {
         event.preventDefault();
         alert(`Selected option: ${selectedOption}`);
     };
-
 
     const [checkedDays, setCheckedDays] = useState({
         Monday: false,
@@ -195,7 +161,7 @@ const Dinein = ()=> {
     return (
         <div className="main-divfssai">
 
-          
+
             <div className="submain-divfssai">
                 <div className="headingfssai">
                     <h5>Dine in Details</h5>
@@ -225,16 +191,16 @@ const Dinein = ()=> {
                                     type="button"
 
                                     value="Enable"
-                                    onClick={(event) => 
-                                        {handleButtonClick('yes', 'Dinein')
-                                        setOutletdetails({...Outletdetails,dineIn:event.target.value})
+                                    onClick={(event) => {
+                                        handleButtonClick('yes', 'Dinein')
+                                        setOutletdetails({ ...Outletdetails, dineIn: event.target.value })
 
-                                        
+
                                     }
-                                        }
+                                    }
 
 
-                                       
+
 
 
 
@@ -249,14 +215,14 @@ const Dinein = ()=> {
                                 <button
                                     type="button"
                                     value="Disable"
-                                    onClick={(event) =>
-                                        { handleButtonClick('no', 'Dinein')
-                                        setOutletdetails({...Outletdetails,dineIn:event.target.value})
+                                    onClick={(event) => {
+                                        handleButtonClick('no', 'Dinein')
+                                        setOutletdetails({ ...Outletdetails, dineIn: event.target.value })
 
 
                                     }
-                                        }
-                                   
+                                    }
+
 
                                     className="disablebtn"
                                     style={{
@@ -286,8 +252,8 @@ const Dinein = ()=> {
                                                 <input
                                                     type="radio"
                                                     value="yes"
-                                                    checked={selectedOption === 'yes'}
-                                                    onChange={(event)=>setOutletdetails({...Outletdetails,highChair:event.target.value})}
+                                                    checked={Outletdetails.highChair === 'yes'}
+                                                    onChange={(event) => setOutletdetails({ ...Outletdetails, highChair: event.target.value })}
                                                     className="radioStyle"
                                                 />
                                                 <label className="chairradio">Yes</label>
@@ -296,8 +262,8 @@ const Dinein = ()=> {
                                                 <input
                                                     type="radio"
                                                     value="no"
-                                                    checked={selectedOption === 'no'}
-                                                    onChange={(event)=>setOutletdetails({...Outletdetails,highChair:event.target.value})}
+                                                    checked={Outletdetails.highChair === 'no'}
+                                                    onChange={(event) => setOutletdetails({ ...Outletdetails, highChair: event.target.value })}
                                                     className="radioStyle"
                                                 />
                                                 <label className="chairradio">No</label>
@@ -337,16 +303,15 @@ const Dinein = ()=> {
                                 <div style={{ marginTop: '10px' }} className="enabledisablebtn">
                                     <button
                                         type="button"
-                                        onClick={(event) => 
-                                            {
+                                        onClick={(event) => {
 
-                                                handleButtonClick('yes', 'Interactive')
-                                                setOutletdetails({...Outletdetails,interactiveDineIn:event.target.value})
-                                            }
+                                            handleButtonClick('yes', 'Interactive')
+                                            setOutletdetails({ ...Outletdetails, interactiveDineIn: event.target.value })
                                         }
-                                            
-                                            
-                                         
+                                        }
+
+
+
                                         className="enablebtn"
                                         style={{
                                             backgroundColor: InteractiveselectedButton === 'yes' ? '#0D79DC' : '#979797',
@@ -357,17 +322,15 @@ const Dinein = ()=> {
                                     </button>
                                     <button
                                         type="button"
-                                        onClick={(event) => 
+                                        onClick={(event) => {
+                                            handleButtonClick('no', 'Interactive')
+                                            setOutletdetails({ ...Outletdetails, interactiveDineIn: event.target.value })
 
-                                            {
-                                                handleButtonClick('no', 'Interactive')
-                                                setOutletdetails({...Outletdetails,interactiveDineIn:event.target.value})
-
-                                            }
                                         }
-                                            
-                                            
-                                          
+                                        }
+
+
+
                                         className="disablebtn"
                                         style={{
                                             backgroundColor: InteractiveselectedButton === 'no' ? '#0D79DC' : '#979797',
@@ -396,7 +359,7 @@ const Dinein = ()=> {
                                             <div style={{ marginTop: '10px' }} className="enabledisablebtnInter">
                                                 <button
                                                     type="button"
-                                                    onClick={() => Interactivefield('Enable','yes')}
+                                                    onClick={() => Interactivefield('Enable', 'yes')}
                                                     className="enablebtn"
                                                     style={{
                                                         backgroundColor: Interactivedinein === 'yes' ? '#0D79DC' : '#979797',
@@ -407,7 +370,7 @@ const Dinein = ()=> {
                                                 </button>
                                                 <button
                                                     type="button"
-                                                    onClick={() => Interactivefield('Disable','no')}
+                                                    onClick={() => Interactivefield('Disable', 'no')}
                                                     className="disablebtn"
                                                     style={{
                                                         backgroundColor: Interactivedinein === 'no' ? '#0D79DC' : '#979797',
@@ -431,8 +394,8 @@ const Dinein = ()=> {
                                             <div style={{ marginTop: '10px' }} className="enabledisablebtn">
                                                 <button
                                                     type="button"
-                                                    onClick={()=>merchantvalidationfield('Enable','yes')}
-                                  
+                                                    onClick={() => merchantvalidationfield('Enable', 'yes')}
+
                                                     className="enablebtn"
                                                     style={{
                                                         backgroundColor: Mergentdigitvaliadtion === 'yes' ? '#0D79DC' : '#979797',
@@ -443,8 +406,8 @@ const Dinein = ()=> {
                                                 </button>
                                                 <button
                                                     type="button"
-                                                    onClick={()=>merchantvalidationfield('Disable','no')}
-                                                   
+                                                    onClick={() => merchantvalidationfield('Disable', 'no')}
+
                                                     className="disablebtn"
                                                     style={{
                                                         backgroundColor: Mergentdigitvaliadtion === 'no' ? '#0D79DC' : '#979797',
@@ -516,30 +479,32 @@ const Dinein = ()=> {
                                                     <div className="checkinform1">
                                                         <div className="check1">
                                                             <label htmlFor="maximumpeopleon" id="maximuminon" >Maximum People allowed online</label>
-                                                            <input type="text" id="maximuminonline" onChange={(event)=>
-                                                                {
-                                                                    setOutletdetails({...Outletdetails,checkin:{
+                                                            <input type="text" id="maximuminonline" onChange={(event) => {
+                                                                setOutletdetails({
+                                                                    ...Outletdetails, checkin: {
                                                                         ...Outletdetails.checkin,
-                                                                        maximumPeopleAllowedOnline:event.target.value
-                                                                        
-                                                                    }})
-                                                                }
+                                                                        maximumPeopleAllowedOnline: event.target.value
+
+                                                                    }
+                                                                })
+                                                            }
                                                             } />
                                                         </div>
-                                                        
-               
+
+
 
 
                                                         <div className="check1">
                                                             <label htmlFor="maximumpeopleoff" id="maximuminoff">Maximum People allowed offline</label>
-                                                            <input type="text" id="maximuminoffline" onChange={(event)=>
-                                                                {
-                                                                    setOutletdetails({...Outletdetails,checkin:{
+                                                            <input type="text" id="maximuminoffline" onChange={(event) => {
+                                                                setOutletdetails({
+                                                                    ...Outletdetails, checkin: {
                                                                         ...Outletdetails.checkin,
-                                                                        maximumPeopleAllowedOffline:event.target.value
-                                                                        
-                                                                    }})
-                                                                }
+                                                                        maximumPeopleAllowedOffline: event.target.value
+
+                                                                    }
+                                                                })
+                                                            }
                                                             } />
                                                         </div>
                                                     </div>
@@ -547,45 +512,48 @@ const Dinein = ()=> {
                                                         <div className="check2">
                                                             <label htmlFor="Lateshowtime" id="maximuminon" >Late show time</label>
                                                             <input type="text" id="maximuminonline"
-                                                            onChange={(event)=>
-                                                                {
-                                                                    setOutletdetails({...Outletdetails,checkin:{
-                                                                        ...Outletdetails.checkin,
-                                                                        lateShowTime:event.target.value
-                                                                        
-                                                                    }})
+                                                                onChange={(event) => {
+                                                                    setOutletdetails({
+                                                                        ...Outletdetails, checkin: {
+                                                                            ...Outletdetails.checkin,
+                                                                            lateShowTime: event.target.value
+
+                                                                        }
+                                                                    })
                                                                 }
-                                                            }
-                                                             />
+                                                                }
+                                                            />
                                                         </div>
                                                         <div className="check2">
                                                             <label htmlFor="AutocancelTime" id="maximuminoff">Auto cancel Time</label>
-                                                            <input type="text" id="maximuminoffline" 
-                                                            onChange={(event)=>
-                                                                {
-                                                                    setOutletdetails({...Outletdetails,checkin:{
-                                                                        ...Outletdetails.checkin,
-                                                                        autoCancelTime:event.target.value
-                                                                        
-                                                                    }})
+                                                            <input type="text" id="maximuminoffline"
+                                                                onChange={(event) => {
+                                                                    setOutletdetails({
+                                                                        ...Outletdetails, checkin: {
+                                                                            ...Outletdetails.checkin,
+                                                                            autoCancelTime: event.target.value
+
+                                                                        }
+                                                                    })
                                                                 }
-                                                            }
-                                                            
+                                                                }
+
                                                             />
                                                         </div>
                                                         <div className="check2">
                                                             <label htmlFor="Abandontime" id="maximuminoff">Abandon time</label>
                                                             <input type="text" id="maximuminoffline"
-                                                            onChange={(event)=>
-                                                                {
-                                                                    setOutletdetails({...Outletdetails,checkin:{
-                                                                        ...Outletdetails.checkin,
-                                                                        abandonTime:event.target.value
-                                                                        
-                                                                    }})
+                                                                onChange={(event) => {
+                                                                    setOutletdetails({
+                                                                        ...Outletdetails, checkin: {
+                                                                            ...Outletdetails.checkin,
+                                                                            abandonTime: event.target.value
+
+                                                                        }
+                                                                    })
                                                                 }
-                                                            }
-                                                            
+                                                                }
+
                                                             />
                                                         </div>
                                                     </div>
@@ -604,14 +572,17 @@ const Dinein = ()=> {
                                                     <div className="highchairradio1">
                                                         <input
                                                             type="radio"
-                                                            value="yes"
-                                                            checked={selectedOption === 'yes'}
-                                                            onChange={(event)=>setOutletdetails({...Outletdetails,checkin:{
-                                                                ...Outletdetails.checkin,
-                                                                autoAssign:event.target.value
-                                                                
-                                                            }})}
                                                             className="radioStyle"
+                                                            value="yes"
+                                                            checked={Outletdetails.checkin.autoAssign=== 'yes'}
+                                                            onChange={(event) => setOutletdetails({
+                                                                ...Outletdetails, checkin: {
+                                                                    ...Outletdetails.checkin,
+                                                                    autoAssign: event.target.value
+
+                                                                }
+                                                            })}
+                                                            
                                                         />
                                                         <label className="chairradio">Yes</label>
                                                     </div>
@@ -619,9 +590,16 @@ const Dinein = ()=> {
                                                         <input
                                                             type="radio"
                                                             value="no"
-                                                            checked={selectedOption === 'no'}
-                                                            onChange={handleOptionChange}
                                                             className="radioStyle"
+                                                            checked={Outletdetails.checkin.autoAssign=== 'no'}
+                                                            onChange={(event) => setOutletdetails({
+                                                                ...Outletdetails, checkin: {
+                                                                    ...Outletdetails.checkin,
+                                                                    autoAssign: event.target.value
+
+                                                                }
+                                                            })}
+                                                          
                                                         />
                                                         <label className="chairradio">No</label>
                                                     </div>
@@ -648,163 +626,168 @@ const Dinein = ()=> {
                         <h5>Reservation Details</h5>
                     </div>
                     <div className="">
-                       
-                            <div className="">
-                                <div className="lables1">
-                                    <label htmlFor="BusinessLegalName" className="label">
-                                        Reservation
+
+                        <div className="">
+                            <div className="lables1">
+                                <label htmlFor="BusinessLegalName" className="label">
+                                    Reservation
+                                </label>
+                            </div>
+                            <div className="lables2">
+                                <label htmlFor="BusinessLegalName" className="label">
+                                    Please mention the reservation service
+                                </label>
+                            </div>
+                            <div style={{ marginTop: '10px' }} className="enabledisablebtn">
+                                <button
+                                    type="button"
+                                    onClick={() => handleButtonClick('yes', 'Reservation')}
+                                    className="enablebtn"
+                                    style={{
+                                        backgroundColor: ReservationinselectedButton === 'yes' ? '#0D79DC' : '#979797',
+
+                                    }}>
+
+                                    Enable
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleButtonClick('no', 'Reservation')}
+                                    className="disablebtn"
+                                    style={{
+                                        backgroundColor: ReservationinselectedButton === 'no' ? '#0D79DC' : '#979797',
+
+                                    }}>
+
+                                    Disable
+                                </button>
+                            </div>
+                            {
+                                Reservationinselectedfn &&
+                                <div>
+                                    <div className="checkinform1">
+                                        <div className="check1">
+                                            <label htmlFor="maximumpeopleon" id="maximuminon" >Minimum no of people allowed</label>
+                                            <input type="text" id="maximuminonline"
+                                                onChange={(event) => {
+                                                    setOutletdetails({
+                                                        ...Outletdetails, reservation: {
+                                                            ...Outletdetails.reservation,
+                                                            minimumPeopleAllowed: event.target.value
+
+                                                        }
+                                                    })
+                                                }
+                                                }
+
+
+                                            />
+                                        </div>
+                                        <div className="check1">
+                                            <label htmlFor="maximumpeopleoff" id="maximuminoff">Maximum no of people allowed</label>
+                                            <input type="text" id="maximuminoffline"
+                                                onChange={(event) => {
+                                                    setOutletdetails({
+                                                        ...Outletdetails, reservation: {
+                                                            ...Outletdetails.reservation,
+                                                            maximumPeopleAllowed: event.target.value
+
+                                                        }
+                                                    })
+                                                }
+                                                }
+
+                                            />
+                                        </div>
+                                    </div>
+                                    <label htmlFor="BusinessLegalName" className="labelreserve">
+                                        Reservation serive time
                                     </label>
-                                </div>
-                                <div className="lables2">
-                                    <label htmlFor="BusinessLegalName" className="label">
-                                        Please mention the reservation service
+                                    <div className="checkinform2">
+                                        <div className="check2">
+                                            <label htmlFor="Lateshowtime" id="maximuminon" >From</label>
+                                            <input type="text" id="maximuminonline"
+                                                onChange={(event) => {
+                                                    setOutletdetails({
+                                                        ...Outletdetails, reservation: {
+                                                            ...Outletdetails.reservation,
+                                                            reservationServiceTimeFrom: event.target.value
+
+                                                        }
+                                                    })
+                                                }
+                                                }
+
+                                            />
+                                        </div>
+                                        <div className="check2">
+                                            <label htmlFor="AutocancelTime" id="maximuminoff">To</label>
+                                            <input type="text" id="maximuminoffline"
+                                                onChange={(event) => {
+                                                    setOutletdetails({
+                                                        ...Outletdetails, reservation: {
+                                                            ...Outletdetails.reservation,
+                                                            reservationServiceTimeTo: event.target.value
+
+                                                        }
+                                                    })
+                                                }
+                                                }
+                                            />
+                                        </div>
+
+                                    </div>
+                                    <label htmlFor="BusinessLegalName" className="reservelabel">
+                                        Reservation available days
                                     </label>
-                                </div>
-                                <div style={{ marginTop: '10px' }} className="enabledisablebtn">
-                                    <button
-                                        type="button"
-                                        onClick={() => handleButtonClick('yes', 'Reservation')}
-                                        className="enablebtn"
-                                        style={{
-                                            backgroundColor: ReservationinselectedButton === 'yes' ? '#0D79DC' : '#979797',
 
-                                        }}>
+                                    <div className="reservecheckbox">
 
-                                        Enable
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => handleButtonClick('no', 'Reservation')}
-                                        className="disablebtn"
-                                        style={{
-                                            backgroundColor: ReservationinselectedButton === 'no' ? '#0D79DC' : '#979797',
+                                        {Object.keys(checkedDays).map((day) => (
+                                            <div key={day} className="checkbox-container">
+                                                <input
+                                                    type="checkbox"
+                                                    name={day}
+                                                    checked={Outletdetails.reservation.days.includes(day)}
+                                                    onChange={() => handleDayChange(day)}
+                                                    className="radioStyle"
 
-                                        }}>
-
-                                        Disable
-                                    </button>
-                                </div>
-                                {
-                                    Reservationinselectedfn &&
-                                    <div>
-                                        <div className="checkinform1">
-                                            <div className="check1">
-                                                <label htmlFor="maximumpeopleon" id="maximuminon" >Minimum no of people allowed</label>
-                                                <input type="text" id="maximuminonline" 
-                                                 onChange={(event)=>
-                                                    {
-                                                        setOutletdetails({...Outletdetails,reservation:{
-                                                            ...Outletdetails.reservation,
-                                                            minimumPeopleAllowed:event.target.value
-                                                            
-                                                        }})
-                                                    }
-                                                }
-                                                
-                                                
                                                 />
+                                                <label>
+
+                                                    {day}
+                                                </label>
                                             </div>
-                                            <div className="check1">
-                                                <label htmlFor="maximumpeopleoff" id="maximuminoff">Maximum no of people allowed</label>
-                                                <input type="text" id="maximuminoffline" 
-                                                 onChange={(event)=>
-                                                    {
-                                                        setOutletdetails({...Outletdetails,reservation:{
+                                        ))}
+
+                                    </div>
+                                    <label htmlFor="BusinessLegalName" className="reservelabel">
+                                        Reservation Buffer Days
+                                    </label>
+                                    <div className="Reservation available days">
+                                        <div className="check2">
+                                            <label htmlFor="Lateshowtime" id="reservationdays" >Minimum no.of days before reservation should be placed</label>
+                                            <input type="text" id="maximuminonline"
+                                                onChange={(event) => {
+                                                    setOutletdetails({
+                                                        ...Outletdetails, reservation: {
                                                             ...Outletdetails.reservation,
-                                                            maximumPeopleAllowed:event.target.value
-                                                            
-                                                        }})
-                                                    }
+                                                            bufferDays: event.target.value
+
+                                                        }
+                                                    })
                                                 }
-                                                
-                                                />
-                                            </div>
-                                        </div>
-                                        <label htmlFor="BusinessLegalName" className="labelreserve">
-                                            Reservation serive time
-                                        </label>
-                                        <div className="checkinform2">
-                                            <div className="check2">
-                                                <label htmlFor="Lateshowtime" id="maximuminon" >From</label>
-                                                <input type="text" id="maximuminonline"
-                                                 onChange={(event)=>
-                                                    {
-                                                        setOutletdetails({...Outletdetails,reservation:{
-                                                            ...Outletdetails.reservation,
-                                                            reservationServiceTimeFrom:event.target.value
-                                                            
-                                                        }})
-                                                    }
                                                 }
-
-                                                 />
-                                            </div>
-                                            <div className="check2">
-                                                <label htmlFor="AutocancelTime" id="maximuminoff">To</label>
-                                                <input type="text" id="maximuminoffline" 
-                                                 onChange={(event)=>
-                                                    {
-                                                        setOutletdetails({...Outletdetails,reservation:{
-                                                            ...Outletdetails.reservation,
-                                                            reservationServiceTimeTo:event.target.value
-                                                            
-                                                        }})
-                                                    }
-                                                }
-                                                />
-                                            </div>
-
-                                        </div>
-                                        <label htmlFor="BusinessLegalName" className="reservelabel">
-                                            Reservation available days
-                                        </label>
-
-                                        <div className="reservecheckbox">
-
-                                            {Object.keys(checkedDays).map((day) => (
-                                                <div key={day} className="checkbox">
-                                                    <input
-                                                            type="checkbox"
-                                                            name={day}
-                                                            checked={checkedDays[day]}
-                                                            onChange={()=>handleDayChange(day)}
-                                                            className="radioStyle"
-
-                                                        />
-                                                    <label>
-                                                        
-                                                        {day}
-                                                    </label>
-                                                </div>
-                                            ))}
-
-                                        </div>
-                                        <label htmlFor="BusinessLegalName" className="reservelabel">
-                                            Reservation Buffer Days
-                                        </label>
-                                        <div className="Reservation available days">
-                                            <div className="check2">
-                                                <label htmlFor="Lateshowtime" id="reservationdays" >Minimum no.of days before reservation should be placed</label>
-                                                <input type="text" id="maximuminonline" 
-                                                 onChange={(event)=>
-                                                    {
-                                                        setOutletdetails({...Outletdetails,reservation:{
-                                                            ...Outletdetails.reservation,
-                                                            bufferDays:event.target.value
-                                                            
-                                                        }})
-                                                    }
-                                                }
-                                                />
-                                            </div>
-
-
+                                            />
                                         </div>
 
 
+                                    </div>
 
 
-                                        {/* <label htmlFor="BusinessLegalName" className="reservelabel">
+
+
+                                    {/* <label htmlFor="BusinessLegalName" className="reservelabel">
                                             Reservation Buffer Days
                                         </label>
 
@@ -816,10 +799,10 @@ const Dinein = ()=> {
 
 
                                         </div> */}
-                                    </div>
-                                }
-                            </div>
-                       
+                                </div>
+                            }
+                        </div>
+
                     </div>
                 </div>
 
@@ -827,14 +810,14 @@ const Dinein = ()=> {
 
                 <hr />
                 <button onClick={() => {
-               dispatch(postDineinDataRequest(Outletdetails))
+                    dispatch(postDineinDataRequest(Outletdetails))
 
-              }}>Post data</button>
-               
+                }}>Post data</button>
+
             </div>
             <br />
-            
-           
+
+
 
         </div>
     );
