@@ -5,8 +5,10 @@
   .main-div2 {
     display: flex;
     justify-content: start;
-    border: 2px solid red;
+    position: absolute;
     left: 400px;
+    top: 400px;
+   
 
    
    
@@ -19,7 +21,7 @@
   }
   .submain-div2{
     position: relative;
-    margin-left:-80%;
+ 
     /* margin-top: 2%; */
     
   
