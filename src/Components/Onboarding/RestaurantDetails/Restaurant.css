@@ -1,22 +1,24 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
+
   .main-div2 {
-   
     display: flex;
+    justify-content: start;
+    border: 2px solid red;
+    left: 400px;
+
+   
+ 
+  
    
    
     
   }
   .submain-div2{
-    transform: translateY(- 20px);
+   
+  
     
-      /* margin-top: 30%; */
-      /* border: 1px solid black; */
-      position: relative;
-     top: 80px;
-     left: -600px;
+    
+
+    
    
   
  }
