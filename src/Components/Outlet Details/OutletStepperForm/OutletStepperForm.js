@@ -12,7 +12,11 @@ import { CiImageOn } from "react-icons/ci";
 import { ImSpoonKnife } from "react-icons/im";
 import RestaurantImage from '../RestaurantImage/RestaurantImage'
 import Dinein from '../../Dinein/Dinein'
+
 import Pickup from "../PickUp/Pickup"
+
+import Pickup from '../PickUp/Pickup'
+
 
 
 
@@ -22,6 +26,7 @@ function BasicDetails()
     return<h2>BasicDetails</h2>
 
 }
+
 
 
 function Delivery()
