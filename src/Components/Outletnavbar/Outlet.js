@@ -3,7 +3,7 @@ import './Outlet.css'
 import Registration from '../Registration/PostData';
 import StepperForm from '../Onboarding/Steperform/Stepform';
 import { act } from 'react-dom/test-utils';
-import Pickup from '../PickUp/Pickup';
+import  OutletStepperForm from  '../Outlet Details/OutletStepperForm/OutletStepperForm';
 
 const Outlet = () => {
     const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
@@ -41,6 +41,7 @@ const Outlet = () => {
     </div>
     {activeCategory === 'Registration' && <Registration/>}
     {activeCategory === 'OnBoarding' && <StepperForm/>}
+    {activeCategory === 'Outlet Details' && <OutletStepperForm/>}
   
         {/* {activeCategory === 'Veg' && <Vegdispla/>}
         {activeCategory === 'Non-Veg' && <Nonvegdidsplay/>} */}
