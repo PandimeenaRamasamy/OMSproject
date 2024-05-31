@@ -161,7 +161,6 @@ const Dinein = () => {
     return (
         <div className="main-divfssai">
 
-
             <div className="submain-divfssai">
                 <div className="headingfssai">
                     <h5>Dine in Details</h5>
@@ -574,7 +573,7 @@ const Dinein = () => {
                                                             type="radio"
                                                             className="radioStyle"
                                                             value="yes"
-                                                            checked={Outletdetails.checkin.autoAssign=== 'yes'}
+                                                            checked={Outletdetails.checkin.autoAssign === 'yes'}
                                                             onChange={(event) => setOutletdetails({
                                                                 ...Outletdetails, checkin: {
                                                                     ...Outletdetails.checkin,
@@ -582,7 +581,7 @@ const Dinein = () => {
 
                                                                 }
                                                             })}
-                                                            
+
                                                         />
                                                         <label className="chairradio">Yes</label>
                                                     </div>
@@ -591,7 +590,7 @@ const Dinein = () => {
                                                             type="radio"
                                                             value="no"
                                                             className="radioStyle"
-                                                            checked={Outletdetails.checkin.autoAssign=== 'no'}
+                                                            checked={Outletdetails.checkin.autoAssign === 'no'}
                                                             onChange={(event) => setOutletdetails({
                                                                 ...Outletdetails, checkin: {
                                                                     ...Outletdetails.checkin,
@@ -599,7 +598,7 @@ const Dinein = () => {
 
                                                                 }
                                                             })}
-                                                          
+
                                                         />
                                                         <label className="chairradio">No</label>
                                                     </div>
@@ -807,11 +806,8 @@ const Dinein = () => {
                 </div>
 
                 <br /><br /><br />
-
-                <hr />
                 <button onClick={() => {
                     dispatch(postDineinDataRequest(Outletdetails))
-
                 }}>Post data</button>
 
             </div>
