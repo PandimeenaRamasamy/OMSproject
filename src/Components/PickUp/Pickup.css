@@ -1,0 +1,153 @@
+*{
+    font-family: Poppins;
+}
+.Pickup_form{
+    
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width:700px;
+}
+.Pickup_heading1{
+    
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+}
+.Pickup_heading3 {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    color:rgba(102, 102, 102, 1);
+    margin-bottom: 20px;
+
+}
+.Pickup_heading2{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom:15px;
+}
+.Enable_btn{
+ width: 84px;
+ height: 39px;
+
+ padding: 4px, 16px, 4px, 16px;
+ height: 29px;
+ border:0.1px;
+ border-radius: 20px;   
+ font-size: 14px;
+ border-color: rgba(151, 151, 151, 1);
+}
+.blue {
+width: 84px;
+ padding: 4px, 16px, 4px, 16px;
+ height: 39px;
+ border:0.1px;
+ border-radius: 20px;   
+ font-size: 14px;
+ border-color: rgba(13, 121, 220, 1);
+background-color: rgba(13, 121, 220, 1);
+color: white; 
+}
+.Disable_btn{
+    width: 84px;
+    height: 39px;
+    padding: 4px, 16px, 4px, 16px;
+    height: 29px;
+    border-radius: 20px;   
+    font-size: 14px;
+    border:0.1px;
+    border-color: rgba(151, 151, 151, 1);
+
+}
+.Pickup_heading4{
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 40px;
+    margin-bottom:37px;
+
+}
+.checkbox_class{
+    width:400px;
+   display: flex;
+
+    justify-content: start;
+    gap:10px;
+}
+.Pickup_heading5{
+    font-size: 16px;
+    font-weight: 400;
+    
+}
+.checkbox1{
+accent-color:rgba(103, 131, 62, 1);
+;
+width:16px;
+}
+.from_to{
+    gap: 286px;
+    width:300px;
+    display: flex;
+    justify-content: start;
+}
+.Pickup_heading6{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.textbox1{
+width:300px;
+height: 44px;
+font-size: 16px;
+
+}
+.textbox2{
+    width:300px;
+    height: 44px;
+    margin-left: 5px;
+    font-size: 16px;
+
+}
+.Pickup_heading7{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight:500;
+    line-height: 20px;
+}
+.Payment_checkbox{
+    accent-color:rgba(103, 131, 62, 1);
+    width:24px;
+}
+.radio1{
+
+    accent-color: rgba(103, 131, 62, 1);
+    
+ }
+.radio2{
+   margin-left: 15px;
+   accent-color:rgba(103, 131, 62, 1);
+   
+}
+.updown{
+    width:133px;
+    height:44px;
+
+}
+.Pack_type{
+    margin-top: 20px;
+    width:292px;
+    height:44px;
+    font-size: 16px;
+}.ETA_type{
+    width:292px;
+    height:44px;
+    font-size: 16px;
+}
+
+.Pickup_container{
+    width:500px;
+    position: relative;
+    top:180px;
+    left:365px;
+}

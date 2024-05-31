@@ -2,6 +2,8 @@ import React ,{useState}from 'react'
 import './Outlet.css'
 import Registration from '../Registration/PostData';
 import StepperForm from '../Onboarding/Steperform/Stepform';
+import { act } from 'react-dom/test-utils';
+import Pickup from '../PickUp/Pickup';
 
 const Outlet = () => {
     const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
@@ -39,6 +41,7 @@ const Outlet = () => {
     </div>
     {activeCategory === 'Registration' && <Registration/>}
     {activeCategory === 'OnBoarding' && <StepperForm/>}
+  
         {/* {activeCategory === 'Veg' && <Vegdispla/>}
         {activeCategory === 'Non-Veg' && <Nonvegdidsplay/>} */}
    
