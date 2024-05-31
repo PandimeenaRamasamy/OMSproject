@@ -30,7 +30,7 @@ margin-top: 20px;
 const ImageGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+ 
 `;
 
 const ImageItem = styled.img`
@@ -40,13 +40,14 @@ const ImageItem = styled.img`
   display: flex;
   justify-content: center;
   position:absolute;
-  left:250px;
+  margin-top:40px;
+  left:200px;
 `;
 
 const CrossIcon = styled(ImCross)`
   position: absolute;
   top: 60px;
-  right: 215px;
+  right: 225px;
   background: red;
   
   cursor: pointer;
