@@ -105,7 +105,7 @@ const bankref=useRef();
         </div>
       </div>
       <div className='btn-container'>
-        <div className='btn-footer'>
+        <div className='btn-footer1'>
           <div>
             <button className='clear_all'>Clear ALL</button>
           </div>

@@ -62,11 +62,13 @@
     color:#fff;
   }
   
-  .btn-footer{
-    position: static;
+  .btn-footer1{
+   
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
     display: flex;
-    justify-content:space-between;
-    width:216px
+    flex-direction: row-reverse;
   }
   .save_next{
     width: 100px;
