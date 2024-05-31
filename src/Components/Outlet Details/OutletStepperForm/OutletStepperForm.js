@@ -13,6 +13,11 @@ import { ImSpoonKnife } from "react-icons/im";
 import RestaurantImage from '../RestaurantImage/RestaurantImage'
 import Dinein from '../../Dinein/Dinein'
 
+import Pickup from "../PickUp/Pickup"
+
+import Pickup from '../PickUp/Pickup'
+
+
 
 
 
@@ -23,11 +28,7 @@ function BasicDetails()
 }
 
 
-function Pickup()
-{
-    return<h2>Pickup</h2>
 
-}
 function Delivery()
 {
     return<h2>Delivery</h2>
