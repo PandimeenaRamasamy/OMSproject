@@ -4,7 +4,7 @@
   }
   .sub-container {
    
-    width:1000px;
+    width:1050px;
     position: sticky;
     left: 340px;
     height:120px;
@@ -47,6 +47,7 @@
     padding: 10px;
     border-radius: 100px;
     background-color: #C7C8CC;
+    margin-right: 20px;
     
   }
 
@@ -108,7 +109,7 @@
     position: absolute;
     top: 45px;
     z-index: -1;
-    width:1123px;     /* Maximum width */
+    width:1500px;     /* Maximum width */
     height: 2px;
     background-color: #ccc;
     border-radius: 5px;
@@ -124,7 +125,7 @@
   /* Media Queries for responsiveness */
   @media (max-width: 2000px) {
     .stepper-progress {
-      width: 950px  /* Adjust width for screens smaller than 2700px */
+      width: 1550px  /* Adjust width for screens smaller than 2700px */
     }
     .container {
      
@@ -137,7 +138,7 @@
   }
   @media (max-width: 1500px) {
     .stepper-progress {
-      width:900px;  /* Adjust width for screens smaller than 2700px */
+      width:1500px;  /* Adjust width for screens smaller than 2700px */
     }
     .container {
      
