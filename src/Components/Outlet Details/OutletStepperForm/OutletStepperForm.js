@@ -15,7 +15,7 @@ import Dinein from '../../Dinein/Dinein'
 
 import Pickup from "../PickUp/Pickup"
 
-import Pickup from '../PickUp/Pickup'
+
 
 
 

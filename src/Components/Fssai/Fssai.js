@@ -69,8 +69,8 @@ const Fssai = forwardRef((props, ref) => {
 
         <div className="form-divfssai">
           <form onSubmit={handleSubmit}>
-            <div className="labelinput-div">
-              <label htmlFor="BusinessLegalName" className="label">
+            <div className="labelinput-divfssai">
+              <label htmlFor="BusinessLegalName" className="labelfssai">
                 Do you Have a valid FSSAI Registration/License?
               </label>
               <div style={{ marginTop: '10px' }}>
@@ -111,27 +111,27 @@ const Fssai = forwardRef((props, ref) => {
               </div>
             </div>
 
-            <div className="labelinput-div">
-              <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-details">
+            <div className="labelinput-divfssai">
+              <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-detailsfssai">
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="date" className="label">
+                  <label htmlFor="date" className="labelfssai">
                     FSSAI Expiration Date
                   </label>
                   <input
                     type="date"
-                    className="inputbox2"
+                    className="inputbox2fssai"
                     placeholder="DD/MM/YYYY"
                     value={fssaiform.registerNumber}
                     onChange={(e) => setfssaiform({ ...fssaiform, registerNumber: e.target.value })}
                   />
                 </div>
-                <div style={{ display: "flex", flexDirection: "column" }} className="personal-details">
-                  <label htmlFor="website" className="label">
+                <div style={{ display: "flex", flexDirection: "column" }} className="personal-detailsfssai">
+                  <label htmlFor="website" className="labelfssai">
                     FSSAI Register Number
                   </label>
                   <input
                     type="text"
-                    className="inputbox2"
+                    className="inputbox2fssai"
                     placeholder="44335456567686"
                     value={fssaiform.expirationDate}
                     onChange={(e) => setfssaiform({ ...fssaiform, expirationDate: e.target.value })}
@@ -140,8 +140,8 @@ const Fssai = forwardRef((props, ref) => {
               </div>
             </div>
 
-            <div className="labelinput-div">
-              <label htmlFor="" className="label">
+            <div className="labelinput-divfssai">
+              <label htmlFor="" className="labelfssai">
                 Restaurant logo
               </label>
               <div className="logo">

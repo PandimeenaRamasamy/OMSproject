@@ -2,64 +2,57 @@
     margin: 0;
     padding: 0;
   }
-  .main-div2 {
+  .main-divres {
     display: flex;
-    justify-content: start;
-    position: absolute;
-    left: 400px;
-    top: 400px;
-   
-
-   
-   
-  
-    display: flex;
-    /* border: 1px solid black; */
-   
-   
-    
+    justify-content:flex-start;
+    align-items: center;
+    position:absolute;
+    top:362px;
+    left:367px;  
   }
-  .submain-div2{
+
+  .submain-divres{
     position: relative;
  
     /* margin-top: 2%; */
     
   
  }
-  .heading-div2 {
-    /* position: absolute; */
-    top: -20px;
-    left: 2px;
-    width: 185.69px;
-    height: 15.86px;
-    font-family: 'Poppins',sans-serif;
+  .heading-divres {
+   
+   
+    font-family: Poppins;
+    margin-bottom:1px;
+    color: #2F2F2F;
+    font-weight: 600;
     font-size: 20px;
-    line-height: 30px;
-    color: #2f2f2f;
-    margin: 2px;
+   
     
   }
-  .form-div2 {
-    width: 600px;
-    height: 544px;
+  .form-divres {
+    display:flex;
+    flex-direction: column;
     /* border: 2px solid red; */
-    margin-top: 30px;
+    margin-top: 5px;
   
   
   }
-  .labelinput-div{
+  .labelinput-divres{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    /* border: 1px solid black; */
+    /* margin-top: 20px; */
+   
       
   }
-  .label {
+  .labelres {
     font-size: 16px;
     font-family: Poppins;
     font-weight: 400;
     color: #666666;
+    margin-top: 20px;
   }
-  .inputbox{
+  .inputboxres{
       width: 600px;
       height: 44px;
       border-radius: 4px;
@@ -69,7 +62,7 @@
       font-size: 16px;
       font-family: Poppins;
       font-weight: 400;
-      line-height: 24px;
+     
       padding: 2px;
       margin: 1px;
    
@@ -77,18 +70,21 @@
       
   }
   
-  .radio-label{
+  .radio-labelres{
       font-family: Poppins;
-      line-height: 24px;
+      padding-left: 10px;
       font-size: 16px;
-      margin: 5px;
+    
+    
   
   }
-  .radio{
+  .radiores{
       width :25px;
       height: 15px;
       color: green;
       transform: translateX(-5px);
+      margin-top: 13px;
+    
   
   }
   .PhoneInput input{
@@ -106,7 +102,7 @@
       width: 100% !important;
       font-size: 0.9rem !important;
   }
-  .inputbox2{
+  .inputbox2res{
       width: 292px;
       height: 44px;
       border-radius: 4px;
@@ -114,9 +110,8 @@
       font-size: 16px;
       font-family: Poppins;
       font-weight: 400;
-      line-height: 24px;
-      padding-left: 3px;
-      margin: 4px;
+      padding: 10px;
+     
       
   }
   .inputbox-error {
@@ -124,18 +119,18 @@
   }
   
   @media only screen and (max-width: 768px) {
-      .form-div {
+      .form-divres {
         width: 90%; 
       }
     
-      .inputbox {
+      .inputboxres {
         width: 100%; 
       }
     
-      .inputbox2 {
+      .inputbox2res {
         width: 100%; 
       }
-      .personal-details{
+      .personal-detailsres{
           display: flex;
           flex-direction: column;
       }

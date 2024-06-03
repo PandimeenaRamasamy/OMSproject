@@ -74,20 +74,20 @@ const Restaurant=React.forwardRef((props, ref) => {
   return (
     <>
     
-      <div className="main-div2">
-        <div className="submain-div2">
-          <div className="heading-div2">
+      <div className="main-divres">
+        <div className="submain-divres">
+          <div className="heading-divres">
             <h5>Restaurant Details</h5>
           </div>
-          <div className="form-div2">
+          <div className="form-divres">
             <form onSubmit={handleSubmit}>
-              <div className="labelinput-div">
-                <label htmlFor="BusinessLegalName" className="label">
+              <div className="labelinput-divres">
+                <label htmlFor="BusinessLegalName" className="labelres">
                   Business Legal Name
                 </label>
                 <input
                   type="text"
-                  className="inputbox"
+                  className="inputboxres"
                   placeholder="Name"
                   value={form.businessLegalName}
                   onChange={(e) =>
@@ -96,17 +96,17 @@ const Restaurant=React.forwardRef((props, ref) => {
                 />
               </div>
 
-              <div className="labelinput-div">
-                <label htmlFor="phoneType" className="label">
+              <div className="labelinput-divres">
+                <label htmlFor="phoneType" className="labelres">
                   Restaurant contact number
                 </label>
                 <div>
-                  <label className="radio-label">
+                  <label className="radio-labelres">
                     <input
                       type="radio"
                       value="Mobile"
                       name="phoneType"
-                      className="radio"
+                      className="radiores"
                       checked={form.phone === "Mobile"}
                       onChange={(e) =>
                         setForm({ ...form, phone: e.target.value })
@@ -114,12 +114,12 @@ const Restaurant=React.forwardRef((props, ref) => {
                     />
                     Mobile
                   </label>
-                  <label className="radio-label">
+                  <label className="radio-labelres">
                     <input
                       type="radio"
                       value="Landline"
                       name="phoneType"
-                      className="radio"
+                      className="radiores"
                       checked={form.phone === "Landline"}
                       onChange={(e) =>
                         setForm({ ...form, phone: e.target.value })
@@ -143,18 +143,18 @@ const Restaurant=React.forwardRef((props, ref) => {
                 </div>
               </div>
 
-              <div className="labelinput-div">
+              <div className="labelinput-divres">
                 <label
                   htmlFor="whatsappNumber"
-                  className="label"
+                  className="labelres"
                   style={{ marginBottom: "15px" }}
                 >
                   What's App Number
                 </label>
-                <label className="radio-label">
+                <label className="radio-labelres">
                   <input
                     type="checkbox"
-                    className="radio"
+                    className="radiores"
                     checked={isChecked}
                     onChange={handleCheckboxChange}
                   />
@@ -163,7 +163,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                 {isChecked ? (
                   <input
                     type="text"
-                    className="inputbox"
+                    className="inputboxres"
                     value={form.whatsappNumber}
                     onChange={(e) =>
                       setForm({ ...form, whatsappNumber: e.target.value })
@@ -187,15 +187,15 @@ const Restaurant=React.forwardRef((props, ref) => {
 
               <div
                 style={{ display: "flex", justifyContent: "space-evenly" }}
-                className="personal-details"
+                className="personal-detailsres"
               >
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="email" className="label">
+                  <label htmlFor="email" className="labelres">
                     Email
                   </label>
                   <input
                     type="email"
-                    className={`inputbox2 ${
+                    className={`inputbox2res ${
                       emailError ? "inputbox-error" : ""
                     }`}
                     placeholder="xyz@gmail.com"
@@ -211,14 +211,14 @@ const Restaurant=React.forwardRef((props, ref) => {
                 </div>
                 <div
                   style={{ display: "flex", flexDirection: "column" }}
-                  className="personal-details"
+                  className="personal-detailsres"
                 >
-                  <label htmlFor="website" className="label">
+                  <label htmlFor="website" className="labelres">
                     Website Link
                   </label>
                   <input
                     type="url"
-                    className="inputbox2"
+                    className="inputbox2res"
                     placeholder="Magilhub.com"
                     value={form.website}
                     onChange={(e) =>
@@ -230,15 +230,15 @@ const Restaurant=React.forwardRef((props, ref) => {
 
               <div
                 style={{ display: "flex", justifyContent: "space-evenly" }}
-                className="personal-details"
+                className="personal-detailsres"
               >
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="InstagramLink" className="label">
+                  <label htmlFor="InstagramLink" className="labelres">
                     Instagram Link
                   </label>
                   <input
                     type="url"
-                    className="inputbox2"
+                    className="inputbox2res"
                     placeholder="Chandra.uiux"
                     value={form.instagramLink}
                     onChange={(e) =>
@@ -247,12 +247,12 @@ const Restaurant=React.forwardRef((props, ref) => {
                   />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="FacebookLink" className="label">
+                  <label htmlFor="FacebookLink" className="labelres">
                     Facebook Link
                   </label>
                   <input
                     type="url"
-                    className="inputbox2"
+                    className="inputbox2res"
                     placeholder="chandra.com"
                     value={form.facebookLink}
                     onChange={(e) =>

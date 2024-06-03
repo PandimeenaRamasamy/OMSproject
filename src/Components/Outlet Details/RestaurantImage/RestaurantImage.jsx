@@ -116,9 +116,6 @@ const RestaurantImage = () => {
           </div>
        
     
-
-      
-
       <DropzoneContainer {...getRootProps()}>
         <input {...getInputProps()} />
         <p>Drag & Drop to upload or <span style={{ color: 'black', textDecoration: 'underline' }}>Browse</span></p>
@@ -126,9 +123,6 @@ const RestaurantImage = () => {
           <ImageGrid>
             <ImageItem src={image} alt="Uploaded"   />
             <CrossIcon onClick={removeImage} />
-           
-
-
           </ImageGrid >
           
       :  <UploadButton onClick={open}><img src={AddPhoto} alt="" /></UploadButton>}
