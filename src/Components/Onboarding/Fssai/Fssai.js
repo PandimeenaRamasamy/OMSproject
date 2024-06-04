@@ -43,6 +43,13 @@ const Fssai = forwardRef((props, ref) => {
     setFile(null);
     setImagePreview(addphoto);
   };
+  const getFormData = () => {
+    return fssaiform;
+  };
+
+  useImperativeHandle(ref, () => ({
+    getFormData
+  }));
 
   const handleImage = (e) => {
     const selectedFile = e.target.files[0];
