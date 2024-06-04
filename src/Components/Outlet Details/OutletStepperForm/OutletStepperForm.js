@@ -14,6 +14,7 @@ import RestaurantImage from '../RestaurantImage/RestaurantImage'
 import Dinein from '../../Dinein/Dinein'
 
 import Pickup from "../PickUp/Pickup"
+import Kitchen from '../Kitchen/Kitchen'
 
 
 
@@ -34,10 +35,7 @@ function Delivery()
     return<h2>Delivery</h2>
 
 }
-function Kitchen()
-{
-    return<h2>Kitchen</h2>
-}
+
 function Reciept()
 {
     return<h2>Reciept</h2>
