@@ -61,16 +61,16 @@ const Pickup = () => {
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading3'>Please mention the payment methods</h5>
                         <div>
-                        <input type='checkbox' className='Payment_checkbox' value="Cards" onChange={handlecheckedchange}></input>Cards
-                        <input type='checkbox' className='Payment_checkbox' value="Pay at store" onChange={handlecheckedchange} ></input>Pay at store
-                        <input type='checkbox' className='Payment_checkbox' value="Apple Pay" onChange={handlecheckedchange}></input>Apple Pay
-                        <input type='checkbox' className='Payment_checkbox' value="Google Pay" onChange={handlecheckedchange}></input>Google Pay
+                        <input type='checkbox' className='Payment_checkbox' value="Cards" onChange={handlecheckedchange}></input><label className='label'>Cards</label>
+                        <input type='checkbox' className='Payment_checkbox' value="Pay at store" onChange={handlecheckedchange} ></input><label className='label'>Pay at store</label>
+                        <input type='checkbox' className='Payment_checkbox' value="Apple Pay" onChange={handlecheckedchange}></input><label className='label'>Apple Pay</label>
+                        <input type='checkbox' className='Payment_checkbox' value="Google Pay" onChange={handlecheckedchange}></input><label className='label'>Google Pay</label>
                         </div>
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
                         <div>
-                            <input type="radio" name="YesorNo" className='radio1' ></input>Yes
-                            <input type="radio" name="YesorNo" className='radio2'></input>No
+                            <input type="radio" name="YesorNo" className='radio1' ></input><label className='label'>Yes</label>
+                            <input type="radio" name="YesorNo" className='radio2'></input><label className='label'>No</label>
                         </div>
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
