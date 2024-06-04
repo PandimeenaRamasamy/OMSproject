@@ -1,0 +1,68 @@
+.Bank-Container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 362px;
+    left: 367px;
+}
+
+.form-Bank {
+    display: flex;
+    flex-direction: column;
+}
+
+.Bank_Main_Heading {
+    margin-bottom: 15px;
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: Poppins;
+}
+
+.Bank-Account_Number,
+.Re-Account_Number,
+.Bank-Ifse_Code,
+.Account_Holder_Number {
+    display: flex;
+    flex-direction: column;
+}
+
+.Bank_First_Heading,
+.Bank_Second_Heading,
+.Bank_Third_Heading,
+.Bank_Fourth_Heading {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    font-family: "Poppins";
+}
+
+.TypeI,
+.Type2,
+.Type3,
+.Type4 {
+    border: 2px solid rgba(179, 179, 179, 1);
+    width: 600px;
+    height: 44px;
+    font-family: Poppins;
+    font-size: 16px;
+}
+
+.Account_Button {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 12px;
+    padding-bottom: 15px;
+    width: 600px;
+    padding-top: 20px;
+    color: white;
+    background-color: rgba(103, 131, 62, 1);
+    border: 2px solid rgba(103, 131, 62, 1);
+}
+
+.Terms {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
