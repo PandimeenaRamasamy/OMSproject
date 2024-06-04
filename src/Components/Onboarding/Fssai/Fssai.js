@@ -1,5 +1,5 @@
 import React, { useState, useImperativeHandle, forwardRef } from "react";
-import "./Fssai.css";
+import "./Fssai.scss";
 import { ImCross } from "react-icons/im";
 import addphoto from '../Fssai/images/Addphotos.png';
 

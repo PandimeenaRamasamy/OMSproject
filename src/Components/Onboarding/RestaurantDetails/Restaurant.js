@@ -1,5 +1,5 @@
 import React, { useState,useImperativeHandle} from "react";
-import "./Restaurant.css";
+import "./Restaurant.scss";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import validator from "validator";
