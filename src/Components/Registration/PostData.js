@@ -11,8 +11,8 @@ import './Registration.css'
 // import { productlist } from '../../redux/OMSactions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { postDataRequest } from '../../Actions/PostDataAction';
-import { getDataRequest } from '../../Actions/PostDataAction';
+import { postDataRequest } from '../../redux/Actions/PostDataAction';
+import { getDataRequest } from '../../redux/Actions/PostDataAction';
 
 const PostDataForm = () => {
   const [restaurantNumber, setRestaurantNumber] = useState("");

@@ -9,6 +9,7 @@
     position:absolute;
     top:362px;
     left:367px;  
+    /* border: 1px solid black; */
   }
 
   .submain-divres{
@@ -87,21 +88,7 @@
     
   
   }
-  .PhoneInput input{
-      width: 300px;
-  }
-  .react-tel-input .form-control {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      height: 3rem !important;
-      position: relative;
-      letter-spacing: .01rem;
-      border-radius: 0 !important;
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      width: 100% !important;
-      font-size: 0.9rem !important;
-  }
+ 
   .inputbox2res{
       width: 292px;
       height: 44px;
@@ -135,3 +122,6 @@
           flex-direction: column;
       }
     }
+
+
+    

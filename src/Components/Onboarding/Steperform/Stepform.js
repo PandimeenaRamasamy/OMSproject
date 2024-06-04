@@ -5,11 +5,11 @@ import { PiNotepadBold } from "react-icons/pi";
 import { CiLocationOn } from "react-icons/ci";
 import { TfiNotepad } from "react-icons/tfi";
 import Restaurant from "../RestaurantDetails/Restaurant";
-import Fssai from '../../Fssai/Fssai';
+import Fssai from '../../Onboarding/Fssai/Fssai';
 import BankDetails from '../BankDetails/BankDetails';
 import Location from '../Location/Location';
 import { useDispatch } from 'react-redux';
-import { postOnBoardingDataRequest } from '../../../Actions/PostDataAction';
+import { postOnBoardingDataRequest } from '../../../redux/Actions/PostDataAction';
 
 function Stepform() {
   const dispatch=useDispatch()
@@ -22,10 +22,10 @@ const fssairef=useRef();
 const bankref=useRef();
 
   const steps = [
-    { title: 'Restaurant Details', component: <Restaurant ref={restaurantdetailsref}  />, icon: <BiNotepad className='image' /> },
+    { title: 'RestaurantDetails', component: <Restaurant ref={restaurantdetailsref}  />, icon: <BiNotepad className='image' /> },
     { title: 'Location', component: <Location ref={locationref}  />, icon: <CiLocationOn className='image' /> },
     { title: 'FSSAI', component: <Fssai ref={fssairef}  />, icon: <PiNotepadBold className='image' /> },
-    { title: 'Bank Details', component: <BankDetails ref={bankref} />, icon: <TfiNotepad className='image' /> },
+    { title: 'BankDetails', component: <BankDetails ref={bankref} />, icon: <TfiNotepad className='image' /> },
   ];
   let newformdata={};
   

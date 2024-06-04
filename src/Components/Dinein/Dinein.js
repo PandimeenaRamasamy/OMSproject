@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Dinein.css";
-import { postDineinDataRequest } from "../../Actions/PostDataAction";
+import { postDineinDataRequest } from "../../redux/Actions/PostDataAction";
 import { useDispatch } from "react-redux";
 
 const Dinein = () => {
@@ -144,6 +144,10 @@ const Dinein = () => {
           <h5>Dine in Details</h5>
         </div>
 
+
+
+
+
 {/* dine in details */}
 
         <div className="Dinein1">
@@ -230,6 +234,10 @@ const Dinein = () => {
         </div>
 
         <hr />
+
+
+
+
 
 {/* Interactive details */}
 
@@ -368,6 +376,9 @@ const Dinein = () => {
           </div>
 
           <hr />
+
+
+
 
  {/* Checkin details */}
 
@@ -575,6 +586,11 @@ const Dinein = () => {
         </div>
 
         <hr />
+
+
+
+
+
 
   {/* Reservation details */}
 

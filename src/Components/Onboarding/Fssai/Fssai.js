@@ -1,6 +1,5 @@
 import React, { useState, useImperativeHandle, forwardRef } from "react";
 import "./Fssai.css";
-import validator from "validator";
 import { ImCross } from "react-icons/im";
 import addphoto from '../Fssai/images/Addphotos.png';
 
@@ -12,15 +11,7 @@ const Fssai = forwardRef((props, ref) => {
     documents: ""
   });
 
-  const getFormData = () => {
-    return fssaiform;
-  };
-
-  useImperativeHandle(ref, () => ({
-    getFormData
-  }));
-
-  const [selectedButton, setSelectedButton] = useState('yes');
+  const [selectedButton, setSelectedButton] = useState(true);
   const [imagePreview, setImagePreview] = useState(addphoto);
   const [file, setFile] = useState(null);
   const [imageclose, setImageclose] = useState(false);
@@ -28,11 +19,18 @@ const Fssai = forwardRef((props, ref) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setfssaiform({ ...fssaiform, isEnabled: selectedButton });
-    // Additional form validation and submission logic can be added here
+   
   };
 
-  const handleButtonClick = (button) => {
-    setSelectedButton(button);
+  const handleButtonClickyes = (e) => {
+    setSelectedButton(true);
+    e.preventDefault();
+    setfssaiform({...fssaiform, isEnabled: 'enabled'})
+  };
+  const handleButtonClickno = (e) => {
+    setSelectedButton(false);
+    e.preventDefault();
+    setfssaiform({...fssaiform, isEnabled: 'disabled'})
   };
 
   const handleButton = () => {
@@ -61,24 +59,26 @@ const Fssai = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="main-divfssai">
-      <div className="submain-divfssai">
-        <div className="headingfssai">
-          <h5>Fssai</h5>
-        </div>
-
-        <div className="form-divfssai">
-          <form onSubmit={handleSubmit}>
-            <div className="labelinput-divfssai">
-              <label htmlFor="BusinessLegalName" className="labelfssai">
+ <>
+    
+      <div className="main-divfss">
+        <div className="submain-divfss">
+          <div className="heading-divfss">
+            <h5>Fssai</h5>
+          </div>
+          <div className="form-divfss">
+            <form onSubmit={handleSubmit}>
+              <div className="labelinput-divfss">
+                <label htmlFor="BusinessLegalName" className="labelfss">
                 Do you Have a valid FSSAI Registration/License?
-              </label>
-              <div style={{ marginTop: '10px' }}>
-                <button
+                </label>
+               
+                <div>
+                 <button
                   type="button"
-                  onClick={() => handleButtonClick('yes')}
+                  onClick={ handleButtonClickyes}
                   style={{
-                    backgroundColor: selectedButton === 'yes' ? '#0D79DC' : '#979797',
+                    backgroundColor: selectedButton ? '#0D79DC' : '#979797',
                     color: 'white',
                     margin: '10px',
                     border: 'none',
@@ -93,9 +93,9 @@ const Fssai = forwardRef((props, ref) => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleButtonClick('no')}
+                  onClick={ handleButtonClickno}
                   style={{
-                    backgroundColor: selectedButton === 'no' ? '#0D79DC' : '#979797',
+                    backgroundColor: !selectedButton  ? '#0D79DC' : '#979797',
                     color: 'white',
                     margin: '10px',
                     border: 'none',
@@ -108,41 +108,59 @@ const Fssai = forwardRef((props, ref) => {
                 >
                   No
                 </button>
-              </div>
-            </div>
+               </div>
 
-            <div className="labelinput-divfssai">
-              <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-detailsfssai">
+
+              </div>
+
+              {
+                selectedButton && <>
+                 <div
+                style={{ display: "flex", justifyContent: "space-evenly" }}
+                className="personal-detailsfss"
+              >
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="date" className="labelfssai">
-                    FSSAI Expiration Date
+                  <label htmlFor="email" className="labelfss">
+                  FSSAI Expiration Date
                   </label>
                   <input
                     type="date"
-                    className="inputbox2fssai"
-                    placeholder="DD/MM/YYYY"
-                    value={fssaiform.registerNumber}
-                    onChange={(e) => setfssaiform({ ...fssaiform, registerNumber: e.target.value })}
+                    className="inputbox2fss"
+  
+                    
+                    placeholder="DD/MM/YY"
+                    value={fssaiform.expirationDate}
+                    onChange={(e) => {
+                     
+                      setfssaiform({...fssaiform,expirationDate:e.target.value})
+                    
+                    }}
                   />
+               
                 </div>
-                <div style={{ display: "flex", flexDirection: "column" }} className="personal-detailsfssai">
-                  <label htmlFor="website" className="labelfssai">
-                    FSSAI Register Number
+                <div
+                  style={{ display: "flex", flexDirection: "column" }}
+                  className="personal-detailsfss"
+                >
+                  <label htmlFor="website" className="labelfss">
+                  FSSAI Register Number
                   </label>
                   <input
                     type="text"
-                    className="inputbox2fssai"
+                    className="inputbox2fss"
                     placeholder="44335456567686"
-                    value={fssaiform.expirationDate}
-                    onChange={(e) => setfssaiform({ ...fssaiform, expirationDate: e.target.value })}
+                    value={fssaiform.registerNumber}
+                    onChange={(e) =>
+                      
+                      setfssaiform({...fssaiform,registerNumber:e.target.value})
+                    }
                   />
                 </div>
               </div>
-            </div>
 
-            <div className="labelinput-divfssai">
-              <label htmlFor="" className="labelfssai">
-                Restaurant logo
+              <div className="labelinput-divfss">
+              <label htmlFor="" className="labelfss">
+              Upload FSSAI document
               </label>
               <div className="logo">
                 <input type="file" id="hidden-file-input" onChange={handleImage} style={{ display: 'none' }} />
@@ -169,14 +187,25 @@ const Fssai = forwardRef((props, ref) => {
                   {!file && <img src={addphoto} className="fornoimg" alt="" />}
                 </div>
               </div>
-            </div>
+            </div> 
+    
+</>
+              }
 
-            {/* <button type="submit">Submit</button> */}
-          </form>
+             
+             
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+
+
+
+
   );
 });
 
 export default Fssai;
+
