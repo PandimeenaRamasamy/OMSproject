@@ -1,5 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import "../Location/Location.css";
+import "../Location/Location.scss";
 
 const Location = forwardRef((props, ref) => {
   const [form, setForm] = useState({
