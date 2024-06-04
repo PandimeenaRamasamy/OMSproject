@@ -7,7 +7,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import validator from "validator";
 import { ImCross, ImFontSize } from "react-icons/im";
-import './Registration.css'
+import './Registration.scss'
 // import { productlist } from '../../redux/OMSactions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';

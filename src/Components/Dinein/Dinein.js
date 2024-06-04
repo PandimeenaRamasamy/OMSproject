@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Dinein.css";
+import "./Dinein.scss";
 import { postDineinDataRequest } from "../../redux/Actions/PostDataAction";
 import { useDispatch } from "react-redux";
 
@@ -137,10 +137,10 @@ const Dinein = () => {
   };
 
   return (
-    <div className="main-divfssai">
-      <div className="submain-divfssai">
+    <div className="main-divdine">
+      <div className="submain-divdine">
 
-        <div className="headingfssai">
+        <div className="headingdine">
           <h5>Dine in Details</h5>
         </div>
 
@@ -180,16 +180,22 @@ const Dinein = () => {
 
               {DineinselectedButton && (
                 <div>
-                    <div className="lables1">
-                      <label htmlFor="BusinessLegalName" className="label">
+                  <div style={{marginTop:'20px'}}>
+
+                  <div className="lables1">
+                      <label htmlFor="BusinessLegalName" className="labelhighchair">
                         High Chair
                       </label>
                     </div>
                     <div className="lables2">
-                      <label htmlFor="BusinessLegalName" className="label">
+                      <label htmlFor="BusinessLegalName" className="labelhighchair">
                         Chair with long legs for children
                       </label>
                     </div>
+
+
+                  </div>
+                   
 
                     <div className="highchairradio">
                       <div className="highchairradio1">
@@ -242,13 +248,13 @@ const Dinein = () => {
 {/* Interactive details */}
 
         <div className="Interactive2">
-          <div className="headingfssai">
+          <div className="headingdine">
             <h5>Interactive Dine-in Details</h5>
           </div>
 
           <div className="">
-            <form>
-              <div className="">
+            
+             
 
                 <div className="lables1">
                   <label htmlFor="BusinessLegalName" className="label">
@@ -287,7 +293,7 @@ const Dinein = () => {
                         <button
                           type="button"
                           onClick={() => Interactivefield("Enable", "yes")}
-                          className="enablebtn"
+                          className="enablebtninter"
                           style={{
                             backgroundColor:
                               Interactivedinein === "yes"
@@ -301,7 +307,7 @@ const Dinein = () => {
                         <button
                           type="button"
                           onClick={() => Interactivefield("Disable", "no")}
-                          className="disablebtn"
+                          className="disablebtninter"
                           style={{
                             backgroundColor:
                               Interactivedinein === "no"
@@ -333,14 +339,14 @@ const Dinein = () => {
 
                       <div
                         style={{ marginTop: "10px" }}
-                        className="enabledisablebtn"
+                        className="enabledisablebtninter"
                       >
                         <button
                           type="button"
                           onClick={() =>
                             merchantvalidationfield("Enable", "yes")
                           }
-                          className="enablebtn"
+                          className="enablebtninter"
                           style={{
                             backgroundColor:
                               Mergentdigitvaliadtion === "yes"
@@ -356,7 +362,7 @@ const Dinein = () => {
                           onClick={() =>
                             merchantvalidationfield("Disable", "no")
                           }
-                          className="disablebtn"
+                          className="disablebtninter"
                           style={{
                             backgroundColor:
                               Mergentdigitvaliadtion === "no"
@@ -371,8 +377,9 @@ const Dinein = () => {
                     </form>
                   </div>
                 )}
-              </div>
-            </form>
+              
+           
+            
           </div>
 
           <hr />
@@ -383,11 +390,11 @@ const Dinein = () => {
  {/* Checkin details */}
 
           <div className="checkin3">
-            <div className="headingfssai">
+            <div className="headingdine">
               <h5>Checkin Details</h5>
             </div>
             <div className="">
-              <form>
+             
                 <div className="">
                   <div className="lables1">
                     <label htmlFor="BusinessLegalName" className="label">
@@ -580,7 +587,7 @@ const Dinein = () => {
                     </div>
                   )}
                 </div>
-              </form>
+             
             </div>
           </div>
         </div>
@@ -595,7 +602,7 @@ const Dinein = () => {
   {/* Reservation details */}
 
         <div className="reservation4">
-          <div className="headingfssai">
+          <div className="headingdine">
             <h5>Reservation Details</h5>
           </div>
           <div className="">
