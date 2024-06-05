@@ -1,21 +1,19 @@
 // src/sagas/postDataSaga.js
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSuccess,postDineinDataFailure } from '../Actions/PostDataAction';
-import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST} from '../Actions/PostDataAction';
-
+import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSuccess,postDineinDataFailure,POST_ONBOARDING_DATA_FAILURE } from '../Actions/PostDataAction';
+import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST, POST_ONBOARDING_DATA_SUCCESS} from '../Actions/PostDataAction';
+import axios from 'axios';
 
 
 function* postData(action) {
   try {
-    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/registration', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(action.payload),
-    });
-    const data = yield response.json();
-    yield put(postDataSuccess(data));
+    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlet/registration', action.payload);
+
+    if (response.status === 200) {
+      yield put( postDataSuccess(response.data));
+    } else {
+      yield put(postDataFailure(response.statusText));
+    }
   } catch (error) {
     yield put(postDataFailure(error.message));
   }
@@ -34,17 +32,15 @@ function* getData() {
 
 function* postOnBoardingData(action) {
   try {
-    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/onBoarding', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(action.payload),
-    });
-    const data = yield response.json();
-    yield put(postDataSuccess(data));
+    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlet/onBoarding', action.payload);
+
+    if (response.status === 200) {
+      yield put( POST_ONBOARDING_DATA_SUCCESS(response.data));
+    } else {
+      yield put(POST_ONBOARDING_DATA_FAILURE(response.statusText));
+    }
   } catch (error) {
-    yield put(postDataFailure(error.message));
+    yield put(POST_ONBOARDING_DATA_FAILURE(error.message));
   }
 }
 

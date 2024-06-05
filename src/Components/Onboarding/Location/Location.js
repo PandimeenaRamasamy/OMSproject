@@ -3,6 +3,7 @@ import "../Location/Location.scss";
 
 const Location = forwardRef((props, ref) => {
   const [form, setForm] = useState({
+
    
     address: "",
     pincode: "",

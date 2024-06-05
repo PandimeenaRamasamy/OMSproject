@@ -117,6 +117,10 @@ const PostDataForm = () => {
 
   }
 
+  const data2=useSelector((state)=>state.postData.data)
+  console.log(data2)
+
+
 
   return (
     <>
