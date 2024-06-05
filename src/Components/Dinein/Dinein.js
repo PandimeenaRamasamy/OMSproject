@@ -15,7 +15,8 @@ const Dinein = () => {
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
 
   const [Outletdetails, setOutletdetails] = useState({
-    locationId: "4d974ed6-11ff-4b79-89f2-191097b07cb9",
+    locationId: "5d171ae6-2849-4a49-b75a-c72776625843",
+   
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
@@ -708,7 +709,7 @@ const Dinein = () => {
                       />
                     </div>
                   </div>
-                  <label htmlFor="BusinessLegalName" className="reservelabel">
+                  <label htmlFor="BusinessLegalName" className="labelreserve">
                     Reservation available days
                   </label>
 
@@ -726,7 +727,7 @@ const Dinein = () => {
                       </div>
                     ))}
                   </div>
-                  <label htmlFor="BusinessLegalName" className="reservelabel">
+                  <label htmlFor="BusinessLegalName" className="labelreserve">
                     Reservation Buffer Days
                   </label>
                   <div className="Reservation available days">

@@ -12,6 +12,8 @@ import './Registration.scss'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { postDataRequest } from '../../redux/Actions/PostDataAction';
+import {postDataSuccess} from '../../redux/Actions/PostDataAction';
+
 import { getDataRequest } from '../../redux/Actions/PostDataAction';
 
 const PostDataForm = () => {
@@ -57,17 +59,9 @@ const PostDataForm = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    const emailValidationError = validateEmail(Registrationform.email);
-    const nameValidationError = validateName(Registrationform.name)
+  
     dispatch(postDataRequest(Registrationform));
-    if (emailValidationError) {
-      setEmailError(emailValidationError);
-      setNameError(nameValidationError)
-    } else {
-      setEmailError("");
-      setNameError("");
-      alert(JSON.stringify(Registrationform, null, 2));
-    }
+   
   };
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -103,6 +97,8 @@ const PostDataForm = () => {
   const [imageclose, setimageclose] = useState(false)
 
 
+console.log(data);
+
   const handleButtonClick = () => {
     document.getElementById('hidden-file-input').click();
     setimageclose(false)
@@ -126,7 +122,7 @@ const PostDataForm = () => {
             <h5>Registration</h5>
           </div>
           <div className="form-divreg">
-            <form onSubmit={handleSubmit}>
+           
               <div className="labelinput-divreg">
                 <label htmlFor="" className="labelreg">
                   Restaurant name
@@ -231,14 +227,14 @@ const PostDataForm = () => {
                 </div>
               </div>
               <div className='footnav'>
-                <button className='footnavbtn1' type='submit'>Save & Next</button>
+                <button className='footnavbtn1' onClick={handleSubmit}>Save & Next</button>
                 <button className='footnavbtn2'>Clear All</button>
               </div>
               <button onClick={() => {
-                dispatch(getDataRequest());
+                dispatch(postDataSuccess());
 
               }}>Get data</button>
-            </form>
+          
           </div>
         </div>
 

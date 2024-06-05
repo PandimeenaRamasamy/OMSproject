@@ -22,6 +22,68 @@ function* postData(action) {
 }
 
 
+
+const registerUserApi = (registrationData) => {
+  return fetch('http://192.168.1.20:8080/outlet/registration', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(registrationData),
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    console.log(response.json());
+    return response.json();
+  });
+};
+
+
+
+function* registerUserSaga(action) {
+  try {
+    const data = yield call(registerUserApi, action.payload);
+    yield put(postDataSuccess(data));
+  } catch (error) {
+    yield put(postDataFailure(error.message));
+  }
+}
+
+
+
+
+
+
+
+
+function* postRegistrationData(action) {
+  try {
+    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/registration', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(action.payload),
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+
+
+      }
+    
+     console.log(response.json());
+      return response.json();
+
+    });
+   
+    
+  } catch (error) {
+    yield put(postDataFailure(error.message));
+  }
+}
+
+
 function* getData() {
   try {
     const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76');
@@ -69,7 +131,7 @@ function* postDineinData(action) {
 
 
 export function* watchPostData() {
-  yield takeEvery(POST_DATA_REQUEST, postData);
+  yield takeEvery(POST_DATA_REQUEST, registerUserSaga);
 }
 
 export function* watchgetData() {

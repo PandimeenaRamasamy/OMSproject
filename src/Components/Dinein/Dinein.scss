@@ -20,7 +20,7 @@
 .headingdine {
   width: 350px;
   font-family: 'Poppins', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   color: #2f2f2f;
   margin-bottom: 30px;
 }
@@ -32,7 +32,7 @@
 }
 
 .label {
-  font-size: 16px;
+  font-size: 14px;
  
 }
 
@@ -42,7 +42,7 @@
 
 .reservelabel {
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   text-align: left;
   color: #2f2f2f;
@@ -56,22 +56,24 @@
   .labelcheckin1 {
     margin-top: 20px;
   }
+  .labelhighchair{
+
+    font-size: 14px;
+   }
 
  
 }
 
-.labelhighchair{
 
- 
-}
 
 
 .lables2 {
   margin-top: 2%;
+  font-size: 14px;
 }
 
 .chairradio {
-  font-size: 17px;
+  font-size: 15px;
   font-family: 'Poppins', sans-serif;
   color: #666666;
 }
@@ -156,7 +158,7 @@ hr {
 #maximuminon,
 #maximuminoff {
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 24px;
   text-align: left;
@@ -180,17 +182,17 @@ hr {
 }
 
 .labelcheckin1 {
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.labelcheckin2 {
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
 }
 
+.labelcheckin2 {
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
 .labelreserve {
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -237,10 +239,12 @@ hr {
   }
 }
 
+
+
 #reservationdays {
   margin-top: 20px;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .Enable_btn,
