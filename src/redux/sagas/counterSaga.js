@@ -2,6 +2,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSuccess,postDineinDataFailure,POST_ONBOARDING_DATA_FAILURE } from '../Actions/PostDataAction';
 import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST, POST_ONBOARDING_DATA_SUCCESS} from '../Actions/PostDataAction';
+import {LOCATION_ID} from '../Actions/PostDataAction'
+
 import axios from 'axios';
 
 
@@ -32,7 +34,11 @@ function* postData(action) {
 
 
 
-
+function* locationId(action) {
+  // You can perform any side effects here before storing the name
+  yield console.log('Storing name:', action.payload);
+  // Here you would dispatch an action to update your Redux store with the name
+}
 
 
 
@@ -98,3 +104,6 @@ export function* dineinpostdata()
   yield takeEvery(POST_DINEIN_DATA_REQUEST, postDineinData);
 }
 
+export function* locationIdSaga() {
+  yield takeEvery(LOCATION_ID, locationId);
+}

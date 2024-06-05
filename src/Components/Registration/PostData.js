@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { postDataRequest } from '../../redux/Actions/PostDataAction';
 import {postDataSuccess} from '../../redux/Actions/PostDataAction';
+import {getLocationId} from '../../redux/Actions/PostDataAction'
 
 import { getDataRequest } from '../../redux/Actions/PostDataAction';
 
@@ -113,10 +114,11 @@ console.log(data);
 
   }
 
-  const data2=useSelector((state)=>state.postData.data)
-  console.log(data2)
+  const locationId=useSelector((state)=>state.postData.data)
+  console.log(locationId)
+  dispatch(getLocationId(locationId));
 
-
+ 
 
   return (
     <>

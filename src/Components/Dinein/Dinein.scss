@@ -67,11 +67,11 @@
 
 
 
-.lables2 {
+.lables2  .labelhighchair{
   margin-top: 2%;
   font-size: 14px;
 }
-
+ 
 .chairradio {
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
@@ -229,11 +229,10 @@ hr {
         content: '✔';
         color: white;
         font-size: 10px;
-        justify-content: center;
-        align-items: center;
+       
         text-align: center;
         position: relative;
-        top: -3px;
+        top: -10px;
       }
     }
   }

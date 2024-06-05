@@ -17,6 +17,16 @@ export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
 
 
+export const LOCATION_ID = 'LOCATION_ID';
+
+
+export const getLocationId = (data) => ({
+  type: LOCATION_ID,
+  payload: data,
+});
+
+
+
 export const postDataRequest = (data) => ({
   type: POST_DATA_REQUEST,
   payload: data,
@@ -31,6 +41,8 @@ export const postDataFailure = (error) => ({
   type: POST_DATA_FAILURE,
   payload: error,
 });
+
+
 
 
 

@@ -723,7 +723,7 @@ const Dinein = () => {
                           onChange={() => handleDayChange(day)}
                           className="radioStyle"
                         />
-                        <label>{day}</label>
+                        <label style={{fontSize:'13px'}}>{day}</label>
                       </div>
                     ))}
                   </div>
