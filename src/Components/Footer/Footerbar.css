@@ -1,0 +1,31 @@
+.footnav{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row-reverse; 
+}
+
+.footnavbtn1{
+    width: 100px;
+    height: 35px;
+   margin-left: 10px;
+   color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 4px;
+    background-color:  #67833E;
+    border: 1px solid #67833E;
+}
+.footnavbtn2{
+    width: 100px;
+    height: 35px;
+    color: #67833E;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 4px;
+    
+    border: 1px solid #67833E;
+    background:none;
+    
+    
+   
+}
