@@ -1,0 +1,46 @@
+.addDayAndTime{
+    display: grid;
+}
+.checkboxWrapper{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+.checkBoxContainer{
+    width: 100%;
+    // margin-left: 80px;
+    margin-top: 20px;
+    width: auto;
+    display: flex;
+
+    .cPname{
+        color: #2F2F2F;
+        font-size: 13px;
+    }
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox + p::before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #979797;
+    border-radius: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.checkbox:checked + p::before {
+    background-color: #67833E;
+    border-color: #67833E;
+    content: '✔';
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    line-height: 15px;
+}

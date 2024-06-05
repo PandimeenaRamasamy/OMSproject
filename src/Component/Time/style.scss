@@ -1,0 +1,88 @@
+input{
+    margin-top: 10px;
+    width: 292px;
+    height: 44px;
+    font-size: 15px;
+    font-weight: light;
+    font-family: 'Poppins';
+    border-radius: 4px ;
+    cursor: pointer;
+    padding: 2px;
+}
+
+input[type='time']{
+    border-color: #B3B3B3;
+    border-width: 1px;
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+    font-size: 1.5em; 
+}
+
+@media(max-width:1280px){
+    input{
+        width: 272px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    input[type='time']{
+        border-color: #B3B3B3;
+        border-width: 1px;
+    }
+    
+    input[type='time']::-webkit-calendar-picker-indicator {
+        font-size: 1.5em; 
+    }
+}
+
+@media(max-width:1080px){
+    input{
+        width: 272px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    input[type='time']{
+        border-color: #B3B3B3;
+        border-width: 1px;
+    }
+    
+    input[type='time']::-webkit-calendar-picker-indicator {
+        font-size: 1.5em; 
+    }
+}
+
+@media(max-width:800px){
+    input{
+        width: 242px;
+        height: 30px;
+        font-size: 13px;
+    }
+    
+    input[type='time']{
+        border-color: #B3B3B3;
+        border-width: 1px;
+    }
+    
+    input[type='time']::-webkit-calendar-picker-indicator {
+        font-size: 1.2em; 
+    }
+}
+
+@media(max-width:500px){
+    input{
+        width: 200px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    input[type='time']{
+        border-color: #B3B3B3;
+        border-width: 1px;
+    }
+    
+    input[type='time']::-webkit-calendar-picker-indicator {
+        font-size: 1.2em; 
+    }
+}

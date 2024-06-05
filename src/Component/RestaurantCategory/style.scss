@@ -1,0 +1,40 @@
+.restaurantCategory{
+    margin-left: 330px;
+    p{
+        color: #666666;
+    }
+}
+.description{
+    textArea{
+        width: 605px;
+        height: 130px;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: #B3B3B3;
+        padding: 10px;
+        resize: none;
+        font-size: 15px;
+        font-family: Poppins;
+    }
+}
+textArea::selection{
+    background-color: transparent;
+    color: inherit;
+}
+
+@media(max-width:1280px){
+    .restaurantCategory{
+        margin-left: 330px;
+        p{
+            font-size: 13px;
+            color: #666666;
+        }
+    }
+    .description{
+        textArea{
+            width: 450px;
+            height: 100px;
+            padding: 10px;
+        }
+    }
+}
