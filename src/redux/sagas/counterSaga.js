@@ -20,6 +20,22 @@ function* postData(action) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function* getData() {
   try {
     const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76');

@@ -15,7 +15,7 @@ const initialState = {
 const postDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case POST_DATA_REQUEST:
-      return { ...state, loading: true, error: null };
+      return { ...state, loading: true,error:null };
     case POST_DATA_SUCCESS:
       return { ...state, loading: false, data: action.payload };
     case POST_DATA_FAILURE:

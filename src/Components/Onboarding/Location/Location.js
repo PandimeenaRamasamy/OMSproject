@@ -44,11 +44,11 @@ const Location = forwardRef((props, ref) => {
       </div>
       <div className="form-divloc">
         <form>
-        <div className="headingloc1">
-        <h5> Restaurant address details</h5>
+        <div>
+        <h5 className="headingloc1"> Restaurant address details</h5>
       </div>
       <div className="headingloc2">
-        <h5> Mention restaurant address</h5>
+        <h5 className="headingloc2"> Mention restaurant address</h5>
       </div>
         
           
