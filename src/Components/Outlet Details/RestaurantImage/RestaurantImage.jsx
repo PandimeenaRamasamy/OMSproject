@@ -23,6 +23,7 @@ const DropzoneContainer = styled.div`
 
 const UploadButton = styled.button`
 margin-top: 20px;
+border:none;
 
 
 `;
@@ -112,7 +113,7 @@ const RestaurantImage = () => {
           <h1 className='parafont'>Profile Image</h1></div>
 
           <div className='parafont2'>
-          <p>Please upload profile image</p>
+          <p   className='parafont2'>Please upload profile image</p>
           </div>
        
     

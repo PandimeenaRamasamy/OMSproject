@@ -1,5 +1,5 @@
 import React,{useState,useImperativeHandle} from 'react'
-import "./BankDetails.css"
+import "./BankDetails.scss"
 const BankDetails = React.forwardRef((props,ref) => {
   const[bankform,setBankform]=useState({
  accountNumber:"",
