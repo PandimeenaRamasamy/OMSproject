@@ -159,7 +159,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 <input
                   type="text"
                   name="restaurantNumber"
-                  className="inputboxres"
+                  className="inputboxres2"
                   placeholder="Enter Mobile Number"
                   value={form.restaurantNumber}
                   onChange={handleChange}
@@ -200,7 +200,7 @@ const Restaurant = React.forwardRef((props, ref) => {
               
               type="text"
               name="whatsappNumber"
-              className="inputboxres"
+              className="inputboxres2"
               placeholder="Enter WhatsApp Number"
               value={form.whatsappNumber}
               onChange={handleChange}
