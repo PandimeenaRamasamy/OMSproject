@@ -117,6 +117,25 @@ console.log(data);
   console.log(locationId)
   dispatch(getLocationId(locationId));
 
+
+const countryCodes=[
+  { "name": "United States", "dial_code": "+1" },
+  { "name": "India", "dial_code": "+91" },
+ 
+  // Add more countries as needed
+]
+
+  const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
+    const [phoneNumber, setPhoneNumber] = useState('');
+
+    const handleCodeChange = (event) => {
+        setSelectedCode(event.target.value);
+    };
+
+    const handlePhoneNumberChange = (event) => {
+        setPhoneNumber(event.target.value);
+    };
+
  
 
   return (
@@ -158,6 +177,26 @@ console.log(data);
                   contact person number
                 </label>
                 <div style={{ marginTop: "20px" }}>
+                <select id="country-code" value={selectedCode} className="phonenumbercode" onChange={handleCodeChange}>
+                    {countryCodes.map((country) => (
+                        <option key={country.dial_code} value={country.dial_code}>
+                            {country.dial_code}
+                        </option>
+                    ))}
+                    
+                </select>
+                <input
+                    id="phone-number"
+                    type="text"
+                    className="phonenumberinput"
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
+                    required
+                />
+                <div>
+               
+               
+            </div>
           
                 </div>
               </div>
