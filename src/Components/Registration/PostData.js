@@ -3,7 +3,6 @@
 
 import React, { useState } from 'react';
 
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import validator from "validator";
 import { ImCross, ImFontSize } from "react-icons/im";
@@ -159,17 +158,7 @@ console.log(data);
                   contact person number
                 </label>
                 <div style={{ marginTop: "20px" }}>
-                  <PhoneInput
-                    inputStyle={{ color: "green" }}
-                    country={restaurantNumber}
-                    onChange={(value) => {
-                      setRestaurantNumber(value);
-                      setRegistrationform({ ...Registrationform, phone: value })
-                    }}
-                    placeholder="757443444"
-                    countryCodeEditable={false}
-                    onlyCountries={["in", "us"]}
-                  />
+          
                 </div>
               </div>
               <div className="labelinput-divreg">
