@@ -1,11 +1,11 @@
-import React, { useState,useImperativeHandle} from "react";
+import React, { useState, useImperativeHandle } from "react";
 import "./Restaurant.scss";
 import "react-phone-input-2/lib/style.css";
 import validator from "validator";
 
-const Restaurant=React.forwardRef((props, ref) => {
+const Restaurant = React.forwardRef((props, ref) => {
   const [form, setForm] = useState({
-    id:"58de0876-28b1-468d-bde3-b370e62e6847",
+    id: "58de0876-28b1-468d-bde3-b370e62e6847",
     businessLegalName: "",
     phone: "",
     email: "",
@@ -20,23 +20,22 @@ const Restaurant=React.forwardRef((props, ref) => {
   const [emailError, setEmailError] = useState("");
 
   useImperativeHandle(ref, () => ({
-    getFormData: () => {
-      return form;
-    },
+    getFormData: () => form,
     clearFormData: () => {
       setForm({
-        id:"58de0876-28b1-468d-bde3-b370e62e6847",
+        id: "58de0876-28b1-468d-bde3-b370e62e6847",
         businessLegalName: "",
         phone: "",
         email: "",
         website: "",
-        InstagramLink: "",
-        FacebookLink: "",
+        instagramLink: "",
+        facebookLink: "",
         restaurantNumber: "",
         whatsappNumber: "",
       });
       setIsChecked(false);
-    }
+      setEmailError("");
+    },
   }));
 
   const validateEmail = (email) => {
@@ -63,189 +62,201 @@ const Restaurant=React.forwardRef((props, ref) => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
     if (!isChecked) {
-      setForm({ ...form, whatsappNumber: form.restaurantNumber });
+      setForm((prevForm) => ({
+        ...prevForm,
+        whatsappNumber: prevForm.restaurantNumber,
+      }));
     } else {
-      setForm({ ...form, whatsappNumber: "" });
+      setForm((prevForm) => ({
+        ...prevForm,
+        whatsappNumber: "",
+      }));
     }
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
+
   console.log(form)
 
   return (
-    <>
-    
-      <div className="main-divres">
-        <div className="submain-divres">
-          <div className="heading-divres">
-            <h5>Restaurant Details</h5>
-          </div>
-          <div className="form-divres">
-            <form onSubmit={handleSubmit}>
-              <div className="labelinput-divres">
-                <label htmlFor="BusinessLegalName" className="labelres">
-                  Business Legal Name
-                </label>
-                <input
-                  type="text"
-                  className="inputboxres"
-                  placeholder="Name"
-                  value={form.businessLegalName}
-                  onChange={(e) =>
-                    setForm({ ...form, businessLegalName: e.target.value })
-                  }
-                />
-              </div>
+    <div className="main-divres">
+      <div className="submain-divres">
+        <div className="heading-divres">
+          <h5>Restaurant Details</h5>
+        </div>
+        <div className="form-divres">
+          <form onSubmit={handleSubmit}>
+            <div className="labelinput-divres">
+              <label htmlFor="businessLegalName" className="labelres">
+                Business Legal Name
+              </label>
+              <input
+                type="text"
+                name="businessLegalName"
+                className="inputboxres"
+                placeholder="Name"
+                value={form.businessLegalName}
+                onChange={handleChange}
+              />
+            </div>
 
-              <div className="labelinput-divres">
-                <label htmlFor="phoneType" className="labelres">
-                  Restaurant contact number
-                </label>
-                <div>
-                  <label className="radio-labelres">
-                    <input
-                      type="radio"
-                      value="Mobile"
-                      name="phoneType"
-                      className="radiores"
-                      checked={form.phone === "Mobile"}
-                      onChange={(e) =>
-                        setForm({ ...form, phone: e.target.value })
-                      }
-                    />
-                    Mobile
-                  </label>
-                  <label className="radio-labelres">
-                    <input
-                      type="radio"
-                      value="Landline"
-                      name="phoneType"
-                      className="radiores"
-                      checked={form.phone === "Landline"}
-                      onChange={(e) =>
-                        setForm({ ...form, phone: e.target.value })
-                      }
-                    />
-                    Landline
-                  </label>
-                </div>
-                <div style={{ marginTop: "20px" }}>
-                 
-                </div>
-              </div>
-
-              <div className="labelinput-divres">
-                <label
-                  htmlFor="whatsappNumber"
-                  className="labelres"
-                  style={{ marginBottom: "15px" }}
-                >
-                  What's App Number
+            <div className="labelinput-divres">
+              <label htmlFor="phoneType" className="labelres">
+                Restaurant Contact Number
+              </label>
+              <div>
+                <label className="radio-labelres">
+                  <input
+                    type="radio"
+                    value="Mobile"
+                    name="phoneType"
+                    className="radiores"
+                    checked={form.phone === "Mobile"}
+                    onChange={(e) =>
+                      setForm({ ...form, phone: e.target.value })
+                    }
+                  />
+                  Mobile
                 </label>
                 <label className="radio-labelres">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    value="Landline"
+                    name="phoneType"
                     className="radiores"
-                    checked={isChecked}
-                    onChange={handleCheckboxChange}
-                  />
-                  Same as restaurant mobile no.
-                </label>
-                {isChecked ? (
-                  <input
-                    type="text"
-                    className="inputboxres"
-                    value={form.whatsappNumber}
+                    checked={form.phone === "Landline"}
                     onChange={(e) =>
-                      setForm({ ...form, whatsappNumber: e.target.value })
+                      setForm({ ...form, phone: e.target.value })
                     }
-                    placeholder="Enter Whatsapp Number"
                   />
-                ) : (
-                 ""
+                  Landline
+                </label>
+              </div>
+              <div style={{ marginTop: "20px" }}>
+                <input
+                  type="text"
+                  name="restaurantNumber"
+                  className="inputboxres"
+                  placeholder="Enter Mobile Number"
+                  value={form.restaurantNumber}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="labelinput-divres">
+              <label
+                htmlFor="whatsappNumber"
+                className="labelres"
+                style={{ marginBottom: "15px" }}
+              >
+                WhatsApp Number
+              </label>
+              <label className="radio-labelres">
+                <input
+                  type="checkbox"
+                  className="radiores"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />
+                Same as restaurant mobile no.
+              </label>
+              <input
+                type="text"
+                name="whatsappNumber"
+                className="inputboxres"
+                placeholder="Enter WhatsApp Number"
+                value={form.whatsappNumber}
+                onChange={handleChange}
+                disabled={isChecked}
+              />
+            </div>
+
+            <div
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+              className="personal-detailsres"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label htmlFor="email" className="labelres">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  className={`inputbox2res ${
+                    emailError ? "inputbox-error" : ""
+                  }`}
+                  placeholder="xyz@gmail.com"
+                  value={form.email}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setEmailError(validateEmail(e.target.value));
+                  }}
+                />
+                {emailError && (
+                  <div style={{ color: "red" }}>{emailError}</div>
                 )}
               </div>
-
               <div
-                style={{ display: "flex", justifyContent: "space-evenly" }}
+                style={{ display: "flex", flexDirection: "column" }}
                 className="personal-detailsres"
               >
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="email" className="labelres">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className={`inputbox2res ${
-                      emailError ? "inputbox-error" : ""
-                    }`}
-                    placeholder="xyz@gmail.com"
-                    value={form.email}
-                    onChange={(e) => {
-                      setForm({ ...form, email: e.target.value });
-                      setEmailError(validateEmail(e.target.value));
-                    }}
-                  />
-                  {emailError && (
-                    <div style={{ color: "red" }}>{emailError}</div>
-                  )}
-                </div>
-                <div
-                  style={{ display: "flex", flexDirection: "column" }}
-                  className="personal-detailsres"
-                >
-                  <label htmlFor="website" className="labelres">
-                    Website Link
-                  </label>
-                  <input
-                    type="url"
-                    className="inputbox2res"
-                    placeholder="Magilhub.com"
-                    value={form.website}
-                    onChange={(e) =>
-                      setForm({ ...form, website: e.target.value })
-                    }
-                  />
-                </div>
+                <label htmlFor="website" className="labelres">
+                  Website Link
+                </label>
+                <input
+                  type="url"
+                  name="website"
+                  className="inputbox2res"
+                  placeholder="Magilhub.com"
+                  value={form.website}
+                  onChange={handleChange}
+                />
               </div>
+            </div>
 
-              <div
-                style={{ display: "flex", justifyContent: "space-evenly" }}
-                className="personal-detailsres"
-              >
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="InstagramLink" className="labelres">
-                    Instagram Link
-                  </label>
-                  <input
-                    type="url"
-                    className="inputbox2res"
-                    placeholder="Chandra.uiux"
-                    value={form.instagramLink}
-                    onChange={(e) =>
-                      setForm({ ...form, instagramLink: e.target.value })
-                    }
-                  />
-                </div>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label htmlFor="FacebookLink" className="labelres">
-                    Facebook Link
-                  </label>
-                  <input
-                    type="url"
-                    className="inputbox2res"
-                    placeholder="chandra.com"
-                    value={form.facebookLink}
-                    onChange={(e) =>
-                      setForm({ ...form, facebookLink: e.target.value })
-                    }
-                  />
-                </div>
+            <div
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+              className="personal-detailsres"
+            >
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label htmlFor="instagramLink" className="labelres">
+                  Instagram Link
+                </label>
+                <input
+                  type="url"
+                  name="instagramLink"
+                  className="inputbox2res"
+                  placeholder="Chandra.uiux"
+                  value={form.instagramLink}
+                  onChange={handleChange}
+                />
               </div>
-              <button type="submit">Submit</button>
-            </form>
-          </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label htmlFor="facebookLink" className="labelres">
+                  Facebook Link
+                </label>
+                <input
+                  type="url"
+                  name="facebookLink"
+                  className="inputbox2res"
+                  placeholder="chandra.com"
+                  value={form.facebookLink}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+         
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 });
 
