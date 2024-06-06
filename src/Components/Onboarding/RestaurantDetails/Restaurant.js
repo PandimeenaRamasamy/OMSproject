@@ -1,6 +1,5 @@
 import React, { useState,useImperativeHandle} from "react";
 import "./Restaurant.scss";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import validator from "validator";
 
@@ -129,17 +128,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                   </label>
                 </div>
                 <div style={{ marginTop: "20px" }}>
-                  <PhoneInput
-                    inputStyle={{ color: "green" }}
-                    country={"us"}
-                    value={form.restaurantNumber}
-                    onChange={(value) =>
-                      setForm({ ...form, restaurantNumber: value })
-                    }
-                    placeholder="75744 3444"
-                    countryCodeEditable={false}
-                    onlyCountries={["in", "us"]}
-                  />
+                 
                 </div>
               </div>
 
@@ -171,17 +160,7 @@ const Restaurant=React.forwardRef((props, ref) => {
                     placeholder="Enter Whatsapp Number"
                   />
                 ) : (
-                  <PhoneInput
-                    inputStyle={{ color: "green" }}
-                    country={"us"}
-                    value={form.whatsappNumber}
-                    onChange={(value) =>
-                      setForm({ ...form, whatsappNumber: value })
-                    }
-                    placeholder="75744 3444"
-                    countryCodeEditable={false}
-                    onlyCountries={["in", "us"]}
-                  />
+                 ""
                 )}
               </div>
 
