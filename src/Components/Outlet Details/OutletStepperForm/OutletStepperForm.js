@@ -10,7 +10,6 @@ import { BiReceipt } from "react-icons/bi";
 
 import { CiImageOn } from "react-icons/ci";
 import { ImSpoonKnife } from "react-icons/im";
-import RestaurantImage from '../RestaurantImage/RestaurantImage'
 import Dinein from '../../Dinein/Dinein'
 
 import Pickup from "../PickUp/Pickup"
@@ -18,7 +17,11 @@ import Kitchen from '../Kitchen/Kitchen'
 
 
 
+function RestaurantImage()
+{
+    return<h2>RestaurantImage</h2>
 
+}
 
 
 
