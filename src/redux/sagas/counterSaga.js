@@ -26,18 +26,8 @@ function* postData(action) {
 
 
 
-
-
-
-
-
-
-
-
 function* locationId(action) {
-  // You can perform any side effects here before storing the name
   yield console.log('Storing name:', action.payload);
-  // Here you would dispatch an action to update your Redux store with the name
 }
 
 
