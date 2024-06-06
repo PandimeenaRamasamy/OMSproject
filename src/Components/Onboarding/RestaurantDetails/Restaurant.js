@@ -82,8 +82,6 @@ const Restaurant = React.forwardRef((props, ref) => {
     }));
   };
 
-  console.log(form)
-
   return (
     <div className="main-divres">
       <div className="submain-divres">
@@ -252,7 +250,6 @@ const Restaurant = React.forwardRef((props, ref) => {
                 />
               </div>
             </div>
-         
           </form>
         </div>
       </div>
