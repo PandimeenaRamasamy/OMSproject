@@ -82,7 +82,18 @@ const Restaurant = React.forwardRef((props, ref) => {
     }));
   };
 
+  const countryCodes=[
+    { "name": "United States", "dial_code": "+1" },
+    { "name": "India", "dial_code": "+91" },
+  ]  
+  const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
+  const handleCodeChange = (event) => {
+    setSelectedCode(event.target.value);
+};
+
+
   return (
+
     <div className="main-divres">
       <div className="submain-divres">
         <div className="heading-divres">
@@ -137,6 +148,14 @@ const Restaurant = React.forwardRef((props, ref) => {
                 </label>
               </div>
               <div style={{ marginTop: "20px" }}>
+              <select id="country-code" value={selectedCode} className="phonenumbercode" onChange={handleCodeChange}>
+                    {countryCodes.map((country) => (
+                        <option key={country.dial_code} value={country.dial_code}>
+                            {country.dial_code}
+                        </option>
+                    ))}
+                    
+                </select>
                 <input
                   type="text"
                   name="restaurantNumber"
@@ -165,15 +184,31 @@ const Restaurant = React.forwardRef((props, ref) => {
                 />
                 Same as restaurant mobile no.
               </label>
-              <input
-                type="text"
-                name="whatsappNumber"
-                className="inputboxres"
-                placeholder="Enter WhatsApp Number"
-                value={form.whatsappNumber}
-                onChange={handleChange}
-                disabled={isChecked}
-              />
+
+              <div> 
+              <select id="country-code" value={selectedCode} className="phonenumbercode" onChange={handleCodeChange}>
+                    {countryCodes.map((country) => (
+                        <option key={country.dial_code} value={country.dial_code}>
+                            {country.dial_code}
+                        </option>
+                    ))}
+                    
+                </select>
+                
+                
+                <input
+              
+              type="text"
+              name="whatsappNumber"
+              className="inputboxres"
+              placeholder="Enter WhatsApp Number"
+              value={form.whatsappNumber}
+              onChange={handleChange}
+              disabled={isChecked}
+            /></div>
+
+              
+             
             </div>
 
             <div
