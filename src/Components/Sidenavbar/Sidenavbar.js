@@ -18,24 +18,31 @@ import React, { useState } from 'react';
 
 const Sidenavbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [isopen,setisopen]=useState(false);
+    const toggle=()=>{
+        setisopen(!isopen);
+    }
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+   
     return (
         <>
-         <div className='sidenav'>
+         <div className='sidenav' >
+            
+            <div className='pagelinks'>
             <div className='resnamelocation'>
-                <img src={Thalapa} alt="" />
+                <img src={Thalapa} alt="" className='resimg' />
                 <div>
                     <br />
-                    <p className='resname'>Thalapakatti Biriyan</p>
+                    <p className='resname'  >Thalapakatti Biriyan</p>
                     <div className="dropdown">
                         <br />
-                        <p className='reslocation'>Aarapalayam</p>
+                        <p className='reslocation' >Aarapalayam</p>
 
                         <button className="dropdown-toggle" onClick={toggleDropdown}>
-                            <img src={dropdown} alt="" />
+                            <img src={dropdown} alt=""   />
                         </button>
                         {dropdownOpen && (
                             <div className="dropdown-menu">
@@ -47,50 +54,51 @@ const Sidenavbar = () => {
                     </div>
                 </div>
             </div>
-            <div className='pagelinks'>
+                
+
                 <div className='pagelink pg1'>
                     <img src={dollar} alt="" />
-                    <p>Business</p>
+                    <p  >Business</p>
                 </div>
                 <div className='pagelink pg2' >
                 <img src={group} alt="" />
-                    <p>Employees setup</p>
+                    <p >Employees setup</p>
                 </div>
                 <div className='pagelink pg3'>
                 <img src={handimg} alt="" />
-                    <p>Customer Management</p>
+                    <p >Customer Management</p>
                 </div>
                 <div className='pagelink pg4'>
                     <img src={userimg} alt="" />
-                    <p>Outlet Management</p>
+                    <p >Outlet Management</p>
                 </div>
                 <div className='pagelink pg5' >
                 <img src={key} alt="" />
-                    <p>Roles & Access</p>
+                    <p >Roles & Access</p>
                 </div>
                 <div className='pagelink pg6'>
                 <img src={menu} alt="" />
-                    <p>Menu</p>
+                    <p >Menu</p>
                 </div>
                 <div className='pagelink pg7'>
                     <img src={offer} alt="" />
-                    <p>Offer Management</p>
+                    <p >Offer Management</p>
                 </div>
                 <div className='pagelinksub pg8'>
-                    <p>Offers</p>
-                    <p>Campaigns</p>
+                    <p >Offers</p>
+                    <p >Campaigns</p>
                 </div>
                 <div className='pagelink pg9' >
                 <img src={statistics} alt="" />
-                    <p>Reports & Insights</p>
+                    <p >Reports & Insights</p>
                 </div>
                 <div className='pagelink pg10'>
                 <img src={printing} alt="" />
-                    <p>Printer settings</p>
+                    <p >Printer settings</p>
                 </div>
                 <div className='pagelink pg11'>
                 <img src={pay} alt="" />
-                    <p>Payments</p>
+                    <p >Payments</p>
                 </div>
                
 
