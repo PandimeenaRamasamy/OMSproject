@@ -66,3 +66,28 @@
     font-size: 14px;
     font-weight: 400;
 }
+@media (max-width: 1080px) {
+    .TypeI,
+    .Type2,
+    .Type3,
+    .Type4 {
+        border: 2px solid rgba(179, 179, 179, 1);
+        width: 400px;
+        height: 44px;
+        font-family: Poppins;
+        font-size: 16px;
+    }
+
+    .Account_Button {
+        text-align: center;
+        font-size: 16px;
+        margin-top: 12px;
+        padding-bottom: 15px;
+        width: 200px;
+        padding-top: 20px;
+        color: white;
+        background-color: rgba(103, 131, 62, 1);
+        border: 2px solid rgba(103, 131, 62, 1);
+    }
+    
+}
