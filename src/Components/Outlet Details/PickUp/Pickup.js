@@ -69,8 +69,8 @@ const Pickup = () => {
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
                         <div>
-                            <input type="radio" name="YesorNo" className='radio1' ></input><label className='label'>Yes</label>
-                            <input type="radio" name="YesorNo" className='radio2'></input><label className='label'>No</label>
+                            <input type="radio" name="YesorNo" className='radio1' ></input><label className='label1'>Yes</label>
+                            <input type="radio" name="YesorNo" className='radio2'></input><label className='label1'>No</label>
                         </div>
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>

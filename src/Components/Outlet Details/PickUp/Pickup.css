@@ -114,7 +114,13 @@ font-size: 16px;
 
 }
 .label{
-    font-size:14px;
+    
+    font-size:15px;
+}
+.label1{
+    
+    font-size:15px;
+    margin-left:12px;
 }
 .Pickup_heading7{
     margin-top:60px;
@@ -139,6 +145,7 @@ font-size: 16px;
 .updown{
     width:133px;
     height:44px;
+    font-size: 14px;
 
 }
 .Pack_type{
