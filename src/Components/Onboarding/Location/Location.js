@@ -165,7 +165,8 @@ const Location = forwardRef((props, ref) => {
                   />
             </div>
           </div>
-          <button type="submit">Submit</button>
+          <br />
+          {/* <button type="submit">Submit</button> */}
         </form>
       </div>
     </div>

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,31 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* .Renderapp
+{
+  min-width: 1080px;
+} */
+
+/* body{
+  min-width: 800px;
+} */
+
+.warning-message
+{
+ 
+  background-color:   rgba(103, 131, 62, 1);
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  margin-top: 40%;
+  font-family: 'Poppins',sans-serif;
+}
+
+.Appcontainer {
+  min-width: 800px;
+  max-width: 1200px;
+ 
 }

@@ -13,13 +13,12 @@ import { postOnBoardingDataRequest } from '../../../redux/Actions/PostDataAction
 
 function Stepform() {
   const dispatch=useDispatch()
-  const [activeStep, setActiveStep] = useState(0);
-   
+  const [activeStep, setActiveStep] = useState(0); 
   const [mainForm, setMainForm] = useState({});
-const restaurantdetailsref=useRef();
-const locationref=useRef();
-const fssairef=useRef();
-const bankref=useRef();
+  const restaurantdetailsref=useRef();
+  const locationref=useRef();
+  const fssairef=useRef();
+  const bankref=useRef();
 
   const steps = [
     { title: 'RestaurantDetails', component: <Restaurant ref={restaurantdetailsref}  />, icon: <BiNotepad className='image' /> },
@@ -72,7 +71,9 @@ const bankref=useRef();
       
     }
     else{
-      dispatch( postOnBoardingDataRequest(newformdata))
+      console.log("Action not fetched")
+      dispatch(postOnBoardingDataRequest(mainForm))
+
     }
   };
 
@@ -110,7 +111,7 @@ const bankref=useRef();
             <button className='clear_all'>Clear ALL</button>
           </div>
           <div>
-            <button className='save_next' onClick={handleSaveAndNext}>Save & Next</button>
+            <button className='save_next' onClick={handleSaveAndNext}>Save&Next</button>
           </div>
         </div>
       </div>

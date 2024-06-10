@@ -1,10 +1,11 @@
 .Bank-Container {
+    
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: absolute;
-    top: 362px;
-    left: 367px;
+    position: relative;
+    top: 70px;
+    left: 30px;
 }
 
 .form-Bank {
@@ -91,3 +92,65 @@
     }
     
 }
+
+@media screen and (max-width: 1280px) {
+    .Bank-Container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      top: 70px;
+      left: 30px;
+      /* border: 1px solid black; */
+    }
+
+    
+  
+   
+  }
+  
+  /* Media query for max-width 1080px */
+  @media screen and (max-width: 1080px) {
+    .Bank-Container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      top: 70px;
+      left: 50px;
+      /* border: 1px solid black; */
+    }
+    
+   
+    
+  }
+  
+  /* Media query for max-width 800px */
+  @media screen and (max-width: 800px) {
+
+    .Bank-Container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        top: 70px;
+        left: 50px;
+        /* border: 1px solid black; */
+      }
+      
+   
+   
+  
+   
+    
+  }
+  
+  /* Media query for max-width 500px */
+  @media screen and (max-width: 500px) {
+    
+   
+  
+  }
+  
+  
+  

@@ -42,8 +42,11 @@ const BankDetails = React.forwardRef((props,ref) => {
      <div >
      <h1 className='Terms'>We will credit a amount in your account to validate your bank account details</h1>
      </div>
+     <br />
     </div>
+    
     </div>
+   
     </div>
   )
 });

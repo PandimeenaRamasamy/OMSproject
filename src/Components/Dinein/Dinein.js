@@ -8,15 +8,16 @@ const Dinein = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const [DineinselectedButton, setDineinselectedButton] = useState(false);
-  const [InteractiveselectedButton, setInteractiveselectedButton] = useState(false);
+  const [InteractiveselectedButton, setInteractiveselectedButton] =
+    useState(false);
   const [CheckinselectedButton, setCheckinselectedButton] = useState(false);
-  const [ReservationinselectedButton, setReservationinselectedButton] = useState(false);
+  const [ReservationinselectedButton, setReservationinselectedButton] =
+    useState(false);
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
 
   const [Outletdetails, setOutletdetails] = useState({
     locationId: "5d171ae6-2849-4a49-b75a-c72776625843",
-   
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
@@ -72,35 +73,29 @@ const Dinein = () => {
   const handleInteractiveEnable = (e) => {
     e.preventDefault();
     setInteractiveselectedButton(true);
-   
   };
 
   const handleInteractiveDisable = (e) => {
     e.preventDefault();
     setInteractiveselectedButton(false);
-    
   };
   const handleCheckinEnable = (e) => {
     e.preventDefault();
     setCheckinselectedButton(true);
-    
   };
 
   const handleCheckinDisable = (e) => {
     e.preventDefault();
     setCheckinselectedButton(false);
-    
   };
   const handleReservationEnable = (e) => {
     e.preventDefault();
     setReservationinselectedButton(true);
-   
   };
 
   const handleReservationDisable = (e) => {
     e.preventDefault();
     setReservationinselectedButton(false);
-   
   };
 
   const Interactivefield = (enordis, button) => {
@@ -112,7 +107,6 @@ const Dinein = () => {
     setMergentdigitvaliadtion(button);
     setOutletdetails({ ...Outletdetails, merchant4DigitValidation: enordis });
   };
-
 
   const handleSubmit2 = (event) => {
     event.preventDefault();
@@ -129,33 +123,26 @@ const Dinein = () => {
     Sunday: false,
   });
 
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setCheckedDays((prevCheckedDays) => ({
-      ...prevCheckedDays,
-      [name]: checked,
-    }));
-  };
+  // const handleCheckboxChange = (event) => {
+  //   const { name, checked } = event.target;
+  //   setCheckedDays((prevCheckedDays) => ({
+  //     ...prevCheckedDays,
+  //     [name]: checked,
+  //   }));
+  // };
 
   return (
     <div className="main-divdine">
       <div className="submain-divdine">
-
         <div className="headingdine">
           <h5>Dine in Details</h5>
         </div>
 
-
-
-
-
-{/* dine in details */}
+        {/* dine in details */}
 
         <div className="Dinein1">
           <form>
-
             <div className="">
-
               <div className="lables1">
                 <label htmlFor="BusinessLegalName" className="label">
                   Dine in
@@ -171,82 +158,86 @@ const Dinein = () => {
                 <button
                   className={`Enable_btn ${DineinselectedButton ? "blue" : ""}`}
                   value="enabled"
-                  onClick={(event) => handleDineinEnable(event)}>Enable </button>
+                  onClick={(event) => handleDineinEnable(event)}
+                >
+                  Enable{" "}
+                </button>
                 <button
-                  className={`Disable_btn ${!DineinselectedButton ? "blue" : "" }`}
+                  className={`Disable_btn ${
+                    !DineinselectedButton ? "blue" : ""
+                  }`}
                   value="Disabled"
-                  onClick={(event) => handleDineinDisable(event)}> Disable </button>        
+                  onClick={(event) => handleDineinDisable(event)}
+                >
+                  {" "}
+                  Disable{" "}
+                </button>
               </div>
-
 
               {DineinselectedButton && (
                 <div>
-                  <div style={{marginTop:'20px'}}>
-
-                  <div className="lables1">
-                      <label htmlFor="BusinessLegalName" className="labelhighchair">
+                  <div style={{ marginTop: "20px" }}>
+                    <div className="lables1">
+                      <label
+                        htmlFor="BusinessLegalName"
+                        className="labelhighchair"
+                      >
                         High Chair
                       </label>
                     </div>
                     <div className="lables2">
-                      <label htmlFor="BusinessLegalName" className="labelhighchair">
+                      <label
+                        htmlFor="BusinessLegalName"
+                        className="labelhighchair"
+                      >
                         Chair with long legs for children
                       </label>
                     </div>
-
-
                   </div>
-                   
 
-                    <div className="highchairradio">
-                      <div className="highchairradio1">
-                        <input
-                          type="radio"
-                          value="yes"
-                          className="radioStyle"
-                          checked={Outletdetails.highChair === "yes"}
-                          onChange={(event) =>
-                            setOutletdetails({
-                              ...Outletdetails,
-                              highChair: event.target.value,
-                            })
-                          }
-                         />             
-                        <label className="chairradio">Yes</label>
-                      </div>
-
-                      <div className="highchairradio2">
-                        <input
-                          type="radio"
-                          value="no"
-                          className="radioStyle"
-                          checked={Outletdetails.highChair === "no"}
-                          onChange={(event) =>
-                            setOutletdetails({
-                              ...Outletdetails,
-                              highChair: event.target.value,
-                            })
-                          }  />
-                          
-                        <label className="chairradio">No</label>
-                      </div>
+                  <div className="highchairradio">
+                    <div className="highchairradio1">
+                      <input
+                        type="radio"
+                        value="yes"
+                        className="radioStyle"
+                        checked={Outletdetails.highChair === "yes"}
+                        onChange={(event) =>
+                          setOutletdetails({
+                            ...Outletdetails,
+                            highChair: event.target.value,
+                          })
+                        }
+                      />
+                      <label className="chairradio">Yes</label>
                     </div>
 
-                  
+                    <div className="highchairradio2">
+                      <input
+                        type="radio"
+                        value="no"
+                        className="radioStyle"
+                        checked={Outletdetails.highChair === "no"}
+                        onChange={(event) =>
+                          setOutletdetails({
+                            ...Outletdetails,
+                            highChair: event.target.value,
+                          })
+                        }
+                      />
+
+                      <label className="chairradio">No</label>
+                    </div>
+                  </div>
                 </div>
               )}
-
             </div>
           </form>
         </div>
 
         <hr />
 
-
-
-
-
-{/* Interactive details */}
+        {/* Interactive details */}
 
         <div className="Interactive2">
           <div className="headingdine">
@@ -254,353 +245,339 @@ const Dinein = () => {
           </div>
 
           <div className="">
-            
-             
+            <div className="lables1">
+              <label htmlFor="BusinessLegalName" className="label">
+                Interactive Dine-in
+              </label>
+            </div>
+            <div className="lables2">
+              <label htmlFor="BusinessLegalName" className="label">
+                Please mention the Interactive Dine-in service
+              </label>
+            </div>
 
-                <div className="lables1">
-                  <label htmlFor="BusinessLegalName" className="label">
-                    Interactive Dine-in
-                  </label>
-                </div>
-                <div className="lables2">
-                  <label htmlFor="BusinessLegalName" className="label">
-                    Please mention the Interactive Dine-in service
-                  </label>
-                </div>
+            <div style={{ marginTop: "10px" }} className="enabledisablebtn">
+              <button
+                className={`Enable_btn ${
+                  InteractiveselectedButton ? "blue" : ""
+                }`}
+                value="enabled"
+                onClick={(event) => handleInteractiveEnable(event)}
+              >
+                Enable{" "}
+              </button>
+              <button
+                className={`Disable_btn ${
+                  !InteractiveselectedButton ? "blue" : ""
+                }`}
+                value="Disabled"
+                onClick={(event) => handleInteractiveDisable(event)}
+              >
+                {" "}
+                Disable{" "}
+              </button>
+            </div>
 
-                <div style={{ marginTop: "10px" }} className="enabledisablebtn">    
-                <button
-                  className={`Enable_btn ${InteractiveselectedButton ? "blue" : ""}`}
-                  value="enabled"
-                  onClick={(event) => handleInteractiveEnable(event)}>Enable </button>
-                <button
-                  className={`Disable_btn ${!InteractiveselectedButton ? "blue" : "" }`}
-                  value="Disabled"
-                  onClick={(event) => handleInteractiveDisable(event)}> Disable </button>       
-                 </div>
-
-                {InteractiveselectedButton && (
-                  <div className="interactivefn">
-                    <form onSubmit={handleSubmit2} className="interactivefn">
-                      <div className="lables1">
-                        <label htmlFor="BusinessLegalName" className="labelInter">Interactive Dine-in </label>
-                      </div>
-                      <div className="lables2">
-                        <label htmlFor="BusinessLegalName" className="labelInter">  Please mention the Interactive Dine-in service   </label>
-                      </div>
-
-                      <div  style={{ marginTop: "10px" }} className="enabledisablebtnInter">
-                      
-                        <button
-                          type="button"
-                          onClick={() => Interactivefield("Enable", "yes")}
-                          className="enablebtninter"
-                          style={{
-                            backgroundColor:
-                              Interactivedinein === "yes"
-                                ? "#0D79DC"
-                                : "#979797",
-                          }}
-                        >
-                          Enable
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => Interactivefield("Disable", "no")}
-                          className="disablebtninter"
-                          style={{
-                            backgroundColor:
-                              Interactivedinein === "no"
-                                ? "#0D79DC"
-                                : "#979797",
-                          }}
-                        >
-                          Disable
-                        </button>
-
-                      </div>
-
-                      <div className="lables1">
-                        <label
-                          htmlFor="BusinessLegalName"
-                          className="labelInter"
-                        >
-                          Merchant 4 digit Validation
-                        </label>
-                      </div>
-                      <div className="lables2">
-                        <label
-                          htmlFor="BusinessLegalName"
-                          className="labelInter"
-                        >
-                          Please mention the validation service
-                        </label>
-                      </div>
-
-                      <div
-                        style={{ marginTop: "10px" }}
-                        className="enabledisablebtninter"
-                      >
-                        <button
-                          type="button"
-                          onClick={() =>
-                            merchantvalidationfield("Enable", "yes")
-                          }
-                          className="enablebtninter"
-                          style={{
-                            backgroundColor:
-                              Mergentdigitvaliadtion === "yes"
-                                ? "#0D79DC"
-                                : "#979797",
-                          }}
-                        >
-                          Enable
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() =>
-                            merchantvalidationfield("Disable", "no")
-                          }
-                          className="disablebtninter"
-                          style={{
-                            backgroundColor:
-                              Mergentdigitvaliadtion === "no"
-                                ? "#0D79DC"
-                                : "#979797",
-                          }}
-                        >
-                          Disable
-                        </button>
-
-                      </div>
-                    </form>
+            {InteractiveselectedButton && (
+              <div className="interactivefn">
+                <form onSubmit={handleSubmit2} className="interactivefn">
+                  <div className="lables1">
+                    <label htmlFor="BusinessLegalName" className="labelInter">
+                      Interactive Dine-in{" "}
+                    </label>
                   </div>
-                )}
-              
-           
-            
+                  <div className="lables2">
+                    <label htmlFor="BusinessLegalName" className="labelInter">
+                      {" "}
+                      Please mention the Interactive Dine-in service{" "}
+                    </label>
+                  </div>
+
+                  <div
+                    style={{ marginTop: "10px" }}
+                    className="enabledisablebtnInter"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => Interactivefield("Enable", "yes")}
+                      className="enablebtninter"
+                      style={{
+                        backgroundColor:
+                          Interactivedinein === "yes" ? "#0D79DC" : "#979797",
+                      }}
+                    >
+                      Enable
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => Interactivefield("Disable", "no")}
+                      className="disablebtninter"
+                      style={{
+                        backgroundColor:
+                          Interactivedinein === "no" ? "#0D79DC" : "#979797",
+                      }}
+                    >
+                      Disable
+                    </button>
+                  </div>
+
+                  <div className="lables1">
+                    <label htmlFor="BusinessLegalName" className="labelInter">
+                      Merchant 4 digit Validation
+                    </label>
+                  </div>
+                  <div className="lables2">
+                    <label htmlFor="BusinessLegalName" className="labelInter">
+                      Please mention the validation service
+                    </label>
+                  </div>
+
+                  <div
+                    style={{ marginTop: "10px" }}
+                    className="enabledisablebtninter"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => merchantvalidationfield("Enable", "yes")}
+                      className="enablebtninter"
+                      style={{
+                        backgroundColor:
+                          Mergentdigitvaliadtion === "yes"
+                            ? "#0D79DC"
+                            : "#979797",
+                      }}
+                    >
+                      Enable
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => merchantvalidationfield("Disable", "no")}
+                      className="disablebtninter"
+                      style={{
+                        backgroundColor:
+                          Mergentdigitvaliadtion === "no"
+                            ? "#0D79DC"
+                            : "#979797",
+                      }}
+                    >
+                      Disable
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
 
           <hr />
 
-
-
-
- {/* Checkin details */}
+          {/* Checkin details */}
 
           <div className="checkin3">
             <div className="headingdine">
               <h5>Checkin Details</h5>
             </div>
             <div className="">
-             
-                <div className="">
-                  <div className="lables1">
-                    <label htmlFor="BusinessLegalName" className="label">
-                      Checkin
-                    </label>
-                  </div>
-                  <div className="lables2">
-                    <label htmlFor="BusinessLegalName" className="label">
-                      Please mention the checkin service
-                    </label>
-                  </div>
-                  <div
-                    style={{ marginTop: "10px" }}
-                    className="enabledisablebtn"
-                  >
-                 <button
-                  className={`Enable_btn ${CheckinselectedButton ? "blue" : ""}`}
-                  value="enabled"
-                  onClick={(event) => handleCheckinEnable(event)}>Enable </button>
-                <button
-                  className={`Disable_btn ${!CheckinselectedButton ? "blue" : "" }`}
-                  value="Disabled"
-                  onClick={(event) => handleCheckinDisable(event)}> Disable </button>        
-              
-                  </div>
-                  {CheckinselectedButton && (
-                    <div className="interactivefn">
-                      <form onSubmit={handleSubmit2} className="interactivefn">
-                        <div>
-                          <div className="checkinform1">
-                            <div className="check1">
-                              <label htmlFor="maximumpeopleon" id="maximuminon">
-                                Maximum People allowed online
-                              </label>
-                              <input
-                                type="text"
-                                id="maximuminonline"
-                                onChange={(event) => {
-                                  setOutletdetails({
-                                    ...Outletdetails,
-                                    checkin: {
-                                      ...Outletdetails.checkin,
-                                      maximumPeopleAllowedOnline:
-                                        event.target.value,
-                                    },
-                                  });
-                                }}
-                              />
-                            </div>
-
-                            <div className="check1">
-                              <label
-                                htmlFor="maximumpeopleoff"
-                                id="maximuminoff"
-                              >
-                                Maximum People allowed offline
-                              </label>
-                              <input
-                                type="text"
-                                id="maximuminoffline"
-                                onChange={(event) => {
-                                  setOutletdetails({
-                                    ...Outletdetails,
-                                    checkin: {
-                                      ...Outletdetails.checkin,
-                                      maximumPeopleAllowedOffline:
-                                        event.target.value,
-                                    },
-                                  });
-                                }}
-                              />
-                            </div>
-                          </div>
-                          <div className="checkinform2">
-                            <div className="check2">
-                              <label htmlFor="Lateshowtime" id="maximuminon">
-                                Late show time
-                              </label>
-                              <input
-                                type="text"
-                                id="maximuminonline"
-                                onChange={(event) => {
-                                  setOutletdetails({
-                                    ...Outletdetails,
-                                    checkin: {
-                                      ...Outletdetails.checkin,
-                                      lateShowTime: event.target.value,
-                                    },
-                                  });
-                                }}
-                              />
-                            </div>
-                            <div className="check2">
-                              <label htmlFor="AutocancelTime" id="maximuminoff">
-                                Auto cancel Time
-                              </label>
-                              <input
-                                type="text"
-                                id="maximuminoffline"
-                                onChange={(event) => {
-                                  setOutletdetails({
-                                    ...Outletdetails,
-                                    checkin: {
-                                      ...Outletdetails.checkin,
-                                      autoCancelTime: event.target.value,
-                                    },
-                                  });
-                                }}
-                              />
-                            </div>
-                            <div className="check2">
-                              <label htmlFor="Abandontime" id="maximuminoff">
-                                Abandon time
-                              </label>
-                              <input
-                                type="text"
-                                id="maximuminoffline"
-                                onChange={(event) => {
-                                  setOutletdetails({
-                                    ...Outletdetails,
-                                    checkin: {
-                                      ...Outletdetails.checkin,
-                                      abandonTime: event.target.value,
-                                    },
-                                  });
-                                }}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="lables1">
-                          <label
-                            htmlFor="BusinessLegalName"
-                            className="labelcheckin1"
-                          >
-                            Auto Assign option
-                          </label>
-                        </div>
-                        <div className="lables2">
-                          <label
-                            htmlFor="BusinessLegalName"
-                            className="labelcheckin2"
-                          >
-                            Assign table automatically to the customer
-                          </label>
-                        </div>
-                        <div className="highchairradio">
-                          <div className="highchairradio1">
-                            <input
-                              type="radio"
-                              className="radioStyle"
-                              value="yes"
-                              checked={
-                                Outletdetails.checkin.autoAssign === "yes"
-                              }
-                              onChange={(event) =>
-                                setOutletdetails({
-                                  ...Outletdetails,
-                                  checkin: {
-                                    ...Outletdetails.checkin,
-                                    autoAssign: event.target.value,
-                                  },
-                                })
-                              }
-                            />
-                            <label className="chairradio">Yes</label>
-                          </div>
-                          <div className="highchairradio2">
-                            <input
-                              type="radio"
-                              value="no"
-                              className="radioStyle"
-                              checked={
-                                Outletdetails.checkin.autoAssign === "no"
-                              }
-                              onChange={(event) =>
-                                setOutletdetails({
-                                  ...Outletdetails,
-                                  checkin: {
-                                    ...Outletdetails.checkin,
-                                    autoAssign: event.target.value,
-                                  },
-                                })
-                              }
-                            />
-                            <label className="chairradio">No</label>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  )}
+              <div className="">
+                <div className="lables1">
+                  <label htmlFor="BusinessLegalName" className="label">
+                    Checkin
+                  </label>
                 </div>
-             
+                <div className="lables2">
+                  <label htmlFor="BusinessLegalName" className="label">
+                    Please mention the checkin service
+                  </label>
+                </div>
+                <div style={{ marginTop: "10px" }} className="enabledisablebtn">
+                  <button
+                    className={`Enable_btn ${
+                      CheckinselectedButton ? "blue" : ""
+                    }`}
+                    value="enabled"
+                    onClick={(event) => handleCheckinEnable(event)}
+                  >
+                    Enable{" "}
+                  </button>
+                  <button
+                    className={`Disable_btn ${
+                      !CheckinselectedButton ? "blue" : ""
+                    }`}
+                    value="Disabled"
+                    onClick={(event) => handleCheckinDisable(event)}
+                  >
+                    {" "}
+                    Disable{" "}
+                  </button>
+                </div>
+                {CheckinselectedButton && (
+                  <div className="interactivefn">
+                    <form onSubmit={handleSubmit2} className="interactivefn">
+                      <div>
+                        <div className="checkinform1">
+                          <div className="check1">
+                            <label htmlFor="maximumpeopleon" id="maximuminon">
+                              Maximum People allowed online
+                            </label>
+                            <input
+                              type="text"
+                              id="maximuminonline"
+                              onChange={(event) => {
+                                setOutletdetails({
+                                  ...Outletdetails,
+                                  checkin: {
+                                    ...Outletdetails.checkin,
+                                    maximumPeopleAllowedOnline:
+                                      event.target.value,
+                                  },
+                                });
+                              }}
+                            />
+                          </div>
+
+                          <div className="check1">
+                            <label htmlFor="maximumpeopleoff" id="maximuminoff">
+                              Maximum People allowed offline
+                            </label>
+                            <input
+                              type="text"
+                              id="maximuminoffline"
+                              onChange={(event) => {
+                                setOutletdetails({
+                                  ...Outletdetails,
+                                  checkin: {
+                                    ...Outletdetails.checkin,
+                                    maximumPeopleAllowedOffline:
+                                      event.target.value,
+                                  },
+                                });
+                              }}
+                            />
+                          </div>
+                        </div>
+                        <div className="checkinform2">
+                          <div className="check2">
+                            <label htmlFor="Lateshowtime" id="maximuminon">
+                              Late show time
+                            </label>
+                            <input
+                              type="text"
+                              id="maximuminonline"
+                              onChange={(event) => {
+                                setOutletdetails({
+                                  ...Outletdetails,
+                                  checkin: {
+                                    ...Outletdetails.checkin,
+                                    lateShowTime: event.target.value,
+                                  },
+                                });
+                              }}
+                            />
+                          </div>
+                          <div className="check2">
+                            <label htmlFor="AutocancelTime" id="maximuminoff">
+                              Auto cancel Time
+                            </label>
+                            <input
+                              type="text"
+                              id="maximuminoffline"
+                              onChange={(event) => {
+                                setOutletdetails({
+                                  ...Outletdetails,
+                                  checkin: {
+                                    ...Outletdetails.checkin,
+                                    autoCancelTime: event.target.value,
+                                  },
+                                });
+                              }}
+                            />
+                          </div>
+                          <div className="check2">
+                            <label htmlFor="Abandontime" id="maximuminoff">
+                              Abandon time
+                            </label>
+                            <input
+                              type="text"
+                              id="maximuminoffline"
+                              onChange={(event) => {
+                                setOutletdetails({
+                                  ...Outletdetails,
+                                  checkin: {
+                                    ...Outletdetails.checkin,
+                                    abandonTime: event.target.value,
+                                  },
+                                });
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="lables1">
+                        <label
+                          htmlFor="BusinessLegalName"
+                          className="labelcheckin1"
+                        >
+                          Auto Assign option
+                        </label>
+                      </div>
+                      <div className="lables2">
+                        <label
+                          htmlFor="BusinessLegalName"
+                          className="labelcheckin2"
+                        >
+                          Assign table automatically to the customer
+                        </label>
+                      </div>
+                      <div className="highchairradio">
+                        <div className="highchairradio1">
+                          <input
+                            type="radio"
+                            className="radioStyle"
+                            value="yes"
+                            checked={Outletdetails.checkin.autoAssign === "yes"}
+                            onChange={(event) =>
+                              setOutletdetails({
+                                ...Outletdetails,
+                                checkin: {
+                                  ...Outletdetails.checkin,
+                                  autoAssign: event.target.value,
+                                },
+                              })
+                            }
+                          />
+                          <label className="chairradio">Yes</label>
+                        </div>
+                        <div className="highchairradio2">
+                          <input
+                            type="radio"
+                            value="no"
+                            className="radioStyle"
+                            checked={Outletdetails.checkin.autoAssign === "no"}
+                            onChange={(event) =>
+                              setOutletdetails({
+                                ...Outletdetails,
+                                checkin: {
+                                  ...Outletdetails.checkin,
+                                  autoAssign: event.target.value,
+                                },
+                              })
+                            }
+                          />
+                          <label className="chairradio">No</label>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
 
         <hr />
 
-
-
-
-
-
-  {/* Reservation details */}
+        {/* Reservation details */}
 
         <div className="reservation4">
           <div className="headingdine">
@@ -619,14 +596,25 @@ const Dinein = () => {
                 </label>
               </div>
               <div style={{ marginTop: "10px" }} className="enabledisablebtn">
-               <button
-                  className={`Enable_btn ${ReservationinselectedButton ? "blue" : ""}`}
-                  value="enabled"
-                  onClick={(event) => handleReservationEnable(event)}>Enable </button>
                 <button
-                  className={`Disable_btn ${!ReservationinselectedButton ? "blue" : "" }`}
+                  className={`Enable_btn ${
+                    ReservationinselectedButton ? "blue" : ""
+                  }`}
+                  value="enabled"
+                  onClick={(event) => handleReservationEnable(event)}
+                >
+                  Enable{" "}
+                </button>
+                <button
+                  className={`Disable_btn ${
+                    !ReservationinselectedButton ? "blue" : ""
+                  }`}
                   value="Disabled"
-                  onClick={(event) => handleReservationDisable(event)}> Disable </button>
+                  onClick={(event) => handleReservationDisable(event)}
+                >
+                  {" "}
+                  Disable{" "}
+                </button>
               </div>
               {ReservationinselectedButton && (
                 <div>
@@ -723,7 +711,7 @@ const Dinein = () => {
                           onChange={() => handleDayChange(day)}
                           className="radioStyle"
                         />
-                        <label style={{fontSize:'13px'}}>{day}</label>
+                        <label style={{ fontSize: "13px" }}>{day}</label>
                       </div>
                     ))}
                   </div>

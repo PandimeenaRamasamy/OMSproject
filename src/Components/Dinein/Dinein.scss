@@ -4,7 +4,7 @@
 }
 
 .main-divdine {
-  margin-left: 330px;
+  margin-left: 10px;
   display: flex;
 }
 
@@ -13,7 +13,7 @@
   position: relative;
   width: 100%;
   top: 80px;
-  left: 30px;
+  left: 20px;
   /* border: 1px solid black; */
 }
 
@@ -139,6 +139,8 @@
 hr {
   height: 1px;
   background-color: #979797;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .checkinform1,

@@ -133,7 +133,9 @@ const countryCodes=[
     };
 
     const handlePhoneNumberChange = (event) => {
-        setPhoneNumber(event.target.value);
+       
+
+
     };
 
  
@@ -189,8 +191,14 @@ const countryCodes=[
                     id="phone-number"
                     type="text"
                     className="phonenumberinput"
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange}
+                    value={Registrationform.phone}
+                    onChange={(event)=>
+                      
+                      {
+                       
+                        setRegistrationform({ ...Registrationform, phone: event.target.value })
+                      }
+                    }
                     required
                 />
                 <div>
@@ -264,20 +272,14 @@ const countryCodes=[
                 <button className='footnavbtn1' onClick={handleSubmit}>Save & Next</button>
                 <button className='footnavbtn2'>Clear All</button>
               </div>
-              <button onClick={() => {
-                dispatch(postDataSuccess());
-
-              }}>Get data</button>
+             
           
           </div>
         </div>
 
 
       </div>
-      {/* <button onClick={(e) => {
-                e.preventDefault();
-                dispatch(productlist());
-            }}>Product cart</button> */}
+    
 
     </>
 

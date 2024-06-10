@@ -9,7 +9,7 @@ import axios from 'axios';
 
 function* postData(action) {
   try {
-    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlet/registration', action.payload);
+    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/registration', action.payload);
 
     if (response.status === 200) {
       yield put( postDataSuccess(response.data));
@@ -42,9 +42,10 @@ function* getData() {
   }
 }
 
+
 function* postOnBoardingData(action) {
   try {
-    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlet/onBoarding', action.payload);
+    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/onBoarding', action.payload);
 
     if (response.status === 200) {
       yield put( POST_ONBOARDING_DATA_SUCCESS(response.data));
@@ -55,6 +56,8 @@ function* postOnBoardingData(action) {
     yield put(POST_ONBOARDING_DATA_FAILURE(error.message));
   }
 }
+
+
 
 function* postDineinData(action) {
   try {

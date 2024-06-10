@@ -2,19 +2,29 @@
   
     transform: translateY(200px);
   }
+
+  .stepform
+  {
+    
+    width:1100px ;
+    position:absolute;
+    left: 340px;
+    margin-top: 100px;
+    height:120px;
+  }
+
   .sub-container {
     width:1050px;
-    position: sticky;
-    left: 340px;
-    height:120px;
+    position:relative;
+    margin-left: -45%;
+    margin-top: -26%;
     border:1px solid #979797;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
-    transform: scale(1.0) ;
-   
+    transform: scale(1.0) ; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
     padding-left: 20px;
     padding-right: 20px;
-    border:2px solid red; 
+    /* border:2px solid red;  */
   }
 
   .stepper-container {
@@ -22,6 +32,7 @@
       transform: translateY(25px);
       justify-content: space-between;   
       padding-right: 15px;
+     
     }
   
   .image {
@@ -40,6 +51,7 @@
     border-radius: 100px;
     background-color: #C7C8CC;
     margin-right: 20px;
+   
     
   }
 
@@ -60,7 +72,7 @@
     bottom: 10px;
     right: 10px;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 
   .save_next{
@@ -103,7 +115,7 @@
     position: absolute;
     top: 45px;
     z-index: -1;
-    width:1500px;     /* Maximum width */
+      /* Maximum width */
     height: 2px;
     background-color: #ccc;
     border-radius: 5px;
@@ -119,33 +131,225 @@
   }
   
   /* Media Queries for responsiveness */
-  @media (max-width: 2000px) {
-    .stepper-progress {
-      width: 1550px  /* Adjust width for screens smaller than 2700px */
-    }
-    .container {
+  @media screen and (max-width: 1280px) {
+    .stepform
+    {
+      
+      width:1000px ;
+      position:absolute;
+      left: 300px;
+      margin-top: 150px;
+      height:120px;
      
-      margin-left: 360px;
-      margin-bottom: 160px ;
     }
+  
     .sub-container {
-      transform: scale(1);
+      width:1050px;
+      position:relative;
+      margin-left: -45%;
+      margin-top: -26%;
+      border:1px solid #979797;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+      transform: scale(1.0) ; 
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+      padding-left: 20px;
+      padding-right: 20px;
+      
     }
-  }
-  @media (max-width: 1500px) {
-    .stepper-progress {
-      width:1500px;  /* Adjust width for screens smaller than 2700px */
-    }
-    .container {
+
+    
+
+   
+
+    
+  
+
+
+
+      
+    
      
-      margin-left: 360px;
-      margin-bottom: 150px;
     }
-    .sub-container {
-      transform: scale(1);
+    @media screen and (max-width: 1085px) {
+      .stepform
+      {
+        
+        width:1000px ;
+        position:absolute;
+        left: 300px;
+        margin-top: 150px;
+        height:120px;
+       
+      }
+      .sub-container{
+        
+       
+        position:relative;
+        margin-left: -45%;
+        margin-top: -26%;
+        border:1px solid #979797;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        transform: scale(1.0) ; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        padding-left: 20px;
+        padding-right: 20px;
+      
+
+      }
+
     }
-  }
+
+
+    @media screen and (max-width: 1180px) {
+      .stepform
+      {
+        
+        width:1000px ;
+        position:absolute;
+        left: 300px;
+        margin-top: 150px;
+        height:120px;
+       
+      }
+    
+      .sub-container {
+        width:1050px;
+        position:relative;
+        margin-left: -45%;
+        margin-top: -26%;
+        border:1px solid #979797;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        transform: scale(1.0) ; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+        padding-left: 20px;
+        padding-right: 20px;
+        
+      }
+  
+     
+  
+     
+  
+      
+    
   
   
   
-  
+        
+      
+       
+      }
+    
+    /* Media query for max-width 1080px */
+    @media screen and (max-width: 1080px) {
+      .stepform
+      {
+        
+        width:1100px ;
+        position:absolute;
+        left: 220px;
+        margin-top: 140px;
+        height:120px;
+        
+      }
+    
+      .sub-container {
+        width:1050px;
+        position:relative;
+        margin-left: -45%;
+        margin-top: -26%;
+        border:1px solid #979797;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+        transform: scale(1.0) ; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+        padding-left: 20px;
+        padding-right: 20px;
+       
+      }
+    
+      .stepper-progress
+      {
+        margin-left: 30px;
+        
+      }
+      
+     
+      
+    }
+    
+    /* Media query for max-width 800px */
+    @media screen and (max-width: 800px) {
+      .stepform
+      {
+        
+        width:1100px ;
+        position:absolute;
+        left: 200px;
+        margin-top: 150px;
+        height:120px;
+       
+      }
+      .sub-container {
+        width:1050px;
+        position:relative;
+        margin-left: -45%;
+        margin-top: -26%;
+        border:1px solid #979797;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+        transform: scale(1.0) ; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+        padding-left: 20px;
+        padding-right: 20px;
+        
+      }
+    
+      .stepper-progress
+      {
+        margin-left: 30px;
+        
+      }
+     
+     
+    
+     
+      
+    }
+    
+    /* Media query for max-width 500px */
+    @media screen and (max-width: 500px) {
+      .stepform
+      {
+        
+        width:1100px ;
+        position:absolute;
+        left: 170px;
+        margin-top: 150px;
+        height:120px;
+       
+      }
+      .sub-container {
+        width:1050px;
+        position:relative;
+        margin-left: -45%;
+        margin-top: -26%;
+        border:1px solid #979797;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+        transform: scale(1.0) ; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+        padding-left: 20px;
+        padding-right: 20px;
+        border:2px solid red; 
+      }
+    
+      .stepper-progress
+      {
+        margin-left: 30px;
+        
+      }
+      
+     
+    
+    }
+    
+    
+    

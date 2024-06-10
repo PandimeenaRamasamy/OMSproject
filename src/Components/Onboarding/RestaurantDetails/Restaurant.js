@@ -5,7 +5,7 @@ import validator from "validator";
 
 const Restaurant = React.forwardRef((props, ref) => {
   const [form, setForm] = useState({
-    id: "58de0876-28b1-468d-bde3-b370e62e6847",
+    locationId: "e76292f3-99cf-4bbc-baa6-61d6742a8b85",
     businessLegalName: "",
     phone: "",
     email: "",
@@ -23,7 +23,7 @@ const Restaurant = React.forwardRef((props, ref) => {
     getFormData: () => form,
     clearFormData: () => {
       setForm({
-        id: "58de0876-28b1-468d-bde3-b370e62e6847",
+        locationId: "3208d1e6-7407-4ac5-9d74-83d542b71226",
         businessLegalName: "",
         phone: "",
         email: "",
@@ -82,18 +82,16 @@ const Restaurant = React.forwardRef((props, ref) => {
     }));
   };
 
-  const countryCodes=[
-    { "name": "United States", "dial_code": "+1" },
-    { "name": "India", "dial_code": "+91" },
-  ]  
+  const countryCodes = [
+    { name: "United States", dial_code: "+1" },
+    { name: "India", dial_code: "+91" },
+  ];
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
   const handleCodeChange = (event) => {
     setSelectedCode(event.target.value);
-};
-
+  };
 
   return (
-
     <div className="main-divres">
       <div className="submain-divres">
         <div className="heading-divres">
@@ -148,13 +146,17 @@ const Restaurant = React.forwardRef((props, ref) => {
                 </label>
               </div>
               <div style={{ marginTop: "20px" }}>
-              <select id="country-code" value={selectedCode} className="phonenumbercode" onChange={handleCodeChange}>
-                    {countryCodes.map((country) => (
-                        <option key={country.dial_code} value={country.dial_code}>
-                            {country.dial_code}
-                        </option>
-                    ))}
-                    
+                <select
+                  id="country-code"
+                  value={selectedCode}
+                  className="phonenumbercode"
+                  onChange={handleCodeChange}
+                >
+                  {countryCodes.map((country) => (
+                    <option key={country.dial_code} value={country.dial_code}>
+                      {country.dial_code}
+                    </option>
+                  ))}
                 </select>
                 <input
                   type="text"
@@ -162,7 +164,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                   className="inputboxres2"
                   placeholder="Enter Mobile Number"
                   value={form.restaurantNumber}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    setForm({ ...form, restaurantNumber: e.target.value });
+                  }}
                 />
               </div>
             </div>
@@ -185,31 +189,33 @@ const Restaurant = React.forwardRef((props, ref) => {
                 Same as restaurant mobile no.
               </label>
 
-              <div> 
-              <select id="country-code" value={selectedCode} className="phonenumbercode" onChange={handleCodeChange}>
-                    {countryCodes.map((country) => (
-                        <option key={country.dial_code} value={country.dial_code}>
-                            {country.dial_code}
-                        </option>
-                    ))}
-                    
-                </select>
-                
-                
-                <input
-              
-              type="text"
-              name="whatsappNumber"
-              className="inputboxres2"
-              placeholder="Enter WhatsApp Number"
-              value={form.whatsappNumber}
-              onChange={handleChange}
-              disabled={isChecked}
-            /></div>
 
-              
-             
+              <div>
+                <select
+                  id="country-code"
+                  value={selectedCode}
+                  className="phonenumbercode"
+                  onChange={handleCodeChange}
+                >
+                  {countryCodes.map((country) => (
+                    <option key={country.dial_code} value={country.dial_code}>
+                      {country.dial_code}
+                    </option>
+                  ))}
+                </select>
+
+                <input
+                  type="text"
+                  name="whatsappNumber"
+                  className="inputboxres2"
+                  placeholder="Enter WhatsApp Number"
+                  value={form.whatsappNumber}
+                  onChange={handleChange}
+                  disabled={isChecked}
+                />
+              </div>
             </div>
+
 
             <div
               style={{ display: "flex", justifyContent: "space-evenly" }}
@@ -232,9 +238,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                     setEmailError(validateEmail(e.target.value));
                   }}
                 />
-                {emailError && (
-                  <div style={{ color: "red" }}>{emailError}</div>
-                )}
+                {emailError && <div style={{ color: "red" }}>{emailError}</div>}
               </div>
               <div
                 style={{ display: "flex", flexDirection: "column" }}
@@ -285,6 +289,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 />
               </div>
             </div>
+            <br />
           </form>
         </div>
       </div>
