@@ -107,7 +107,7 @@
     position: absolute;
     top: 45px;
     z-index: -1;
-    width:1123px;    
+    width:1200px;    
     height: 2px;
     background-color: #ccc;
     border-radius: 5px;
@@ -124,7 +124,7 @@
  
   @media (max-width: 4000px) {
     .stepper-progress {
-      width: 850px  
+      width: 1000px  
     }
     .container {
      

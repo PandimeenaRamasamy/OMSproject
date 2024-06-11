@@ -116,7 +116,7 @@
     top: 45px;
     z-index: -1;
     /* border: 1px solid red; */
-   
+    width:1200px;    
       /* Maximum width */
     height: 2px;
     background-color: #ccc;
@@ -132,7 +132,18 @@
    
   }
   
-  @media (max-width:1500px) {
+  @media (max-width:1280px) {
+    .sub-container{
+      width: 1200px;
+    }
+    .container{
+      padding-top: 100px;
+    }
+    
+  }
+
+
+  /* @media (max-width:1500px) {
     .sub-container{
       width: 750px;
     }
@@ -141,3 +152,13 @@
     }
     
   }
+  @media (max-width:1500px) {
+    .sub-container{
+      width: 750px;
+    }
+    .container{
+      padding-top: 50px;
+    }
+    
+  } */
+ 
