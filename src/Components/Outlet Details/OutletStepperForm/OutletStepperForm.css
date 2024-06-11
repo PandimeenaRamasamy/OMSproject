@@ -124,7 +124,7 @@
  
   @media (max-width: 4000px) {
     .stepper-progress {
-      width: 1000px  
+      width: 850px  ;
     }
     .container {
      

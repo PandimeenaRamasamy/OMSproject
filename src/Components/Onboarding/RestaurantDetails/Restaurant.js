@@ -1,8 +1,6 @@
 import React, { useState, useImperativeHandle } from "react";
 import "./Restaurant.scss";
 
-import "react-phone-input-2/lib/style.css";
-import validator from "validator";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
@@ -260,7 +258,7 @@ const Restaurant = React.forwardRef((props, ref) => {
             </div>
 
             <div
-              style={{ display: "flex", justifyContent: "space-evenly" }}
+              style={{ display: "flex", justifyContent: "space-evenly"  }}
               className="personal-detailsres"
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
