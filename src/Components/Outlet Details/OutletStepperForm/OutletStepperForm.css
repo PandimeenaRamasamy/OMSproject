@@ -124,7 +124,7 @@
  
   @media (max-width: 4000px) {
     .stepper-progress {
-      width: 950px  
+      width: 850px  
     }
     .container {
      
@@ -135,22 +135,10 @@
       transform: scale(1);
     }
   }
-  @media (max-width: 2000px) {
-    .stepper-progress {
-      width: 950px 
-    }
-    .container {
-     
-      margin-left: 360px;
-      margin-bottom: 160px ;
-    }
-    .sub-container {
-      transform: scale(1);
-    }
-  }
+
   @media (max-width: 1500px) {
     .stepper-progress {
-      width:900px;  
+      width:620px;  
     }
     .container {
      
