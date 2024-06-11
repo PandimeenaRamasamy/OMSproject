@@ -11,8 +11,8 @@
     width: 402px;
     height: 350px;
     position: absolute;
-    top: 150px;
-    left: 25px;
+    top: 370px;
+    left: 350px;
     display: flex;
     flex-direction: column;
 }
