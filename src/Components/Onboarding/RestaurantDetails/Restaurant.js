@@ -1,10 +1,25 @@
 import React, { useState, useImperativeHandle } from "react";
 import "./Restaurant.scss";
 
+import "react-phone-input-2/lib/style.css";
+import validator from "validator";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
+
+
 
 const Restaurant = React.forwardRef((props, ref) => {
+  const dispatch = useDispatch();
+  const locationId = useSelector((state) => state.postData.data);
+  console.log(locationId);
+  const LocationId=dispatch(getLocationId(locationId));
+ console.log(LocationId.payload)
+ const Locid=LocationId.payload
+
+
   const [form, setForm] = useState({
-    locationId: "e76292f3-99cf-4bbc-baa6-61d6742a8b85",
+    locationId:LocationId.payload,
     businessLegalName: "",
     phone: "",
     email: "",

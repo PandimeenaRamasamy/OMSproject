@@ -21,7 +21,7 @@ const Home = () => {
             
             <div className='homeimg'>
                 <img src={Homeimg} alt="" />
-                <button onClick={goToAbout}>+ Add outlet</button>
+                <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
             </div>
 
 
