@@ -11,6 +11,10 @@ const PostDataForm = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
   const [imageclose, setimageclose] = useState(false);
+  const countryCodes = [
+    { name: "India", dial_code: "+91" },
+    { name: "United States", dial_code: "+1" },
+  ];
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
   const [Registrationform, setRegistrationform] = useState({
     restaurantName: "",
@@ -21,10 +25,7 @@ const PostDataForm = () => {
     gstNumber: "",
     base64Image: "",
   });
-  const countryCodes = [
-    { name: "India", dial_code: "+91" },
-    { name: "United States", dial_code: "+1" },
-  ];
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
