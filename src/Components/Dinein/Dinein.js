@@ -6,16 +6,12 @@ import { useDispatch } from "react-redux";
 const Dinein = () => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState("");
-
   const [DineinselectedButton, setDineinselectedButton] = useState(false);
-  const [InteractiveselectedButton, setInteractiveselectedButton] =
-    useState(false);
+  const [InteractiveselectedButton, setInteractiveselectedButton] = useState(false); 
   const [CheckinselectedButton, setCheckinselectedButton] = useState(false);
-  const [ReservationinselectedButton, setReservationinselectedButton] =
-    useState(false);
+  const [ReservationinselectedButton, setReservationinselectedButton] =useState(false);  
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
-
   const [Outletdetails, setOutletdetails] = useState({
     locationId: "5d171ae6-2849-4a49-b75a-c72776625843",
     dineIn: "",
@@ -123,13 +119,7 @@ const Dinein = () => {
     Sunday: false,
   });
 
-  // const handleCheckboxChange = (event) => {
-  //   const { name, checked } = event.target;
-  //   setCheckedDays((prevCheckedDays) => ({
-  //     ...prevCheckedDays,
-  //     [name]: checked,
-  //   }));
-  // };
+ 
 
   return (
     <div className="main-divdine">
@@ -138,7 +128,7 @@ const Dinein = () => {
           <h5>Dine in Details</h5>
         </div>
 
-        {/* dine in details */}
+  {/* dine in details */}
 
         <div className="Dinein1">
           <form>
@@ -237,7 +227,7 @@ const Dinein = () => {
 
         <hr />
 
-        {/* Interactive details */}
+ {/* Interactive details */}
 
         <div className="Interactive2">
           <div className="headingdine">
@@ -372,7 +362,7 @@ const Dinein = () => {
 
           <hr />
 
-          {/* Checkin details */}
+{/* Checkin details */}
 
           <div className="checkin3">
             <div className="headingdine">
@@ -577,7 +567,7 @@ const Dinein = () => {
 
         <hr />
 
-        {/* Reservation details */}
+{/* Reservation details */}
 
         <div className="reservation4">
           <div className="headingdine">

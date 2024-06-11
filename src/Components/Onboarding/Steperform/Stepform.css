@@ -14,7 +14,7 @@
   }
 
   .sub-container {
-    width:1050px;
+    width:1000px;
     position:relative;
     margin-left: -45%;
     margin-top: -26%;
@@ -50,7 +50,7 @@
     padding: 10px;
     border-radius: 100px;
     background-color: #C7C8CC;
-    margin-right: 20px;
+    margin-right: 50px;
    
     
   }
@@ -112,9 +112,11 @@
   }
   
   .stepper-progress {
-    position: absolute;
+    position: relative;
     top: 45px;
     z-index: -1;
+    /* border: 1px solid red; */
+   
       /* Maximum width */
     height: 2px;
     background-color: #ccc;
