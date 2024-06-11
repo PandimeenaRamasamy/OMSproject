@@ -80,38 +80,38 @@ function Stepform() {
   const progress = ((visitedSteps.filter(step => step).length) / steps.length) * 100;
 
   return (
-    <div className="page-content">
-      <div className='stepform'>
-        <div className='container'>
-          <div className='sub-container'>
-            <div className="stepper-progress">
-              <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+    <div className="page-contentonboard">
+      <div className='stepformonboard'>
+        <div className='containeronboard'>
+          <div className='sub-containeronboard'>
+            <div className="stepper-progressonboard">
+              <div className="progress-baronboard" style={{ width: `${progress}%` }}></div>
             </div>
-            <div className="stepper-container">
+            <div className="stepper-containeronboard">
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className={`step ${index === activeStep ? 'active' : ''} ${visitedSteps[index] ? 'visited' : ''}`}
+                  className={`steponboard ${index === activeStep ? 'activeonboard' : ''} ${visitedSteps[index] ? 'visitedonboard' : ''}`}
                   onClick={() => handleStepClick(index)}
                 >
                   {step.icon}
-                  <div className='icon-text'>{step.title}</div>
+                  <div className='icon-textonboard'>{step.title}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <div className='component-container'>
+        <div className='component-containeronboard'>
           {steps[activeStep].component}
         </div>
       </div>
-      <div className='btn-container'>
-        <div className='btn-footer1'>
+      <div className='btn-containeronboard'>
+        <div className='btn-footer1onboard'>
           <div>
-            <button className='clear_all'>Clear ALL</button>
+            <button className='clear_allonboard'>Clear ALL</button>
           </div>
           <div>
-            <button className='save_next' onClick={handleSaveAndNext}>Save&Next</button>
+            <button className='save_nextonboard' onClick={handleSaveAndNext}>Save&Next</button>
           </div>
         </div>
       </div>

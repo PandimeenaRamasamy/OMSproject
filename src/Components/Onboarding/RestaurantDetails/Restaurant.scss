@@ -10,8 +10,8 @@
       justify-content: flex-start;
       align-items: center;
       position: relative;
-      top: 70px;
-      left: 30px;
+      top: 20px;
+      left: 360px;
       /* border: 1px solid black; */
     }
     
@@ -107,20 +107,28 @@
       border: 1px solid red;
     }
 
-    @media (max-width:1050px) {
+    @media (max-width:1280px) {
       .main-divres {
-        position: relative;
-        left: -80px;
-        top: 40px;
-      }
-
-      .personal-detailsres{
-        display: flex;
-        flex-direction: column;
-      }
-
       
+        position: relative;
+        top: 120px;
+        left: 360px;
+      }
+
+
     }
+
+    @media (max-width:1280px) {
+      .main-divres {
+      
+        position: relative;
+        top: 120px;
+        left: 360px;
+      }
+
+
+    }
+    
     
     
     

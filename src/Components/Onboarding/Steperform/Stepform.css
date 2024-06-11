@@ -1,41 +1,32 @@
-.container {
-  
-    transform: translateY(200px);
-  }
 
-  .stepform
-  {
+
+  .sub-containeronboard {
+    width:900px;
     
-    width:1100px ;
-    position:absolute;
-    left: 340px;
-    margin-top: 100px;
     height:120px;
-  }
-
-  .sub-container {
-    width:1000px;
     position:relative;
-    margin-left: -45%;
-    margin-top: -26%;
+    margin-left: 350px;
+    margin-top: 100px;
     border:1px solid #979797;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
     transform: scale(1.0) ; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
-    padding-left: 20px;
+    padding-left: 50px;
     padding-right: 20px;
-    /* border:2px solid red;  */
+    
   }
 
-  .stepper-container {
+  .stepper-containeronboard {
       display: flex;
-      transform: translateY(25px);
+      transform: translateY(20px);
       justify-content: space-between;   
       padding-right: 15px;
+    
+
      
     }
   
-  .image {
+  .imageonboard {
     position: absolute;
     top:-2px;
     height: 44px;
@@ -43,31 +34,34 @@
     color: black;
   }
   
-  .step {
+  .steponboard {
     cursor: pointer;
-    width: 100px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     padding: 10px;
-    border-radius: 100px;
+    border-radius: 50%;
     background-color: #C7C8CC;
     margin-right: 50px;
+    align-items: center;
+    justify-content: center;
+   
    
     
   }
 
-  .visited {
+  .visitedonboard {
     background-color: rgba(0, 183, 29, 1) ;
     color:white;
   }
-  .visited.icon {
+  .visitedonboard.icononboard {
     color:white !important;
   }
-  .step.active {
+  .steponboard.activeonboard {
     background-color: rgba(182, 210, 140, 1);
     color:#fff;
   }
   
-  .btn-footer1{
+  .btn-footer1onboard{
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -75,7 +69,7 @@
     flex-direction: row;
   }
 
-  .save_next{
+  .save_nextonboard{
     width: 100px;
     height: 35px;
     margin-left: 10px;
@@ -86,7 +80,7 @@
     border: 1px dotted #67833E
   }
 
-  .clear_all{
+  .clear_allonboard{
     width: 100px;
     height: 35px;
     color: #67833E;
@@ -96,13 +90,13 @@
     background:none;
   }
 
-  .btn-container{
+  .btn-containeronboard{
     position:absolute;
     top:1080px;
     left:1100px  
   }
 
-  .icon-text{
+  .icon-textonboard{
     color:black;
     font-size: 14px;
     margin-top:30px;
@@ -111,13 +105,14 @@
    margin-right: 25px;
   }
   
-  .stepper-progress {
+  .stepper-progressonboard {
     position: relative;
-    top: 45px;
+    top: 60px;
     z-index: -1;
     /* border: 1px solid red; */
-    width:1200px;    
+      
       /* Maximum width */
+      width: 750px;
     height: 2px;
     background-color: #ccc;
     border-radius: 5px;
@@ -125,22 +120,55 @@
  
   }
   
-  .progress-bar {
+  .progress-baronboard {
     height: 100%;
     background-color: rgba(0, 183, 29, 1);
     border-radius: 5px;
    
   }
-  
+/*   
   @media (max-width:1280px) {
     .sub-container{
-      width: 1200px;
+      width: 1280px;
     }
     .container{
       padding-top: 100px;
     }
     
   }
+
+  @media (max-width: 4000px) {
+    .stepper-progress {
+      width: 850px  ;
+    }
+    .container {
+     
+      margin-left: 360px;
+      margin-bottom: 160px ;
+    }
+    .sub-container {
+      transform: scale(1);
+    }
+  } */
+
+  @media (max-width: 1280px) {
+    .sub-containeronboard {
+      width:900px;  
+      top: 100px;
+    }
+   
+  }
+  
+  @media (max-width: 1080px) {
+  
+    .sub-containeronboard {
+      width:900px;  
+      top: 100px;
+    }
+  }
+  
+  
+  
 
 
   /* @media (max-width:1500px) {

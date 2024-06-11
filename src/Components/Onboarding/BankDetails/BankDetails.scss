@@ -1,11 +1,11 @@
 .Bank-Container {
     
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-    top: 70px;
-    left: 30px;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      top: 20px;
+      left: 360px;
 }
 
 .form-Bank {
@@ -93,17 +93,15 @@
     
 }
 
-@media screen and (max-width: 1280px) {
+@media (max-width:1280px) {
     .Bank-Container {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       position: relative;
-      top: 70px;
-      left: 30px;
-      /* border: 1px solid black; */
+      top: 120px;
+      left: 360px;
     }
-
     
   
    
