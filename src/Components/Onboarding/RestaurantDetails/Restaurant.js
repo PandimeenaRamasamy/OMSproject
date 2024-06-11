@@ -1,10 +1,12 @@
 import React, { useState, useImperativeHandle } from "react";
 import "./Restaurant.scss";
+
 import "react-phone-input-2/lib/style.css";
 import validator from "validator";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
+
 
 
 const Restaurant = React.forwardRef((props, ref) => {
@@ -50,25 +52,12 @@ const Restaurant = React.forwardRef((props, ref) => {
     },
   }));
 
-  const validateEmail = (email) => {
-    if (!email) {
-      return "Email is required";
-    } else if (!validator.isEmail(email)) {
-      return "Invalid email address";
-    } else {
-      return "";
-    }
-  };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const emailValidationError = validateEmail(form.email);
-    if (emailValidationError) {
-      setEmailError(emailValidationError);
-    } else {
-      setEmailError("");
-      // handle form submission
-    }
+   
+   
   };
 
   const handleCheckboxChange = () => {
@@ -247,7 +236,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   value={form.email}
                   onChange={(e) => {
                     handleChange(e);
-                    setEmailError(validateEmail(e.target.value));
+                   
                   }}
                 />
                 {emailError && <div style={{ color: "red" }}>{emailError}</div>}
