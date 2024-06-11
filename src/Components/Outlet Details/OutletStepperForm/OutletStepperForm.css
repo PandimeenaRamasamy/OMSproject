@@ -1,6 +1,6 @@
 .container {
-  
-    transform: translateY(200px);
+  margin-top:90px;
+    transform: translateX(350px);
     
   }
   .sub-container {
@@ -107,7 +107,7 @@
     position: absolute;
     top: 45px;
     z-index: -1;
-      
+    width: 1110px;
     height: 2px;
     background-color: #ccc;
     border-radius: 5px;
