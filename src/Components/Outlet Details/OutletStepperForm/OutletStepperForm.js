@@ -14,14 +14,11 @@ import Dinein from '../../Dinein/Dinein'
 
 import Pickup from "../PickUp/Pickup"
 import Kitchen from '../Kitchen/Kitchen'
+import RestaurantImage from '../Restaurant Image/InputRefs'
 
 
 
-function RestaurantImage()
-{
-    return<h2>RestaurantImage</h2>
 
-}
 
 
 
