@@ -1,5 +1,6 @@
 .RestaurantImagemain{
   position: absolute;
+  top: 380px;
   left: 400px;
 }
 
@@ -76,11 +77,12 @@
 
 
 
-  img {
+  .img2 {
     display: flex;
     justify-content: start;
-    width: 80px;
-    overflow-x: hidden;
+    width: 100px;
+    height: 300px;
+    
 
     height: 80px;
 
