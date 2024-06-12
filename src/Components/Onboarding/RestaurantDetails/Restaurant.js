@@ -27,12 +27,23 @@ const Restaurant = React.forwardRef((props, ref) => {
     restaurantNumber: "",
     whatsappNumber: "",
   });
+  const[reserror,setResError]=useState({
+    businessLegalName: "",
+    phone: "",
+    email: "",
+    website: "",
+    instagramLink: "",
+    facebookLink: "",
+    restaurantNumber: "",
+    whatsappNumber: "",
+  })
 
   const [isChecked, setIsChecked] = useState(false);
   const [emailError, setEmailError] = useState("");
 
   useImperativeHandle(ref, () => ({
     getFormData: () => form,
+    validate,
     clearFormData: () => {
       setForm({
         locationId: "3208d1e6-7407-4ac5-9d74-83d542b71226",
@@ -89,6 +100,57 @@ const Restaurant = React.forwardRef((props, ref) => {
   const handleCodeChange = (event) => {
     setSelectedCode(event.target.value);
   };
+  const validate=()=>{
+    const errors={}
+    let isValid=true;
+    if(!form.businessLegalName)
+      {
+        errors.businessLegalName="Please Enter The Name"
+        isValid=false
+      }
+      else if(/[^a-zA-Z\s]/.test(form.businessLegalName)) {
+      
+     errors.businessLegalName=" Enter Name"
+     isValid=false;
+   }
+   if(!form.phone)
+    {errors.phone=" Enter type"
+      isValid=false;
+
+    }
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(form.email)) {
+      
+      errors.email = "Enter valid email";
+    }
+    if(!form.website)
+      {errors.website=" Enter Website Link"
+        isValid=false;
+  
+      }
+      if(!form.instagramLink)
+        {errors.instagramLink=" Enter instagram Link"
+          isValid=false;
+    
+        }
+        if(!form.facebookLink)
+          {errors.facebookLink=" Enter facebook Link"
+            isValid=false;
+      
+          }
+          if(!form.restaurantNumber)
+            {errors.restaurantNumber=" Enter Restaurant Number"
+              isValid=false;
+        
+            }
+            if(!form.whatsappNumber)
+              {errors.whatsappNumber=" Enter Restaurant Whatsapp Number"
+                isValid=false;
+          
+              }
+      setResError(errors);
+      return isValid
+  }
+  
 
   return (
     <div className="main-divres">
@@ -109,7 +171,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                 placeholder="Name"
                 value={form.businessLegalName}
                 onChange={handleChange}
+                
               />
+              {reserror.businessLegalName && <h1 className="error">{reserror.businessLegalName}</h1>}
             </div>
 
             <div className="labelinput-divres">
@@ -143,6 +207,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   />
                   Landline
                 </label>
+                {reserror.phone && <h1 className="error">{reserror.phone}</h1>}
               </div>
               <div style={{ marginTop: "20px" }}>
                 <select
@@ -168,6 +233,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   }}
                 />
               </div>
+              {reserror.restaurantNumber && <h1 className="error">{reserror.restaurantNumber}</h1>}
             </div>
 
             <div className="labelinput-divres">
@@ -213,6 +279,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   disabled={isChecked}
                 />
               </div>
+              {reserror.whatsappNumber && <h1 className="error">{reserror.whatsappNumber}</h1>}
             </div>
 
 
@@ -237,7 +304,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                    
                   }}
                 />
-                {emailError && <div style={{ color: "red" }}>{emailError}</div>}
+                {reserror.email && <h1 className="error">{reserror.email}</h1>}
               </div>
               <div
                 style={{ display: "flex", flexDirection: "column" }}
@@ -254,6 +321,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   value={form.website}
                   onChange={handleChange}
                 />
+                {reserror.website && <h1 className="error">{reserror.website}</h1>}
               </div>
             </div>
 
@@ -273,6 +341,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   value={form.instagramLink}
                   onChange={handleChange}
                 />
+                {reserror.instagramLink && <h1 className="error">{reserror.instagramLink}</h1>}
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="facebookLink" className="labelres">
@@ -286,6 +355,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   value={form.facebookLink}
                   onChange={handleChange}
                 />
+                {reserror.facebookLink && <h1 className="error">{reserror.facebookLink}</h1>}
               </div>
             </div>
             <br />
