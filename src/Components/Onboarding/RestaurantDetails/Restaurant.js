@@ -137,6 +137,16 @@ const Restaurant = React.forwardRef((props, ref) => {
             isValid=false;
       
           }
+          if(!form.restaurantNumber)
+            {errors.restaurantNumber=" Enter Restaurant Number"
+              isValid=false;
+        
+            }
+            if(!form.whatsappNumber)
+              {errors.whatsappNumber=" Enter Restaurant Whatsapp Number"
+                isValid=false;
+          
+              }
       setResError(errors);
       return isValid
   }
@@ -223,6 +233,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   }}
                 />
               </div>
+              {reserror.restaurantNumber && <h1 className="error">{reserror.restaurantNumber}</h1>}
             </div>
 
             <div className="labelinput-divres">
@@ -268,6 +279,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   disabled={isChecked}
                 />
               </div>
+              {reserror.whatsappNumber && <h1 className="error">{reserror.whatsappNumber}</h1>}
             </div>
 
 
