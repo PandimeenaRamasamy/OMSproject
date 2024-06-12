@@ -106,11 +106,11 @@
                   {image && (
   <>
                       {isBase64(image) ? (
-  <img className='img2' src={URL.createObjectURL(base64ToBlob(image))} alt='image' />
+  <img  src={URL.createObjectURL(base64ToBlob(image))} alt='image' className='imgOrg' />
                       ) : image instanceof File ? (
-  <img src={URL.createObjectURL(image)} alt='image' className='img2' />
+  <img src={URL.createObjectURL(image)} alt='image' className='imgOrg' />
                       ) : (
-  <img src={image} alt='image' className='img2' />
+  <img src={image} alt='image' className='imgOrg' />
                       )}
   <p className="uploadImg removeImgBtn" onClick={() => removeImage(index)} style={{color:"white"}}>x</p>
   </>
@@ -119,7 +119,7 @@
               ))}
   </div>
   <div className='uploadImg addImageBtn' style={{ display: images.some(img => img === null) ? 'block' : 'none' }} onClick={() => handleClick(images.findIndex(img => img === null))}>
-  <img src={addImg} alt=''  className='img2'/>
+  <img src={addImg} alt=''  className='imgOrg'/>
               {inputRefs.map((ref, index) => (
   <input
                   key={index}
