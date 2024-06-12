@@ -36,45 +36,50 @@ const PostDataForm = () => {
     base64Imageerror: "",
   });
 
+  const registrationpagerrors = {};
+
   const validationofregistrationform = () => {
-    validaterestaurantname();
-    // validatename();
-    
    
+    if (!Registrationform.restaurantName) {
+      registrationpagerrors.restaurantNameerror = "Enter Restaurent Name";
+    }
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(Registrationform.email)) {
+      console.log("email error")
+      registrationpagerrors.emailerror = "Enter valid email";
+    }
+    if(!Registrationform.base64Image)
+      {
+        registrationpagerrors.base64Imageerror ="Upload logo";
+      }
 
+    if (!Registrationform.name) {
+      registrationpagerrors.nameerror = "Enter your Name";
+    } else if (/[^a-zA-Z\s]/.test(Registrationform.name)) {
+      registrationpagerrors.nameerror =
+        "Name must only contain letters and spaces";
+    }
 
-    
-   
+    setError(registrationpagerrors);
   };
-const validaterestaurantname=()=>{
-  
-  if (Registrationform.restaurantName === "") {
-    console.log("resgisration error")
-    setError({ restaurantNameerror: "Enter Restaurant Name" });
-  }
-  else{
-    setError({restaurantNameerror:""})
+  const validaterestaurantname = () => {
+    if (Registrationform.restaurantName === "") {
+      console.log("resgisration error");
+      setError({ restaurantNameerror: "Enter Restaurant Name" });
+    } else {
+      setError({ restaurantNameerror: "" });
+    }
+    validatename();
+  };
 
-  }
-  validatename();
-
-}
-
-const validatename=()=>{
- 
-  if (Registrationform.name === "") {
-    setError({ nameerror: "Enter your name" });
-  }
-  else if(/[^a-zA-Z\s]/.test(Registrationform.name)) {
-    setError({ nameerror: "Name must only contain letters and spaces" });
-  } 
-  else{
-    setError({nameerror:""})
-
-  }
-
-}
-
+  const validatename = () => {
+    if (Registrationform.name === "") {
+      setError({ nameerror: "Enter your name" });
+    } else if (/[^a-zA-Z\s]/.test(Registrationform.name)) {
+      setError({ nameerror: "Name must only contain letters and spaces" });
+    } else {
+      setError({ nameerror: "" });
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -116,6 +121,12 @@ const validatename=()=>{
   const handleCodeChange = (event) => {
     setSelectedCode(event.target.value);
   };
+  const handleKeyPress = (event) => {
+    // Prevent non-numeric keys from being pressed
+    if (!/^\d$/.test(event.key)) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <>
@@ -132,7 +143,9 @@ const validatename=()=>{
               <input
                 type="text"
                 className="inputbox"
-                style={{ borderColor: error.restaurantNameerror ? "red" : "#B3B3B3" }}
+                style={{
+                  borderColor: error.restaurantNameerror ? "red" : "#B3B3B3",
+                }}
                 placeholder="Name"
                 value={Registrationform.restaurantName}
                 onChange={(e) =>
@@ -142,7 +155,7 @@ const validatename=()=>{
                   })
                 }
               />
-             {error.restaurantNameerror && (
+              {error.restaurantNameerror && (
                 <div className="invaliddata">{error.restaurantNameerror} </div>
               )}
             </div>
@@ -189,6 +202,8 @@ const validatename=()=>{
                   type="text"
                   className="phonenumberinput"
                   value={Registrationform.phone}
+                  maxLength={10}
+                  onKeyPress={handleKeyPress}
                   onChange={(event) => {
                     setRegistrationform({
                       ...Registrationform,
@@ -209,6 +224,9 @@ const validatename=()=>{
                 className="inputbox"
                 placeholder="xyz@gmail.com"
                 value={Registrationform.email}
+                style={{
+                  borderColor: error.emailerror ? "red" : "#B3B3B3",
+                }}
                 onChange={(e) => {
                   setRegistrationform({
                     ...Registrationform,
@@ -216,6 +234,9 @@ const validatename=()=>{
                   });
                 }}
               />
+              {error.emailerror && (
+                <div className="invaliddata">{error.emailerror} </div>
+              )}
             </div>
             <div className="labelinput-divreg">
               <label for="cars" className="labelreg">
@@ -308,7 +329,11 @@ const validatename=()=>{
                   )}
                 </div>
                 {!file && <p className="fornoimage">No image was selected</p>}
+                {error.base64Imageerror && (
+                <div className="invaliddata fornoimage">{error.base64Imageerror} </div>
+              )}
               </div>
+             
             </div>
             <div className="footnav">
               <button className="footnavbtn1" onClick={handleSubmit}>

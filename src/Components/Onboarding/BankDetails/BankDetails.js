@@ -27,6 +27,11 @@ AccountHolderName:""
         isValid=false;
         errors.reaccountNumber="Please ReEnter Account Number"
       }
+    else if(bankform.accountNumber!=bankform.reaccountNumber)
+      {
+        isValid=false;
+        errors.reaccountNumber="Please Enter Same Account Number"
+      }
     if(!bankform.ifscCode)
       {
         isValid=false;
