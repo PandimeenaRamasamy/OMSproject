@@ -12,22 +12,21 @@ import { useDispatch } from 'react-redux';
 import { postOnBoardingDataRequest } from '../../../redux/Actions/PostDataAction';
 
 function Stepform() {
-  const dispatch=useDispatch()
-  const [activeStep, setActiveStep] = useState(0); 
+  const dispatch = useDispatch();
+  const [activeStep, setActiveStep] = useState(0);
   const [mainForm, setMainForm] = useState({});
-  const restaurantdetailsref=useRef();
-  const locationref=useRef();
-  const fssairef=useRef();
-  const bankref=useRef();
+  const restaurantDetailsRef = useRef();
+  const locationRef = useRef();
+  const fssaiRef = useRef();
+  const bankRef = useRef();
 
   const steps = [
-    { title: 'RestaurantDetails', component: <Restaurant ref={restaurantdetailsref}  />, icon: <BiNotepad className='image' /> },
-    { title: 'Location', component: <Location ref={locationref}  />, icon: <CiLocationOn className='image' /> },
-    { title: 'FSSAI', component: <Fssai ref={fssairef}  />, icon: <PiNotepadBold className='image' /> },
-    { title: 'BankDetails', component: <BankDetails ref={bankref} />, icon: <TfiNotepad className='image' /> },
+    { title: 'RestaurantDetails', component: <Restaurant ref={restaurantDetailsRef} />, icon: <BiNotepad className='image' /> },
+    { title: 'Location', component: <Location ref={locationRef} />, icon: <CiLocationOn className='image' /> },
+    { title: 'FSSAI', component: <Fssai ref={fssaiRef} />, icon: <PiNotepadBold className='image' /> },
+    { title: 'BankDetails', component: <BankDetails ref={bankRef} />, icon: <TfiNotepad className='image' /> },
   ];
-  let newformdata={};
-  
+
   const [visitedSteps, setVisitedSteps] = useState(new Array(steps.length).fill(false));
 
   useEffect(() => {
@@ -40,40 +39,41 @@ function Stepform() {
     setActiveStep(index);
   };
 
-  
-  const handleSaveAndNext=()=>{
-  
-   switch(activeStep)
-   {
-    case 0:
-      newformdata={...mainForm,restaurant_details:restaurantdetailsref.current.getFormData()};
-      break;
+  const handleSaveAndNext = () => {
+    let isValid = true;
+    let newFormData = { ...mainForm };
+
+    switch (activeStep) {
+      case 0:
+        newFormData = { ...newFormData, restaurant_details: restaurantDetailsRef.current.getFormData() };
+        break;
       case 1:
-        newformdata={...mainForm,location_Details:locationref.current.getFormData()};
+        newFormData = { ...newFormData, location_details: locationRef.current.getFormData() };
         break;
-        case 2:
-        newformdata={...mainForm,fssai_details:fssairef.current.getFormData()};
+      case 2:
+        newFormData = { ...newFormData, fssai_details: fssaiRef.current.getFormData() };
         break;
-        case 3:
-        newformdata={...mainForm,bank_details:bankref.current.getFormData()};
+      case 3:
+        isValid = bankRef.current.getValidate();
+        if (isValid) {
+          newFormData = { ...newFormData, bank_details: bankRef.current.getFormData() };
+        }
         break;
-        default:
+      default:
         break;
-   } 
-   setMainForm(newformdata);
-   
-   
-   handleNextStep();
-  }
+    }
+
+    if (isValid) {
+      setMainForm(newFormData);
+      handleNextStep();
+    }
+  };
+
   const handleNextStep = () => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
-      
-    }
-    else{
-      console.log("Action not fetched")
-      dispatch(postOnBoardingDataRequest(mainForm))
-
+    } else {
+      dispatch(postOnBoardingDataRequest(mainForm));
     }
   };
 
@@ -111,7 +111,7 @@ function Stepform() {
             <button className='clear_allonboard'>Clear ALL</button>
           </div>
           <div>
-            <button className='save_nextonboard' onClick={handleSaveAndNext}>Save&Next</button>
+            <button className='save_nextonboard' onClick={handleSaveAndNext}>Save & Next</button>
           </div>
         </div>
       </div>

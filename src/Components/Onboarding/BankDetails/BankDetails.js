@@ -3,16 +3,39 @@ import "./BankDetails.scss"
 const BankDetails = React.forwardRef((props,ref) => {
   const[bankform,setBankform]=useState({
  accountNumber:"",
-
  ifscCode:"",
   AccountHolderName:""
   })
+  const[bankError,setBankError]=useState({
+    accountNumber:"",
+    ifscCode:"",
+    AccountHolderName:""   
+  })
+  let errors={};
+  const getValidate=()=>{
+    let isValid=true;
+    
+    if(!bankform.accountNumber)
+    {
+      isValid=false;
+      errors.accountNumber="Please Enter Account Number"
+    }
+    if(!bankform.ifscCode)
+      {
+        isValid=false;
+        errors.ifscCode="Please Enter IFSc Code"
+      }
+    setBankError(errors)
+    return isValid;
+
+  }
   const getFormData = () => {
     return bankform;
   };
 
   useImperativeHandle(ref, () => ({
-    getFormData
+    getFormData,
+    getValidate
   }));
  
   return (
@@ -23,6 +46,7 @@ const BankDetails = React.forwardRef((props,ref) => {
      <div className='Bank_Account_Number'>
       <h1 className='Bank_First_Heading'>Bank account number</h1>
       <input type='text' className='TypeI' onChange={(e)=>setBankform({...bankform,accountNumber:e.target.value})}></input>
+      {bankError.accountNumber && <h1 className='error-message'>{bankError.accountNumber}</h1>}
      </div>
      <div className='Re_Account_Number'>
       <h1 className='Bank_Second_Heading'>Re-enter account number</h1>
@@ -31,6 +55,7 @@ const BankDetails = React.forwardRef((props,ref) => {
      <div className='Bank_Ifse_Code'>
       <h1 className='Bank_Third_Heading'>Bank IFSE code</h1>
       <input type='text' className='Type3' onChange={(e)=>setBankform({...bankform,ifscCode:e.target.value})}></input>
+      {bankError.ifscCode && <h1 className='error-message'>{bankError.ifscCode}</h1>}
      </div>
      <div className='Account_Holder_Name'>
       <h1 className='Bank_Fourth_Heading'>Account holder name</h1>

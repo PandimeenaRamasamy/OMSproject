@@ -12,7 +12,10 @@
     display: flex;
     flex-direction: column;
 }
-
+.error-message{
+    color:red;
+    font-size: 14px;
+}
 .Bank_Main_Heading {
     margin-bottom: 15px;
     color: black;
@@ -95,30 +98,23 @@
 
 @media (max-width:1280px) {
     .Bank-Container {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+    
       position: relative;
       top: 120px;
       left: 360px;
     }
-    
   
-   
+  
   }
   
-  /* Media query for max-width 1080px */
-  @media screen and (max-width: 1080px) {
-    .Bank-Container {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      position: relative;
-      top: 70px;
-      left: 50px;
-      /* border: 1px solid black; */
-    }
+  @media (max-width:1080px) {
+    .Bank-Container{
     
+      position: relative;
+      top: 120px;
+      left: 250px;
+    }
+   
    
     
   }
@@ -143,12 +139,6 @@
     
   }
   
-  /* Media query for max-width 500px */
-  @media screen and (max-width: 500px) {
-    
-   
-  
-  }
-  
+
   
   
