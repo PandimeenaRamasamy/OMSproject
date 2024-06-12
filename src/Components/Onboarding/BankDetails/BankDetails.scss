@@ -12,7 +12,10 @@
     display: flex;
     flex-direction: column;
 }
-
+.error-message{
+    color:red;
+    font-size: 14px;
+}
 .Bank_Main_Heading {
     margin-bottom: 15px;
     color: black;
@@ -143,12 +146,6 @@
     
   }
   
-  /* Media query for max-width 500px */
-  @media screen and (max-width: 500px) {
-    
-   
-  
-  }
-  
+
   
   
