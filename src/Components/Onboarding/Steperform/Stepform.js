@@ -48,7 +48,12 @@ function Stepform() {
         newFormData = { ...newFormData, restaurant_details: restaurantDetailsRef.current.getFormData() };
         break;
       case 1:
-        newFormData = { ...newFormData, location_details: locationRef.current.getFormData() };
+        isValid=locationRef.current.getValidate();
+        if(isValid){
+          newFormData = { ...newFormData, location_details: locationRef.current.getFormData() };
+
+        }
+      
         break;
       case 2:
         newFormData = { ...newFormData, fssai_details: fssaiRef.current.getFormData() };

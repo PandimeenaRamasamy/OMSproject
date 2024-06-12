@@ -12,6 +12,15 @@ const Location = forwardRef((props, ref) => {
     country: ""
   });
 
+  const[locationError,setLocationError]=useState({
+    address: "",
+    pincode: "",
+    city: "",
+    state: "",
+    country: ""
+  })
+  let errors={};
+
   const [textboxes, setTextboxes] = useState([""]);
 
   const handleTextBoxes = (e) => {
@@ -24,7 +33,8 @@ const Location = forwardRef((props, ref) => {
   };
 
   useImperativeHandle(ref, () => ({
-    getFormData
+    getFormData,
+    getValidate,
   }));
 
   const handleAddressChange = (index, value) => {
@@ -33,6 +43,38 @@ const Location = forwardRef((props, ref) => {
     setTextboxes(newTextBoxes);
     setForm({ ...form, address: newTextBoxes.join(", ") });
   };
+
+  const getValidate=()=>{
+    let isValid=true;
+  
+    if(!form.address){
+      isValid=false;
+      errors.address="Please Enter Location"
+    }
+    if(!form.pincode ){
+      isValid=false;
+      errors.pincode="Please Enter Pincode"
+    }
+    if(!form.city){
+      isValid=false;
+      errors.city="Please Enter City"
+    }
+    if(!form.state){
+      isValid=false;
+      errors.state="Please Enter State"
+    }
+   
+    if(!form.country){
+      isValid=false;
+      errors.country="Please Enter Country"
+    }
+
+    setLocationError(errors);
+    return isValid
+
+  }
+
+  console.log(locationError)
 
   return (
 
@@ -67,6 +109,8 @@ const Location = forwardRef((props, ref) => {
                onChange={(e) => handleAddressChange(0, e.target.value)}
               
             />
+              {locationError.address && <h1 className='error-message'>{locationError.address}</h1>}
+
           </div>
 
           {textboxes.slice(1).map((_, index) => (
@@ -115,7 +159,10 @@ const Location = forwardRef((props, ref) => {
                     className="inputbox2loc"
                     placeholder="600 084"
                     onChange={(e) => setForm({ ...form, pincode: e.target.value })}
+                 
+
                   />
+                     {locationError.pincode && <h1 className='error-message'>{locationError.pincode}  </h1>}
             
             </div>
 
@@ -135,6 +182,7 @@ const Location = forwardRef((props, ref) => {
                     placeholder="Chennai"
                     onChange={(e) => setForm({ ...form, city: e.target.value })}
                   />
+                      {locationError.city && <h1 className='error-message'>{locationError.city}</h1>}
             </div>
           </div>
 
@@ -152,6 +200,7 @@ const Location = forwardRef((props, ref) => {
                     placeholder="Tamil Nadu"
                     onChange={(e) => setForm({ ...form, state: e.target.value })}
                   />
+                   {locationError.state && <h1 className='error-message'>{locationError.state}</h1>}
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <label htmlFor="FacebookLink" className="labelloc">
@@ -163,6 +212,7 @@ const Location = forwardRef((props, ref) => {
                     placeholder="India"
                     onChange={(e) => setForm({ ...form, country: e.target.value })}
                   />
+                   {locationError.country && <h1 className='error-message'>{locationError.country}</h1>}
             </div>
           </div>
           <br />
