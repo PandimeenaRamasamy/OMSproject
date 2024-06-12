@@ -111,7 +111,7 @@ function Stepform() {
             <button className='clear_allonboard'>Clear ALL</button>
           </div>
           <div>
-            <button className='save_nextonboard' onClick={handleSaveAndNext}>Save&Next</button>
+            <button className='save_nextonboard' onClick={handleSaveAndNext}>Save & Next</button>
           </div>
         </div>
       </div>

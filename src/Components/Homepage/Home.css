@@ -6,13 +6,6 @@
 }
 
 
-.homeoutlet
-{
-    position: relative;
-   
-    display: flex;
-    flex-direction: column;
-}
 
 .Addoutlet
 {
@@ -20,6 +13,9 @@
 }
 
 .homeoutlet{
+    position: relative;  
+    display: flex;
+    flex-direction: column;
     font-size: 25px;
     font-family: 'Poppins', sans-serif;
     color: #2F2F2F;
@@ -51,4 +47,44 @@
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     color: white;
+}
+
+@media (max-width:1280px)
+{
+    .homeoutlet
+    {
+      
+
+    }
+    .homeimg img{
+        width: 330px;
+        height: 340px;
+        margin-top: 250px;
+       
+    
+    }
+    
+}
+
+@media (max-width:1080px)
+{
+    .homeoutlet
+    {
+       margin-left: -100px;
+      
+       
+    }
+    .homeimg img{
+      
+        margin-top: 200px;
+        margin-left: -20px;
+       
+    
+    }
+    .homeimg button{
+       
+        margin-left: 10px;
+       
+    }
+    
 }

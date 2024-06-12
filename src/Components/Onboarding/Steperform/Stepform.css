@@ -38,7 +38,7 @@
     cursor: pointer;
     width: 40px;
     height: 40px;
-    padding: 10px;
+    padding: 7px;
     border-radius: 50%;
     background-color: #C7C8CC;
     margin-right: 50px;
@@ -70,7 +70,7 @@
   }
 
   .save_nextonboard{
-    width: 100px;
+    width: 120px;
     height: 35px;
     margin-left: 10px;
     color: white;
@@ -81,7 +81,7 @@
   }
 
   .clear_allonboard{
-    width: 100px;
+    width: 120px;
     height: 35px;
     color: #67833E;
     font-family: 'Poppins', sans-serif;
@@ -162,8 +162,14 @@
   @media (max-width: 1080px) {
   
     .sub-containeronboard {
-      width:900px;  
+      width:800px;  
       top: 100px;
+      margin-left: 250px;
+    
+    }
+    .stepper-progressonboard
+    {
+      width: 630px;
     }
   }
   

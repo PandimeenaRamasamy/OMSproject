@@ -25,10 +25,61 @@ const PostDataForm = () => {
     gstNumber: "",
     base64Image: "",
   });
+
+  const [error, setError] = useState({
+    restaurantNameerror: "",
+    nameerror: "",
+    phoneerror: "",
+    emailerror: "",
+    designationerror: "",
+    gstNumbererror: "",
+    base64Imageerror: "",
+  });
+
+  const validationofregistrationform = () => {
+    validaterestaurantname();
+    // validatename();
+    
+   
+
+
+    
+   
+  };
+const validaterestaurantname=()=>{
+  
+  if (Registrationform.restaurantName === "") {
+    console.log("resgisration error")
+    setError({ restaurantNameerror: "Enter Restaurant Name" });
+  }
+  else{
+    setError({restaurantNameerror:""})
+
+  }
+  validatename();
+
+}
+
+const validatename=()=>{
  
+  if (Registrationform.name === "") {
+    setError({ nameerror: "Enter your name" });
+  }
+  else if(/[^a-zA-Z\s]/.test(Registrationform.name)) {
+    setError({ nameerror: "Name must only contain letters and spaces" });
+  } 
+  else{
+    setError({nameerror:""})
+
+  }
+
+}
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    validationofregistrationform();
+
     dispatch(postDataRequest(Registrationform));
   };
 
@@ -81,6 +132,7 @@ const PostDataForm = () => {
               <input
                 type="text"
                 className="inputbox"
+                style={{ borderColor: error.restaurantNameerror ? "red" : "#B3B3B3" }}
                 placeholder="Name"
                 value={Registrationform.restaurantName}
                 onChange={(e) =>
@@ -90,6 +142,9 @@ const PostDataForm = () => {
                   })
                 }
               />
+             {error.restaurantNameerror && (
+                <div className="invaliddata">{error.restaurantNameerror} </div>
+              )}
             </div>
             <div className="labelinput-divreg">
               <label htmlFor="" className="labelreg">
@@ -98,6 +153,7 @@ const PostDataForm = () => {
               <input
                 type="text"
                 className="inputbox"
+                style={{ borderColor: error.nameerror ? "red" : "#B3B3B3" }}
                 placeholder="Name"
                 value={Registrationform.name}
                 onChange={(e) => {
@@ -107,6 +163,9 @@ const PostDataForm = () => {
                   });
                 }}
               />
+              {error.nameerror && (
+                <div className="invaliddata">{error.nameerror} </div>
+              )}
             </div>
             <div className="labelinput-divreg">
               <label htmlFor="" className="labelreg">
