@@ -45,7 +45,11 @@ function Stepform() {
 
     switch (activeStep) {
       case 0:
+        isValid=restaurantDetailsRef.current.validate();
+        if(isValid)
+          {
         newFormData = { ...newFormData, restaurant_details: restaurantDetailsRef.current.getFormData() };
+          }
         break;
       case 1:
         isValid=locationRef.current.getValidate();
