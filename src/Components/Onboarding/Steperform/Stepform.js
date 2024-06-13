@@ -80,9 +80,10 @@ function Stepform() {
   const clearAll=()=>{
     if(bankRef.current && bankRef.current.resetForm)
       {
-        setMainForm({})
+       
         bankRef.current.resetForm();
       }
+      setMainForm({})
   }
 
   const handleNextStep = () => {
