@@ -88,6 +88,13 @@ function Stepform() {
          
           locationRef.current.resetForm();
         }
+
+
+        if(fssaiRef.current && fssaiRef.current.resetForm)
+          {
+           
+           fssaiRef.current.resetForm();
+          }
       setMainForm({})
 
       

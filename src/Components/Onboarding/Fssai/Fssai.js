@@ -49,6 +49,7 @@ const Fssai = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     getFormData,
+    resetForm,
   }));
 
   const handleImage = (e) => {
@@ -64,6 +65,18 @@ const Fssai = forwardRef((props, ref) => {
       reader.readAsDataURL(selectedFile);
     }
   };
+
+  const resetForm=()=>{
+    setfssaiform({
+      isEnabled: "",
+      registerNumber: "",
+      expirationDate: "",
+      documents: "",
+
+    })
+    setFile(null)
+
+  }
 
   return (
     <>
