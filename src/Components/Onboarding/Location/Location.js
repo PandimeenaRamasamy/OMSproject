@@ -43,9 +43,12 @@ const Location = forwardRef((props, ref) => {
     setTextboxes(newTextBoxes);
     setForm({ ...form, address: newTextBoxes.join(", ") });
   };
+  
 
   const getValidate=()=>{
-    let isValid=true;
+    let isValid=true
+    
+   
   
     if(!form.address){
       isValid=false;
@@ -107,9 +110,10 @@ const Location = forwardRef((props, ref) => {
                className="inputboxloc"
                placeholder="Name"
                onChange={(e) => handleAddressChange(0, e.target.value)}
+               style={{borderColor:locationError.address?"red":"#B3B3B3" }}
               
             />
-              {locationError.address && <h1 className='error-message'>{locationError.address}</h1>}
+              {locationError.address && <div className='error-message'>{locationError.address}</div>}
 
           </div>
 
@@ -121,6 +125,7 @@ const Location = forwardRef((props, ref) => {
                   className="inputboxloc"
                   placeholder="Name"
                   onChange={(e) => handleAddressChange(index + 1, e.target.value)}
+
                 />
                 {index + 1 === textboxes.length - 1 && (
                   <button className="btn" onClick={handleTextBoxes}>
@@ -159,10 +164,11 @@ const Location = forwardRef((props, ref) => {
                     className="inputbox2loc"
                     placeholder="600 084"
                     onChange={(e) => setForm({ ...form, pincode: e.target.value })}
+                    style={{borderColor:locationError.pincode?"red":"#B3B3B3" }}
                  
 
                   />
-                     {locationError.pincode && <h1 className='error-message'>{locationError.pincode}  </h1>}
+                     {locationError.pincode && <div className='error-message'>{locationError.pincode}  </div>}
             
             </div>
 
@@ -181,8 +187,9 @@ const Location = forwardRef((props, ref) => {
                     className="inputbox2loc"
                     placeholder="Chennai"
                     onChange={(e) => setForm({ ...form, city: e.target.value })}
+                    style={{borderColor:locationError.city?"red":"#B3B3B3" }}
                   />
-                      {locationError.city && <h1 className='error-message'>{locationError.city}</h1>}
+                      {locationError.city && <div className='error-message'>{locationError.city}</div>}
             </div>
           </div>
 
@@ -196,11 +203,12 @@ const Location = forwardRef((props, ref) => {
               </label>
               <input
                     type="text"
-                    className="inputbox2loc"
+                    className={"inputbox2loc"}
                     placeholder="Tamil Nadu"
                     onChange={(e) => setForm({ ...form, state: e.target.value })}
+                    style={{borderColor:locationError.state?"red":"#B3B3B3" }}
                   />
-                   {locationError.state && <h1 className='error-message'>{locationError.state}</h1>}
+                   {locationError.state && <div className='error-message'>{locationError.state}</div>}
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <label htmlFor="FacebookLink" className="labelloc">
@@ -211,8 +219,9 @@ const Location = forwardRef((props, ref) => {
                     className="inputbox2loc"
                     placeholder="India"
                     onChange={(e) => setForm({ ...form, country: e.target.value })}
+                    style={{borderColor:locationError.country?"red":"#B3B3B3" }}
                   />
-                   {locationError.country && <h1 className='error-message'>{locationError.country}</h1>}
+                   {locationError.country && <div className='error-message'>{locationError.country}</div>}
             </div>
           </div>
           <br />
