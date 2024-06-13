@@ -58,6 +58,13 @@ AccountHolderName:""
     getFormData,
     getValidate
   }));
+  const handleKeyPress = (event) => {
+    // Prevent non-numeric keys from being pressed
+    if (!/^\d$/.test(event.key)) {
+      event.preventDefault();
+    }
+  };
+
  
   return (
     <div>
@@ -66,12 +73,12 @@ AccountHolderName:""
      <h1 className='Bank_Main_Heading'>Bank Details</h1>
      <div className='Bank_Account_Number'>
       <h1 className='Bank_First_Heading'>Bank account number</h1>
-      <input type='number' className='TypeI' onChange={(e)=>setBankform({...bankform,accountNumber:e.target.value})}style={{borderColor: bankError.accountNumber ? "red" : "#B3B3B3"}}></input>
+      <input type='text' className='TypeI'  onKeyPress={handleKeyPress} onChange={(e)=>setBankform({...bankform,accountNumber:e.target.value})}style={{borderColor: bankError.accountNumber ? "red" : "#B3B3B3"}}></input>
       {bankError.accountNumber && <div className='error-message'>{bankError.accountNumber}</div>}
      </div>
      <div className='Re_Account_Number'>
       <h1 className='Bank_Second_Heading'>Re-enter account number</h1>
-      <input type='number' className='Type2' onChange={(e)=>setBankform({...bankform,reaccountNumber:e.target.value})} style={{borderColor: bankError.reaccountNumber ? "red" : "#B3B3B3"}} ></input>
+      <input type='text' className='Type2'  onKeyPress={handleKeyPress} onChange={(e)=>setBankform({...bankform,reaccountNumber:e.target.value})} style={{borderColor: bankError.reaccountNumber ? "red" : "#B3B3B3"}} ></input>
       {bankError.reaccountNumber && <div className='error-message'>{bankError.reaccountNumber}</div>}
      </div>
      <div className='Bank_Ifse_Code'>

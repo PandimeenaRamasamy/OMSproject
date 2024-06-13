@@ -1,5 +1,5 @@
 import React ,{useState}from 'react'
-import './Outlet.css'
+import './Outlet.scss'
 import Registration from '../Registration/PostData';
 import StepperForm from '../Onboarding/Steperform/Stepform';
 import { act } from 'react-dom/test-utils';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Stepform.css';
+import './Stepform.scss';
 import { BiNotepad } from "react-icons/bi";
 import { PiNotepadBold } from "react-icons/pi";
 import { CiLocationOn } from "react-icons/ci";
