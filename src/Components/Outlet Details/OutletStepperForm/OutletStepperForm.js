@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import './OutletStepperForm.css';
+import './OutletStepperForm.scss';
 import { CiUser } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
 import { GiPressureCooker } from "react-icons/gi";

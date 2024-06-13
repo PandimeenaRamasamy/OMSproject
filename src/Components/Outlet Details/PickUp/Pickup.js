@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./Pickup.css";
+import "./Pickup.scss";
 
 const Pickup = () => {
     const[form,setForm]=useState({

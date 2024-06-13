@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Kitchen/Kitchen.css'
+import '../Kitchen/Kitchen.scss'
 import { useState } from 'react'
 
 const Kitchen = () => {
