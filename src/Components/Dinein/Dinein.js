@@ -119,7 +119,7 @@ const Dinein = () => {
     Sunday: false,
   });
   const handleKeyPress = (event) => {
-    // Prevent non-numeric keys from being pressed
+   
     if (!/^\d$/.test(event.key)) {
       event.preventDefault();
     }
