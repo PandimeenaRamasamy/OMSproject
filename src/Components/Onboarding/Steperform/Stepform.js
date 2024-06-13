@@ -77,6 +77,13 @@ function Stepform() {
       handleNextStep();
     }
   };
+  const clearAll=()=>{
+    if(bankRef.current && bankRef.current.resetForm)
+      {
+        setMainForm({})
+        bankRef.current.resetForm();
+      }
+  }
 
   const handleNextStep = () => {
     if (activeStep < steps.length - 1) {
@@ -117,7 +124,7 @@ function Stepform() {
       <div className='btn-containeronboard'>
         <div className='btn-footer1onboard'>
           <div>
-            <button className='clear_allonboard'>Clear ALL</button>
+            <button className='clear_allonboard' onClick={clearAll}>Clear ALL</button>
           </div>
           <div>
             <button className='save_nextonboard' onClick={handleSaveAndNext}>Save & Next</button>
