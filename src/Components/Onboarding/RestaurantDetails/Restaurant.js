@@ -171,9 +171,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                 placeholder="Name"
                 value={form.businessLegalName}
                 onChange={handleChange}
-                
+                style={{borderColor: reserror.businessLegalName ? "red" : "#B3B3B3"}}
               />
-              {reserror.businessLegalName && <h1 className="error">{reserror.businessLegalName}</h1>}
+              {reserror.businessLegalName && <div className="error">{reserror.businessLegalName}</div>}
             </div>
 
             <div className="labelinput-divres">
@@ -204,10 +204,11 @@ const Restaurant = React.forwardRef((props, ref) => {
                     onChange={(e) =>
                       setForm({ ...form, phone: e.target.value })
                     }
+
                   />
                   Landline
                 </label>
-                {reserror.phone && <h1 className="error">{reserror.phone}</h1>}
+                {reserror.phone && <div className="error">{reserror.phone}</div>}
               </div>
               <div style={{ marginTop: "20px" }}>
                 <select
@@ -230,10 +231,12 @@ const Restaurant = React.forwardRef((props, ref) => {
                   value={form.restaurantNumber}
                   onChange={(e) => {
                     setForm({ ...form, restaurantNumber: e.target.value });
+                    
                   }}
+                  style={{borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3"}}
                 />
               </div>
-              {reserror.restaurantNumber && <h1 className="error">{reserror.restaurantNumber}</h1>}
+              {reserror.restaurantNumber && <div className="error">{reserror.restaurantNumber}</div>}
             </div>
 
             <div className="labelinput-divres">
@@ -250,6 +253,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   className="radiores"
                   checked={isChecked}
                   onChange={handleCheckboxChange}
+                  
                 />
                 Same as restaurant mobile no.
               </label>
@@ -277,9 +281,10 @@ const Restaurant = React.forwardRef((props, ref) => {
                   value={form.whatsappNumber}
                   onChange={handleChange}
                   disabled={isChecked}
+                  style={{borderColor: reserror.whatsappNumber ? "red" : "#B3B3B3"}}
                 />
               </div>
-              {reserror.whatsappNumber && <h1 className="error">{reserror.whatsappNumber}</h1>}
+              {reserror.whatsappNumber && <div className="error">{reserror.whatsappNumber}</div>}
             </div>
 
 
@@ -303,8 +308,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                     handleChange(e);
                    
                   }}
+                  style={{borderColor: reserror.email ? "red" : "#B3B3B3"}}
                 />
-                {reserror.email && <h1 className="error">{reserror.email}</h1>}
+                {reserror.email && <div className="error">{reserror.email}</div>}
               </div>
               <div
                 style={{ display: "flex", flexDirection: "column" }}
@@ -320,8 +326,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                   placeholder="Magilhub.com"
                   value={form.website}
                   onChange={handleChange}
+                  style={{borderColor: reserror.website ? "red" : "#B3B3B3"}}
                 />
-                {reserror.website && <h1 className="error">{reserror.website}</h1>}
+                {reserror.website && <div className="error">{reserror.website}</div>}
               </div>
             </div>
 
@@ -340,8 +347,10 @@ const Restaurant = React.forwardRef((props, ref) => {
                   placeholder="Chandra.uiux"
                   value={form.instagramLink}
                   onChange={handleChange}
+                  style={{borderColor: reserror.instagramLink ? "red" : "#B3B3B3"}}
+                  
                 />
-                {reserror.instagramLink && <h1 className="error">{reserror.instagramLink}</h1>}
+                {reserror.instagramLink && <div className="error">{reserror.instagramLink}</div>}
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="facebookLink" className="labelres">
@@ -354,8 +363,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                   placeholder="chandra.com"
                   value={form.facebookLink}
                   onChange={handleChange}
+                  style={{borderColor: reserror.facebookLink ? "red" : "#B3B3B3"}}
                 />
-                {reserror.facebookLink && <h1 className="error">{reserror.facebookLink}</h1>}
+                {reserror.facebookLink && <div className="error">{reserror.facebookLink}</div>}
               </div>
             </div>
             <br />
