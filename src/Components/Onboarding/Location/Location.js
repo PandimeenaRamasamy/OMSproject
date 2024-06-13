@@ -35,6 +35,8 @@ const Location = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     getFormData,
     getValidate,
+    resetForm,
+
   }));
 
   const handleAddressChange = (index, value) => {
@@ -79,6 +81,28 @@ const Location = forwardRef((props, ref) => {
 
   console.log(locationError)
 
+  const resetForm=()=>{
+    setForm({
+      address: "",
+    pincode: "",
+    city: "",
+    state: "",
+    country: ""
+
+    })
+
+    setLocationError({
+      address: "",
+    pincode: "",
+    city: "",
+    state: "",
+    country: ""
+
+
+    })
+
+  }
+
   return (
 
 
@@ -109,6 +133,7 @@ const Location = forwardRef((props, ref) => {
                type="text"
                className="inputboxloc"
                placeholder="Name"
+               value={form.address}
                onChange={(e) => handleAddressChange(0, e.target.value)}
                style={{borderColor:locationError.address?"red":"#B3B3B3" }}
               
@@ -165,6 +190,8 @@ const Location = forwardRef((props, ref) => {
                     placeholder="600 084"
                     onChange={(e) => setForm({ ...form, pincode: e.target.value })}
                     style={{borderColor:locationError.pincode?"red":"#B3B3B3" }}
+                    value={form.pincode}
+
                  
 
                   />
@@ -188,6 +215,7 @@ const Location = forwardRef((props, ref) => {
                     placeholder="Chennai"
                     onChange={(e) => setForm({ ...form, city: e.target.value })}
                     style={{borderColor:locationError.city?"red":"#B3B3B3" }}
+                    value={form.city}
                   />
                       {locationError.city && <div className='error-message'>{locationError.city}</div>}
             </div>
@@ -207,6 +235,7 @@ const Location = forwardRef((props, ref) => {
                     placeholder="Tamil Nadu"
                     onChange={(e) => setForm({ ...form, state: e.target.value })}
                     style={{borderColor:locationError.state?"red":"#B3B3B3" }}
+                    value={form.state}
                   />
                    {locationError.state && <div className='error-message'>{locationError.state}</div>}
             </div>
@@ -220,6 +249,7 @@ const Location = forwardRef((props, ref) => {
                     placeholder="India"
                     onChange={(e) => setForm({ ...form, country: e.target.value })}
                     style={{borderColor:locationError.country?"red":"#B3B3B3" }}
+                    value={form.country}
                   />
                    {locationError.country && <div className='error-message'>{locationError.country}</div>}
             </div>

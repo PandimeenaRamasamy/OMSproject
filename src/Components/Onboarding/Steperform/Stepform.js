@@ -83,8 +83,16 @@ function Stepform() {
        
         bankRef.current.resetForm();
       }
+      if(locationRef.current && locationRef.current.resetForm)
+        {
+         
+          locationRef.current.resetForm();
+        }
       setMainForm({})
+
+      
   }
+
 
   const handleNextStep = () => {
     if (activeStep < steps.length - 1) {
