@@ -118,6 +118,12 @@ const Dinein = () => {
     Saturday: false,
     Sunday: false,
   });
+  const handleKeyPress = (event) => {
+    // Prevent non-numeric keys from being pressed
+    if (!/^\d$/.test(event.key)) {
+      event.preventDefault();
+    }
+  };
 
  
 
@@ -412,7 +418,10 @@ const Dinein = () => {
                             </label>
                             <input
                               type="text"
+                              style={{fontSize:'14px'}}
                               id="maximuminonline"
+                              maxLength={3}
+                              onKeyPress={handleKeyPress}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -432,7 +441,11 @@ const Dinein = () => {
                             </label>
                             <input
                               type="text"
+
                               id="maximuminoffline"
+                              style={{fontSize:'14px'}}
+                              maxLength={3}
+                              onKeyPress={handleKeyPress}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -452,8 +465,9 @@ const Dinein = () => {
                               Late show time
                             </label>
                             <input
-                              type="text"
+                              type="time"
                               id="maximuminonline"
+                              style={{fontSize:'12px'}}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -470,8 +484,9 @@ const Dinein = () => {
                               Auto cancel Time
                             </label>
                             <input
-                              type="text"
+                              type="time"
                               id="maximuminoffline"
+                              style={{fontSize:'12px'}}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -488,8 +503,9 @@ const Dinein = () => {
                               Abandon time
                             </label>
                             <input
-                              type="text"
+                              type="time"
                               id="maximuminoffline"
+                              style={{fontSize:'12px'}}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -616,6 +632,9 @@ const Dinein = () => {
                       <input
                         type="text"
                         id="maximuminonline"
+                        style={{fontSize:'14px'}}
+                        maxLength={3}
+                        onKeyPress={handleKeyPress}
                         onChange={(event) => {
                           setOutletdetails({
                             ...Outletdetails,
@@ -634,6 +653,9 @@ const Dinein = () => {
                       <input
                         type="text"
                         id="maximuminoffline"
+                        style={{fontSize:'14px'}}
+                        maxLength={3}
+                        onKeyPress={handleKeyPress}
                         onChange={(event) => {
                           setOutletdetails({
                             ...Outletdetails,
@@ -655,7 +677,7 @@ const Dinein = () => {
                         From
                       </label>
                       <input
-                        type="text"
+                        type="time"
                         id="maximuminonline"
                         onChange={(event) => {
                           setOutletdetails({
@@ -673,7 +695,7 @@ const Dinein = () => {
                         To
                       </label>
                       <input
-                        type="text"
+                        type="time"
                         id="maximuminoffline"
                         onChange={(event) => {
                           setOutletdetails({
@@ -716,6 +738,9 @@ const Dinein = () => {
                       <input
                         type="text"
                         id="maximuminonline"
+                        style={{fontSize:'14px'}}
+                        maxLength={3}
+                        onKeyPress={handleKeyPress}
                         onChange={(event) => {
                           setOutletdetails({
                             ...Outletdetails,
