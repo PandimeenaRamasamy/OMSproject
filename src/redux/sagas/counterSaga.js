@@ -4,6 +4,9 @@ import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSucce
 import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST, POST_ONBOARDING_DATA_SUCCESS} from '../Actions/PostDataAction';
 import {LOCATION_ID} from '../Actions/PostDataAction'
 import { postOutletRegistration } from '../Api';
+import { GetData } from '../Api'
+import { PostOnboardingData } from '../Api';
+import {PostDineinData} from '../Api'
 
 import axios from 'axios';
 
@@ -45,20 +48,45 @@ function* locationId(action) {
 
 
 
+// function* getData() {
+//   try {
+//     const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76');
+//     const data = yield response.json();
+//     yield put(getDataSuccess(data));
+//   } catch (error) {
+//     yield put(getDataFailure(error.message));
+//   }
+// }
+
 function* getData() {
-  try {
-    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76');
-    const data = yield response.json();
-    yield put(getDataSuccess(data));
-  } catch (error) {
-    yield put(getDataFailure(error.message));
+    try {
+      const response = yield call(GetData);
+      const data = yield response.json();
+      yield put(getDataSuccess(data));
+    } catch (error) {
+      yield put(getDataFailure(error.message));
+    }
   }
-}
 
 
+
+
+// function* postOnBoardingData(action) {
+//   try {
+//     const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/onBoarding', action.payload);
+
+//     if (response.status === 200) {
+//       yield put( POST_ONBOARDING_DATA_SUCCESS(response.data));
+//     } else {
+//       yield put(POST_ONBOARDING_DATA_FAILURE(response.statusText));
+//     }
+//   } catch (error) {
+//     yield put(POST_ONBOARDING_DATA_FAILURE(error.message));
+//   }
+// }
 function* postOnBoardingData(action) {
   try {
-    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/onBoarding', action.payload);
+    const response = yield call(PostOnboardingData,action.payload );
 
     if (response.status === 200) {
       yield put( POST_ONBOARDING_DATA_SUCCESS(response.data));
@@ -71,16 +99,26 @@ function* postOnBoardingData(action) {
 }
 
 
+// function* postDineinData(action) {
+//   try {
+//     const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/dineIn', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(action.payload),
+//     });
+//     const data = yield response.json();
+//     yield put(postDineinDataSuccess(data));
+//   } catch (error) {
+//     yield put(postDineinDataFailure(error.message));
+//   }
+// }
+
 
 function* postDineinData(action) {
   try {
-    const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/dineIn', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(action.payload),
-    });
+    const response = yield call(PostDineinData,action.payload) 
     const data = yield response.json();
     yield put(postDineinDataSuccess(data));
   } catch (error) {
