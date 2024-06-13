@@ -142,6 +142,8 @@ hr {
   background-color: #979797;
   margin-top: 10px;
   margin-bottom: 10px;
+ 
+  width: 1000px;
 }
 
 .checkinform1,
@@ -270,4 +272,26 @@ hr {
   border-color: rgba(13, 121, 220, 1);
   background-color: rgba(13, 121, 220, 1);
   color: white;
+}
+
+
+
+@media (max-width:1280px)
+{
+  .main-divdine {
+  position: relative;
+  top: 100px;
+  }
+}
+
+@media (max-width:1080px) {
+  .main-divdine {
+  
+    position: relative;
+    top: 120px;
+    left: -120px;
+  
+  }
+
+
 }
