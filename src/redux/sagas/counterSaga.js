@@ -3,16 +3,30 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSuccess,postDineinDataFailure,POST_ONBOARDING_DATA_FAILURE } from '../Actions/PostDataAction';
 import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST, POST_ONBOARDING_DATA_SUCCESS} from '../Actions/PostDataAction';
 import {LOCATION_ID} from '../Actions/PostDataAction'
+import { postOutletRegistration } from '../Api';
 
 import axios from 'axios';
 
 
+// function* postData(action) {
+//   try {
+//     const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/registration', action.payload);
+
+//     if (response.status === 200) {
+//       yield put( postDataSuccess(response.data));
+//     } else {
+//       yield put(postDataFailure(response.statusText));
+//     }
+//   } catch (error) {
+//     yield put(postDataFailure(error.message));
+//   }
+// }
 function* postData(action) {
   try {
-    const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/registration', action.payload);
+    const response = yield call(postOutletRegistration, action.payload);
 
     if (response.status === 200) {
-      yield put( postDataSuccess(response.data));
+      yield put(postDataSuccess(response.data));
     } else {
       yield put(postDataFailure(response.statusText));
     }
@@ -20,7 +34,6 @@ function* postData(action) {
     yield put(postDataFailure(error.message));
   }
 }
-
 
 
 
