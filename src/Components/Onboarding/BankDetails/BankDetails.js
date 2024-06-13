@@ -66,23 +66,23 @@ AccountHolderName:""
      <h1 className='Bank_Main_Heading'>Bank Details</h1>
      <div className='Bank_Account_Number'>
       <h1 className='Bank_First_Heading'>Bank account number</h1>
-      <input type='number' className='TypeI' onChange={(e)=>setBankform({...bankform,accountNumber:e.target.value})}></input>
-      {bankError.accountNumber && <h1 className='error-message'>{bankError.accountNumber}</h1>}
+      <input type='number' className='TypeI' onChange={(e)=>setBankform({...bankform,accountNumber:e.target.value})}style={{borderColor: bankError.accountNumber ? "red" : "#B3B3B3"}}></input>
+      {bankError.accountNumber && <div className='error-message'>{bankError.accountNumber}</div>}
      </div>
      <div className='Re_Account_Number'>
       <h1 className='Bank_Second_Heading'>Re-enter account number</h1>
-      <input type='number' className='Type2' onChange={(e)=>setBankform({...bankform,reaccountNumber:e.target.value})} ></input>
-      {bankError.reaccountNumber && <h1 className='error-message'>{bankError.reaccountNumber}</h1>}
+      <input type='number' className='Type2' onChange={(e)=>setBankform({...bankform,reaccountNumber:e.target.value})} style={{borderColor: bankError.reaccountNumber ? "red" : "#B3B3B3"}} ></input>
+      {bankError.reaccountNumber && <div className='error-message'>{bankError.reaccountNumber}</div>}
      </div>
      <div className='Bank_Ifse_Code'>
       <h1 className='Bank_Third_Heading'>Bank IFSE code</h1>
-      <input type='text' className='Type3' onChange={(e)=>setBankform({...bankform,ifscCode:e.target.value})}></input>
-      {bankError.ifscCode && <h1 className='error-message'>{bankError.ifscCode}</h1>}
+      <input type='text' className='Type3' onChange={(e)=>setBankform({...bankform,ifscCode:e.target.value})}style={{borderColor: bankError.ifscCode ? "red" : "#B3B3B3"}}></input>
+      {bankError.ifscCode && <div className='error-message'>{bankError.ifscCode}</div>}
      </div>
      <div className='Account_Holder_Name'>
       <h1 className='Bank_Fourth_Heading'>Account holder name</h1>
-      <input type='text' className='Type4' onChange={(e)=>setBankform({...bankform,AccountHolderName:e.target.value})}></input>
-      {bankError.AccountHolderName && <h1 className='error-message'>{bankError.AccountHolderName}</h1>}
+      <input type='text' className='Type4' onChange={(e)=>setBankform({...bankform,AccountHolderName:e.target.value})}style={{borderColor: bankError.AccountHolderName ? "red" : "#B3B3B3"}}></input>
+      {bankError.AccountHolderName && <div className='error-message'>{bankError.AccountHolderName}</div>}
      </div>
      <div >
      <button className='Account_Button '>Verify Account Details</button>
