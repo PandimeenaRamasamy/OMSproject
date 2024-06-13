@@ -37,6 +37,30 @@ const Restaurant = React.forwardRef((props, ref) => {
     restaurantNumber: "",
     whatsappNumber: "",
   })
+  const resetForm=()=>{
+    setForm(
+     {
+      businessLegalName: "",
+      phone: "",
+      email: "",
+      website: "",
+      instagramLink: "",
+      facebookLink: "",
+      restaurantNumber: "",
+      whatsappNumber: "",
+     }
+    ) 
+    setResError({
+      businessLegalName: "",
+      phone: "",
+      email: "",
+      website: "",
+      instagramLink: "",
+      facebookLink: "",
+      restaurantNumber: "",
+      whatsappNumber: "",
+    }) 
+ }
 
   const [isChecked, setIsChecked] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -44,6 +68,7 @@ const Restaurant = React.forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     getFormData: () => form,
     validate,
+    resetForm,
     clearFormData: () => {
       setForm({
         locationId: "3208d1e6-7407-4ac5-9d74-83d542b71226",

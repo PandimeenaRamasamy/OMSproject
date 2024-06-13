@@ -88,6 +88,11 @@ function Stepform() {
          
           locationRef.current.resetForm();
         }
+        if(restaurantDetailsRef.current && restaurantDetailsRef.current.resetForm)
+          {
+           
+            restaurantDetailsRef.current.resetForm();
+          }
       setMainForm({})
 
       
