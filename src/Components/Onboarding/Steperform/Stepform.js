@@ -45,19 +45,16 @@ function Stepform() {
 
     switch (activeStep) {
       case 0:
-        isValid=restaurantDetailsRef.current.validate();
-        if(isValid)
-          {
-        newFormData = { ...newFormData, restaurant_details: restaurantDetailsRef.current.getFormData() };
-          }
+        isValid = restaurantDetailsRef.current.validate();
+        if (isValid) {
+          newFormData = { ...newFormData, restaurant_details: restaurantDetailsRef.current.getFormData() };
+        }
         break;
       case 1:
-        isValid=locationRef.current.getValidate();
-        if(isValid){
+        isValid = locationRef.current.getValidate();
+        if (isValid) {
           newFormData = { ...newFormData, location_details: locationRef.current.getFormData() };
-
         }
-      
         break;
       case 2:
         newFormData = { ...newFormData, fssai_details: fssaiRef.current.getFormData() };
@@ -77,27 +74,22 @@ function Stepform() {
       handleNextStep();
     }
   };
-  const clearAll=()=>{
-    if(bankRef.current && bankRef.current.resetForm)
-      {
-       
-        bankRef.current.resetForm();
-      }
-      if(locationRef.current && locationRef.current.resetForm)
-        {
-         
-          locationRef.current.resetForm();
-        }
-        if(restaurantDetailsRef.current && restaurantDetailsRef.current.resetForm)
-          {
-           
-            restaurantDetailsRef.current.resetForm();
-          }
-      setMainForm({})
 
-      
-  }
-
+  const clearAll = () => {
+    if (restaurantDetailsRef.current && restaurantDetailsRef.current.resetForm) {
+      restaurantDetailsRef.current.resetForm();
+    }
+    if (locationRef.current && locationRef.current.resetForm) {
+      locationRef.current.resetForm();
+    }
+    if (fssaiRef.current && fssaiRef.current.resetForm) {
+      fssaiRef.current.resetForm();
+    }
+    if (bankRef.current && bankRef.current.resetForm) {
+      bankRef.current.resetForm();
+    }
+    setMainForm({});
+  };
 
   const handleNextStep = () => {
     if (activeStep < steps.length - 1) {
