@@ -39,54 +39,71 @@ const PostDataForm = () => {
   const registrationpagerrors = {};
 
   const validationofregistrationform = () => {
+    let isValid=true;
    
     if (!Registrationform.restaurantName) {
+      isValid=false;
       registrationpagerrors.restaurantNameerror = "Enter Restaurent Name";
     }
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(Registrationform.email)) {
       console.log("email error")
+      isValid=false;
       registrationpagerrors.emailerror = "Enter valid email";
     }
     if(!Registrationform.base64Image)
       {
+        isValid=false;
         registrationpagerrors.base64Imageerror ="Upload logo";
       }
 
     if (!Registrationform.name) {
+      isValid=false;
       registrationpagerrors.nameerror = "Enter your Name";
     } else if (/[^a-zA-Z\s]/.test(Registrationform.name)) {
+      isValid=false;
       registrationpagerrors.nameerror =
         "Name must only contain letters and spaces";
     }
 
     setError(registrationpagerrors);
+    return  isValid;
   };
-  const validaterestaurantname = () => {
-    if (Registrationform.restaurantName === "") {
-      console.log("resgisration error");
-      setError({ restaurantNameerror: "Enter Restaurant Name" });
-    } else {
-      setError({ restaurantNameerror: "" });
-    }
-    validatename();
-  };
-
-  const validatename = () => {
-    if (Registrationform.name === "") {
-      setError({ nameerror: "Enter your name" });
-    } else if (/[^a-zA-Z\s]/.test(Registrationform.name)) {
-      setError({ nameerror: "Name must only contain letters and spaces" });
-    } else {
-      setError({ nameerror: "" });
-    }
-  };
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
     validationofregistrationform();
+    const checkvalid= validationofregistrationform();
+    if(checkvalid)
+      {
+        dispatch(postDataRequest(Registrationform));
+      }
 
-    dispatch(postDataRequest(Registrationform));
+    
   };
+  const closeModal = () => {
+    setimageclose(true);
+    setFile(null);
+  };
+
+
+  const ClearAll=()=>{
+    setRegistrationform({
+      restaurantName: "",
+      name: "",
+      phone: "",
+      email: "",
+      designation: "",
+      gstNumber: "",
+      base64Image: ""
+    })
+    closeModal()
+
+
+
+
+    
+  }
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -109,11 +126,7 @@ const PostDataForm = () => {
     setimageclose(false);
   };
 
-  const closeModal = () => {
-    setimageclose(true);
-    setFile(null);
-  };
-
+ 
   const locationId = useSelector((state) => state.postData.data);
   console.log(locationId);
   dispatch(getLocationId(locationId));
@@ -339,7 +352,7 @@ const PostDataForm = () => {
               <button className="footnavbtn1" onClick={handleSubmit}>
                 Save & Next
               </button>
-              <button className="footnavbtn2">Clear All</button>
+              <button className="footnavbtn2" onClick={ClearAll}>Clear All</button>
             </div>
           </div>
         </div>
