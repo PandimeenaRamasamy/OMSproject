@@ -18,6 +18,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 18px;
+  
 }
 
 .dropdown {
@@ -37,27 +38,32 @@
 
 .resname {
   font-size: 14px;
+  color: black;
 }
 
 .reslocation {
   font-size: 12px;
+  color: #000000;
 }
 
 .pagelink {
   display: flex;
   flex-direction: row;
   padding: 18px;
+ 
 }
 
 .pagelinks {
   width: 280px;
   border: none;
   margin-top: 8px;
+  
 }
 
 .pagelink p {
   padding-left: 20px;
   font-size: 14px;
+  color: #2F2F2F;
 }
 
 .dropdown-menu {
@@ -86,11 +92,13 @@
 .offeroptions {
   display: flex;
   flex-direction: column;
+ 
 }
 
 .pg8 {
   display: flex;
   flex-direction: column;
+  
 }
 
 .pagelinksub {
@@ -107,6 +115,7 @@
   padding: 3px;
   font-size: 12px;
   font-family: "Poppins", sans-serif;
+  color: #2F2F2F;
 }
 
 .pg4 {

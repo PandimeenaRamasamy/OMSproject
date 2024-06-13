@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './Home.css'
-import Homeimg from '../Homepage/images/Home.png'
-import Sidenavbar from '../Sidenavbar/Sidenavbar'
+import './Home.scss'
+import Homeimg from '../../assets/images/Home.png'
+
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
 

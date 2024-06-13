@@ -6,7 +6,7 @@ import Sidenavbar from './Components/Sidenavbar/Sidenavbar'
 import Outlet from './Components/Outletnavbar/Outlet'
 import Home from './Components/Homepage/Home';
 import { Routes, Route } from 'react-router-dom';
-import Dinein from './Components/Dinein/Dinein'
+
 function App() {
 
   const MIN_WIDTH = 800; 

@@ -1,7 +1,8 @@
 import React, { useState, useImperativeHandle, forwardRef } from "react";
 import "./Fssai.scss";
 import { ImCross } from "react-icons/im";
-import addphoto from "../Fssai/images/Addphotos.png";
+import addphoto from "../../../assets/images/Addphotos.png";
+
 
 const Fssai = forwardRef((props, ref) => {
   const [fssaiform, setfssaiform] = useState({

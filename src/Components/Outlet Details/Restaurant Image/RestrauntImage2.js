@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import '../Restaurant Image/RestaurantImage.scss'
-import addImg from '../Restaurant Image/AddImg.jpg'
+import addImg from '../../../assets/images/AddImg.jpg'
 
  
 const UploadImg = ({ images, setImages, inputRefs }) => {

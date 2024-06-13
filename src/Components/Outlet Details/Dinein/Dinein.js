@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Dinein.scss";
-import { postDineinDataRequest } from "../../redux/Actions/PostDataAction";
+import { postDineinDataRequest } from "../../../redux/Actions/PostDataAction";
 import { useDispatch } from "react-redux";
 
 const Dinein = () => {
