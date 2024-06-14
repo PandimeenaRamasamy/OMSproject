@@ -50,7 +50,7 @@ function Stepform() {
     },
     {
       title: "Restaurant Image",
-      component: <RestaurantImage />,
+      component: <RestaurantImage ref={restrauntimageref} />,
       icon: <CiImageOn className="image" />,
     },
     {
