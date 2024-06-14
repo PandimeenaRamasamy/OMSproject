@@ -116,12 +116,6 @@ function Stepform() {
           setDineInForm(newFormData1)
           dispatch( postDineinDataRequest(newFormData1))
           break;
-          
-         
-
-
-        
-
 
       case 3:
         newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
