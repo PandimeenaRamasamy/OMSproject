@@ -5,7 +5,7 @@ const BankDetails = React.forwardRef((props,ref) => {
  accountNumber:"",
  reaccountNumber:"",
  ifscCode:"",
-AccountHolderName:""
+ AccountHolderName:""
   })
   const[bankError,setBankError]=useState({
     accountNumber:"",

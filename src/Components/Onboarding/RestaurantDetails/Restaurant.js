@@ -4,10 +4,7 @@ import "./Restaurant.scss";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
-
-
-
-const Restaurant = React.forwardRef((props, ref) => {
+  const Restaurant = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const locationId = useSelector((state) => state.postData.data);
   console.log(locationId);
@@ -26,7 +23,7 @@ const Restaurant = React.forwardRef((props, ref) => {
     facebookLink: "",
     restaurantNumber: "",
     whatsappNumber: "",
-  });
+  }); 
   const[reserror,setResError]=useState({
     businessLegalName: "",
     phone: "",
