@@ -14,12 +14,12 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
   const [Outletdetails, setOutletdetails] = useState({
-    locationId: "5d171ae6-2849-4a49-b75a-c72776625843",
+    locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
     merchant4DigitValidation: "",
-    checkin: {
+    checkIn: {
       maximumPeopleAllowedOnline: "",
       maximumPeopleAllowedOffline: "",
       lateShowTime: "",
@@ -437,7 +437,7 @@ const Dinein = React.forwardRef((props,ref) => {
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
-                                  checkin: {
+                                  checkIn: {
                                     ...Outletdetails.checkin,
                                     maximumPeopleAllowedOnline:
                                       event.target.value,
@@ -461,7 +461,7 @@ const Dinein = React.forwardRef((props,ref) => {
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
-                                  checkin: {
+                                  checkIn: {
                                     ...Outletdetails.checkin,
                                     maximumPeopleAllowedOffline:
                                       event.target.value,
@@ -483,7 +483,7 @@ const Dinein = React.forwardRef((props,ref) => {
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
-                                  checkin: {
+                                  checkIn: {
                                     ...Outletdetails.checkin,
                                     lateShowTime: event.target.value,
                                   },
@@ -502,7 +502,7 @@ const Dinein = React.forwardRef((props,ref) => {
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
-                                  checkin: {
+                                  checkIn: {
                                     ...Outletdetails.checkin,
                                     autoCancelTime: event.target.value,
                                   },
@@ -521,7 +521,7 @@ const Dinein = React.forwardRef((props,ref) => {
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
-                                  checkin: {
+                                  checkIn: {
                                     ...Outletdetails.checkin,
                                     abandonTime: event.target.value,
                                   },
@@ -557,7 +557,7 @@ const Dinein = React.forwardRef((props,ref) => {
                             onChange={(event) =>
                               setOutletdetails({
                                 ...Outletdetails,
-                                checkin: {
+                                checkIn: {
                                   ...Outletdetails.checkin,
                                   autoAssign: event.target.value,
                                 },
@@ -575,7 +575,7 @@ const Dinein = React.forwardRef((props,ref) => {
                             onChange={(event) =>
                               setOutletdetails({
                                 ...Outletdetails,
-                                checkin: {
+                                checkIn: {
                                   ...Outletdetails.checkin,
                                   autoAssign: event.target.value,
                                 },

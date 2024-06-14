@@ -31,7 +31,7 @@ export const PostOnboardingData = async (payload) => {
  export const  PostDineinData=async(payload)=>{
 
   try {
-    const response = await axios.post('http://192.168.1.20:8080/outlet/dineIn',payload,{
+    const response = await axios.post('http://192.168.1.20:8080/outlets/outlet/dineIn/properties',payload,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

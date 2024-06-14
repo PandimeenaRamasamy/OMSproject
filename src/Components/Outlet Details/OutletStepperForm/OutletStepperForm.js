@@ -93,9 +93,9 @@ function Stepform() {
         break;
 
         case 2:
-          newFormData1={...newFormData1,DineIn:dineinref.current.getFormData()}
+          newFormData1={DineIn:dineinref.current.getFormData()}
           setDineInForm(newFormData1)
-          dispatch( postDineinDataRequest(dineInForm))
+          dispatch( postDineinDataRequest(newFormData1))
           
           break;
 
