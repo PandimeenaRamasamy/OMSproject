@@ -163,7 +163,7 @@ function Stepform() {
   return (
     <div className="page-content">
       <div className="stepform">
-        <div className="container">
+        <div className="Stepperformcontainer">
           <div className="sub-container">
             <div className="stepper-progress">
               <div

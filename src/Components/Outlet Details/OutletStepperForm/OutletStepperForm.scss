@@ -1,6 +1,8 @@
-.container {
+.Stepperformcontainer {
   margin-top:90px;
     transform: translateX(250px);
+  
+  
     
   }
   .sub-container {
@@ -186,14 +188,23 @@
    */
    @media(max-width:1280px)
    {
+    .Stepperformcontainer {
+      margin-top:90px;
+        transform: translateX(250px);
+    height: 240px;
+    width:900px;
+        border: 1px solid red;
+        
+      }
+
     .sub-container {
       width:830px;
       top: 100px;
-      left:-40px;
+      left:40px;
       
     }
     .stepper-progress{
-      width: 640px;
+      width: 750px;
     }
     
    }

@@ -14,7 +14,7 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
   const [Outletdetails, setOutletdetails] = useState({
-    locationId:"3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
+    locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
