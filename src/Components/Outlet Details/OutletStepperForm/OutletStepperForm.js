@@ -29,6 +29,18 @@ function Reciept() {
 function Stepform() {
 
   const [activeStep, setActiveStep] = useState(0);
+  const dispatch=useDispatch();
+   
+   const pickUpformRef=useRef();
+   const kitchenformRef=useRef();
+   const restrauntimageref=useRef();
+   const dineinref=useRef();
+ 
+  const[pickupForm,setPickupForm]=useState("")
+  const[kitchenForm,setKitchenForm]=useState("")
+  const[restrauntImageForm,setrestrauntImageForm]=useState("")
+  const[dineInForm,setDineInForm]=useState("")
+
 
   const steps = [
     {
@@ -43,7 +55,7 @@ function Stepform() {
     },
     {
       title: "DineIn",
-      component: <Dinein />,
+      component: <Dinein  ref={dineinref}/>,
       icon: <ImSpoonKnife className="image" />,
     },
     {
@@ -70,18 +82,7 @@ function Stepform() {
 
  
   
-   const dispatch=useDispatch();
    
-   const pickUpformRef=useRef();
-   const kitchenformRef=useRef();
-   const restrauntimageref=useRef();
-   const dineinref=useRef();
- 
-  const[pickupForm,setPickupForm]=useState("")
-  const[kitchenForm,setKitchenForm]=useState("")
-  const[restrauntImageForm,setrestrauntImageForm]=useState("")
-  const[dineInForm,setDineInForm]=useState("")
-
  
 
 
@@ -196,9 +197,7 @@ function Stepform() {
           </div>
           <div>
 
-            <button className="save_next" onClick={handleNextStep}>
-              Save & Next
-            </button>
+        
 
             <button className='save_next' onClick={handleSaveandNext}>Save & Next</button>
 

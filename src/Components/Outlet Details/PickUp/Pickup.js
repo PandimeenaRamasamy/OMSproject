@@ -67,17 +67,18 @@ const Pickup = React.forwardRef((props,ref) => {
                         </div>
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading3'>Please mention the payment methods</h5>
-                        <div>
-                        <input type='checkbox' className='Payment_checkbox' value="Cards" onChange={handlecheckedchange}></input><label className='label'>Cards</label>
-                        <input type='checkbox' className='Payment_checkbox' value="Pay at store" onChange={handlecheckedchange} ></input><label className='label'>Pay at store</label>
-                        <input type='checkbox' className='Payment_checkbox' value="Apple Pay" onChange={handlecheckedchange}></input><label className='label'>Apple Pay</label>
-                        <input type='checkbox' className='Payment_checkbox' value="Google Pay" onChange={handlecheckedchange}></input><label className='label'>Google Pay</label>
+                        <div style={{display:'flex', justifyContent:"space-around"}}>
+                        <input type='checkbox' style={{width:"20px"}} value="Cards" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px" }}>Cards</label>
+                        <input type='checkbox'  style={{width:"20px"}}  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px"}}>Pay at store</label>
+                        <input type='checkbox'  style={{width:"20px"}}  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px"}}>Apple Pay</label>
+                        <input type='checkbox' style={{width:"20px"}}  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px"}}>Google Pay</label>
                         </div>
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
-                        <div>
-                            <input type="radio" name="YesorNo" className='radio1' ></input><label className='label1'>Yes</label>
-                            <input type="radio" name="YesorNo" className='radio2'></input><label className='label1'>No</label>
+                        <div style={{ }}>
+                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)"}} ></input><label className='' style={{fontSize:"16px" , marginTop:"20px",margin:"30px" }}>Yes</label>
+                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)"}}></input><label className='' style={{fontSize:"16px" , marginTop:"20px",margin:"30px" }}>No</label>
+                        
                         </div>
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
