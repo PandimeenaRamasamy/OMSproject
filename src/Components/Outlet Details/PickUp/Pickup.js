@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useImperativeHandle, useRef} from 'react';
 import "./Pickup.scss";
 
-const Pickup = () => {
+const Pickup = React.forwardRef((props,ref) => {
+    
     const[form,setForm]=useState({
         serviceTimeFrom:"",
         serviceTimeTo:"",
@@ -11,9 +12,7 @@ const Pickup = () => {
         ETA:""
 
     })
-    const handleSubmit=()=>{
-        console.log(form)
-    }
+   
     const handlecheckedchange=(e)=>{
          const value=e.target.value;
          const ischecked=e.target.checked;
@@ -31,6 +30,14 @@ const Pickup = () => {
     const handleDisable = () => {
         setIsEnabled(false);
     };
+    const getFormData = () => {
+        return form;
+      };
+    
+      useImperativeHandle(ref, () => ({
+        getFormData,
+
+      }));
    
 
     return (
@@ -82,6 +89,7 @@ const Pickup = () => {
                        <h5 className='Pickup_heading7'>Pick up ETA </h5> 
                         <h5 className='Pickup_heading3'>Please mention the Estimated time of arrival for Pick up</h5>
                         <input type="text" className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"ETA":e.target.value})}></input>
+                        
                         </>
                     )
                     }
@@ -90,6 +98,6 @@ const Pickup = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Pickup;

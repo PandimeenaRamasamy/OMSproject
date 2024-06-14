@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useImperativeHandle } from 'react'
 import '../Kitchen/Kitchen.scss'
 import { useState } from 'react'
 
-const Kitchen = () => {
+const Kitchen = React.forwardRef((props,ref) => {
     const [form,setForm]=useState({
         LastorderTime:"",
         KDSAlert:""
@@ -10,6 +10,18 @@ const Kitchen = () => {
 
     })
     console.log(form)
+
+
+    const getFormData=()=>{
+        return form;
+
+
+    }
+    useImperativeHandle(ref,()=>({
+        getFormData,
+
+
+    }))
   return (
     <div className='main-kitchen-div'>
         <div className='submain-kitchen-div'>
@@ -39,5 +51,6 @@ const Kitchen = () => {
     </div>
   )
 }
+)
 
 export default Kitchen

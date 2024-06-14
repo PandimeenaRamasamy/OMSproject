@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect,useRef} from 'react';
 import './OutletStepperForm.scss';
 import { CiUser } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
@@ -43,16 +43,19 @@ function Reciept()
 function Stepform() {
    const [activeStep, setActiveStep] = useState(0);
    
-
+   const pickUpformRef=useRef();
+   const kitchenformRef=useRef();
   const steps = [
     { title: 'Basic Details', component: <BasicDetails/>, icon: <CiUser className='image' /> },
     { title: 'Restaurant Image', component: <RestaurantImage   />, icon: <CiImageOn className='image' /> },
     { title: 'DineIn', component: <Dinein   />, icon: <ImSpoonKnife className='image' /> },
-    { title: 'Pickup', component: <Pickup/>, icon: <FiShoppingBag className='image' /> },
+    { title: 'Pickup', component: <Pickup ref={pickUpformRef}/>, icon: <FiShoppingBag className='image' /> },
     { title: 'Delivery', component: <Delivery/>, icon: <CiDeliveryTruck className='image' /> },
-    { title: 'Kitchen', component: <Kitchen/>, icon: <GiPressureCooker className='image' /> },
+    { title: 'Kitchen', component: <Kitchen ref={kitchenformRef}/>, icon: <GiPressureCooker className='image' /> },
     { title: 'Reciept', component: <Reciept/>, icon: <BiReceipt className='image' /> },
   ];
+  const[pickupForm,setPickupForm]=useState("")
+  const[kitchenForm,setKitchenForm]=useState("")
  
 
 
@@ -70,7 +73,30 @@ function Stepform() {
   };
 
   
-  
+ const handleSaveandNext=()=>{
+    let newFormData1={}
+    switch(activeStep)
+    {
+      case 3:
+        newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
+        setPickupForm(newFormData1);
+        break;
+
+        case 5:
+          newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}
+          setKitchenForm(newFormData1)
+          console.log(kitchenForm)
+          break;
+
+        
+
+    }
+    
+    
+    
+    handleNextStep();
+
+ } 
    
    
   const handleNextStep = () => {
@@ -115,7 +141,7 @@ function Stepform() {
             <button className='clear_all'>Clear ALL</button>
           </div>
           <div>
-            <button className='save_next' onClick={handleNextStep}>Save & Next</button>
+            <button className='save_next' onClick={handleSaveandNext}>Save & Next</button>
           </div>
         </div>
       </div>
