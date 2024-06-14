@@ -19,6 +19,11 @@ import {
   POST_DELIVERY_DATA_REQUEST,
   POST_DELIVERY_DATA_SUCCESS,
   POST_DELIVERY_DATA_FAILURE,
+  POST_RESTAURANTIMAGE_DATA_REQUEST,
+  POST_RESTAURANTIMAGE_DATA_SUCCESS,
+  POST_RESTAURANTIMAGE_DATA_FALIURE
+
+
 } from "../constants";
 
 const initialState = {
@@ -56,6 +61,16 @@ export const postDataReducer = (state = initialState, action) => {
       return { ...state, loading: false, data: action.payload };
     case POST_DINEIN_DATA_FAILURE:
       return { ...state, loading: false, error: action.payload };
+
+
+      case POST_RESTAURANTIMAGE_DATA_REQUEST:
+        return { ...state, loading: true, error: null };
+
+      case   POST_RESTAURANTIMAGE_DATA_SUCCESS:
+      return { ...state, loading: false, data: action.payload };
+
+      case POST_RESTAURANTIMAGE_DATA_FALIURE:
+        return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
