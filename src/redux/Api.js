@@ -54,6 +54,8 @@ export const PostDineinData = async (payload) => {
   }
 };
 
+
+
 export const postDeliveryDataURL =
   "http://192.168.1.20:8080/outlets/outlet/delivery/properties";
 
@@ -71,8 +73,18 @@ export const PostDeliveryDataEndPoint = async (payload) => {
   }
 };
 
-// Comitted New Change 3:07 PM
 
+export const PostBasicdetails = async (payload) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      payload
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
 // export const basicDetailUrl =
 //   "";
 

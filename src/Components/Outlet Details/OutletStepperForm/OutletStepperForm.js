@@ -1,27 +1,18 @@
 
-import React, { useState, useEffect } from "react";
 import "./OutletStepperForm.scss";
-
 import React, { useState, useEffect,useRef} from 'react';
 import './OutletStepperForm.scss';
-
 import { CiUser } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
 import { GiPressureCooker } from "react-icons/gi";
-
 import { CiDeliveryTruck } from "react-icons/ci";
-
 import { BiReceipt } from "react-icons/bi";
-
 import { CiImageOn } from "react-icons/ci";
 import { ImSpoonKnife } from "react-icons/im";
 import Dinein from "../Dinein/Dinein";
 import Pickup from "../PickUp/Pickup";
 import Kitchen from "../Kitchen/Kitchen";
 import RestaurantImage from "../Restaurant Image/InputRefs";
-import Pickup from "../PickUp/Pickup"
-import Kitchen from '../Kitchen/Kitchen'
-import RestaurantImage from '../Restaurant Image/InputRefs'
 import { useDispatch } from 'react-redux';
 import { postDineinDataRequest } from '../../../redux/Actions/PostDataAction';
 
