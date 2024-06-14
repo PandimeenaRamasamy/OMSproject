@@ -21,6 +21,9 @@ import {
   POST_ONBOARDING_DATA_SUCCESS,
   SAVE_BASIC_DETAILS_REQUEST,
   POST_DELIVERY_DATA_REQUEST,
+  POST_RESTAURANTIMAGE_DATA_REQUEST,
+  POST_RESTAURANTIMAGE_DATA_SUCCESS,
+  POST_RESTAURANTIMAGE_DATA_FALIURE
 } from "../constants";
 
 import { LOCATION_ID } from "../constants";
@@ -32,6 +35,7 @@ import {
 import { GetData } from "../Api";
 import { PostOnboardingData } from "../Api";
 import { PostDineinData } from "../Api";
+import { PostRestaurantImage } from "../Api";
 
 // import axios from "axios";
 
@@ -168,6 +172,25 @@ export function* PostDeliveryDataSagas(action) {
   }
 }
 
+export function* PostRestaurantImageSaga(action) {
+  try {
+    const payload = action.payload;
+    const response = yield call(PostRestaurantImage, payload);
+    if (response.status === 200) {
+      yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
+      console.log("Posted Successfully");
+    }
+  } catch (error) {
+    yield put(POST_RESTAURANTIMAGE_DATA_FALIURE(error));
+  }
+}
+
+
+
+
+
+
+
 export function* watchPostDeliveryDataSagas() {
   yield takeEvery(POST_DELIVERY_DATA_REQUEST, PostDeliveryDataSagas);
 }
@@ -194,4 +217,8 @@ export function* dineinpostdata() {
 
 export function* locationIdSaga() {
   yield takeEvery(LOCATION_ID, locationId);
+}
+
+export function* RestrauntImageSaga() {
+  yield takeEvery(POST_RESTAURANTIMAGE_DATA_REQUEST,  PostRestaurantImageSaga);
 }

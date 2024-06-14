@@ -15,6 +15,7 @@ import Kitchen from "../Kitchen/Kitchen";
 import RestaurantImage from "../Restaurant Image/InputRefs";
 import { useDispatch } from 'react-redux';
 import { postDineinDataRequest } from '../../../redux/Actions/PostDataAction';
+import { PostRestaurantImageDataRequest } from "../../../redux/Actions/PostDataAction";
 
 import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
@@ -110,6 +111,7 @@ function Stepform() {
       case 1:
         newFormData1={...newFormData1,RestrauntImage:restrauntimageref.current.getFormData()}
         setrestrauntImageForm(newFormData1)
+        dispatch(PostRestaurantImageDataRequest(newFormData1))
         break;
       case 2:
           newFormData1={DineIn:dineinref.current.getFormData()}
