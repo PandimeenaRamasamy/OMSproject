@@ -348,7 +348,7 @@ const BasicDetails = () => {
     },
   ]);
   return (
-    <div className="container">
+    <div className="basic-details-container">
       <div className="basicDetails">
         <p className="heading">Basic Details</p>
         <div className="serviceStyle">
