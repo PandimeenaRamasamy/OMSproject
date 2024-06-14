@@ -14,7 +14,7 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
   const [Outletdetails, setOutletdetails] = useState({
-    locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
+    locationId:"3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
@@ -438,7 +438,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     maximumPeopleAllowedOnline:
                                       event.target.value,
                                   },
@@ -462,7 +462,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     maximumPeopleAllowedOffline:
                                       event.target.value,
                                   },
@@ -484,7 +484,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     lateShowTime: event.target.value,
                                   },
                                 });
@@ -503,7 +503,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     autoCancelTime: event.target.value,
                                   },
                                 });
@@ -522,7 +522,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     abandonTime: event.target.value,
                                   },
                                 });
@@ -553,12 +553,12 @@ const Dinein = React.forwardRef((props,ref) => {
                             type="radio"
                             className="radioStyle"
                             value="yes"
-                            checked={Outletdetails.checkin.autoAssign === "yes"}
+                            checked={Outletdetails.checkIn.autoAssign === "yes"}
                             onChange={(event) =>
                               setOutletdetails({
                                 ...Outletdetails,
                                 checkIn: {
-                                  ...Outletdetails.checkin,
+                                  ...Outletdetails.checkIn,
                                   autoAssign: event.target.value,
                                 },
                               })
@@ -571,12 +571,12 @@ const Dinein = React.forwardRef((props,ref) => {
                             type="radio"
                             value="no"
                             className="radioStyle"
-                            checked={Outletdetails.checkin.autoAssign === "no"}
+                            checked={Outletdetails.checkIn.autoAssign === "no"}
                             onChange={(event) =>
                               setOutletdetails({
                                 ...Outletdetails,
                                 checkIn: {
-                                  ...Outletdetails.checkin,
+                                  ...Outletdetails.checkIn,
                                   autoAssign: event.target.value,
                                 },
                               })
