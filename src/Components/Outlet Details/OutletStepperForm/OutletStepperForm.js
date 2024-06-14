@@ -50,7 +50,7 @@ function Stepform() {
     },
     {
       title: "Restaurant Image",
-      component: <RestaurantImage />,
+      component: <RestaurantImage ref={restrauntimageref} />,
       icon: <CiImageOn className="image" />,
     },
     {
@@ -60,7 +60,7 @@ function Stepform() {
     },
     {
       title: "Pickup",
-      component: <Pickup />,
+      component: <Pickup ref={pickUpformRef} />,
       icon: <FiShoppingBag className="image" />,
     },
     {
@@ -70,7 +70,7 @@ function Stepform() {
     },
     {
       title: "Kitchen",
-      component: <Kitchen />,
+      component: <Kitchen ref={kitchenformRef} />,
       icon: <GiPressureCooker className="image" />,
     },
     {
