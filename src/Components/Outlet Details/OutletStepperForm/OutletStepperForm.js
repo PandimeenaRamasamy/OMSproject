@@ -45,9 +45,10 @@ function Stepform() {
    
    const pickUpformRef=useRef();
    const kitchenformRef=useRef();
+   const restrauntimageref=useRef();
   const steps = [
     { title: 'Basic Details', component: <BasicDetails/>, icon: <CiUser className='image' /> },
-    { title: 'Restaurant Image', component: <RestaurantImage   />, icon: <CiImageOn className='image' /> },
+    { title: 'Restaurant Image', component: <RestaurantImage ref={restrauntimageref}   />, icon: <CiImageOn className='image' /> },
     { title: 'DineIn', component: <Dinein   />, icon: <ImSpoonKnife className='image' /> },
     { title: 'Pickup', component: <Pickup ref={pickUpformRef}/>, icon: <FiShoppingBag className='image' /> },
     { title: 'Delivery', component: <Delivery/>, icon: <CiDeliveryTruck className='image' /> },
@@ -56,6 +57,8 @@ function Stepform() {
   ];
   const[pickupForm,setPickupForm]=useState("")
   const[kitchenForm,setKitchenForm]=useState("")
+  const[restrauntImageForm,setrestrauntImageForm]=useState("")
+
  
 
 
@@ -77,6 +80,15 @@ function Stepform() {
     let newFormData1={}
     switch(activeStep)
     {
+
+      case 1:
+        newFormData1={...newFormData1,RestrauntImage:restrauntimageref.current.getFormData()}
+        setrestrauntImageForm(newFormData1)
+     
+        break;
+        
+
+
       case 3:
         newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
         setPickupForm(newFormData1);
@@ -85,13 +97,12 @@ function Stepform() {
         case 5:
           newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}
           setKitchenForm(newFormData1)
-          console.log(kitchenForm)
           break;
 
         
 
     }
-    
+    console.log(restrauntImageForm) 
     
     
     handleNextStep();
