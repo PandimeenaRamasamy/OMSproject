@@ -1,0 +1,796 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+
+  .footerButtonsContainer {
+    height: 40px;
+    width: 400px;
+    position: fixed;
+    top: 93%;
+    // margin-top: 50px;
+    left: 73%;
+    .footerButtonsInnerContainer {
+      display: flex;
+      gap: 5px;
+      .clearAllButton {
+        width: 200px;
+        height: 40px;
+        padding: 10px;
+        font-weight: 600;
+        border-radius: 9px;
+        text-align: center;
+        color: #6a8c3a;
+        border-style: solid;
+        border-width: thin;
+        border-color: #6a8c3a;
+        background-color: #fff;
+        margin-right: 30px;
+        cursor: pointer;
+        &.clearAllButton:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+      .saveAndNextButton {
+        width: 200px;
+        height: 40px;
+        padding: 5px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 9px;
+        text-align: center;
+        color: #fff;
+        background-color: #6a8c3a;
+        border-style: hidden;
+        cursor: pointer;
+        &.saveAndNextButton:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+    }
+  }
+
+  .basicDetails {
+    margin-left: 350px;
+    width: 100%;
+    .addNewService {
+      background-color: #779749;
+      color: #fff;
+      padding: 0.5rem;
+      border-style: none;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      &:hover {
+        box-shadow: 1px 1px 1px 1px gray;
+      }
+    }
+    .heading {
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    .sessionHeader {
+      display: flex;
+      gap: 15px;
+
+      img {
+        cursor: pointer;
+      }
+    }
+    .sessionBody {
+      .addBtn span {
+        color: #67833e;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+    .basicDetailsLine {
+      margin-top: 1rem;
+      margin-bottom: 0.7rem;
+      height: 2px;
+      width: 90%;
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+.alcoholModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.alcoholModal {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem 1.5rem 2.3rem;
+  width: 500px;
+  .headingAndClose {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  .line {
+    height: 1px;
+    background-color: #c5c4c4;
+    margin: 0.5rem 0;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #c5c4c4;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+
+      &:checked {
+        background-color: #67833e;
+        border-color: #67833e;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 6px;
+          width: 5px;
+          height: 10px;
+          border: solid #fff;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+    p {
+      margin-left: 8px;
+      margin-bottom: 5px;
+    }
+  }
+  .alcoholModalBtns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .declineBtn,
+    .agreeBtn {
+      border-radius: 0.5rem;
+      font-weight: 700;
+      padding: 0.5rem 2rem;
+      &:hover {
+        box-shadow: 1px 1px 1px 1px gray;
+      }
+    }
+    .declineBtn {
+      background-color: #fff;
+      color: #67833e;
+      border: 1px solid #67833e;
+    }
+    .agreeBtn {
+      background-color: #67833e;
+      color: #fff;
+      border: 1px solid #67833e;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+    .footerButtonsContainer {
+      height: 40px;
+      width: 400px;
+      position: fixed;
+      top: 93%;
+      left: 65%;
+      .footerButtonsInnerContainer {
+        display: flex;
+        gap: 5px;
+        .clearAllButton {
+          width: 200px;
+          height: 40px;
+          padding: 10px;
+          font-weight: 600;
+          border-radius: 9px;
+          text-align: center;
+          color: #6a8c3a;
+          border-style: solid;
+          border-width: thin;
+          border-color: #6a8c3a;
+          background-color: #fff;
+          margin-right: 30px;
+          cursor: pointer;
+          &.clearAllButton:hover {
+            box-shadow: 1px 1px 1px 1px #6a8c3a;
+          }
+        }
+        .saveAndNextButton {
+          width: 200px;
+          height: 40px;
+          padding: 5px;
+          font-size: 15px;
+          font-weight: 600;
+          border-radius: 9px;
+          text-align: center;
+          color: #fff;
+          background-color: #6a8c3a;
+          border-style: hidden;
+          cursor: pointer;
+          &.saveAndNextButton:hover {
+            box-shadow: 1px 1px 1px 1px #6a8c3a;
+          }
+        }
+      }
+    }
+
+    .basicDetails {
+      margin-left: 350px;
+      // background-color: bisque;
+      width: 58%;
+      .addNewService {
+        background-color: #779749;
+        color: #fff;
+        padding: 0.5rem;
+        border-style: none;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+        }
+      }
+      .heading {
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+      .sessionHeader {
+        display: flex;
+        gap: 15px;
+
+        img {
+          cursor: pointer;
+        }
+      }
+      .sessionBody {
+        .addBtn span {
+          color: #67833e;
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+      .basicDetailsLine {
+        margin-top: 1rem;
+        margin-bottom: 0.7rem;
+        height: 2px;
+        width: 90%;
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  .alcoholModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .alcoholModal {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem 1.5rem 2.3rem;
+    width: 500px;
+    .headingAndClose {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+    .line {
+      height: 1px;
+      background-color: #c5c4c4;
+      margin: 0.5rem 0;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+
+      input[type="checkbox"] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #c5c4c4;
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+
+        &:checked {
+          background-color: #67833e;
+          border-color: #67833e;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+      }
+      p {
+        margin-left: 8px;
+        margin-bottom: 5px;
+      }
+    }
+    .alcoholModalBtns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .declineBtn,
+      .agreeBtn {
+        border-radius: 0.5rem;
+        font-weight: 700;
+        padding: 0.5rem 2rem;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+        }
+      }
+      .declineBtn {
+        background-color: #fff;
+        color: #67833e;
+        border: 1px solid #67833e;
+      }
+      .agreeBtn {
+        background-color: #67833e;
+        color: #fff;
+        border: 1px solid #67833e;
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+    .footerButtonsContainer {
+      height: 40px;
+      width: 400px;
+      position: fixed;
+      top: 93%;
+      left: 60%;
+      .footerButtonsInnerContainer {
+        display: flex;
+        gap: 5px;
+        .clearAllButton {
+          width: 200px;
+          height: 40px;
+          padding: 10px;
+          font-weight: 600;
+          border-radius: 9px;
+          text-align: center;
+          color: #6a8c3a;
+          border-style: solid;
+          border-width: thin;
+          border-color: #6a8c3a;
+          background-color: #fff;
+          margin-right: 30px;
+          cursor: pointer;
+          &.clearAllButton:hover {
+            box-shadow: 1px 1px 1px 1px #6a8c3a;
+          }
+        }
+        .saveAndNextButton {
+          width: 200px;
+          height: 40px;
+          padding: 5px;
+          font-size: 15px;
+          font-weight: 600;
+          border-radius: 9px;
+          text-align: center;
+          color: #fff;
+          background-color: #6a8c3a;
+          border-style: hidden;
+          cursor: pointer;
+          &.saveAndNextButton:hover {
+            box-shadow: 1px 1px 1px 1px #6a8c3a;
+          }
+        }
+      }
+    }
+
+    .basicDetails {
+      margin-left: 350px;
+      width: 60%;
+      // background-color: aqua;
+      .addNewService {
+        background-color: #779749;
+        color: #fff;
+        padding: 0.5rem;
+        border-style: none;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+        }
+      }
+      .heading {
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+      .sessionHeader {
+        display: flex;
+        gap: 15px;
+
+        img {
+          cursor: pointer;
+        }
+      }
+      .sessionBody {
+        .addBtn span {
+          color: #67833e;
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+      .basicDetailsLine {
+        margin-top: 1rem;
+        margin-bottom: 0.7rem;
+        height: 2px;
+        width: 90%;
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  .alcoholModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .alcoholModal {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem 1.5rem 2.3rem;
+    width: 500px;
+    .headingAndClose {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+    .line {
+      height: 1px;
+      background-color: #c5c4c4;
+      margin: 0.5rem 0;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+
+      input[type="checkbox"] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #c5c4c4;
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+
+        &:checked {
+          background-color: #67833e;
+          border-color: #67833e;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+      }
+      p {
+        margin-left: 8px;
+        margin-bottom: 5px;
+      }
+    }
+    .alcoholModalBtns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .declineBtn,
+      .agreeBtn {
+        border-radius: 0.5rem;
+        font-weight: 700;
+        padding: 0.5rem 2rem;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+        }
+      }
+      .declineBtn {
+        background-color: #fff;
+        color: #67833e;
+        border: 1px solid #67833e;
+      }
+      .agreeBtn {
+        background-color: #67833e;
+        color: #fff;
+        border: 1px solid #67833e;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    // width: 100vw;
+    height: 100%;
+
+    .footerButtonsContainer {
+      height: 40px;
+      width: 400px;
+      margin-left: 45%;
+      position: static;
+      // margin-bottom: 10%;
+      margin-top: 15px;
+      .footerButtonsInnerContainer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 5px;
+        // background-color: aqua;
+        .clearAllButton {
+          width: 100px;
+          height: 30px;
+          padding: 10px;
+          font-weight: 600;
+          font-size: x-small;
+          border-radius: 9px;
+          text-align: center;
+          color: #6a8c3a;
+          border-style: solid;
+          border-width: thin;
+          border-color: #6a8c3a;
+          background-color: #fff;
+          margin-right: 30px;
+          cursor: pointer;
+          &.clearAllButton:hover {
+            box-shadow: 1px 1px 1px 1px #6a8c3a;
+          }
+        }
+        .saveAndNextButton {
+          width: 100px;
+          height: 30px;
+          padding: 5px;
+          font-size: 15px;
+          font-weight: 600;
+          font-size: x-small;
+          border-radius: 9px;
+          text-align: center;
+          color: #fff;
+          background-color: #6a8c3a;
+          border-style: hidden;
+          cursor: pointer;
+          &.saveAndNextButton:hover {
+            box-shadow: 1px 1px 1px 1px #6a8c3a;
+          }
+        }
+      }
+    }
+
+    .basicDetails {
+      margin-left: 350px;
+      width: 440px;
+      height: 100%;
+      // background-color: aqua;
+      .addNewService {
+        background-color: #779749;
+        color: #fff;
+        padding: 0.5rem;
+        border-style: none;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: x-small;
+        width: 105px;
+        height: 25px;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+        }
+      }
+      .heading {
+        width: 440px;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+      .sessionHeader {
+        display: flex;
+        gap: 15px;
+
+        img {
+          cursor: pointer;
+        }
+      }
+      .serviceStyle {
+        // background-color: aqua;
+        width: 440px;
+      }
+      .sessionBody {
+        .addBtn span {
+          color: #67833e;
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+      .basicDetailsLine {
+        margin-top: 1rem;
+        margin-bottom: 0.7rem;
+        height: 2px;
+        width: 90%;
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  .alcoholModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .alcoholModal {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem 1.5rem 2.3rem;
+    width: 500px;
+    .headingAndClose {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+    .line {
+      height: 1px;
+      background-color: #c5c4c4;
+      margin: 0.5rem 0;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+
+      input[type="checkbox"] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #c5c4c4;
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+
+        &:checked {
+          background-color: #67833e;
+          border-color: #67833e;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+      }
+      p {
+        margin-left: 8px;
+        margin-bottom: 5px;
+      }
+    }
+    .alcoholModalBtns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      .declineBtn,
+      .agreeBtn {
+        border-radius: 0.5rem;
+        font-weight: 700;
+        padding: 0.5rem 2rem;
+        &:hover {
+          box-shadow: 1px 1px 1px 1px gray;
+        }
+      }
+      .declineBtn {
+        background-color: #fff;
+        color: #67833e;
+        border: 1px solid #67833e;
+      }
+      .agreeBtn {
+        background-color: #67833e;
+        color: #fff;
+        border: 1px solid #67833e;
+      }
+    }
+  }
+}

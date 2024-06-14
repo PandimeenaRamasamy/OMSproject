@@ -1,0 +1,123 @@
+.alcoholModal {
+  height: 340px;
+  width: 500px;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 10px;
+  padding-top: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2.3rem;
+  .alcohol-modal-terms {
+    margin-top: 1rem;
+  }
+  .headingAndClose {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    p {
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  .line {
+    height: 1px;
+    width: 450px;
+    background-color: #c5c4c4;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 0.1rem;
+    .checkbox-dialogue {
+      margin-top: 0.8rem;
+      // background-color: #c5c4c4;
+    }
+    // background-color: antiquewhite;
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #c5c4c4;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+
+      &:checked {
+        background-color: #67833e;
+        border-color: #67833e;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 6px;
+          width: 5px;
+          height: 10px;
+          border: solid #fff;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+    p {
+      margin-left: 8px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.alcoholModalBtns {
+  display: flex;
+  width: 410px;
+  justify-content: space-between;
+  margin-left: 18px;
+  margin-top: 20px;
+  // background-color: cadetblue;
+
+  .declineBtn {
+    background-color: #fff;
+    color: #67833e;
+    border-color: #67833e;
+    border-style: solid;
+    border-width: thin;
+    padding-left: 70px;
+    padding-right: 120px;
+    height: 44px;
+    width: 200px;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    &:hover {
+      box-shadow: 1px 1px 1px 1px gray;
+    }
+  }
+  .agreeBtn {
+    background-color: #67833e;
+    color: #fff;
+    border-color: #67833e;
+    border-style: solid;
+    border-width: thin;
+    padding-left: 85px;
+    padding-right: 120px;
+    width: 200px;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    &:hover {
+      box-shadow: 1px 1px 1px 1px gray;
+    }
+    &:disabled {
+      background-color: #a6b989;
+      border-color: #d3d3d3;
+      color: #fff;
+      cursor: not-allowed;
+    }
+  }
+}

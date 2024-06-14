@@ -1,0 +1,1625 @@
+.delivery {
+  margin-left: 250px;
+  margin-bottom: 30px;
+  // background-color: #0d79dc;
+  // border: 1px solid red;
+
+  p {
+    color: #666666;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: -5px;
+  }
+
+  //Button
+  .button {
+    .enableBtn {
+      width: 84px;
+      height: 29px;
+      text-align: center;
+      border-radius: 20px;
+      border-width: 1px;
+      border-color: #979797;
+      font-weight: 600;
+      color: #666666;
+      cursor: pointer;
+      border: none;
+      box-shadow: 1px 1px 1px 1px #979797;
+      margin-right: 15px;
+    }
+
+    .disableBtn {
+      width: 84px;
+      height: 29px;
+      text-align: center;
+      border-radius: 20px;
+      border-width: 1px;
+      background-color: #0d79dc;
+      border: none;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px 1px #0d79dc;
+      margin-right: 15px;
+    }
+
+    .enableBtn:hover {
+      box-shadow: 1px 2px 1px 1px #979797;
+    }
+
+    .disableBtn:hover {
+      box-shadow: 1px 2px 1px 1px #979797;
+    }
+  }
+
+  //CheckBox
+  .checkBoxContainer {
+    width: 100%;
+    // margin-left: 80px;
+    margin-top: 20px;
+    width: auto;
+    display: flex;
+
+    .cPname {
+      // color: #2F2F2F;
+      font-size: 15px;
+    }
+  }
+
+  .checkbox {
+    display: none;
+  }
+
+  .checkbox + p::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #979797;
+    border-radius: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .checkbox:checked + p::before {
+    background-color: #67833e;
+    border-color: #67833e;
+    content: "✔";
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    line-height: 15px;
+  }
+
+  //Add Time component
+  .addTime {
+    margin-top: 10px;
+
+    .deleteTime {
+      margin-top: -60px;
+      margin-left: 10px;
+      color: red;
+    }
+    p {
+      margin-top: 40px;
+      color: #67833e;
+      margin-left: -450px;
+      cursor: pointer;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+  .payment {
+    p {
+      margin-bottom: 20px;
+    }
+    .paymentMethod {
+      margin-top: 5px;
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  //radio-btn
+  .radioBtn {
+    display: flex;
+    margin-top: -10px;
+
+    .sessionContainer {
+      margin-right: 15px;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      input[type="radio"] + p::before {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #979797;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      input[type="radio"]:checked + p::before {
+        background-color: #67833e;
+        border-color: #67833e;
+        box-shadow: inset 0 0 0 4px white;
+      }
+
+      p {
+        color: black;
+        margin-top: 18px;
+      }
+    }
+  }
+  .priceDetails {
+    margin-top: 10px;
+    .input-container {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .symbol {
+      position: absolute;
+      top: 59px;
+      left: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .input {
+      padding-left: 25px;
+      box-sizing: border-box;
+      border-width: 1px;
+    }
+  }
+
+  //schedule delivery container
+  .scheduleContainer {
+    width: 133px;
+    height: 44px;
+    border: 1px solid #b3b3b3;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    .scheduledContent {
+      p {
+        color: black;
+        font-size: 17px;
+        padding-top: 13px;
+        padding-left: 25px;
+        font-weight: 500;
+      }
+    }
+    .arrow {
+      margin-right: 5px;
+      margin-top: -5px;
+      .upsideArrow {
+        img {
+          transform: rotate(180deg);
+          cursor: pointer;
+        }
+      }
+      .downsideArrow {
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  //package charge
+  .packageCharge {
+    margin-top: 5px;
+    .input-container {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .symbol {
+      position: absolute;
+      top: 33px;
+      left: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .input {
+      padding-left: 25px;
+      box-sizing: border-box;
+      border-width: 1px;
+    }
+  }
+
+  //delivery option
+  .deliveryOption {
+    .deliveryOptionContainer {
+      display: flex;
+      margin-top: 20px;
+      gap: 20px;
+
+      p {
+        color: black;
+      }
+    }
+  }
+
+  //Distance(max raidus)
+  .distance {
+    h5 {
+      font-weight: 500;
+      font-size: 15px;
+    }
+    input {
+      margin-top: -5px;
+    }
+  }
+  .defaultCount {
+    margin-top: 20px;
+  }
+  .basedOnDistance {
+    .distanceInput {
+      display: flex;
+      margin-top: 10px;
+      .input-container {
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      .symbol {
+        position: absolute;
+        top: 59px;
+        left: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      .input {
+        padding-left: 25px;
+        box-sizing: border-box;
+        border-width: 1px;
+      }
+    }
+  }
+  .flatfee {
+    .input-container {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .symbol {
+      position: absolute;
+      top: 59px;
+      left: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .input {
+      padding-left: 25px;
+      box-sizing: border-box;
+      border-width: 1px;
+    }
+  }
+
+  .inhouse {
+    margin-top: 20px;
+    width: 40%;
+    border: 1px solid #979797;
+    padding: 0 40px 20px 40px;
+    border-radius: 8px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .arrowDown {
+      margin-right: 5px;
+      transform: rotate(180deg);
+    }
+    .arrowUp {
+      margin-right: 5px;
+      transform: rotate(0deg);
+    }
+  }
+
+  .thirdParty {
+    margin-top: 20px;
+    width: fit-content;
+    border: 1px solid #979797;
+    padding: 0 40px 20px 40px;
+    border-radius: 8px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      h3 {
+        margin-right: 50px;
+      }
+      .arrowDown {
+        margin-right: 5px;
+        transform: rotate(180deg);
+      }
+      .arrowUp {
+        margin-right: 5px;
+        transform: rotate(0deg);
+      }
+    }
+
+    .thirdPartyCheckBox {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+    }
+    .thirdPartyInputContaianer {
+      display: flex;
+      gap: 30px;
+      .thirdPartyInput {
+        input {
+          font-size: 15px;
+          height: 35px;
+        }
+        p {
+          margin-top: 15px;
+          margin-bottom: -5px;
+          font-size: 16px;
+        }
+        .checkBoxContainer {
+          width: 100%;
+          // margin-left: 80px;
+          margin-top: 20px;
+          width: auto;
+          display: flex;
+
+          .cPname {
+            // color: #2F2F2F;
+            font-size: 15px;
+          }
+        }
+
+        .checkbox {
+          display: none;
+        }
+
+        .checkbox + p::before {
+          content: "";
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          border: 2px solid #979797;
+          border-radius: 4px;
+          margin-right: 5px;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+
+        .checkbox:checked + p::before {
+          background-color: #67833e;
+          border-color: #67833e;
+          content: "✔";
+          color: white;
+          font-size: 10px;
+          text-align: center;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+
+  .button {
+    margin-bottom: 100px;
+    .buttonsContainer {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .cancelBtn {
+      width: 140px;
+      height: 45px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 9px;
+      text-align: center;
+      color: #6a8c3a;
+      border-style: solid;
+      border-width: thin;
+      border-color: #6a8c3a;
+      background-color: #fff;
+      margin-right: 30px;
+      cursor: pointer;
+
+      &.cancelBtn:hover {
+        box-shadow: 1px 1px 1px 1px #6a8c3a;
+      }
+    }
+    .saveBtn {
+      width: 140px;
+      height: 45px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 9px;
+      text-align: center;
+      color: #fff;
+      background-color: #6a8c3a;
+      border-style: hidden;
+      cursor: pointer;
+
+      &.saveBtn:hover {
+        box-shadow: 1px 1px 1px 1px #6a8c3a;
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .delivery {
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .button {
+      .enableBtn {
+        width: 84px;
+        font-size: 13px;
+      }
+
+      .disableBtn {
+        width: 84px;
+        font-size: 13px;
+      }
+    }
+    .checkBoxContainer {
+      width: 100%;
+      margin-top: 20px;
+      .cPname {
+        font-size: 12px;
+      }
+    }
+
+    .checkbox {
+      display: none;
+    }
+
+    .checkbox + p::before {
+      width: 13px;
+      height: 13px;
+    }
+
+    .checkbox:checked + p::before {
+      background-color: #67833e;
+      border-color: #67833e;
+      content: "✔";
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      line-height: 15px;
+    }
+    .radioBtn {
+      .sessionContainer {
+        margin-right: 15px;
+
+        label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        input[type="radio"] + p::before {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+    .priceDetails {
+      margin-top: 10px;
+
+      .symbol {
+        top: 55px;
+      }
+    }
+    .scheduleContainer {
+      width: 123px;
+      height: 40px;
+
+      .scheduledContent {
+        p {
+          font-size: 15px;
+        }
+      }
+      .arrow {
+        margin-right: 5px;
+        margin-top: -5px;
+      }
+    }
+    .packageCharge {
+      .symbol {
+        top: 30px;
+      }
+    }
+    .distance {
+      h5 {
+        font-weight: 500;
+        font-size: 13px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .batchOrder {
+      input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .basedOnDistance {
+      .distanceInput {
+        margin-top: 5px;
+
+        .symbol {
+          font-size: 13px;
+          top: 38px;
+          left: 10px;
+        }
+
+        .input {
+          width: 200px;
+          height: 30px;
+          margin-top: -9px;
+          font-size: 13px;
+        }
+      }
+    }
+    .flatfee {
+      .symbol {
+        font-size: 13px;
+        top: 38px;
+      }
+
+      .input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .inhouse {
+      margin-top: 20px;
+      width: 30%;
+      border: 1px solid #979797;
+      padding: 0 40px 20px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .arrowDown {
+        margin-right: 5px;
+        transform: rotate(180deg);
+      }
+      .arrowUp {
+        margin-right: 5px;
+        transform: rotate(0deg);
+      }
+    }
+    .thirdParty {
+      margin-top: 20px;
+      width: fit-content;
+      border: 1px solid #979797;
+      padding: 0 40px 20px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        h3 {
+          margin-right: 50px;
+        }
+        .arrowDown {
+          margin-right: 5px;
+          transform: rotate(180deg);
+        }
+        .arrowUp {
+          margin-right: 5px;
+          transform: rotate(0deg);
+        }
+      }
+
+      .thirdPartyCheckBox {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+      }
+      .thirdPartyInputContaianer {
+        display: flex;
+        gap: 30px;
+        .thirdPartyInput {
+          input {
+            border-width: 1px;
+            width: 200px;
+            height: 25px;
+            font-size: 13px;
+          }
+          p {
+            font-size: 13px;
+          }
+          .checkBoxContainer {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .button {
+      .buttonsContainer {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        gap: 8px;
+      }
+      .cancelBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 9px;
+        text-align: center;
+        color: #6a8c3a;
+        border-style: solid;
+        border-width: thin;
+        border-color: #6a8c3a;
+        background-color: #fff;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &.cancelBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+      .saveBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 9px;
+        text-align: center;
+        color: #fff;
+        background-color: #6a8c3a;
+        border-style: hidden;
+        cursor: pointer;
+
+        &.saveBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+    }
+    .addTime {
+      .deleteTime {
+        margin-top: -60px;
+        margin-left: 100px;
+        color: red;
+      }
+      p {
+        margin-top: 40px;
+        color: #67833e;
+        margin-left: -220px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .delivery {
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .button {
+      .enableBtn {
+        width: 84px;
+        font-size: 13px;
+      }
+
+      .disableBtn {
+        width: 84px;
+        font-size: 13px;
+      }
+    }
+    .checkBoxContainer {
+      width: 100%;
+      margin-top: 20px;
+      .cPname {
+        font-size: 12px;
+      }
+    }
+
+    .checkbox {
+      display: none;
+    }
+
+    .checkbox + p::before {
+      width: 13px;
+      height: 13px;
+    }
+
+    .checkbox:checked + p::before {
+      background-color: #67833e;
+      border-color: #67833e;
+      content: "✔";
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      line-height: 15px;
+    }
+    .radioBtn {
+      .sessionContainer {
+        margin-right: 15px;
+
+        label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        input[type="radio"] + p::before {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+    .priceDetails {
+      margin-top: 10px;
+
+      .symbol {
+        top: 55px;
+      }
+    }
+    .scheduleContainer {
+      width: 123px;
+      height: 40px;
+
+      .scheduledContent {
+        p {
+          font-size: 15px;
+        }
+      }
+      .arrow {
+        margin-right: 5px;
+        margin-top: -5px;
+      }
+    }
+    .packageCharge {
+      .symbol {
+        top: 30px;
+      }
+    }
+    .distance {
+      h5 {
+        font-weight: 500;
+        font-size: 13px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .batchOrder {
+      input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .basedOnDistance {
+      .distanceInput {
+        margin-top: 5px;
+
+        .symbol {
+          font-size: 13px;
+          top: 38px;
+          left: 10px;
+        }
+
+        .input {
+          width: 200px;
+          height: 30px;
+          margin-top: -9px;
+          font-size: 13px;
+        }
+      }
+    }
+    .flatfee {
+      .symbol {
+        font-size: 13px;
+        top: 38px;
+      }
+
+      .input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .inhouse {
+      margin-top: 20px;
+      width: 30%;
+      border: 1px solid #979797;
+      padding: 0 40px 10px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .arrowDown {
+        margin-right: 5px;
+        transform: rotate(180deg);
+      }
+      .arrowUp {
+        margin-right: 5px;
+        transform: rotate(0deg);
+      }
+    }
+    .thirdParty {
+      margin-top: 20px;
+      width: fit-content;
+      border: 1px solid #979797;
+      padding: 0 40px 10px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        h3 {
+          margin-right: 50px;
+        }
+        .arrowDown {
+          margin-right: 5px;
+          transform: rotate(180deg);
+        }
+        .arrowUp {
+          margin-right: 5px;
+          transform: rotate(0deg);
+        }
+      }
+
+      .thirdPartyCheckBox {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+      }
+      .thirdPartyInputContaianer {
+        display: flex;
+        gap: 30px;
+        .thirdPartyInput {
+          input {
+            border-width: 1px;
+            width: 200px;
+            height: 25px;
+            font-size: 13px;
+          }
+          p {
+            font-size: 13px;
+          }
+          .checkBoxContainer {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .button {
+      .buttonsContainer {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        gap: 8px;
+      }
+      .cancelBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 9px;
+        text-align: center;
+        color: #6a8c3a;
+        border-style: solid;
+        border-width: thin;
+        border-color: #6a8c3a;
+        background-color: #fff;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &.cancelBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+      .saveBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 9px;
+        text-align: center;
+        color: #fff;
+        background-color: #6a8c3a;
+        border-style: hidden;
+        cursor: pointer;
+
+        &.saveBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+    }
+    .addTime {
+      .deleteTime {
+        margin-top: -60px;
+        margin-left: 350px;
+        color: red;
+      }
+      p {
+        margin-top: 40px;
+        color: #67833e;
+        margin-left: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .delivery {
+    h2 {
+      font-size: 17px;
+    }
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .button {
+      .enableBtn {
+        width: 80px;
+        font-size: 12px;
+      }
+
+      .disableBtn {
+        width: 80px;
+        font-size: 12px;
+      }
+    }
+    .checkBoxContainer {
+      width: 100%;
+      margin-top: 20px;
+      .cPname {
+        font-size: 12px;
+      }
+    }
+
+    .checkbox {
+      display: none;
+    }
+
+    .checkbox + p::before {
+      width: 12px;
+      height: 12px;
+    }
+
+    .checkbox:checked + p::before {
+      background-color: #67833e;
+      border-color: #67833e;
+      content: "✔";
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      line-height: 15px;
+    }
+    .radioBtn {
+      .sessionContainer {
+        margin-right: 15px;
+
+        label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        input[type="radio"] + p::before {
+          width: 13px;
+          height: 13px;
+        }
+      }
+    }
+    .priceDetails {
+      margin-top: 10px;
+
+      input {
+        margin-top: -20px;
+        width: 200px;
+      }
+
+      .symbol {
+        top: 38px;
+      }
+    }
+    .scheduleContainer {
+      width: 115px;
+      height: 30px;
+
+      .scheduledContent {
+        p {
+          font-size: 13px;
+        }
+      }
+      .arrow {
+        font-size: 10px;
+        margin-right: 5px;
+        margin-top: 1px;
+        cursor: pointer;
+      }
+    }
+    .packageCharge {
+      .symbol {
+        top: 14px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .distance {
+      h5 {
+        font-weight: 500;
+        font-size: 13px;
+      }
+      input {
+        width: 200px;
+        height: 25px;
+        margin-top: -9px;
+        font-size: 12px;
+        border-width: 1px;
+      }
+    }
+    .batchOrder {
+      input {
+        width: 200px;
+        height: 25px;
+        margin-top: -9px;
+        font-size: 13px;
+        border-width: 1px;
+      }
+    }
+    .basedOnDistance {
+      .distanceInput {
+        margin-top: 5px;
+
+        .symbol {
+          font-size: 13px;
+          top: 38px;
+          left: 10px;
+        }
+
+        .input {
+          width: 200px;
+          height: 30px;
+          margin-top: -9px;
+          font-size: 13px;
+        }
+      }
+    }
+    .inhouse {
+      margin-top: 20px;
+      width: 30%;
+      border: 1px solid #979797;
+      padding: 0 40px 10px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .arrowDown {
+        margin-right: 5px;
+        transform: rotate(180deg);
+      }
+      .arrowUp {
+        margin-right: 5px;
+        transform: rotate(0deg);
+      }
+    }
+    .thirdParty {
+      margin-top: 20px;
+      width: fit-content;
+      border: 1px solid #979797;
+      padding: 0 40px 10px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        h3 {
+          margin-right: 50px;
+        }
+        .arrowDown {
+          margin-right: 5px;
+          transform: rotate(180deg);
+        }
+        .arrowUp {
+          margin-right: 5px;
+          transform: rotate(0deg);
+        }
+      }
+
+      .thirdPartyCheckBox {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+      }
+      .thirdPartyInputContaianer {
+        display: grid;
+        gap: 5px;
+        .thirdPartyInput {
+          input {
+            border-width: 1px;
+            width: 200px;
+            height: 25px;
+            font-size: 13px;
+          }
+          p {
+            font-size: 13px;
+          }
+          .checkBoxContainer {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .button {
+      .buttonsContainer {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        gap: 8px;
+      }
+      .cancelBtn {
+        width: 90px;
+        height: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 9px;
+        text-align: center;
+        color: #6a8c3a;
+        border-style: solid;
+        border-width: thin;
+        border-color: #6a8c3a;
+        background-color: #fff;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &.cancelBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+      .saveBtn {
+        width: 90px;
+        height: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 9px;
+        text-align: center;
+        color: #fff;
+        background-color: #6a8c3a;
+        border-style: hidden;
+        cursor: pointer;
+
+        &.saveBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+    }
+    .addTime {
+      .deleteTime {
+        margin-top: -60px;
+        margin-left: 450px;
+        color: red;
+      }
+      p {
+        margin-top: 40px;
+        color: #67833e;
+        margin-left: 150px;
+      }
+    }
+    .feesStructure {
+      .sessionName {
+        margin-right: -7px;
+      }
+    }
+    .basedOnDistance {
+      p {
+        margin-top: 5px;
+      }
+
+      .distanceInput {
+        margin-top: 5px;
+        display: grid;
+        margin-top: 5px;
+
+        .symbol {
+          font-size: 13px;
+          top: 46px;
+          left: 10px;
+        }
+
+        .input {
+          width: 200px;
+          height: 30px;
+          margin-top: -9px;
+          font-size: 13px;
+        }
+      }
+    }
+    .flatfee {
+      .symbol {
+        font-size: 13px;
+        top: 38px;
+      }
+
+      .input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .delivery {
+    h2 {
+      font-size: 17px;
+    }
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    .button {
+      .enableBtn {
+        width: 80px;
+        font-size: 12px;
+      }
+
+      .disableBtn {
+        width: 80px;
+        font-size: 12px;
+      }
+    }
+    .checkBoxContainer {
+      width: 100%;
+      margin-top: 20px;
+      .cPname {
+        font-size: 12px;
+      }
+    }
+
+    .checkbox {
+      display: none;
+    }
+
+    .checkbox + p::before {
+      width: 12px;
+      height: 12px;
+    }
+
+    .checkbox:checked + p::before {
+      background-color: #67833e;
+      border-color: #67833e;
+      content: "✔";
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      line-height: 15px;
+    }
+    .radioBtn {
+      .sessionContainer {
+        margin-right: 15px;
+
+        label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        input[type="radio"] + p::before {
+          width: 13px;
+          height: 13px;
+        }
+      }
+    }
+    .priceDetails {
+      margin-top: 10px;
+
+      input {
+        margin-top: -20px;
+        width: 200px;
+      }
+
+      .symbol {
+        top: 38px;
+      }
+    }
+    .scheduleContainer {
+      width: 115px;
+      height: 30px;
+
+      .scheduledContent {
+        p {
+          font-size: 13px;
+        }
+      }
+      .arrow {
+        font-size: 10px;
+        margin-right: 5px;
+        margin-top: 1px;
+        cursor: pointer;
+      }
+    }
+    .packageCharge {
+      .symbol {
+        top: 14px;
+      }
+      input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+    .distance {
+      h5 {
+        font-weight: 500;
+        font-size: 13px;
+      }
+      input {
+        width: 200px;
+        height: 25px;
+        margin-top: -9px;
+        font-size: 12px;
+        border-width: 1px;
+      }
+    }
+    .batchOrder {
+      input {
+        width: 200px;
+        height: 25px;
+        margin-top: -9px;
+        font-size: 13px;
+        border-width: 1px;
+      }
+    }
+    .basedOnDistance {
+      .distanceInput {
+        margin-top: 5px;
+
+        .symbol {
+          font-size: 13px;
+          top: 38px;
+          left: 10px;
+        }
+
+        .input {
+          width: 200px;
+          height: 30px;
+          margin-top: -9px;
+          font-size: 13px;
+        }
+      }
+    }
+    .inhouse {
+      margin-top: 20px;
+      width: 30%;
+      border: 1px solid #979797;
+      padding: 0 40px 10px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .arrowDown {
+        margin-right: 5px;
+        transform: rotate(180deg);
+      }
+      .arrowUp {
+        margin-right: 5px;
+        transform: rotate(0deg);
+      }
+    }
+    .thirdParty {
+      margin-top: 20px;
+      width: fit-content;
+      border: 1px solid #979797;
+      padding: 0 40px 10px 40px;
+      border-radius: 8px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        h3 {
+          margin-right: 50px;
+        }
+        .arrowDown {
+          margin-right: 5px;
+          transform: rotate(180deg);
+        }
+        .arrowUp {
+          margin-right: 5px;
+          transform: rotate(0deg);
+        }
+      }
+
+      .thirdPartyCheckBox {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+      }
+      .thirdPartyInputContaianer {
+        display: grid;
+        gap: 5px;
+        .thirdPartyInput {
+          input {
+            border-width: 1px;
+            width: 200px;
+            height: 25px;
+            font-size: 13px;
+          }
+          p {
+            font-size: 13px;
+          }
+          .checkBoxContainer {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .button {
+      .buttonsContainer {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        display: flex;
+        gap: 8px;
+      }
+      .cancelBtn {
+        width: 90px;
+        height: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 9px;
+        text-align: center;
+        color: #6a8c3a;
+        border-style: solid;
+        border-width: thin;
+        border-color: #6a8c3a;
+        background-color: #fff;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &.cancelBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+      .saveBtn {
+        width: 90px;
+        height: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 9px;
+        text-align: center;
+        color: #fff;
+        background-color: #6a8c3a;
+        border-style: hidden;
+        cursor: pointer;
+
+        &.saveBtn:hover {
+          box-shadow: 1px 1px 1px 1px #6a8c3a;
+        }
+      }
+    }
+    .addTime {
+      .deleteTime {
+        margin-top: -60px;
+        margin-left: 160px;
+        color: red;
+      }
+      p {
+        margin-top: 40px;
+        color: #67833e;
+        margin-left: -150px;
+      }
+    }
+    .feesStructure {
+      .sessionName {
+        margin-right: -7px;
+      }
+    }
+    .basedOnDistance {
+      p {
+        margin-top: 5px;
+      }
+
+      .distanceInput {
+        margin-top: 5px;
+        display: grid;
+        margin-top: 5px;
+
+        .symbol {
+          font-size: 13px;
+          top: 46px;
+          left: 10px;
+        }
+
+        .input {
+          width: 200px;
+          height: 30px;
+          margin-top: -9px;
+          font-size: 13px;
+        }
+      }
+    }
+    .flatfee {
+      .symbol {
+        font-size: 13px;
+        top: 38px;
+      }
+
+      .input {
+        width: 200px;
+        height: 30px;
+        margin-top: -9px;
+        font-size: 13px;
+      }
+    }
+  }
+}

@@ -1,23 +1,24 @@
-export const POST_DATA_REQUEST = 'POST_DATA_REQUEST';
-export const POST_DATA_SUCCESS = 'POST_DATA_SUCCESS';
-export const POST_DATA_FAILURE = 'POST_DATA_FAILURE';
-export const POST_ONBOARDING_DATA_REQUEST = 'POST_ONBOARDING_DATA_REQUEST';
-export const  POST_ONBOARDING_DATA_SUCCESS="POST_ONBOARDING_DATA_SUCCESS";
-export const POST_ONBOARDING_DATA_FAILURE="POST_ONBOARDING_DATA_FAILURE"
-
-
-export const POST_DINEIN_DATA_REQUEST = 'POST_DINEIN_DATA_REQUEST';
-export const POST_DINEIN_DATA_SUCCESS="POST_DINEIN_DATA_SUCCESS";
-export const POST_DINEIN_DATA_FAILURE="POST_DINEIN_DATA_FAILURE"
-
-
-export const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
-export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
-export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
-
-
-export const LOCATION_ID = 'LOCATION_ID';
-
+import {
+  SAVE_BASIC_DETAILS_REQUEST,
+  SAVE_BASIC_DETAILS_SUCCESS,
+  SAVE_BASIC_DETAILS_FAILURE,
+  LOCATION_ID,
+  POST_DATA_REQUEST,
+  POST_DATA_SUCCESS,
+  POST_DATA_FAILURE,
+  GET_DATA_SUCCESS,
+  GET_DATA_FAILURE,
+  POST_DINEIN_DATA_REQUEST,
+  POST_DINEIN_DATA_SUCCESS,
+  POST_DINEIN_DATA_FAILURE,
+  POST_ONBOARDING_DATA_REQUEST,
+  POST_ONBOARDING_DATA_SUCCESS,
+  POST_ONBOARDING_DATA_FAILURE,
+  GET_DATA_REQUEST,
+  POST_DELIVERY_DATA_REQUEST,
+  POST_DELIVERY_DATA_SUCCESS,
+  POST_DELIVERY_DATA_FAILURE,
+} from "../constants";
 
 export const getLocationId = (data) => ({
   type: LOCATION_ID,
@@ -54,41 +55,74 @@ export const getDataFailure = (error) => ({
   payload: error,
 });
 
-export const postDineinDataRequest=(data)=>{
-  return{
-    type:POST_DINEIN_DATA_REQUEST,
-    payload:data
-  }}
+export const postDineinDataRequest = (data) => {
+  return {
+    type: POST_DINEIN_DATA_REQUEST,
+    payload: data,
+  };
+};
 
-export const postDineinDataSuccess=(response)=>{
-  return{
-    type:POST_DINEIN_DATA_SUCCESS,
-    payload:response
-  }}
-  
-export const postDineinDataFailure=(error)=>{
-  return{
-    type:POST_DINEIN_DATA_FAILURE,
-    payload:error
-  } }
+export const postDineinDataSuccess = (response) => {
+  return {
+    type: POST_DINEIN_DATA_SUCCESS,
+    payload: response,
+  };
+};
 
-export const postOnBoardingDataRequest=(data)=>{
-  return{
-    type:POST_ONBOARDING_DATA_REQUEST,
-    payload:data
-  } }
-  
-export const postOnBoardingDataSuccess=(response)=>{
-  return{
-    type:POST_ONBOARDING_DATA_SUCCESS,
-    payload:response
-  } }
-  
-export const postOnBoardingDataFailure=(error)=>{
-  return{
-    type:POST_ONBOARDING_DATA_FAILURE,
-    payload:error
-  }
-  
-}
+export const postDineinDataFailure = (error) => {
+  return {
+    type: POST_DINEIN_DATA_FAILURE,
+    payload: error,
+  };
+};
 
+export const postOnBoardingDataRequest = (data) => {
+  return {
+    type: POST_ONBOARDING_DATA_REQUEST,
+    payload: data,
+  };
+};
+
+export const postOnBoardingDataSuccess = (response) => {
+  return {
+    type: POST_ONBOARDING_DATA_SUCCESS,
+    payload: response,
+  };
+};
+
+export const postOnBoardingDataFailure = (error) => {
+  return {
+    type: POST_ONBOARDING_DATA_FAILURE,
+    payload: error,
+  };
+};
+
+export const saveBasicDetailsRequest = (data) => ({
+  type: SAVE_BASIC_DETAILS_REQUEST,
+  payload: data,
+});
+
+export const saveBasicDetailsSuccess = (data) => ({
+  type: SAVE_BASIC_DETAILS_SUCCESS,
+  payload: data,
+});
+
+export const saveBasicDetailsFailure = (error) => ({
+  type: SAVE_BASIC_DETAILS_FAILURE,
+  payload: error,
+});
+
+export const PostDeliveryDataRequest = (data) => ({
+  type: POST_DELIVERY_DATA_REQUEST,
+  payload: data,
+});
+
+export const PostDeliveryDataSuccess = (response) => ({
+  type: POST_DELIVERY_DATA_SUCCESS,
+  payload: response,
+});
+
+export const PostDeliveryDataFailure = (error) => ({
+  type: POST_DELIVERY_DATA_FAILURE,
+  payload: error,
+});

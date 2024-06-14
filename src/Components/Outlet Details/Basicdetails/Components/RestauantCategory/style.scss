@@ -1,0 +1,79 @@
+.restaurantCategory {
+  p {
+    color: #666666;
+  }
+  .header {
+    margin-bottom: 1rem;
+  }
+  .pillBox {
+    margin-bottom: 1rem;
+  }
+}
+.description {
+  textArea {
+    width: 605px;
+    height: 130px;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: #b3b3b3;
+    padding: 10px;
+    resize: none;
+    font-size: 15px;
+    font-family: Poppins;
+  }
+}
+textArea::selection {
+  background-color: transparent;
+  color: inherit;
+}
+
+@media (max-width: 1280px) {
+  .restaurantCategory {
+    margin-left: -8px;
+    p {
+      font-size: 13px;
+      color: #666666;
+    }
+  }
+  .description {
+    textArea {
+      width: 450px;
+      height: 100px;
+      padding: 10px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .restaurantCategory {
+    margin-left: -8px;
+    width: 440px;
+    .header {
+      h4 {
+        width: 440px;
+        // background-color: aquamarine;
+      }
+      p {
+        width: 440px;
+        // background-color: cadetblue;
+      }
+    }
+    p {
+      width: 440px;
+      font-size: 13px;
+      color: #666666;
+      // background-color: aqua;
+    }
+    .pillBox {
+      width: 440px;
+    }
+  }
+  .description {
+    width: 440px;
+    textArea {
+      width: 430px;
+      height: 100px;
+      padding: 10px;
+    }
+  }
+}

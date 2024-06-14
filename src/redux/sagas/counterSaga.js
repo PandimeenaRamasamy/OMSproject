@@ -1,15 +1,39 @@
 // src/sagas/postDataSaga.js
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { POST_DATA_REQUEST, postDataSuccess, postDataFailure,postDineinDataSuccess,postDineinDataFailure,POST_ONBOARDING_DATA_FAILURE } from '../Actions/PostDataAction';
-import { GET_DATA_REQUEST, getDataSuccess, getDataFailure ,POST_ONBOARDING_DATA_REQUEST,POST_DINEIN_DATA_REQUEST, POST_ONBOARDING_DATA_SUCCESS} from '../Actions/PostDataAction';
-import {LOCATION_ID} from '../Actions/PostDataAction'
-import { postOutletRegistration } from '../Api';
-import { GetData } from '../Api'
-import { PostOnboardingData } from '../Api';
-import {PostDineinData} from '../Api'
+import { call, put, takeEvery } from "redux-saga/effects";
+import {
+  postDataSuccess,
+  postDataFailure,
+  postDineinDataSuccess,
+  postDineinDataFailure,
+  getDataSuccess,
+  getDataFailure,
+  saveBasicDetailsSuccess,
+  saveBasicDetailsFailure,
+  PostDeliveryDataSuccess,
+  PostDeliveryDataFailure,
+} from "../Actions/PostDataAction";
+import {
+  POST_DATA_REQUEST,
+  POST_ONBOARDING_DATA_FAILURE,
+  GET_DATA_REQUEST,
+  POST_ONBOARDING_DATA_REQUEST,
+  POST_DINEIN_DATA_REQUEST,
+  POST_ONBOARDING_DATA_SUCCESS,
+  SAVE_BASIC_DETAILS_REQUEST,
+  POST_DELIVERY_DATA_REQUEST,
+} from "../constants";
 
-import axios from 'axios';
+import { LOCATION_ID } from "../constants";
+import {
+  PostBasicdetails,
+  PostDeliveryDataEndPoint,
+  postOutletRegistration,
+} from "../Api";
+import { GetData } from "../Api";
+import { PostOnboardingData } from "../Api";
+import { PostDineinData } from "../Api";
 
+// import axios from "axios";
 
 // function* postData(action) {
 //   try {
@@ -38,15 +62,9 @@ function* postData(action) {
   }
 }
 
-
-
-
-
 function* locationId(action) {
-  yield console.log('Storing name:', action.payload);
+  yield console.log("Storing name:", action.payload);
 }
-
-
 
 // function* getData() {
 //   try {
@@ -59,17 +77,14 @@ function* locationId(action) {
 // }
 
 function* getData() {
-    try {
-      const response = yield call(GetData);
-      const data = yield response.json();
-      yield put(getDataSuccess(data));
-    } catch (error) {
-      yield put(getDataFailure(error.message));
-    }
+  try {
+    const response = yield call(GetData);
+    const data = yield response.json();
+    yield put(getDataSuccess(data));
+  } catch (error) {
+    yield put(getDataFailure(error.message));
   }
-
-
-
+}
 
 // function* postOnBoardingData(action) {
 //   try {
@@ -86,10 +101,10 @@ function* getData() {
 // }
 function* postOnBoardingData(action) {
   try {
-    const response = yield call(PostOnboardingData,action.payload );
+    const response = yield call(PostOnboardingData, action.payload);
 
     if (response.status === 200) {
-      yield put( POST_ONBOARDING_DATA_SUCCESS(response.data));
+      yield put(POST_ONBOARDING_DATA_SUCCESS(response.data));
     } else {
       yield put(POST_ONBOARDING_DATA_FAILURE(response.statusText));
     }
@@ -97,7 +112,6 @@ function* postOnBoardingData(action) {
     yield put(POST_ONBOARDING_DATA_FAILURE(error.message));
   }
 }
-
 
 // function* postDineinData(action) {
 //   try {
@@ -115,10 +129,9 @@ function* postOnBoardingData(action) {
 //   }
 // }
 
-
 function* postDineinData(action) {
   try {
-    const response = yield call(PostDineinData,action.payload) 
+    const response = yield call(PostDineinData, action.payload);
     const data = yield response.json();
     yield put(postDineinDataSuccess(data));
   } catch (error) {
@@ -126,9 +139,39 @@ function* postDineinData(action) {
   }
 }
 
+function* postBasicDetailsData(action) {
+  try {
+    const payload = action.payload;
+    const response = yield call(PostBasicdetails, payload);
+    console.log("payload from saga", payload);
+    if (response === 200) {
+      yield put(saveBasicDetailsSuccess(response));
+    }
+  } catch (error) {
+    yield put(saveBasicDetailsFailure(error));
+  }
+}
 
+export function* PostDeliveryDataSagas(action) {
+  try {
+    const payload = action.payload;
+    const response = yield call(PostDeliveryDataEndPoint, payload);
+    if (response.status === 200) {
+      yield put(PostDeliveryDataSuccess(response.data));
+      console.log("Posted Successfully");
+    }
+  } catch (error) {
+    yield put(PostDeliveryDataFailure(error));
+  }
+}
 
+export function* watchPostDeliveryDataSagas() {
+  yield takeEvery(POST_DELIVERY_DATA_REQUEST, PostDeliveryDataSagas);
+}
 
+export function* watchBascDetailsPostData() {
+  yield takeEvery(SAVE_BASIC_DETAILS_REQUEST, postBasicDetailsData);
+}
 
 export function* watchPostData() {
   yield takeEvery(POST_DATA_REQUEST, postData);
@@ -142,9 +185,7 @@ export function* onBoardPostData() {
   yield takeEvery(POST_ONBOARDING_DATA_REQUEST, postOnBoardingData);
 }
 
-
-export function* dineinpostdata()
-{
+export function* dineinpostdata() {
   yield takeEvery(POST_DINEIN_DATA_REQUEST, postDineinData);
 }
 

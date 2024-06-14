@@ -1,0 +1,287 @@
+.pills {
+  width: 40.5%;
+  height: 20%;
+}
+
+.pillsContainer {
+  width: 455px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  align-items: center;
+  // background-color: burlywood;
+  img {
+    cursor: pointer;
+  }
+  .arrowDown {
+    margin-right: 5px;
+    transform: rotate(180deg);
+  }
+  .arrowUp {
+    margin-right: 5px;
+    transform: rotate(0deg);
+  }
+  .pillsContent {
+    display: flex;
+    flex-wrap: wrap;
+    width: 550px;
+    height: fit-content;
+    gap: 20px;
+    margin: 20px;
+    // background-color: brown;
+    .newPills {
+      display: flex;
+      // background-color: beige;
+      width: 145px;
+      height: 27px;
+      align-items: center;
+      margin-left: 100px;
+      position: relative;
+      left: 320px;
+      .inputText {
+        height: 23px;
+        width: 90px;
+        margin-bottom: 10px;
+        border-right: none;
+        padding-left: 8px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-left-width: 1px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        transition: border-color 0.3s ease;
+        &:focus {
+          border-color: #779749;
+          outline: none;
+        }
+      }
+      .addInputButton {
+        width: 60px;
+        height: 24px;
+        border-style: none;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        padding-right: 5px;
+        padding-left: 3px;
+        font-weight: 300;
+        color: #fff;
+        position: relative;
+        right: 5px;
+        background-color: #779749;
+      }
+    }
+    .addNewButton {
+      height: 27px;
+      width: 100px;
+      border-style: none;
+      border-radius: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-weight: 300;
+      color: #fff;
+      background-color: #779749;
+      position: relative;
+      left: 445px;
+    }
+    .pillsModal {
+      width: 100%;
+      border-top: 1px solid #000;
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      // background-color: #779749;
+      .iPills {
+        cursor: pointer;
+      }
+    }
+    .iPills {
+      width: fit-content;
+      display: flex;
+      background-color: #ebebeb;
+      padding: 7px 7px 7px 7px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 600;
+      justify-content: space-between;
+      img {
+        margin-left: 10px;
+        padding-top: 5px;
+        height: 13px;
+      }
+    }
+    .pillsModal .iPills:hover {
+      box-shadow: 1px 1px 1px 1px gray;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .pillsContainer {
+    padding: 3px;
+    .pillsContent {
+      width: 400px;
+      gap: 20px;
+      margin: 20px;
+      .pillsModal {
+        padding-top: 20px;
+        gap: 15px;
+      }
+      .newPills {
+        display: flex;
+        // background-color: beige;
+        width: 145px;
+        height: 27px;
+        align-items: center;
+        margin-left: -30px;
+        position: relative;
+        left: 310px;
+        .inputText {
+          height: 23px;
+          width: 90px;
+          margin-bottom: 10px;
+          border-right: none;
+          padding-left: 8px;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          border-left-width: 1px;
+          border-top-width: 1px;
+          border-bottom-width: 1px;
+          transition: border-color 0.3s ease;
+          &:focus {
+            border-color: #779749;
+            outline: none;
+          }
+        }
+        .addInputButton {
+          width: 60px;
+          height: 24px;
+          border-style: none;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          padding-right: 5px;
+          padding-left: 3px;
+          font-weight: 300;
+          color: #fff;
+          position: relative;
+          right: 5px;
+          background-color: #779749;
+        }
+      }
+      .addNewButton {
+        height: 27px;
+        width: 100px;
+        border-style: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 300;
+        color: #fff;
+        background-color: #779749;
+        // background-color: aquamarine;
+        position: relative;
+        left: 320px;
+      }
+      .iPills {
+        padding: 5px 5px 5px 5px;
+        border-radius: 13px;
+        font-size: 11px;
+        font-weight: 600;
+        justify-content: space-between;
+        img {
+          margin-left: 8px;
+          padding-top: 3px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .pillsContainer {
+    padding: 3px;
+    width: 430px;
+    // background-color: aquamarine;
+    .pillsContent {
+      width: 400px;
+      gap: 20px;
+      margin: 20px;
+      // background-color: beige;
+      .pillsModal {
+        padding-top: 20px;
+        gap: 15px;
+      }
+      .newPills {
+        display: flex;
+        // background-color: beige;
+        width: 145px;
+        height: 27px;
+        align-items: center;
+        margin-left: -30px;
+        position: relative;
+        left: 280px;
+        .inputText {
+          position: relative;
+          top: 5px;
+          height: 23px;
+          width: 90px;
+          margin-bottom: 10px;
+          border-right: none;
+          padding-left: 8px;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          border-left-width: 1px;
+          border-top-width: 1px;
+          border-bottom-width: 1px;
+          transition: border-color 0.3s ease;
+          &:focus {
+            border-color: #779749;
+            outline: none;
+          }
+        }
+        .addInputButton {
+          width: 60px;
+          height: 24px;
+          border-style: none;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          padding-right: 5px;
+          padding-left: 3px;
+          font-weight: 300;
+          color: #fff;
+          position: relative;
+          right: 5px;
+          background-color: #779749;
+        }
+      }
+      .addNewButton {
+        height: 27px;
+        width: 100px;
+        border-style: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 300;
+        color: #fff;
+        background-color: #779749;
+        // background-color: aquamarine;
+        position: relative;
+        left: 300px;
+      }
+      .iPills {
+        padding: 5px 5px 5px 5px;
+        border-radius: 13px;
+        font-size: 11px;
+        font-weight: 600;
+        justify-content: space-between;
+        img {
+          margin-left: 8px;
+          padding-top: 3px;
+        }
+      }
+    }
+  }
+}

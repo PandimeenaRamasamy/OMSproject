@@ -1,14 +1,21 @@
 // src/store/configureStore.js
 
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import postDataReducer from '../src/redux/Reducers/postDataReducer';
-import rootSaga from '../src/redux/sagas/rootSaga';
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import createSagaMiddleware from "redux-saga";
+// import postDataReducer from '../src/redux/Reducers/postDataReducer';
+import rootSaga from "../src/redux/sagas/rootSaga";
+import {
+  deliveryDataReducer,
+  postDataReducer,
+} from "./redux/Reducers/postDataReducer";
+import { basicDetailsReducer } from "./redux/Reducers/postDataReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   postData: postDataReducer,
+  basicDetails: basicDetailsReducer,
+  deliveryDetails: deliveryDataReducer,
   // Add other reducers here if necessary
 });
 

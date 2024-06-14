@@ -1,0 +1,64 @@
+.AddTime{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-left: -30px;
+}
+.time{
+    display: flex;
+    gap: 20px;
+}
+.nameBox{
+    margin-left: -190px;
+}
+
+@media(max-width:1280px){
+    .AddTime{
+        margin-bottom: 30px;
+        margin-left: -30px;
+    }
+    .time{
+        display: flex;
+        gap: 20px;
+    }
+    .nameBox{
+        margin-left: -180px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width:800px){
+    .AddTime{
+        margin-bottom: 30px;
+        margin-left: -30px;
+        margin-right: 30px;
+
+    }
+
+    .time{
+        display: flex;
+        gap: 20px;
+    }
+    .nameBox{
+        margin-left: -150px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width:500px){
+    .AddTime{
+        margin-bottom: 30px;
+        margin-left: -27px;
+    }
+    .time{
+        display: grid;
+        // grid-template-rows: 1fr 1fr;
+        margin-bottom: -15px;
+        .timeContainer{
+            margin-top: 15px;
+        }
+    }
+    .nameBox{
+        margin-left: -340px;
+        font-size: 13px;
+    }
+}
