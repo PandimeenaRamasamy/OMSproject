@@ -295,7 +295,7 @@ const Delivery = () => {
               <p className="cPname">Same as restaurant working time</p>
             </label>
           </div>
-          <div className="delivery addTime">
+          <div className="addTime">
             {timeSlots.map((slot, index) => (
               <AddTime
                 key={index}
@@ -310,7 +310,7 @@ const Delivery = () => {
             <p className="deleteTime" onClick={handleDelete}>
               - Delete Session
             </p>
-            <p onClick={addDayAndTime}>+ Add Time slots</p>
+            <p onClick={addDayAndTime} className="Addtimeslot">+ Add Time slots</p>
           </div>
 
           <div className="payment">
@@ -490,9 +490,12 @@ const Delivery = () => {
                 <p className="cPname">3rd party</p>
               </label>
             </div>
+
           </div>
 
           {/* Inhouse */}
+
+          <div className="inHousedeliveryoption" style={{height: showInHouse ? '100vh' : '20vh'}} >
           {inHouse && (
             <div className="inhouse">
               <div className="header">
@@ -706,10 +709,17 @@ const Delivery = () => {
                   </div>
                 </div>
               )}
+
+
             </div>
           )}
+          </div>
 
           {/* 3rd party */}
+
+          <div className="thirdpartydeliveryoption" style={{height: showThirdParty ? '30vh' : '20vh'}}>
+
+
           {thirdParty && (
             <div className="thirdParty">
               <div className="header">
@@ -805,27 +815,25 @@ const Delivery = () => {
                           onChange={(e) => {
                             setUberEats(e.target.value);
                           }}
+
                         />
+                       
                       </div>
                     )}
+                    
                   </div>
+                
                 </div>
               )}
             </div>
           )}
         </div>
-      )}
-
-      <div className="button">
-        <div className="button buttonsContainer">
-          <button className="button cancelBtn" onClick={handleClearAllButton}>
-            Clear All
-          </button>
-          <button className="button saveBtn" onClick={handleSaveNextButton}>
-            Save & Next
-          </button>
         </div>
-      </div>
+
+      )}
+      
+
+     
     </div>
   );
 };

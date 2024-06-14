@@ -1,10 +1,8 @@
 .delivery {
   position: relative;
-  margin-left: 340px;
-  display: flex;
-  top: 150px;
-  // background-color: #0d79dc;
-  // border: 1px solid red;
+  margin-left: 370px; 
+  top: 140px;
+  
 
   p {
     color: #666666;
@@ -15,6 +13,7 @@
 
   //Button
   .button {
+    margin-top: 25px;
     .enableBtn {
       width: 84px;
       height: 29px;
@@ -54,6 +53,11 @@
     }
   }
 
+
+  .deliveryContent
+  {
+    margin-top: -70px;
+  }
   //CheckBox
   .checkBoxContainer {
     width: 100%;
@@ -97,29 +101,35 @@
   //Add Time component
   .addTime {
     margin-top: 10px;
+    margin-left: 30px;
 
     .deleteTime {
-      margin-top: -60px;
+  
       margin-left: 10px;
       color: red;
     }
     p {
-      margin-top: 40px;
+      margin-top: 20px;
       color: #67833e;
-      margin-left: -450px;
+     margin-left: 250px;
       cursor: pointer;
       font-weight: 600;
       text-align: center;
     }
   }
   .payment {
+    margin-bottom: 30px;
     p {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     .paymentMethod {
       margin-top: 5px;
       display: flex;
       gap: 20px;
+    }
+    h3{
+      margin-bottom: 15px;
+
     }
   }
 
@@ -165,17 +175,20 @@
       }
     }
   }
+
   .priceDetails {
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     .input-container {
       position: relative;
       display: inline-block;
       margin-right: 20px;
+      margin-top: 20px;
     }
 
     .symbol {
       position: absolute;
-      top: 59px;
+      top: 45px;
       left: 10px;
       transform: translateY(-50%);
       pointer-events: none;
@@ -185,6 +198,31 @@
       padding-left: 25px;
       box-sizing: border-box;
       border-width: 1px;
+      top: 59px;
+    }
+  }
+
+
+  .schedule
+  {
+    margin-bottom: 30px;
+    h3{
+      margin-bottom: 15px;
+    }
+    p{
+      margin-bottom: 15px;
+    }
+  }
+ 
+
+  .deliveryInfo
+  {
+    margin-bottom: 30px;
+    h3{
+      margin-bottom: 15px;
+    }
+    p{
+      margin-bottom: 15px;
     }
   }
 
@@ -224,7 +262,8 @@
 
   //package charge
   .packageCharge {
-    margin-top: 5px;
+    margin-top: 15px;
+    margin-bottom: 30px;
     .input-container {
       position: relative;
       display: inline-block;
@@ -248,6 +287,8 @@
 
   //delivery option
   .deliveryOption {
+    margin-top: 15px;
+    margin-bottom: 30px;
     .deliveryOptionContainer {
       display: flex;
       margin-top: 20px;
@@ -319,17 +360,45 @@
     }
   }
 
+
+// .inHousedeliveryoption
+// {
+ 
+//   height: 100vh;
+// }
+// .thirdpartydeliveryoption
+// {
+
+//   height: 30vh;
+// }
+
+.feesStructure
+{
+  margin-top: 20px;
+}
+
   .inhouse {
-    margin-top: 20px;
-    width: 40%;
+    margin-top: 30px;
+   
+    width: 600px;
     border: 1px solid #979797;
     padding: 0 40px 20px 40px;
     border-radius: 8px;
+   
 
     .header {
       display: flex;
+      margin-top: 20px;
+      margin-bottom: 20px;
       justify-content: space-between;
       cursor: pointer;
+    }
+    .body{
+     
+      p{
+        margin-bottom: 20px;
+
+      }
     }
     .arrowDown {
       margin-right: 5px;
@@ -341,9 +410,16 @@
     }
   }
 
+  .distance
+  {
+    h5{
+      margin-bottom: 20px;
+    }
+  }
+
   .thirdParty {
-    margin-top: 20px;
-    width: fit-content;
+    margin-top: 30px;
+    width: 880px;
     border: 1px solid #979797;
     padding: 0 40px 20px 40px;
     border-radius: 8px;
@@ -352,6 +428,7 @@
       display: flex;
       justify-content: space-between;
       cursor: pointer;
+      margin-top: 20px;
       h3 {
         margin-right: 50px;
       }
@@ -372,11 +449,14 @@
     }
     .thirdPartyInputContaianer {
       display: flex;
+      margin-bottom: 30px;
       gap: 30px;
       .thirdPartyInput {
         input {
           font-size: 15px;
           height: 35px;
+          width: 250px;
+          border:1px solid #979797;
         }
         p {
           margin-top: 15px;
@@ -424,6 +504,30 @@
       }
     }
   }
+
+  .cod{
+    margin-top: 20px;
+    h3{
+      margin-bottom: 5px;
+    }
+   p{
+    margin-bottom: 5px;
+   }
+  }
+
+  .batchOrder{
+    margin-top: 10px;
+    h3{
+      margin-bottom: 5px;
+    }
+   p{
+    margin-bottom: 5px;
+   }
+  }
+
+
+
+
 
   .button {
     margin-bottom: 100px;
@@ -534,6 +638,7 @@
     }
     .priceDetails {
       margin-top: 10px;
+      margin-bottom: 30px;
 
       .symbol {
         top: 55px;
