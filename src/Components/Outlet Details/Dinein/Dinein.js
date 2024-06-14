@@ -762,14 +762,8 @@ const Dinein = () => {
         <br />
         <br />
         <br />
-        <button
-          onClick={() => {
-            dispatch(postDineinDataRequest(Outletdetails));
-          }}
-        >
-          Post data
-        </button>
-        <button onClick={handlesubmitoutlet}>post</button>
+      
+        
       </div>
       <br />
     </div>

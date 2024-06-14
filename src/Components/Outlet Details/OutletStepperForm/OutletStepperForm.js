@@ -54,6 +54,8 @@ function Stepform() {
     { title: 'Reciept', component: <Reciept/>, icon: <BiReceipt className='image' /> },
   ];
  
+
+
   
   const [visitedSteps, setVisitedSteps] = useState(new Array(steps.length).fill(false));
 
@@ -77,9 +79,9 @@ function Stepform() {
       
     }
     
-  };
-
-  const progress = ((visitedSteps.filter(step => step).length) / steps.length) * 100;
+    };
+    
+    const progress = ((visitedSteps.filter(step => step).length) / steps.length) * 100;
 
   return (
     <div className="page-content">
