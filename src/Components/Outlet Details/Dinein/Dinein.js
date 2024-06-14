@@ -503,7 +503,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     autoCancelTime: event.target.value,
                                   },
                                 });
@@ -522,7 +522,7 @@ const Dinein = React.forwardRef((props,ref) => {
                                 setOutletdetails({
                                   ...Outletdetails,
                                   checkIn: {
-                                    ...Outletdetails.checkin,
+                                    ...Outletdetails.checkIn,
                                     abandonTime: event.target.value,
                                   },
                                 });
@@ -571,12 +571,12 @@ const Dinein = React.forwardRef((props,ref) => {
                             type="radio"
                             value="no"
                             className="radioStyle"
-                            checked={Outletdetails.checkin.autoAssign === "no"}
+                            checked={Outletdetails.checkIn.autoAssign === "no"}
                             onChange={(event) =>
                               setOutletdetails({
                                 ...Outletdetails,
                                 checkIn: {
-                                  ...Outletdetails.checkin,
+                                  ...Outletdetails.checkIn,
                                   autoAssign: event.target.value,
                                 },
                               })
