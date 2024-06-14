@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import RestrauntImage from './RestrauntImage';
 import RestrauntImage2 from './RestrauntImage2';
 
-const ParentComponent = () => {
+const ParentComponent = React.forwardRef((props,ref) => {
   const [form, setForm] = useState({
     images: [],
     image: ""
@@ -51,8 +51,15 @@ const ParentComponent = () => {
     });
   };
 
-  console.log(form);
-  
+  const getFormData=()=>{
+    return form;
+  }
+
+  useImperativeHandle(ref,()=>({
+    getFormData,
+
+
+}))
 
   return (
     <>
@@ -72,6 +79,8 @@ const ParentComponent = () => {
    
     
   );
-};
+
+});
+
 
 export default ParentComponent;

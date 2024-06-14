@@ -35,6 +35,9 @@ import { PostDineinData } from "../Api";
 
 // import axios from "axios";
 
+
+
+
 // function* postData(action) {
 //   try {
 //     const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/registration', action.payload);
