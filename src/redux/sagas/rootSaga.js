@@ -5,6 +5,7 @@ import {
   watchBascDetailsPostData,
   watchPostData,
   watchPostDeliveryDataSagas,
+  RestrauntImageSaga
 } from "../sagas/counterSaga";
 import { watchgetData } from "../sagas/counterSaga";
 import { onBoardPostData } from "../sagas/counterSaga";
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     locationIdSaga(),
     watchBascDetailsPostData(),
     watchPostDeliveryDataSagas(),
+    RestrauntImageSaga() ,
   ]);
 }

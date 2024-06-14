@@ -74,7 +74,7 @@ export const PostDeliveryDataEndPoint = async (payload) => {
 };
 
 
-export const PostBasicdetails = async (payload) => {
+export const PostRestaurantImage = async (payload) => {
   try {
     const response = await axios.post(
       "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
@@ -101,3 +101,16 @@ export const PostBasicdetails = async (payload) => {
 //     throw new Error("Error Saving the basic details");
 //   }
 // };
+
+
+export const PostBasicdetails = async (payload) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      payload
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
