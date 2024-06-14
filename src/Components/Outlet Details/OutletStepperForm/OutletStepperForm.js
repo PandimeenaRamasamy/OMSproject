@@ -15,6 +15,8 @@ import Dinein from '../Dinein/Dinein'
 import Pickup from "../PickUp/Pickup"
 import Kitchen from '../Kitchen/Kitchen'
 import RestaurantImage from '../Restaurant Image/InputRefs'
+import { useDispatch } from 'react-redux';
+import { postDineinDataRequest } from '../../../redux/Actions/PostDataAction';
 
 
 
@@ -42,14 +44,16 @@ function Reciept()
 }
 function Stepform() {
    const [activeStep, setActiveStep] = useState(0);
+   const dispatch=useDispatch();
    
    const pickUpformRef=useRef();
    const kitchenformRef=useRef();
    const restrauntimageref=useRef();
+   const dineinref=useRef();
   const steps = [
     { title: 'Basic Details', component: <BasicDetails/>, icon: <CiUser className='image' /> },
     { title: 'Restaurant Image', component: <RestaurantImage ref={restrauntimageref}   />, icon: <CiImageOn className='image' /> },
-    { title: 'DineIn', component: <Dinein   />, icon: <ImSpoonKnife className='image' /> },
+    { title: 'DineIn', component: <Dinein ref={dineinref}  />, icon: <ImSpoonKnife className='image' /> },
     { title: 'Pickup', component: <Pickup ref={pickUpformRef}/>, icon: <FiShoppingBag className='image' /> },
     { title: 'Delivery', component: <Delivery/>, icon: <CiDeliveryTruck className='image' /> },
     { title: 'Kitchen', component: <Kitchen ref={kitchenformRef}/>, icon: <GiPressureCooker className='image' /> },
@@ -58,6 +62,7 @@ function Stepform() {
   const[pickupForm,setPickupForm]=useState("")
   const[kitchenForm,setKitchenForm]=useState("")
   const[restrauntImageForm,setrestrauntImageForm]=useState("")
+  const[dineInForm,setDineInForm]=useState("")
 
  
 
@@ -86,6 +91,15 @@ function Stepform() {
         setrestrauntImageForm(newFormData1)
      
         break;
+
+        case 2:
+          newFormData1={...newFormData1,DineIn:dineinref.current.getFormData()}
+          setDineInForm(newFormData1)
+          dispatch( postDineinDataRequest(dineInForm))
+          
+          break;
+
+
         
 
 
@@ -102,7 +116,7 @@ function Stepform() {
         
 
     }
-    console.log(restrauntImageForm) 
+    console.log(dineInForm) 
     
     
     handleNextStep();

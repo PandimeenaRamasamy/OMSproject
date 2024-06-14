@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useImperativeHandle } from "react";
+
 import "./Dinein.scss";
 import { postDineinDataRequest } from "../../../redux/Actions/PostDataAction";
 import { useDispatch } from "react-redux";
 
-const Dinein = () => {
+const Dinein = React.forwardRef((props,ref) => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState("");
   const [DineinselectedButton, setDineinselectedButton] = useState(false);
@@ -38,7 +39,6 @@ const Dinein = () => {
 
   const handlesubmitoutlet = (event) => {
     event.preventDefault();
-    console.log(Outletdetails);
   };
 
   const handleDayChange = (day) => {
@@ -124,6 +124,18 @@ const Dinein = () => {
       event.preventDefault();
     }
   };
+
+  const getFormData=()=>{
+    return Outletdetails;
+
+
+}
+
+  useImperativeHandle(ref,()=>({
+    getFormData,
+
+
+}))
 
  
 
@@ -768,6 +780,7 @@ const Dinein = () => {
       <br />
     </div>
   );
-};
+});
+
 
 export default Dinein;
