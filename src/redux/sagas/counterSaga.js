@@ -70,7 +70,7 @@ function* postData(action) {
 }
 
 function* locationId(action) {
-  yield console.log("Storing name:", action.payload);
+  yield ;
 }
 
 // function* getData() {

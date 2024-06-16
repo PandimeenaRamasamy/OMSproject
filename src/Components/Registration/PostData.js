@@ -127,9 +127,7 @@ const PostDataForm = () => {
   };
  
  
-  const locationId = useSelector((state) => state.postData.data);
-  console.log(locationId);
-  dispatch(getLocationId(locationId));
+
  
   const handleCodeChange = (event) => {
     setSelectedCode(event.target.value);
@@ -252,7 +250,7 @@ const PostDataForm = () => {
               )}
             </div>
             <div className="labelinput-divreg">
-              <label for="cars" className="labelreg">
+              <label htmlFor="cars" className="labelreg">
                 Designation
               </label>
               <select

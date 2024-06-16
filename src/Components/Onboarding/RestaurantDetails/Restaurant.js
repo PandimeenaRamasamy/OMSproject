@@ -4,17 +4,16 @@ import "./Restaurant.scss";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
-  const Restaurant = React.forwardRef((props, ref) => {
+
+const Restaurant = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const locationId = useSelector((state) => state.postData.data);
-  console.log(locationId);
-  const LocationId=dispatch(getLocationId(locationId));
- console.log(LocationId.payload)
- const Locid=LocationId.payload
 
+  const LocationId = dispatch(getLocationId(locationId));
+  const Locid = LocationId.payload;
 
   const [form, setForm] = useState({
-    locationId:Locid,
+    locationId: Locid,
     businessLegalName: "",
     phone: "",
     email: "",
@@ -23,8 +22,8 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
     facebookLink: "",
     restaurantNumber: "",
     whatsappNumber: "",
-  }); 
-  const[reserror,setResError]=useState({
+  });
+  const [reserror, setResError] = useState({
     businessLegalName: "",
     phone: "",
     email: "",
@@ -33,10 +32,9 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
     facebookLink: "",
     restaurantNumber: "",
     whatsappNumber: "",
-  })
-  const resetForm=()=>{
-    setForm(
-     {
+  });
+  const resetForm = () => {
+    setForm({
       businessLegalName: "",
       phone: "",
       email: "",
@@ -45,8 +43,7 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
       facebookLink: "",
       restaurantNumber: "",
       whatsappNumber: "",
-     }
-    ) 
+    });
     setResError({
       businessLegalName: "",
       phone: "",
@@ -56,8 +53,8 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
       facebookLink: "",
       restaurantNumber: "",
       whatsappNumber: "",
-    }) 
- }
+    });
+  };
 
   const [isChecked, setIsChecked] = useState(false);
   const [emailError, setEmailError] = useState("");
@@ -83,12 +80,8 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
     },
   }));
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
-   
-   
   };
 
   const handleCheckboxChange = () => {
@@ -122,57 +115,46 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
   const handleCodeChange = (event) => {
     setSelectedCode(event.target.value);
   };
-  const validate=()=>{
-    const errors={}
-    let isValid=true;
-    if(!form.businessLegalName)
-      {
-        errors.businessLegalName="Please Enter The Name"
-        isValid=false
-      }
-      else if(/[^a-zA-Z\s]/.test(form.businessLegalName)) {
-      
-     errors.businessLegalName=" Enter Name"
-     isValid=false;
-   }
-   if(!form.phone)
-    {errors.phone=" Enter type"
-      isValid=false;
-
+  const validate = () => {
+    const errors = {};
+    let isValid = true;
+    if (!form.businessLegalName) {
+      errors.businessLegalName = "Please Enter The Name";
+      isValid = false;
+    } else if (/[^a-zA-Z\s]/.test(form.businessLegalName)) {
+      errors.businessLegalName = " Enter Name";
+      isValid = false;
+    }
+    if (!form.phone) {
+      errors.phone = " Enter type";
+      isValid = false;
     }
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(form.email)) {
-      
       errors.email = "Enter valid email";
     }
-    if(!form.website)
-      {errors.website=" Enter Website Link"
-        isValid=false;
-  
-      }
-      if(!form.instagramLink)
-        {errors.instagramLink=" Enter instagram Link"
-          isValid=false;
-    
-        }
-        if(!form.facebookLink)
-          {errors.facebookLink=" Enter facebook Link"
-            isValid=false;
-      
-          }
-          if(!form.restaurantNumber)
-            {errors.restaurantNumber=" Enter Restaurant Number"
-              isValid=false;
-        
-            }
-            if(!form.whatsappNumber)
-              {errors.whatsappNumber=" Enter Restaurant Whatsapp Number"
-                isValid=false;
-          
-              }
-      setResError(errors);
-      return isValid
-  }
-  
+    if (!form.website) {
+      errors.website = " Enter Website Link";
+      isValid = false;
+    }
+    if (!form.instagramLink) {
+      errors.instagramLink = " Enter instagram Link";
+      isValid = false;
+    }
+    if (!form.facebookLink) {
+      errors.facebookLink = " Enter facebook Link";
+      isValid = false;
+    }
+    if (!form.restaurantNumber) {
+      errors.restaurantNumber = " Enter Restaurant Number";
+      isValid = false;
+    }
+    if (!form.whatsappNumber) {
+      errors.whatsappNumber = " Enter Restaurant Whatsapp Number";
+      isValid = false;
+    }
+    setResError(errors);
+    return isValid;
+  };
 
   return (
     <div className="main-divres">
@@ -193,9 +175,13 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                 placeholder="Name"
                 value={form.businessLegalName}
                 onChange={handleChange}
-                style={{borderColor: reserror.businessLegalName ? "red" : "#B3B3B3"}}
+                style={{
+                  borderColor: reserror.businessLegalName ? "red" : "#B3B3B3",
+                }}
               />
-              {reserror.businessLegalName && <div className="error">{reserror.businessLegalName}</div>}
+              {reserror.businessLegalName && (
+                <div className="error">{reserror.businessLegalName}</div>
+              )}
             </div>
 
             <div className="labelinput-divres">
@@ -226,11 +212,12 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                     onChange={(e) =>
                       setForm({ ...form, phone: e.target.value })
                     }
-
                   />
                   Landline
                 </label>
-                {reserror.phone && <div className="error">{reserror.phone}</div>}
+                {reserror.phone && (
+                  <div className="error">{reserror.phone}</div>
+                )}
               </div>
               <div style={{ marginTop: "20px" }}>
                 <select
@@ -253,12 +240,15 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   value={form.restaurantNumber}
                   onChange={(e) => {
                     setForm({ ...form, restaurantNumber: e.target.value });
-                    
                   }}
-                  style={{borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3"}}
+                  style={{
+                    borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3",
+                  }}
                 />
               </div>
-              {reserror.restaurantNumber && <div className="error">{reserror.restaurantNumber}</div>}
+              {reserror.restaurantNumber && (
+                <div className="error">{reserror.restaurantNumber}</div>
+              )}
             </div>
 
             <div className="labelinput-divres">
@@ -275,11 +265,9 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   className="radiores"
                   checked={isChecked}
                   onChange={handleCheckboxChange}
-                  
                 />
                 Same as restaurant mobile no.
               </label>
-
 
               <div>
                 <select
@@ -303,12 +291,15 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   value={form.whatsappNumber}
                   onChange={handleChange}
                   disabled={isChecked}
-                  style={{borderColor: reserror.whatsappNumber ? "red" : "#B3B3B3"}}
+                  style={{
+                    borderColor: reserror.whatsappNumber ? "red" : "#B3B3B3",
+                  }}
                 />
               </div>
-              {reserror.whatsappNumber && <div className="error">{reserror.whatsappNumber}</div>}
+              {reserror.whatsappNumber && (
+                <div className="error">{reserror.whatsappNumber}</div>
+              )}
             </div>
-
 
             <div
               style={{ display: "flex", justifyContent: "space-evenly" }}
@@ -328,11 +319,12 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   value={form.email}
                   onChange={(e) => {
                     handleChange(e);
-                   
                   }}
-                  style={{borderColor: reserror.email ? "red" : "#B3B3B3"}}
+                  style={{ borderColor: reserror.email ? "red" : "#B3B3B3" }}
                 />
-                {reserror.email && <div className="error">{reserror.email}</div>}
+                {reserror.email && (
+                  <div className="error">{reserror.email}</div>
+                )}
               </div>
               <div
                 style={{ display: "flex", flexDirection: "column" }}
@@ -348,14 +340,16 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   placeholder="Magilhub.com"
                   value={form.website}
                   onChange={handleChange}
-                  style={{borderColor: reserror.website ? "red" : "#B3B3B3"}}
+                  style={{ borderColor: reserror.website ? "red" : "#B3B3B3" }}
                 />
-                {reserror.website && <div className="error">{reserror.website}</div>}
+                {reserror.website && (
+                  <div className="error">{reserror.website}</div>
+                )}
               </div>
             </div>
 
             <div
-              style={{ display: "flex", justifyContent: "space-evenly"  }}
+              style={{ display: "flex", justifyContent: "space-evenly" }}
               className="personal-detailsres"
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -369,10 +363,13 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   placeholder="Chandra.uiux"
                   value={form.instagramLink}
                   onChange={handleChange}
-                  style={{borderColor: reserror.instagramLink ? "red" : "#B3B3B3"}}
-                  
+                  style={{
+                    borderColor: reserror.instagramLink ? "red" : "#B3B3B3",
+                  }}
                 />
-                {reserror.instagramLink && <div className="error">{reserror.instagramLink}</div>}
+                {reserror.instagramLink && (
+                  <div className="error">{reserror.instagramLink}</div>
+                )}
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="facebookLink" className="labelres">
@@ -385,9 +382,13 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
                   placeholder="chandra.com"
                   value={form.facebookLink}
                   onChange={handleChange}
-                  style={{borderColor: reserror.facebookLink ? "red" : "#B3B3B3"}}
+                  style={{
+                    borderColor: reserror.facebookLink ? "red" : "#B3B3B3",
+                  }}
                 />
-                {reserror.facebookLink && <div className="error">{reserror.facebookLink}</div>}
+                {reserror.facebookLink && (
+                  <div className="error">{reserror.facebookLink}</div>
+                )}
               </div>
             </div>
             <br />

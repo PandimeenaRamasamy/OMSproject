@@ -79,7 +79,7 @@ const Location = forwardRef((props, ref) => {
 
   }
 
-  console.log(locationError)
+  // console.log(locationError)
 
   const resetForm=()=>{
     setForm({
