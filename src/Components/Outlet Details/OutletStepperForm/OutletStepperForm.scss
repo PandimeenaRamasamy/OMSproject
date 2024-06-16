@@ -69,11 +69,12 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
+    
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
   .save_next{
-    width: 100px;
+    width: 150px;
     height: 35px;
    margin-left: 10px;
    color: white;
@@ -83,7 +84,7 @@
     border: 1px solid #67833E
   }
   .clear_all{
-    width: 100px;
+    width: 150px;
     height: 35px;
     color: #67833E;
     font-family: 'Poppins', sans-serif;

@@ -71,6 +71,7 @@
 
 
 
+
 .lables2  .labelhighchair{
   margin-top: 2%;
   font-size: 14px;
@@ -228,11 +229,12 @@ hr {
   input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     border: 2px solid #ccc;
     border-radius: 3px;
     margin-right: 10px;
+    
     cursor: pointer;
 
     &:checked {
@@ -248,7 +250,7 @@ hr {
        
         text-align: center;
         position: relative;
-        top: -10px;
+        top: -8px;
       }
     }
   }

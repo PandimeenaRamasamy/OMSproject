@@ -1,11 +1,11 @@
 import React, { useState,useImperativeHandle } from "react";
 
 import "./Dinein.scss";
-import { postDineinDataRequest } from "../../../redux/Actions/PostDataAction";
+
 import { useDispatch } from "react-redux";
 
 const Dinein = React.forwardRef((props,ref) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState("");
   const [DineinselectedButton, setDineinselectedButton] = useState(false);
   const [InteractiveselectedButton, setInteractiveselectedButton] = useState(false); 
@@ -37,9 +37,7 @@ const Dinein = React.forwardRef((props,ref) => {
     },
   });
 
-  const handlesubmitoutlet = (event) => {
-    event.preventDefault();
-  };
+ 
 
   const handleDayChange = (day) => {
     const updatedDays = Outletdetails.reservation.days.includes(day)
@@ -735,7 +733,7 @@ const Dinein = React.forwardRef((props,ref) => {
                           onChange={() => handleDayChange(day)}
                           className="radioStyle"
                         />
-                        <label style={{ fontSize: "13px" }}>{day}</label>
+                        <label style={{ fontSize: "13px",marginTop:'7px' }}>{day}</label>
                       </div>
                     ))}
                   </div>

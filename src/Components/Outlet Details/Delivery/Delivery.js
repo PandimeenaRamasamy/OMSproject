@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
@@ -405,10 +405,10 @@ const Delivery = () => {
                 </div>
                 <div className="arrow">
                   <div className="downsideArrow" onClick={handleDownClick}>
-                    <img src={vector} />
+                    <img src={vector} alt=""/>
                   </div>
                   <div className="upsideArrow" onClick={handleUpClick}>
-                    <img src={vector} />
+                    <img src={vector} alt=""/>
                   </div>
                 </div>
               </div>
@@ -503,7 +503,7 @@ const Delivery = () => {
                 <img
                   className={showInHouse ? "arrowUp" : "arrowDown"}
                   onClick={() => setShowInHouse(!showInHouse)}
-                  src={vector}
+                  src={vector} alt=""
                 />
               </div>
               {showInHouse && (
@@ -727,7 +727,7 @@ const Delivery = () => {
                 <img
                   className={showThirdParty ? "arrowUp" : "arrowDown"}
                   onClick={() => setShowTHirdParty(!showThirdParty)}
-                  src={vector}
+                  src={vector} alt=""
                 />
               </div>
               {showThirdParty && (

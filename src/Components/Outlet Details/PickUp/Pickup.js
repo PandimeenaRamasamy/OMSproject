@@ -1,4 +1,4 @@
-import React, { useState,useImperativeHandle, useRef} from 'react';
+import React, { useState,useImperativeHandle} from 'react';
 import "./Pickup.scss";
 
 const Pickup = React.forwardRef((props,ref) => {
@@ -67,30 +67,45 @@ const Pickup = React.forwardRef((props,ref) => {
                         </div>
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading3'>Please mention the payment methods</h5>
-                        <div style={{display:'flex', justifyContent:"space-around"}}>
-                        <input type='checkbox' style={{width:"20px"}} value="Cards" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px" }}>Cards</label>
-                        <input type='checkbox'  style={{width:"20px"}}  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px"}}>Pay at store</label>
-                        <input type='checkbox'  style={{width:"20px"}}  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px"}}>Apple Pay</label>
-                        <input type='checkbox' style={{width:"20px"}}  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:"10px"}}>Google Pay</label>
+                        <div style={{display:'flex'}}>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
+                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}}  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
+                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}}  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}}  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
                         </div>
+                        <div >
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
-                        <div style={{ }}>
-                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)"}} ></input><label className='' style={{fontSize:"16px" , marginTop:"20px",margin:"30px" }}>Yes</label>
-                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)"}}></input><label className='' style={{fontSize:"16px" , marginTop:"20px",margin:"30px" }}>No</label>
+                        <div style={{marginTop:'10px' }}>
+                            <input type="radio" name="YesorNo"   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
+                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
                         
                         </div>
+                        </div>
+
+                        <div>
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
-                        <div>
+                        <div className='pickupduration'>
                             <input type="number" placeholder='EOD' className='updown' onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
                         </div>
+                        </div>
+                       
+                        
+                        <div className='PackagingCharge'>
                         <h5 className='Pickup_heading7'>Packaging Charge </h5> 
                        <input type="text" className='Pack_type' placeholder='$' onChange={(e)=>setForm({...form,"packagingCharge":e.target.value})}></input>
-                       <h5 className='Pickup_heading7'>Pick up ETA </h5> 
+                      
+                        </div>
+                        <div className='picketa'>
+                        <h5 className='Pickup_heading7'>Pick up ETA </h5> 
                         <h5 className='Pickup_heading3'>Please mention the Estimated time of arrival for Pick up</h5>
                         <input type="text" className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"ETA":e.target.value})}></input>
                         
+                        </div>
+                      
+                      
+                     
                         </>
                     )
                     }

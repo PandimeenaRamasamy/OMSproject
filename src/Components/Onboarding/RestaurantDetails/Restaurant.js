@@ -14,7 +14,7 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 
   const [form, setForm] = useState({
-    locationId:LocationId.payload,
+    locationId:Locid,
     businessLegalName: "",
     phone: "",
     email: "",
@@ -68,7 +68,7 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
     resetForm,
     clearFormData: () => {
       setForm({
-        locationId: "3208d1e6-7407-4ac5-9d74-83d542b71226",
+        locationId: Locid,
         businessLegalName: "",
         phone: "",
         email: "",

@@ -20,9 +20,7 @@ import { PostRestaurantImageDataRequest } from "../../../redux/Actions/PostDataA
 import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
 
-// function Delivery() {
-//   return <h2>Delivery</h2>;
-// }
+
 
 function Reciept() {
   return <h2>Reciept</h2>;
@@ -128,6 +126,12 @@ function Stepform() {
           newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}
           setKitchenForm(newFormData1)
           break;
+        default:
+          console.log(" There is no Api call") ;
+          break;
+      
+
+
 
         
 
