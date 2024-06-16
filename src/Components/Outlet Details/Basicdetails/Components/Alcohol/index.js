@@ -15,7 +15,7 @@ const Alcohol = ({ onRadioChange, selectedOption }) => {
             onChange={onRadioChange}
             checked={selectedOption === "Serve Alcohol"}
           />
-          <p className="alcoholOptionName">Serve Alcohol</p>
+          <p className="serveAlcoholOptionName">Serve Alcohol</p>
         </label>
         <label>
           <input
@@ -26,7 +26,7 @@ const Alcohol = ({ onRadioChange, selectedOption }) => {
             checked={selectedOption === "Doesn't Serve Alcohol"}
             onChange={onRadioChange}
           />
-          <p className="alcoholOptionName">Doesn't Serve Alcohol</p>
+          <p className="noAlcoholOptionName">Doesn't Serve Alcohol</p>
         </label>
       </div>
     </div>

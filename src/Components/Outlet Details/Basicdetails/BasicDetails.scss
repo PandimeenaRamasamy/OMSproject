@@ -196,8 +196,9 @@
   .basic-details-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 90%;
     height: 100vh;
+    // background-color: burlywood;
 
     .footerButtonsContainer {
       height: 40px;
@@ -246,17 +247,21 @@
     }
 
     .basicDetails {
-      margin-top: 250px;
+      // margin-top: 250px;
       // background-color: red;
       width: 70%;
       .addNewService {
         background-color: #779749;
+        // background-color: salmon;
+        height: 40px;
+        width: 200px;
         color: #fff;
         padding: 0.5rem;
         border-style: none;
         border-radius: 0.5rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        font-size: medium;
         &:hover {
           box-shadow: 1px 1px 1px 1px gray;
         }
@@ -390,7 +395,7 @@
 }
 
 @media (max-width: 1080px) {
-  .container {
+  .basic-details-container {
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -443,7 +448,7 @@
     }
 
     .basicDetails {
-      margin-left: 350px;
+      margin-left: 250px;
       width: 60%;
       // background-color: aqua;
       .addNewService {
@@ -454,6 +459,7 @@
         border-radius: 0.5rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        font-size: small;
         &:hover {
           box-shadow: 1px 1px 1px 1px gray;
         }

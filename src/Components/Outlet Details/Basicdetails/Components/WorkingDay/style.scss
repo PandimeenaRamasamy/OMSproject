@@ -76,6 +76,7 @@
   }
   .session {
     display: flex;
+    width: 700px;
   }
   .sessionContainer {
     margin-right: 15px;
@@ -114,7 +115,10 @@
     }
   }
 
-  .addDayAndTime {
+  .addDayAndTimeWor {
+    // border: 1px solid black;
+    // height: 80px;
+    // background-color: salmon;
     .pAdd {
       color: #67833e;
       margin-top: -55px;

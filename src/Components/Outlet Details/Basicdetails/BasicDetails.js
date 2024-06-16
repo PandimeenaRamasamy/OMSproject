@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import "./BasicDetails.scss";
 import RestaurantSession from "./Components/RestaurantSession";
 import Alcohol from "./Components/Alcohol";
-// import Sidenavbar from "../../Components/Sidenavbar";
 import RestaurantCategory from "./Components/RestauantCategory";
 import AlcoholModal from "./Components/AlcoholModal";
 import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
@@ -388,7 +387,7 @@ const BasicDetails = () => {
           />
         </div>
       )}
-      <div className="footerButtonsContainer">
+      {/* <div className="footerButtonsContainer">
         <div className="footerButtonsInnerContainer">
           <button className="clearAllButton" onClick={handleClearAll}>
             Clear All
@@ -397,7 +396,7 @@ const BasicDetails = () => {
             Save & Next
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
