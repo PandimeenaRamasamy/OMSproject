@@ -54,8 +54,6 @@ export const PostDineinData = async (payload) => {
   }
 };
 
-
-
 export const postDeliveryDataURL =
   "http://192.168.1.20:8080/outlets/outlet/delivery/properties";
 
@@ -72,7 +70,6 @@ export const PostDeliveryDataEndPoint = async (payload) => {
     throw new Error("Error in Posting delivery data");
   }
 };
-
 
 export const PostRestaurantImage = async (payload) => {
   try {
@@ -101,7 +98,6 @@ export const PostRestaurantImage = async (payload) => {
 //     throw new Error("Error Saving the basic details");
 //   }
 // };
-
 
 export const PostBasicdetails = async (payload) => {
   try {

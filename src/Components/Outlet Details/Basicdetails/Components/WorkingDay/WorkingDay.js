@@ -14,7 +14,6 @@ const WorkingDay = ({
   setClosingTime,
   restaurantSessionid,
 }) => {
-
   return (
     <div className="workingDay">
       <div className="session">
@@ -98,17 +97,17 @@ const WorkingDay = ({
         </div>
       </div>
 
-      <div className="addDayAndTime">
-        {timeSlots?.[restaurantSessionid]?.map((slots,index) => (
-            <AddDayAndTime
-                slots={slots}
-                setTimeSlots={setTimeSlots}
-                index={index}
-                isLastIndex={index === timeSlots?.[restaurantSessionid]?.length - 1}  //show add time
-                restaurantSessionid={restaurantSessionid}
-                setOpeningTime={setOpeningTime}
-                setClosingTime={setClosingTime}
-            />
+      <div className="addDayAndTimeWor">
+        {timeSlots?.[restaurantSessionid]?.map((slots, index) => (
+          <AddDayAndTime
+            slots={slots}
+            setTimeSlots={setTimeSlots}
+            index={index}
+            isLastIndex={index === timeSlots?.[restaurantSessionid]?.length - 1} //show add time
+            restaurantSessionid={restaurantSessionid}
+            setOpeningTime={setOpeningTime}
+            setClosingTime={setClosingTime}
+          />
         ))}
       </div>
     </div>
