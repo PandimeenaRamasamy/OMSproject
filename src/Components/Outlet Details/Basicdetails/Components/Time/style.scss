@@ -23,9 +23,12 @@
 
 @media (max-width: 1280px) {
   .time {
+    margin-left: 1rem;
+    width: 100%;
+    // background-color: cadetblue;
     input {
       margin-top: 10px;
-      width: 292px;
+      width: 400px;
       height: 44px;
       font-size: 15px;
       font-weight: light;

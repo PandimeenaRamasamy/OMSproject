@@ -85,11 +85,11 @@ const AddDayAndTime = ({
           </div>
         )}
         {!isLastIndex && (
-          <div className="deleteDayAndTime">
-            <p onClick={deleteCurrentTime} className="delete-day-time">
-              - Delete Time
-            </p>
-          </div>
+          // <div className="deleteDayAndTime">
+          <p onClick={deleteCurrentTime} className="delete-day-time">
+            - Delete Time
+          </p>
+          // </div>
         )}
       </span>
       {slots?.isContainWeeks && (
