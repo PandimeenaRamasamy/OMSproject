@@ -15,6 +15,7 @@ import Kitchen from "../Kitchen/Kitchen";
 import RestaurantImage from "../Restaurant Image/InputRefs";
 import { useDispatch } from 'react-redux';
 import { postDineinDataRequest } from '../../../redux/Actions/PostDataAction';
+import { PostRestaurantImageDataRequest } from "../../../redux/Actions/PostDataAction";
 
 import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
@@ -29,48 +30,7 @@ function Reciept() {
 function Stepform() {
 
   const [activeStep, setActiveStep] = useState(0);
-
-  const steps = [
-    {
-      title: "Basic Details",
-      component: <BasicDetails />,
-      icon: <CiUser className="image" />,
-    },
-    {
-      title: "Restaurant Image",
-      component: <RestaurantImage />,
-      icon: <CiImageOn className="image" />,
-    },
-    {
-      title: "DineIn",
-      component: <Dinein />,
-      icon: <ImSpoonKnife className="image" />,
-    },
-    {
-      title: "Pickup",
-      component: <Pickup />,
-      icon: <FiShoppingBag className="image" />,
-    },
-    {
-      title: "Delivery",
-      component: <Delivery />,
-      icon: <CiDeliveryTruck className="image" />,
-    },
-    {
-      title: "Kitchen",
-      component: <Kitchen />,
-      icon: <GiPressureCooker className="image" />,
-    },
-    {
-      title: "Reciept",
-      component: <Reciept />,
-      icon: <BiReceipt className="image" />,
-    },
-  ];
-
- 
-  
-   const dispatch=useDispatch();
+  const dispatch=useDispatch();
    
    const pickUpformRef=useRef();
    const kitchenformRef=useRef();
@@ -82,6 +42,48 @@ function Stepform() {
   const[restrauntImageForm,setrestrauntImageForm]=useState("")
   const[dineInForm,setDineInForm]=useState("")
 
+
+  const steps = [
+    {
+      title: "Basic Details",
+      component: <BasicDetails />,
+      icon: <CiUser className="image" />,
+    },
+    {
+      title: "Restaurant Image",
+      component: <RestaurantImage ref={restrauntimageref} />,
+      icon: <CiImageOn className="image" />,
+    },
+    {
+      title: "DineIn",
+      component: <Dinein  ref={dineinref}/>,
+      icon: <ImSpoonKnife className="image" />,
+    },
+    {
+      title: "Pickup",
+      component: <Pickup ref={pickUpformRef} />,
+      icon: <FiShoppingBag className="image" />,
+    },
+    {
+      title: "Delivery",
+      component: <Delivery />,
+      icon: <CiDeliveryTruck className="image" />,
+    },
+    {
+      title: "Kitchen",
+      component: <Kitchen ref={kitchenformRef} />,
+      icon: <GiPressureCooker className="image" />,
+    },
+    {
+      title: "Reciept",
+      component: <Reciept />,
+      icon: <BiReceipt className="image" />,
+    },
+  ];
+
+ 
+  
+   
  
 
 
@@ -109,18 +111,13 @@ function Stepform() {
       case 1:
         newFormData1={...newFormData1,RestrauntImage:restrauntimageref.current.getFormData()}
         setrestrauntImageForm(newFormData1)
+        dispatch(PostRestaurantImageDataRequest(newFormData1))
         break;
       case 2:
           newFormData1={DineIn:dineinref.current.getFormData()}
           setDineInForm(newFormData1)
           dispatch( postDineinDataRequest(newFormData1))
           break;
-          
-         
-
-
-        
-
 
       case 3:
         newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
@@ -163,7 +160,7 @@ function Stepform() {
   return (
     <div className="page-content">
       <div className="stepform">
-        <div className="container">
+        <div className="Stepperformcontainer">
           <div className="sub-container">
             <div className="stepper-progress">
               <div
@@ -196,9 +193,7 @@ function Stepform() {
           </div>
           <div>
 
-            <button className="save_next" onClick={handleNextStep}>
-              Save & Next
-            </button>
+        
 
             <button className='save_next' onClick={handleSaveandNext}>Save & Next</button>
 

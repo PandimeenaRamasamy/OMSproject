@@ -84,12 +84,15 @@ color: white;
 .Pickup_heading5{
     font-size: 14px;
     font-weight: 400;
+    margin-top: 22px;
+
     
 }
 .checkbox1{
 accent-color:rgba(103, 131, 62, 1);
-;
-width:16px;
+width: 16px;
+
+
 }
 .from_to{
     gap: 286px;
@@ -115,14 +118,17 @@ font-size: 16px;
     font-size: 16px;
 
 }
-.label{
+.label2{
     
     font-size:15px;
+ 
+    
 }
 .label1{
     
     font-size:15px;
     margin-left:12px;
+    margin-top: -30px;
 }
 .Pickup_heading7{
     margin-top:60px;
@@ -130,24 +136,30 @@ font-size: 16px;
     font-weight:500;
     line-height: 20px;
 }
-.Payment_checkbox{
+.Payment_checkbox1{
     accent-color:rgba(103, 131, 62, 1);
-    width:24px;
+    width: 16px;
+    
+
 }
-.radio1{
+.radioo1{
 
     accent-color: rgba(103, 131, 62, 1);
+    width: 16px;
     
  }
-.radio2{
+.radioo2{
    margin-left: 15px;
    accent-color:rgba(103, 131, 62, 1);
+   width: 16px;
+ 
    
 }
 .updown{
     width:133px;
     height:44px;
     font-size: 14px;
+
 
 }
 .Pack_type{
@@ -174,8 +186,7 @@ font-size: 16px;
 .Pickup_container{
     width:500px;
     position: relative;
-    top:250px;
-    left:375px;
+   
 
 }
 }
@@ -185,8 +196,8 @@ font-size: 16px;
 .Pickup_container{
     width:500px;
     position: relative;
-    top:250px;
-    left:275px;
+    
 
 }
 }
+
