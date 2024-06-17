@@ -3,16 +3,17 @@
 }
 
 .main-kitchen-div{
+    position: relative;
+    margin-left: 340px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 120px;
 }
 .submain-kitchen-div{
-    width: 402px;
-    height: 350px;
-    position: absolute;
-    top: 343px;
-    left: 370px;
+    transform: translateY(-20px);
+    position: relative;
+    width: 100%;
+    top: 40px;
+    left: 30px;
 
     display: flex;
     flex-direction: column;
@@ -96,4 +97,24 @@
     left: 39px
 
     
+}
+
+
+@media (max-width:1280px)
+{
+    .main-kitchen-div {
+  position: relative;
+  margin-top: -140px;
+  
+  }
+}
+
+@media (max-width:1080px) {
+  .main-kitchen-div {
+  
+    left: -120px;
+  
+  }
+
+
 }
