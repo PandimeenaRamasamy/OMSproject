@@ -495,7 +495,7 @@ const Delivery = () => {
 
           {/* Inhouse */}
 
-          <div className="inHousedeliveryoption" style={{height: showInHouse ? '100vh' : '20vh'}} >
+          <div className="inHousedeliveryoption" style={{height: showInHouse ? '120vh' : '10vh'}} >
           {inHouse && (
             <div className="inhouse">
               <div className="header">

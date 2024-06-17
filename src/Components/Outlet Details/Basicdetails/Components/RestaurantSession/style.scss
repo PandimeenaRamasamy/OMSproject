@@ -1,10 +1,12 @@
 .restaurantSessionContainer {
+ 
   margin-top: 1rem;
   .sessionHeaderRes {
     display: flex;
     gap: 15px;
     p {
       color: #2f2f2f;
+      font-size: 14px;
     }
     img {
       cursor: pointer;
@@ -20,11 +22,19 @@
   }
   .sessionBodyRes {
     .addBtn {
-      margin-top: 20px;
+      margin-top: 10px;
+      
       span {
         color: #67833e;
-        font-weight: 700;
+        font-weight: 500;
         cursor: pointer;
+        font-size: 14px;
+      }
+      p {
+        color: #000000;
+        font-size: 14px;
+        
+
       }
     }
   }

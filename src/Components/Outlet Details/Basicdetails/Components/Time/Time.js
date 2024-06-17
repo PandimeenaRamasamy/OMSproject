@@ -13,4 +13,6 @@ const Time = ({ time, setTime, index}) => {
   );
 };
 
+
+
 export default Time;

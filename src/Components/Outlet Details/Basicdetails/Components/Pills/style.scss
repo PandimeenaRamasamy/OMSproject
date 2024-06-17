@@ -4,7 +4,7 @@
 }
 
 .pillsContainer {
-  width: 455px;
+  width: 605px;
   height: fit-content;
   display: flex;
   justify-content: space-between;
@@ -67,10 +67,12 @@
         padding-right: 5px;
         padding-left: 3px;
         font-weight: 300;
+        font-size: small;
         color: #fff;
         position: relative;
         right: 5px;
         background-color: #779749;
+        // background-color: salmon;
       }
     }
     .addNewButton {
@@ -81,6 +83,7 @@
       padding-top: 5px;
       padding-bottom: 5px;
       font-weight: 300;
+      font-size: small;
       color: #fff;
       background-color: #779749;
       position: relative;
@@ -354,6 +357,7 @@
         background-color: #779749;
         // background-color: aquamarine;
         position: relative;
+        text-align: center;
         left: 300px;
       }
       .iPills {
