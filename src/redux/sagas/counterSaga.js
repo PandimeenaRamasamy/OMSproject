@@ -24,7 +24,8 @@ import {
   POST_RESTAURANTIMAGE_DATA_REQUEST,
   POST_RESTAURANTIMAGE_DATA_SUCCESS,
   POST_RESTAURANTIMAGE_DATA_FALIURE,
-  POST_PICKUP_DATA_REQUEST
+  POST_PICKUP_DATA_REQUEST,
+  POST_KITCHEN_DATA_REQUEST
 } from "../constants";
 
 import { LOCATION_ID } from "../constants";
@@ -202,6 +203,21 @@ export function* PostPickupSaga(action) {
 }
 
 
+export function* PostKitchenSaga(action) {
+  try {
+    const payload = action.payload;
+    const response = yield call(PostPickup, payload);
+    if (response.status === 200) {
+      yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
+      console.log("Posted Successfully");
+    }
+  } catch (error) {
+    yield put(POST_RESTAURANTIMAGE_DATA_FALIURE(error));
+  }
+}
+
+
+
 
 
 
@@ -241,4 +257,8 @@ export function* RestrauntImageSaga() {
 
 export function* PickupSaga() {
   yield takeEvery(POST_PICKUP_DATA_REQUEST, PostPickupSaga);
+}
+
+export function* KitchenSaga() {
+  yield takeEvery(POST_KITCHEN_DATA_REQUEST, PostKitchenSaga);
 }
