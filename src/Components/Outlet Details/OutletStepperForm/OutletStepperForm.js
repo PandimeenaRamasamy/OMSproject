@@ -116,23 +116,18 @@ function Stepform() {
       case 0:
         newFormData1=basicDetailsref.current.getFormData()
         setBasicDetailsForm(newFormData1)
-        dispatch(saveBasicDetailsRequest(newFormData1))
-       
+        dispatch(saveBasicDetailsRequest(newFormData1))      
         break;
-
-
       case 1:
         newFormData1=restrauntimageref.current.getFormData()
         setrestrauntImageForm(newFormData1)
-        dispatch(PostRestaurantImageDataRequest(newFormData1))
-       
+        dispatch(PostRestaurantImageDataRequest(newFormData1))    
         break;
       case 2:
           newFormData1=dineinref.current.getFormData()
           setDineInForm(newFormData1)
           dispatch(postDineinDataRequest(newFormData1))
           break;
-
       case 3:
         newFormData1=pickUpformRef.current.getFormData()
         setPickupForm(newFormData1);

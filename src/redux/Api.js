@@ -115,7 +115,7 @@ export const PostBasicdetails = async (payload) => {
 export const PostPickup = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
+      "http://192.168.1.18:8081/outlets/outlet/pickUp/properties",
       payload
     );
     return response;
@@ -128,7 +128,7 @@ export const PostPickup = async (payload) => {
 export const PostKitchen = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
+      "http://192.168.1.18:8081/outlets/outlet/kitchen/properties",
       payload
     );
     return response;

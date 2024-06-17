@@ -345,7 +345,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
     });
 
     const payload = {
-      locationId: Locid,
+      locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
     
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
