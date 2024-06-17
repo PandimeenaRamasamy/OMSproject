@@ -312,7 +312,7 @@ const BasicDetails = () => {
     });
 
     const payload = {
-      locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
+    
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,
