@@ -22,6 +22,7 @@ import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
 import { PostPickupDataRequest } from "../../../redux/Actions/PostDataAction";
 import { PostKitchenDataRequest } from "../../../redux/Actions/PostDataAction";
+import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
 
 
 
@@ -38,18 +39,20 @@ function Stepform() {
    const restrauntimageref=useRef();
    const dineinref=useRef();
    const deliveryref=useRef();
+   const basicDetailsref=useRef();
  
   const[pickupForm,setPickupForm]=useState("")
   const[kitchenForm,setKitchenForm]=useState("")
   const[restrauntImageForm,setrestrauntImageForm]=useState("")
   const[dineInForm,setDineInForm]=useState("")
   const [deliveryform,setDeliveryForm]=useState("");
+  const[basicDetailsForm,setBasicDetailsForm]=useState('');
 
 
   const steps = [
     {
       title: "Basic Details",
-      component: <BasicDetails />,
+      component: <BasicDetails ref={basicDetailsref}/>,
       icon: <CiUser className="image" />,
     },
     {
@@ -110,11 +113,17 @@ function Stepform() {
     let newFormData1={}
     switch(activeStep)
     {
+      case 0:
+        newFormData1={...newFormData1,BasicDetails:basicDetailsref.current.getFormData()}
+        setBasicDetailsForm(newFormData1)
+        dispatch(PostRestaurantImageDataRequest(newFormData1))
+        break;
+
 
       case 1:
         newFormData1={...newFormData1,RestrauntImage:restrauntimageref.current.getFormData()}
         setrestrauntImageForm(newFormData1)
-        dispatch(PostRestaurantImageDataRequest(newFormData1))
+        dispatch(saveBasicDetailsRequest(newFormData1))
         break;
       case 2:
           newFormData1={DineIn:dineinref.current.getFormData()}
