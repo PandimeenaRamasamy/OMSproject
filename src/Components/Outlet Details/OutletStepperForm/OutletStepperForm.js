@@ -21,6 +21,7 @@ import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
 import { PostPickupDataRequest } from "../../../redux/Actions/PostDataAction";
+import { PostKitchenDataRequest } from "../../../redux/Actions/PostDataAction";
 
 
 
@@ -130,6 +131,7 @@ function Stepform() {
         case 5:
           newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}
           setKitchenForm(newFormData1)
+          dispatch(PostKitchenDataRequest(newFormData1))
           break;
         default:
           console.log(" There is no Api call") ;
