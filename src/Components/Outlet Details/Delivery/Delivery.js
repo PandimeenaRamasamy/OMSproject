@@ -213,6 +213,8 @@ const Delivery = () => {
       deliveryOption: {},
     };
 
+    console.log(payloadData)
+
     if (inHouse) {
       payloadData.deliveryOption.inHouse = {
         isEnabled: inHouse,

@@ -132,6 +132,7 @@
   
       margin-left: 10px;
       color: red;
+     
     }
     p {
       margin-top: 20px;
@@ -603,6 +604,8 @@
 
 @media (max-width: 1280px) {
   .delivery {
+
+    margin-top: -135px;
     h3 {
       font-size: 16px;
     }
@@ -620,6 +623,15 @@
         font-size: 13px;
       }
     }
+
+    .addTime{
+      .deleteTime{
+        margin-top: 100px;
+      }
+    }
+
+
+    
     .checkBoxContainer {
       width: 100%;
       margin-top: 20px;
@@ -854,14 +866,18 @@
     }
     .addTime {
       .deleteTime {
-        margin-top: -60px;
-        margin-left: 100px;
+        margin-top: 40px;
+        margin-left: 350px;
         color: red;
       }
       p {
         margin-top: 40px;
         color: #67833e;
         margin-left: -220px;
+      }
+      .Addtimeslot
+      {
+        margin-left: 400px;
       }
     }
   }
@@ -1119,7 +1135,7 @@
     }
     .addTime {
       .deleteTime {
-        margin-top: -60px;
+        margin-top: 40px;
         margin-left: 350px;
         color: red;
       }
