@@ -3,7 +3,7 @@ import axios from "axios";
 export const postOutletRegistration = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlets/outlet/registration",
+      "http://192.168.1.18:8081/outlets/outlet/registration",
       payload
     );
     return response;
@@ -15,7 +15,7 @@ export const postOutletRegistration = async (payload) => {
 export const GetData = async () => {
   try {
     const response = await axios.get(
-      "http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76"
+      "http://192.168.1.20:8081/outlet/8dfe7674-709d-431c-a233-628e839ecc76"
     );
     return response;
   } catch (error) {
@@ -26,7 +26,7 @@ export const GetData = async () => {
 export const PostOnboardingData = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlets/outlet/onBoarding",
+      "http://192.168.1.18:8081/outlets/outlet/onBoarding",
       payload
     );
     return response;
@@ -38,7 +38,7 @@ export const PostOnboardingData = async (payload) => {
 export const PostDineinData = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlet/dineIn",
+      "http://192.168.1.18:8081/outlets/outlet/dineIn/properties",
       payload,
       {
         method: "POST",
@@ -55,7 +55,7 @@ export const PostDineinData = async (payload) => {
 };
 
 export const postDeliveryDataURL =
-  "http://192.168.1.20:8080/outlets/outlet/delivery/properties";
+  "http://192.168.1.18:8081/outlets/outlet/delivery/properties";
 
 export const PostDeliveryDataEndPoint = async (payload) => {
   try {
@@ -74,7 +74,7 @@ export const PostDeliveryDataEndPoint = async (payload) => {
 export const PostRestaurantImage = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      "http://192.168.1.18:8081/outlets/outlet/restImg/properties",
       payload
     );
     return response;
@@ -102,7 +102,7 @@ export const PostRestaurantImage = async (payload) => {
 export const PostBasicdetails = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
       payload
     );
     return response;
@@ -115,7 +115,7 @@ export const PostBasicdetails = async (payload) => {
 export const PostPickup = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
       payload
     );
     return response;
@@ -128,7 +128,7 @@ export const PostPickup = async (payload) => {
 export const PostKitchen = async (payload) => {
   try {
     const response = await axios.post(
-      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
       payload
     );
     return response;

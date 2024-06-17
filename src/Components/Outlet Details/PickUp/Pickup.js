@@ -1,9 +1,16 @@
 import React, { useState,useImperativeHandle} from 'react';
 import "./Pickup.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 const Pickup = React.forwardRef((props,ref) => {
+    const dispatch = useDispatch();
+    const locationId = useSelector((state) => state.postData.data);  
+    const LocationId = dispatch(getLocationId(locationId));
+    const Locid = LocationId.payload;
     
     const[form,setForm]=useState({
+        locationId: Locid,
         serviceTimeFrom:"",
         serviceTimeTo:"",
         Payment:[],
@@ -87,7 +94,7 @@ const Pickup = React.forwardRef((props,ref) => {
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
                         <div className='pickupduration'>
-                            <input type="number" placeholder='EOD' className='updown' onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
+                            <input type="number" placeholder='EOD' className='updown' min="0" onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
                         </div>
                         </div>
                        

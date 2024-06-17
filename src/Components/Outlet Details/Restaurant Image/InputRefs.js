@@ -1,11 +1,21 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import RestrauntImage from './RestrauntImage';
 import RestrauntImage2 from './RestrauntImage2';
+import { useDispatch, useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
+
 
 const ParentComponent = React.forwardRef((props,ref) => {
+  const dispatch = useDispatch();
+
+  const locationId = useSelector((state) => state.postData.data);  
+  const LocationId = dispatch(getLocationId(locationId));
+  const Locid = LocationId.payload;
   const [form, setForm] = useState({
-    images: [],
-    image: ""
+
+    locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
+    restaurantImgs: [],
+    profileImg: ""
   });
 
   const [images, setImages] = useState(Array(4).fill(null));
@@ -26,7 +36,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
       reader.onloadend = () => {
         setForm(prevForm => ({
           ...prevForm,
-          image: reader.result
+          profileImg: reader.result
         }));
       };
       reader.readAsDataURL(images[0]);
@@ -43,7 +53,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
           
           setForm(prevForm => ({
             ...prevForm,
-            images: base64Images
+            restaurantImgs: base64Images
           }));
         };
         reader.readAsDataURL(image); 

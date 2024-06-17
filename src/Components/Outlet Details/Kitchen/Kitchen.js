@@ -1,9 +1,18 @@
 import React, { useImperativeHandle } from 'react'
 import '../Kitchen/Kitchen.scss'
 import { useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
+
 
 const Kitchen = React.forwardRef((props,ref) => {
+    const dispatch = useDispatch();
+
+    const locationId = useSelector((state) => state.postData.data);  
+    const LocationId = dispatch(getLocationId(locationId));
+    const Locid = LocationId.payload;
     const [form,setForm]=useState({
+        locationId: Locid,
         LastorderTime:"",
         KDSAlert:""
 

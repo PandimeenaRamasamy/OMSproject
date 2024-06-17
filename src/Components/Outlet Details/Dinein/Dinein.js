@@ -2,10 +2,11 @@ import React, { useState,useImperativeHandle } from "react";
 
 import "./Dinein.scss";
 
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 const Dinein = React.forwardRef((props,ref) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState("");
   const [DineinselectedButton, setDineinselectedButton] = useState(false);
   const [InteractiveselectedButton, setInteractiveselectedButton] = useState(false); 
@@ -13,8 +14,14 @@ const Dinein = React.forwardRef((props,ref) => {
   const [ReservationinselectedButton, setReservationinselectedButton] =useState(false);  
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
+
+
+  const locationId = useSelector((state) => state.postData.data);  
+  const LocationId = dispatch(getLocationId(locationId));
+  const Locid = LocationId.payload;
+
   const [Outletdetails, setOutletdetails] = useState({
-    locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
+    locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",

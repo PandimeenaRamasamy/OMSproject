@@ -2,10 +2,12 @@ import React, {  useState ,useImperativeHandle} from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
-import { useDispatch, useSelector } from "react-redux";
+
 import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 import AddTime from "../Delivery/components/AddTime";
 import vector from "../../../assets/images/Vector.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 const Delivery = React.forwardRef((props,ref) => {
   const [isEnable, setIsEnable] = useState(true);
@@ -202,8 +204,13 @@ const Delivery = React.forwardRef((props,ref) => {
       deliveryServiceTimeTo: slot.closingTime,
     }));
 
+
+    const locationId = useSelector((state) => state.postData.data);  
+    const LocationId = dispatch(getLocationId(locationId));
+    const Locid = LocationId.payload;
+
     const payloadData = {
-      locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
+      locationId:Locid,
       deliverySettingTime,
       deliveryPayment: selectedMethods,
       scheduledDelivery: deliveryOption,

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState,useImperativeHandle } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { v4 as uuidv4 } from "uuid";
 // import { saveBasicDetailsRequest } from "../../actions/basicDetailsActions";
 import "./BasicDetails.scss";
@@ -8,13 +8,22 @@ import Alcohol from "./Components/Alcohol";
 import RestaurantCategory from "./Components/RestauantCategory";
 import AlcoholModal from "./Components/AlcoholModal";
 import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
+import { useDispatch, useSelector } from "react-redux";
+import { getLocationId } from "../../../redux/Actions/PostDataAction";
+
 
 const BasicDetails = React.forwardRef((props,ref) => {
+  const dispatch = useDispatch();
   // const basicDetailsReducer = useSelector((state) => state.basicDetailsReducer);
   // console.log("basicDetailsReducer", basicDetailsReducer);
 
   const uid = useMemo(() => uuidv4(), []);
 
+  const locationId = useSelector((state) => state.postData.data);
+
+  const LocationId = dispatch(getLocationId(locationId));
+  const Locid = LocationId.payload;
+  
   const [isAlcoholModalOpen, setIsAlcoholModalOpen] = useState(false);
   const [selectedAlcoholOption, setSelectedAlcoholOption] = useState("");
 
@@ -81,7 +90,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
   
   const [mealsMap, setMealsMap] = useState({ [uid]: "breakfast" });
 
-  const dispatch = useDispatch();
+
 
   const handleTimeChange = (time, id, type, index) => {
     if (type === "opening") {
@@ -336,6 +345,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
     });
 
     const payload = {
+      locationId: Locid,
     
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,

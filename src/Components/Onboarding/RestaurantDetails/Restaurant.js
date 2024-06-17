@@ -13,7 +13,7 @@ const Restaurant = React.forwardRef((props, ref) => {
   const Locid = LocationId.payload;
 
   const [form, setForm] = useState({
-    locationId: Locid,
+    locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
     businessLegalName: "",
     phone: "",
     email: "",

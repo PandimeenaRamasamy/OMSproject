@@ -114,38 +114,40 @@ function Stepform() {
     switch(activeStep)
     {
       case 0:
-        newFormData1={...newFormData1,BasicDetails:basicDetailsref.current.getFormData()}
+        newFormData1=basicDetailsref.current.getFormData()
         setBasicDetailsForm(newFormData1)
-        dispatch(PostRestaurantImageDataRequest(newFormData1))
+        dispatch(saveBasicDetailsRequest(newFormData1))
+       
         break;
 
 
       case 1:
-        newFormData1={...newFormData1,RestrauntImage:restrauntimageref.current.getFormData()}
+        newFormData1=restrauntimageref.current.getFormData()
         setrestrauntImageForm(newFormData1)
-        dispatch(saveBasicDetailsRequest(newFormData1))
+        dispatch(PostRestaurantImageDataRequest(newFormData1))
+       
         break;
       case 2:
-          newFormData1={DineIn:dineinref.current.getFormData()}
+          newFormData1=dineinref.current.getFormData()
           setDineInForm(newFormData1)
-          dispatch( postDineinDataRequest(newFormData1))
+          dispatch(postDineinDataRequest(newFormData1))
           break;
 
       case 3:
-        newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
+        newFormData1=pickUpformRef.current.getFormData()
         setPickupForm(newFormData1);
         dispatch(PostPickupDataRequest(newFormData1))
         break;
 
         case 4:
-          newFormData1={...newFormData1,Delivery:deliveryref.current.getFormData()}
+          newFormData1=deliveryref.current.getFormData()
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1))
         break;
 
        
         case 5:
-          newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}
+          newFormData1=kitchenformRef.current.getFormData()
           setKitchenForm(newFormData1)
           dispatch(PostKitchenDataRequest(newFormData1))
           break;
