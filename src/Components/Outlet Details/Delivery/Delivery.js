@@ -195,16 +195,17 @@ const Delivery = React.forwardRef((props,ref) => {
       return newState;
     });
   };
-  let payloadData={};
+  
 
   const handleSaveNextButton = () => {
     const deliverySettingTime = timeSlots.map((slot) => ({
       deliveryServiceTimeFrom: slot.openingTime,
       deliveryServiceTimeTo: slot.closingTime,
     }));
+  };
 
-   payloadData = {
-      deliverySettingTime,
+   const payloadData = {
+      
       deliveryPayment: selectedMethods,
       scheduledDelivery: deliveryOption,
       minimumOrderPrice: minPriceValue,
@@ -215,6 +216,18 @@ const Delivery = React.forwardRef((props,ref) => {
     };
 
     console.log(payloadData)
+    const getFormData=()=>{
+      return payloadData;
+  
+  
+  }
+  
+    useImperativeHandle(ref,()=>({
+      getFormData,
+  
+  
+  }))
+  
 
     if (inHouse) {
       payloadData.deliveryOption.inHouse = {
@@ -244,7 +257,7 @@ const Delivery = React.forwardRef((props,ref) => {
       payloadData.deliveryOption.inhouse = {
         isEnabled: inHouse,
       };
-    }
+    
 
   };
 
@@ -266,17 +279,6 @@ const Delivery = React.forwardRef((props,ref) => {
     setUberEats("");
     setDoorDash("");
   };
-  const getFormData=()=>{
-    return payloadData;
-
-
-}
-
-  useImperativeHandle(ref,()=>({
-    getFormData,
-
-
-}))
 
  
 
