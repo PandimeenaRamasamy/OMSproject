@@ -246,7 +246,6 @@ const Delivery = React.forwardRef((props,ref) => {
       };
     }
 
-    dispatch(PostDeliveryDataRequest(payloadData));
   };
 
 
