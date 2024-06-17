@@ -54,8 +54,26 @@ function Stepform() {
   }, [activeStep]);
 
   const handleStepClick = (index) => {
+    if (index > activeStep) {
+      let isValid = true;
+      switch (activeStep) {
+        case 0:
+          isValid = restaurantDetailsRef.current.validate();
+          break;
+        case 1:
+          isValid = locationRef.current.getValidate();
+          break;
+        default:
+          break;
+      }
+      if (!isValid) {
+        alert("Please fill out the required fields before moving to the next step.");
+        return;
+      }
+    }
     setActiveStep(index);
   };
+
 
   const handleSaveAndNext = () => {
     let isValid = true;
