@@ -20,7 +20,12 @@ import {
   POST_DELIVERY_DATA_FAILURE,
   POST_RESTAURANTIMAGE_DATA_REQUEST,
   POST_RESTAURANTIMAGE_DATA_SUCCESS,
-  POST_RESTAURANTIMAGE_DATA_FALIURE
+  POST_RESTAURANTIMAGE_DATA_FALIURE,
+  POST_PICKUP_DATA_REQUEST,
+  POST_PICKUP_DATA_SUCCESS,
+  POST_PICKUP_DATA_FALIURE
+
+
 } from "../constants";
 
 export const getLocationId = (data) => ({
@@ -143,6 +148,23 @@ export const PostRestaurantImageDataSuccess=(response)=>({
 
 export const PostRestaurantImageDataFailure=(error)=>({
   type:  POST_RESTAURANTIMAGE_DATA_FALIURE,
+  payload:error
+})
+
+
+export const PostPickupDataRequest=(data)=>({
+  type: POST_PICKUP_DATA_REQUEST,
+
+  payload:data
+})
+
+export const PostPickupDataSuccess=(response)=>({
+  type: POST_PICKUP_DATA_SUCCESS,
+  payload:response
+})
+
+export const PostPickupDataFailure=(error)=>({
+  type:  POST_PICKUP_DATA_FALIURE,
   payload:error
 })
 
