@@ -16,9 +16,11 @@ import RestaurantImage from "../Restaurant Image/InputRefs";
 import { useDispatch } from 'react-redux';
 import { postDineinDataRequest } from '../../../redux/Actions/PostDataAction';
 import { PostRestaurantImageDataRequest } from "../../../redux/Actions/PostDataAction";
+import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 
 import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
+import { PostPickupDataRequest } from "../../../redux/Actions/PostDataAction";
 
 
 
@@ -34,11 +36,13 @@ function Stepform() {
    const kitchenformRef=useRef();
    const restrauntimageref=useRef();
    const dineinref=useRef();
+   const deliveryref=useRef();
  
   const[pickupForm,setPickupForm]=useState("")
   const[kitchenForm,setKitchenForm]=useState("")
   const[restrauntImageForm,setrestrauntImageForm]=useState("")
   const[dineInForm,setDineInForm]=useState("")
+  const [deliveryform,setDeliveryForm]=useState("");
 
 
   const steps = [
@@ -64,7 +68,7 @@ function Stepform() {
     },
     {
       title: "Delivery",
-      component: <Delivery />,
+      component: <Delivery ref={deliveryref} />,
       icon: <CiDeliveryTruck className="image" />,
     },
     {
@@ -120,8 +124,13 @@ function Stepform() {
       case 3:
         newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
         setPickupForm(newFormData1);
+        dispatch(PostPickupDataRequest(newFormData1))
         break;
-
+        case 4:
+          newFormData1={...newFormData1,Delivery:deliveryref.current.getFormData()};
+          setDeliveryForm(newFormData1)
+          dispatch(PostDeliveryDataRequest(newFormData1))
+          break;
         case 5:
           newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}
           setKitchenForm(newFormData1)
