@@ -3,66 +3,26 @@ import "./BankDetails.scss"
 const BankDetails = React.forwardRef((props,ref) => {
   const[bankform,setBankform]=useState({
  accountNumber:"",
- reaccountNumber:"",
  ifscCode:"",
  AccountHolderName:""
   })
   const[bankError,setBankError]=useState({
     accountNumber:"",
-    reaccountNumber:"",
     ifscCode:"",
     AccountHolderName:""   
   })
 
-  let errors={};
-  const getValidate=()=>{
-    let isValid=true;
-    
-    if(!bankform.accountNumber)
-    {
-      isValid=false;
-      errors.accountNumber="Please Enter Account Number"
-    }
-    if(!bankform.reaccountNumber)
-      {
-        isValid=false;
-        errors.reaccountNumber="Please ReEnter Account Number"
-      }
-    else if(bankform.accountNumber!=bankform.reaccountNumber)
-      {
-        isValid=false;
-        errors.reaccountNumber="Please Enter Same Account Number"
-      }
-    if(!bankform.ifscCode)
-      {
-        isValid=false;
-        errors.ifscCode="Please Enter IFSc Code"
-      }
-      if(!bankform.AccountHolderName)
-        {
-          isValid=false;
-          errors.AccountHolderName="Please Enter Account Holder Name Code"
-        }
-        else if(/[^a-zA-Z\s]/.test(bankform.AccountHolderName)) {
-             isValid=false;
-          errors.AccountHolderName="Please Enter Name"
-        }
-    setBankError(errors)
-    return isValid;
-
-  }
+ 
   const resetForm=()=>{
      setBankform(
       {
  accountNumber:"",
- reaccountNumber:"",
  ifscCode:"",
 AccountHolderName:""
       }
      ) 
      setBankError({
       accountNumber:"",
- reaccountNumber:"",
  ifscCode:"",
 AccountHolderName:""
      }) 
@@ -73,7 +33,6 @@ AccountHolderName:""
 
   useImperativeHandle(ref, () => ({
     getFormData,
-    getValidate,
     resetForm
   }));
   const handleKeyPress = (event) => {
