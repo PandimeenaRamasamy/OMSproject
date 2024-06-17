@@ -171,3 +171,22 @@ export const PostPickupDataFailure=(error)=>({
   payload:error
 })
 
+
+export const PostKitchenDataRequest=(data)=>({
+  type: POST_KITCHEN_DATA_REQUEST,
+
+  payload:data
+})
+
+export const PostKitchenDataSuccess=(response)=>({
+  type:   POST_KITCHEN_SUCCESS,
+
+  payload:response
+})
+
+export const PostKitchenDataFailure=(error)=>({
+  type:  POST_KITCHEN_FALIURE,
+
+  payload:error
+})
+
