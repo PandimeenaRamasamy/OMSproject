@@ -11,6 +11,7 @@ import { watchgetData } from "../sagas/counterSaga";
 import { onBoardPostData } from "../sagas/counterSaga";
 import { dineinpostdata } from "../sagas/counterSaga";
 import { locationIdSaga } from "../sagas/counterSaga";
+import { PickupSaga } from "../sagas/counterSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     watchBascDetailsPostData(),
     watchPostDeliveryDataSagas(),
     RestrauntImageSaga() ,
+    PickupSaga()
   ]);
 }

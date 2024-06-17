@@ -20,6 +20,7 @@ import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 
 import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
+import { PostPickupDataRequest } from "../../../redux/Actions/PostDataAction";
 
 
 
@@ -123,6 +124,7 @@ function Stepform() {
       case 3:
         newFormData1={...newFormData1,Pickup:pickUpformRef.current.getFormData()}
         setPickupForm(newFormData1);
+        dispatch(PostPickupDataRequest(newFormData1))
         break;
         case 4:
           newFormData1={...newFormData1,Delivery:deliveryref.current.getFormData()};
