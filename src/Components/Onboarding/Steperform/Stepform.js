@@ -87,13 +87,11 @@ function Stepform() {
         };
         break;
       case 3:
-        isValid = bankRef.current.getValidate();
-        if (isValid) {
-          newFormData = {
-            ...newFormData,
-            bank_details: bankRef.current.getFormData(),
-          };
-        }
+        newFormData = {
+          ...newFormData,
+          bank_details: bankRef.current.getFormData(),
+        };
+        console.log(newFormData);
         break;
       default:
         break;
@@ -101,7 +99,7 @@ function Stepform() {
 
     if (isValid) {
       setMainForm(newFormData);
-      handleNextStep();
+      handleNextStep(newFormData);
     }
   };
 
@@ -124,11 +122,11 @@ function Stepform() {
     setMainForm({});
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = (formData) => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
     } else {
-      dispatch(postOnBoardingDataRequest(mainForm));
+      dispatch(postOnBoardingDataRequest(formData));
     }
   };
 
