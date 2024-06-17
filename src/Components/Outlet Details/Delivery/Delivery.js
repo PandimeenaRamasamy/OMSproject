@@ -1,4 +1,4 @@
-import React, {  useState,useImperativeHandle } from "react";
+import React, {  useState } from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
@@ -7,7 +7,7 @@ import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 import AddTime from "../Delivery/components/AddTime";
 import vector from "../../../assets/images/Vector.svg";
 
-const Delivery = React.forwardRef((props,ref) => {
+const Delivery = () => {
   const [isEnable, setIsEnable] = useState(true);
   const [showdelivery, setShowDelivery] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
@@ -195,17 +195,16 @@ const Delivery = React.forwardRef((props,ref) => {
       return newState;
     });
   };
-  
 
   const handleSaveNextButton = () => {
     const deliverySettingTime = timeSlots.map((slot) => ({
       deliveryServiceTimeFrom: slot.openingTime,
       deliveryServiceTimeTo: slot.closingTime,
     }));
-  };
 
-   const payloadData = {
-      
+    const payloadData = {
+      locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
+      deliverySettingTime,
       deliveryPayment: selectedMethods,
       scheduledDelivery: deliveryOption,
       minimumOrderPrice: minPriceValue,
@@ -214,10 +213,6 @@ const Delivery = React.forwardRef((props,ref) => {
       packagingCharge: packageCharge,
       deliveryOption: {},
     };
-
-    console.log(payloadData)
-   
-  
 
     if (inHouse) {
       payloadData.deliveryOption.inHouse = {
@@ -247,21 +242,10 @@ const Delivery = React.forwardRef((props,ref) => {
       payloadData.deliveryOption.inhouse = {
         isEnabled: inHouse,
       };
-    
+    }
 
+    dispatch(PostDeliveryDataRequest(payloadData));
   };
-  const getFormData=()=>{
-    return payloadData;
-
-
-}
-
-  useImperativeHandle(ref,()=>({
-    getFormData,
-
-
-}))
-
 
   const handleClearAllButton = () => {
     setTimeSlots([{ openingTime: "00:00", closingTime: "00:00" }]);
@@ -280,8 +264,6 @@ const Delivery = React.forwardRef((props,ref) => {
     setUberEats("");
     setDoorDash("");
   };
-
- 
 
   return (
     <div className="delivery">
@@ -513,7 +495,7 @@ const Delivery = React.forwardRef((props,ref) => {
 
           {/* Inhouse */}
 
-          <div className="inHousedeliveryoption" style={{height: showInHouse ? '120vh' : '10vh'}} >
+          <div className="inHousedeliveryoption" style={{height: showInHouse ? '100vh' : '20vh'}} >
           {inHouse && (
             <div className="inhouse">
               <div className="header">
@@ -854,6 +836,6 @@ const Delivery = React.forwardRef((props,ref) => {
      
     </div>
   );
-});
+};
 
 export default Delivery;
