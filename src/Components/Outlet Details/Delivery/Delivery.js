@@ -203,7 +203,6 @@ const Delivery = () => {
     }));
 
     const payloadData = {
-      locationId: "3ad3b065-ae91-4524-8cc7-2fdb5d3abb0b",
       deliverySettingTime,
       deliveryPayment: selectedMethods,
       scheduledDelivery: deliveryOption,

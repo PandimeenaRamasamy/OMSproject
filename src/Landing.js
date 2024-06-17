@@ -11,11 +11,11 @@ function Landing() {
 
   const MIN_WIDTH = 800; 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [belowMinWidth, setBelowMinWidth] = useState(window.innerWidth < MIN_WIDTH);
+  const [belowMinWidth, setBelowMinWidth] = useState(window.innerWidth <=MIN_WIDTH);
   useEffect(() => {
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
-        setBelowMinWidth(window.innerWidth < MIN_WIDTH);
+        setBelowMinWidth(window.innerWidth <=MIN_WIDTH);
     };
 
     window.addEventListener('resize', handleResize);
