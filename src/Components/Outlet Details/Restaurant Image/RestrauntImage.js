@@ -88,6 +88,7 @@
     }
 
     return (
+      <div className='restaurantimage'>
   <div className='uploadImg'>
     <h1 className='headingrestrauntimage2'>Restaurant images</h1>
    
@@ -134,6 +135,7 @@
   </div>
   </div>
   </div>
+ </div>
     )
   }
   
