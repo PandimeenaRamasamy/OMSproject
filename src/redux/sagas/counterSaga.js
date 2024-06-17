@@ -39,6 +39,7 @@ import { PostOnboardingData } from "../Api";
 import { PostDineinData } from "../Api";
 import { PostRestaurantImage } from "../Api";
 import { PostPickup } from "../Api";
+import { PostKitchen } from "../Api";
 
 
 
@@ -206,7 +207,7 @@ export function* PostPickupSaga(action) {
 export function* PostKitchenSaga(action) {
   try {
     const payload = action.payload;
-    const response = yield call(PostPickup, payload);
+    const response = yield call(PostKitchen, payload);
     if (response.status === 200) {
       yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
       console.log("Posted Successfully");
