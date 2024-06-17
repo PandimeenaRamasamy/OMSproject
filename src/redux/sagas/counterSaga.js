@@ -186,6 +186,20 @@ export function* PostRestaurantImageSaga(action) {
 }
 
 
+export function* PostPickupSaga(action) {
+  try {
+    const payload = action.payload;
+    const response = yield call(PostRestaurantImage, payload);
+    if (response.status === 200) {
+      yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
+      console.log("Posted Successfully");
+    }
+  } catch (error) {
+    yield put(POST_RESTAURANTIMAGE_DATA_FALIURE(error));
+  }
+}
+
+
 
 
 
@@ -220,5 +234,9 @@ export function* locationIdSaga() {
 }
 
 export function* RestrauntImageSaga() {
+  yield takeEvery(POST_RESTAURANTIMAGE_DATA_REQUEST,  PostRestaurantImageSaga);
+}
+
+export function* PickupSaga() {
   yield takeEvery(POST_RESTAURANTIMAGE_DATA_REQUEST,  PostRestaurantImageSaga);
 }
