@@ -24,7 +24,10 @@ import {
   POST_RESTAURANTIMAGE_DATA_FALIURE,
   POST_PICKUP_DATA_REQUEST,
   POST_PICKUP_DATA_SUCCESS,
-  POST_PICKUP_DATA_FALIURE
+  POST_PICKUP_DATA_FALIURE,
+  POST_KITCHEN_DATA_REQUEST,
+  POST_KITCHEN_SUCCESS,
+  POST_KITCHEN_FALIURE
 
 
 
@@ -85,6 +88,19 @@ export const postDataReducer = (state = initialState, action) => {
 
           case  POST_PICKUP_DATA_FALIURE:
             return { ...state, loading: false, error: action.payload };
+
+            case  POST_KITCHEN_DATA_REQUEST:
+              return { ...state, loading: true, error: null };
+
+              case POST_KITCHEN_SUCCESS:
+                return { ...state, loading: false, data: action.payload };
+
+                case POST_KITCHEN_FALIURE:
+                  return { ...state, loading: false, error: action.payload };
+
+
+
+
 
 
 
