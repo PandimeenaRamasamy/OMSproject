@@ -123,3 +123,17 @@ export const PostPickup = async (payload) => {
     throw error;
   }
 };
+
+
+export const PostKitchen = async (payload) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.1.20:8080/outlets/outlet/basicDetails/properties",
+      payload
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+

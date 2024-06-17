@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState,useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 // import { saveBasicDetailsRequest } from "../../actions/basicDetailsActions";
@@ -9,7 +9,7 @@ import RestaurantCategory from "./Components/RestauantCategory";
 import AlcoholModal from "./Components/AlcoholModal";
 import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
 
-const BasicDetails = () => {
+const BasicDetails = React.forwardRef((props,ref) => {
   // const basicDetailsReducer = useSelector((state) => state.basicDetailsReducer);
   // console.log("basicDetailsReducer", basicDetailsReducer);
 
@@ -78,6 +78,7 @@ const BasicDetails = () => {
   // console.log([timeSlots])
 
   // {[id]: string}
+  
   const [mealsMap, setMealsMap] = useState({ [uid]: "breakfast" });
 
   const dispatch = useDispatch();
@@ -223,6 +224,29 @@ const BasicDetails = () => {
     setIsAlcoholModalOpen(false);
   };
 
+  const [service, setService] = useState([
+    {
+      id: uid,
+      component: (
+        <RestaurantSession
+          timeSlots={timeSlots}
+          setTimeSlots={setTimeSlots}
+          setOpeningTime={(time, index) =>
+            handleTimeChange(time, uid, "opening", index)
+          }
+          setClosingTime={(time, index) =>
+            handleTimeChange(time, uid, "closing", index)
+          }
+          key={uid}
+          restaurantSessionid={uid}
+          deleteRestaurantSession={deleteRestaurantSession}
+          onMealsChange={(uid, name) => handleMealsChange(uid, name)}
+          meals={mealsMap[uid]}
+        />
+      ),
+    },
+  ]);
+
   const handleClearAll = () => {
     const unid = uuidv4();
     setTimeSlots({
@@ -292,7 +316,7 @@ const BasicDetails = () => {
     setSelectedAlcoholOption("");
   };
 
-  const handleSave = () => {
+ 
     const RestaurantSessions = service.map((serv) => {
       const sessionTimes =
         timeSlots[serv.id]?.map((slot) => ({
@@ -321,31 +345,22 @@ const BasicDetails = () => {
       alcohol: selectedAlcoholOption,
     };
 
-    dispatch(saveBasicDetailsRequest(payload));
     console.log("payload from basic details button", payload);
-  };
-  const [service, setService] = useState([
-    {
-      id: uid,
-      component: (
-        <RestaurantSession
-          timeSlots={timeSlots}
-          setTimeSlots={setTimeSlots}
-          setOpeningTime={(time, index) =>
-            handleTimeChange(time, uid, "opening", index)
-          }
-          setClosingTime={(time, index) =>
-            handleTimeChange(time, uid, "closing", index)
-          }
-          key={uid}
-          restaurantSessionid={uid}
-          deleteRestaurantSession={deleteRestaurantSession}
-          onMealsChange={(uid, name) => handleMealsChange(uid, name)}
-          meals={mealsMap[uid]}
-        />
-      ),
-    },
-  ]);
+  
+ 
+
+  const getFormData=()=>{
+    return payload;
+
+
+}
+
+  useImperativeHandle(ref,()=>({
+    getFormData,
+
+
+}))
+
   return (
     <div className="basic-details-container">
       <div className="basicDetails">
@@ -399,6 +414,6 @@ const BasicDetails = () => {
       </div> */}
     </div>
   );
-};
+});
 
 export default BasicDetails;
