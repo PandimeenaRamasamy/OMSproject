@@ -292,7 +292,7 @@ const BasicDetails = () => {
     setSelectedAlcoholOption("");
   };
 
-  const handleSave = () => {
+ 
     const RestaurantSessions = service.map((serv) => {
       const sessionTimes =
         timeSlots[serv.id]?.map((slot) => ({
@@ -323,7 +323,7 @@ const BasicDetails = () => {
 
     dispatch(saveBasicDetailsRequest(payload));
     console.log("payload from basic details button", payload);
-  };
+  
   const [service, setService] = useState([
     {
       id: uid,

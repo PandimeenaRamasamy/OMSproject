@@ -127,6 +127,13 @@ function Stepform() {
         setPickupForm(newFormData1);
         dispatch(PostPickupDataRequest(newFormData1))
         break;
+
+        case 4:
+          newFormData1={...newFormData1,Delivery:deliveryref.current.getFormData()}
+        setDeliveryForm(newFormData1);
+        dispatch(PostDeliveryDataRequest(newFormData1))
+        break;
+
        
         case 5:
           newFormData1={...newFormData1,Kitchen:kitchenformRef.current.getFormData()}

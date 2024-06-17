@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useState ,useImperativeHandle} from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
@@ -7,7 +7,7 @@ import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 import AddTime from "../Delivery/components/AddTime";
 import vector from "../../../assets/images/Vector.svg";
 
-const Delivery = () => {
+const Delivery = React.forwardRef((props,ref) => {
   const [isEnable, setIsEnable] = useState(true);
   const [showdelivery, setShowDelivery] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
@@ -196,7 +196,7 @@ const Delivery = () => {
     });
   };
 
-  const handleSaveNextButton = () => {
+ 
     const deliverySettingTime = timeSlots.map((slot) => ({
       deliveryServiceTimeFrom: slot.openingTime,
       deliveryServiceTimeTo: slot.closingTime,
@@ -244,8 +244,7 @@ const Delivery = () => {
       };
     }
 
-    dispatch(PostDeliveryDataRequest(payloadData));
-  };
+  
 
   const handleClearAllButton = () => {
     setTimeSlots([{ openingTime: "00:00", closingTime: "00:00" }]);
@@ -264,6 +263,20 @@ const Delivery = () => {
     setUberEats("");
     setDoorDash("");
   };
+
+  const getFormData=()=>{
+    return payloadData;
+
+
+}
+
+  useImperativeHandle(ref,()=>({
+    getFormData,
+
+
+}))
+
+ 
 
   return (
     <div className="delivery">
@@ -836,6 +849,6 @@ const Delivery = () => {
      
     </div>
   );
-};
+});
 
 export default Delivery;
