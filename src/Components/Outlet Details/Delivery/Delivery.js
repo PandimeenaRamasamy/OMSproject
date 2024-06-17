@@ -216,17 +216,7 @@ const Delivery = React.forwardRef((props,ref) => {
     };
 
     console.log(payloadData)
-    const getFormData=()=>{
-      return payloadData;
-  
-  
-  }
-  
-    useImperativeHandle(ref,()=>({
-      getFormData,
-  
-  
-  }))
+   
   
 
     if (inHouse) {
@@ -260,6 +250,17 @@ const Delivery = React.forwardRef((props,ref) => {
     
 
   };
+  const getFormData=()=>{
+    return payloadData;
+
+
+}
+
+  useImperativeHandle(ref,()=>({
+    getFormData,
+
+
+}))
 
 
   const handleClearAllButton = () => {
