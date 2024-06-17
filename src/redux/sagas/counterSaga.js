@@ -238,5 +238,5 @@ export function* RestrauntImageSaga() {
 }
 
 export function* PickupSaga() {
-  yield takeEvery(POST_RESTAURANTIMAGE_DATA_REQUEST,  PostRestaurantImageSaga);
+  yield takeEvery(POST_PICKUP_DATA_REQUEST, PostPickupSaga);
 }
