@@ -110,10 +110,14 @@ function Stepform() {
       }
         break;
       case 3:
+        isValid=bankRef.current.validate();
+        if(isValid)
+          {
         newFormData = {
           ...newFormData,
           bank_details: bankRef.current.getFormData(),
         };
+      }
         console.log(newFormData);
         break;
       default:
