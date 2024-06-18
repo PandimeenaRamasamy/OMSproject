@@ -291,7 +291,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 </select>
 
                 <input
-                  type="texT"
+                  type="text"
                   name="whatsappNumber"
                   onKeyPress={handleKeyPress}
                   className="inputboxres2"
