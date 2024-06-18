@@ -100,7 +100,7 @@ function Stepform() {
         }
         break;
       case 2:
-        isValid=fssaiRef.current.validate();
+        iisValid=fssaiRef.current.validate();
         if(isValid)
           {
         newFormData = {
