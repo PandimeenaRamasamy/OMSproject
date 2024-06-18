@@ -33,7 +33,8 @@ AccountHolderName:""
 
   useImperativeHandle(ref, () => ({
     getFormData,
-    resetForm
+    resetForm,
+    validate
   }));
   const handleKeyPress = (event) => {
     // Prevent non-numeric keys from being pressed
@@ -42,7 +43,30 @@ AccountHolderName:""
     }
   };
 
- 
+ const validate=()=>{
+  let isValid=true;
+  const error={};
+  if(!bankform.accountNumber)
+    {
+      error.accountNumber="Please Enter Account Number";
+      isValid=false;
+
+    }
+    if(!bankform.ifscCode)
+      {
+        error.ifscCode="Please Enter ifsce code";
+        isValid=false;
+  
+      }
+      if(!bankform.AccountHolderName)
+        {
+          error.AccountHolderName="Please Enter Account Holder Name";
+          isValid=false;
+    
+        }
+    setBankError(error);
+    return isValid
+ }
   return (
     <div>
       <div className='Bank-Container'>
