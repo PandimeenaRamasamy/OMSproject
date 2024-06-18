@@ -25,7 +25,9 @@ import {
   POST_RESTAURANTIMAGE_DATA_SUCCESS,
   POST_RESTAURANTIMAGE_DATA_FALIURE,
   POST_PICKUP_DATA_REQUEST,
-  POST_KITCHEN_DATA_REQUEST
+  POST_KITCHEN_DATA_REQUEST,
+  POST_DINEIN_DATA_SUCCESS,
+  POST_DINEIN_DATA_FAILURE
 } from "../constants";
 
 import { LOCATION_ID } from "../constants";
@@ -144,9 +146,9 @@ function* postDineinData(action) {
   try {
     const response = yield call(PostDineinData, action.payload);
     const data = yield response.json();
-    yield put(postDineinDataSuccess(data));
+    yield put(POST_DINEIN_DATA_SUCCESS(data));
   } catch (error) {
-    yield put(postDineinDataFailure(error.message));
+    yield put(POST_DINEIN_DATA_FAILURE(error.message));
   }
 }
 
@@ -248,9 +250,9 @@ export function* dineinpostdata() {
   yield takeEvery(POST_DINEIN_DATA_REQUEST, postDineinData);
 }
 
-export function* locationIdSaga() {
-  yield takeEvery(LOCATION_ID, locationId);
-}
+  export function* locationIdSaga() {
+    yield takeEvery(LOCATION_ID, locationId);
+  }
 
 export function* RestrauntImageSaga() {
   yield takeEvery(POST_RESTAURANTIMAGE_DATA_REQUEST,  PostRestaurantImageSaga);
