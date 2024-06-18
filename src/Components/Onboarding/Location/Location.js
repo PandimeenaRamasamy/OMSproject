@@ -142,9 +142,22 @@ const Location = forwardRef((props, ref) => {
 
           </div>
 
-       {textboxes.map(()=>{
+       {textboxes.map((index)=>{
         return(
+          <>
+          <div className="labelinput-divloc" style={{marginTop:"-30px"}}> 
+          <label className="labelloc">Line {index+1} </label>
         <input type="text" className="inputboxloc"/>
+        
+        </div>
+        
+      { index==textboxes.length-1?
+
+        <button className="btn" onClick={handleTextBoxes}>+Add Line</button>
+        :""
+      }
+
+        </>
         
         )
        })}
