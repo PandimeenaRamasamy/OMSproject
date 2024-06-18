@@ -274,7 +274,7 @@ const Fssai = forwardRef((props, ref) => {
                         )}
                       </div>
                     </div>
-                    {fssaierrors.documents && <div className="error">{fssaierrors.documents}</div>}
+                    {fssaierrors.documentsa && <div className="error">{fssaierrors.documents}</div>}
 
                   </div>
                 </>

@@ -90,7 +90,7 @@ function Stepform() {
           };
         }
         break;
-      case 1:
+      case 1a:
         isValid = locationRef.current.getValidate();
         if (isValid) {
           newFormData = {
