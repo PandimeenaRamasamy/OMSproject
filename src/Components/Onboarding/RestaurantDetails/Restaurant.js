@@ -155,6 +155,12 @@ const Restaurant = React.forwardRef((props, ref) => {
     setResError(errors);
     return isValid;
   };
+  const handleKeyPress = (event) => {
+    // Prevent non-numeric keys from being pressed
+    if (!/^\d$/.test(event.key)) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <div className="main-divres">
@@ -234,6 +240,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 </select>
                 <input
                   type="text"
+                  onKeyPress={handleKeyPress}
                   name="restaurantNumber"
                   className="inputboxres2"
                   placeholder="Enter Mobile Number"
@@ -286,6 +293,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 <input
                   type="text"
                   name="whatsappNumber"
+                  onKeyPress={handleKeyPress}
                   className="inputboxres2"
                   placeholder="Enter WhatsApp Number"
                   value={form.whatsappNumber}
