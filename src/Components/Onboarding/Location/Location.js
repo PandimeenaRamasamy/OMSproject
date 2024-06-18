@@ -135,31 +135,19 @@ const Location = forwardRef((props, ref) => {
                placeholder="Name"
                value={form.address}
                onChange={(e) => handleAddressChange(0, e.target.value)}
-               style={{borderColor:locationError.address?"red":"#B3B3B3" }}
+               style={{borderColor:locationError.address?"red":"#B3B3B3"  , marginBottom:"30px" }}
               
             />
               {locationError.address && <div className='error-message'>{locationError.address}</div>}
 
           </div>
 
-          {textboxes.slice(1).map((_, index) => (
-              <div className="inputboxloc" key={index + 1}>
-                <label className="labelloc">Line {index + 2}</label>
-                <input
-                  type="text"
-                  className="inputboxloc"
-                  placeholder="Name"
-                  onChange={(e) => handleAddressChange(index + 1, e.target.value)}
-
-                />
-                {index + 1 === textboxes.length - 1 && (
-                  <button className="btn" onClick={handleTextBoxes}>
-                    + Add line
-                  </button>
-                )}
-              </div>
-            ))}
-
+       {textboxes.map(()=>{
+        return(
+        <input type="text" className="inputboxloc"/>
+        
+        )
+       })}
 
 
 
