@@ -27,10 +27,7 @@ const Restaurant = React.forwardRef((props, ref) => {
     businessLegalName: "",
     phone: "",
     email: "",
-    website: "",
-    instagramLink: "",
-    facebookLink: "",
-    restaurantNumber: "",
+   restaurantNumber: "",
     whatsappNumber: "",
   });
   const resetForm = () => {
@@ -38,9 +35,9 @@ const Restaurant = React.forwardRef((props, ref) => {
       businessLegalName: "",
       phone: "",
       email: "",
-      website: "",
-      instagramLink: "",
-      facebookLink: "",
+      
+      
+      
       restaurantNumber: "",
       whatsappNumber: "",
     });
@@ -48,9 +45,6 @@ const Restaurant = React.forwardRef((props, ref) => {
       businessLegalName: "",
       phone: "",
       email: "",
-      website: "",
-      instagramLink: "",
-      facebookLink: "",
       restaurantNumber: "",
       whatsappNumber: "",
     });
@@ -69,9 +63,8 @@ const Restaurant = React.forwardRef((props, ref) => {
         businessLegalName: "",
         phone: "",
         email: "",
-        website: "",
-        instagramLink: "",
-        facebookLink: "",
+               
+        
         restaurantNumber: "",
         whatsappNumber: "",
       });
@@ -132,18 +125,7 @@ const Restaurant = React.forwardRef((props, ref) => {
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(form.email)) {
       errors.email = "Enter valid email";
     }
-    if (!form.website) {
-      errors.website = " Enter Website Link";
-      isValid = false;
-    }
-    if (!form.instagramLink) {
-      errors.instagramLink = " Enter instagram Link";
-      isValid = false;
-    }
-    if (!form.facebookLink) {
-      errors.facebookLink = " Enter facebook Link";
-      isValid = false;
-    }
+    
     if (!form.restaurantNumber) {
       errors.restaurantNumber = " Enter Restaurant Number";
       isValid = false;
@@ -348,11 +330,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                   placeholder="Magilhub.com"
                   value={form.website}
                   onChange={handleChange}
-                  style={{ borderColor: reserror.website ? "red" : "#B3B3B3" }}
+                  
                 />
-                {reserror.website && (
-                  <div className="error">{reserror.website}</div>
-                )}
+                
               </div>
             </div>
 
@@ -371,13 +351,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                   placeholder="Chandra.uiux"
                   value={form.instagramLink}
                   onChange={handleChange}
-                  style={{
-                    borderColor: reserror.instagramLink ? "red" : "#B3B3B3",
-                  }}
+                  
                 />
-                {reserror.instagramLink && (
-                  <div className="error">{reserror.instagramLink}</div>
-                )}
+               
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="facebookLink" className="labelres">
@@ -390,14 +366,9 @@ const Restaurant = React.forwardRef((props, ref) => {
                   placeholder="chandra.com"
                   value={form.facebookLink}
                   onChange={handleChange}
-                  style={{
-                    borderColor: reserror.facebookLink ? "red" : "#B3B3B3",
-                  }}
+                  
                 />
-                {reserror.facebookLink && (
-                  <div className="error">{reserror.facebookLink}</div>
-                )}
-              </div>
+                             </div>
             </div>
             <br />
           </form>
