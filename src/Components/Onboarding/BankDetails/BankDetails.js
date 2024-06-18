@@ -87,7 +87,7 @@ AccountHolderName:""
       <input type='text' value={bankform.ifscCode} className='Type3' onChange={(e)=>setBankform({...bankform,ifscCode:e.target.value})}style={{borderColor: bankError.ifscCode ? "red" : "#B3B3B3"}}></input>
       {bankError.ifscCode && <div className='error-message'>{bankError.ifscCode}</div>}
      </div>
-     <div className='aAccount_Holder_Name'>
+     <div className='Account_Holder_Name'>
       <h1 className='Bank_Fourth_Heading'>Account holder name</h1>
       <input type='text' value={bankform.AccountHolderName} className='Type4' onChange={(e)=>setBankform({...bankform,AccountHolderName:e.target.value})}style={{borderColor: bankError.AccountHolderName ? "red" : "#B3B3B3"}}></input>
       {bankError.AccountHolderName && <div className='error-message'>{bankError.AccountHolderName}</div>}
