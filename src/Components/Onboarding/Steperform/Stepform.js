@@ -63,7 +63,9 @@ function Stepform() {
         case 1:
           isValid = locationRef.current.getValidate();
           break;
-          
+          case 2:
+          isValid = fssaiRef.current.validate();
+          break;
         default:
           break;
       }
