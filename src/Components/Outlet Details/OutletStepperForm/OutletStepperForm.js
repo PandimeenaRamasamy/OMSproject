@@ -111,8 +111,10 @@ function Stepform() {
   
  const handleSaveandNext=()=>{
     let newFormData1={}
+    let isValid=true
     switch(activeStep)
     {
+      
       case 0:
         newFormData1=basicDetailsref.current.getFormData()
         setBasicDetailsForm(newFormData1)
@@ -129,9 +131,13 @@ function Stepform() {
           dispatch(postDineinDataRequest(newFormData1))
           break;
       case 3:
+        isValid=pickUpformRef.current.validate();
+        if(isValid)
+          {
         newFormData1=pickUpformRef.current.getFormData()
         setPickupForm(newFormData1);
         dispatch(PostPickupDataRequest(newFormData1))
+          }
         break;
 
         case 4:
@@ -158,8 +164,10 @@ function Stepform() {
     }
     console.log(dineInForm) 
     
-    
+    if(isValid)
+      {
     handleNextStep();
+      }
 
  } 
    
