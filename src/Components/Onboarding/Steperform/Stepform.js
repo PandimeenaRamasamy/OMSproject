@@ -58,7 +58,7 @@ function Stepform() {
       let isValid = true;
       switch (activeStep) {
         case 0:
-          isValid = restaurantDetailsRef.current.validate();
+          isValid = restaurantDaetailsRef.current.validate();
           break;
         case 1:
           isValid = locationRef.current.getValidate();
