@@ -63,6 +63,7 @@ function Stepform() {
         case 1:
           isValid = locationRef.current.getValidate();
           break;
+          
         default:
           break;
       }
@@ -99,10 +100,14 @@ function Stepform() {
         }
         break;
       case 2:
+        isValid=fssaiRef.current.validate();
+        if(isValid)
+          {
         newFormData = {
           ...newFormData,
           fssai_details: fssaiRef.current.getFormData(),
         };
+      }
         break;
       case 3:
         newFormData = {
