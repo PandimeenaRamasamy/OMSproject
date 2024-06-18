@@ -361,7 +361,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 </label>
                 <input
                   type="url"
-                  name="facebookLink"
+                  name="facebookLinK"
                   className="inputbox2res"
                   placeholder="chandra.com"
                   value={form.facebookLink}
