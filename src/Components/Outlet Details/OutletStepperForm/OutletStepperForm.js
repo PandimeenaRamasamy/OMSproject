@@ -148,10 +148,14 @@ function Stepform() {
 
        
         case 5:
+          isValid=kitchenformRef.current.validate();
+          if(isValid)
+            {
           newFormData1=kitchenformRef.current.getFormData()
           setKitchenForm(newFormData1)
           dispatch(PostKitchenDataRequest(newFormData1))
           break;
+            }
         default:
           console.log(" There is no Api call") ;
           break;
