@@ -120,18 +120,18 @@ return isValid;
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading3'>Please mention the payment methods</h5>
                         <div style={{display:'flex'}}>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
-                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}}  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
-                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}}  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}}  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
+                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
+                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
                        
                         </div>
                         <div >
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
                         <div style={{marginTop:'10px' }}>
-                            <input type="radio" name="YesorNo"   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
-                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
+                            <input type="radio" name="YesorNo" className='radioo1'   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
+                            <input type="radio" name="YesorNo" className='radioo2' style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
                         
                         </div>
                         </div>

@@ -120,10 +120,13 @@ function Stepform() {
         setBasicDetailsForm(newFormData1)
         dispatch(saveBasicDetailsRequest(newFormData1))      
         break;
-      case 1:
+      case 1: isValid=restrauntimageref.current.validate();
+        if(isValid)
+          {
         newFormData1=restrauntimageref.current.getFormData()
         setrestrauntImageForm(newFormData1)
-        dispatch(PostRestaurantImageDataRequest(newFormData1))    
+        dispatch(PostRestaurantImageDataRequest(newFormData1))
+          }    
         break;
       case 2:
           newFormData1=dineinref.current.getFormData()

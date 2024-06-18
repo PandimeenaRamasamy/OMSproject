@@ -17,6 +17,10 @@ const ParentComponent = React.forwardRef((props,ref) => {
     restaurantImgs: [],
     profileImg: ""
   });
+  const[resimgerror,setResImageError]=useState({
+    restaurantImgs: [],
+    profileImg: ""
+  })
 
   const [images, setImages] = useState(Array(4).fill(null));
   const [images2, setImages2] = useState(Array(1).fill(null)); 
@@ -65,11 +69,31 @@ const ParentComponent = React.forwardRef((props,ref) => {
     return form;
   }
 
+
   useImperativeHandle(ref,()=>({
     getFormData,
+    validate,
 
 
 }))
+const validate=()=>{
+  let errors={};
+  let isValid=true;
+  if(!form.profileImg)
+    {
+      errors.profileImg="Please Select the profile Image";
+      isValid=false;
+    }
+    if(!form.restaurantImgs || form.restaurantImgs.length===0)
+      {
+        errors.restaurantImgs="Please Select the restaurant Image";
+        isValid=false;
+      }
+    setResImageError(errors);
+    return isValid
+    
+      
+}
 
   return (
     <>
@@ -80,9 +104,11 @@ const ParentComponent = React.forwardRef((props,ref) => {
  
      
      <RestrauntImage inputRefs={[useRef(null)]} images={images} setImages={setImages} />
+     {resimgerror.profileImg && <div className='error'>{resimgerror.profileImg}</div>}
   
    
      <RestrauntImage2 inputRefs={[useRef(null)]} images={images2} setImages={setImages2} />
+     {resimgerror.restaurantImgs && <div className='error1'>{resimgerror.restaurantImgs}</div>}
      </div>
    </>
 
