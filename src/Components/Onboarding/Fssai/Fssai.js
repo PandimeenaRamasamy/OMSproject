@@ -1,8 +1,300 @@
-import React, { useState, useImperativeHandle, forwardRef } from "react";
+// import React, { useState, useImperativeHandle, forwardRef } from "react";
+// import "./Fssai.scss";
+// import { ImCross } from "react-icons/im";
+// import addphoto from "../../../assets/images/Addphotos.png";
+
+
+// const Fssai = forwardRef((props, ref) => {
+//   const [fssaiform, setfssaiform] = useState({
+//     isEnabled: "",
+//     registerNumber: "",
+//     expirationDate: "",
+//     documents: "",
+//   });
+//   const[fssaierrors,setFssaiErrors]=useState({
+   
+//     registerNumber: "",
+//     expirationDate: "",
+//     documents: "",
+//   })
+//   const validate=()=>{
+//     let isValid=true;
+//     const errors={};
+//     if(!fssaiform.registerNumber)
+//       {
+//         errors.registerNumber="Please Enter The Register Number";
+//         isValid=false;
+//       }
+//       if(!fssaiform.expirationDate)
+//         {
+//           errors.expirationDate="Please Enter The Date";
+//           isValid=false;
+//         }
+//         if(!fssaiform.documents)
+//           {
+//             errors.documents="Please Enter The Image";
+//             isValid=false;
+//           }
+//       setFssaiErrors(errors)
+//     return isValid;
+//   }
+
+//   const [selectedButton, setSelectedButton] = useState(true);
+//   const [imagePreview, setImagePreview] = useState(addphoto);
+//   const [file, setFile] = useState(null);
+//   const [imageclose, setImageclose] = useState(false);
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     setfssaiform({ ...fssaiform, isEnabled: selectedButton });
+//   };
+
+//   const handleButtonClickyes = (e) => {
+//     setSelectedButton(true);
+//     e.preventDefault();
+//     setfssaiform({ ...fssaiform, isEnabled: "enabled" });
+//   };
+//   const handleButtonClickno = (e) => {
+//     setSelectedButton(false);
+//     e.preventDefault();
+//     setfssaiform({ ...fssaiform, isEnabled: "disabled" });
+//   };
+
+//   const handleButton = () => {
+//     document.getElementById("hidden-file-input").click();
+//     setImageclose(false);
+//   };
+
+//   const closeModal = () => {
+//     setImageclose(true);
+//     setFile(null);
+//     setImagePreview(addphoto);
+//   };
+//   const getFormData = () => {
+//     return fssaiform;
+//   };
+
+//   useImperativeHandle(ref, () => ({
+//     getFormData,
+//     validate,
+//     resetForm
+//   }));
+
+//   const handleImage = (e) => {
+//     const selectedFile = e.target.files[0];
+//     if (selectedFile) {
+//       setFile(selectedFile);
+//       const reader = new FileReader();
+//       reader.onloadend = () => {
+//         const base64String = reader.result.split(",")[1];
+//         setfssaiform({ ...fssaiform, documents: base64String });
+//         setImagePreview(reader.result);
+//       };
+//       reader.readAsDataURL(selectedFile);
+//     }
+//   };
+
+//   const resetForm=()=>{
+//     setfssaiform({
+//       isEnabled: "",
+//       registerNumber: "",
+//       expirationDate: "",
+//       documents: "",
+
+//     })
+//     setFile(null);
+//     setFssaiErrors({
+      
+//     registerNumber: "",
+//     expirationDate: "",
+//     documents: "",
+//     })
+//   }
+
+//   return (
+//     <>
+//       <div className="main-divfss">
+//         <div className="submain-divfss">
+//           <div className="heading-divfss">
+//             <h5>Fssai</h5>
+//           </div>
+//           <div className="form-divfss">
+//             <form onSubmit={handleSubmit}>
+//               <div className="labelinput-divfss">
+//                 <label htmlFor="BusinessLegalName" className="labelfss">
+//                   Do you Have a valid FSSAI Registration/License?
+//                 </label>
+
+//                 <div>
+//                   <button
+//                     type="button"
+//                     onClick={handleButtonClickyes}
+//                     style={{
+//                       backgroundColor: selectedButton ? "#0D79DC" : "#979797",
+//                       color: "white",
+//                       margin: "10px",
+//                       border: "none",
+//                       borderRadius: "20px",
+//                       outline: "none",
+//                       cursor: "pointer",
+//                       width: "80px",
+//                       height: "30px",
+//                     }}
+//                   >
+//                     Yes
+//                   </button>
+//                   <button
+//                     type="button"
+//                     onClick={handleButtonClickno}
+//                     style={{
+//                       backgroundColor: !selectedButton ? "#0D79DC" : "#979797",
+//                       color: "white",
+//                       margin: "10px",
+//                       border: "none",
+//                       borderRadius: "20px",
+//                       outline: "none",
+//                       cursor: "pointer",
+//                       width: "80px",
+//                       height: "30px",
+//                     }}
+//                   >
+//                     No
+//                   </button>
+//                 </div>
+//               </div>
+
+//               {selectedButton && (
+//                 <>
+//                   <div
+//                     style={{ display: "flex", justifyContent: "space-evenly" }}
+//                     className="personal-detailsfss"
+//                   >
+//                     <div style={{ display: "flex", flexDirection: "column" }}>
+//                       <label htmlFor="email" className="labelfss">
+//                         FSSAI Expiration Date
+//                       </label>
+//                       <input
+//                         type="date"
+//                         className="inputbox2fss"
+//                         placeholder="DD/MM/YY"
+//                         value={fssaiform.expirationDate}
+//                         onChange={(e) => {
+//                           setfssaiform({
+//                             ...fssaiform,
+//                             expirationDate: e.target.value,
+//                           });
+//                         }}
+//                         style={{
+//                           borderColor: fssaierrors.expirationDate ? "red" : "#B3B3B3",
+//                         }}
+//                       />
+//                       {fssaierrors.expirationDate && <div className="error">{fssaierrors.expirationDate}</div>}
+//                     </div>
+//                     <div
+//                       style={{ display: "flex", flexDirection: "column" }}
+//                       className="personal-detailsfss"
+//                     >
+//                       <label htmlFor="website" className="labelfss">
+//                         FSSAI Register Number
+//                       </label>
+//                       <input
+//                         type="text"
+//                         className="inputbox2fss"
+//                         placeholder="44335456567686"
+//                         value={fssaiform.registerNumber}
+//                         onChange={(e) =>
+//                           setfssaiform({
+//                             ...fssaiform,
+//                             registerNumber: e.target.value,
+//                           })
+
+//                         }
+//                         style={{
+//                           borderColor: fssaierrors.registerNumber ? "red" : "#B3B3B3",
+//                         }}
+//                       />
+//                       {fssaierrors.registerNumber && <div className="error">{fssaierrors.registerNumber}</div>}
+//                     </div>
+//                   </div>
+
+//                   <div className="labelinput-divfss">
+//                     <label htmlFor="" className="labelfss">
+//                       Upload FSSAI document
+//                     </label>
+//                     <div className="logo">
+//                       <input
+//                         type="file"
+//                         id="hidden-file-input"
+//                         onChange={handleImage}
+//                         style={{ display: "none" }}
+//                       />
+//                       <span>Drag & Drop to upload or </span>
+//                       <button
+//                         type="button"
+//                         className="custom-file-button custom-file-input"
+//                         onClick={handleButton}
+//                       >
+//                         Browse
+//                       </button>
+//                       <div className="preview">
+//                         {file && (
+//                           <div>
+//                             {!imageclose ? (
+//                               <>
+//                                 <button
+//                                   onClick={closeModal}
+//                                   className="imcrosssty"
+//                                 >
+//                                   <ImCross
+//                                     style={{ fontSize: "10px", color: "white" }}
+//                                   />
+//                                 </button>
+//                                 <img
+//                                   src={imagePreview}
+//                                   alt="Preview"
+//                                   className="imgpreview"
+//                                 />
+//                                 <p>Preview</p>
+//                               </>
+//                             ) : (
+//                               <p
+//                                 style={{
+//                                   marginLeft: "-5%",
+//                                   color: "#67833E",
+//                                   fontSize: "12px",
+//                                 }}
+//                               >
+//                                 No image selected
+//                               </p>
+//                             )}
+//                           </div>
+//                         )}
+//                         {!file && (
+//                           <img src={addphoto} className="fornoimg" alt="" />
+//                         )}
+//                       </div>
+//                     </div>
+//                     {fssaierrors.documents && <div className="error">{fssaierrors.documents}</div>}
+
+//                   </div>
+//                 </>
+//               )}
+
+              
+//             </form>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// });
+
+// export default Fssai;
+
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import "./Fssai.scss";
 import { ImCross } from "react-icons/im";
 import addphoto from "../../../assets/images/Addphotos.png";
-
 
 const Fssai = forwardRef((props, ref) => {
   const [fssaiform, setfssaiform] = useState({
@@ -11,38 +303,61 @@ const Fssai = forwardRef((props, ref) => {
     expirationDate: "",
     documents: "",
   });
-  const[fssaierrors,setFssaiErrors]=useState({
-   
+
+  const [fssaierrors, setFssaiErrors] = useState({
     registerNumber: "",
     expirationDate: "",
     documents: "",
-  })
-  const validate=()=>{
-    let isValid=true;
-    const errors={};
-    if(!fssaiform.registerNumber)
-      {
-        errors.registerNumber="Please Enter The Register Number";
-        isValid=false;
-      }
-      if(!fssaiform.expirationDate)
-        {
-          errors.expirationDate="Please Enter The Date";
-          isValid=false;
-        }
-        if(!fssaiform.documents)
-          {
-            errors.documents="Please Enter The Image";
-            isValid=false;
-          }
-      setFssaiErrors(errors)
+  });
+
+  const validate = () => {
+    let isValid = true;
+    const errors = {};
+    if (!fssaiform.registerNumber) {
+      errors.registerNumber = "Please Enter The Register Number";
+      isValid = false;
+    }
+    if (!fssaiform.expirationDate) {
+      errors.expirationDate = "Please Enter The Date";
+      isValid = false;
+    }
+    if (!fssaiform.documents) {
+      errors.documents = "Please Enter The Image";
+      isValid = false;
+    }
+    setFssaiErrors(errors);
     return isValid;
-  }
+  };
 
   const [selectedButton, setSelectedButton] = useState(true);
   const [imagePreview, setImagePreview] = useState(addphoto);
   const [file, setFile] = useState(null);
   const [imageclose, setImageclose] = useState(false);
+
+  useEffect(() => {
+    if (props.data && props.data[0]) {
+      const newForm = {
+        isEnabled: props.data[0].isEnabled || "",
+        registerNumber: props.data[0].registerNumber || "",
+        expirationDate: props.data[0].expirationDate || "",
+        documents: props.data[0].documents || "",
+      };
+      setfssaiform(newForm);
+      setSelectedButton(newForm.isEnabled === "enabled");
+    }
+  }, [props.data]);
+
+  useEffect(() => {
+    if (fssaiform.documents) {
+      setImagePreview(`data:image/png;base64,${fssaiform.documents}`);
+      setFile(true);
+      setImageclose(false);
+    } else {
+      setImagePreview(addphoto);
+      setFile(null);
+      setImageclose(true);
+    }
+  }, [fssaiform.documents]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,6 +369,7 @@ const Fssai = forwardRef((props, ref) => {
     e.preventDefault();
     setfssaiform({ ...fssaiform, isEnabled: "enabled" });
   };
+
   const handleButtonClickno = (e) => {
     setSelectedButton(false);
     e.preventDefault();
@@ -70,6 +386,7 @@ const Fssai = forwardRef((props, ref) => {
     setFile(null);
     setImagePreview(addphoto);
   };
+
   const getFormData = () => {
     return fssaiform;
   };
@@ -77,7 +394,7 @@ const Fssai = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     getFormData,
     validate,
-    resetForm
+    resetForm,
   }));
 
   const handleImage = (e) => {
@@ -94,22 +411,20 @@ const Fssai = forwardRef((props, ref) => {
     }
   };
 
-  const resetForm=()=>{
+  const resetForm = () => {
     setfssaiform({
       isEnabled: "",
       registerNumber: "",
       expirationDate: "",
       documents: "",
-
-    })
+    });
     setFile(null);
     setFssaiErrors({
-      
-    registerNumber: "",
-    expirationDate: "",
-    documents: "",
-    })
-  }
+      registerNumber: "",
+      expirationDate: "",
+      documents: "",
+    });
+  };
 
   return (
     <>
@@ -188,7 +503,13 @@ const Fssai = forwardRef((props, ref) => {
                           borderColor: fssaierrors.expirationDate ? "red" : "#B3B3B3",
                         }}
                       />
+
+                      {fssaierrors.expirationDate && (
+                        <div className="error">{fssaierrors.expirationDate}</div>
+                      )}
+
                       {fssaierrors.expirationDate && <div className="error_FSSAI">{fssaierrors.expirationDate}</div>}
+
                     </div>
                     <div
                       style={{ display: "flex", flexDirection: "column" }}
@@ -207,13 +528,18 @@ const Fssai = forwardRef((props, ref) => {
                             ...fssaiform,
                             registerNumber: e.target.value,
                           })
-
                         }
                         style={{
                           borderColor: fssaierrors.registerNumber ? "red" : "#B3B3B3",
                         }}
                       />
+
+                      {fssaierrors.registerNumber && (
+                        <div className="error">{fssaierrors.registerNumber}</div>
+                      )}
+
                       {fssaierrors.registerNumber && <div className="error_FSSAI">{fssaierrors.registerNumber}</div>}
+
                     </div>
                   </div>
 
@@ -274,13 +600,17 @@ const Fssai = forwardRef((props, ref) => {
                         )}
                       </div>
                     </div>
+
+                    {fssaierrors.documents && (
+                      <div className="error">{fssaierrors.documents}</div>
+                    )}
+
                     {fssaierrors.documents && <div className="error_FSSAI">{fssaierrors.documents}</div>}
+
 
                   </div>
                 </>
               )}
-
-              
             </form>
           </div>
         </div>
@@ -290,3 +620,4 @@ const Fssai = forwardRef((props, ref) => {
 });
 
 export default Fssai;
+

@@ -107,7 +107,7 @@ function Stepform({data}) {
         if (isValid) {
           newFormData = {
             ...newFormData,
-            location_details: locationRef.current.getFormData(),
+            location_Details: locationRef.current.getFormData(),
           };
         }
         break;

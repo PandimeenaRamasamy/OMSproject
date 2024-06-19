@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
 
 
-  const locationdata=  []
+  const locationdata=  [
+   
+  ]
 
 
   let navigate = useNavigate();
