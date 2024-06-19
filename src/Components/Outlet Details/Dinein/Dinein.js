@@ -176,6 +176,7 @@ const validate=()=>{
       errors.highChair="Please Click Yes or No"
       isValid=false;
     }
+    
     setDineInErrors(errors);
     return isValid;
 }
@@ -281,9 +282,11 @@ const validate=()=>{
                     </div>
                   </div>
                 </div>
+                
               )}
+              {dineinerrors.highChair &&<div className="errors">{dineinerrors.highChair}</div>}
             </div>
-            {dineinerrors.highChair &&<div className="error">{dineinerrors.highChair}</div>}
+            
           </form>
         </div>
 

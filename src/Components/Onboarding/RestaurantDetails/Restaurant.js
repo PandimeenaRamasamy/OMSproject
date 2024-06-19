@@ -172,7 +172,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 }}
               />
               {reserror.businessLegalName && (
-                <div className="error">{reserror.businessLegalName}</div>
+                <div className="error_Res">{reserror.businessLegalName}</div>
               )}
             </div>
 
@@ -208,7 +208,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   Landline
                 </label>
                 {reserror.phone && (
-                  <div className="error">{reserror.phone}</div>
+                  <div className="error_Res">{reserror.phone}</div>
                 )}
               </div>
               <div style={{ marginTop: "20px" }}>
@@ -240,7 +240,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 />
               </div>
               {reserror.restaurantNumber && (
-                <div className="error">{reserror.restaurantNumber}</div>
+                <div className="error_Res">{reserror.restaurantNumber}</div>
               )}
             </div>
 
@@ -291,7 +291,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                 />
               </div>
               {reserror.whatsappNumber && (
-                <div className="error">{reserror.whatsappNumber}</div>
+                <div className="error_Res">{reserror.whatsappNumber}</div>
               )}
             </div>
 
@@ -317,7 +317,7 @@ const Restaurant = React.forwardRef((props, ref) => {
                   style={{ borderColor: reserror.email ? "red" : "#B3B3B3" }}
                 />
                 {reserror.email && (
-                  <div className="error">{reserror.email}</div>
+                  <div className="error_Res">{reserror.email}</div>
                 )}
               </div>
               <div
