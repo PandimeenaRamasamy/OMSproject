@@ -6,6 +6,9 @@ import Sidenavbar from './Components/Sidenavbar/Sidenavbar'
 import Outlet from './Components/Outletnavbar/Outlet'
 import Home from './Components/Homepage/Home';
 import { Routes, Route } from 'react-router-dom';
+import PostDataForm from './Components/Registration/PostData'
+import Stepform from './Components/Onboarding/Steperform/Stepform';
+import Updateoutlet from './Components/UpdateOutlet/Updateoutlet';
 
 function Landing() {
 
@@ -38,6 +41,12 @@ function Landing() {
       <Routes>
         <Route path="/" element={ <Home/> } />
         <Route path="/outlet" element={  <Outlet />} />
+        <Route path="/PostDataForm" element={  <PostDataForm />} />
+        <Route path="/Stepform" element={  <Stepform />} />
+        <Route path="/outlet/Stepform" element={  <Stepform />} />
+        <Route path="/outlet/PostDataForm" element={  <PostDataForm />} />
+
+        <Route path="/Updateoutlet" element={  <Updateoutlet />} />
         {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes></div>
      )}

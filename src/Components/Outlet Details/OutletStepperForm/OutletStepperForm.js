@@ -87,10 +87,11 @@ function Stepform() {
     },
   ];
 
- 
+
   
-   
- 
+
+
+
 
 
   
@@ -109,7 +110,7 @@ function Stepform() {
 
 
   
- const handleSaveandNext=()=>{
+ const handleSaveandNext= async()=>{
     let newFormData1={}
     switch(activeStep)
     {

@@ -5,9 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
+
+  const locationdata=  []
+
+
   let navigate = useNavigate();
   const goToAbout = () => {
-    navigate('/outlet');
+    navigate('/outlet',{ state: { APidata: locationdata } });
   };
   return (
     <div className='main'>

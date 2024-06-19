@@ -7,15 +7,21 @@ import rootSaga from "../src/redux/sagas/rootSaga";
 import {
   deliveryDataReducer,
   postDataReducer,
+  registrationReducer,
+  postDataReducergetLocation
+
 } from "./redux/Reducers/postDataReducer";
 import { basicDetailsReducer } from "./redux/Reducers/postDataReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
+  
   postData: postDataReducer,
   basicDetails: basicDetailsReducer,
   deliveryDetails: deliveryDataReducer,
+  registration:registrationReducer,
+  getlocationdata:postDataReducergetLocation
   // Add other reducers here if necessary
 });
 

@@ -21,7 +21,7 @@ const Dinein = React.forwardRef((props,ref) => {
   const Locid = LocationId.payload;
 
   const [Outletdetails, setOutletdetails] = useState({
-    locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
+    locationId: Locid,
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",

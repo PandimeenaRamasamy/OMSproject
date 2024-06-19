@@ -10,7 +10,7 @@ const Pickup = React.forwardRef((props,ref) => {
     const Locid = LocationId.payload;
     
     const[form,setForm]=useState({
-        locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
+        locationId:Locid,
         serviceTimeFrom:"",
         serviceTimeTo:"",
         Payment:[],
