@@ -27,16 +27,16 @@ const Dinein = React.forwardRef((props,ref) => {
     locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
 
     dineIn: "",
-    highChair: "",
+    highChair: "yes",
     interactiveDineIn: "",
     merchant4DigitValidation: "",
     checkIn: {
       maximumPeopleAllowedOnline: "",
       maximumPeopleAllowedOffline: "",
-      lateShowTime: "",
+      lateShowTime:"",
       autoCancelTime: "",
       abandonTime: "",
-      autoAssign: "",
+      autoAssign: "yes",
     },
     reservation: {
       minimumPeopleAllowed: "",
@@ -477,6 +477,7 @@ const validate=()=>{
                             </label>
                             <input
                               type="text"
+                              placeholder="20"
                               style={{fontSize:'14px'}}
                               id="maximuminonline"
                               maxLength={3}
@@ -500,6 +501,7 @@ const validate=()=>{
                             </label>
                             <input
                               type="text"
+                              placeholder="20"
 
                               id="maximuminoffline"
                               style={{fontSize:'14px'}}
@@ -523,20 +525,20 @@ const validate=()=>{
                             <label htmlFor="Lateshowtime" id="maximuminon">
                               Late show time
                             </label>
-                            <input
-                              type="time"
-                              id="maximuminonline"
-                              style={{fontSize:'12px'}}
-                              onChange={(event) => {
-                                setOutletdetails({
-                                  ...Outletdetails,
-                                  checkIn: {
-                                    ...Outletdetails.checkIn,
-                                    lateShowTime: event.target.value,
-                                  },
-                                });
-                              }}
-                            />
+                              <input
+                                type="time"
+                                id="maximuminonline"
+                                style={{fontSize:'12px'}}
+                                onChange={(event) => {
+                                  setOutletdetails({
+                                    ...Outletdetails,
+                                    checkIn: {
+                                      ...Outletdetails.checkIn,
+                                      lateShowTime: event.target.value,
+                                    },
+                                  });
+                                }}
+                              />
                           </div>
                           <div className="check2">
                             <label htmlFor="AutocancelTime" id="maximuminoff">
