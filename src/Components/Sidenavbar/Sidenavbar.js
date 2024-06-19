@@ -450,7 +450,7 @@ console.log(locationdata[0].location.id)
               datafromapi.map((location, index) => (
                 <div key={index}>
                   <button onClick={()=>goToupdate(datafromapi[index].locationId)}>
-                  {datafromapi[index].restaurantName} {datafromapi[index].locationId}
+                  {datafromapi[index].restaurantName}   
                 </button>
                 </div>
               
