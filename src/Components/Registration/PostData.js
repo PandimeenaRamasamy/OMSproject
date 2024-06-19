@@ -24,6 +24,10 @@ const PostDataForm = ({ data }) => {
 
   // console.log("registrationapi", data[0].location.id);
 
+
+  ;
+
+
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
   const [successmgs,setsuccessmgs]=useState(false)
@@ -41,6 +45,7 @@ const PostDataForm = ({ data }) => {
 
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
   const [Registrationform, setRegistrationform] = useState({
+    locationId:null,
     restaurantName: "",
     name: "",
     phone: "",
@@ -60,11 +65,51 @@ const PostDataForm = ({ data }) => {
     base64Imageerror: "",
   });
 
+  useEffect(() => {
+    if (data) {
+      console.log("Props data available:", data); // Debugging line
+
+      if (data.attributes) {
+        try {
+          const attributes = JSON.parse(data.attributes);
+          console.log("Parsed attributes:", attributes); // Debugging line
+          const bankDetails = attributes.gstNumber || {};
+          console.log("Extracted bank details:", bankDetails); // Debugging line
+          setRegistrationform({
+            gstNumber: bankDetails || "",
+          
+          });
+        } catch (error) {
+          console.error("Failed to parse attributes", error);
+        }
+      } else {
+        console.error("Attributes field is undefined");
+      }
+    } else {
+      console.error("Props data is undefined");
+    }
+
+    if (data && data[0]) {
+      setRegistrationform({
+        locationId:data[0].location.id||null,
+        restaurantName: data[0].location.restaurantName || "",
+        name: data[0].location.name || "",
+        phone: data[0].location.phone || "",
+        email: data[0].location.email || "",
+        designation: data[0].location.designation || "",
+        
+      });
+    }
+    setImagePreview(null)
+
+
+  }, [data])
+
   const registrationpagerrors = {};
-
+  
   const validationofregistrationform = () => {
+  
     let isValid = true;
-
     if (!Registrationform.restaurantName) {
       isValid = false;
       registrationpagerrors.restaurantNameerror = "Enter Restaurant Name";
@@ -102,9 +147,10 @@ const PostDataForm = ({ data }) => {
     const checkvalid = validationofregistrationform();
     if (checkvalid) {
       dispatch(postDataRequest(Registrationform));
+      setsuccessmgs(true);
     }
 
-    setsuccessmgs(true);
+   
 
 
   };
@@ -196,7 +242,7 @@ const PostDataForm = ({ data }) => {
                   borderColor: error.restaurantNameerror ? "red" : "#B3B3B3",
                 }}
                 placeholder="Name"
-                value={data && data[0] ? data[0].location.restaurantName : Registrationform.restaurantName}
+                value={ Registrationform.restaurantName}
                 onChange={(e) =>
                   setRegistrationform({
                     ...Registrationform,
@@ -217,7 +263,7 @@ const PostDataForm = ({ data }) => {
                 className="inputbox"
                 style={{ borderColor: error.nameerror ? "red" : "#B3B3B3" }}
                 placeholder="Name"
-                value={data && data[0] ? data[0].location.name : Registrationform.name}
+                value={ Registrationform.name}
                 onChange={(e) => {
                   setRegistrationform({
                     ...Registrationform,
@@ -250,7 +296,7 @@ const PostDataForm = ({ data }) => {
                   id="phone-number"
                   type="text"
                   className="phonenumberinput"
-                  value={data && data[0] ? data[0].location.phone : Registrationform.phone}
+                  value={Registrationform.phone}
                   maxLength={10}
                   onKeyPress={handleKeyPress}
                   onChange={(event) => {
@@ -272,7 +318,7 @@ const PostDataForm = ({ data }) => {
                 type="email"
                 className="inputbox"
                 placeholder="xyz@gmail.com"
-                value={data && data[0] ? data[0].location.email : Registrationform.email}
+                value={Registrationform.email}
                 style={{
                   borderColor: error.emailerror ? "red" : "#B3B3B3",
                 }}
@@ -295,7 +341,7 @@ const PostDataForm = ({ data }) => {
                 name="desig"
                 id="desig"
                 className="inputbox"
-                value={data && data[0] ? data[0].location.designation : Registrationform.designation}
+                value={ Registrationform.designation}
                 onChange={(e) =>
                   setRegistrationform({
                     ...Registrationform,
@@ -316,7 +362,7 @@ const PostDataForm = ({ data }) => {
                 type="text"
                 className="inputbox"
                 placeholder=""
-                value={data && data[0] ? data[0].location.gstNumber : Registrationform.gstNumber}
+                value={ Registrationform.gstNumber}
                 onChange={(e) =>
                   setRegistrationform({
                     ...Registrationform,
@@ -397,7 +443,7 @@ const PostDataForm = ({ data }) => {
           </button>
           <button className="footnavbtn2" onClick={ClearAll}>Clear All</button>
         </div>
-        {successmgs && (
+        {successmgs &&  validationofregistrationform &&(
         <div className="alcoholModalOverlaysuccess">
           <Success
             onCloseRequest={handleCloseAlcoholModal}
