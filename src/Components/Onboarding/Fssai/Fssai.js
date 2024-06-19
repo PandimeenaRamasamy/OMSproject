@@ -11,6 +11,33 @@ const Fssai = forwardRef((props, ref) => {
     expirationDate: "",
     documents: "",
   });
+  const[fssaierrors,setFssaiErrors]=useState({
+   
+    registerNumber: "",
+    expirationDate: "",
+    documents: "",
+  })
+  const validate=()=>{
+    let isValid=true;
+    const errors={};
+    if(!fssaiform.registerNumber)
+      {
+        errors.registerNumber="Please Enter The Register Number";
+        isValid=false;
+      }
+      if(!fssaiform.expirationDate)
+        {
+          errors.expirationDate="Please Enter The Date";
+          isValid=false;
+        }
+        if(!fssaiform.documents)
+          {
+            errors.documents="Please Enter The Image";
+            isValid=false;
+          }
+      setFssaiErrors(errors)
+    return isValid;
+  }
 
   const [selectedButton, setSelectedButton] = useState(true);
   const [imagePreview, setImagePreview] = useState(addphoto);
@@ -49,6 +76,7 @@ const Fssai = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     getFormData,
+    validate,
     resetForm
   }));
 
@@ -75,7 +103,12 @@ const Fssai = forwardRef((props, ref) => {
 
     })
     setFile(null);
-
+    setFssaiErrors({
+      
+    registerNumber: "",
+    expirationDate: "",
+    documents: "",
+    })
   }
 
   return (
@@ -151,7 +184,11 @@ const Fssai = forwardRef((props, ref) => {
                             expirationDate: e.target.value,
                           });
                         }}
+                        style={{
+                          borderColor: fssaierrors.expirationDate ? "red" : "#B3B3B3",
+                        }}
                       />
+                      {fssaierrors.expirationDate && <div className="error">{fssaierrors.expirationDate}</div>}
                     </div>
                     <div
                       style={{ display: "flex", flexDirection: "column" }}
@@ -170,8 +207,13 @@ const Fssai = forwardRef((props, ref) => {
                             ...fssaiform,
                             registerNumber: e.target.value,
                           })
+
                         }
+                        style={{
+                          borderColor: fssaierrors.registerNumber ? "red" : "#B3B3B3",
+                        }}
                       />
+                      {fssaierrors.registerNumber && <div className="error">{fssaierrors.registerNumber}</div>}
                     </div>
                   </div>
 
@@ -232,6 +274,8 @@ const Fssai = forwardRef((props, ref) => {
                         )}
                       </div>
                     </div>
+                    {fssaierrors.documents && <div className="error">{fssaierrors.documents}</div>}
+
                   </div>
                 </>
               )}

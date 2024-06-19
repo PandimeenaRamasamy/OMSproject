@@ -13,10 +13,18 @@ const ParentComponent = React.forwardRef((props,ref) => {
   const Locid = LocationId.payload;
   const [form, setForm] = useState({
 
+
     locationId:Locid,
+
+    locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+
     restaurantImgs: [],
     profileImg: ""
   });
+  const[resimgerror,setResImageError]=useState({
+    restaurantImgs: [],
+    profileImg: ""
+  })
 
   
 
@@ -38,7 +46,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
       reader.onloadend = () => {
         setForm(prevForm => ({
           ...prevForm,
-          profileImg: reader.result
+          profileImg: reader.result.split(',')[1]
         }));
       };
       reader.readAsDataURL(images[0]);
@@ -51,7 +59,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
       if (image) { 
         const reader = new FileReader();
         reader.onloadend = () => {
-          base64Images.push(reader.result);
+          base64Images.push(reader.result.split(',')[1]);
           
           setForm(prevForm => ({
             ...prevForm,
@@ -67,11 +75,31 @@ const ParentComponent = React.forwardRef((props,ref) => {
     return form;
   }
 
+
   useImperativeHandle(ref,()=>({
     getFormData,
+    validate,
 
 
 }))
+const validate=()=>{
+  let errors={};
+  let isValid=true;
+  if(!form.profileImg)
+    {
+      errors.profileImg="Please Select the profile Image";
+      isValid=false;
+    }
+    if(!form.restaurantImgs || form.restaurantImgs.length===0)
+      {
+        errors.restaurantImgs="Please Select the restaurant Image";
+        isValid=false;
+      }
+    setResImageError(errors);
+    return isValid
+    
+      
+}
 
   return (
     <>
@@ -82,9 +110,11 @@ const ParentComponent = React.forwardRef((props,ref) => {
  
      
      <RestrauntImage inputRefs={[useRef(null)]} images={images} setImages={setImages} />
+     {resimgerror.profileImg && <div className='error'>{resimgerror.profileImg}</div>}
   
    
      <RestrauntImage2 inputRefs={[useRef(null)]} images={images2} setImages={setImages2} />
+     {resimgerror.restaurantImgs && <div className='error1'>{resimgerror.restaurantImgs}</div>}
      </div>
    </>
 

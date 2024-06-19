@@ -26,6 +26,7 @@
     height: 15.86px;
     font-family: Poppins;
     font-size: 20px;
+    font-weight: 600;
     line-height: 30px;
     color: #2f2f2f;
    
@@ -54,7 +55,7 @@
       width: 600px;
       height: 44px;
       border-radius: 4px;
-      border: 1px solid #B3B3B3;
+      border: 1px solid #2F2F2F;
       margin-top: 3px;
       color:black ;
       font-size: 16px;
@@ -69,6 +70,7 @@
  
   .PhoneInput input{
       width: 300px;
+      border: 1px solid #2F2F2F;
   }
   .react-tel-input .form-control {
       margin-top: 0 !important;

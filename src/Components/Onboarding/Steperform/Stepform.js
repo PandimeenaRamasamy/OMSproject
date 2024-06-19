@@ -10,8 +10,12 @@ import BankDetails from "../BankDetails/BankDetails";
 import Location from "../Location/Location";
 import { useDispatch } from "react-redux";
 import { postOnBoardingDataRequest } from "../../../redux/Actions/PostDataAction";
+
 import { useNavigate } from 'react-router-dom';
 import Outlet from '../../Outletnavbar/Outlet.scss'
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Stepform({data}) {
   const dispatch = useDispatch();
@@ -61,6 +65,26 @@ function Stepform({data}) {
   }, [activeStep]);
 
   const handleStepClick = (index) => {
+    if (index > activeStep) {
+      let isValid = true;
+      switch (activeStep) {
+        case 0:
+          isValid = restaurantDetailsRef.current.validate();
+          break;
+        case 1:
+          isValid = locationRef.current.getValidate();
+          break;
+        case 2:
+          isValid = fssaiRef.current.validate();
+          break;
+        default:
+          break;
+      }
+      if (!isValid) {
+        toast.error("Please fill out the required fields before moving to the next step.");
+        return;
+      }
+    }
     setActiveStep(index);
   };
 
@@ -88,17 +112,22 @@ function Stepform({data}) {
         }
         break;
       case 2:
-        newFormData = {
-          ...newFormData,
-          fssai_details: fssaiRef.current.getFormData(),
-        };
+        isValid = fssaiRef.current.validate();
+        if (isValid) {
+          newFormData = {
+            ...newFormData,
+            fssai_details: fssaiRef.current.getFormData(),
+          };
+        }
         break;
       case 3:
-        newFormData = {
-          ...newFormData,
-          bank_details: bankRef.current.getFormData(),
-        };
-        console.log(newFormData);
+        isValid = bankRef.current.validate();
+        if (isValid) {
+          newFormData = {
+            ...newFormData,
+            bank_details: bankRef.current.getFormData(),
+          };
+        }
         break;
       default:
         break;
@@ -107,6 +136,19 @@ function Stepform({data}) {
     if (isValid) {
       setMainForm(newFormData);
       handleNextStep(newFormData);
+    } else {
+      toast.error("Please fill out the required fields.", {
+        style: {
+          backgroundColor: '', // Background color
+          color: 'red', // Text color
+          fontFamily: 'Arial, sans-serif', // Font family
+          fontSize: '14px', // Font size
+          padding: '12px', // Padding,
+          position: "top",
+          
+
+        },
+      });
     }
   };
 
@@ -132,8 +174,11 @@ function Stepform({data}) {
   const handleNextStep = (formData) => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
+      toast.success("Data submitted successfully!");
+
     } else {
       dispatch(postOnBoardingDataRequest(formData));
+      toast.success("Data submitted successfully!");
     }
   };
   const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
@@ -202,6 +247,20 @@ function Stepform({data}) {
           </div>
         </div>
       </div>
+      {/* Render ToastContainer from react-toastify */}
+      <ToastContainer
+position="top-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+
+/>
     </div>
    
     </>

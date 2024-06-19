@@ -10,7 +10,11 @@ const Pickup = React.forwardRef((props,ref) => {
     const Locid = LocationId.payload;
     
     const[form,setForm]=useState({
+
         locationId:Locid,
+
+        locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+
         serviceTimeFrom:"",
         serviceTimeTo:"",
         Payment:[],
@@ -18,6 +22,14 @@ const Pickup = React.forwardRef((props,ref) => {
         packagingCharge:"",
         ETA:""
 
+    })
+    const[pickuperror,setPickUpError]=useState({
+        serviceTimeFrom:"",
+        serviceTimeTo:"",
+        Payment:[],
+        scheduleDuration:"",
+        packagingCharge:"",
+        ETA:""
     })
    
     const handlecheckedchange=(e)=>{
@@ -43,10 +55,41 @@ const Pickup = React.forwardRef((props,ref) => {
     
       useImperativeHandle(ref, () => ({
         getFormData,
+        validate,
 
       }));
    
+const validate=()=>{
+ let isValid=true;
+ const errors={};
+if(!form.serviceTimeFrom && isEnabled)
+{
+    errors.serviceTimeFrom="Please fill this field"
+    isValid=false;
+}
+if(!form.serviceTimeTo && isEnabled)
+    {
+        errors.serviceTimeTo="Please fill this field"
+        isValid=false;
+    }
+    if(!form.packagingCharge && isEnabled){
+        errors. packagingCharge="Please fill this field"
+        isValid=false
 
+    }
+    if(!form.scheduleDuration && isEnabled){
+        errors.scheduleDuration="Please fill this field"
+        isValid=false
+
+    }
+    if(!form.ETA && isEnabled){
+        errors.ETA="Please fill this field"
+        isValid=false
+
+    }
+setPickUpError(errors)   
+return isValid;
+}
     return (
         <div className='Pickup_container'>
             
@@ -69,23 +112,30 @@ const Pickup = React.forwardRef((props,ref) => {
                         <h5 className='Pickup_heading6'>To</h5>
                         </div>
                         <div className='from_to_input'>
-                        <input type="text" className='textbox1' placeholder='11:00 AM' onChange={(e)=>setForm({...form,"serviceTimeFrom":e.target.value})} ></input>
-                        <input type="text" className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})}></input>
+                        <input type="text" className='textbox1' placeholder='11:00 AM' style={{
+                          borderColor: pickuperror.serviceTimeFrom ? "red" : "#B3B3B3",
+                        }} onChange={(e)=>setForm({...form,"serviceTimeFrom":e.target.value})} ></input>
+                        <input type="text" className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})} style={{
+                          borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
+                        }}></input>
+                        {pickuperror.serviceTimeFrom && <div className='error'>{pickuperror.serviceTimeFrom}</div>}
+                        {pickuperror.serviceTimeTo && <div className='error-flex'>{pickuperror.serviceTimeTo}</div>}
                         </div>
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading3'>Please mention the payment methods</h5>
                         <div style={{display:'flex'}}>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
-                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}}  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
-                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}}  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}}  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
+                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
+                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
+                       
                         </div>
                         <div >
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
                         <div style={{marginTop:'10px' }}>
-                            <input type="radio" name="YesorNo"   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
-                            <input type="radio" name="YesorNo" style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
+                            <input type="radio" name="YesorNo" className='radioo1'   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
+                            <input type="radio" name="YesorNo" className='radioo2' style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
                         
                         </div>
                         </div>
@@ -94,21 +144,28 @@ const Pickup = React.forwardRef((props,ref) => {
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
                         <div className='pickupduration'>
-                            <input type="number" placeholder='EOD' className='updown' min="0" onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
+                            <input type="number" style={{
+                          borderColor: pickuperror.scheduleDuration ? "red" : "#B3B3B3",
+                        }} placeholder='EOD' className='updown' min="0" onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
                         </div>
+                        {pickuperror.scheduleDuration && <div className='error'>{pickuperror.scheduleDuration}</div>}
                         </div>
                        
                         
                         <div className='PackagingCharge'>
                         <h5 className='Pickup_heading7'>Packaging Charge </h5> 
-                       <input type="text" className='Pack_type' placeholder='$' onChange={(e)=>setForm({...form,"packagingCharge":e.target.value})}></input>
-                      
+                       <input type="text" style={{
+                          borderColor: pickuperror.packagingCharge ? "red" : "#B3B3B3",
+                        }} className='Pack_type' placeholder='$' onChange={(e)=>setForm({...form,"packagingCharge":e.target.value})}></input>
+                       {pickuperror.packagingCharge && <div className='error'>{pickuperror.packagingCharge}</div>}
                         </div>
                         <div className='picketa'>
                         <h5 className='Pickup_heading7'>Pick up ETA </h5> 
                         <h5 className='Pickup_heading3'>Please mention the Estimated time of arrival for Pick up</h5>
-                        <input type="text" className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"ETA":e.target.value})}></input>
-                        
+                        <input type="text" style={{
+                          borderColor: pickuperror.ETA ? "red" : "#B3B3B3",
+                        }} className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"ETA":e.target.value})}></input>
+                        {pickuperror.ETA && <div className='error'>{pickuperror.ETA}</div>}
                         </div>
                       
                       

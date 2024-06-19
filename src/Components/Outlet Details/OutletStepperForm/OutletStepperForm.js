@@ -23,6 +23,9 @@ import Delivery from "../Delivery/Delivery";
 import { PostPickupDataRequest } from "../../../redux/Actions/PostDataAction";
 import { PostKitchenDataRequest } from "../../../redux/Actions/PostDataAction";
 import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
+import { Flip, ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 
@@ -112,41 +115,83 @@ function Stepform() {
   
  const handleSaveandNext= async()=>{
     let newFormData1={}
+    let isValid=true
     switch(activeStep)
     {
+      
       case 0:
         newFormData1=basicDetailsref.current.getFormData()
         setBasicDetailsForm(newFormData1)
-        dispatch(saveBasicDetailsRequest(newFormData1))      
+        dispatch(saveBasicDetailsRequest(newFormData1))  
+        toast.success("Data submitted successfully!");
+    
         break;
-      case 1:
+      case 1: isValid=restrauntimageref.current.validate();
+        if(isValid)
+          {
         newFormData1=restrauntimageref.current.getFormData()
         setrestrauntImageForm(newFormData1)
-        dispatch(PostRestaurantImageDataRequest(newFormData1))    
+        dispatch(PostRestaurantImageDataRequest(newFormData1))
+        toast.success("Data submitted successfully!");
+
+          }  
+          else{
+            toast.error("Please fill out the required fields before moving to the next step.");
+          }  
         break;
-      case 2:
+      case 2: 
+      isValid=dineinref.current.validate();
+        if(isValid)
+          {
           newFormData1=dineinref.current.getFormData()
           setDineInForm(newFormData1)
           dispatch(postDineinDataRequest(newFormData1))
+
+          
+          }
+
+          toast.success("Data submitted successfully!");
+
+
           break;
       case 3:
+        isValid=pickUpformRef.current.validate();
+        if(isValid)
+          {
         newFormData1=pickUpformRef.current.getFormData()
         setPickupForm(newFormData1);
         dispatch(PostPickupDataRequest(newFormData1))
+        toast.success("Data submitted successfully!");
+
+          }
+          else{
+            toast.error("Please fill out the required fields before moving to the next step.");
+          }  
         break;
 
         case 4:
           newFormData1=deliveryref.current.getFormData()
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1))
+        toast.success("Data submitted successfully!");
+
         break;
 
        
         case 5:
+          isValid=kitchenformRef.current.validate();
+          if(isValid)
+            {
           newFormData1=kitchenformRef.current.getFormData()
           setKitchenForm(newFormData1)
           dispatch(PostKitchenDataRequest(newFormData1))
+          toast.success("Data submitted successfully!");
+
           break;
+            }
+            else{
+              toast.error("Please fill out the required fields before moving to the next step.");
+            }  
         default:
           console.log(" There is no Api call") ;
           break;
@@ -159,8 +204,10 @@ function Stepform() {
     }
     console.log(dineInForm) 
     
-    
+    if(isValid)
+      {
     handleNextStep();
+      }
 
  } 
    
@@ -225,6 +272,18 @@ function Stepform() {
           </div>
         </div>
       </div>
+      <ToastContainer
+position="top-center"
+autoClose={1600}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Flip}/>
     </div>
   );
 }

@@ -33,7 +33,8 @@ AccountHolderName:""
 
   useImperativeHandle(ref, () => ({
     getFormData,
-    resetForm
+    resetForm,
+    validate
   }));
   const handleKeyPress = (event) => {
     // Prevent non-numeric keys from being pressed
@@ -42,7 +43,30 @@ AccountHolderName:""
     }
   };
 
- 
+ const validate=()=>{
+  let isValid=true;
+  const error={};
+  if(!bankform.accountNumber)
+    {
+      error.accountNumber="Please Enter Account Number";
+      isValid=false;
+
+    }
+    if(!bankform.ifscCode)
+      {
+        error.ifscCode="Please Enter ifsce code";
+        isValid=false;
+  
+      }
+      if(!bankform.AccountHolderName)
+        {
+          error.AccountHolderName="Please Enter Account Holder Name";
+          isValid=false;
+    
+        }
+    setBankError(error);
+    return isValid
+ }
   return (
     <div>
       <div className='Bank-Container'>
@@ -55,8 +79,8 @@ AccountHolderName:""
      </div>
      <div className='Re_Account_Number'>
       <h1 className='Bank_Second_Heading'>Re-enter account number</h1>
-      <input type='text' value={bankform.reaccountNumber} className='Type2'  onKeyPress={handleKeyPress} onChange={(e)=>setBankform({...bankform,reaccountNumber:e.target.value})} style={{borderColor: bankError.reaccountNumber ? "red" : "#B3B3B3"}} ></input>
-      {bankError.reaccountNumber && <div className='error-message'>{bankError.reaccountNumber}</div>}
+      <input type='text'  className='Type2'  onKeyPress={handleKeyPress}  ></input>
+      
      </div>
      <div className='Bank_Ifse_Code'>
       <h1 className='Bank_Third_Heading'>Bank IFSE code</h1>

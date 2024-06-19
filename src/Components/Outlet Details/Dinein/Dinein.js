@@ -21,7 +21,11 @@ const Dinein = React.forwardRef((props,ref) => {
   const Locid = LocationId.payload;
 
   const [Outletdetails, setOutletdetails] = useState({
+
     locationId: Locid,
+
+    locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
@@ -44,7 +48,29 @@ const Dinein = React.forwardRef((props,ref) => {
     },
   });
 
- 
+  const [dineinerrors, setDineInErrors] = useState({
+   
+    dineIn: "",
+    highChair: "",
+    interactiveDineIn: "",
+    merchant4DigitValidation: "",
+    checkIn: {
+      maximumPeopleAllowedOnline: "",
+      maximumPeopleAllowedOffline: "",
+      lateShowTime: "",
+      autoCancelTime: "",
+      abandonTime: "",
+      autoAssign: "",
+    },
+    reservation: {
+      minimumPeopleAllowed: "",
+      maximumPeopleAllowed: "",
+      reservationServiceTimeFrom: "",
+      reservationServiceTimeTo: "",
+      days: [],
+      bufferDays: "",
+    },
+  });
 
   const handleDayChange = (day) => {
     const updatedDays = Outletdetails.reservation.days.includes(day)
@@ -138,9 +164,21 @@ const Dinein = React.forwardRef((props,ref) => {
 
   useImperativeHandle(ref,()=>({
     getFormData,
+    validate,
 
 
 }))
+const validate=()=>{
+  const errors={};
+  let isValid=true;
+  if(!Outletdetails.highChair && DineinselectedButton)
+    {
+      errors.highChair="Please Click Yes or No"
+      isValid=false;
+    }
+    setDineInErrors(errors);
+    return isValid;
+}
 
  
 
@@ -245,6 +283,7 @@ const Dinein = React.forwardRef((props,ref) => {
                 </div>
               )}
             </div>
+            {dineinerrors.highChair &&<div className="error">{dineinerrors.highChair}</div>}
           </form>
         </div>
 
