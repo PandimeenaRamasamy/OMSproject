@@ -128,10 +128,15 @@ function Stepform() {
         dispatch(PostRestaurantImageDataRequest(newFormData1))
           }    
         break;
-      case 2:
+      case 2: 
+      isValid=dineinref.current.validate();
+        if(isValid)
+          {
           newFormData1=dineinref.current.getFormData()
           setDineInForm(newFormData1)
           dispatch(postDineinDataRequest(newFormData1))
+          
+          }
           break;
       case 3:
         isValid=pickUpformRef.current.validate();
