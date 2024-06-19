@@ -37,7 +37,7 @@ const Outlet = () => {
     };
   return (
     <>
-    <div className='outletnav'>
+    <div className='outletnavorg'>
         <p>Outlet Management</p>
        
         <nav className="navbar">
