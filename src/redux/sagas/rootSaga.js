@@ -13,6 +13,7 @@ import { dineinpostdata } from "../sagas/counterSaga";
 import { locationIdSaga } from "../sagas/counterSaga";
 import { PickupSaga } from "../sagas/counterSaga";
 import { KitchenSaga } from "../sagas/counterSaga";
+import { watchgetLocationData } from "../sagas/counterSaga";
 export default function* rootSaga() {
   yield all([
     watchPostData(),
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     watchPostDeliveryDataSagas(),
     RestrauntImageSaga() ,
     PickupSaga(),
-    KitchenSaga()
+    KitchenSaga(),
+    watchgetLocationData()
   ]);
 }

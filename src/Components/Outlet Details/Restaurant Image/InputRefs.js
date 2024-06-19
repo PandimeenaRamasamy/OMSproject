@@ -13,7 +13,11 @@ const ParentComponent = React.forwardRef((props,ref) => {
   const Locid = LocationId.payload;
   const [form, setForm] = useState({
 
+
+    locationId:Locid,
+
     locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+
     restaurantImgs: [],
     profileImg: ""
   });
@@ -21,6 +25,8 @@ const ParentComponent = React.forwardRef((props,ref) => {
     restaurantImgs: [],
     profileImg: ""
   })
+
+  
 
   const [images, setImages] = useState(Array(4).fill(null));
   const [images2, setImages2] = useState(Array(1).fill(null)); 

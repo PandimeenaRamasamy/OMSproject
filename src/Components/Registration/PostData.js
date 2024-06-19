@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import "./Registration.scss";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { postDataRequest } from "../../redux/Actions/PostDataAction";
-import { getLocationId } from "../../redux/Actions/PostDataAction";
- 
-const PostDataForm = () => {
+import { useDispatch, useSelector } from "react-redux";
+import { postDataRequest, getLocationId, getDataRequest, getLocationRequest } from "../../redux/Actions/PostDataAction";
+import { useLocation } from 'react-router-dom';
+import Success from './Success'
+
+const PostDataForm = ({ data }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  
+  // const datafromapi = useSelector((state) => state.postData.data);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     data.forEach((location, index) => {
+  //       console.log("datas", location.location.id);
+  //     });
+  //   }
+  // }, []);
+
+  console.log(typeof data)
+
+  // console.log("registrationapi", data[0].location.id);
+
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
+  const [successmgs,setsuccessmgs]=useState(false)
   const [imageclose, setimageclose] = useState(false);
   const countryCodes = [
     { name: "India", dial_code: "+91" },
     { name: "United States", dial_code: "+1" },
   ];
+
+  // if (datafromapi.length > 0) {
+  //   console.log(datafromapi[0].locationId);
+  // }
+
+  // console.log("data from api", datafromapi);
+
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
   const [Registrationform, setRegistrationform] = useState({
     restaurantName: "",
@@ -25,7 +49,7 @@ const PostDataForm = () => {
     gstNumber: "",
     base64Image: "",
   });
- 
+
   const [error, setError] = useState({
     restaurantNameerror: "",
     nameerror: "",
@@ -35,59 +59,64 @@ const PostDataForm = () => {
     gstNumbererror: "",
     base64Imageerror: "",
   });
- 
+
   const registrationpagerrors = {};
- 
+
   const validationofregistrationform = () => {
-    let isValid=true;
-   
+    let isValid = true;
+
     if (!Registrationform.restaurantName) {
-      isValid=false;
-      registrationpagerrors.restaurantNameerror = "Enter Restaurent Name";
+      isValid = false;
+      registrationpagerrors.restaurantNameerror = "Enter Restaurant Name";
     }
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(Registrationform.email)) {
-      console.log("email error")
-      isValid=false;
+      console.log("email error");
+      isValid = false;
       registrationpagerrors.emailerror = "Enter valid email";
     }
-    if(!Registrationform.base64Image)
-      {
-        isValid=false;
-        registrationpagerrors.base64Imageerror ="Upload logo";
-      }
- 
+    if (!Registrationform.base64Image) {
+      isValid = false;
+      registrationpagerrors.base64Imageerror = "Upload logo";
+    }
+
     if (!Registrationform.name) {
-      isValid=false;
+      isValid = false;
       registrationpagerrors.nameerror = "Enter your Name";
     } else if (/[^a-zA-Z\s]/.test(Registrationform.name)) {
-      isValid=false;
-      registrationpagerrors.nameerror =
-        "Name must only contain letters and spaces";
+      isValid = false;
+      registrationpagerrors.nameerror = "Name must only contain letters and spaces";
     }
- 
+
     setError(registrationpagerrors);
-    return  isValid;
+    return isValid;
   };
- 
- 
+
+  const restaurantNameapi = useSelector((state) => state.registration.restaurantData.restaurantName);
+  const dataitem = restaurantNameapi;
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    // window.location.reload();
+    console.log(restaurantNameapi);
     validationofregistrationform();
-    const checkvalid= validationofregistrationform();
-    if(checkvalid)
-      {
-        dispatch(postDataRequest(Registrationform));
-      }
- 
-   
+    const checkvalid = validationofregistrationform();
+    if (checkvalid) {
+      dispatch(postDataRequest(Registrationform));
+    }
+
+    setsuccessmgs(true);
+
+
   };
+
   const closeModal = () => {
     setimageclose(true);
     setFile(null);
   };
- 
- 
-  const ClearAll=()=>{
+
+  const [clearingdata,setclearingdata]=useState(false);
+
+  const ClearAll = () => {
     setRegistrationform({
       restaurantName: "",
       name: "",
@@ -95,16 +124,27 @@ const PostDataForm = () => {
       email: "",
       designation: "",
       gstNumber: "",
-      base64Image: ""
-    })
-    closeModal()
- 
- 
- 
- 
-   
-  }
- 
+      base64Image: "",
+    });
+    closeModal();
+  };
+
+  const handleCloseAlcoholModal = () => {
+    setsuccessmgs(false);
+    ClearAll();
+  };
+  
+
+  // const handleDeclineAlcohol = () => {
+  //   setSelectedAlcoholOption("Doesn't Serve Alcohol");
+  //   setIsAlcoholModalOpen(false);
+  // };
+
+  // const handleAgreeAlcohol = () => {
+  //   setSelectedAlcoholOption("Serve Alcohol");
+  //   setIsAlcoholModalOpen(false);
+  // };
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     const reader = new FileReader();
@@ -120,25 +160,23 @@ const PostDataForm = () => {
       reader.readAsDataURL(selectedFile);
     }
   };
- 
+
   const handleButtonClick = () => {
     document.getElementById("hidden-file-input").click();
     setimageclose(false);
   };
- 
- 
 
- 
   const handleCodeChange = (event) => {
     setSelectedCode(event.target.value);
   };
+
   const handleKeyPress = (event) => {
     // Prevent non-numeric keys from being pressed
     if (!/^\d$/.test(event.key)) {
       event.preventDefault();
     }
   };
- 
+
   return (
     <>
       <div className="main-divreg">
@@ -158,7 +196,7 @@ const PostDataForm = () => {
                   borderColor: error.restaurantNameerror ? "red" : "#B3B3B3",
                 }}
                 placeholder="Name"
-                value={Registrationform.restaurantName}
+                value={data && data[0] ? data[0].location.restaurantName : Registrationform.restaurantName}
                 onChange={(e) =>
                   setRegistrationform({
                     ...Registrationform,
@@ -167,7 +205,7 @@ const PostDataForm = () => {
                 }
               />
               {error.restaurantNameerror && (
-                <div className="invaliddata">{error.restaurantNameerror} </div>
+                <div className="invaliddata">{error.restaurantNameerror}</div>
               )}
             </div>
             <div className="labelinput-divreg">
@@ -179,7 +217,7 @@ const PostDataForm = () => {
                 className="inputbox"
                 style={{ borderColor: error.nameerror ? "red" : "#B3B3B3" }}
                 placeholder="Name"
-                value={Registrationform.name}
+                value={data && data[0] ? data[0].location.name : Registrationform.name}
                 onChange={(e) => {
                   setRegistrationform({
                     ...Registrationform,
@@ -188,12 +226,12 @@ const PostDataForm = () => {
                 }}
               />
               {error.nameerror && (
-                <div className="invaliddata">{error.nameerror} </div>
+                <div className="invaliddata">{error.nameerror}</div>
               )}
             </div>
             <div className="labelinput-divreg">
               <label htmlFor="" className="labelreg">
-                contact person number
+                Contact person number
               </label>
               <div style={{ marginTop: "20px" }}>
                 <select
@@ -212,7 +250,7 @@ const PostDataForm = () => {
                   id="phone-number"
                   type="text"
                   className="phonenumberinput"
-                  value={Registrationform.phone}
+                  value={data && data[0] ? data[0].location.phone : Registrationform.phone}
                   maxLength={10}
                   onKeyPress={handleKeyPress}
                   onChange={(event) => {
@@ -234,7 +272,7 @@ const PostDataForm = () => {
                 type="email"
                 className="inputbox"
                 placeholder="xyz@gmail.com"
-                value={Registrationform.email}
+                value={data && data[0] ? data[0].location.email : Registrationform.email}
                 style={{
                   borderColor: error.emailerror ? "red" : "#B3B3B3",
                 }}
@@ -246,7 +284,7 @@ const PostDataForm = () => {
                 }}
               />
               {error.emailerror && (
-                <div className="invaliddata">{error.emailerror} </div>
+                <div className="invaliddata">{error.emailerror}</div>
               )}
             </div>
             <div className="labelinput-divreg">
@@ -257,7 +295,7 @@ const PostDataForm = () => {
                 name="desig"
                 id="desig"
                 className="inputbox"
-                value={Registrationform.designation}
+                value={data && data[0] ? data[0].location.designation : Registrationform.designation}
                 onChange={(e) =>
                   setRegistrationform({
                     ...Registrationform,
@@ -278,7 +316,7 @@ const PostDataForm = () => {
                 type="text"
                 className="inputbox"
                 placeholder=""
-                value={Registrationform.gstNumber}
+                value={data && data[0] ? data[0].location.gstNumber : Registrationform.gstNumber}
                 onChange={(e) =>
                   setRegistrationform({
                     ...Registrationform,
@@ -307,54 +345,84 @@ const PostDataForm = () => {
                 >
                   Browse
                 </button>
- 
-                <div className="preview">
-                  {file && (
-                    <div>
-                      {imageclose ? (
-                        <p
-                          style={{
-                            marginLeft: "-5%",
-                            color: "#67833E",
-                            fontSize: "12px",
-                          }}
-                        >
-                          No selected
-                        </p>
-                      ) : (
-                        <>
-                          <button onClick={closeModal} className="imcrosssty">
-                            <ImCross
-                              style={{ fontSize: "10px", color: "white" }}
-                            />
-                          </button>
-                          <img
-                            src={imagePreview}
-                            alt="Preview"
-                            className="imgpreview"
-                          />
-                          <p>Preview</p>
-                        </>
-                      )}
-                    </div>
+
+            <div className="preview">
+              {file && (
+                <div>
+                  {imageclose ? (
+                    <p
+                      style={{
+                        marginLeft: "-5%",
+                        color: "#67833E",
+                        fontSize: "12px",
+                      }}
+                    >
+                      No selected
+                    </p>
+                  ) : (
+                    <>
+                      <button onClick={closeModal} className="imcrosssty">
+                        <ImCross
+                          style={{ fontSize: "10px", color: "white" }}
+                        />
+                      </button>
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="imgpreview"
+                      />
+                      <p>Preview</p>
+                    </>
                   )}
                 </div>
-                {!file && <p className="fornoimage">No image was selected</p>}
-                {error.base64Imageerror && (
-                <div className="invaliddata fornoimage">{error.base64Imageerror} </div>
               )}
-              </div>
-             
             </div>
-            <div className="footnav">
-              <button className="footnavbtn1" onClick={handleSubmit}>
-                Save & Next
-              </button>
-              <button className="footnavbtn2" onClick={ClearAll}>Clear All</button>
-            </div>
+            {!file && <p className="fornoimage">No image was selected</p>}
+            {error.base64Imageerror && (
+            <div className="invaliddata fornoimage">{error.base64Imageerror} </div>
+          )}
           </div>
+          <button className="footnavbtn1" onClick={() => dispatch(getLocationRequest())
+}>GET Location</button> 
         </div>
+        <div className="footnav">
+          <button className="footnavbtn1" onClick={(event)=>{
+
+            handleSubmit(event)
+            dispatch(getDataRequest())
+            
+            
+            }}>
+            Save & Next
+          </button>
+          <button className="footnavbtn2" onClick={ClearAll}>Clear All</button>
+        </div>
+        {successmgs && (
+        <div className="alcoholModalOverlaysuccess">
+          <Success
+            onCloseRequest={handleCloseAlcoholModal}
+            
+            
+          />
+        </div>
+      )}
+
+
+
+
+
       </div>
+    
+    </div>
+               
+  </div>
+
+        
+  
+
+
+
+      
     </>
   );
 };

@@ -20,7 +20,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
   const uid = useMemo(() => uuidv4(), []);
 
   const locationId = useSelector((state) => state.postData.data);
-
+  
   const LocationId = dispatch(getLocationId(locationId));
   const Locid = LocationId.payload;
   
@@ -345,7 +345,11 @@ const BasicDetails = React.forwardRef((props,ref) => {
     });
 
     const payload = {
+
+      locationId: Locid,
+
       locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+
     
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,

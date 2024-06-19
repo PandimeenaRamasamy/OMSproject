@@ -7,6 +7,9 @@ import {
   GET_DATA_REQUEST,
   GET_DATA_SUCCESS,
   GET_DATA_FAILURE,
+  GET_DATA_LOCATION_REQUEST,
+  GET_DATA_LOCATION_SUCCESS,
+  GET_DATA_LOCATION_FAILURE,
   POST_ONBOARDING_DATA_REQUEST,
   POST_ONBOARDING_DATA_SUCCESS,
   POST_ONBOARDING_DATA_FAILURE,
@@ -27,27 +30,88 @@ import {
   POST_PICKUP_DATA_FALIURE,
   POST_KITCHEN_DATA_REQUEST,
   POST_KITCHEN_SUCCESS,
-  POST_KITCHEN_FALIURE
-
-
-
-
+  POST_KITCHEN_FALIURE,
 } from "../constants";
 
 const initialState = {
   loading: false,
-  data: null,
+  data:[],
   error: null,
 };
 
-export const postDataReducer = (state = initialState, action) => {
+
+const registrationinitialstate = {
+  restaurantData: {
+    restaurantName: '',
+    name: '',
+    phone: '',
+    email: '',
+    designation: '',
+    gstNumber: '',
+    base64Image: '',
+    loading: false,
+    error: null,
+  }
+};
+
+export const registrationReducer = (
+  state = registrationinitialstate,
+  action
+) => {
   switch (action.type) {
     case POST_DATA_REQUEST:
-      return { ...state, loading: true, error: null };
+      return {
+        ...state,
+        restaurantData: action.payload,
+        loading: true,
+        error: null,
+      };
     case POST_DATA_SUCCESS:
-      return { ...state, loading: false, data: action.payload };
+      return {
+        ...state,
+        ...action.payload,
+        loading: false,
+        error: null,
+      };
     case POST_DATA_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+const initialStategetlocation = {
+  loading: false,
+  data:[],
+  error: null,
+};
+
+
+export const postDataReducergetLocation = (state = initialStategetlocation, action) => {
+  switch (action.type) {
+
+    case GET_DATA_LOCATION_REQUEST:
+        return {...state, loading: true, error: null };
+    case GET_DATA_LOCATION_SUCCESS:
+        return { ...state, loading: false, data: action.payload };
+    case GET_DATA_LOCATION_FAILURE:
+        return { ...state, loading: false, error: action.payload };
+    
+    default:
+      return state;
+  }
+};
+
+
+
+
+
+export const postDataReducer = (state = initialState, action) => {
+  switch (action.type) {
 
     case GET_DATA_REQUEST:
       return { ...state, loading: true, error: null };
@@ -55,6 +119,8 @@ export const postDataReducer = (state = initialState, action) => {
       return { ...state, loading: false, data: action.payload };
     case GET_DATA_FAILURE:
       return { ...state, loading: false, error: action.payload };
+
+
 
     case POST_ONBOARDING_DATA_REQUEST:
       return { ...state, loading: true, error: null };
@@ -70,39 +136,32 @@ export const postDataReducer = (state = initialState, action) => {
     case POST_DINEIN_DATA_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
+    case POST_RESTAURANTIMAGE_DATA_REQUEST:
+      return { ...state, loading: true, error: null };
 
-      case POST_RESTAURANTIMAGE_DATA_REQUEST:
-        return { ...state, loading: true, error: null };
-
-      case   POST_RESTAURANTIMAGE_DATA_SUCCESS:
+    case POST_RESTAURANTIMAGE_DATA_SUCCESS:
       return { ...state, loading: false, data: action.payload };
 
-      case POST_RESTAURANTIMAGE_DATA_FALIURE:
-        return { ...state, loading: false, error: action.payload };
+    case POST_RESTAURANTIMAGE_DATA_FALIURE:
+      return { ...state, loading: false, error: action.payload };
 
-        case POST_PICKUP_DATA_REQUEST:
-          return { ...state, loading: true, error: null };
+    case POST_PICKUP_DATA_REQUEST:
+      return { ...state, loading: true, error: null };
 
-        case  POST_PICKUP_DATA_SUCCESS:
-          return { ...state, loading: false, data: action.payload };
+    case POST_PICKUP_DATA_SUCCESS:
+      return { ...state, loading: false, data: action.payload };
 
-          case  POST_PICKUP_DATA_FALIURE:
-            return { ...state, loading: false, error: action.payload };
+    case POST_PICKUP_DATA_FALIURE:
+      return { ...state, loading: false, error: action.payload };
 
-            case  POST_KITCHEN_DATA_REQUEST:
-              return { ...state, loading: true, error: null };
+    case POST_KITCHEN_DATA_REQUEST:
+      return { ...state, loading: true, error: null };
 
-              case POST_KITCHEN_SUCCESS:
-                return { ...state, loading: false, data: action.payload };
+    case POST_KITCHEN_SUCCESS:
+      return { ...state, loading: false, data: action.payload };
 
-                case POST_KITCHEN_FALIURE:
-                  return { ...state, loading: false, error: action.payload };
-
-
-
-
-
-
+    case POST_KITCHEN_FALIURE:
+      return { ...state, loading: false, error: action.payload };
 
     default:
       return state;

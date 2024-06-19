@@ -11,11 +11,13 @@ import {
   saveBasicDetailsFailure,
   PostDeliveryDataSuccess,
   PostDeliveryDataFailure,
+  getLocationSuccess,
 } from "../Actions/PostDataAction";
 import {
   POST_DATA_REQUEST,
   POST_ONBOARDING_DATA_FAILURE,
   GET_DATA_REQUEST,
+  GET_DATA_LOCATION_REQUEST,
   POST_ONBOARDING_DATA_REQUEST,
   POST_DINEIN_DATA_REQUEST,
   POST_ONBOARDING_DATA_SUCCESS,
@@ -26,12 +28,18 @@ import {
   POST_RESTAURANTIMAGE_DATA_FALIURE,
   POST_PICKUP_DATA_REQUEST,
   POST_KITCHEN_DATA_REQUEST,
+
+  GET_DATA_SUCCESS,
+  GET_DATA_FAILURE,
+
   POST_DINEIN_DATA_SUCCESS,
   POST_DINEIN_DATA_FAILURE
+
 } from "../constants";
 
 import { LOCATION_ID } from "../constants";
 import {
+  GetLocationData,
   PostBasicdetails,
   PostDeliveryDataEndPoint,
   postOutletRegistration,
@@ -48,19 +56,7 @@ import { PostKitchen } from "../Api";
 
 
 
-// function* postData(action) {
-//   try {
-//     const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/registration', action.payload);
 
-//     if (response.status === 200) {
-//       yield put( postDataSuccess(response.data));
-//     } else {
-//       yield put(postDataFailure(response.statusText));
-//     }
-//   } catch (error) {
-//     yield put(postDataFailure(error.message));
-//   }
-// }
 function* postData(action) {
   try {
     const response = yield call(postOutletRegistration, action.payload);
@@ -79,39 +75,37 @@ function* locationId(action) {
   yield ;
 }
 
-// function* getData() {
-//   try {
-//     const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/8dfe7674-709d-431c-a233-628e839ecc76');
-//     const data = yield response.json();
-//     yield put(getDataSuccess(data));
-//   } catch (error) {
-//     yield put(getDataFailure(error.message));
-//   }
-// }
+
+
 
 function* getData() {
   try {
     const response = yield call(GetData);
-    const data = yield response.json();
-    yield put(getDataSuccess(data));
-  } catch (error) {
-    yield put(getDataFailure(error.message));
+    yield put({ type: 'GET_DATA_SUCCESS', payload: response.data });
   }
+  catch (error) {
+    yield put({ type: 'GET_DATA_FAILURE', payload: error.message });
+  }
+
+  
 }
 
-// function* postOnBoardingData(action) {
-//   try {
-//     const response = yield call(axios.post, 'http://192.168.1.20:8080/outlets/outlet/onBoarding', action.payload);
+function* getLocationData(action) {
+  try {
+    // const { payload: locationId } = action;
+    console.log("In saga",action.payload)
+    const response = yield call(GetLocationData,action.payload);
+    console.log("Saga Response :",response.data);
+    yield put(getLocationSuccess(response.data));
+  }
+  catch (error) {
+    yield put({ type: 'GET_DATA_LOCATION_FAILURE', payload: error.message });
+  }
 
-//     if (response.status === 200) {
-//       yield put( POST_ONBOARDING_DATA_SUCCESS(response.data));
-//     } else {
-//       yield put(POST_ONBOARDING_DATA_FAILURE(response.statusText));
-//     }
-//   } catch (error) {
-//     yield put(POST_ONBOARDING_DATA_FAILURE(error.message));
-//   }
-// }
+  
+}
+
+
 function* postOnBoardingData(action) {
   try {
     const response = yield call(PostOnboardingData, action.payload);
@@ -126,21 +120,7 @@ function* postOnBoardingData(action) {
   }
 }
 
-// function* postDineinData(action) {
-//   try {
-//     const response = yield call(fetch, 'http://192.168.1.20:8080/outlet/dineIn', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(action.payload),
-//     });
-//     const data = yield response.json();
-//     yield put(postDineinDataSuccess(data));
-//   } catch (error) {
-//     yield put(postDineinDataFailure(error.message));
-//   }
-// }
+
 
 function* postDineinData(action) {
   try {
@@ -247,6 +227,10 @@ export function* watchPostData() {
 
 export function* watchgetData() {
   yield takeEvery(GET_DATA_REQUEST, getData);
+}
+
+export function* watchgetLocationData() {
+  yield takeEvery(GET_DATA_LOCATION_REQUEST, getLocationData);
 }
 
 export function* onBoardPostData() {

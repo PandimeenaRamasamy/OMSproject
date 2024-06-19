@@ -1,17 +1,36 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import './Outlet.scss'
 import Registration from '../Registration/PostData';
 import StepperForm from '../Onboarding/Steperform/Stepform';
 import { act } from 'react-dom/test-utils';
 import  OutletStepperForm from  '../Outlet Details/OutletStepperForm/OutletStepperForm';
-
+import { useLocation } from 'react-router-dom';
 const Outlet = () => {
     const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
 
   
     const [activeCategory, setActiveCategory] = useState('Registration');
 
-    
+    const location = useLocation();
+    const datamap = location.state;
+       const { APidata } = location.state || {};
+       if (APidata) {
+        console.log("Received APidata: ", APidata);
+        // Use the APidata as needed
+    }
+ 
+
+    console.log("received api from api",APidata)
+
+
+
+
+
+    // datamap.map((item,index)=>
+    // {
+    //     console.log(item.location.id)
+    // })
+//   console.log(APidata[0].location.restaurantName)
     const handleCategoryClick = (category) => {
         setActiveCategory(category);
       
@@ -39,9 +58,9 @@ const Outlet = () => {
 
       
     </div>
-    {activeCategory === 'Registration' && <Registration/>}
-    {activeCategory === 'OnBoarding' && <StepperForm/>}
-    {activeCategory === 'Outlet Details' && <OutletStepperForm/>}
+    {activeCategory === 'Registration' && <Registration data={APidata}/>}
+    {activeCategory === 'OnBoarding' && <StepperForm  data={APidata}/>}
+    {activeCategory === 'Outlet Details' && <OutletStepperForm  data={APidata}/>}
   
         {/* {activeCategory === 'Veg' && <Vegdispla/>}
         {activeCategory === 'Non-Veg' && <Nonvegdidsplay/>} */}
@@ -51,3 +70,29 @@ const Outlet = () => {
 }
 
 export default Outlet
+
+
+// import React from 'react';
+// import { useLocation } from "react-router-dom";
+
+// const Outlet = () => {
+//     const location = useLocation();
+//     const { APidata } = location.state || {};
+
+   
+
+//     return (
+//         <div style={{marginLeft:'400px',marginTop:'100px'}}>
+//             <h1>Outlet Component</h1>
+//             {APidata && APidata.map((location, index) => (
+//                 <div key={index}>
+//                     <h2>{location.location.restaurantName}</h2>
+//                     <p>{location.location.id}</p>
+//                     {/* Render other properties as needed */}
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// }
+
+// export default Outlet;

@@ -210,7 +210,11 @@ const Delivery = React.forwardRef((props,ref) => {
     const Locid = LocationId.payload;
 
     const payloadData = {
+
+      locationId: Locid,
+
       locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+
       deliverySettingTime,
       deliveryPayment: selectedMethods,
       scheduledDelivery: deliveryOption,

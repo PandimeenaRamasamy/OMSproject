@@ -10,10 +10,14 @@ import BankDetails from "../BankDetails/BankDetails";
 import Location from "../Location/Location";
 import { useDispatch } from "react-redux";
 import { postOnBoardingDataRequest } from "../../../redux/Actions/PostDataAction";
+
+import { useNavigate } from 'react-router-dom';
+import Outlet from '../../Outletnavbar/Outlet.scss'
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Stepform() {
+function Stepform({data}) {
   const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [mainForm, setMainForm] = useState({});
@@ -22,25 +26,30 @@ function Stepform() {
   const fssaiRef = useRef();
   const bankRef = useRef();
 
+  {data && data.map((location, index) => (
+    console.log("datasteperform",location.location.id)) )}
+
+
+
   const steps = [
     {
       title: "RestaurantDetails",
-      component: <Restaurant ref={restaurantDetailsRef} />,
+      component: <Restaurant ref={restaurantDetailsRef} data={data}/>,
       icon: <BiNotepad className="image" />,
     },
     {
       title: "Location",
-      component: <Location ref={locationRef} />,
+      component: <Location ref={locationRef} data={data} />,
       icon: <CiLocationOn className="image" />,
     },
     {
       title: "FSSAI",
-      component: <Fssai ref={fssaiRef} />,
+      component: <Fssai ref={fssaiRef} data={data}/>,
       icon: <PiNotepadBold className="image" />,
     },
     {
       title: "BankDetails",
-      component: <BankDetails ref={bankRef} />,
+      component: <BankDetails ref={bankRef} data={data}/>,
       icon: <TfiNotepad className="image" />,
     },
   ];
@@ -172,11 +181,28 @@ function Stepform() {
       toast.success("Data submitted successfully!");
     }
   };
+  const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
+  let navigate = useNavigate();
 
-  const progress =
-    (visitedSteps.filter((step) => step).length / steps.length) * 100;
+  const [activeCategory, setActiveCategory] = useState('Registration');
+
+  
+  const handleCategoryClick = (category) => {
+      setActiveCategory(category);
+    
+  };
+  const Registarionnavigation = () => {
+      navigate('./PostDataForm')
+     };
+
+   const StepperFormnavigation=()=>{
+      navigate('/Stepform')}
+
+  const progress =(visitedSteps.filter((step) => step).length / steps.length) * 100;
 
   return (
+    <>
+    
     <div className="page-contentonboard">
       <div className="stepformonboard">
         <div className="containeronboard">
@@ -236,6 +262,8 @@ theme="light"
 
 />
     </div>
+   
+    </>
   );
 }
 

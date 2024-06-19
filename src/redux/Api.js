@@ -12,11 +12,39 @@ export const postOutletRegistration = async (payload) => {
   }
 };
 
+export const PostBasicdetails = async (payload) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
+      payload
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 export const GetData = async () => {
   try {
     const response = await axios.get(
-      "http://192.168.1.20:8081/outlet/8dfe7674-709d-431c-a233-628e839ecc76"
+      "http://192.168.1.18:8081/outlets/outlet/listOfLocation/8dfe7674-709d-431c-a233-628e839ecc76"
     );
+    console.log( (response.data))
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+// 9797ce29-1ef1-4c08-ab2d-bea899750bc6
+
+export const GetLocationData = async (loactioId) => {
+  try {
+    
+    const response = await axios.get(
+      `http://192.168.1.18:8081/outlets/outlet/${loactioId}`
+    );
+    console.log( (response.data))
     return response;
   } catch (error) {
     throw error;
@@ -82,34 +110,8 @@ export const PostRestaurantImage = async (payload) => {
     throw error;
   }
 };
-// export const basicDetailUrl =
-//   "";
 
-// export const Post = async (payload) => {
-//   try {
-//     const response = await axios.post(basicDetailUrl, payload, {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     return { data: response.data, status: response.status };
-//   } catch (error) {
-//     console.error(error);
-//     throw new Error("Error Saving the basic details");
-//   }
-// };
 
-export const PostBasicdetails = async (payload) => {
-  try {
-    const response = await axios.post(
-      "http://192.168.1.18:8081/outlets/outlet/basicDetails/properties",
-      payload
-    );
-    return response;
-  } catch (error) {
-    throw error;
-  }
-};
 
 
 export const PostPickup = async (payload) => {
