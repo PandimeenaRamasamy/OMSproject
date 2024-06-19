@@ -693,6 +693,7 @@ const validate=()=>{
                       <input
                         type="text"
                         id="maximuminonline"
+                        placeholder="5"
                         style={{fontSize:'14px'}}
                         maxLength={3}
                         onKeyPress={handleKeyPress}
@@ -713,6 +714,7 @@ const validate=()=>{
                       </label>
                       <input
                         type="text"
+                        placeholder="5"
                         id="maximuminoffline"
                         style={{fontSize:'14px'}}
                         maxLength={3}
@@ -799,6 +801,7 @@ const validate=()=>{
                       <input
                         type="text"
                         id="maximuminonline"
+                        placeholder="2"
                         style={{fontSize:'14px'}}
                         maxLength={3}
                         onKeyPress={handleKeyPress}
