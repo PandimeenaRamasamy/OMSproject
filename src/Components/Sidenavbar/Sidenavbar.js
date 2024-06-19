@@ -446,6 +446,8 @@ console.log(locationdata[0].location.id)
     
       <div>
       <div>
+      <button onClick={()=>dispatch(getDataRequest())}>get</button>
+
             {datafromapi.length > 0 &&
               datafromapi.map((location, index) => (
                 <div key={index}>
@@ -460,7 +462,6 @@ console.log(locationdata[0].location.id)
        
       </div>
     </div>
-    <button onClick={()=>dispatch(getDataRequest())}>get</button>
              
 
                 
