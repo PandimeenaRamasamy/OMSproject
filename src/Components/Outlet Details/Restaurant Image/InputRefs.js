@@ -13,7 +13,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
   const Locid = LocationId.payload;
   const [form, setForm] = useState({
 
-    locationId: "c95fbe31-f8b3-45dd-83eb-16e9a00f3f04",
+    locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
     restaurantImgs: [],
     profileImg: ""
   });
@@ -40,7 +40,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
       reader.onloadend = () => {
         setForm(prevForm => ({
           ...prevForm,
-          profileImg: reader.result
+          profileImg: reader.result.split(',')[1]
         }));
       };
       reader.readAsDataURL(images[0]);
@@ -53,7 +53,7 @@ const ParentComponent = React.forwardRef((props,ref) => {
       if (image) { 
         const reader = new FileReader();
         reader.onloadend = () => {
-          base64Images.push(reader.result);
+          base64Images.push(reader.result.split(',')[1]);
           
           setForm(prevForm => ({
             ...prevForm,

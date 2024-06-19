@@ -144,16 +144,19 @@ function* postOnBoardingData(action) {
 
 function* postDineinData(action) {
   try {
+    console.log("hi from dine in")
+
     const response = yield call(PostDineinData, action.payload);
-    const data = yield response.json();
-    yield put(POST_DINEIN_DATA_SUCCESS(data));
+    
+    yield put(POST_DINEIN_DATA_SUCCESS(response));
   } catch (error) {
-    yield put(POST_DINEIN_DATA_FAILURE(error.message));
+ 
   }
 }
 
 function* postBasicDetailsData(action) {
   try {
+    console.log("hi")
     const payload = action.payload;
     const response = yield call(PostBasicdetails, payload);
     console.log("payload from saga", payload);
@@ -167,6 +170,7 @@ function* postBasicDetailsData(action) {
 
 export function* PostDeliveryDataSagas(action) {
   try {
+
     const payload = action.payload;
     const response = yield call(PostDeliveryDataEndPoint, payload);
     if (response.status === 200) {
@@ -179,21 +183,25 @@ export function* PostDeliveryDataSagas(action) {
 }
 
 export function* PostRestaurantImageSaga(action) {
+
   try {
+    console.log("hi from rest")
+
     const payload = action.payload;
     const response = yield call(PostRestaurantImage, payload);
-    if (response.status === 200) {
+   
       yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
       console.log("Posted Successfully");
-    }
+   
   } catch (error) {
-    yield put(POST_RESTAURANTIMAGE_DATA_FALIURE(error));
   }
 }
 
 
 export function* PostPickupSaga(action) {
   try {
+    console.log("hi from pickup")
+
     const payload = action.payload;
     const response = yield call(PostPickup, payload);
     if (response.status === 200) {
@@ -201,7 +209,7 @@ export function* PostPickupSaga(action) {
       console.log("Posted Successfully");
     }
   } catch (error) {
-    yield put(POST_RESTAURANTIMAGE_DATA_FALIURE(error));
+  
   }
 }
 
@@ -215,7 +223,6 @@ export function* PostKitchenSaga(action) {
       console.log("Posted Successfully");
     }
   } catch (error) {
-    yield put(POST_RESTAURANTIMAGE_DATA_FALIURE(error));
   }
 }
 
