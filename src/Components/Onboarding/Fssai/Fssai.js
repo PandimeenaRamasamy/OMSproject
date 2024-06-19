@@ -503,9 +503,13 @@ const Fssai = forwardRef((props, ref) => {
                           borderColor: fssaierrors.expirationDate ? "red" : "#B3B3B3",
                         }}
                       />
+
                       {fssaierrors.expirationDate && (
                         <div className="error">{fssaierrors.expirationDate}</div>
                       )}
+
+                      {fssaierrors.expirationDate && <div className="error_FSSAI">{fssaierrors.expirationDate}</div>}
+
                     </div>
                     <div
                       style={{ display: "flex", flexDirection: "column" }}
@@ -529,9 +533,13 @@ const Fssai = forwardRef((props, ref) => {
                           borderColor: fssaierrors.registerNumber ? "red" : "#B3B3B3",
                         }}
                       />
+
                       {fssaierrors.registerNumber && (
                         <div className="error">{fssaierrors.registerNumber}</div>
                       )}
+
+                      {fssaierrors.registerNumber && <div className="error_FSSAI">{fssaierrors.registerNumber}</div>}
+
                     </div>
                   </div>
 
@@ -592,9 +600,14 @@ const Fssai = forwardRef((props, ref) => {
                         )}
                       </div>
                     </div>
+
                     {fssaierrors.documents && (
                       <div className="error">{fssaierrors.documents}</div>
                     )}
+
+                    {fssaierrors.documents && <div className="error_FSSAI">{fssaierrors.documents}</div>}
+
+
                   </div>
                 </>
               )}

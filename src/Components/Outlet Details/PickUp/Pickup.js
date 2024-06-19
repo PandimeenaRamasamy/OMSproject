@@ -118,7 +118,7 @@ return isValid;
                         <input type="text" className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})} style={{
                           borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
                         }}></input>
-                        {pickuperror.serviceTimeFrom && <div className='error'>{pickuperror.serviceTimeFrom}</div>}
+                        {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}
                         {pickuperror.serviceTimeTo && <div className='error-flex'>{pickuperror.serviceTimeTo}</div>}
                         </div>
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
@@ -134,7 +134,7 @@ return isValid;
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
                         <div style={{marginTop:'10px' }}>
-                            <input type="radio" name="YesorNo" className='radioo1'   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
+                            <input type="radio" defaultChecked name="YesorNo" className='radioo1'   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
                             <input type="radio" name="YesorNo" className='radioo2' style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
                         
                         </div>
@@ -148,7 +148,7 @@ return isValid;
                           borderColor: pickuperror.scheduleDuration ? "red" : "#B3B3B3",
                         }} placeholder='EOD' className='updown' min="0" onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
                         </div>
-                        {pickuperror.scheduleDuration && <div className='error'>{pickuperror.scheduleDuration}</div>}
+                        {pickuperror.scheduleDuration && <div className='error_pickup'>{pickuperror.scheduleDuration}</div>}
                         </div>
                        
                         
@@ -157,7 +157,7 @@ return isValid;
                        <input type="text" style={{
                           borderColor: pickuperror.packagingCharge ? "red" : "#B3B3B3",
                         }} className='Pack_type' placeholder='$' onChange={(e)=>setForm({...form,"packagingCharge":e.target.value})}></input>
-                       {pickuperror.packagingCharge && <div className='error'>{pickuperror.packagingCharge}</div>}
+                       {pickuperror.packagingCharge && <div className='error_pickup'>{pickuperror.packagingCharge}</div>}
                         </div>
                         <div className='picketa'>
                         <h5 className='Pickup_heading7'>Pick up ETA </h5> 
@@ -165,7 +165,7 @@ return isValid;
                         <input type="text" style={{
                           borderColor: pickuperror.ETA ? "red" : "#B3B3B3",
                         }} className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"ETA":e.target.value})}></input>
-                        {pickuperror.ETA && <div className='error'>{pickuperror.ETA}</div>}
+                        {pickuperror.ETA && <div className='error_pickup'>{pickuperror.ETA}</div>}
                         </div>
                       
                       

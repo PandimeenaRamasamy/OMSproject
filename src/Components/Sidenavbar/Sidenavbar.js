@@ -447,11 +447,12 @@ console.log(locationdata[0].location.id)
     
       <div>
       <div>
+      <button onClick={()=>dispatch(getDataRequest())}>get</button>
             {datafromapi.length > 0 &&
               datafromapi.map((location, index) => (
                 <div key={index}>
-                  <button onClick={()=>goToupdate(datafromapi[index].locationId)}>
-                  {datafromapi[index].restaurantName} {datafromapi[index].locationId}
+                  <button onClick={()=>goToupdate(datafromapi[index].locationId)} className='btnlocation'>
+                  {datafromapi[index].restaurantName}
                 </button>
                 </div>
               
@@ -461,7 +462,7 @@ console.log(locationdata[0].location.id)
        
       </div>
     </div>
-    <button onClick={()=>dispatch(getDataRequest())}>get</button>
+   
              
 
                 

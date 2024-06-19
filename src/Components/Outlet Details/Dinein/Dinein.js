@@ -27,16 +27,16 @@ const Dinein = React.forwardRef((props,ref) => {
     locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
 
     dineIn: "",
-    highChair: "",
+    highChair: "yes",
     interactiveDineIn: "",
     merchant4DigitValidation: "",
     checkIn: {
       maximumPeopleAllowedOnline: "",
       maximumPeopleAllowedOffline: "",
-      lateShowTime: "",
+      lateShowTime:"",
       autoCancelTime: "",
       abandonTime: "",
-      autoAssign: "",
+      autoAssign: "yes",
     },
     reservation: {
       minimumPeopleAllowed: "",
@@ -176,6 +176,7 @@ const validate=()=>{
       errors.highChair="Please Click Yes or No"
       isValid=false;
     }
+    
     setDineInErrors(errors);
     return isValid;
 }
@@ -281,9 +282,11 @@ const validate=()=>{
                     </div>
                   </div>
                 </div>
+                
               )}
+              {dineinerrors.highChair &&<div className="errors">{dineinerrors.highChair}</div>}
             </div>
-            {dineinerrors.highChair &&<div className="error">{dineinerrors.highChair}</div>}
+            
           </form>
         </div>
 
@@ -474,6 +477,7 @@ const validate=()=>{
                             </label>
                             <input
                               type="text"
+                              placeholder="20"
                               style={{fontSize:'14px'}}
                               id="maximuminonline"
                               maxLength={3}
@@ -497,6 +501,7 @@ const validate=()=>{
                             </label>
                             <input
                               type="text"
+                              placeholder="20"
 
                               id="maximuminoffline"
                               style={{fontSize:'14px'}}
@@ -520,20 +525,20 @@ const validate=()=>{
                             <label htmlFor="Lateshowtime" id="maximuminon">
                               Late show time
                             </label>
-                            <input
-                              type="time"
-                              id="maximuminonline"
-                              style={{fontSize:'12px'}}
-                              onChange={(event) => {
-                                setOutletdetails({
-                                  ...Outletdetails,
-                                  checkIn: {
-                                    ...Outletdetails.checkIn,
-                                    lateShowTime: event.target.value,
-                                  },
-                                });
-                              }}
-                            />
+                              <input
+                                type="time"
+                                id="maximuminonline"
+                                style={{fontSize:'12px'}}
+                                onChange={(event) => {
+                                  setOutletdetails({
+                                    ...Outletdetails,
+                                    checkIn: {
+                                      ...Outletdetails.checkIn,
+                                      lateShowTime: event.target.value,
+                                    },
+                                  });
+                                }}
+                              />
                           </div>
                           <div className="check2">
                             <label htmlFor="AutocancelTime" id="maximuminoff">
@@ -688,6 +693,7 @@ const validate=()=>{
                       <input
                         type="text"
                         id="maximuminonline"
+                        placeholder="5"
                         style={{fontSize:'14px'}}
                         maxLength={3}
                         onKeyPress={handleKeyPress}
@@ -708,6 +714,7 @@ const validate=()=>{
                       </label>
                       <input
                         type="text"
+                        placeholder="5"
                         id="maximuminoffline"
                         style={{fontSize:'14px'}}
                         maxLength={3}
@@ -794,6 +801,7 @@ const validate=()=>{
                       <input
                         type="text"
                         id="maximuminonline"
+                        placeholder="2"
                         style={{fontSize:'14px'}}
                         maxLength={3}
                         onKeyPress={handleKeyPress}
