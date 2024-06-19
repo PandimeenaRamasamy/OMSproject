@@ -387,8 +387,7 @@ console.log(locationdata[0].location.id)
 
     //   };
     const AAlocationdata = useSelector((state) => state.getlocationdata.data);
-    console.log("AA",typeof AAlocationdata)
-
+    console.log("AA",AAlocationdata)
     const goToupdate = (locationIddata) => {
 
         dispatch(getLocationRequest(locationIddata));
@@ -400,7 +399,7 @@ console.log(locationdata[0].location.id)
         if (AAlocationdata) {
             // console.log("sidenavbargetting");
             // console.log("isempty",AAlocationdata)
-            navigate('/outlet', { state: { APidata: AAlocationdata} });
+            navigate('/outlet', { state: { APidata: AAlocationdata } });
         }
 
         
@@ -447,12 +446,11 @@ console.log(locationdata[0].location.id)
     
       <div>
       <div>
-      <button onClick={()=>dispatch(getDataRequest())}>get</button>
             {datafromapi.length > 0 &&
               datafromapi.map((location, index) => (
                 <div key={index}>
-                  <button onClick={()=>goToupdate(datafromapi[index].locationId)} className='btnlocation'>
-                  {datafromapi[index].restaurantName}
+                  <button onClick={()=>goToupdate(datafromapi[index].locationId)}>
+                  {datafromapi[index].restaurantName} {datafromapi[index].locationId}
                 </button>
                 </div>
               
@@ -462,7 +460,7 @@ console.log(locationdata[0].location.id)
        
       </div>
     </div>
-   
+    <button onClick={()=>dispatch(getDataRequest())}>get</button>
              
 
                 
