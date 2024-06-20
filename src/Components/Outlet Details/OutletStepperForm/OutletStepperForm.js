@@ -34,7 +34,7 @@ function Reciept() {
 }
 function Stepform() {
 
-  const [activeStep, setActiveStep] = useState(0);
+  const [outletactiveStep, setOutletActiveStep] = useState(0);
   const dispatch=useDispatch();
    
    const pickUpformRef=useRef();
@@ -98,17 +98,17 @@ function Stepform() {
 
 
   
-  const [visitedSteps, setVisitedSteps] = useState(new Array(steps.length).fill(false));
+  const [outletvisitedSteps, setOutletVisitedSteps] = useState(new Array(steps.length).fill(false));
 
 
   useEffect(() => {
-    const updatedVisitedSteps = [...visitedSteps];
-    updatedVisitedSteps[activeStep] = true;
-    setVisitedSteps(updatedVisitedSteps);
-  }, [activeStep]);
+    const updatedVisitedSteps = [...outletvisitedSteps];
+    updatedVisitedSteps[outletactiveStep] = true;
+    setOutletVisitedSteps(updatedVisitedSteps);
+  }, [outletactiveStep]);
 
   const handleStepClick = (index) => {
-    setActiveStep(index);
+    setOutletActiveStep(index);
   };
 
 
@@ -116,7 +116,7 @@ function Stepform() {
  const handleSaveandNext= async()=>{
     let newFormData1={}
     let isValid=true
-    switch(activeStep)
+    switch(outletactiveStep)
     {
       
       case 0:
@@ -214,14 +214,14 @@ function Stepform() {
    
 
   const handleNextStep = () => {
-    if (activeStep < steps.length - 1) {
-      setActiveStep(activeStep + 1);
+    if (outletactiveStep < steps.length - 1) {
+      setOutletActiveStep(outletactiveStep + 1);
     }
 
   };
 
   const progress =
-    (visitedSteps.filter((step) => step).length / steps.length) * 100;
+    (outletvisitedSteps.filter((step) => step).length / steps.length) * 100;
 
     
     
@@ -244,8 +244,8 @@ function Stepform() {
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className={`step ${index === activeStep ? "active" : ""} ${
-                    visitedSteps[index] ? "visited" : ""
+                  className={`step ${index === outletactiveStep ? "active" : ""} ${
+                    outletvisitedSteps[index] ? "visited" : ""
                   }`}
                   onClick={() => handleStepClick(index)}
                 >
@@ -256,7 +256,7 @@ function Stepform() {
             </div>
           </div>
         </div>
-        <div className="component-container">{steps[activeStep].component}</div>
+        <div className="component-container">{steps[outletactiveStep].component}</div>
       </div>
       <div className="btn-container">
         <div className="btn-footer">
