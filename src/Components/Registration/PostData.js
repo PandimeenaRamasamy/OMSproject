@@ -31,7 +31,7 @@ const PostDataForm = () => {
     email: "",
     designation: "",
     gstNumber: "",
-    base64Image: "",
+    base64Image: null,
   });
 
   const [error, setError] = useState({
