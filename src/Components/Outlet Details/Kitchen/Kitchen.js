@@ -9,12 +9,11 @@ const Kitchen = React.forwardRef((props,ref) => {
     const dispatch = useDispatch();
     const locationId = useSelector((state) => state.postData.data);  
     const LocationId = dispatch(getLocationId(locationId));
+    const datafromapi = useSelector((state) => state.postData.data);
     const Locid = LocationId.payload;
     const [form,setForm]=useState({
 
-        locationId:Locid,
-
-        locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+        locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
 
         LastorderTime:"",
         KDSAlert:""
