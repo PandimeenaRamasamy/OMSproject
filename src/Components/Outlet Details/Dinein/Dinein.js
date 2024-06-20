@@ -17,13 +17,10 @@ const Dinein = React.forwardRef((props,ref) => {
 
   const data = useSelector((state) => state.getlocationdata.data);  
 
-
+  const datafromapi = useSelector((state) => state.postData.data);
   const [Outletdetails, setOutletdetails] = useState({
 
-    locationId: "",
-
-   
-
+    locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
     dineIn: "",
     highChair: "yes",
     interactiveDineIn: "",

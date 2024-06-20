@@ -9,12 +9,11 @@ const Kitchen = React.forwardRef((props,ref) => {
     const dispatch = useDispatch();
     const locationId = useSelector((state) => state.postData.data);  
     const LocationId = dispatch(getLocationId(locationId));
+    const datafromapi = useSelector((state) => state.postData.data);
     const Locid = LocationId.payload;
     const [form,setForm]=useState({
 
-        locationId:Locid,
-
-        locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+        locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
 
         LastorderTime:"",
         KDSAlert:""
@@ -58,10 +57,13 @@ const Kitchen = React.forwardRef((props,ref) => {
             if (data && data[0] && data[0].location && data[0].location.attributes) {
               try {
                 const attributes = JSON.parse(data[0].location.attributes);
-                const kitchenDetails = attributes.kitchenDetails || {};
+
+                const kitchenDetails = attributes.KitchenDetails ;
+                console.log(kitchenDetails)
+
                 setForm({
-                  LastorderTime: kitchenDetails.LastorderTime || "",
-                  KDSAlert: kitchenDetails.KDSAlert || "",
+                  LastorderTime: kitchenDetails.lastOrderTime || "",
+                  KDSAlert: kitchenDetails.kdsAlert || "",
                 
                 });
               } catch (error) {
@@ -82,9 +84,9 @@ const Kitchen = React.forwardRef((props,ref) => {
                 <p className='para-kitchen'>Allow customer to place last order before the shop closes</p>
                 <div className='input-div-kitchen'>
                     <label className='label-kitchen' >Time</label>
-                    <input type="text"  placeholder='20' style={{
+                    <input type="text"  placeholder='20' value={form.KDSAlert} style={{
                           borderColor: kitchenerror.LastorderTime ? "red" : "#B3B3B3",
-                        }} className='input-div' maxLength = "2"  onChange={(e)=>setForm({...form,"LastorderTime":e.target.value})} /> <span className='span-kitchen'>mins</span>
+                        }} className='input-div' maxLength = "2"  onChange={(e)=>setForm({...form,"LastorderTime":e.target.value})} /> 
                     {kitchenerror.LastorderTime && <div className='error_Kitchen'>{kitchenerror.LastorderTime}</div>}
                 </div>
 
@@ -93,10 +95,10 @@ const Kitchen = React.forwardRef((props,ref) => {
 
                 <div className='input-div-kitchen'>
                 <label className='label-kitchen' >Alert Time</label>
-                    <input type="text" placeholder='20' style={{
+                    <input type="text" placeholder='20' value={form.LastorderTime} style={{
                         
                           borderColor: kitchenerror.KDSAlert ? "red" : "#B3B3B3",
-                        }} className='input-div'  maxLength = "2" onChange={(e)=>setForm({...form,"KDSAlert":e.target.value})} />  <span className='span-kitchen'>mins</span>
+                        }} className='input-div'  maxLength = "2" onChange={(e)=>setForm({...form,"KDSAlert":e.target.value})} />  
                     {kitchenerror.KDSAlert && <div className='error_Kitchen'>{kitchenerror.KDSAlert}</div>}
                 </div>
 
