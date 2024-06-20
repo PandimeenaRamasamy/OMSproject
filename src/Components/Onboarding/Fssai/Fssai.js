@@ -58,15 +58,15 @@ const Fssai = forwardRef((props, ref) => {
   const validate = () => {
     let isValid = true;
     const errors = {};
-    if (!fssaiform.registerNumber) {
+    if (!fssaiform.registerNumber && selectedButton) {
       errors.registerNumber = "Please Enter The Register Number";
       isValid = false;
     }
-    if (!fssaiform.expirationDate) {
+    if (!fssaiform.expirationDate &&  selectedButton) {
       errors.expirationDate = "Please Enter The Date";
       isValid = false;
     }
-    if (!fssaiform.documents) {
+    if (!fssaiform.documents && selectedButton)  {
       errors.documents = "Please Enter The Image";
       isValid = false;
     }
