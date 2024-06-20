@@ -39,50 +39,81 @@ const initialState = {
   error: null,
 };
 
-
 const registrationinitialstate = {
-  restaurantData: {
-    restaurantName: '',
-    name: '',
-    phone: '',
-    email: '',
-    designation: '',
-    gstNumber: '',
-    base64Image: '',
-    loading: false,
-    error: null,
-  }
+  data: [],
+  loading: false,
+  error: null
 };
 
-export const registrationReducer = (
-  state = registrationinitialstate,
-  action
-) => {
+ export const registrationReducer = (state = registrationinitialstate, action) => {
   switch (action.type) {
     case POST_DATA_REQUEST:
       return {
         ...state,
-        restaurantData: action.payload,
         loading: true,
-        error: null,
+        error: null
       };
     case POST_DATA_SUCCESS:
       return {
         ...state,
-        ...action.payload,
         loading: false,
-        error: null,
+        data: action.payload
       };
     case POST_DATA_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: action.payload
       };
     default:
       return state;
   }
 };
+
+
+// const  = {
+//   restaurantData: {
+//     restaurantName: '',
+//     name: '',
+//     phone: '',
+//     email: '',
+//     designation: '',
+//     gstNumber: '',
+//     base64Image: '',
+//     loading: false,
+//     error: null,
+//   }
+// };
+
+// export const  = (
+//   state = registrationinitialstate,
+//   action
+// ) => {
+//   switch (action.type) {
+//     case POST_DATA_REQUEST:
+//       return {
+       
+//         restaurantData: action.payload,
+//         loading: true,
+//         error: null,
+//       };
+//     case POST_DATA_SUCCESS:
+//       return {
+        
+//         ...action.payload,
+//         loading: false,
+//         error: null,
+//       };
+//     case POST_DATA_FAILURE:
+//       return {
+//         ...state,
+//         loading: false,
+//         error: action.payload,
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
 const initialStategetlocation = {
   loading: false,

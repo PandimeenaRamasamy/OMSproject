@@ -402,9 +402,11 @@ const Restaurant = forwardRef((props, ref) => {
     }
   }, [dispatch, locationId]);
     const data = useSelector((state) => state.getlocationdata.data);
+    const data2 = useSelector((state) => state.registration.data);
+    console.log(data2);
 
   const initialFormState = {
-    locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"" ,
+    locationId: data2 && data2||"" ,
     businessLegalName: "",
     phone: "",
     email: "",
@@ -450,8 +452,11 @@ const Restaurant = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (data && data[0]) {
+      console.log("id", datafromapi && datafromapi[0] ?datafromapi[0].locationId:"")
+
+
       setForm({
-        locationId: data[0].location.id || "",
+        locationId: data2 && data2||data[0].location.id,
         businessLegalName: data[0].location.restaurantName || "",
         phone: data[0].location.phoneType || "",
         email:data[0].location.email || "",

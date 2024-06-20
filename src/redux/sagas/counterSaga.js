@@ -62,6 +62,7 @@ function* postData(action) {
     const response = yield call(postOutletRegistration, action.payload);
 
     if (response.status === 200) {
+      console.log("response fro pm ",response.data)
       yield put(postDataSuccess(response.data));
     } else {
       yield put(postDataFailure(response.statusText));
