@@ -67,7 +67,7 @@ function* postData(action) {
       yield put(postDataFailure(response.statusText));
     }
   } catch (error) {
-  }
+ }
 }
 
 function* locationId(action) {
@@ -85,6 +85,8 @@ function* getData() {
   }
   catch (error) {
   
+    // yield put({ type: 'GET_DATA_FAILURE', payload: error.message });
+
   }
 
   

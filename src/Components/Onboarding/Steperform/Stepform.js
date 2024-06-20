@@ -134,6 +134,11 @@ function Stepform({data}) {
 
 
 
+
+          navigate('/outlet/Outlet-Details');
+        
+
+        // navigate('/outlet/Outlet-Details');
         break;
       default:
         break;
