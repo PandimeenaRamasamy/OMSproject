@@ -52,7 +52,7 @@ function Stepform() {
   const[basicDetailsForm,setBasicDetailsForm]=useState('');
 
 
-  const steps = [
+  const outletsteps = [
     {
       title: "Basic Details",
       component: <BasicDetails ref={basicDetailsref}/>,
@@ -98,7 +98,7 @@ function Stepform() {
 
 
   
-  const [outletvisitedSteps, setOutletVisitedSteps] = useState(new Array(steps.length).fill(false));
+  const [outletvisitedSteps, setOutletVisitedSteps] = useState(new Array(outletsteps.length).fill(false));
 
 
   useEffect(() => {
@@ -214,14 +214,14 @@ function Stepform() {
    
 
   const handleNextStep = () => {
-    if (outletactiveStep < steps.length - 1) {
+    if (outletactiveStep < outletsteps.length - 1) {
       setOutletActiveStep(outletactiveStep + 1);
     }
 
   };
 
   const progress =
-    (outletvisitedSteps.filter((step) => step).length / steps.length) * 100;
+    (outletvisitedSteps.filter((outletstep) => outletsteps.length / outletsteps.length) * 100);
 
     
     
@@ -241,7 +241,7 @@ function Stepform() {
               ></div>
             </div>
             <div className="stepper-container">
-              {steps.map((step, index) => (
+              {outletsteps.map((step, index) => (
                 <div
                   key={index}
                   className={`step ${index === outletactiveStep ? "active" : ""} ${
@@ -256,7 +256,7 @@ function Stepform() {
             </div>
           </div>
         </div>
-        <div className="component-container">{steps[outletactiveStep].component}</div>
+        <div className="component-container">{outletsteps[outletactiveStep].component}</div>
       </div>
       <div className="btn-container">
         <div className="btn-footer">
