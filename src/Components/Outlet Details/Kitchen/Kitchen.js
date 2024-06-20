@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react'
+import React, { useImperativeHandle,useEffect } from 'react'
 import '../Kitchen/Kitchen.scss'
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
@@ -7,19 +7,19 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 const Kitchen = React.forwardRef((props,ref) => {
     const dispatch = useDispatch();
-      // const data = useSelector((state) => state.getlocationdata.data);
-
-    const datafromapi = useSelector((state) => state.postData.data);
+    const locationId = useSelector((state) => state.postData.data);  
+    const LocationId = dispatch(getLocationId(locationId));
+    const Locid = LocationId.payload;
     const [form,setForm]=useState({
 
-        locationId:datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+        locationId:Locid,
 
-       
+        locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
 
         LastorderTime:"",
         KDSAlert:""
     })
-    console.log(form)
+    
 
      const[kitchenerror,setKitchenError]=useState({
         LastorderTime:"",
@@ -53,6 +53,24 @@ const Kitchen = React.forwardRef((props,ref) => {
             setKitchenError(errors);
             return isValid;
         }
+        const data = useSelector((state) => state.getlocationdata.data);
+        useEffect(() => {
+            if (data && data[0] && data[0].location && data[0].location.attributes) {
+              try {
+                const attributes = JSON.parse(data[0].location.attributes);
+                const kitchenDetails = attributes.kitchenDetails || {};
+                setForm({
+                  LastorderTime: kitchenDetails.LastorderTime || "",
+                  KDSAlert: kitchenDetails.KDSAlert || "",
+                
+                });
+              } catch (error) {
+                console.error("Failed to parse attributes", error);
+              }
+            }
+          }, [data]);
+        
+        
   return (
     <div className='main-kitchen-div'>
         <div className='submain-kitchen-div'>
