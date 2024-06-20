@@ -393,14 +393,18 @@ const Restaurant = forwardRef((props, ref) => {
   const locationId = useSelector((state) => state.postData.data);
     const LocationId = dispatch(getLocationId(locationId));
   const Locid = LocationId.payload;
+
+  const datafromapi = useSelector((state) => state.postData.data);
+  // console.log("LOcation id from",datafromapi[0].locationId);
   useEffect(() => {
     if (locationId) {
       dispatch(getLocationId(locationId));
     }
   }, [dispatch, locationId]);
+    const data = useSelector((state) => state.getlocationdata.data);
 
   const initialFormState = {
-    locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+    locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"" ,
     businessLegalName: "",
     phone: "",
     email: "",
@@ -448,20 +452,20 @@ const Restaurant = forwardRef((props, ref) => {
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
 
   useEffect(() => {
-    if (props.data && props.data[0]) {
+    if (data && data[0]) {
       setForm({
-        locationId: props.data[0].location.id || "",
-        businessLegalName: props.data[0].location.restaurantName || "",
-        phone: props.data[0].location.phoneType || "",
-        email: props.data[0].location.email || "",
-        website: props.data[0].location.website || "",
-        instagramLink: props.data[0].location.instagramLink || "",
-        facebookLink: props.data[0].location.facebookLink || "",
-        restaurantNumber: props.data[0].location.phone || "",
-        whatsappNumber: props.data[0].location.whatsappNumber || ""
+        locationId: data[0].location.id || "",
+        businessLegalName: data[0].location.restaurantName || "",
+        phone: data[0].location.phoneType || "",
+        email:data[0].location.email || "",
+        website: data[0].location.website || "",
+        instagramLink: data[0].location.instagramLink || "",
+        facebookLink: data[0].location.facebookLink || "",
+        restaurantNumber: data[0].location.phone || "",
+        whatsappNumber:data[0].location.whatsappNumber || ""
       });
     }
-  }, [props.data]);
+  }, [data]);
 
   useImperativeHandle(ref, () => ({
     getFormData: () => form,

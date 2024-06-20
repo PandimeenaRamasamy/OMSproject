@@ -72,6 +72,7 @@ function* postData(action) {
 }
 
 function* locationId(action) {
+  
   yield ;
 }
 

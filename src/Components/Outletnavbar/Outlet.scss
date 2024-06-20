@@ -1,9 +1,9 @@
 .outletnavorg {
   margin-left: 350px;
   position: relative;
-  top: 54px;
-  width: 130%;
- 
+  top: 44px;
+  width: 95%;
+ padding: 10px;
   /* height: 110px; */
   border-bottom: 1px solid #979797;
   
@@ -19,9 +19,10 @@
   display: flex;
 
   width:580px;
-  height: 73px;
-
-  gap: 62px;
+  height: 93px;
+  margin-left: -10px;
+ 
+  gap: 72px;
   opacity: 0px;
 }
 
@@ -29,6 +30,7 @@
 .nav-list {
   list-style: none;
   display: flex;
+  
   margin-top: 50px;
 }
 
@@ -37,12 +39,16 @@
   cursor: pointer;
   transition: background-color 0.3s;
   /* border-radius: 5px; */
-  
+
   color: rgba(0, 0, 0, 0.5);
 }
 
 /* Active category styles */
 .nav-item.active {
+  
+ 
+  height: 33px;
+ 
   border-bottom: 2px solid rgba(104, 132, 64, 1);
   color: #67833e;
   font-weight: bold;

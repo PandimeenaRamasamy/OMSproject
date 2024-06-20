@@ -1,6 +1,7 @@
 .pills {
-  width: 40.5%;
+  width: 56.4%;
   height: 20%;
+  // background-color: cadetblue;
 }
 
 .pillsContainer {
@@ -12,6 +13,7 @@
   border: 1px solid black;
   border-radius: 5px;
   align-items: center;
+  cursor: pointer;
   // background-color: burlywood;
   img {
     cursor: pointer;
@@ -357,7 +359,6 @@
         background-color: #779749;
         // background-color: aquamarine;
         position: relative;
-        text-align: center;
         left: 300px;
       }
       .iPills {

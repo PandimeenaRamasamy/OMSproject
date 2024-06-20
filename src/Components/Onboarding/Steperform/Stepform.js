@@ -25,6 +25,7 @@ function Stepform({data}) {
   const locationRef = useRef();
   const fssaiRef = useRef();
   const bankRef = useRef();
+  const navigate=useNavigate();
 
   {data && data.map((location, index) => (
     console.log("datasteperform",location.location.id)) )}
@@ -128,6 +129,7 @@ function Stepform({data}) {
             bank_details: bankRef.current.getFormData(),
           };
         }
+        navigate('/outlet/Outlet-Details');
         break;
       default:
         break;
@@ -182,7 +184,7 @@ function Stepform({data}) {
     }
   };
   const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
-  let navigate = useNavigate();
+
 
   const [activeCategory, setActiveCategory] = useState('Registration');
 

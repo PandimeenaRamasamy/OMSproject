@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import PostDataForm from './Components/Registration/PostData'
 import Stepform from './Components/Onboarding/Steperform/Stepform';
 import Updateoutlet from './Components/UpdateOutlet/Updateoutlet';
+import OutletStepperForm from './Components/Outlet Details/OutletStepperForm/OutletStepperForm' 
 
 function Landing() {
 
@@ -38,15 +39,20 @@ function Landing() {
          
      ) : (<div className='Appcontainer'>
       <Sidenavbar />
+      
       <Routes>
-        <Route path="/" element={ <Home/> } />
-        <Route path="/outlet" element={  <Outlet />} />
-        <Route path="/PostDataForm" element={  <PostDataForm />} />
-        <Route path="/Stepform" element={  <Stepform />} />
-        <Route path="/outlet/Stepform" element={  <Stepform />} />
-        <Route path="/outlet/PostDataForm" element={  <PostDataForm />} />
+      <Route path="/" element={ <Home/> } />
+      <Route path="/outlet" element={<Outlet />}>
 
-        <Route path="/Updateoutlet" element={  <Updateoutlet />} />
+       
+      
+        <Route path="Registration" element={  <PostDataForm />} />
+        <Route path="Onboaring" element={  <Stepform />} />
+        <Route path="Outlet-Details" element={  <OutletStepperForm />} />
+     
+          </Route>
+
+       
         {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes></div>
      )}

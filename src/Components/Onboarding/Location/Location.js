@@ -333,6 +333,7 @@
 
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import "../Location/Location.scss";
+import { useSelector } from "react-redux";
 
 const Location = forwardRef((props, ref) => {
   const [form, setForm] = useState({
@@ -342,7 +343,7 @@ const Location = forwardRef((props, ref) => {
     state: "",
     country: ""
   });
-
+  const data = useSelector((state) => state.getlocationdata.data);
   const [locationError, setLocationError] = useState({
     address: "",
     pincode: "",
@@ -356,16 +357,16 @@ const Location = forwardRef((props, ref) => {
   const [textboxes, setTextboxes] = useState([""]);
 
   useEffect(() => {
-    if (props.data && props.data[0]) {
+    if (data && data[0]) {
       setForm({
-        address: props.data[0].location.addressLine1 || "",
-        pincode: props.data[0].location.pinCode || "",
-        city: props.data[0].location.city || "",
-        state: props.data[0].location.state || "",
-        country: props.data[0].location.country || ""
+        address: data[0].location.addressLine1 || "",
+        pincode: data[0].location.pinCode || "",
+        city: data[0].location.city || "",
+        state: data[0].location.state || "",
+        country: data[0].location.country || ""
       });
     }
-  }, [props.data]);
+  }, [data]);
 
   const handleTextBoxes = (e) => {
     e.preventDefault();

@@ -5,15 +5,13 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 const Pickup = React.forwardRef((props,ref) => {
     const dispatch = useDispatch();
-    const locationId = useSelector((state) => state.postData.data);  
-    const LocationId = dispatch(getLocationId(locationId));
-    const Locid = LocationId.payload;
+      // const data = useSelector((state) => state.getlocationdata.data);
+    const datafromapi = useSelector((state) => state.postData.data);
     
     const[form,setForm]=useState({
 
-        locationId:Locid,
+        locationId:datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
 
-        locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
 
         serviceTimeFrom:"",
         serviceTimeTo:"",

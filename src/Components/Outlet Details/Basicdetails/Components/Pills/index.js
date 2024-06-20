@@ -44,10 +44,15 @@ const Pills = ({
   const handleShowInputBox = () => {
     setShowInputBox(true);
   };
+
+  const handlePillsContainerClick = () => {
+    setShowModal((mo) => !mo);
+  };
+
   return (
     <div className="pills">
-      <div className="pillsContainer">
-        <div className="pillsContent">
+      <div className="pillsContainer" onClick={handlePillsContainerClick}>
+        <div className="pillsContent" onClick={(e) => e.stopPropagation()}>
           {pillsText.map((item, index) => (
             <div className="iPills" key={index}>
               {item}
@@ -100,7 +105,7 @@ const Pills = ({
             </>
           )}
         </div>
-        <div className="pillsArrow">
+        <div className="pillsArrow" onClick={(e) => e.stopPropagation()}>
           <img
             className={showModal ? "arrowUp" : "arrowDown"}
             src={arrow}

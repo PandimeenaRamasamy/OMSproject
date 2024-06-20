@@ -15,16 +15,13 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
 
-
-  const locationId = useSelector((state) => state.postData.data);  
-  const LocationId = dispatch(getLocationId(locationId));
-  const Locid = LocationId.payload;
-
+  const datafromapi = useSelector((state) => state.postData.data);
+  // const data = useSelector((state) => state.getlocationdata.data);
   const [Outletdetails, setOutletdetails] = useState({
 
-    locationId: Locid,
+    locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
 
-    locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+   
 
     dineIn: "",
     highChair: "yes",
@@ -580,6 +577,7 @@ const validate=()=>{
                           </div>
                         </div>
                       </div>
+                      <div className="Autoassignradio">
                       <div className="lables1">
                         <label
                           htmlFor="BusinessLegalName"
@@ -634,6 +632,7 @@ const validate=()=>{
                           <label className="chairradio">No</label>
                         </div>
                       </div>
+                     </div>
                     </form>
                   </div>
                 )}

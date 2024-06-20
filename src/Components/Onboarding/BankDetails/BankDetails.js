@@ -111,9 +111,11 @@
 
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import "./BankDetails.scss";
+import { useDispatch, useSelector } from "react-redux";
 
 const BankDetails = forwardRef((props, ref) => {
   const [bankform, setBankform] = useState({
+    
     accountNumber: "",
     ifscCode: "",
     AccountHolderName: "",
@@ -124,14 +126,15 @@ const BankDetails = forwardRef((props, ref) => {
     ifscCode: "",
     AccountHolderName: "",
   });
+    const data = useSelector((state) => state.getlocationdata.data);
 
   useEffect(() => {
-    if (props.data) {
-      console.log("Props data available:", props.data); // Debugging line
+    if (data) {
+      console.log("Props data available:", data); // Debugging line
 
-      if (props.data.attributes) {
+      if (data[0].attributes) {
         try {
-          const attributes = JSON.parse(props.data.attributes);
+          const attributes = JSON.parse(data[0].attributes);
           console.log("Parsed attributes:", attributes); // Debugging line
           const bankDetails = attributes.BankDetails || {};
           console.log("Extracted bank details:", bankDetails); // Debugging line
@@ -149,7 +152,7 @@ const BankDetails = forwardRef((props, ref) => {
     } else {
       console.error("Props data is undefined");
     }
-  }, [props.data]);
+  }, [data]);
 
   const resetForm = () => {
     setBankform({

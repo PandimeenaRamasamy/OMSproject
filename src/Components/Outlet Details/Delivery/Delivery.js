@@ -13,6 +13,7 @@ const Delivery = React.forwardRef((props,ref) => {
   const [isEnable, setIsEnable] = useState(true);
   const [showdelivery, setShowDelivery] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
+    // const data = useSelector((state) => state.getlocationdata.data);
 
   const dispatch = useDispatch();
   const reducer = useSelector((state) => state.deliveryDataReducer);
@@ -205,15 +206,13 @@ const Delivery = React.forwardRef((props,ref) => {
     }));
 
 
-    const locationId = useSelector((state) => state.postData.data);  
-    const LocationId = dispatch(getLocationId(locationId));
-    const Locid = LocationId.payload;
+    const datafromapi = useSelector((state) => state.postData.data);
 
     const payloadData = {
 
-      locationId: Locid,
+      locationId:datafromapi && datafromapi[0] ?datafromapi[0].locationId:"" ,
 
-      locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
+     
 
       deliverySettingTime,
       deliveryPayment: selectedMethods,

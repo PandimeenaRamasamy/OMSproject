@@ -295,6 +295,7 @@ import React, { useState, useEffect, useImperativeHandle, forwardRef } from "rea
 import "./Fssai.scss";
 import { ImCross } from "react-icons/im";
 import addphoto from "../../../assets/images/Addphotos.png";
+import {  useSelector } from "react-redux";
 
 const Fssai = forwardRef((props, ref) => {
   const [fssaiform, setfssaiform] = useState({
@@ -309,6 +310,7 @@ const Fssai = forwardRef((props, ref) => {
     expirationDate: "",
     documents: "",
   });
+    const data = useSelector((state) => state.getlocationdata.data);
 
   const validate = () => {
     let isValid = true;
@@ -335,17 +337,17 @@ const Fssai = forwardRef((props, ref) => {
   const [imageclose, setImageclose] = useState(false);
 
   useEffect(() => {
-    if (props.data && props.data[0]) {
+    if (data && data[0]) {
       const newForm = {
-        isEnabled: props.data[0].isEnabled || "",
-        registerNumber: props.data[0].registerNumber || "",
-        expirationDate: props.data[0].expirationDate || "",
-        documents: props.data[0].documents || "",
+        isEnabled:data[0].isEnabled || "",
+        registerNumber: data[0].registerNumber || "",
+        expirationDate: data[0].expirationDate || "",
+        documents: data[0].documents || "",
       };
       setfssaiform(newForm);
       setSelectedButton(newForm.isEnabled === "enabled");
     }
-  }, [props.data]);
+  }, [data]);
 
   useEffect(() => {
     if (fssaiform.documents) {

@@ -18,6 +18,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
   // console.log("basicDetailsReducer", basicDetailsReducer);
 
   const uid = useMemo(() => uuidv4(), []);
+    const data = useSelector((state) => state.getlocationdata.data);
 
   const locationId = useSelector((state) => state.postData.data);
   
@@ -343,14 +344,11 @@ const BasicDetails = React.forwardRef((props,ref) => {
         basicTime: sessionTimes,
       };
     });
-
+    const datafromapi = useSelector((state) => state.postData.data);
+  
     const payload = {
 
-      locationId: Locid,
-
-      locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
-
-    
+      locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,

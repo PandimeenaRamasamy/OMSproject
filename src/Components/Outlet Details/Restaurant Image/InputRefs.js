@@ -8,19 +8,15 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
 const ParentComponent = React.forwardRef((props,ref) => {
   const dispatch = useDispatch();
 
-  const locationId = useSelector((state) => state.postData.data);  
-  const LocationId = dispatch(getLocationId(locationId));
-  const Locid = LocationId.payload;
+  const datafromapi = useSelector((state) => state.postData.data);
+    // const data = useSelector((state) => state.getlocationdata.data);
+
   const [form, setForm] = useState({
-
-
-    locationId:Locid,
-
-    locationId: "6f0d05ab-3c6d-4812-b29a-22822cabdeea",
-
+    locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
     restaurantImgs: [],
     profileImg: ""
   });
+
   const[resimgerror,setResImageError]=useState({
     restaurantImgs: [],
     profileImg: ""

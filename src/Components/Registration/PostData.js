@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { postDataRequest, getLocationId, getDataRequest, getLocationRequest } from "../../redux/Actions/PostDataAction";
 import { useLocation } from 'react-router-dom';
 import Success from './Success'
+import Outlet from "../Outletnavbar/Outlet";
 
-const PostDataForm = ({ data }) => {
+const PostDataForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   
@@ -20,13 +21,15 @@ const PostDataForm = ({ data }) => {
   //   }
   // }, []);
 
-  console.log(typeof data)
+ 
 
   // console.log("registrationapi", data[0].location.id);
 
 
   ;
 
+
+  const data = useSelector((state) => state.getlocationdata.data);
 
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
@@ -225,8 +228,10 @@ const PostDataForm = ({ data }) => {
 
   return (
     <>
+    
       <div className="main-divreg">
         <div className="submain-divreg">
+   
           <div className="headingreg">
             <h5>Registration</h5>
           </div>
@@ -428,8 +433,8 @@ const PostDataForm = ({ data }) => {
             <div className="invaliddata fornoimage">{error.base64Imageerror} </div>
           )}
           </div>
-          <button className="footnavbtn1" onClick={() => dispatch(getLocationRequest())
-}>GET Location</button> 
+          {/* <button className="footnavbtn1" onClick={() => dispatch(getLocationRequest())
+}>GET Location</button>  */}
         </div>
         <div className="footnav">
           <button className="footnavbtn1" onClick={(event)=>{

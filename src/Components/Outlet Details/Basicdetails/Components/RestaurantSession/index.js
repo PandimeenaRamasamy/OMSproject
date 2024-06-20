@@ -57,7 +57,9 @@ const RestaurantSession = ({
   return (
     <div className="restaurantSessionContainer">
       <div className="sessionHeaderRes">
-        <p>Restaurant Session - {meals}</p>
+      <p style={{ cursor: "pointer" }} onClick={() => setOpenSession((sess) => !sess)}>
+    Restaurant Session - {meals}
+</p>
         <img
           src={vector}
           alt="drop-down"
