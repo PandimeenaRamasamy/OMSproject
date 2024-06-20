@@ -67,7 +67,6 @@ function* postData(action) {
       yield put(postDataFailure(response.statusText));
     }
   } catch (error) {
-    yield put(postDataFailure(error.message));
   }
 }
 
@@ -85,7 +84,7 @@ function* getData() {
     yield put({ type: 'GET_DATA_SUCCESS', payload: response.data });
   }
   catch (error) {
-    yield put({ type: 'GET_DATA_FAILURE', payload: error.message });
+  
   }
 
   
@@ -100,7 +99,6 @@ function* getLocationData(action) {
     yield put(getLocationSuccess(response.data));
   }
   catch (error) {
-    yield put({ type: 'GET_DATA_LOCATION_FAILURE', payload: error.message });
   }
 
   

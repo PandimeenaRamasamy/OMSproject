@@ -134,13 +134,6 @@ function Stepform({data}) {
 
 
 
-        const timer = setTimeout(() => {
-          navigate('/outlet/Outlet-Details');
-        }, 5000); // Navigate after 5 seconds
-    
-        return () => clearTimeout(timer);
-
-        // navigate('/outlet/Outlet-Details');
         break;
       default:
         break;
@@ -191,6 +184,7 @@ function Stepform({data}) {
 
     } else {
       dispatch(postOnBoardingDataRequest(formData));
+
       
     }
   };
