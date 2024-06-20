@@ -521,7 +521,7 @@ const Delivery = React.forwardRef((props,ref) => {
           <div className="inHousedeliveryoption" style={{height: showInHouse ? '100vh' : '20vh'}} >
           {inHouse && (
             <div className="inhouse">
-              <div className="header">
+              <div className="header" onClick={() => setShowInHouse((inho) => !inho)}>
                 <h3>Inhouse</h3>
                 <img
                   className={showInHouse ? "arrowUp" : "arrowDown"}
@@ -744,8 +744,8 @@ const Delivery = React.forwardRef((props,ref) => {
 
 
           {thirdParty && (
-            <div className="thirdParty">
-              <div className="header">
+            <div className="thirdParty"     onClick={() => setShowTHirdParty((tp) => !tp)}  >
+              <div className="header" >
                 <h3>3rd Party</h3>
                 <img
                   className={showThirdParty ? "arrowUp" : "arrowDown"}
