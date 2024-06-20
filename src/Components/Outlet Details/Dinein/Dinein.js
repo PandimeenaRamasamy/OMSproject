@@ -15,11 +15,12 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
 
-  const datafromapi = useSelector((state) => state.postData.data);
-  // const data = useSelector((state) => state.getlocationdata.data);
+  const data = useSelector((state) => state.getlocationdata.data);  
+
+
   const [Outletdetails, setOutletdetails] = useState({
 
-    locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+    locationId: "",
 
    
 
@@ -177,6 +178,8 @@ const validate=()=>{
     setDineInErrors(errors);
     return isValid;
 }
+
+console.log("This data is coming from dine in ",data)
 
  
 
