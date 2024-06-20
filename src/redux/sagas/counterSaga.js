@@ -117,7 +117,6 @@ function* postOnBoardingData(action) {
       yield put(POST_ONBOARDING_DATA_FAILURE(response.statusText));
     }
   } catch (error) {
-    yield put(POST_ONBOARDING_DATA_FAILURE(error.message));
   }
 }
 

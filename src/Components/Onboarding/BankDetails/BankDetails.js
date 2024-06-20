@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import "./BankDetails.scss";
 import { useSelector } from "react-redux";
+import OnboardSuceess from '../../Onboarding/Steperform/Onboardsuccess'
 
 const BankDetails = forwardRef((props, ref) => {
   const [bankform, setBankform] = useState({
@@ -45,6 +46,7 @@ const BankDetails = forwardRef((props, ref) => {
       AccountHolderName: "",
     });
   };
+  const [successmgs, setsuccessmgs] = useState(false);
 
   const getFormData = () => {
     return bankform;
@@ -61,6 +63,11 @@ const BankDetails = forwardRef((props, ref) => {
       event.preventDefault();
     }
   };
+  const handleCloseSuccessModal = () => {
+    setsuccessmgs(false);
+    resetForm();
+  };
+
 
   const validate = () => {
     let isValid = true;
@@ -151,6 +158,11 @@ const BankDetails = forwardRef((props, ref) => {
               We will credit a small amount in your account to validate your bank account details.
             </h1>
           </div>
+          {successmgs && validate && (
+            <div className="alcoholModalOverlaysuccess">
+              <OnboardSuceess onCloseRequest={handleCloseSuccessModal} />
+            </div>
+          )}
           <br />
         </div>
       </div>
