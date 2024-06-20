@@ -108,6 +108,30 @@ function Stepform() {
   }, [outletactiveStep]);
 
   const handleStepClick = (index) => {
+    if (index > outletactiveStep) {
+      let isValid = true;
+
+      switch(outletactiveStep){
+        case 1:
+          isValid=restrauntimageref.current.validate();
+          break;
+          case 2:
+            isValid=dineinref.current.validate();
+          break;
+
+          case 3:
+          isValid=pickUpformRef.current.validate();
+          break;
+
+
+      }
+      if (!isValid) {
+        toast.error("Please fill out the required fields before moving to the next step.");
+        return;
+      }
+
+    }
+  
     setOutletActiveStep(index);
   };
 
