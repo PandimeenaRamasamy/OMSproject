@@ -126,18 +126,11 @@ function Stepform() {
         toast.success("Data submitted successfully!");
     
         break;
-      case 1: isValid=restrauntimageref.current.validate();
-        if(isValid)
-          {
+      case 1:
         newFormData1=restrauntimageref.current.getFormData()
         setrestrauntImageForm(newFormData1)
         dispatch(PostRestaurantImageDataRequest(newFormData1))
-        toast.success("Data submitted successfully!");
-
-          }  
-          else{
-            toast.error("Please fill out the required fields before moving to the next step.");
-          }  
+        toast.success("Data submitted successfully!"); 
         break;
       case 2: 
       isValid=dineinref.current.validate();
