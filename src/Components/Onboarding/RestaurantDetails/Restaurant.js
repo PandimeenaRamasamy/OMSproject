@@ -428,10 +428,7 @@ const Restaurant = forwardRef((props, ref) => {
           businessLegalName: "",
           phone: "",
           email: "",
-          
-          
-          
-          restaurantNumber: "",
+           restaurantNumber: "",
           whatsappNumber: "",
         });
         setResError({
@@ -522,13 +519,13 @@ const Restaurant = forwardRef((props, ref) => {
   const validate = () => {
     const errors = {};
     let isValid = true;
-    if (!form.businessLegalName) {
-      errors.businessLegalName = "Please Enter The Name";
-      isValid = false;
-    } else if (/[^a-zA-Z\s]/.test(form.businessLegalName)) {
-      errors.businessLegalName = " Enter Name";
-      isValid = false;
-    }
+    // if (!form.businessLegalName) {
+    //   errors.businessLegalName = "Please Enter The Name";
+    //   isValid = false;
+    // } else if (/[^a-zA-Z\s]/.test(form.businessLegalName)) {
+    //   errors.businessLegalName = " Enter Name";
+    //   isValid = false;
+    // }
     if (!form.phone) {
       errors.phone = " Enter type";
       isValid = false;
@@ -626,6 +623,7 @@ const Restaurant = forwardRef((props, ref) => {
                 </select>
                 <input
                   type="text"
+                  maxLength={10}
                   onKeyPress={handleKeyPress}
                   name="restaurantNumber"
                   className="inputboxres2"

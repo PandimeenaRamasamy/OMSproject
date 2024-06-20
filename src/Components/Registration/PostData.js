@@ -57,7 +57,7 @@ const PostDataForm = () => {
         email: location.email || "",
         designation: location.designation || "",
         gstNumber: attributes.gstNumber || "",
-        base64Image: "",
+        base64Image: null,
       });
 
       setImagePreview(null);
@@ -79,10 +79,10 @@ const PostDataForm = () => {
       registrationpagerrors.emailerror = "Enter valid email";
     }
 
-    if (!Registrationform.base64Image) {
-      isValid = false;
-      registrationpagerrors.base64Imageerror = "Upload logo";
-    }
+    // if (!Registrationform.base64Image) {
+    //   isValid = false;
+    //   registrationpagerrors.base64Imageerror = "Upload logo";
+    // }
 
     if (!Registrationform.name) {
       isValid = false;
@@ -157,6 +157,11 @@ const PostDataForm = () => {
       event.preventDefault();
     }
   };
+  const handleKeyname = (event) => {
+    if (/^\d$/.test(event.key)) {
+      event.preventDefault();
+    }
+  };
 
   return (
     <div className="main-divreg">
@@ -182,6 +187,7 @@ const PostDataForm = () => {
             <input
               type="text"
               className="inputbox"
+              onKeyPress={handleKeyname}
               style={{ borderColor: error.nameerror ? "red" : "#B3B3B3" }}
               placeholder="Name"
               value={Registrationform.name}
@@ -248,6 +254,8 @@ const PostDataForm = () => {
               type="text"
               className="inputbox"
               placeholder=""
+              maxLength={15}
+              onKeyPress={handleKeyPress}
               value={Registrationform.gstNumber}
               onChange={(e) => setRegistrationform({ ...Registrationform, gstNumber: e.target.value })}
             />
@@ -286,7 +294,7 @@ const PostDataForm = () => {
                 )}
               </div>
               {!file && <p className="fornoimage">No image was selected</p>}
-              {error.base64Imageerror && <div className="invaliddata fornoimage">{error.base64Imageerror}</div>}
+              {/* {error.base64Imageerror && <div className="invaliddata fornoimage">{error.base64Imageerror}</div>} */}
             </div>
           </div>
           <div className="footnav">

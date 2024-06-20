@@ -476,6 +476,7 @@ const Location = forwardRef((props, ref) => {
                   className="inputbox2loc"
                   placeholder="600 084"
                   name="pincode"
+                  maxLength={6}
                   onChange={handleChange}
                   style={{ borderColor: locationError.pincode ? "red" : "#B3B3B3" }}
                   value={form.pincode}

@@ -14,11 +14,11 @@ const ParentComponent = React.forwardRef((props,ref) => {
   const [form, setForm] = useState({
     locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
     restaurantImgs: [],
-    profileImg: ""
+    profileImg: null
   });
 
   const[resimgerror,setResImageError]=useState({
-    restaurantImgs: [],
+    restaurantImgs: [null],
     profileImg: ""
   })
 
@@ -81,16 +81,16 @@ const ParentComponent = React.forwardRef((props,ref) => {
 const validate=()=>{
   let errors={};
   let isValid=true;
-  if(!form.profileImg)
-    {
-      errors.profileImg="Please Select the profile Image";
-      isValid=false;
-    }
-    if(!form.restaurantImgs || form.restaurantImgs.length===0)
-      {
-        errors.restaurantImgs="Please Select the restaurant Image";
-        isValid=false;
-      }
+  // if(!form.profileImg)
+  //   {
+  //     errors.profileImg="Please Select the profile Image";
+  //     isValid=false;
+  //   }
+  //   if(!form.restaurantImgs || form.restaurantImgs.length===0)
+  //     {
+  //       errors.restaurantImgs="Please Select the restaurant Image";
+  //       isValid=false;
+  //     }
     setResImageError(errors);
     return isValid
     

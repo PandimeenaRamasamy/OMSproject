@@ -88,6 +88,11 @@ const BankDetails = forwardRef((props, ref) => {
     return isValid;
   };
 
+  const handleKeyname = (event) => {
+    if (/^\d$/.test(event.key)) {
+      event.preventDefault();
+    }
+  };
   return (
     <div>
       <div className="Bank-Container">
@@ -139,6 +144,7 @@ const BankDetails = forwardRef((props, ref) => {
               type="text"
               value={bankform.AccountHolderName}
               className="Type4"
+              onKeyPress={handleKeyname}
               onChange={(e) =>
                 setBankform({ ...bankform, AccountHolderName: e.target.value })
               }
