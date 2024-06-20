@@ -13,8 +13,8 @@ const ParentComponent = React.forwardRef((props,ref) => {
  
   const [form, setForm] = useState({
     locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
-    restaurantImgs: [],
-    profileImg: ""
+    restaurantImgs: [null],
+    profileImg: null
   });
  
   const[resimgerror,setResImageError]=useState({
