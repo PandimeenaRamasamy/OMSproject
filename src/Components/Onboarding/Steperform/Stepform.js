@@ -129,7 +129,18 @@ function Stepform({data}) {
             bank_details: bankRef.current.getFormData(),
           };
         }
-        navigate('/outlet/Outlet-Details');
+
+        toast.success("All yor Data submitted successfully!");
+
+
+
+        const timer = setTimeout(() => {
+          navigate('/outlet/Outlet-Details');
+        }, 5000); // Navigate after 5 seconds
+    
+        return () => clearTimeout(timer);
+
+        // navigate('/outlet/Outlet-Details');
         break;
       default:
         break;
@@ -176,11 +187,11 @@ function Stepform({data}) {
   const handleNextStep = (formData) => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
-      toast.success("Data submitted successfully!");
+      toast.success("Data has been stored successfully!");
 
     } else {
       dispatch(postOnBoardingDataRequest(formData));
-      toast.success("Data submitted successfully!");
+      
     }
   };
   const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
