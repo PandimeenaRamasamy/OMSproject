@@ -112,9 +112,7 @@ function Stepform() {
       let isValid = true;
 
       switch(outletactiveStep){
-        case 1:
-          isValid=restrauntimageref.current.validate();
-          break;
+        
           case 2:
             isValid=dineinref.current.validate();
           break;
