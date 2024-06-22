@@ -1,4 +1,4 @@
-import React, { useState,useImperativeHandle} from 'react';
+import React, { useState,useImperativeHandle, useEffect} from 'react';
 import "./Pickup.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
@@ -7,6 +7,8 @@ const Pickup = React.forwardRef((props,ref) => {
     const dispatch = useDispatch();
       // const data = useSelector((state) => state.getlocationdata.data);
     const datafromapi = useSelector((state) => state.postData.data);
+    const data = useSelector((state) => state.getlocationdata.data);
+
     
     const[form,setForm]=useState({
 
@@ -39,6 +41,29 @@ const Pickup = React.forwardRef((props,ref) => {
             }        
     }
     const [isEnabled, setIsEnabled] = useState(false);
+
+
+    useEffect(()=>{
+        if (data && data[0] && data[0].location) {
+            const location = data[0].location;
+            const attributes = JSON.parse(location.attributes || "{}");
+            const PickUp = attributes.PickUp ;
+
+      
+            setRegistrationform({
+              locationId: PickUp.id || null,
+              serviceTimeFrom: PickUp.serviceTimeFrom || "",
+              serviceTimeTo: PickUp.serviceTimeTo || "",
+              Payment: PickUp.Payment || [],
+              scheduleDuration: PickUp.scheduleDuration || "",
+              packagingCharge: PickUp.packagingCharge || "",
+              ETA: PickUp.ETA || "",
+            });
+      
+          }
+        }, [data]);
+
+        
 
     const handleEnable = () => {
         setIsEnabled(true);

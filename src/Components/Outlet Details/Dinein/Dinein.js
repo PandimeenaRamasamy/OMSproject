@@ -45,6 +45,44 @@ const Dinein = React.forwardRef((props,ref) => {
     },
   });
 
+
+
+  
+  useEffect(()=>{
+    if (data && data[0] && data[0].location) {
+        const location = data[0].location;
+        const attributes = JSON.parse(location.attributes || "{}");
+        const DineIn = attributes.DineIn ;
+
+  
+        setRegistrationform({
+          locationId: DineIn.id || null,
+          dineIn: DineIn.dineIn || "",
+          highChair: DineIn.highChair || "",
+          interactiveDineIn: DineIn.interactiveDineIn || [],
+          merchant4DigitValidation: DineIn.merchant4DigitValidation || "",
+          checkIn: {
+            maximumPeopleAllowedOnline: DineIn.maximumPeopleAllowedOnline || "",
+            maximumPeopleAllowedOffline:DineIn.maximumPeopleAllowedOffline || "",
+            lateShowTime:DineIn.lateShowTime || "",
+            autoCancelTime:DineIn.autoCancelTime || "",
+            abandonTime: DineIn.abandonTime || "",
+            autoAssign: DineIn.autoAssign || "",
+          },
+          reservation: {
+            minimumPeopleAllowed: DineIn.minimumPeopleAllowed || "",
+            maximumPeopleAllowed: DineIn.maximumPeopleAllowed || "",
+            reservationServiceTimeFrom:DineIn.reservationServiceTimeFrom || "",
+            reservationServiceTimeTo:DineIn.reservationServiceTimeTo || "",
+            days:DineIn.days || [],
+            bufferDays:DineIn.bufferDays || "",
+          },
+        });
+  
+      }
+    }, [data]);
+
+
   const [dineinerrors, setDineInErrors] = useState({
    
     dineIn: "",
