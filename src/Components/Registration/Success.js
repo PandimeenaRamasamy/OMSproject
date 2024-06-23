@@ -5,17 +5,29 @@ import { useNavigate } from "react-router-dom";
 import Stepform from "../Onboarding/Steperform/Stepform";
 import { getDataRequest } from "../../redux/Actions/PostDataAction";
 
-const AlcoholModal = ({ onCloseRequest }) => {
+const AlcoholModal = ({ onCloseRequest ,pathname}) => {
   const [isChecked, setIsChecked] = useState(false);
   const dispatch=useDispatch();
   const AAlocationdata = useSelector((state) => state.getlocationdata.data);
   const [onboard,setonboard]=useState(false);
   let navigate = useNavigate();
   const setting=()=>{
+
+    if(pathname==="Registraion")
+      {
+        console.log("setting");
+        navigate('/outlet/Onboaring', { state: { pagename: "Onboaring" } });
+        dispatch(getDataRequest());
+
+      } 
+    else if(pathname==="Onboarding")  
+      {
+        console.log("setting");
+        navigate('/outlet/Outlet-Details',  { state: { pagename: "Outlet Details" } });
+        dispatch(getDataRequest());
+      }
    
-    console.log("setting");
-    navigate('/outlet/Onboaring', { state: { APidata: AAlocationdata } });
-    dispatch(getDataRequest());
+  
    
   }
 

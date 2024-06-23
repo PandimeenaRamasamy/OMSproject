@@ -47,6 +47,7 @@ const BankDetails = forwardRef((props, ref) => {
     });
   };
   const [successmgs, setsuccessmgs] = useState(false);
+  const onboarddata = useSelector((state) => state.postData.data);
 
   const getFormData = () => {
     return bankform;
@@ -164,7 +165,7 @@ const BankDetails = forwardRef((props, ref) => {
               We will credit a small amount in your account to validate your bank account details.
             </h1>
           </div>
-          {successmgs && validate && (
+          {successmgs && onboarddata&& validate && (
             <div className="alcoholModalOverlaysuccess">
               <OnboardSuceess onCloseRequest={handleCloseSuccessModal} />
             </div>

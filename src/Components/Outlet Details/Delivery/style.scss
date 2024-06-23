@@ -1,7 +1,7 @@
 .delivery {
   position: relative;
   margin-left: 370px; 
-  top: 140px;
+  top: 30px;
   
 
   p {
@@ -605,7 +605,7 @@
 @media (max-width: 1280px) {
   .delivery {
 
-    margin-top: -135px;
+    margin-top: -50px;
     h3 {
       font-size: 16px;
     }
@@ -753,7 +753,7 @@
     }
     .inhouse {
       margin-top: 20px;
-      width: 30%;
+      width: 600px;
       border: 1px solid #979797;
       padding: 0 40px 20px 40px;
       border-radius: 8px;
@@ -885,7 +885,9 @@
 
 @media (max-width: 1080px) {
   .delivery {
-    margin-left: 250px;
+    margin-top: -50px;
+    position: relative;
+    left: -100px;
   
     h3 {
       font-size: 16px;
@@ -1024,7 +1026,7 @@
     }
     .inhouse {
       margin-top: 20px;
-      width: 30%;
+      width: 600px;
       border: 1px solid #979797;
       padding: 0 40px 10px 40px;
       border-radius: 8px;
@@ -1074,7 +1076,7 @@
       }
       .thirdPartyInputContaianer {
         display: flex;
-        gap: 30px;
+        // gap: 30px;
         .thirdPartyInput {
           input {
             border-width: 1px;

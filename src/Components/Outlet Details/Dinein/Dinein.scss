@@ -7,7 +7,7 @@
   position: relative;
   margin-left: 340px;
   display: flex;
-  top: 120px;
+  top: 30px;
  
 }
 
@@ -305,15 +305,16 @@ hr {
 {
   .main-divdine {
   position: relative;
-  margin-top: -140px;
+  margin-top: -70px;
+
   
   }
 }
 
 @media (max-width:1080px) {
   .main-divdine {
-  
-    left: -120px;
+  margin-top: -70px;
+    left: -100px;
   
   }
 

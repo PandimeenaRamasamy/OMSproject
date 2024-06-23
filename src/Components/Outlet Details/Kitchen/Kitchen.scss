@@ -6,7 +6,7 @@
     position: relative;
     margin-left: 340px;
     display: flex;
-    top: 120px;
+    top: 30px;
 }
 .submain-kitchen-div{
     transform: translateY(-20px);
@@ -107,7 +107,7 @@
 {
     .main-kitchen-div {
   position: relative;
-  margin-top: -140px;
+  margin-top: -70px;
   
   }
 }
@@ -115,7 +115,8 @@
 @media (max-width:1080px) {
   .main-kitchen-div {
   
-    left: -120px;
+    margin-top: -70px;
+    left: -100px;
   
   }
 

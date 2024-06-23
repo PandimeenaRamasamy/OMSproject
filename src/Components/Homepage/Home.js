@@ -13,7 +13,7 @@ const Home = () => {
 
   let navigate = useNavigate();
   const goToAbout = () => {
-    navigate('/outlet/Registration',{ state: { APidata: locationdata } });
+    navigate('/outlet/Registration',{ state: { pagename: "Registration" } });
   };
   return (
     <div className='main'>

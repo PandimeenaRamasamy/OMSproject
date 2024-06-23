@@ -1,7 +1,7 @@
 .Stepperformcontainer {
   margin-top:90px;
     transform: translateX(250px);
-   
+    height:139px;
   
   
     
@@ -191,9 +191,9 @@
    @media(max-width:1280px)
    {
     .Stepperformcontainer {
-      margin-top:90px;
-        transform: translateX(250px);
-    height: 240px;
+      margin-top:190px;
+        // transform: translateX(250px);
+    height: 200px;
     width:900px;
        
         
@@ -201,7 +201,7 @@
 
     .sub-container {
       width:830px;
-      top: 100px;
+      // top: 100px;
       left:40px;
       
     }
@@ -225,13 +225,21 @@
 
    @media(max-width:1080px)
    {
+    .Stepperformcontainer {
+      margin-top:190px;
+        transform: translateX(250px);
+        height:200px;
+      
+      
+        
+      }
     .sub-container {
-      width:700px;
-      top: 100px;
-      left: -60px;
+      width:760px;
+     top:10px;
+      left: -40px;
     }
     .stepper-progress{
-      width: 640px;
+      width: 680px;
     }
     
    }

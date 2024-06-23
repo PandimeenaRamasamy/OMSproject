@@ -110,10 +110,10 @@ return isValid;
                         <h5 className='Pickup_heading6'>To</h5>
                         </div>
                         <div className='from_to_input'>
-                        <input type="text" className='textbox1' placeholder='11:00 AM' style={{
+                        <input type="time" className='textbox1' placeholder='11:00 AM' style={{
                           borderColor: pickuperror.serviceTimeFrom ? "red" : "#B3B3B3",
                         }} onChange={(e)=>setForm({...form,"serviceTimeFrom":e.target.value})} ></input>
-                        <input type="text" className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})} style={{
+                        <input type="time" className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})} style={{
                           borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
                         }}></input>
                         {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}

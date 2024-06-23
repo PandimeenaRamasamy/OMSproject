@@ -224,6 +224,8 @@ const Delivery = React.forwardRef((props,ref) => {
       deliveryOption: {},
     };
 
+
+
     if (inHouse) {
       payloadData.deliveryOption.inHouse = {
         isEnabled: inHouse,
@@ -744,8 +746,8 @@ const Delivery = React.forwardRef((props,ref) => {
 
 
           {thirdParty && (
-            <div className="thirdParty"     onClick={() => setShowTHirdParty((tp) => !tp)}  >
-              <div className="header" >
+            <div className="thirdParty"      >
+              <div className="header"  onClick={() => setShowTHirdParty((tp) => !tp)}>
                 <h3>3rd Party</h3>
                 <img
                   className={showThirdParty ? "arrowUp" : "arrowDown"}

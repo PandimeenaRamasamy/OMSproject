@@ -7,6 +7,8 @@
     flex-direction: column;
     text-align: start;
     width:700px;
+    position: relative;
+    top: -100px;
 }
 .Pickup_heading1{
     
@@ -270,7 +272,7 @@ font-size: 16px;
 .Pickup_container{
     width:500px;
     position: relative;
-    margin-top: -140px;
+    margin-top: -70px;
     margin-left: -10px;
    
 
@@ -280,9 +282,10 @@ font-size: 16px;
 {
     
 .Pickup_container{
-    width:500px;
-    position: relative;
-    margin-left: -120px;
+   
+   position: relative;
+    margin-top: -70px;
+    left: 280px;
     
 
 }

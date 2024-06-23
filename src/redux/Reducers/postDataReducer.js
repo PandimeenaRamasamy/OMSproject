@@ -141,6 +141,8 @@ export const postDataReducergetLocation = (state = initialStategetlocation, acti
 
 
 
+
+
 export const postDataReducer = (state = initialState, action) => {
   switch (action.type) {
 

@@ -10,7 +10,7 @@ import BankDetails from "../BankDetails/BankDetails";
 import Location from "../Location/Location";
 import { useDispatch } from "react-redux";
 import { postOnBoardingDataRequest } from "../../../redux/Actions/PostDataAction";
-
+import Success from '../../Registration/Success'
 import { useNavigate } from 'react-router-dom';
 import Outlet from '../../Outletnavbar/Outlet.scss'
 
@@ -58,7 +58,8 @@ function Stepform({data}) {
   const [visitedSteps, setVisitedSteps] = useState(
     new Array(steps.length).fill(false)
   );
-
+  const [successmgs, setsuccessmgs] = useState(false);
+  
   useEffect(() => {
     const updatedVisitedSteps = [...visitedSteps];
     updatedVisitedSteps[activeStep] = true;
@@ -102,6 +103,10 @@ function Stepform({data}) {
             restaurant_details: restaurantDetailsRef.current.getFormData(),
           };
         }
+
+
+
+
         break;
       case 1:
         isValid = locationRef.current.getValidate();
@@ -130,12 +135,12 @@ function Stepform({data}) {
           };
         }
 
-        toast.success("All yor Data submitted successfully!");
+        // toast.success("All yor Data submitted successfully!");
+        setsuccessmgs(true);
 
 
 
-
-          navigate('/outlet/Outlet-Details');
+          // navigate('/outlet/Outlet-Details');
         
 
         // navigate('/outlet/Outlet-Details');
@@ -192,6 +197,10 @@ function Stepform({data}) {
 
       
     }
+  };
+  const handleCloseSuccessModal = () => {
+    setsuccessmgs(false);
+    clearAll();
   };
   const categories = ['Registration', 'OnBoarding', 'Outlet Details','Subscription'];
 
@@ -274,6 +283,11 @@ theme="light"
 
 />
     </div>
+    {successmgs   && (
+            <div className="alcoholModalOverlaysuccess">
+              <Success onCloseRequest={handleCloseSuccessModal} pathname="Onboarding" />
+            </div>
+          )}
    
     </>
   );

@@ -1,6 +1,6 @@
 .RestaurantImagemain{
-  position: absolute;
-  top: 343px;
+  position: relative;
+  top: 30px;
   left: 370px;
 }
 
@@ -186,6 +186,11 @@
 }
 
 @media (max-width: 1280px) {
+  .RestaurantImagemain
+  {
+    margin-top: -50px;
+    margin-left: -10px;
+  }
   .uploadImg {
     img {
       width: 100px;
@@ -230,7 +235,8 @@
 
 @media (max-width: 1080px) {
   .RestaurantImagemain{
-   margin-left: -120px;
+   margin-left: -100px;
+   margin-top: -50px;
   }
   
 }

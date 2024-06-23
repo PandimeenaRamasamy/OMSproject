@@ -345,6 +345,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
       };
     });
     const datafromapi = useSelector((state) => state.postData.data);
+    
   
     const payload = {
 

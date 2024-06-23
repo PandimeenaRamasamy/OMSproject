@@ -10,6 +10,13 @@ import Outlet from "../Outletnavbar/Outlet";
 const PostDataForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const data2 = useSelector((state) => state.registration.data);
+  console.log("data2",data2);
+  if(data2)
+    {
+      dispatch(getLocationRequest(data2))
+    }
+  
 
   const data = useSelector((state) => state.getlocationdata.data);
 
@@ -98,7 +105,6 @@ const PostDataForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const isValid = validationofregistrationform();
     if (isValid) {
       dispatch(postDataRequest(Registrationform));
@@ -305,9 +311,9 @@ const PostDataForm = () => {
               Clear All
             </button>
           </div>
-          {successmgs && validationofregistrationform && (
+          {successmgs && data2 && validationofregistrationform && (
             <div className="alcoholModalOverlaysuccess">
-              <Success onCloseRequest={handleCloseSuccessModal} />
+              <Success onCloseRequest={handleCloseSuccessModal} pathname="Registraion" />
             </div>
           )}
         </div>
