@@ -345,11 +345,16 @@ const BasicDetails = React.forwardRef((props,ref) => {
       };
     });
     const datafromapi = useSelector((state) => state.postData.data);
+
     
+
+    const data2 = useSelector((state) => state.registration.data);
+
+
   
     const payload = {
 
-      locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+      locationId: data2 && data2||data[0].location.id,
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,
@@ -373,6 +378,8 @@ const BasicDetails = React.forwardRef((props,ref) => {
 
 
 }))
+
+console.log(data2)
 
   return (
     <div className="basic-details-container">
