@@ -613,7 +613,7 @@ const Dinein = React.forwardRef((props,ref) => {
         const DineIn = attributes.DineIn ;
 
   
-        setRegistrationform({
+        setOutletdetails({
           locationId: DineIn.id || null,
           dineIn: DineIn.dineIn || "",
           highChair: DineIn.highChair || "",

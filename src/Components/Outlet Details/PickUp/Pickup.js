@@ -50,7 +50,7 @@ const Pickup = React.forwardRef((props,ref) => {
             const PickUp = attributes.PickUp ;
 
       
-            setRegistrationform({
+            setForm({
               locationId: PickUp.id || null,
               serviceTimeFrom: PickUp.serviceTimeFrom || "",
               serviceTimeTo: PickUp.serviceTimeTo || "",
