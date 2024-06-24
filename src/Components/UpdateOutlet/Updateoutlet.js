@@ -1,5 +1,5 @@
 import React ,{useState}from 'react'
-import './Updateoutlet.scss'
+import '../UpdateOutlet/Updateoutlet.scss'
 import Registration from '../Registration/PostData';
 import StepperForm from '../Onboarding/Steperform/Stepform';
 import { act } from 'react-dom/test-utils';
@@ -24,7 +24,7 @@ const Updateoutlet = ({dataapi}) => {
   return (
     <>
     <div className='outletnav'>
-        <p>Outlet Management</p>
+        <p className='p'>Outlet Management</p>
        
         <nav className="navbar">
             <ul className="nav-list">
