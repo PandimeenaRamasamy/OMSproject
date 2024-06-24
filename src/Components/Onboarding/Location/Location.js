@@ -338,7 +338,7 @@ import { useSelector } from "react-redux";
 const Location = forwardRef((props, ref) => {
   const [form, setForm] = useState({
     address: "",
-    pincode: "",
+    pinCode: "",
     city: "",
     state: "",
     country: ""
@@ -346,7 +346,7 @@ const Location = forwardRef((props, ref) => {
   const data = useSelector((state) => state.getlocationdata.data);
   const [locationError, setLocationError] = useState({
     address: "",
-    pincode: "",
+    pinCode: "",
     city: "",
     state: "",
     country: ""
@@ -360,7 +360,7 @@ const Location = forwardRef((props, ref) => {
     if (data && data[0]) {
       setForm({
         address: data[0].location.addressLine1 || "",
-        pincode: data[0].location.pinCode || "",
+        pinCode: data[0].location.pinCode || "",
         city: data[0].location.city || "",
         state: data[0].location.state || "",
         country: data[0].location.country || ""
@@ -402,9 +402,9 @@ const Location = forwardRef((props, ref) => {
       isValid = false;
       errors.address = "Please Enter Location";
     }
-    if (!form.pincode) {
+    if (!form.pinCode) {
       isValid = false;
-      errors.pincode = "Please Enter Pincode";
+      errors.pinCode = "Please Enter Pincode";
     }
     if (!form.city) {
       isValid = false;
@@ -426,7 +426,7 @@ const Location = forwardRef((props, ref) => {
   const resetForm = () => {
     setForm({
       address: "",
-      pincode: "",
+      pinCode: "",
       city: "",
       state: "",
       country: ""
@@ -434,7 +434,7 @@ const Location = forwardRef((props, ref) => {
 
     setLocationError({
       address: "",
-      pincode: "",
+      pinCode: "",
       city: "",
       state: "",
       country: ""
@@ -474,14 +474,14 @@ const Location = forwardRef((props, ref) => {
                 <input
                   type="text"
                   className="inputbox2loc"
-                  placeholder="600 084"
-                  name="pincode"
+                  placeholder="600084"
+                  name="pinCode"
                   maxLength={6}
                   onChange={handleChange}
-                  style={{ borderColor: locationError.pincode ? "red" : "#B3B3B3" }}
-                  value={form.pincode}
+                  style={{ borderColor: locationError.pinCode ? "red" : "#B3B3B3" }}
+                  value={form.pinCode}
                 />
-                {locationError.pincode && <div className='error-message'>{locationError.pincode}</div>}
+                {locationError.pinCode && <div className='error-message'>{locationError.pincode}</div>}
               </div>
 
               <div style={{ display: "flex", flexDirection: "column" }} className="personal-detailsloc">

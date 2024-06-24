@@ -88,10 +88,12 @@ const BasicDetails = React.forwardRef((props,ref) => {
   // console.log([timeSlots])
 
   // {[id]: string}
-  
+  const basicDetailsFromRedux = useSelector((state) => state.basicDetails);
   const [mealsMap, setMealsMap] = useState({ [uid]: "breakfast" });
 
-
+  useEffect(() => {
+    retrieveData(basicDetailsFromRedux)
+  },[])
 
   const handleTimeChange = (time, id, type, index) => {
     if (type === "opening") {
@@ -345,16 +347,10 @@ const BasicDetails = React.forwardRef((props,ref) => {
       };
     });
     const datafromapi = useSelector((state) => state.postData.data);
-
-    
-
-    const data2 = useSelector((state) => state.registration.data);
-
-
   
     const payload = {
 
-      locationId: data2 && data2||data[0].location.id,
+      locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,
@@ -373,13 +369,79 @@ const BasicDetails = React.forwardRef((props,ref) => {
 
 }
 
+const retrieveData = (tempPayload) => {
+  setSelectedAlcoholOption(tempPayload?.alcohol ?? '')
+  setSafetyMeasures(tempPayload?.safetyMeasures ?? '')
+  setPPillsText(tempPayload?.parking ?? [])
+  setAPillsText(tempPayload?.amenities ?? [])
+  setCPillsText(tempPayload?.cuisines ?? [])
+
+  setPModalText(prev => prev.filter(p => !pPillsText.includes(p)))
+  setAModalText(prev => prev.filter(p => !aPillsText.includes(p)))
+  setCModalText(prev => prev.filter(p => !cPillsText.includes(p)))
+
+
+
+  const tempService = [];
+  const tempMealsMap = {};
+  const tempTimeSlots = {};
+
+  //restaurantSesssionDto change name after checking be's response
+  tempPayload?.restaurantSessionDto?.forEach(restaurantSessions => {
+    let tempId = uuidv4();
+    tempMealsMap[tempId] = restaurantSessions?.name ?? 'breakfast'
+    tempService.push({
+      id: tempId,
+      component: (
+        <RestaurantSession
+          timeSlots={timeSlots}
+          setTimeSlots={setTimeSlots}
+          setOpeningTime={(time, index) =>
+            handleTimeChange(time, tempId, "opening", index)
+          }
+          setClosingTime={(time, index) =>
+            handleTimeChange(time, tempId, "closing", index)
+          }
+          key={tempId}
+          restaurantSessionid={tempId}
+          deleteRestaurantSession={deleteRestaurantSession}
+          onMealsChange={(tempId, name) => handleMealsChange(tempId, name)}
+          meals={mealsMap[tempId]}
+        />
+      ),
+    },)
+
+    const currentRestaurantSlot = [];
+    restaurantSessions?.basicTime?.forEach(time => {
+      currentRestaurantSlot.push({
+        openingTime: time?.start_time ?? "00:00",
+        closingTime: time?.end_time ?? "00:00",
+        isContainWeeks: time.weekday.length === 0 ?false : true,
+        checkedDays: {
+          monday: time.weekday.includes('monday'),
+          tuesday: time.weekday.includes('tuesday'),
+          wednesday: time.weekday.includes('wednesday'),
+          thursday: time.weekday.includes('thursday'),
+          friday: time.weekday.includes('friday'),
+          saturday: time.weekday.includes('saturday'),
+          sunday: time.weekday.includes('sunday'),
+        },
+      })
+    })
+
+    tempTimeSlots[tempId] = currentRestaurantSlot
+
+  })
+  setService(tempService)
+  setMealsMap(tempMealsMap)
+  setTimeSlots(tempTimeSlots)
+}
+
   useImperativeHandle(ref,()=>({
     getFormData,
 
 
 }))
-
-console.log(data2)
 
   return (
     <div className="basic-details-container">

@@ -56,7 +56,7 @@ const PostDataForm = () => {
         locationId: location.id || null,
         restaurantName: location.restaurantName || "",
         name: location.name || "",
-        phone: location.phone || "",
+        phone: attributes.RestaurantNumber || "",
         email: location.email || "",
         designation: location.designation || "",
         gstNumber: attributes.gstNumber || "",

@@ -9,10 +9,10 @@ const Pickup = React.forwardRef((props,ref) => {
     const datafromapi = useSelector((state) => state.postData.data);
     const data = useSelector((state) => state.getlocationdata.data);
 
-    
+    const data2 = useSelector((state) => state.registration.data);
     const[form,setForm]=useState({
 
-        locationId:"",
+      locationId:data2 && data2||"",
 
 
         serviceTimeFrom:"",
@@ -41,7 +41,7 @@ const Pickup = React.forwardRef((props,ref) => {
             }        
     }
     const [isEnabled, setIsEnabled] = useState(false);
-    const data2 = useSelector((state) => state.registration.data);
+  
 
    
   useEffect(() => {

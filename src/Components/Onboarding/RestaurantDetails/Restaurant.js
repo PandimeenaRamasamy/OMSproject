@@ -453,17 +453,19 @@ const Restaurant = forwardRef((props, ref) => {
   useEffect(() => {
     if (data && data[0]) {
       console.log("id", datafromapi && datafromapi[0] ?datafromapi[0].locationId:"")
+      const location = data[0].location;
+      const attributes = JSON.parse(location.attributes || "{}");
 
-
+     
       setForm({
         locationId: data2 && data2||data[0].location.id,
         businessLegalName: data[0].location.restaurantName || "",
-        phone: data[0].location.phoneType || "",
+        phone: attributes.RestaurantNumber  || "",
         email:data[0].location.email || "",
         website: data[0].location.website || "",
         instagramLink: data[0].location.instagramLink || "",
         facebookLink: data[0].location.facebookLink || "",
-        restaurantNumber: data[0].location.phone || "",
+        restaurantNumber: attributes.RestaurantNumber || "",
         whatsappNumber:data[0].location.whatsappNumber || ""
       });
     }

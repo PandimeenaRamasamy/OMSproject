@@ -580,7 +580,7 @@ const Dinein = React.forwardRef((props,ref) => {
 
   const [Outletdetails, setOutletdetails] = useState({
 
-    locationId:"",
+    locationId:data2 && data2||"",
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
@@ -664,6 +664,15 @@ const Dinein = React.forwardRef((props,ref) => {
   //           "availabilityDtos": []
   //       }
   //   ]
+  const [checkedDays, setCheckedDays] = useState({
+    Monday: false,
+    Tuesday: false,
+    Wednesday: false,
+    Thursday: false,
+    Friday: false,
+    Saturday: false,
+    Sunday: false,
+  });
 
   useEffect(() => {
     // Ensure data is an array and has at least one element
@@ -789,15 +798,7 @@ const Dinein = React.forwardRef((props,ref) => {
     alert(`Selected option: ${selectedOption}`);
   };
 
-  const [checkedDays, setCheckedDays] = useState({
-    Monday: false,
-    Tuesday: false,
-    Wednesday: false,
-    Thursday: false,
-    Friday: false,
-    Saturday: false,
-    Sunday: false,
-  });
+  
   const handleKeyPress = (event) => {
    
     if (!/^\d$/.test(event.key)) {
