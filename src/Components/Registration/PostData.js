@@ -12,11 +12,7 @@ const PostDataForm = () => {
   const location = useLocation();
   const data2 = useSelector((state) => state.registration.data);
   console.log("data2",data2);
-  if(data2)
-    {
-      dispatch(getLocationRequest(data2))
-    }
-  
+
 
   const data = useSelector((state) => state.getlocationdata.data);
 

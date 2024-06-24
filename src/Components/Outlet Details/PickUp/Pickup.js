@@ -12,7 +12,7 @@ const Pickup = React.forwardRef((props,ref) => {
     
     const[form,setForm]=useState({
 
-        locationId:datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+        locationId:"",
 
 
         serviceTimeFrom:"",
@@ -41,27 +41,32 @@ const Pickup = React.forwardRef((props,ref) => {
             }        
     }
     const [isEnabled, setIsEnabled] = useState(false);
+    const data2 = useSelector((state) => state.registration.data);
 
+   
+  useEffect(() => {
+    // Ensure data is an array, has at least one element, and location exists
+    if (Array.isArray(data) && data.length > 0 && data[0].location) {
+      const location = data[0].location;
 
-    useEffect(()=>{
-        if (data && data[0] && data[0].location) {
-            const location = data[0].location;
-            const attributes = JSON.parse(location.attributes || "{}");
-            const PickUp = attributes.PickUp ;
+      try {
+        const attributes = JSON.parse(location.attributes || "{}");
+        const PickUp = attributes.PickUp || {};
 
-      
-            setForm({
-              locationId: PickUp.id || null,
-              serviceTimeFrom: PickUp.serviceTimeFrom || "",
-              serviceTimeTo: PickUp.serviceTimeTo || "",
-              Payment: PickUp.Payment || [],
-              scheduleDuration: PickUp.scheduleDuration || "",
-              packagingCharge: PickUp.packagingCharge || "",
-              ETA: PickUp.ETA || "",
-            });
-      
-          }
-        }, [data]);
+        setForm({
+            locationId:data2 && data2||data[0].location.id,
+          serviceTimeFrom: PickUp.serviceTimeFrom || "",
+          serviceTimeTo: PickUp.serviceTimeTo || "",
+          Payment: PickUp.Payment || [],
+          scheduleDuration: PickUp.scheduleDuration || "",
+          packagingCharge: PickUp.packagingCharge || "",
+          ETA: PickUp.ETA || "",
+        });
+      } catch (error) {
+        console.error("Failed to parse attributes", error);
+      }
+    }
+  }, [data]);
 
         
 

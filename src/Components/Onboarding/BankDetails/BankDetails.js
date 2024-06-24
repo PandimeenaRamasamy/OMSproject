@@ -19,9 +19,12 @@ const BankDetails = forwardRef((props, ref) => {
   const data = useSelector((state) => state.getlocationdata.data);
 
   useEffect(() => {
+    console.log("Data from Redux:", data);
     if (data && data[0] && data[0].location && data[0].location.attributes) {
       try {
         const attributes = JSON.parse(data[0].location.attributes);
+        console.log("Parsed Attributes:", attributes);
+        
         const bankDetails = attributes.BankDetails || {};
         setBankform({
           accountNumber: bankDetails.accountNumber || "",

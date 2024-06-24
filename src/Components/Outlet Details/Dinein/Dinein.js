@@ -573,14 +573,14 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Interactivedinein, setInteractivedinein] = useState("");
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
 
-  // const data = useSelector((state) => state.getlocationdata.data);  
+  const data = useSelector((state) => state.getlocationdata.data);  
 
   const datafromapi = useSelector((state) => state.postData.data);
   const data2 = useSelector((state) => state.registration.data);
 
   const [Outletdetails, setOutletdetails] = useState({
 
-    locationId: data2&&data2?data2:"",
+    locationId:"",
     dineIn: "",
     highChair: "",
     interactiveDineIn: "",
@@ -606,39 +606,8 @@ const Dinein = React.forwardRef((props,ref) => {
 
 
   
-  useEffect(()=>{
-    if (data && data[0] && data[0].location) {
-        const location = data[0].location;
-        const attributes = JSON.parse(location.attributes || "{}");
-        const DineIn = attributes.DineIn ;
-
   
-        setOutletdetails({
-          locationId: DineIn.id || null,
-          dineIn: DineIn.dineIn || "",
-          highChair: DineIn.highChair || "",
-          interactiveDineIn: DineIn.interactiveDineIn || [],
-          merchant4DigitValidation: DineIn.merchant4DigitValidation || "",
-          checkIn: {
-            maximumPeopleAllowedOnline: DineIn.maximumPeopleAllowedOnline || "",
-            maximumPeopleAllowedOffline:DineIn.maximumPeopleAllowedOffline || "",
-            lateShowTime:DineIn.lateShowTime || "",
-            autoCancelTime:DineIn.autoCancelTime || "",
-            abandonTime: DineIn.abandonTime || "",
-            autoAssign: DineIn.autoAssign || "",
-          },
-          reservation: {
-            minimumPeopleAllowed: DineIn.minimumPeopleAllowed || "",
-            maximumPeopleAllowed: DineIn.maximumPeopleAllowed || "",
-            reservationServiceTimeFrom:DineIn.reservationServiceTimeFrom || "",
-            reservationServiceTimeTo:DineIn.reservationServiceTimeTo || "",
-            days:DineIn.days || [],
-            bufferDays:DineIn.bufferDays || "",
-          },
-        });
-  
-      }
-    }, [data]);
+ 
 
 
   const [dineinerrors, setDineInErrors] = useState({
@@ -664,87 +633,94 @@ const Dinein = React.forwardRef((props,ref) => {
       bufferDays: "",
     },
   });
-  const data=[
-        {
-            "location": {
-                "id": "9797ce29-1ef1-4c08-ab2d-bea899750bc6",
-                "merchantId": "8dfe7674-709d-431c-a233-628e839ecc76",
-                "restaurantName": "A2B",
-                "name": "arunaa",
-                "phone": "+91 587283487r2",
-                "email": "fdyu11@gmail.com",
-                "addressLine1": "71,Kamarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
-                "addressLine2": null,
-                "addressLine3": null,
-                "city": "Madurai",
-                "state": "TamilNadu",
-                "pinCode": "625009",
-                "country": "India",
-                "attributes": "{\"cuisines\": [\"Fast Food\", \"North Indian\", \"Fast Food\", \"North Indian\"], \"amenities\": [\"free-wifi\", \"free-wifi\"], \"gstNumber\": \"erry4639\", \"BankDetails\": {\"ifscCode\": \"SBI4365\", \"accountNumber\": \"123345789380\", \"AccountHolderName\": \"arun\"}, \"websiteLink\": \"www.rest.com\", \"FSSAIDetails\": {\"documents\": \"a5ccd036-5c81-4d24-922d-a80008cc0182\", \"isEnabled\": \"yes\", \"expirationDate\": \"024-7-12\", \"registerNumber\": \"8610764743\"}, \"FaceBookLink\": \"rest.fb.com\", \"DineInDetails\": {\"dineIn\": \"enabled\", \"checkIn\": {\"autoAssign\": \"yes\", \"abandonTime\": \"00:15Am\", \"lateShowTime\": \"15:24\", \"autoCancelTime\": \"12:45\", \"maximumPeopleAllowedOnline\": \"25\", \"maximumPeopleAllowedOffline\": null}, \"highChair\": \"no\", \"reservation\": {\"days\": [\"wednesday\", \"sunday\"], \"bufferDays\": 3, \"maximumPeopleAllowed\": \"25\", \"minimumPeopleAllowed\": \"2\", \"reservationServiceTimeTo\": \"15:24\", \"reservationServiceTimeFrom\": \"00:00AM\"}, \"interactiveDineIn\": \"enabled\", \"merchant4DigitValidation\": \"enabled\"}, \"instagramLink\": \"rest_insta\", \"SafetyMeasures\": \"We sanitize all tables and chairs after every use\", \"WhatsappNumber\": \"6578740562764958\", \"RestaurantNumber\": \"436789908295\"}"
-            },
-            "media": [
-                {
-                    "entityId": "4eedcaf5-b1cf-4025-bbb9-09b313cf61b8",
-                    "entityType": "LOGO",
-                    "fileName": "oms_1718802295219_fa66d701-1479-419c-8bf8-02f669aaa66b",
-                    "mimeType": "image/webp",
-                    "sortOrder": null,
-                    "tag": null
-                }
-            ],
-            "availabilityDtos": []
-        }
-    ]
+  // const data=[
+  //       {
+  //           "location": {
+  //               "id": "9797ce29-1ef1-4c08-ab2d-bea899750bc6",
+  //               "merchantId": "8dfe7674-709d-431c-a233-628e839ecc76",
+  //               "restaurantName": "A2B",
+  //               "name": "arunaa",
+  //               "phone": "+91 587283487r2",
+  //               "email": "fdyu11@gmail.com",
+  //               "addressLine1": "71,Kamarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
+  //               "addressLine2": null,
+  //               "addressLine3": null,
+  //               "city": "Madurai",
+  //               "state": "TamilNadu",
+  //               "pinCode": "625009",
+  //               "country": "India",
+  //               "attributes": "{\"cuisines\": [\"Fast Food\", \"North Indian\", \"Fast Food\", \"North Indian\"], \"amenities\": [\"free-wifi\", \"free-wifi\"], \"gstNumber\": \"erry4639\", \"BankDetails\": {\"ifscCode\": \"SBI4365\", \"accountNumber\": \"123345789380\", \"AccountHolderName\": \"arun\"}, \"websiteLink\": \"www.rest.com\", \"FSSAIDetails\": {\"documents\": \"a5ccd036-5c81-4d24-922d-a80008cc0182\", \"isEnabled\": \"yes\", \"expirationDate\": \"024-7-12\", \"registerNumber\": \"8610764743\"}, \"FaceBookLink\": \"rest.fb.com\", \"DineInDetails\": {\"dineIn\": \"enabled\", \"checkIn\": {\"autoAssign\": \"yes\", \"abandonTime\": \"00:15Am\", \"lateShowTime\": \"15:24\", \"autoCancelTime\": \"12:45\", \"maximumPeopleAllowedOnline\": \"25\", \"maximumPeopleAllowedOffline\": null}, \"highChair\": \"no\", \"reservation\": {\"days\": [\"wednesday\", \"sunday\"], \"bufferDays\": 3, \"maximumPeopleAllowed\": \"25\", \"minimumPeopleAllowed\": \"2\", \"reservationServiceTimeTo\": \"15:24\", \"reservationServiceTimeFrom\": \"00:00AM\"}, \"interactiveDineIn\": \"enabled\", \"merchant4DigitValidation\": \"enabled\"}, \"instagramLink\": \"rest_insta\", \"SafetyMeasures\": \"We sanitize all tables and chairs after every use\", \"WhatsappNumber\": \"6578740562764958\", \"RestaurantNumber\": \"436789908295\"}"
+  //           },
+  //           "media": [
+  //               {
+  //                   "entityId": "4eedcaf5-b1cf-4025-bbb9-09b313cf61b8",
+  //                   "entityType": "LOGO",
+  //                   "fileName": "oms_1718802295219_fa66d701-1479-419c-8bf8-02f669aaa66b",
+  //                   "mimeType": "image/webp",
+  //                   "sortOrder": null,
+  //                   "tag": null
+  //               }
+  //           ],
+  //           "availabilityDtos": []
+  //       }
+  //   ]
 
   useEffect(() => {
-    if (data && data[0].location && data[0].location.attributes) {
-      try {
-        const attributes = JSON.parse(data[0].location.attributes);
-        const dineInDetails = attributes.DineInDetails || {};
-        const checkInDetails = dineInDetails.checkIn || {};
-        const reservationDetails = dineInDetails.reservation || {};
-        console.log("checkInDetails",checkInDetails)
-        
-        setOutletdetails({
-          dineIn:dineInDetails.dineIn||"",
-          highChair:dineInDetails.highChair||"",
- 
-          checkIn: {
-            maximumPeopleAllowedOnline: checkInDetails.maximumPeopleAllowedOnline || "",
-            maximumPeopleAllowedOffline: checkInDetails.maximumPeopleAllowedOffline || "",
-            lateShowTime: checkInDetails.lateShowTime || "",
-            autoCancelTime: checkInDetails.autoCancelTime || "",
-            abandonTime: checkInDetails.abandonTime || "",
-            autoAssign: checkInDetails.autoAssign || "no",
-          },
-          reservation: {
-            minimumPeopleAllowed: reservationDetails.minimumPeopleAllowed || "",
-            maximumPeopleAllowed: reservationDetails.maximumPeopleAllowed || "",
-            reservationServiceTimeFrom: reservationDetails.reservationServiceTimeFrom || "",
-            reservationServiceTimeTo: reservationDetails.reservationServiceTimeTo || "",
-            days: reservationDetails.days || [],
-            bufferDays: reservationDetails.bufferDays || "",
-          },
-        });
-        setDineinselectedButton(dineInDetails.dineIn?true:false);
-        setInteractiveselectedButton(dineInDetails.interactiveDineIn?"yes":"no");
+    // Ensure data is an array and has at least one element
+    if (Array.isArray(data) && data.length > 0 && data[0].location) {
+      // Check if location attributes exist
+      if (data[0].location.attributes) {
+        try {
+          const attributes = JSON.parse(data[0].location.attributes);
+          const dineInDetails = attributes.DineInDetails || {};
+          const checkInDetails = dineInDetails.checkIn || {};
+          const reservationDetails = dineInDetails.reservation || {};
+          console.log("checkInDetails", checkInDetails);
 
-        setCheckinselectedButton(dineInDetails.checkIn ? true : false);
-        setReservationinselectedButton(dineInDetails.reservation ? true : false);
-        setCheckedDays(
-          reservationDetails.days.reduce((acc, day) => {
-            acc[day.toLowerCase()] = true;
-            return acc;
-          }, checkedDays)
-        );
-      } catch (error) {
-        console.error("Failed to parse attributes", error);
+          setOutletdetails({
+            locationId:data2 && data2||data[0].location.id,
+            dineIn: dineInDetails.dineIn || "",
+            highChair: "",
+
+            checkIn: {
+              maximumPeopleAllowedOnline: checkInDetails.maximumPeopleAllowedOnline || "",
+              maximumPeopleAllowedOffline: checkInDetails.maximumPeopleAllowedOffline || "",
+              lateShowTime: checkInDetails.lateShowTime || "",
+              autoCancelTime: checkInDetails.autoCancelTime || "",
+              abandonTime: checkInDetails.abandonTime || "",
+              autoAssign: checkInDetails.autoAssign || "no",
+            },
+            reservation: {
+              minimumPeopleAllowed: reservationDetails.minimumPeopleAllowed || "",
+              maximumPeopleAllowed: reservationDetails.maximumPeopleAllowed || "",
+              reservationServiceTimeFrom: reservationDetails.reservationServiceTimeFrom || "",
+              reservationServiceTimeTo: reservationDetails.reservationServiceTimeTo || "",
+              days: reservationDetails.days || [],
+              bufferDays: reservationDetails.bufferDays || "",
+            },
+          });
+          setDineinselectedButton(!!dineInDetails.dineIn);
+          setInteractiveselectedButton(dineInDetails.interactiveDineIn ? "yes" : "no");
+
+          setCheckinselectedButton(!!dineInDetails.checkIn);
+          setReservationinselectedButton(!!dineInDetails.reservation);
+          setCheckedDays(
+            (reservationDetails.days || []).reduce((acc, day) => {
+              acc[day.toLowerCase()] = true;
+              return acc;
+            }, {})
+          );
+        } catch (error) {
+          console.error("Failed to parse attributes", error);
+        }
       }
+    } else {
+      console.log("Location data not present");
     }
-    else{
-      console.log("not present")
-    }
-  }, []);
+  }, [data]);
+     
+           
+          
   const handleDayChange = (day) => {
     const updatedDays = Outletdetails.reservation.days.includes(day)
       ? Outletdetails.reservation.days.filter((d) => d !== day)
@@ -854,7 +830,7 @@ const validate=()=>{
     return isValid;
 }
 
-console.log("This data is coming from dine in ",data)
+
 
  
 
