@@ -236,7 +236,7 @@ function Stepform() {
   };
 
   const progress =
-    (outletvisitedSteps.filter((outletstep) => outletsteps.length / outletsteps.length) * 100);
+  (outletvisitedSteps.filter((step) => step).length / outletsteps.length) *100;
 
     
     
