@@ -624,6 +624,27 @@
       }
     }
 
+
+    .scheduleContainer
+    {
+      .arrow {
+        margin-right: 5px;
+        margin-top: -10px;
+        .upsideArrow {
+          img {
+            transform: rotate(180deg);
+            cursor: pointer;
+           font-size: 20px;
+          }
+        }
+        .downsideArrow {
+          img {
+            cursor: pointer;
+            font-size: 20px;
+          }
+        }
+      }
+    }
     .addTime{
       .deleteTime{
         margin-top: 100px;
@@ -678,7 +699,7 @@
       margin-bottom: 30px;
 
       .symbol {
-        top: 55px;
+        top: 43px;
       }
     }
     .scheduleContainer {
@@ -708,7 +729,7 @@
       input {
         width: 200px;
         height: 30px;
-        margin-top: -9px;
+        margin-top: -20px;
         font-size: 13px;
       }
     }
@@ -733,7 +754,7 @@
         .input {
           width: 200px;
           height: 30px;
-          margin-top: -9px;
+          margin-top: -20px;
           font-size: 13px;
         }
       }
@@ -747,7 +768,7 @@
       .input {
         width: 200px;
         height: 30px;
-        margin-top: -9px;
+        margin-top: -20px;
         font-size: 13px;
       }
     }

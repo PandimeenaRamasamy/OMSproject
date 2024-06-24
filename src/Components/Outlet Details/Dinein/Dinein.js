@@ -903,7 +903,7 @@ const validate=()=>{
                     <div className="highchairradio1">
                       <input
                         type="radio"
-                        value={Outletdetails.highChair }
+                        value="yes"
                         className="radioStyle"
                         checked={Outletdetails.highChair === "yes"}
                         onChange={(event) =>
@@ -919,7 +919,7 @@ const validate=()=>{
                     <div className="highchairradio2">
                       <input
                         type="radio"
-                        value={Outletdetails.highChair }
+                        value="no"
                         className="radioStyle"
                         checked={Outletdetails.highChair === "no"}
                         onChange={(event) =>
