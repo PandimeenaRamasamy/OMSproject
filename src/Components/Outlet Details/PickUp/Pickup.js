@@ -51,7 +51,8 @@ const Pickup = React.forwardRef((props,ref) => {
 
       try {
         const attributes = JSON.parse(location.attributes || "{}");
-        const PickUp = attributes.PickUp || {};
+        const PickUp = attributes.PickUpDetails || {};
+        console.log(PickUp)
 
         setForm({
             locationId:data2 && data2||data[0].location.id,
@@ -140,10 +141,10 @@ return isValid;
                         <h5 className='Pickup_heading6'>To</h5>
                         </div>
                         <div className='from_to_input'>
-                        <input type="time" className='textbox1' placeholder='11:00 AM' style={{
+                        <input type="time"  value={form.serviceTimeFrom}className='textbox1' placeholder='11:00 AM' style={{
                           borderColor: pickuperror.serviceTimeFrom ? "red" : "#B3B3B3",
                         }} onChange={(e)=>setForm({...form,"serviceTimeFrom":e.target.value})} ></input>
-                        <input type="time" className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})} style={{
+                        <input type="time"  value={form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e)=>setForm({...form,"serviceTimeTo":e.target.value})} style={{
                           borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
                         }}></input>
                         {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}
@@ -182,7 +183,7 @@ return isValid;
                         
                         <div className='PackagingCharge'>
                         <h5 className='Pickup_heading7'>Packaging Charge </h5> 
-                       <input type="text" style={{
+                       <input type="text" value={form.packagingCharge} style={{
                           borderColor: pickuperror.packagingCharge ? "red" : "#B3B3B3",
                         }} className='Pack_type' placeholder='$' onChange={(e)=>setForm({...form,"packagingCharge":e.target.value})}></input>
                        {pickuperror.packagingCharge && <div className='error_pickup'>{pickuperror.packagingCharge}</div>}
