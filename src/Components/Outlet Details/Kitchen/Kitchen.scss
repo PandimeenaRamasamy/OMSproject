@@ -12,7 +12,7 @@
     transform: translateY(-20px);
     position: relative;
     width: 100%;
-    top: 40px;
+    top: 10px;
     left: 30px;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,6 @@
     font-size: 16px;
     line-height: 27px   ;
     margin-top: -2px;
-    margin-bottom: 20px;
     
 
 
@@ -77,23 +76,27 @@
 }
 
 .input-div{
-    width: 80px;
-    height: 30px;
+    width: 92px;
+    height: 44px;
     border-radius: 4px;
     border: 1px solid #2F2F2F;
     font-size: 14px;
     padding-left: 15px;
     padding-top: 5px;
+    font-size: 16px;
+    margin-top: 2px;
+
     
 }
 .span-kitchen{
     font-family: Poppins;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     position: relative;
-    top: -25px;
-    left: 39px
+    top: -32px;
+    left: 41px;
+    color: #2F2F2F;
 
     
 }

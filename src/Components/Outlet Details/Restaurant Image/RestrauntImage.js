@@ -113,7 +113,7 @@
                       ) : (
   <img src={image} alt='image' className='imgOrg' />
                       )}
-  <p className="uploadImg removeImgBtn" onClick={() => removeImage(index)} style={{color:"white"}}>x</p>
+  <p className="uploadImg removeImgBtn" onClick={() => removeImage(index)} style={{color:"white" }}>x</p>
   </>
                   )}
   </div>

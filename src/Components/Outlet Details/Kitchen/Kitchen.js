@@ -86,7 +86,7 @@ const Kitchen = React.forwardRef((props,ref) => {
                     <label className='label-kitchen' >Time</label>
                     <input type="text"  placeholder='20'value={form.LastorderTime ? form.LastorderTime : ""}  style={{
                           borderColor: kitchenerror.LastorderTime ? "red" : "#B3B3B3",
-                        }} className='input-div' maxLength = "2"  onChange={(e)=>setForm({...form,"LastorderTime":e.target.value})} /> 
+                        }} className='input-div' maxLength = "2"  onChange={(e)=>setForm({...form,"LastorderTime":e.target.value})} /> <span className='span-kitchen'>mins</span> 
                     {kitchenerror.LastorderTime && <div className='error_Kitchen'>{kitchenerror.LastorderTime}</div>}
                 </div>
 
@@ -98,7 +98,7 @@ const Kitchen = React.forwardRef((props,ref) => {
                     <input type="text" placeholder='20' value={form.KDSAlert ? form.KDSAlert : ""}  style={{
                         
                           borderColor: kitchenerror.KDSAlert ? "red" : "#B3B3B3",
-                        }} className='input-div'  maxLength = "2" onChange={(e)=>setForm({...form,"KDSAlert":e.target.value})} />  
+                        }} className='input-div'  maxLength = "2" onChange={(e)=>setForm({...form,"KDSAlert":e.target.value})} />   <span className='span-kitchen'>mins</span>
                     {kitchenerror.KDSAlert && <div className='error_Kitchen'>{kitchenerror.KDSAlert}</div>}
                 </div>
 
