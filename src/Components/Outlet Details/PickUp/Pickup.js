@@ -126,9 +126,10 @@ return isValid;
                 <div><h5 className='Pickup_heading1'>Pick Up Details</h5></div>
                 <div><h5 className='Pickup_heading2'>Pick Up</h5></div>
                 <div><h5 className='Pickup_heading3'>Please Mention The Pick Up Service</h5></div>
-                <div className='Pick_Upbtn'>
-                    <button className={`Enable_btn ${isEnabled ? 'blue' : ''}`} onClick={handleEnable}>Enable</button>
-                    <button className={`Disable_btn ${!isEnabled ? 'blue' : ''}`} onClick={handleDisable}>Disable</button>
+                <div className='switchButtonStyles'>
+                    <button className={` ${isEnabled ? 'blue' : 'hello'}`} onClick={handleEnable}>Enable</button>
+                    <button className={` ${!isEnabled ? 'blue' : 'hello'}`} onClick={handleDisable}>Disable</button>
+                    </div>
                     {isEnabled && (
                         <>
                         <div><h5 className='Pickup_heading4'>Pick up service time</h5></div>
@@ -202,7 +203,7 @@ return isValid;
                         </>
                     )
                     }
-                </div>
+                
                
             </div>
         </div>
