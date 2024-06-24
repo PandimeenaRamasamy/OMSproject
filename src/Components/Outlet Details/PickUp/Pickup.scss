@@ -32,39 +32,19 @@
     color: #2f2f2f;
     margin-bottom:15px;
 }
-.Enable_btn{
- width: 84px;
- height: 39px;
 
- padding: 4px, 16px, 4px, 16px;
- height: 29px;
- border:0.1px;
- border-radius: 20px;   
- font-size: 14px;
- border-color: rgba(151, 151, 151, 1);
-}
 .blue {
-width: 84px;
+ width:89px;   
  padding: 4px, 16px, 4px, 16px;
  height: 39px;
  border:0.1px;
- border-radius: 20px;   
+ border-radius: 30px;   
  font-size: 14px;
  border-color: rgba(13, 121, 220, 1);
 background-color: rgba(13, 121, 220, 1);
 color: white; 
 }
-.Disable_btn{
-    width: 84px;
-    height: 39px;
-    padding: 4px, 16px, 4px, 16px;
-    height: 29px;
-    border-radius: 20px;   
-    font-size: 14px;
-    border:0.1px;
-    border-color: rgba(151, 151, 151, 1);
 
-}
 .Pickup_heading4{
     font-size: 16px;
     font-weight: 500;
@@ -260,11 +240,54 @@ font-size: 16px;
     accent-color:rgba(103, 131, 62, 1);
 
 }
-
-
-
-
-
+.switchButtonStyles {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f6f6; /* Background for the switch */
+    border-radius: 25px; /* Rounded corners for the background */
+    padding: 5px; /* Some padding around the buttons */
+    width: 170px; /* Adjust to content width */
+    overflow: hidden; /* Ensures that the rounded corners are maintained */
+  }
+  .hello{
+   font-size: 14px;
+    outline: none;
+    border:none;
+    width:84px
+   
+    
+  }
+  
+  .switchButtonStyles .button {
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left:60px ;
+    transition: background-color 0.3s ease,  0.3s ease;
+    background-color: transparent; /* Default background */
+    color: #6c757d; /* Default color for inactive button */
+    flex: 1; /* Ensure both buttons take up equal space */
+    text-align: center; /* Center the text */
+    border-radius: 0; /* Remove individual border radius */
+  }
+  
+  .switchButtonStyles .button:first-child {
+    border-top-left-radius: 25px; /* Round the top-left corner */
+    border-bottom-left-radius: 25px; /* Round the bottom-left corner */
+  }
+  
+  .switchButtonStyles .button:last-child {
+    border-top-right-radius: 25px; /* Round the top-right corner */
+    border-bottom-right-radius: 25px; /* Round the bottom-right corner */
+  }
+  
+  .switchButtonStyles .button.active {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    
+  }
+  
+  
 
 @media(max-width:1280px)
 {
