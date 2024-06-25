@@ -10,7 +10,7 @@ import AlcoholModal from "./Components/AlcoholModal";
 import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
-
+import { getLocationRequest } from "../../../redux/Actions/PostDataAction";
 
 const BasicDetails = React.forwardRef((props,ref) => {
   const dispatch = useDispatch();
@@ -347,10 +347,10 @@ const BasicDetails = React.forwardRef((props,ref) => {
       };
     });
     const datafromapi = useSelector((state) => state.postData.data);
-  
+    const data2 = useSelector((state) => state.registration.data);
     const payload = {
 
-      locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+      locationId: data2 && data2||"",
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,
@@ -358,6 +358,10 @@ const BasicDetails = React.forwardRef((props,ref) => {
       safetyMeasures,
       alcohol: selectedAlcoholOption,
     };
+
+
+
+
 
     console.log("payload from basic details button", payload);
   
@@ -446,6 +450,8 @@ const retrieveData = (tempPayload) => {
   return (
     <div className="basic-details-container">
       <div className="basicDetails">
+
+        <button onClick={()=>{dispatch(getLocationRequest("bfffa7b7-33ed-4ea6-b3f8-be95b11d70dc"))}}>Get data</button>
         <p className="heading">Basic Details</p>
         <div className="serviceStyle">
           {service.map((serv) => serv.component)}

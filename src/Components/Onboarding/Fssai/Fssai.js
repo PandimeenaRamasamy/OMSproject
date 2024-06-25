@@ -194,7 +194,7 @@ const Fssai = forwardRef((props, ref) => {
               <>
                 <div
                   style={{ display: "flex", justifyContent: "space-evenly" }}
-                  className="personal-detailsfss"
+                  
                 >
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <label htmlFor="email" className="labelfss">
@@ -268,7 +268,7 @@ const Fssai = forwardRef((props, ref) => {
                         !imageclose ? (
                           <>
                             <button onClick={closeModal} className="imcrosssty">
-                              <ImCross style={{ fontSize: "10px", color: "white" }} />
+                              <ImCross style={{ fontSize: "7px", color: "white" }} />
                             </button>
                             <img src={imagePreview} alt="Preview" className="imgpreview" />
                             <p>Preview</p>

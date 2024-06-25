@@ -942,7 +942,7 @@ const validate=()=>{
           </form>
         </div>
 
-        <hr />
+       
 
  {/* Interactive details */}
 
@@ -988,53 +988,17 @@ const validate=()=>{
             {InteractiveselectedButton && (
               <div className="interactivefn">
                 <form onSubmit={handleSubmit2} className="interactivefn">
-                  <div className="lables1">
-                    <label htmlFor="BusinessLegalName" className="labelInter">
-                      Interactive Dine-in{" "}
-                    </label>
-                  </div>
-                  <div className="lables2">
-                    <label htmlFor="BusinessLegalName" className="labelInter">
-                      {" "}
-                      Please mention the Interactive Dine-in service{" "}
-                    </label>
-                  </div>
+                
+                
 
-                  <div
-                    style={{ marginTop: "10px" }}
-                    className="enabledisablebtnInter"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => Interactivefield("Enable", "yes")}
-                      className="enablebtninter"
-                      style={{
-                        backgroundColor:
-                          Interactivedinein === "yes" ? "#0D79DC" : "#979797",
-                      }}
-                    >
-                      Enable
-                    </button>
+                
 
-                    <button
-                      type="button"
-                      onClick={() => Interactivefield("Disable", "no")}
-                      className="disablebtninter"
-                      style={{
-                        backgroundColor:
-                          Interactivedinein === "no" ? "#0D79DC" : "#979797",
-                      }}
-                    >
-                      Disable
-                    </button>
-                  </div>
-
-                  <div className="lables1">
+                  <div className="merchantlable1">
                     <label htmlFor="BusinessLegalName" className="labelInter">
                       Merchant 4 digit Validation
                     </label>
                   </div>
-                  <div className="lables2">
+                  <div className="merchantlable2">
                     <label htmlFor="BusinessLegalName" className="labelInter">
                       Please mention the validation service
                     </label>

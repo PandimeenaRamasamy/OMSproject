@@ -157,17 +157,10 @@ const BankDetails = forwardRef((props, ref) => {
             {bankError.AccountHolderName && (
               <div className="error-message">{bankError.AccountHolderName}</div>
             )}
+            
           </div>
-          <div>
-            <button className="Account_Button" onClick={validate}>
-              Verify Account Details
-            </button>
-          </div>
-          <div>
-            <h1 className="Terms">
-              We will credit a small amount in your account to validate your bank account details.
-            </h1>
-          </div>
+         <br /><br />
+         
           {successmgs && onboarddata&& validate && (
             <div className="alcoholModalOverlaysuccess">
               <OnboardSuceess onCloseRequest={handleCloseSuccessModal} />

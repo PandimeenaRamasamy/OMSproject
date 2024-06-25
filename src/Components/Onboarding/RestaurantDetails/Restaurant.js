@@ -408,7 +408,7 @@ const Restaurant = forwardRef((props, ref) => {
   const initialFormState = {
     locationId: data2 && data2||"" ,
     businessLegalName: "",
-    phone: "",
+    phone: "Mobile",
     email: "",
     website: "",
     instagramLink: "",
@@ -497,6 +497,7 @@ const Restaurant = forwardRef((props, ref) => {
   };
 
   const handleCheckboxChange = () => {
+    if(form.restaurantNumber!==""){
     setIsChecked(!isChecked);
     if (!isChecked) {
       setForm((prevForm) => ({
@@ -509,7 +510,8 @@ const Restaurant = forwardRef((props, ref) => {
         whatsappNumber: ""
       }));
     }
-  };
+  }
+};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -558,6 +560,49 @@ const Restaurant = forwardRef((props, ref) => {
     }
   };
 
+  const validateName = () => {
+    const namePattern = /^[a-zA-Z\s]+$/; // Pattern for only letters and spaces
+    if (form.businessLegalName .trim() === '') {
+      setResError({  ...reserror,businessLegalName :'Enter your Name'});
+    } else if (!namePattern.test(form.businessLegalName )) {
+      setResError({  ...reserror, businessLegalName:'Name can only contain letters and spaces.'});
+    } else {
+      setResError('');
+    }
+  };
+  const validateEmail = () => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; 
+    // Adjust the regex pattern based on your requirements
+    if (form.email === '') {
+      setResError({  ...reserror,email :'Enter valid email '});}
+    else if (!emailPattern.test(form.email)) {
+      setResError({ ...reserror , email: 'Please enter a valid email address.'});
+    }
+     else {
+      setResError('');
+    }
+  };
+  const validatePhone = () => {
+    const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
+    if (form.restaurantNumber  === '') {
+      setResError({  ...reserror,restaurantNumber :'Enter phone number'});}
+    else if (!phonePattern.test(form.restaurantNumber)) {
+      setResError({...reserror,restaurantNumber:'Please enter a valid phone number'});
+    } else {
+      setResError('');
+    }
+  };
+  const validatewhatsapp= () => {
+    const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
+    if (form.whatsappNumber  === '') {
+      setResError({  ...reserror,whatsappNumber :'Enter whatsapp number'});}
+    else if (!phonePattern.test(form.whatsappNumber)) {
+      setResError({...reserror,whatsappNumber:'Please enter a valid whatsapp number'});
+    } else {
+      setResError('');
+    }
+  };
+
   return (
     <div className="main-divres">
       <div className="submain-divres">
@@ -576,6 +621,7 @@ const Restaurant = forwardRef((props, ref) => {
                 className="inputboxres"
                 placeholder="Name"
                 value={form.businessLegalName}
+                onBlur={validateName}
                 onChange={handleChange}
                 style={{ borderColor: reserror.businessLegalName ? "red" : "#B3B3B3" }}
               />
@@ -594,6 +640,7 @@ const Restaurant = forwardRef((props, ref) => {
                     type="radio"
                     value="Mobile"
                     name="phone"
+                    
                     className="radiores"
                     checked={form.phone === "Mobile"}
                     onChange={handleChange}
@@ -605,7 +652,7 @@ const Restaurant = forwardRef((props, ref) => {
                     type="radio"
                     value="Landline"
                     name="phone"
-                    className="radiores"
+                    className="radiores radiores2 "
                     checked={form.phone === "Landline"}
                     onChange={handleChange}
                   />
@@ -615,7 +662,7 @@ const Restaurant = forwardRef((props, ref) => {
                   <div className="error_Res">{reserror.phone}</div>
                 )}
               </div>
-              <div style={{ marginTop: "20px" }}>
+              {form.phone==='Mobile' && <> <div style={{ marginTop: "10px" }} className="numberfield">
                 <select
                   id="country-code"
                   value={selectedCode}
@@ -633,27 +680,72 @@ const Restaurant = forwardRef((props, ref) => {
                   maxLength={10}
                   onKeyPress={handleKeyPress}
                   name="restaurantNumber"
-                  className="inputboxres2"
+                  className="phonenumberinput"
+                  onBlur={validatePhone}
                   placeholder="Enter Mobile Number"
                   value={form.restaurantNumber}
                   onChange={handleChange}
                   style={{ borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3" }}
                 />
+
               </div>
-              {reserror.restaurantNumber && (
+              <div>
+                 {reserror.restaurantNumber && (
                 <div className="error_Res">{reserror.restaurantNumber}</div>
               )}
-            </div>
+              </div>
+              </>
+               }
 
-            <div className="labelinput-divres">
+{form.phone==='Landline' && <> <div style={{ marginTop: "10px" }} className="numberfield">
+                {/* <select
+                  id="country-code"
+                  value="STD"
+                  className="phonenumbercode"
+                  onChange={handleCodeChange}
+                >STD
+                  {countryCodes.map((country) => (
+                    <option key={country.dial_code} value={country.dial_code}>
+                      {country.dial_code}
+                    </option>
+                  ))}
+                </select> */}
+                <span className="phonenumbercode">STD</span>
+                <input
+                  type="text"
+                  maxLength={10}
+                  onKeyPress={handleKeyPress}
+                  name="restaurantNumber"
+                  className="phonenumberinput"
+                  onBlur={validatePhone}
+                  placeholder="Enter Mobile Number"
+                  value={form.restaurantNumber}
+                  onChange={handleChange}
+                  style={{ borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3" }}
+                />
+
+              </div>
+              <div>
+                 {reserror.restaurantNumber && (
+                <div className="error_Res">{reserror.restaurantNumber}</div>
+              )}
+              </div>
+              </>
+               }
+               
+
+
+              
+            </div>
+            {form.phone!=='Landline' && <>  <div className="labelinput-divres">
               <label
                 htmlFor="whatsappNumber"
                 className="labelres"
-                style={{ marginBottom: "15px" }}
+                style={{ marginBottom: "5px" }}
               >
                 WhatsApp Number
               </label>
-              <label className="radio-labelres">
+              <label className="radio-labelres" style={{marginTop:'-5px',marginBottom:'15px'}}>
                 <input
                   type="checkbox"
                   className="radiores"
@@ -662,7 +754,7 @@ const Restaurant = forwardRef((props, ref) => {
                 />
                 Same as restaurant mobile no.
               </label>
-              <div>
+              <div className="numberfield" >
                 <select
                   id="country-code"
                   value={selectedCode}
@@ -679,9 +771,10 @@ const Restaurant = forwardRef((props, ref) => {
                   type="text"
                   name="whatsappNumber"
                   onKeyPress={handleKeyPress}
-                  className="inputboxres2"
+                  className="phonenumberinput"
                   placeholder="Enter WhatsApp Number"
                   value={form.whatsappNumber}
+                  onBlur={validatewhatsapp}
                   onChange={handleChange}
                   disabled={isChecked}
                   style={{ borderColor: reserror.whatsappNumber ? "red" : "#B3B3B3" }}
@@ -690,9 +783,11 @@ const Restaurant = forwardRef((props, ref) => {
               {reserror.whatsappNumber && (
                 <div className="error_Res">{reserror.whatsappNumber}</div>
               )}
-            </div>
+            </div></>}
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-detailsres">
+          
+
+            <div style={{ display: "flex", justifyContent: "space-evenly" }} >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="email" className="labelres">Email</label>
                 <input
@@ -701,6 +796,7 @@ const Restaurant = forwardRef((props, ref) => {
                   className={`inputbox2res ${emailError ? "inputbox-error" : ""}`}
                   placeholder="xyz@gmail.com"
                   value={form.email}
+                  onBlur={validateEmail}
                   onChange={handleChange}
                   style={{ borderColor: reserror.email ? "red" : "#B3B3B3" }}
                 />
@@ -721,7 +817,7 @@ const Restaurant = forwardRef((props, ref) => {
               </div>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-detailsres">
+            <div style={{ display: "flex", justifyContent: "space-evenly" }} >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="instagramLink" className="labelres">Instagram Link</label>
                 <input
@@ -733,7 +829,7 @@ const Restaurant = forwardRef((props, ref) => {
                   onChange={handleChange}
                 />
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column" }} className="personal-detailsres">
                 <label htmlFor="facebookLink" className="labelres">Facebook Link</label>
                 <input
                   type="url"

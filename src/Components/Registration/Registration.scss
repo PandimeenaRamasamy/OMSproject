@@ -99,23 +99,7 @@
      
   }
    
-  @media only screen and (max-width: 768px) {
-      .form-divreg {
-        width: 90%;
-      }
-   
-      .inputbox {
-        width: 100%;
-      }
-   
-      .inputbox2 {
-        width: 100%;
-      }
-      .personal-details{
-          display: flex;
-          flex-direction: column;
-      }
-    }
+ 
 
 
    
@@ -188,11 +172,11 @@
     font-size: 12px;
    }
    
-   .imcrosssty{
+   .imcrossstyres{
 
     position: absolute;
-    top: 10%;
-    right: 38%;
+    top: 30px;
+    left: 353px;
     background-color:#F23D3D;
     color: white;
     border: none;
@@ -201,6 +185,9 @@
     width: 20px;
     height: 20px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 
    }
@@ -237,27 +224,52 @@
    
 }
 
-.phonenumbercode
-{
-  height: 44px;
-  border: 1px solid #B3B3B3;
-  color: #666666 ;
-  border-radius: 4px;
-  margin-top: 10px;
 
- 
-
+ .phonenumberinput {
+  
+  border: none;
+  padding: 20px;
+  width:545px;
+  height: 38px;
+  border-radius:0px;
+  box-sizing: border-box;
+  font-size: 14px;
+  margin-top: -1px;
+  border-left: 1px solid #B3B3B3 ;
 }
 
-.phonenumberinput
-{
-  width: 545px;
-  height: 44px;
-  margin-top: -5px;
-  border-radius: 4px;
-  border: 1px solid #B3B3B3;
-  border-left: none;
+.phonenumberinput:focus{
+  outline: none;
+  border: none;
+  border-left: 1px solid #B3B3B3 ;
+}
 
+.numberfield {
+  display: flex;
+  align-items: center;
+  border: 1px solid #B3B3B3;
+  border-radius: 4px;
+  padding: 5px;
+  width: 600px;
+      height: 44px;
+}
+
+.phonenumbercode {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 4px;
+  background: none;
+}
+.dropoption
+{
+ 
+  font-size: 14px;
+ 
+}
+.dropoption:hover{
+  background-color: #67833E;
 }
 
 .invaliddata

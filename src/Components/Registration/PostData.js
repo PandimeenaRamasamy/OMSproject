@@ -72,14 +72,14 @@ const PostDataForm = () => {
   const validationofregistrationform = () => {
     let isValid = true;
 
-    if (!Registrationform.restaurantName) {
-      isValid = false;
-      registrationpagerrors.restaurantNameerror = "Enter Restaurant Name";
-    }
+    // if (!Registrationform.restaurantName) {
+    //   isValid = false;
+    //   registrationpagerrors.restaurantNameerror = "Enter Restaurant Name";
+    // }
 
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(Registrationform.email)) {
       isValid = false;
-      registrationpagerrors.emailerror = "Enter valid email";
+      registrationpagerrors.emailerror = "Please enter a valid email address.";
     }
 
     // if (!Registrationform.base64Image) {
@@ -95,6 +95,11 @@ const PostDataForm = () => {
       registrationpagerrors.nameerror = "Name must only contain letters and spaces";
     }
 
+
+    if (!Registrationform.phone) {
+      isValid = false;
+      registrationpagerrors.phoneerror = "Enter phone number";
+    } 
     setError(registrationpagerrors);
     return isValid;
   };
@@ -165,6 +170,42 @@ const PostDataForm = () => {
     }
   };
 
+
+  const validateName = () => {
+    const namePattern = /^[a-zA-Z\s]+$/; // Pattern for only letters and spaces
+    if (Registrationform.name .trim() === '') {
+      setError({  ...error,nameerror :'Enter your Name'});
+    } else if (!namePattern.test(Registrationform.name )) {
+      setError({  ...error, nameerror:'Name can only contain letters and spaces.'});
+    } else {
+      setError('');
+    }
+  };
+  const validatePhone = () => {
+    const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
+    if (Registrationform.phone  === '') {
+      setError({  ...error,phoneerror :'Enter phone number'});}
+    else if (!phonePattern.test(Registrationform.phone)) {
+      setError({...error,phoneerror:'Please enter a valid phone number'});
+    } else {
+      setError('');
+    }
+  };
+
+  const validateEmail = () => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; 
+    // Adjust the regex pattern based on your requirements
+    if (Registrationform.email === '') {
+      setError({  ...error,emailerror :'Enter valid email '});}
+    else if (!emailPattern.test(Registrationform.email)) {
+      setError({ ...error , emailerror: 'Please enter a valid email address.'});
+    }
+     else {
+      setError('');
+    }
+  };
+
+
   return (
     <div className="main-divreg">
       <div className="submain-divreg">
@@ -180,7 +221,8 @@ const PostDataForm = () => {
               style={{ borderColor: error.restaurantNameerror ? "red" : "#B3B3B3" }}
               placeholder="Name"
               value={Registrationform.restaurantName}
-              onChange={(e) => setRegistrationform({ ...Registrationform, restaurantName: e.target.value })}
+              onChange={(e) => {setRegistrationform({ ...Registrationform, restaurantName: e.target.value })
+            }}
             />
             {error.restaurantNameerror && <div className="invaliddata">{error.restaurantNameerror}</div>}
           </div>
@@ -193,13 +235,16 @@ const PostDataForm = () => {
               style={{ borderColor: error.nameerror ? "red" : "#B3B3B3" }}
               placeholder="Name"
               value={Registrationform.name}
+              onBlur={validateName}
               onChange={(e) => setRegistrationform({ ...Registrationform, name: e.target.value })}
             />
             {error.nameerror && <div className="invaliddata">{error.nameerror}</div>}
+           
           </div>
+          
           <div className="labelinput-divreg">
             <label className="labelreg">Contact person number</label>
-            <div style={{ marginTop: "20px" }}>
+            <div className="numberfield" >
               <select
                 id="country-code"
                 value={selectedCode}
@@ -207,7 +252,7 @@ const PostDataForm = () => {
                 onChange={handleCodeChange}
               >
                 {countryCodes.map((country) => (
-                  <option key={country.dial_code} value={country.dial_code}>
+                  <option className="dropoption" key={country.dial_code} value={country.dial_code}>
                     {country.dial_code}
                   </option>
                 ))}
@@ -217,12 +262,16 @@ const PostDataForm = () => {
                 type="text"
                 className="phonenumberinput"
                 value={Registrationform.phone}
+                onBlur={validatePhone}
                 maxLength={10}
+                minLength={10}
                 onKeyPress={handleKeyPress}
                 onChange={(event) => setRegistrationform({ ...Registrationform, phone: event.target.value })}
                 required
               />
+             
             </div>
+            {error.phoneerror && <div className="invaliddata">{error.phoneerror}</div>}
           </div>
           <div className="labelinput-divreg">
             <label className="labelreg">Contact Person Email ID</label>
@@ -230,6 +279,7 @@ const PostDataForm = () => {
               type="email"
               className="inputbox"
               placeholder="xyz@gmail.com"
+              onBlur={validateEmail}
               value={Registrationform.email}
               style={{ borderColor: error.emailerror ? "red" : "#B3B3B3" }}
               onChange={(e) => setRegistrationform({ ...Registrationform, email: e.target.value })}
@@ -285,8 +335,8 @@ const PostDataForm = () => {
                       </p>
                     ) : (
                       <>
-                        <button onClick={closeModal} className="imcrosssty">
-                          <ImCross style={{ fontSize: "10px", color: "white" }} />
+                        <button onClick={closeModal} className="imcrossstyres">
+                          <ImCross style={{ fontSize: "7px", color: "white" }} />
                         </button>
                         <img src={imagePreview} alt="Preview" className="imgpreview" />
                         <p>Preview</p>
