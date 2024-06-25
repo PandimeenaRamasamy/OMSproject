@@ -33,6 +33,10 @@
     display: flex;
     flex-direction: column;
 }
+.Bank_First_Heading{
+    margin-top: 15px;
+
+}
 
 .Bank_First_Heading,
 .Bank_Second_Heading,
@@ -51,8 +55,10 @@
     border: 1px solid rgba(179, 179, 179, 1);
     width: 600px;
     height: 44px;
+   margin-top: -1px;
     font-family: Poppins;
     font-size: 16px;
+    margin-bottom: 13px;
 }
 
 .Account_Button {

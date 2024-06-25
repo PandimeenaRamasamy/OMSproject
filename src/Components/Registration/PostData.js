@@ -214,7 +214,7 @@ const PostDataForm = () => {
         </div>
         <div className="form-divreg">
           <div className="labelinput-divreg">
-            <label className="labelreg">Restaurant name</label>
+            <label className="labelreg">Restaurant Name</label>
             <input
               type="text"
               className="inputbox"
@@ -227,7 +227,7 @@ const PostDataForm = () => {
             {error.restaurantNameerror && <div className="invaliddata">{error.restaurantNameerror}</div>}
           </div>
           <div className="labelinput-divreg">
-            <label className="labelreg">Contact person name</label>
+            <label className="labelreg">Contact Person Name</label>
             <input
               type="text"
               className="inputbox"
@@ -243,7 +243,7 @@ const PostDataForm = () => {
           </div>
           
           <div className="labelinput-divreg">
-            <label className="labelreg">Contact person number</label>
+            <label className="labelreg">Contact Person Number</label>
             <div className="numberfield" >
               <select
                 id="country-code"
@@ -295,13 +295,13 @@ const PostDataForm = () => {
               value={Registrationform.designation}
               onChange={(e) => setRegistrationform({ ...Registrationform, designation: e.target.value })}
             >
-              <option value="Owner">Owner</option>
-              <option value="Manager">Manager</option>
-              <option value="Admin">Admin</option>
+              <option value="Owner" className="options">Owner</option>
+              <option value="Manager" className="options">Manager</option>
+              <option value="Admin" className="options">Admin</option>
             </select>
           </div>
           <div className="labelinput-divreg">
-            <label className="labelreg">GST NUMBER</label>
+            <label className="labelreg">GST Number</label>
             <input
               type="text"
               className="inputbox"
@@ -313,7 +313,7 @@ const PostDataForm = () => {
             />
           </div>
           <div className="labelinput-divreg">
-            <label className="labelreg">Restaurant logo</label>
+            <label className="labelreg">Restaurant Logo</label>
             <div className="logo">
               <input
                 type="file"

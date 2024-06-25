@@ -794,7 +794,7 @@ const Restaurant = forwardRef((props, ref) => {
                   type="email"
                   name="email"
                   className={`inputbox2res ${emailError ? "inputbox-error" : ""}`}
-                  placeholder="xyz@gmail.com"
+                  placeholder="maghil@gmail.com"
                   value={form.email}
                   onBlur={validateEmail}
                   onChange={handleChange}
@@ -824,7 +824,7 @@ const Restaurant = forwardRef((props, ref) => {
                   type="url"
                   name="instagramLink"
                   className="inputbox2res"
-                  placeholder="Chandra.uiux"
+                  placeholder="instagram.maghil"
                   value={form.instagramLink}
                   onChange={handleChange}
                 />
@@ -835,7 +835,7 @@ const Restaurant = forwardRef((props, ref) => {
                   type="url"
                   name="facebookLink"
                   className="inputbox2res"
-                  placeholder="chandra.com"
+                  placeholder="facebook.com"
                   value={form.facebookLink}
                   onChange={handleChange}
                 />

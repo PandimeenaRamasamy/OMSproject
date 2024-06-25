@@ -897,34 +897,31 @@ const Location = forwardRef((props, ref) => {
                 onChange={(e) => handleAddressChange(0, e.target.value)}
 
                 onBlur={handleBlur}
-                style={{ borderColor: locationError.address ? "red" : "#B3B3B3", marginBottom: "10px" }}
+                style={{ borderColor: locationError.address ? "red" : "#B3B3B3", marginBottom: "30px" }}
 
-                style={{
-                  borderColor: locationError.address ? "red" : "#B3B3B3",
-                  marginBottom: "30px",
-                }}
-
+               
               />
-              {locationError.address && (
-                <div className="error-message1" style={{marginTop:"-20px"}}>{locationError.address}</div>
-              )}
+              
 {textboxes.map((textbox, index) => {
   return (
     <div className="labelinput-divloc1" key={index}>
-      <label htmlFor={`BusinessLegalName${index}`} className="labelloc1">Line {index+1}</label>
+      <label htmlFor={`BusinessLegalName${index}`} className="labelloc1" >Line {index+1}</label>
       <input
         type="text"
         className="inputboxloc"
         placeholder="Name"
-        value={textbox}  // Assume each textbox holds its own value
+        value={textbox}  
         onChange={(e) => handleAddressChange(index, e.target.value)}
         style={{
           borderColor: locationError.address ? "red" : "#B3B3B3",
           marginBottom: "30px",
         }}
       />
+      {locationError.address && (
+                <div className="error-message1" style={{marginTop:"-20px"}}>{locationError.address}</div>
+              )}
       {textboxes.length < 2 && (
-        <button className="btn" onClick={handleTextBoxes}>Add Line +</button>
+        <button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>
       )}
       
     </div>
@@ -938,7 +935,7 @@ const Location = forwardRef((props, ref) => {
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
 
-                <label htmlFor="pinCode" className="labelloc">Pincode</label>
+               
 
                 <label htmlFor="pincode" className="labelloc">
                   Pincode
@@ -978,12 +975,7 @@ const Location = forwardRef((props, ref) => {
                   onChange={handleChange}
 
                   onBlur={handleBlur}
-                  style={{ borderColor: locationError.city ? "red" : "#B3B3B3" }}
-
-                  style={{
-                    borderColor: locationError.city ? "red" : "#B3B3B3",
-                  }}
-
+                  style={{ borderColor: locationError.city ? "red" : "#B3B3B3" }}  
                   value={form.city}
                 />
                 {locationError.city && (
@@ -1010,9 +1002,7 @@ const Location = forwardRef((props, ref) => {
                   onBlur={handleBlur}
                   style={{ borderColor: locationError.state ? "red" : "#B3B3B3" }}
 
-                  style={{
-                    borderColor: locationError.state ? "red" : "#B3B3B3",
-                  }}
+                 
 
                   value={form.state}
                 />
@@ -1034,9 +1024,7 @@ const Location = forwardRef((props, ref) => {
                   onBlur={handleBlur}
                   style={{ borderColor: locationError.country ? "red" : "#B3B3B3" }}
 
-                  style={{
-                    borderColor: locationError.country ? "red" : "#B3B3B3",
-                  }}
+                 
 
                   value={form.country}
                 />

@@ -571,7 +571,7 @@ const Dinein = React.forwardRef((props,ref) => {
   const [CheckinselectedButton, setCheckinselectedButton] = useState(false);
   const [ReservationinselectedButton, setReservationinselectedButton] =useState(false);  
   const [Interactivedinein, setInteractivedinein] = useState("");
-  const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("No");
+  const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("no");
 
   const data = useSelector((state) => state.getlocationdata.data);  
 
@@ -582,16 +582,16 @@ const Dinein = React.forwardRef((props,ref) => {
 
     locationId:data2 && data2||"",
     dineIn: "",
-    highChair: "",
+    highChair: "no",
     interactiveDineIn: "",
-    merchant4DigitValidation: "",
+    merchant4DigitValidation: "no",
     checkIn: {
       maximumPeopleAllowedOnline: "",
       maximumPeopleAllowedOffline: "",
       lateShowTime:"",
       autoCancelTime: "",
       abandonTime: "",
-      autoAssign: "yes",
+      autoAssign: "no",
     },
     reservation: {
       minimumPeopleAllowed: "",
@@ -689,7 +689,7 @@ const Dinein = React.forwardRef((props,ref) => {
           setOutletdetails({
             locationId:data2 && data2||data[0].location.id,
             dineIn: dineInDetails.dineIn || "",
-            highChair: "",
+            highChair: "No",
 
             checkIn: {
               maximumPeopleAllowedOnline: checkInDetails.maximumPeopleAllowedOnline || "",
