@@ -860,15 +860,15 @@ const validate=()=>{
 
               <div style={{ marginTop: "10px" }} className="enabledisablebtn">
                 <button
-                  className={`Enable_btn ${DineinselectedButton ? "blue" : ""}`}
+                  className={` ${DineinselectedButton ? "blue" : "inactive"}`}
                   value="enable"
                   onClick={(event) => handleDineinEnable(event)}
                 >
                   Enable{" "}
                 </button>
                 <button
-                  className={`Disable_btn ${
-                    !DineinselectedButton ? "blue" : ""
+                  className={` ${
+                    !DineinselectedButton ? "blue" : "inactive"
                   }`}
                   value="disable"
                   onClick={(event) => handleDineinDisable(event)}
@@ -965,8 +965,8 @@ const validate=()=>{
 
             <div style={{ marginTop: "10px" }} className="enabledisablebtn">
               <button
-                className={`Enable_btn ${
-                  InteractiveselectedButton ? "blue" : ""
+                className={` ${
+                  InteractiveselectedButton ? "blue" : "inactive"
                 }`}
                 value="enabled"
                 onClick={(event) => handleInteractiveEnable(event)}
@@ -974,8 +974,8 @@ const validate=()=>{
                 Enable{" "}
               </button>
               <button
-                className={`Disable_btn ${
-                  !InteractiveselectedButton ? "blue" : ""
+                className={` ${
+                  !InteractiveselectedButton ? "blue" : "inactive"
                 }`}
                 value="Disabled"
                 onClick={(event) => handleInteractiveDisable(event)}
@@ -1002,16 +1002,16 @@ const validate=()=>{
 
                   <div
                     style={{ marginTop: "10px" }}
-                    className="enabledisablebtnInter"
+                    className="enabledisablebtn"
                   >
                     <button
                       type="button"
                       onClick={() => Interactivefield("Enable", "yes")}
-                      className="enablebtninter"
-                      style={{
-                        backgroundColor:
-                          Interactivedinein === "yes" ? "#0D79DC" : "#979797",
-                      }}
+                       
+                      className={`
+                        ${Interactivedinein === "yes" ? "blue" : "inactive"}
+                    `}
+                      
                     >
                       Enable
                     </button>
@@ -1019,11 +1019,10 @@ const validate=()=>{
                     <button
                       type="button"
                       onClick={() => Interactivefield("Disable", "no")}
-                      className="disablebtninter"
-                      style={{
-                        backgroundColor:
-                          Interactivedinein === "no" ? "#0D79DC" : "#979797",
-                      }}
+                      
+                      className={`
+                          ${Interactivedinein === "no" ? "blue" : "inactive"}
+                      `}
                     >
                       Disable
                     </button>
@@ -1042,18 +1041,15 @@ const validate=()=>{
 
                   <div
                     style={{ marginTop: "10px" }}
-                    className="enabledisablebtninter"
+                    className="enabledisablebtn"
                   >
                     <button
                       type="button"
                       onClick={() => merchantvalidationfield("Enable", "yes")}
-                      className="enablebtninter"
-                      style={{
-                        backgroundColor:
-                          Mergentdigitvaliadtion === "yes"
-                            ? "#0D79DC"
-                            : "#979797",
-                      }}
+                      
+                      className={`
+                        ${Mergentdigitvaliadtion === "yes" ? "blue" : "inactive"}
+                    `}
                     >
                       Enable
                     </button>
@@ -1061,13 +1057,10 @@ const validate=()=>{
                     <button
                       type="button"
                       onClick={() => merchantvalidationfield("Disable", "no")}
-                      className="disablebtninter"
-                      style={{
-                        backgroundColor:
-                          Mergentdigitvaliadtion === "no"
-                            ? "#0D79DC"
-                            : "#979797",
-                      }}
+                     
+                      className={`
+                        ${Mergentdigitvaliadtion === "no" ? "blue" : "inactive"}
+                    `}
                     >
                       Disable
                     </button>
@@ -1099,8 +1092,8 @@ const validate=()=>{
                 </div>
                 <div style={{ marginTop: "10px" }} className="enabledisablebtn">
                   <button
-                    className={`Enable_btn ${
-                      CheckinselectedButton ? "blue" : ""
+                    className={` ${
+                      CheckinselectedButton ? "blue" : "inactive"
                     }`}
                     value="enabled"
                     onClick={(event) => handleCheckinEnable(event)}
@@ -1108,8 +1101,8 @@ const validate=()=>{
                     Enable{" "}
                   </button>
                   <button
-                    className={`Disable_btn ${
-                      !CheckinselectedButton ? "blue" : ""
+                    className={` ${
+                      !CheckinselectedButton ? "blue" : "inactive"
                     }`}
                     value="Disabled"
                     onClick={(event) => handleCheckinDisable(event)}
@@ -1322,8 +1315,8 @@ const validate=()=>{
               </div>
               <div style={{ marginTop: "10px" }} className="enabledisablebtn">
                 <button
-                  className={`Enable_btn ${
-                    ReservationinselectedButton ? "blue" : ""
+                  className={` ${
+                    ReservationinselectedButton ? "blue" : "inactive"
                   }`}
                   value="enabled"
                   onClick={(event) => handleReservationEnable(event)}
@@ -1331,8 +1324,8 @@ const validate=()=>{
                   Enable{" "}
                 </button>
                 <button
-                  className={`Disable_btn ${
-                    !ReservationinselectedButton ? "blue" : ""
+                  className={` ${
+                    !ReservationinselectedButton ? "blue" : "inactive"
                   }`}
                   value="Disabled"
                   onClick={(event) => handleReservationDisable(event)}
