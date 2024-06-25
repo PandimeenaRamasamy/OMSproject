@@ -4,7 +4,6 @@
 // const Location = forwardRef((props, ref) => {
 //   const [form, setForm] = useState({
 
-   
 //     address: "",
 //     pincode: "",
 //     city: "",
@@ -45,13 +44,10 @@
 //     setTextboxes(newTextBoxes);
 //     setForm({ ...form, address: newTextBoxes.join(", ") });
 //   };
-  
 
 //   const getValidate=()=>{
 //     let isValid=true
-    
-   
-  
+
 //     if(!form.address){
 //       isValid=false;
 //       errors.address="Please Enter Location"
@@ -68,7 +64,7 @@
 //       isValid=false;
 //       errors.state="Please Enter State"
 //     }
-   
+
 //     if(!form.country){
 //       isValid=false;
 //       errors.country="Please Enter Country"
@@ -98,13 +94,11 @@
 //     state: "",
 //     country: ""
 
-
 //     })
 
 //   }
 
 //   return (
-
 
 //     <div className="main-divloc">
 //     <div className="submain-divloc">
@@ -119,15 +113,12 @@
 //       <div className="headingloc2">
 //         <h5 className="headingloc2"> Mention restaurant address</h5>
 //       </div>
-        
-          
-           
+
 //             <div className="labelinput-divloc">
 
 //             <label htmlFor="BusinessLegalName" className="labelloc">
 //            Address Line
 //             </label>
-
 
 //             <input
 //                type="text"
@@ -136,31 +127,16 @@
 //                value={props.data && props.data[0] ? props.data[0].location.addressLine1 : form.address}
 //                onChange={(e) => handleAddressChange(0, e.target.value)}
 //                style={{borderColor:locationError.address?"red":"#B3B3B3"  , marginBottom:"30px" }}
-              
+
 //             />
 //               {locationError.address && <div className='error-message'>{locationError.address}</div>}
 
 //           </div>
 
-       
-
-
-
-
-        
-
-
-
-
-
-
-
-
 //           <div
 //             style={{ display: "flex", justifyContent: "space-evenly" }}
 //             className="personal-detailsloc"
 //           >
-
 
 //             <div style={{ display: "flex", flexDirection: "column" }}>
 //               <label htmlFor="email" className="labelloc">
@@ -174,20 +150,15 @@
 //                     style={{borderColor:locationError.pincode?"red":"#B3B3B3" }}
 //                     value={props.data && props.data[0] ? props.data[0].location.pinCode : form.pincode}
 
-                 
-
 //                   />
 //                      {locationError.pincode && <div className='error-message'>{locationError.pincode}  </div>}
-            
+
 //             </div>
-
-
-
 
 //             <div
 //               style={{ display: "flex", flexDirection: "column" }}
 //               className="personal-detailsloc">
-            
+
 //               <label htmlFor="website" className="labelloc">
 //                 City
 //               </label>
@@ -242,10 +213,7 @@
 //       </div>
 //     </div>
 //   </div>
-  
-      
-        
-       
+
 //         // <div className="form-divloc">
 //         // <h5 className="headingloc">Location</h5>
 //         //   <form>
@@ -322,16 +290,18 @@
 //         //     </div>
 //         //   </form>
 //         // </div>
-        
-       
-   
- 
+
 //   );
 // });
 
 // export default Location;
 
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import "../Location/Location.scss";
 import { useSelector } from "react-redux";
 
@@ -341,7 +311,7 @@ const Location = forwardRef((props, ref) => {
     pinCode: "",
     city: "",
     state: "",
-    country: ""
+    country: "",
   });
   const data = useSelector((state) => state.getlocationdata.data);
   const [locationError, setLocationError] = useState({
@@ -349,7 +319,7 @@ const Location = forwardRef((props, ref) => {
     pinCode: "",
     city: "",
     state: "",
-    country: ""
+    country: "",
   });
 
   let errors = {};
@@ -363,7 +333,7 @@ const Location = forwardRef((props, ref) => {
         pinCode: data[0].location.pinCode || "",
         city: data[0].location.city || "",
         state: data[0].location.state || "",
-        country: data[0].location.country || ""
+        country: data[0].location.country || "",
       });
     }
   }, [data]);
@@ -429,7 +399,7 @@ const Location = forwardRef((props, ref) => {
       pinCode: "",
       city: "",
       state: "",
-      country: ""
+      country: "",
     });
 
     setLocationError({
@@ -437,7 +407,7 @@ const Location = forwardRef((props, ref) => {
       pinCode: "",
       city: "",
       state: "",
-      country: ""
+      country: "",
     });
   };
 
@@ -456,21 +426,55 @@ const Location = forwardRef((props, ref) => {
               <h5 className="headingloc2">Mention restaurant address</h5>
             </div>
             <div className="labelinput-divloc">
-              <label htmlFor="BusinessLegalName" className="labelloc">Address Line</label>
+              <label htmlFor="BusinessLegalName" className="labelloc">
+                Address Line
+              </label>
               <input
                 type="text"
                 className="inputboxloc"
                 placeholder="Name"
                 value={form.address}
                 onChange={(e) => handleAddressChange(0, e.target.value)}
-                style={{ borderColor: locationError.address ? "red" : "#B3B3B3", marginBottom: "30px" }}
+                style={{
+                  borderColor: locationError.address ? "red" : "#B3B3B3",
+                  marginBottom: "30px",
+                }}
               />
-              {locationError.address && <div className='error-message'>{locationError.address}</div>}
+              {locationError.address && (
+                <div className="error-message">{locationError.address}</div>
+              )}
+{textboxes.map((textbox, index) => {
+  return (
+    <div className="labelinput-divloc1" key={index}>
+      <label htmlFor={`BusinessLegalName${index}`} className="labelloc1">Line {index+1}</label>
+      <input
+        type="text"
+        className="inputboxloc"
+        placeholder="Name"
+        value={textbox}  // Assume each textbox holds its own value
+        onChange={(e) => handleAddressChange(index, e.target.value)}
+        style={{
+          borderColor: locationError.address ? "red" : "#B3B3B3",
+          marginBottom: "30px",
+        }}
+      />
+      {textboxes.length < 2 && (
+        <button className="btn" onClick={handleTextBoxes}>Add Line +</button>
+      )}
+      
+    </div>
+  );
+})} 
             </div>
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-detailsloc">
+            <div
+              style={{ display: "flex", justifyContent: "space-evenly", marginTop:"-40px" }}
+              className="personal-detailsloc"
+            >
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <label htmlFor="pincode" className="labelloc">Pincode</label>
+                <label htmlFor="pincode" className="labelloc">
+                  Pincode
+                </label>
                 <input
                   type="text"
                   className="inputbox2loc"
@@ -478,53 +482,81 @@ const Location = forwardRef((props, ref) => {
                   name="pinCode"
                   maxLength={6}
                   onChange={handleChange}
-                  style={{ borderColor: locationError.pinCode ? "red" : "#B3B3B3" }}
+                  style={{
+                    borderColor: locationError.pinCode ? "red" : "#B3B3B3",
+                  }}
                   value={form.pinCode}
                 />
-                {locationError.pinCode && <div className='error-message'>{locationError.pincode}</div>}
+                {locationError.pinCode && (
+                  <div className="error-message">{locationError.pincode}</div>
+                )}
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column" }} className="personal-detailsloc">
-                <label htmlFor="city" className="labelloc">City</label>
+              <div
+                style={{ display: "flex", flexDirection: "column" }}
+                className="personal-detailsloc"
+              >
+                <label htmlFor="city" className="labelloc">
+                  City
+                </label>
                 <input
                   type="text"
                   className="inputbox2loc"
                   placeholder="Chennai"
                   name="city"
                   onChange={handleChange}
-                  style={{ borderColor: locationError.city ? "red" : "#B3B3B3" }}
+                  style={{
+                    borderColor: locationError.city ? "red" : "#B3B3B3",
+                  }}
                   value={form.city}
                 />
-                {locationError.city && <div className='error-message'>{locationError.city}</div>}
+                {locationError.city && (
+                  <div className="error-message">{locationError.city}</div>
+                )}
               </div>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }} className="personal-detailsloc">
+            <div
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+              className="personal-detailsloc"
+            >
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <label htmlFor="state" className="labelloc">State</label>
+                <label htmlFor="state" className="labelloc">
+                  State
+                </label>
                 <input
                   type="text"
                   className="inputbox2loc"
                   placeholder="Tamil Nadu"
                   name="state"
                   onChange={handleChange}
-                  style={{ borderColor: locationError.state ? "red" : "#B3B3B3" }}
+                  style={{
+                    borderColor: locationError.state ? "red" : "#B3B3B3",
+                  }}
                   value={form.state}
                 />
-                {locationError.state && <div className='error-message'>{locationError.state}</div>}
+                {locationError.state && (
+                  <div className="error-message">{locationError.state}</div>
+                )}
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <label htmlFor="country" className="labelloc">Country</label>
+                <label htmlFor="country" className="labelloc">
+                  Country
+                </label>
                 <input
                   type="text"
                   className="inputbox2loc"
                   placeholder="India"
                   name="country"
                   onChange={handleChange}
-                  style={{ borderColor: locationError.country ? "red" : "#B3B3B3" }}
+                  style={{
+                    borderColor: locationError.country ? "red" : "#B3B3B3",
+                  }}
                   value={form.country}
                 />
-                {locationError.country && <div className='error-message'>{locationError.country}</div>}
+                {locationError.country && (
+                  <div className="error-message">{locationError.country}</div>
+                )}
               </div>
             </div>
             <br />
@@ -536,4 +568,3 @@ const Location = forwardRef((props, ref) => {
 });
 
 export default Location;
-

@@ -91,12 +91,27 @@ color: #2F2F2F;
    
       
   }
+  .labelinput-divloc1{
+    display: flex;
+    flex-direction: column;
+margin-top: -10px;   
+   
+      
+  }
   .labelloc {
     font-size: 16px;
     font-family: Poppins;
     font-weight: 400;
     color: #666666;
     margin-top: 20px;
+  }
+  .labelloc1 {
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 400;
+    color: #666666;
+    margin-top: -5px;
+ 
   }
   .inputboxloc{
       width: 600px;
@@ -157,7 +172,8 @@ color: #2F2F2F;
   background-color: white;
   border:none;
   position: relative;
-  right: -525px;
+ left: 263px;
+ top: -30px;
   cursor: pointer;
   margin-top: 5px;
 
