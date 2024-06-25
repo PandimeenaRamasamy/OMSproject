@@ -102,6 +102,16 @@
   margin-bottom: 10px;
  
 }
+.enabledisablebtn{
+  display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    background-color: #f6f6f6; /* Background for the switch */
+    border-radius: 25px; /* Rounded corners for the background */
+    padding: 5px; /* Some padding around the buttons */
+    width: 170px; /* Adjust to content width */
+    overflow: hidden;
+}
 
 .enablebtninter,
 .disablebtninter {
@@ -292,16 +302,23 @@ hr {
 }
 
 .blue {
-  width: 100px;
-  height: 35px;
-  border: 0.1px;
-  border-radius: 20px;
-  font-size: 14px;
-  border-color: rgba(13, 121, 220, 1);
-  background-color: rgba(13, 121, 220, 1);
-  color: white;
+  width:119px;   
+ padding: 4px, 16px, 4px, 16px;
+ height: 34px;
+ border:0.1px;
+ border-radius: 30px;   
+ font-size: 14px;
+ border-color: rgba(13, 121, 220, 1);
+background-color: rgba(13, 121, 220, 1);
+color: white; 
 }
-
+.inactive{
+  font-size: 14px;
+  outline: none;
+  border:none;
+  width:84px;
+  cursor: pointer;
+}
 
 .Autoassignradio
 {
