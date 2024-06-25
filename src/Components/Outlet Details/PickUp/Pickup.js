@@ -5,6 +5,7 @@ import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
 const Pickup = React.forwardRef((props,ref) => {
     const dispatch = useDispatch();
+    const[schedulepick,setSchedulePick]=useState(true)
       // const data = useSelector((state) => state.getlocationdata.data);
     const datafromapi = useSelector((state) => state.postData.data);
     const data = useSelector((state) => state.getlocationdata.data);
@@ -81,6 +82,9 @@ const Pickup = React.forwardRef((props,ref) => {
     const getFormData = () => {
         return form;
       };
+      const handleSchedulePickup=()=>{
+        setSchedulePick(false)
+      }
     
       useImperativeHandle(ref, () => ({
         getFormData,
@@ -163,13 +167,13 @@ return isValid;
                         <div >
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
-                        <div style={{marginTop:'10px' }}>
-                            <input type="radio" defaultChecked name="YesorNo" className='radioo1'   style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}} ></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>Yes</label>
-                            <input type="radio" name="YesorNo" className='radioo2' style={{width:"20px",transform:"translateY(20px)",marginLeft:'10px'}}></input><label className='' style={{fontSize:"16px" , marginTop:"10px",marginLeft:'10px' }}>No</label>
+                        <div style={{display:"flex",justifyContent:"flex-start"}}>
+                            <input type="radio" defaultChecked name="YesorNo" className='radioo1'   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
+                            <input type="radio" name="YesorNo" className='radioo2' onClick={handleSchedulePickup} style={{width:"20px"}}></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px"  }}>No</label>
                         
                         </div>
                         </div>
-
+                       
                         <div>
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
@@ -180,7 +184,7 @@ return isValid;
                         </div>
                         {pickuperror.scheduleDuration && <div className='error_pickup'>{pickuperror.scheduleDuration}</div>}
                         </div>
-                       
+
                         
                         <div className='PackagingCharge'>
                         <h5 className='Pickup_heading7'>Packaging Charge </h5> 

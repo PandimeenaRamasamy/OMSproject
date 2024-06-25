@@ -34,9 +34,9 @@
 }
 
 .blue {
- width:89px;   
+ width:109px;   
  padding: 4px, 16px, 4px, 16px;
- height: 39px;
+ height: 34px;
  border:0.1px;
  border-radius: 30px;   
  font-size: 14px;
@@ -71,8 +71,13 @@ color: white;
     
 }
 .checkbox1{
+display: flex;
+justify-content: flex-start;
 accent-color:rgba(103, 131, 62, 1);
-width: 16px;
+width: 20px;
+.checkbox1 .checkbox{
+    margin-top: 12px;
+}
 
 
 }
@@ -242,6 +247,7 @@ font-size: 16px;
 }
 .switchButtonStyles {
     display: flex;
+    cursor: pointer;
     justify-content: space-between;
     background-color: #f6f6f6; /* Background for the switch */
     border-radius: 25px; /* Rounded corners for the background */
@@ -253,7 +259,8 @@ font-size: 16px;
    font-size: 14px;
     outline: none;
     border:none;
-    width:84px
+    width:84px;
+    cursor: pointer;
    
     
   }
