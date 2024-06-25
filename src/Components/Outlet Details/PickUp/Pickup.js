@@ -85,6 +85,9 @@ const Pickup = React.forwardRef((props,ref) => {
       const handleSchedulePickup=()=>{
         setSchedulePick(false)
       }
+      const handleSchedulePickuptrue=()=>{
+      setSchedulePick(true)
+      }
     
       useImperativeHandle(ref, () => ({
         getFormData,
@@ -168,12 +171,13 @@ return isValid;
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
                         <div style={{display:"flex",justifyContent:"flex-start"}}>
-                            <input type="radio" defaultChecked name="YesorNo" className='radioo1'   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
+                            <input type="radio" defaultChecked name="YesorNo" className='radioo1' onClick={handleSchedulePickuptrue}   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
                             <input type="radio" name="YesorNo" className='radioo2' onClick={handleSchedulePickup} style={{width:"20px"}}></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px"  }}>No</label>
                         
                         </div>
                         </div>
-                       
+                       {
+                        schedulepick && (
                         <div>
                         <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
@@ -183,9 +187,9 @@ return isValid;
                         }} placeholder='EOD' className='updown' min="0" onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
                         </div>
                         {pickuperror.scheduleDuration && <div className='error_pickup'>{pickuperror.scheduleDuration}</div>}
-                        </div>
+                        </div>)
 
-                        
+                      }
                         <div className='PackagingCharge'>
                         <h5 className='Pickup_heading7'>Packaging Charge </h5> 
                        <input type="text" value={form.packagingCharge} style={{
