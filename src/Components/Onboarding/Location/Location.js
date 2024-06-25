@@ -741,12 +741,6 @@
 
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 
-import React, {
-  useState,
-  useEffect,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
 
 import "../Location/Location.scss";
 import { useSelector } from "react-redux";
