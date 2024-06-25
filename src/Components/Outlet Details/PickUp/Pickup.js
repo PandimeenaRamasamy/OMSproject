@@ -161,14 +161,14 @@ return isValid;
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading10'>Please mention the payment methods</h5>
                         <div style={{display:'flex'}}>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
+                        <input type='checkbox' style={{width:"20px",marginLeft:'0px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
                         <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
                         <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
                         <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
                        
                         </div>
                         <div >
-                        <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
+                        <h5 className='Pickup_heading13'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading11'>Customer can place pick-up order for future/next session</h5>
                         <div style={{display:"flex",justifyContent:"flex-start"}}>
                             <input type="radio" defaultChecked name="YesorNo" className='radioo1' onClick={handleSchedulePickuptrue}   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
@@ -179,7 +179,7 @@ return isValid;
                        {
                         schedulepick && (
                         <div>
-                        <h5 className='Pickup_heading7'>Scheduled Pick up time Duration </h5> 
+                        <h5 className='Pickup_heading12'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
                         <div className='pickupduration'>
                             <input type="number" style={{

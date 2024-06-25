@@ -39,7 +39,7 @@
     font-weight: 400;
     font-size: 14px;
     color:rgba(102, 102, 102, 1);
-    margin-top: -2px;
+    margin-top: 2px;
     
 
 }
@@ -141,6 +141,19 @@ font-size: 16px;
     line-height: 20px;
 
 }
+.Pickup_heading12{
+    margin-top:15px;
+    font-size: 16px;
+    font-weight:500;
+    line-height: 20px;
+}
+
+.Pickup_heading13{
+    margin-top:20px;
+    font-size: 16px;
+    font-weight:500;
+    line-height: 20px;
+}
 .Payment_checkbox1{
     accent-color:rgba(103, 131, 62, 1);
     width: 16px;
@@ -207,6 +220,8 @@ font-size: 16px;
         line-height: 24px;
         padding-left: 3px;
         margin: 4px;
+        margin-left: -2px;
+
 
     }
 }
@@ -222,6 +237,8 @@ font-size: 16px;
         line-height: 24px;
         padding-left: 3px;
         margin: 4px;
+        margin-left: -2px;
+
 
     }
 }
@@ -237,7 +254,7 @@ font-size: 16px;
         font-weight: 400;
         line-height: 24px;
         padding-left: 3px;
-        margin: 4px;
+        margin-left: -2px;
 
     }
 }
@@ -271,6 +288,7 @@ font-size: 16px;
     padding: 5px; /* Some padding around the buttons */
     width: 170px; /* Adjust to content width */
     overflow: hidden; /* Ensures that the rounded corners are maintained */
+    margin-left: -8px;
   }
   .hello{
    font-size: 14px;
