@@ -441,7 +441,7 @@ const Location = forwardRef((props, ref) => {
                 }}
               />
               {locationError.address && (
-                <div className="error-message">{locationError.address}</div>
+                <div className="error-message1" style={{marginTop:"-20px"}}>{locationError.address}</div>
               )}
 {textboxes.map((textbox, index) => {
   return (
