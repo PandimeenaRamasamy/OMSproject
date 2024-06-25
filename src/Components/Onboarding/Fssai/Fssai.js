@@ -153,38 +153,19 @@ const Fssai = forwardRef((props, ref) => {
               <label htmlFor="BusinessLegalName" className="labelfss">
                 Do you Have a valid FSSAI Registration/License?
               </label>
-              <div>
+              <div className="switchButtonStylesFSSAi">
                 <button
                   type="button"
                   onClick={handleButtonClickyes}
-                  style={{
-                    backgroundColor: selectedButton ? "#0D79DC" : "#979797",
-                    color: "white",
-                    margin: "10px",
-                    border: "none",
-                    borderRadius: "20px",
-                    outline: "none",
-                    cursor: "pointer",
-                    width: "80px",
-                    height: "30px",
-                  }}
+                  className={`${selectedButton?"bluefssai":"hellofssai"}`}
+                  style={{marginTop:""}}
                 >
                   Yes
                 </button>
                 <button
                   type="button"
                   onClick={handleButtonClickno}
-                  style={{
-                    backgroundColor: !selectedButton ? "#0D79DC" : "#979797",
-                    color: "white",
-                    margin: "10px",
-                    border: "none",
-                    borderRadius: "20px",
-                    outline: "none",
-                    cursor: "pointer",
-                    width: "80px",
-                    height: "30px",
-                  }}
+                  className={`${!selectedButton?"bluefssai":"hellofssai"}`}
                 >
                   No
                 </button>
