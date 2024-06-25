@@ -571,7 +571,7 @@ const Dinein = React.forwardRef((props,ref) => {
   const [CheckinselectedButton, setCheckinselectedButton] = useState(false);
   const [ReservationinselectedButton, setReservationinselectedButton] =useState(false);  
   const [Interactivedinein, setInteractivedinein] = useState("");
-  const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("");
+  const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("No");
 
   const data = useSelector((state) => state.getlocationdata.data);  
 
@@ -852,8 +852,8 @@ const validate=()=>{
                   Dine in
                 </label>
               </div>
-              <div className="lables2">
-                <label htmlFor="BusinessLegalName" className="label">
+              <div className="lablesdine">
+                <label htmlFor="BusinessLegalName" className="labeldine">
                   Please mention the dine in service
                 </label>
               </div>
@@ -881,18 +881,18 @@ const validate=()=>{
               {DineinselectedButton && (
                 <div>
                   <div style={{ marginTop: "20px" }}>
-                    <div className="lables1">
+                    <div className="labelhighchair">
                       <label
                         htmlFor="BusinessLegalName"
-                        className="labelhighchair"
+                        className="labelhighchair1"
                       >
                         High Chair
                       </label>
                     </div>
-                    <div className="lables2">
+                    <div className="labelhighchair">
                       <label
                         htmlFor="BusinessLegalName"
-                        className="labelhighchair"
+                        className="labelhighchair2"
                       >
                         Chair with long legs for children
                       </label>
@@ -901,10 +901,11 @@ const validate=()=>{
 
                   <div className="highchairradio">
                     <div className="highchairradio1">
+                      <label htmlFor="" style={{display:'flex',flexDirection:'row'}} >
                       <input
                         type="radio"
                         value="yes"
-                        className="radioStyle"
+                        className="radioStyledine"
                         checked={Outletdetails.highChair === "yes"}
                         onChange={(event) =>
                           setOutletdetails({
@@ -912,15 +913,18 @@ const validate=()=>{
                             highChair: event.target.value,
                           })
                         }
-                      />
-                      <label className="chairradio">Yes</label>
+                      /> <span className="radionamedine">Yes</span>
+                      </label>
+                    
+                      {/* <label className="chairradiodine">Yes</label> */}
                     </div>
 
                     <div className="highchairradio2">
+                      <label htmlFor=""  style={{display:'flex',flexDirection:'row'}}>
                       <input
                         type="radio"
                         value="no"
-                        className="radioStyle"
+                        className="radioStyledine"
                         checked={Outletdetails.highChair === "no"}
                         onChange={(event) =>
                           setOutletdetails({
@@ -928,9 +932,11 @@ const validate=()=>{
                             highChair: event.target.value,
                           })
                         }
-                      />
+                      /> <span className="radionamedine">No</span>
+                      </label>
+                     
 
-                      <label className="chairradio">No</label>
+                      {/* <label className="chairradiodine">No</label> */}
                     </div>
                   </div>
                 </div>
@@ -942,7 +948,7 @@ const validate=()=>{
           </form>
         </div>
 
-       
+       <hr />
 
  {/* Interactive details */}
 
@@ -957,8 +963,8 @@ const validate=()=>{
                 Interactive Dine-in
               </label>
             </div>
-            <div className="lables2">
-              <label htmlFor="BusinessLegalName" className="label">
+            <div className="lables2Inter">
+              <label htmlFor="BusinessLegalName" className="labelInteractive">
                 Please mention the Interactive Dine-in service
               </label>
             </div>
@@ -994,37 +1000,11 @@ const validate=()=>{
 
                 
 
+                  
+
+                 
+
                   <div className="merchantlable1">
-
-                  <div
-                    style={{ marginTop: "10px" }}
-                    className="enabledisablebtn"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => Interactivefield("Enable", "yes")}
-                       
-                      className={`
-                        ${Interactivedinein === "yes" ? "blue" : "inactive"}
-                    `}
-                      
-                    >
-                      Enable
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => Interactivefield("Disable", "no")}
-                      
-                      className={`
-                          ${Interactivedinein === "no" ? "blue" : "inactive"}
-                      `}
-                    >
-                      Disable
-                    </button>
-                  </div>
-
-                  <div className="lables1">
 
                     <label htmlFor="BusinessLegalName" className="labelInter">
                       Merchant 4 digit Validation
@@ -1062,12 +1042,12 @@ const validate=()=>{
                       Disable
                     </button>
                   </div>
-                  </div>
+                  
                 </form>
               </div>
             )}
           </div>
-
+          </div>
           <hr />
 
 {/* Checkin details */}
@@ -1083,8 +1063,8 @@ const validate=()=>{
                     Checkin
                   </label>
                 </div>
-                <div className="lables2">
-                  <label htmlFor="BusinessLegalName" className="label">
+                <div className="lablescheckin">
+                  <label htmlFor="BusinessLegalName" className="labelcheck">
                     Please mention the checkin service
                   </label>
                 </div>
@@ -1110,8 +1090,8 @@ const validate=()=>{
                   </button>
                 </div>
                 {CheckinselectedButton && (
-                  <div className="interactivefn">
-                    <form onSubmit={handleSubmit2} className="interactivefn">
+                  <div className="checkfn">
+                    <form onSubmit={handleSubmit2} className="checkfn">
                       <div>
                         <div className="checkinform1">
                           <div className="check1">
@@ -1148,7 +1128,7 @@ const validate=()=>{
                               placeholder="20"
                               value={Outletdetails.checkIn.maximumPeopleAllowedOffline}
                               id="maximuminoffline"
-                              style={{fontSize:'14px'}}
+                              style={{fontSize:'14px',padding:'10px'}}
                               maxLength={3}
                               onKeyPress={handleKeyPress}
                               onChange={(event) => {
@@ -1228,7 +1208,7 @@ const validate=()=>{
                         </div>
                       </div>
                       <div className="Autoassignradio">
-                      <div className="lables1">
+                      <div className="auto">
                         <label
                           htmlFor="BusinessLegalName"
                           className="labelcheckin1"
@@ -1244,11 +1224,19 @@ const validate=()=>{
                           Assign table automatically to the customer
                         </label>
                       </div>
+
+
+                      
+                  
+
+
+
                       <div className="highchairradio">
-                        <div className="highchairradio1">
+                        <div className="highchairradio1" >
+                          <label htmlFor=""  style={{display:'flex',flexDirection:'row'}}>
                           <input
                             type="radio"
-                            className="radioStyle"
+                            className="radioStyledine"
                             value="yes"
                             checked={Outletdetails.checkIn.autoAssign === "yes"}
                             onChange={(event) =>
@@ -1260,14 +1248,17 @@ const validate=()=>{
                                 },
                               })
                             }
-                          />
-                          <label className="chairradio">Yes</label>
+                          /> <span className="radionamedine">Yes</span>
+                          </label>
+                          
+                          
                         </div>
                         <div className="highchairradio2">
+                          <label htmlFor=""  style={{display:'flex',flexDirection:'row'}}>
                           <input
                             type="radio"
                             value="no"
-                            className="radioStyle"
+                            className="radioStyledine"
                             checked={Outletdetails.checkIn.autoAssign === "no"}
                             onChange={(event) =>
                               setOutletdetails({
@@ -1278,8 +1269,10 @@ const validate=()=>{
                                 },
                               })
                             }
-                          />
-                          <label className="chairradio">No</label>
+                          /> <span className="radionamedine">No</span>
+                          </label>
+                          
+                         
                         </div>
                       </div>
                      </div>
@@ -1289,7 +1282,7 @@ const validate=()=>{
               </div>
             </div>
           </div>
-        </div>
+      
 
         <hr />
 
@@ -1302,12 +1295,12 @@ const validate=()=>{
           <div className="">
             <div className="">
               <div className="lables1">
-                <label htmlFor="BusinessLegalName" className="label">
+                <label htmlFor="" className="label">
                   Reservation
                 </label>
               </div>
-              <div className="lables2">
-                <label htmlFor="BusinessLegalName" className="label">
+              <div className="lablesreserv">
+                <label htmlFor="" className="labelreserv">
                   Please mention the reservation service
                 </label>
               </div>
@@ -1382,9 +1375,12 @@ const validate=()=>{
                       />
                     </div>
                   </div>
-                  <label htmlFor="BusinessLegalName" className="labelreserve">
-                    Reservation serive time
-                  </label>
+                
+                <label htmlFor="BusinessLegalName" className="reservel">
+                Reservation serive time
+                </label>
+            
+                  
                   <div className="checkinform2">
                     <div className="check2">
                       <label htmlFor="Lateshowtime" id="maximuminon">
@@ -1425,7 +1421,7 @@ const validate=()=>{
                       />
                     </div>
                   </div>
-                  <label htmlFor="BusinessLegalName" className="labelreserve">
+                  <label htmlFor="BusinessLegalName" className="reservel">
                     Reservation available days
                   </label>
 
@@ -1434,16 +1430,17 @@ const validate=()=>{
                       <div key={day} className="checkbox-container">
                         <input
                           type="checkbox"
+                          style={{ marginLeft: day === "Monday" ? "-10px" : "8px" }}
                           name={day}
                           checked={Outletdetails.reservation.days.includes(day)}
                           onChange={() => handleDayChange(day)}
-                          className="radioStyle"
+                          className="radioStylecheckbox"
                         />
-                        <label style={{ fontSize: "13px",marginTop:'7px' }}>{day}</label>
+                        <label style={{ fontSize: "16px",marginTop:'8px' }}>{day}</label>
                       </div>
                     ))}
                   </div>
-                  <label htmlFor="BusinessLegalName" className="labelreserve">
+                  <label htmlFor="BusinessLegalName" className="reservel">
                     Reservation Buffer Days
                   </label>
                   <div className="Reservation available days">
@@ -1453,9 +1450,9 @@ const validate=()=>{
                       </label>
                       <input
                         type="text"
-                        id="maximuminonline"
+                        id="bufferbox"
                         value={Outletdetails.reservation.bufferDays}
-                        placeholder="2"
+                        placeholder="2 days"
                         style={{fontSize:'14px'}}
                         maxLength={3}
                         onKeyPress={handleKeyPress}

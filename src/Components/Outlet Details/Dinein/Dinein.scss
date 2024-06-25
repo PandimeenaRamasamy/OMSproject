@@ -33,28 +33,189 @@
   margin-bottom: 30px;
 }
 
-.label,
-.labelInter {
-  font-family: 'Poppins', sans-serif;
-  
-}
+
 
 .label {
   font-size: 14px;
  
 }
+.merchantlable1
+{
+  .labelInter {
+    color: #2F2F2F;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+}
+.merchantlable1
+{
+  margin-top: 10px;
+}
 
-.labelInter {
-  font-size: 14px;
+.merchantlable2
+{
+
+  .labelInter {
+    color: #2F2F2F;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
 }
 
 .reservelabel {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  font-weight: 500;
+
   text-align: left;
   color: #2f2f2f;
 }
+.lablesdine
+{
+ .labeldine
+ {
+  //styleName: Subtitle/Text 14;
+font-family: 'Poppins',sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color: #666666;
+
+
+ }
+}
+
+.lablescheckin
+{
+ .labelcheck
+ {
+  //styleName: Subtitle/Text 14;
+font-family: 'Poppins',sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color: #666666;
+
+
+ }
+}
+
+.lables2
+{
+  .labelcheckin2
+  {
+    font-family: 'Poppins',sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color: #666666;
+  }
+}
+.merchantlable2
+{
+  .labelInter
+  {
+    font-family: 'Poppins',sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color: #666666;
+  }
+}
+
+.lablesreserv
+{
+  .labelreserv
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+  }
+}
+
+.check2
+{
+  #reservationdays
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+  }
+}
+
+.lables1
+{
+  .labelreserve
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+  }
+}
+
+.check1
+{
+  #maximuminon
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+
+  }
+  #maximuminoff
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+  }
+}
+
+.check2
+{
+  #maximuminon
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+
+  }
+  #maximuminoff
+  {
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #666666;
+  }
+}
+
+
 
 .lables1 {
   margin-top: -20px;
@@ -64,12 +225,25 @@
     font-size: 18px;
 
   }
+  .reservel
+  {
+    color: #2F2F2F;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 15px;
+  }
   .labelcheckin1 {
     margin-top: 20px;
   }
   .labelhighchair{
 
-    font-size: 14px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    text-align: left;
+    color:  #2F2F2F;
+    
    }
 
  
@@ -77,17 +251,38 @@
 
 
 
-
-
-.lables2  .labelhighchair{
-  margin-top: 2%;
-  font-size: 14px;
+.labelhighchair {
+.labelhighchair1{
+  color: #2F2F2F;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 10px;
+  line-height: 27px;
 }
+}
+
+.labelhighchair {
+  .labelhighchair2{
+    color:  #666666;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+    line-height: 14px;
+    
+  }
+  }
+
+
+
  
-.chairradio {
-  font-size: 15px;
+.chairradiodine {
+  font-size: 16px;
   font-family: 'Poppins', sans-serif;
   color: #666666;
+  margin-top: 20px;
+
 }
 
 .enabledisablebtninter {
@@ -129,30 +324,50 @@
 .highchairradio {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  width: 138px;
+  height: 25px;
+ 
  
  
   .highchairradio2 input{
-    margin-left: 10px;
+    margin-left: 25px;
+    margin-top: -5px;
     width: 20px;
     height: 20px;
+   
   }
   .highchairradio1 input {
-   margin-left: 10px;
+   margin-left: 0px;
     width: 20px;
+    margin-top: -5px;
     height: 20px;
   }
 }
 .headingdine {
   h5{
     margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+  
 
   }
 
 }
+.radionamedine
+{
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #2F2F2F;
+  margin-top: -5px;
+  font-weight: 400;
+}
 
-.radioStyle {
+
+
+.radioStyledine {
   // transform: scale(1.1);
   margin-right: 10px;
  
@@ -161,11 +376,22 @@
 
 .interactivefn {
   width: 350px;
-  height: 270px;
-  margin-left: 10px;
+  height: 100px;
+ 
   // border: 1px solid black;
 }
 
+
+
+.labelInteractive
+{
+  font-family: 'Poppins',sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color: #666666;
+}
 .Dinein1,
 .Interactive2,
 .checkin3,
@@ -177,7 +403,7 @@
 hr {
   height: 1px;
   background-color: #979797;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 10px;
  
   width: 150%;
@@ -204,13 +430,27 @@ hr {
   font-weight: 400;
   line-height: 24px;
   text-align: left;
+  
+  
 }
 
 #maximuminonline,
 #maximuminoffline {
   width: 290px;
-  height: 45px;
+  height: 40px;
   border-radius: 4px;
+  margin-top: -1px;
+  outline: none;
+  border: 1px solid #2f2f2f;
+  
+}
+
+#bufferbox
+{
+  width: 290px;
+  height: 40px;
+  border-radius: 4px;
+  margin-top: 1px;
   outline: none;
   border: 1px solid #2f2f2f;
 }
@@ -222,43 +462,67 @@ hr {
 #maximuminoffline {
   margin-left: 30px;
 }
+.check1
+{
+  input{
+    padding: 10px;
+  }
+}
 
+.check2
+{
+  input{
+    padding: 10px;
+  }
+}
 .labelcheckin1 {
-  font-size: 14px;
+  
   font-family: 'Poppins', sans-serif;
+  color: #2F2F2F;
+    font-weight: 500;
+    font-size: 18px;
+
 }
 
 .labelcheckin2 {
-  font-size: 12px;
+  color: #2F2F2F;
+    font-weight: 500;
+    font-size: 14px;
+
   font-family: 'Poppins', sans-serif;
 }
 
 .labelreserve {
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
+ 
 }
 
 .reservecheckbox {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  padding-left: -10px;
+ 
+  margin-bottom: 10px;
 }
 
 .checkbox-container {
-  padding: 10px;
+  padding: 8px;
   font-family: 'Poppins', sans-serif;
   font-size: 13px;
   display: flex;
   flex-direction: row;
+  
 
   input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    border: 2px solid #ccc;
+    width: 18px;
+    height: 18px;
+  
     border-radius: 3px;
     margin-right: 10px;
+    border: 2px solid #979797;
     
     cursor: pointer;
 
@@ -275,16 +539,19 @@ hr {
        
         text-align: center;
         position: relative;
-        top: -8px;
+        top: -5px;
       }
     }
   }
 }
 
-
+.auto
+{
+  
+}
 
 #reservationdays {
-  margin-top: 20px;
+  margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
 }
