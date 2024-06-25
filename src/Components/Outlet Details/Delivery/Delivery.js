@@ -1,4 +1,4 @@
-import React, {  useState ,useImperativeHandle} from "react";
+import React, {  useState ,useImperativeHandle,useEffect} from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
@@ -97,6 +97,87 @@ const Delivery = React.forwardRef((props,ref) => {
   const [selectedThirdParties, setSelectedThirdParties] = useState([]);
   const [deliveryOption, setDeliveryOption] = useState("no");
 
+  const data = {
+    "location": {
+        "id": "c43f3a9c-60c7-4443-b1da-477c2ad3c97c",
+        "merchantId": "8dfe7674-709d-431c-a233-628e839ecc76",
+        "restaurantName": "A2B",
+        "name": "aruna",
+        "phone": "+91 587283487r2",
+        "email": "fdyu1@gmail.com",
+        "addressLine1": "71,amarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
+        "addressLine2": null,
+        "addressLine3": null,
+        "city": "Madurai",
+        "state": "TamilNadu",
+        "pinCode": "625009",
+        "country": "India",
+        "attributes": "{\"parking\": [\"four wheeler\", \"two wheeler\"], \"cuisines\": [\"fast Food\", \"North Indian\"], \"amenities\": [\"free-wifi\"], \"gstNumber\": \"erts4639\", \"BankDetails\": {\"ifscCode\": \"SBI4365\", \"accountNumber\": \"12334578938999\", \"AccountHolderName\": \"arun\"}, \"websiteLink\": \"www.rest.com\", \"FaceBookLink\": \"rest.fb.com\", \"DineInDetails\": {\"dineIn\": \"disabled\", \"checkIn\": {\"autoAssign\": \"no\", \"abandonTime\": \"00:15Am\", \"lateShowTime\": \"10:24\", \"autoCancelTime\": \"12:45\", \"maximumPeopleAllowedOnline\": \"25\", \"maximumPeopleAllowedOffline\": null}, \"highChair\": \"yes\", \"reservation\": {\"days\": [\"wednesday\", \"sunday\"], \"bufferDays\": 3, \"maximumPeopleAllowed\": \"25\", \"minimumPeopleAllowed\": \"3\", \"reservationServiceTimeTo\": \"00:00PM\", \"reservationServiceTimeFrom\": \"00:00AM\"}, \"interactiveDineIn\": \"enabled\", \"merchant4DigitValidation\": \"enabled\"}, \"PickUpDetails\": {\"eta\": \"40mins\", \"payment\": [\"card\", \"applePay\"], \"serviceTimeTo\": \"00:00PM\", \"packagingCharge\": \"3\", \"serviceTimeFrom\": \"00:00AM\", \"scheduledDuration\": \"Eta\"}, \"instagramLink\": \"rest_insta\", \"KitchenDetails\": {\"kdsAlert\": \"15mins\", \"lastOrderTime\": \"00:00AM\"}, \"SafetyMeasures\": \"We sanitize all  tables and chairs after every use\", \"WhatsappNumber\": \"6578740562764958\", \"DeliveryDetails\": {\"deliveryPayment\": [\"pay at store\", \"apple pay\"], \"packagingCharge\": \"15\", \"isInHouseEnabled\": false, \"maximumOrderPrice\": \"$1000\", \"minimumOrderPrice\": \"$100\", \"scheduledDelivery\": \"yes\", \"deliverySettingTime\": [{\"deliveryServiceTimeTo\": \"11:00PM\", \"deliveryServiceTimeFrom\": \"08:00AM\"}, {\"deliveryServiceTimeTo\": \"10:00PM\", \"deliveryServiceTimeFrom\": \"06:00PM\"}], \"isThirdPartyEnabled\": false, \"scheduledDeliveryDuration\": \"4D\"}, \"RestaurantNumber\": \"436789908295\"}"
+    },
+    "media": [],
+    "availabilityDtos": [
+        {
+            "createdTime": null,
+            "endTime": "07:00",
+            "name": "HappyHours",
+            "startTime": "05:00",
+            "weekDay": "5"
+        },
+        {
+            "createdTime": null,
+            "endTime": "12:00PM",
+            "name": "lunch",
+            "startTime": "08:00AM",
+            "weekDay": "4"
+        },
+        {
+            "createdTime": null,
+            "endTime": "12:00PM",
+            "name": "lunch",
+            "startTime": "08:00AM",
+            "weekDay": "5"
+        }
+    ]
+  };
+  
+  // const payloadData = {
+
+  //   locationId:datafromapi && datafromapi[0] ?datafromapi[0].locationId:"" ,
+
+   
+
+  //   deliverySettingTime,
+  //   deliveryPayment: selectedMethods,
+  //   scheduledDelivery: deliveryOption,
+  //   minimumOrderPrice: minPriceValue,
+  //   maximumOrderPrice: maxPriceValue,
+  //   scheduledDeliveryDuration: scheduledDay[currentIndex],
+  //   packagingCharge: packageCharge,
+  //   deliveryOption: {},
+  // };
+
+  useEffect(() => {
+   
+    const deliveryDetails = JSON.parse(data.location.attributes).DeliveryDetails;
+
+    setSelectedMethods(deliveryDetails.deliveryPayment || []);
+    setPackageCharge(deliveryDetails.packagingCharge || '');
+    setInHouse(deliveryDetails.isInHouseEnabled);
+    setShowInHouse(deliveryDetails.isInHouseEnabled);
+    setMaxPriceValue(deliveryDetails.maximumOrderPrice.replace('$', '') || '');
+    setMinPriceValue(deliveryDetails.minimumOrderPrice.replace('$', '') || '');
+    setDeliveryOption(deliveryDetails.scheduledDelivery);
+    setShowScheduledDelivery(deliveryDetails.scheduledDelivery === 'yes');
+    setTimeSlots(deliveryDetails.deliverySettingTime || []);
+    setThirdParty(deliveryDetails.isThirdPartyEnabled);
+    setScheduledDay[0]=deliveryDetails.scheduledDeliveryDuration
+    const index = scheduledDay.indexOf(deliveryDetails.scheduledDeliveryDuration);
+    setCurrentIndex(index);
+    console.log("eod",deliveryDetails.scheduledDeliveryDuration,"index",index)
+    // setShowThirdParty(deliveryDetails.isThirdPartyEnabled);
+  }, []);
+  
+  
   const enableClick = () => {
     setShowDelivery(true);
     if (isEnable !== false) {
@@ -426,6 +507,9 @@ const Delivery = React.forwardRef((props,ref) => {
               <p>Please mention the Scheduled delivery duration</p>
               <div className="scheduleContainer">
                 <div className="scheduledContent">
+                  {
+                    console.log("schedule",scheduledDay[currentIndex])
+                  }
                   <p>{scheduledDay[currentIndex]}</p>
                 </div>
                 <div className="arrow">

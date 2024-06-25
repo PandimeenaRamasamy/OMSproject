@@ -8,11 +8,15 @@
   border-bottom: 1px solid #979797;
   
 }
-.outletnav p {
+
+.outletheading 
+  {
   font-size: 24px;
   font-family: "Poppins", sans-serif;
   color: #2f2f2f;
   font-weight: 500;
+  margin-left: -10px;
+  
 }
 
 .navbar {
@@ -44,14 +48,15 @@
 }
 
 /* Active category styles */
-.nav-item.active {
+.nav-item.activee {
   
  
   height: 33px;
  
   border-bottom: 2px solid rgba(104, 132, 64, 1);
   color: #67833e;
-  font-weight: bold;
+  font-weight: 600;
+  
 
   
   
@@ -112,7 +117,7 @@
   .nav-item.active {
     border-bottom: 2px solid rgba(104, 132, 64, 1);
     color: #67833e;
-    font-weight: bold;
+   
     height: 22px;
     padding: 20px;
     margin-top: -20px;
@@ -183,7 +188,7 @@
     height: 22px;
     border-bottom: 2px solid rgba(104, 132, 64, 1);
     color: #67833e;
-    font-weight: bold;
+   
   
     
     
@@ -246,7 +251,7 @@
   .nav-item.active {
     border-bottom: 2px solid rgba(104, 132, 64, 1);
     color: #67833e;
-    font-weight: bold;
+    
   
     
     
@@ -314,7 +319,7 @@
   .nav-item.active {
     border-bottom: 2px solid rgba(104, 132, 64, 1);
     color: #67833e;
-    font-weight: bold;
+    
   
     
     

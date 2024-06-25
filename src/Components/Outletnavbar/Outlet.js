@@ -133,13 +133,13 @@ const Outlet = () => {
   return (
     <>
       <div className='outletnavorg'>
-        <p>Outlet Management</p>
+        <p className='outletheading'>Outlet Management</p>
         <nav className="navbar">
           <ul className="nav-list">
             {categories.map((category, index) => (
               <li
                 key={category}
-                className={`nav-item nav${index} ${location.pathname.includes(category.toLowerCase().replace(' ', '-')) ? 'active' : ''} ${category===pagename ?'active':''}`}
+                className={`nav-item nav${index} ${location.pathname.includes(category.toLowerCase().replace(' ', '-')) ? 'activee' : ''} ${category===pagename ?'activee':''}`}
                 onClick={() => handleCategoryClick(category)}
               >
                 {category}

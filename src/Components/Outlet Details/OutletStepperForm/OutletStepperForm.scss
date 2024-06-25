@@ -75,21 +75,25 @@
     flex-direction: row;
   }
   .save_next{
-    width: 150px;
+    width: 120px;
     height: 35px;
    margin-left: 10px;
    color: white;
+   font-size: 16px;
+   font-weight: 500;
     font-family: 'Poppins', sans-serif;
     border-radius: 4px;
     background-color:  #67833E;
     border: 1px solid #67833E
   }
   .clear_all{
-    width: 150px;
+    width: 120px;
     height: 35px;
     color: #67833E;
     font-family: 'Poppins', sans-serif;
     border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
     border: 1px solid #67833E;
     background:none;
   }
