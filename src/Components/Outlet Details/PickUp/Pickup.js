@@ -159,7 +159,7 @@ return isValid;
                         {pickuperror.serviceTimeTo && <div className='error-flex'>{pickuperror.serviceTimeTo}</div>}
                         </div>
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
-                        <h5 className='Pickup_heading3'>Please mention the payment methods</h5>
+                        <h5 className='Pickup_heading10'>Please mention the payment methods</h5>
                         <div style={{display:'flex'}}>
                         <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
                         <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
@@ -169,7 +169,7 @@ return isValid;
                         </div>
                         <div >
                         <h5 className='Pickup_heading7'>Schedule Pick Up</h5> 
-                        <h5 className='Pickup_heading3'>Customer can place pick-up order for future/next session</h5>
+                        <h5 className='Pickup_heading11'>Customer can place pick-up order for future/next session</h5>
                         <div style={{display:"flex",justifyContent:"flex-start"}}>
                             <input type="radio" defaultChecked name="YesorNo" className='radioo1' onClick={handleSchedulePickuptrue}   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
                             <input type="radio" name="YesorNo" className='radioo2' onClick={handleSchedulePickup} style={{width:"20px"}}></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px"  }}>No</label>
