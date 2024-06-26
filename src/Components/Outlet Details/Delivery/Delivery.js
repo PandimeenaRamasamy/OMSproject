@@ -174,10 +174,12 @@ const Delivery = React.forwardRef((props,ref) => {
     const index = scheduledDay.indexOf(deliveryDetails.scheduledDeliveryDuration);
     setCurrentIndex(index);
     console.log("eod",deliveryDetails.scheduledDeliveryDuration,"index",index)
+    console.log("delivery time",deliveryDetails.deliverySettingTime)
+   
     // setShowThirdParty(deliveryDetails.isThirdPartyEnabled);
   }, []);
   
-  
+  console.log("delivery time time slot",timeSlots[0])
   const enableClick = () => {
     setShowDelivery(true);
     if (isEnable !== false) {
@@ -210,6 +212,7 @@ const Delivery = React.forwardRef((props,ref) => {
   };
 
   const addDayAndTime = () => {
+
     if (timeSlots.length < 3) {
       setTimeSlots([
         ...timeSlots,
@@ -368,8 +371,30 @@ const Delivery = React.forwardRef((props,ref) => {
 
 
 }))
+const convertTo24HourFormat = (time) => {
+  const [hoursAndMinutes, period] = [time.slice(0, -2), time.slice(-2)];
+  let [hours, minutes] = hoursAndMinutes.split(':').map(Number);
+
+  if (period.toLowerCase() === 'pm' && hours !== 12) hours += 12;
+  if (period.toLowerCase() === 'am' && hours === 12) hours = 0;
+
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+};
 
  
+const convertTo12HourFormat = (time) => {
+  let [hours, minutes] = time.split(':').map(Number);
+  const period = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}${period}`;
+};
+
+const handleTimeChange = (index, key, value) => {
+  const updatedTimeSlots = timeSlots.map((slot, i) => 
+    i === index ? { ...slot, [key]: convertTo12HourFormat(value) } : slot
+  );
+  setTimeSlots(updatedTimeSlots);
+};
 
   return (
     <div className="delivery">
@@ -397,31 +422,42 @@ const Delivery = React.forwardRef((props,ref) => {
           <h3>Delivery service time</h3>
           <div className="checkBoxContainer">
             <label>
-              <input className="checkbox" type="checkbox" />
+              <input className="checkboxdelivery" type="checkbox" />
               <p className="cPname">Same as restaurant working time</p>
             </label>
           </div>
           <div className="addTime">
-            {timeSlots.map((slot, index) => (
-              <AddTime
+          {timeSlots.map((slot, index) => (
+        <div key={index}>
+          <input type="time" value={ slot.deliveryServiceTimeFrom &&  convertTo24HourFormat(slot.deliveryServiceTimeFrom)}  onChange={(e) => handleTimeChange(index, 'deliveryServiceTimeFrom', e.target.value)}  />
+          <input type="time" value={slot.deliveryServiceTimeTo&&convertTo24HourFormat(slot.deliveryServiceTimeTo)}  onChange={(e) => handleTimeChange(index, 'deliveryServiceTimeTo', e.target.value)}   />
+        </div>
+      ))}
+              {/* <AddTime
                 key={index}
                 timeSlot={slot}
                 setTimeSlot={(newSlot) => {
                   const newSlots = [...timeSlots];
                   newSlots[index] = newSlot;
                   setTimeSlots(newSlots);
+                 
                 }}
-              />
-            ))}
-            <p className="deleteTime" onClick={handleDelete}>
+              /> */}
+            
+            
+            
+            {
+              timeSlots.length>1 &&  <p className="deleteTime" onClick={handleDelete}>
               - Delete Session
             </p>
+            }
+           
             <p onClick={addDayAndTime} className="Addtimeslot">+ Add Time slots</p>
           </div>
 
           <div className="payment">
             <h3>Delivery Payment</h3>
-            <p>Customer can place delivery order for future/next session</p>
+            <p>Please mention the payment methods</p>
             <div className="paymentMethod">
               <label>
                 <input
@@ -507,9 +543,7 @@ const Delivery = React.forwardRef((props,ref) => {
               <p>Please mention the Scheduled delivery duration</p>
               <div className="scheduleContainer">
                 <div className="scheduledContent">
-                  {
-                    console.log("schedule",scheduledDay[currentIndex])
-                  }
+                 
                   <p>{scheduledDay[currentIndex]}</p>
                 </div>
                 <div className="arrow">
@@ -539,11 +573,11 @@ const Delivery = React.forwardRef((props,ref) => {
                     setMinPriceValue(val);
                   }
                 }}
-                className="input"
+                className="input1"
               />
             </div>
             <div className="input-container">
-              <p>Maximum order price</p>
+              <p className="inputcontainermaximum">Maximum order price</p>
               <span className="symbol">$</span>
               <input
                 type="text"

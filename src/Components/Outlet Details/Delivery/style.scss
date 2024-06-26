@@ -1,8 +1,7 @@
 .delivery {
   position: relative;
-  margin-left: 370px; 
+  margin-left: 370px;
   top: 30px;
-  
 
   p {
     color: #666666;
@@ -11,36 +10,43 @@
     margin-top: -5px;
   }
 
-  .delivery-header
-  {
-    h2{
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
+  .delivery-header {
+    h2 {
+      font-family: "Poppins", sans-serif;
+
       color: #2f2f2f;
+
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 30px;
+      text-align: left;
       margin-bottom: 20px;
-
     }
 
-    h3{
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+    h3 {
+      font-family: "Poppins", sans-serif;
+
       color: #2f2f2f;
-      margin-bottom: 10px;
 
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+
+      margin-bottom: 10px;
     }
 
-    p{
+    p {
       color: #666666;
-      font-size: 13px;
-      font-weight: 500;
-     
-      
+
+      //styleName: Subtitle/Text 14;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      margin-top: -10px;
     }
   }
-
-
-
-
 
   //Button
   .button {
@@ -52,7 +58,7 @@
       border-radius: 20px;
       border-width: 1px;
       border-color: #979797;
-      
+
       color: #666666;
       cursor: pointer;
       border: none;
@@ -68,20 +74,24 @@
       border-width: 1px;
       background-color: #0d79dc;
       border: none;
-     
+
       color: white;
       cursor: pointer;
       // box-shadow: 1px 1px 1px 1px #0d79dc;
       margin-right: 15px;
     }
-
-   
   }
 
-
-  .deliveryContent
-  {
+  .deliveryContent {
     margin-top: -70px;
+
+    h3 {
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+    }
   }
   //CheckBox
   .checkBoxContainer {
@@ -92,20 +102,25 @@
     display: flex;
 
     .cPname {
-      // color: #2F2F2F;
-      font-size: 15px;
+      color: #2f2f2f;
+      //styleName: Subtitle/Text 16;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
     }
   }
 
-  .checkbox {
+  .checkboxdelivery {
     display: none;
   }
 
-  .checkbox + p::before {
+  .checkboxdelivery + p::before {
     content: "";
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     border: 2px solid #979797;
     border-radius: 4px;
     margin-right: 5px;
@@ -113,7 +128,7 @@
     cursor: pointer;
   }
 
-  .checkbox:checked + p::before {
+  .checkboxdelivery:checked + p::before {
     background-color: #67833e;
     border-color: #67833e;
     content: "✔";
@@ -129,40 +144,66 @@
     margin-left: 30px;
 
     .deleteTime {
-  
       margin-left: 10px;
       color: red;
-     
     }
     p {
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
       margin-top: 20px;
       color: #67833e;
-     margin-left: 250px;
+      margin-left: 340px;
       cursor: pointer;
-      font-weight: 600;
+
       text-align: center;
     }
   }
+
   .payment {
     margin-bottom: 30px;
     p {
       margin-bottom: 15px;
+      //styleName: Subtitle/Text 14;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      margin-top: -10px;
+      margin-bottom: 25px;
+      color: #666666;
     }
     .paymentMethod {
       margin-top: 5px;
       display: flex;
       gap: 20px;
     }
-    h3{
+    h3 {
       margin-bottom: 15px;
-
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+      color: #2f2f2f;
+    }
+    .cPname {
+      //styleName: Subtitle/Text 16;
+      font-family: Poppins;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      color: #2f2f2f;
     }
   }
 
   //radio-btn
+
   .radioBtn {
     display: flex;
-    margin-top: -10px;
+    margin-top: -5px;
 
     .sessionContainer {
       margin-right: 15px;
@@ -180,8 +221,8 @@
       input[type="radio"] + p::before {
         content: "";
         display: inline-block;
-        width: 15px;
-        height: 15px;
+        width: 18px;
+        height: 18px;
         border: 2px solid #979797;
         border-radius: 50%;
         margin-right: 5px;
@@ -198,6 +239,12 @@
       p {
         color: black;
         margin-top: 18px;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+
+        color: #2f2f2f;
       }
     }
   }
@@ -205,50 +252,113 @@
   .priceDetails {
     margin-top: 20px;
     margin-bottom: 20px;
+
+    h3 {
+      font-family: Poppins;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+      color: #2f2f2f;
+    }
     .input-container {
       position: relative;
       display: inline-block;
-      margin-right: 20px;
-      margin-top: 20px;
+      margin-right: 10px;
+      margin-top: 10px;
+      .input1 {
+        margin-left: -10px;
+        padding-left: 35px;
+        top: 59px;
+        width: 292px;
+        height: 44px;
+        border-radius: 4px;
+        border: 1px solid #979797;
+        margin-top: 2px;
+      }
+
+      .inputcontainermaximum {
+        margin-left: 10px;
+      }
+
+      p {
+        //styleName: Subtitle/Text 16;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+
+        color: #666666;
+      }
     }
 
     .symbol {
-      position: absolute;
-      top: 45px;
-      left: 10px;
+      position: relative;
+
+      left: 20px;
       transform: translateY(-50%);
       pointer-events: none;
     }
 
     .input {
       padding-left: 25px;
-      box-sizing: border-box;
-      border-width: 1px;
+      margin-top: 2px;
       top: 59px;
+      width: 292px;
+      height: 44px;
+
+      border-radius: 4px;
+      border: 1px solid #979797;
     }
   }
 
-
-  .schedule
-  {
+  .schedule {
     margin-bottom: 30px;
-    h3{
+    h3 {
       margin-bottom: 15px;
     }
-    p{
+    h3 {
       margin-bottom: 15px;
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+      color: #2f2f2f;
+    }
+    p {
+      //styleName: Subtitle/Text 14;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: left;
+      color: #666666;
+      margin-top: -10px;
+      margin-bottom: 10px;
     }
   }
- 
 
-  .deliveryInfo
-  {
+  .deliveryInfo {
     margin-bottom: 30px;
-    h3{
+    h3 {
       margin-bottom: 15px;
+      font-family: Poppins;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+      color: #2f2f2f;
     }
-    p{
+    p {
       margin-bottom: 15px;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: left;
+      color: #666666;
+      margin-top: -10px;
     }
   }
 
@@ -262,25 +372,37 @@
     justify-content: space-between;
     .scheduledContent {
       p {
-        color: black;
-        font-size: 17px;
-        padding-top: 13px;
-        padding-left: 25px;
-        font-weight: 500;
+        color: #000000;
+        // font-size: 17px;
+        // padding-top: 13px;
+        // padding-left: 25px;
+        // font-weight: 500;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        position: relative;
+        top: 20px;
+        left: 30px;
       }
     }
     .arrow {
-      margin-right: 5px;
-      margin-top: -5px;
+      margin-right: 15px;
+      margin-top: -7px;
       .upsideArrow {
         img {
           transform: rotate(180deg);
           cursor: pointer;
+          margin-top: -2px;
+          width: 12px;
+          height: 6px;
         }
       }
       .downsideArrow {
         img {
           cursor: pointer;
+          width: 12px;
+          height: 6px;
         }
       }
     }
@@ -294,12 +416,22 @@
       position: relative;
       display: inline-block;
       margin-right: 20px;
+      margin-left: -10px;
+    }
+
+    h3 {
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      text-align: left;
+      color: #2f2f2f;
     }
 
     .symbol {
-      position: absolute;
-      top: 33px;
-      left: 10px;
+      position: relative;
+
+      left: 20px;
       transform: translateY(-50%);
       pointer-events: none;
     }
@@ -308,20 +440,37 @@
       padding-left: 25px;
       box-sizing: border-box;
       border-width: 1px;
+      width: 292px;
+      height: 44px;
+
+      border-radius: 4px 0px 0px 0px;
+      border: 1px solid #979797;
     }
   }
 
   //delivery option
   .deliveryOption {
     margin-top: 15px;
-  
+    h3 {
+      font-family: Poppins;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+      color: #2f2f2f;
+    }
+
     .deliveryOptionContainer {
       display: flex;
       margin-top: 20px;
       gap: 20px;
 
       p {
-        color: black;
+        color: #2f2f2f;
+        //styleName: Subtitle/Text 16;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
       }
     }
   }
@@ -386,31 +535,28 @@
     }
   }
 
+  // .inHousedeliveryoption
+  // {
 
-// .inHousedeliveryoption
-// {
- 
-//   height: 100vh;
-// }
-// .thirdpartydeliveryoption
-// {
+  //   height: 100vh;
+  // }
+  // .thirdpartydeliveryoption
+  // {
 
-//   height: 30vh;
-// }
+  //   height: 30vh;
+  // }
 
-.feesStructure
-{
-  margin-top: 20px;
-}
+  .feesStructure {
+    margin-top: 20px;
+  }
 
   .inhouse {
     margin-top: 30px;
-   
+
     width: 750px;
     border: 1px solid #979797;
     padding: 0 40px 20px 40px;
     border-radius: 8px;
-   
 
     .header {
       display: flex;
@@ -419,11 +565,9 @@
       justify-content: space-between;
       cursor: pointer;
     }
-    .body{
-     
-      p{
+    .body {
+      p {
         margin-bottom: 20px;
-
       }
     }
     .arrowDown {
@@ -436,9 +580,8 @@
     }
   }
 
-  .distance
-  {
-    h5{
+  .distance {
+    h5 {
       margin-bottom: 20px;
     }
   }
@@ -482,7 +625,7 @@
           font-size: 15px;
           height: 35px;
           width: 250px;
-          border:1px solid #979797;
+          border: 1px solid #979797;
         }
         p {
           margin-top: 15px;
@@ -531,29 +674,25 @@
     }
   }
 
-  .cod{
+  .cod {
     margin-top: 20px;
-    h3{
+    h3 {
       margin-bottom: 5px;
     }
-   p{
-    margin-bottom: 5px;
-   }
+    p {
+      margin-bottom: 5px;
+    }
   }
 
-  .batchOrder{
+  .batchOrder {
     margin-top: 10px;
-    h3{
+    h3 {
       margin-bottom: 5px;
     }
-   p{
-    margin-bottom: 5px;
-   }
+    p {
+      margin-bottom: 5px;
+    }
   }
-
-
-
-
 
   .button {
     margin-bottom: 100px;
@@ -604,7 +743,6 @@
 
 @media (max-width: 1280px) {
   .delivery {
-
     margin-top: -50px;
     h3 {
       font-size: 16px;
@@ -624,9 +762,7 @@
       }
     }
 
-
-    .scheduleContainer
-    {
+    .scheduleContainer {
       .arrow {
         margin-right: 5px;
         margin-top: -10px;
@@ -634,7 +770,7 @@
           img {
             transform: rotate(180deg);
             cursor: pointer;
-           font-size: 20px;
+            font-size: 20px;
           }
         }
         .downsideArrow {
@@ -645,14 +781,12 @@
         }
       }
     }
-    .addTime{
-      .deleteTime{
+    .addTime {
+      .deleteTime {
         margin-top: 100px;
       }
     }
 
-
-    
     .checkBoxContainer {
       width: 100%;
       margin-top: 20px;
@@ -896,8 +1030,7 @@
         color: #67833e;
         margin-left: -220px;
       }
-      .Addtimeslot
-      {
+      .Addtimeslot {
         margin-left: 400px;
       }
     }
@@ -909,7 +1042,7 @@
     margin-top: -50px;
     position: relative;
     left: -100px;
-  
+
     h3 {
       font-size: 16px;
     }
