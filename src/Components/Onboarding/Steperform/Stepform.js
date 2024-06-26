@@ -66,29 +66,7 @@ function Stepform({data}) {
     setVisitedSteps(updatedVisitedSteps);
   }, [activeStep]);
 
-  const handleStepClick = (index) => {
-    if (index > activeStep) {
-      let isValid = true;
-      switch (activeStep) {
-        case 0:
-          isValid = restaurantDetailsRef.current.validate();
-          break;
-        case 1:
-          isValid = locationRef.current.getValidate();
-          break;
-        case 2:
-          isValid = fssaiRef.current.validate();
-          break;
-        default:
-          break;
-      }
-      if (!isValid) {
-        toast.error("Please fill out the required fields before moving to the next step.");
-        return;
-      }
-    }
-    setActiveStep(index);
-  };
+  
 
   const handleSaveAndNext = () => {
     let isValid = true;
@@ -241,8 +219,7 @@ function Stepform({data}) {
                   className={`steponboard ${
                     index === activeStep ? "activeonboard" : ""
                   } ${visitedSteps[index] ? "visitedonboard" : ""}`}
-                  onClick={() => handleStepClick(index)}
-                >
+                                  >
                   {step.icon}
                   <div className="icon-textonboard">{step.title}</div>
                 </div>
