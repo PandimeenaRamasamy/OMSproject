@@ -787,7 +787,7 @@ const Restaurant = forwardRef((props, ref) => {
 
           
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }} >
+            <div className="inputdivreg" style={{ display: "flex", justifyContent: "space-evenly" }} >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="email" className="labelres">Email</label>
                 <input
@@ -817,7 +817,7 @@ const Restaurant = forwardRef((props, ref) => {
               </div>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "space-evenly" }} >
+            <div className="inputdivreg"  style={{ display: "flex", justifyContent: "space-evenly" }} >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor="instagramLink" className="labelres">Instagram Link</label>
                 <input

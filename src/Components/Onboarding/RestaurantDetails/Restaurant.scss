@@ -145,6 +145,19 @@
 
     }
     
+
+    
+    @media (max-width:900px) {
+    .inputdivreg{
+      display: flex;
+      flex-direction: column;
+    }
+    .personal-detailsres
+    {
+      margin-left: 0px;
+    }
+
+    }
     
     
     

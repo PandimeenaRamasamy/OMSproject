@@ -910,8 +910,7 @@ const Location = forwardRef((props, ref) => {
         type="text"
         className="inputboxloc"
         placeholder="Name"
-        value={textbox}  
-        onChange={(e) => handleAddressChange(index, e.target.value)}
+        
         style={{
           borderColor: locationError.address ? "red" : "#B3B3B3",
           marginBottom: "30px",

@@ -642,7 +642,7 @@ const handleTimeChange = (index, key, value) => {
           {inHouse && (
             <div className="inhouse">
               <div className="header" onClick={() => setShowInHouse((inho) => !inho)}>
-                <h3>Inhouse</h3>
+                <h3  style={{fontSize:"18px", fontWeight:"500",fontFamily:"Poppins"}}>Inhouse</h3>
                 <img
                   className={showInHouse ? "arrowUp" : "arrowDown"}
                   onClick={() => setShowInHouse(!showInHouse)}
@@ -651,7 +651,7 @@ const handleTimeChange = (index, key, value) => {
               </div>
               {showInHouse && (
                 <div className="body">
-                  <p>Use restaurant person to deliver the food</p>
+                  <p style={{fontSize:"14px",fontWeight:"400"}}>Use restaurant person to deliver the food</p>
 
                   <div className="distance">
                     <h5>Maximum Radius</h5>
@@ -669,7 +669,7 @@ const handleTimeChange = (index, key, value) => {
                   </div>
 
                   <div className="cod">
-                    <h3>Cash On Delivery</h3>
+                    <h3 style={{fontFamily:"Poppins",fontSize:"17px",fontWeight:"600"}}>Cash On Delivery</h3>
                     <p>Collect order bill amount from cutomer offline</p>
                     <div className="radioBtn">
                       <div className="sessionContainer">
@@ -702,7 +702,7 @@ const handleTimeChange = (index, key, value) => {
                   </div>
 
                   <div className="batchOrder">
-                    <h3>Batch Order</h3>
+                    <h3 style={{fontFamily:"Poppins",fontSize:"17px",fontWeight:"600"}}>Batch Order</h3>
                     <p>Allow multiple order delivery in single ride</p>
                     <div className="radioBtn">
                       <div className="sessionContainer">
@@ -733,7 +733,7 @@ const handleTimeChange = (index, key, value) => {
                       </div>
                     </div>
                     <div className="defaultCount">
-                      <p>Default count of branch order</p>
+                      <p style={{fontFamily:"Poppins",fontSize:"16px",fontWeight:"400"}}>Default count of branch order</p>
                       <input
                         type="text"
                         placeholder="Upto 30"
@@ -749,7 +749,7 @@ const handleTimeChange = (index, key, value) => {
                   </div>
 
                   <div className="feesStructure">
-                    <h3>Fees Structure</h3>
+                    <h3 style={{fontFamily:"Poppins",fontSize:"16px",fontWeight:"600"}}>Fees Structure</h3>
                     <p>Please maintain a fees structure</p>
 
                     <div className="radioBtn">
@@ -782,14 +782,14 @@ const handleTimeChange = (index, key, value) => {
                             }}
                             onChange={handleFeesStructure}
                           />
-                          <p className="sessionName">Flat Fee</p>
+                          <p >Flat Fee</p>
                         </label>
                       </div>
                     </div>
 
                     {isBOD && (
                       <div className="basedOnDistance">
-                        <h3>Based on Distance</h3>
+                        <h3 style={{fontFamily:"Poppins",fontSize:"16px",fontWeight:600}}>Based on Distance</h3>
                         <p>Amount based on distance</p>
                         <div className="distanceInput">
                           <div className="input-container">
@@ -828,7 +828,7 @@ const handleTimeChange = (index, key, value) => {
 
                     {isFlatFee && !isBOD && (
                       <div className="flatfee">
-                        <h3>Flat Fee</h3>
+                        <h3 style={{fontFamily:"Poppins",fontSize:"16px",fontWeight:600}}>Flat Fee</h3>
                         <p>The flat amount for every order</p>
                         <div className="flatfeeInput">
                           <div className="input-container">
