@@ -192,6 +192,25 @@
   
   
    */
+
+
+   @media(max-width:1500px)
+   {
+   
+
+    .sub-container {
+      width:1050px;
+      // top: 100px;
+      left:40px;
+      
+    }
+    .stepper-progress{
+      width: 1000px;
+    }
+  
+   }
+
+
    @media(max-width:1280px)
    {
     .Stepperformcontainer {
@@ -218,7 +237,6 @@
    {
     .sub-container {
       width:820px;
-      top: 100px;
       left:60px;
     }
     .stepper-progress{
