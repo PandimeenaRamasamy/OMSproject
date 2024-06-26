@@ -75,8 +75,7 @@
     margin-left: 350px;
     position: absolute;
     top: 34px;
-    width: 70%;
-    height: 110px;
+    
     border-bottom: 1px solid #979797;
     
   }
@@ -139,14 +138,41 @@
  
 }
 
+@media  (max-width: 1140px) {
+  .outletnavorg {
+
+    position: absolute;
+    top: -15px;
+    border-bottom: 1px solid #979797;
+    
+  } 
+
+
+
+}
+
+@media  (max-width:1075px) {
+  .outletnavorg {
+
+    position: absolute;
+    top: 45px;
+    border-bottom: 1px solid #979797;
+    
+  } 
+
+
+
+}
+
+
+
 @media screen and (max-width: 1080px) {
  
   .outletnavorg {
     margin-left: 250px;
     position: absolute;
-    top: 34px;
-    width: 70%;
-    height: 110px;
+    top: -14px;
+   
     border-bottom: 1px solid #979797;
     
   }
