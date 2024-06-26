@@ -243,7 +243,11 @@ color: red;
 
   }
   /* Media query for max-width 800px */
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 900px) {
+    .personal-detailsloc{
+      display: flex;
+      flex-direction: column;
+    }
    
    
   
