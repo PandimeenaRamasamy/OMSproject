@@ -265,3 +265,24 @@
     }
     
    }
+
+   @media(max-width:900px)
+   {
+    .Stepperformcontainer {
+      margin-top:190px;
+        transform: translateX(250px);
+        height:200px;
+      
+      
+        
+      }
+    .sub-container {
+      width:760px;
+     top:10px;
+      left: -40px;
+    }
+    .stepper-progress{
+      width: 680px;
+    }
+    
+   }
