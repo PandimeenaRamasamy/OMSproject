@@ -134,7 +134,7 @@ const Outlet = () => {
     <>
       <div className='outletnavorg'>
         <p className='outletheading'>Outlet Management</p>
-        <nav className="navbar">
+        <nav className="nav">
           <ul className="nav-list">
             {categories.map((category, index) => (
               <li

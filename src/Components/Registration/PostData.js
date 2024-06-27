@@ -56,7 +56,7 @@ const PostDataForm = () => {
         locationId: location.id || null,
         restaurantName: location.restaurantName || "",
         name: location.name || "",
-        phone: attributes.RestaurantNumber || "",
+        phone:location.phone || "",
         email: location.email || "",
         designation: location.designation || "",
         gstNumber: attributes.gstNumber || "",
@@ -205,6 +205,9 @@ const PostDataForm = () => {
     }
   };
 
+  const handlePaste = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="main-divreg">
@@ -292,9 +295,11 @@ const PostDataForm = () => {
               name="desig"
               id="desig"
               className="inputbox"
+            
               value={Registrationform.designation}
               onChange={(e) => setRegistrationform({ ...Registrationform, designation: e.target.value })}
             >
+               <option value="" selected></option>
               <option value="Owner" className="options">Owner</option>
               <option value="Manager" className="options">Manager</option>
               <option value="Admin" className="options">Admin</option>
@@ -306,6 +311,8 @@ const PostDataForm = () => {
               type="text"
               className="inputbox"
               placeholder=""
+               onPaste={handlePaste}
+               autoComplete="off"
               maxLength={15}
               onKeyPress={handleKeyPress}
               value={Registrationform.gstNumber}

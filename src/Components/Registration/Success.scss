@@ -62,4 +62,12 @@
     }
   }
   
-  
+  @media(max-width:1280px)
+  {
+   .alcoholModalOverlaysuccess
+   {
+    position: absolute;
+    width: 1400px;
+    height: 150vh;
+   }
+  }

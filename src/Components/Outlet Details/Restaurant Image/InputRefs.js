@@ -88,11 +88,13 @@ const ParentComponent = React.forwardRef((props,ref) => {
   return (
     <>
     <div className='RestaurantImagemain'>
-    <h1 className='RestaurantImageHeading'>Restaurant Image</h1>
-    <h1 className='RestaurantImageHeading'>Profile Image</h1>
+      <div>
+      <h1 className='RestaurantImageHeading1'>Restaurant Image</h1>
+    <h1 className='RestaurantImageHeading2'>Profile Image</h1>
     <p  className='RestaurantImagePara'>Please upload profile image</p>
- 
-     
+      </div>
+   
+
      <RestrauntImage inputRefs={[useRef(null)]} images={images} setImages={setImages} />
    
  
