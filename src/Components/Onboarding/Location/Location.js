@@ -799,6 +799,12 @@ const Location = forwardRef((props, ref) => {
     setTextboxes(newTextBoxes);
     setForm({ ...form, address: newTextBoxes.join(", ") });
   };
+  const handleAddressChange2 = (index, value) => {
+    const newTextBoxes = [...textboxes];
+    newTextBoxes[1] = value;
+    setTextboxes(newTextBoxes);
+    setForm({ ...form, address: newTextBoxes.join(", ") });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -870,6 +876,8 @@ const Location = forwardRef((props, ref) => {
     });
   };
 
+  console.log(form)
+
   return (
     <div className="main-divloc">
       <div className="submain-divloc">
@@ -893,7 +901,7 @@ const Location = forwardRef((props, ref) => {
                 className="inputboxloc"
                 placeholder="Name"
                 name="address"
-                value={form.address}
+               
                 onChange={(e) => handleAddressChange(0, e.target.value)}
 
                 onBlur={handleBlur}
@@ -913,6 +921,8 @@ const Location = forwardRef((props, ref) => {
         type="text"
         className="inputboxloc"
         placeholder="Name"
+        onChange={(e) => handleAddressChange2(1, e.target.value)}
+
         
        
       />

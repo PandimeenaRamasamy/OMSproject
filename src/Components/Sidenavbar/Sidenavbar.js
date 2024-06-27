@@ -122,7 +122,6 @@ const Sidenavbar = () => {
                           
                         }
                       >
-                        
                         {datafromapi[index].restaurantName}
                       </button>
                     </div>

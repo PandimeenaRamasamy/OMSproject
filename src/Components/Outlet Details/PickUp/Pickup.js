@@ -178,8 +178,8 @@ return isValid;
                         <h5 className='Pickup_heading13'>Schedule Pick Up</h5> 
                         <h5 className='Pickup_heading11'>Customer can place pick-up order for future/next session</h5>
                         <div style={{display:"flex",justifyContent:"flex-start"}}>
-                            <input type="radio"  name="YesorNo" className='radioo1' onClick={handleSchedulePickuptrue}   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
-                            <input type="radio" defaultChecked name="YesorNo" className='radioo2' onClick={handleSchedulePickup} style={{width:"20px"}}></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px"  }}>No</label>
+                            <input type="radio" defaultChecked name="YesorNo" className='radioo1' onClick={handleSchedulePickuptrue}   style={{width:"20px"}} ></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px" }}>Yes</label>
+                            <input type="radio" name="YesorNo" className='radioo2' onClick={handleSchedulePickup} style={{width:"20px"}}></input><label className='' style={{fontSize:"16px",marginTop:"20px",marginLeft:"6px"  }}>No</label>
                         
                         </div>
                         </div>
