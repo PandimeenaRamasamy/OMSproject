@@ -1121,7 +1121,7 @@ const Delivery = React.forwardRef((props,ref) => {
   const [isEnable, setIsEnable] = useState(false);
   const [showdelivery, setShowDelivery] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
-    // const data = useSelector((state) => state.getlocationdata.data);
+    const data = useSelector((state) => state.getlocationdata.data);
 
   const dispatch = useDispatch();
   const reducer = useSelector((state) => state.deliveryDataReducer);
@@ -1205,7 +1205,7 @@ const Delivery = React.forwardRef((props,ref) => {
   const [selectedThirdParties, setSelectedThirdParties] = useState([]);
   const [deliveryOption, setDeliveryOption] = useState("no");
 
-  const data = {
+  const data4 = {
         location: {
           id: "c43f3a9c-60c7-4443-b1da-477c2ad3c97c",
           merchantId: "8dfe7674-709d-431c-a233-628e839ecc76",
