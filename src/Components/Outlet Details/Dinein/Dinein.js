@@ -1375,11 +1375,12 @@ const validate=()=>{
                       />
                     </div>
                   </div>
-                
-                <label htmlFor="BusinessLegalName" className="reservel">
+                  <div style={{marginTop:'20px'}}>
+                  <label htmlFor="BusinessLegalName" className="lablesforreservation">
                 Reservation serive time
                 </label>
             
+                  
                   
                   <div className="checkinform2">
                     <div className="check2">
@@ -1420,8 +1421,13 @@ const validate=()=>{
                         }}
                       />
                     </div>
+                  </div>  
+                  
                   </div>
-                  <label htmlFor="BusinessLegalName" className="reservel">
+                
+               
+                  <div style={{marginTop:'20px'}}>
+                  <label htmlFor="BusinessLegalName" className="lablesforreservation">
                     Reservation available days
                   </label>
 
@@ -1440,7 +1446,10 @@ const validate=()=>{
                       </div>
                     ))}
                   </div>
-                  <label htmlFor="BusinessLegalName" className="reservel">
+                  </div>
+                  
+                 <div style={{marginTop:'20px'}}>
+                 <label htmlFor="BusinessLegalName" className="lablesforreservation">
                     Reservation Buffer Days
                   </label>
                   <div className="Reservation available days">
@@ -1468,6 +1477,8 @@ const validate=()=>{
                       />
                     </div>
                   </div>
+                 </div>
+                
                 </div>
               )}
             </div>

@@ -205,6 +205,9 @@ const PostDataForm = () => {
     }
   };
 
+  const handlePaste = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="main-divreg">
@@ -308,6 +311,8 @@ const PostDataForm = () => {
               type="text"
               className="inputbox"
               placeholder=""
+               onPaste={handlePaste}
+               autoComplete="off"
               maxLength={15}
               onKeyPress={handleKeyPress}
               value={Registrationform.gstNumber}

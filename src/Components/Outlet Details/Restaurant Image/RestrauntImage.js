@@ -90,7 +90,11 @@
     return (
       <div className='restaurantimage'>
   <div className='uploadImg'>
-    <h1 className='headingrestrauntimage2'>Restaurant images</h1>
+    <h1 className='headingrestrauntimage2'>Restaurant images
+    <p>Please upload atleast one facade shot (picture of the restaurant)</p>
+
+
+    </h1>
    
   <div className='uploadImg uploadImgContainer'>
    
