@@ -379,6 +379,7 @@ const BankDetails = forwardRef((props, ref) => {
               onBlur={handleBlur}
               onChange={handleChange}
               onPaste={handlePaste}
+               autoComplete="off"
               style={{ borderColor: bankError.reAccountNumber ? "red" : "#B3B3B3" }}
             />
             {bankError.reAccountNumber && (

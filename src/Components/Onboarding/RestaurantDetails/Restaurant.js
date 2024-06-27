@@ -408,7 +408,7 @@ const Restaurant = forwardRef((props, ref) => {
   const initialFormState = {
     locationId: data2 && data2||"" ,
     businessLegalName: "",
-    phone: "Mobile",
+    phone: "",
     email: "",
     website: "",
     instagramLink: "",
@@ -460,7 +460,7 @@ const Restaurant = forwardRef((props, ref) => {
       setForm({
         locationId: data2 && data2||data[0].location.id,
         businessLegalName: data[0].location.restaurantName || "",
-        phone: attributes.RestaurantNumber  || "",
+        phone: data[0].phone  || "",
         email:data[0].location.email || "",
         website: data[0].location.website || "",
         instagramLink: data[0].location.instagramLink || "",
@@ -497,12 +497,12 @@ const Restaurant = forwardRef((props, ref) => {
   };
 
   const handleCheckboxChange = () => {
-    if(form.restaurantNumber!==""){
+    if(form.phone!==""){
     setIsChecked(!isChecked);
     if (!isChecked) {
       setForm((prevForm) => ({
         ...prevForm,
-        whatsappNumber: prevForm.restaurantNumber
+        whatsappNumber: prevForm.phone
       }));
     } else {
       setForm((prevForm) => ({
@@ -542,14 +542,20 @@ const Restaurant = forwardRef((props, ref) => {
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(form.email)) {
       errors.email = "Enter valid email";
     }
-    if (!form.restaurantNumber) {
-      errors.restaurantNumber = " Enter Restaurant Number";
-      isValid = false;
+    // if (!form.restaurantNumber) {
+    //   errors.restaurantNumber = " Enter Restaurant Number";
+    //   isValid = false;
+    // }
+
+
+    if(numbertype=="Mobile"){
+      if (!form.whatsappNumber) {
+        errors.whatsappNumber = " Enter Restaurant Whatsapp Number";
+        isValid = false;
+      }
+
     }
-    if (!form.whatsappNumber) {
-      errors.whatsappNumber = " Enter Restaurant Whatsapp Number";
-      isValid = false;
-    }
+   
     setResError(errors);
     return isValid;
   };
@@ -584,10 +590,10 @@ const Restaurant = forwardRef((props, ref) => {
   };
   const validatePhone = () => {
     const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
-    if (form.restaurantNumber  === '') {
-      setResError({  ...reserror,restaurantNumber :'Enter phone number'});}
-    else if (!phonePattern.test(form.restaurantNumber)) {
-      setResError({...reserror,restaurantNumber:'Please enter a valid phone number'});
+    if (form.phone  === '') {
+      setResError({  ...reserror,phone :'Enter phone number'});}
+    else if (!phonePattern.test(form.phone)) {
+      setResError({...reserror,phone:'Please enter a valid phone number'});
     } else {
       setResError('');
     }
@@ -602,6 +608,16 @@ const Restaurant = forwardRef((props, ref) => {
       setResError('');
     }
   };
+
+
+  const [numbertype,setnumbertype]=useState("Mobile");
+
+  const typechange=(phonretype)=>{
+    setnumbertype(phonretype);
+
+  }
+
+
 
   return (
     <div className="main-divres">
@@ -639,11 +655,11 @@ const Restaurant = forwardRef((props, ref) => {
                   <input
                     type="radio"
                     value="Mobile"
-                    name="phone"
+                   
                     
                     className="radiores"
-                    checked={form.phone === "Mobile"}
-                    onChange={handleChange}
+                    checked={numbertype=== "Mobile"}
+                    onChange={()=>typechange("Mobile")}
                   />
                   Mobile
                 </label>
@@ -651,18 +667,17 @@ const Restaurant = forwardRef((props, ref) => {
                   <input
                     type="radio"
                     value="Landline"
-                    name="phone"
+                  
                     className="radiores radiores2 "
-                    checked={form.phone === "Landline"}
-                    onChange={handleChange}
+                    checked={numbertype === "Landline"}
+                    onChange={()=>typechange("Landline")}
                   />
                   Landline
                 </label>
-                {reserror.phone && (
-                  <div className="error_Res">{reserror.phone}</div>
-                )}
+               
               </div>
-              {form.phone==='Mobile' && <> <div style={{ marginTop: "10px" }} className="numberfield">
+              {numbertype==="Mobile" && <>
+                <div style={{ marginTop: "10px" }} className="numberfield">
                 <select
                   id="country-code"
                   value={selectedCode}
@@ -679,25 +694,25 @@ const Restaurant = forwardRef((props, ref) => {
                   type="text"
                   maxLength={10}
                   onKeyPress={handleKeyPress}
-                  name="restaurantNumber"
+                  name="phone"
                   className="phonenumberinput"
                   onBlur={validatePhone}
                   placeholder="Enter Mobile Number"
-                  value={form.restaurantNumber}
+                  value={form.phone}
                   onChange={handleChange}
                   style={{ borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3" }}
                 />
 
               </div>
               <div>
-                 {reserror.restaurantNumber && (
-                <div className="error_Res">{reserror.restaurantNumber}</div>
+                 {reserror.phone && (
+                <div className="error_Res">{reserror.phone}</div>
               )}
-              </div>
-              </>
-               }
+              </div></>}
+              
+            
 
-{form.phone==='Landline' && <> <div style={{ marginTop: "10px" }} className="numberfield">
+{numbertype==="Landline" && <> <div style={{ marginTop: "10px" }} className="numberfield">
                 {/* <select
                   id="country-code"
                   value="STD"
@@ -715,19 +730,19 @@ const Restaurant = forwardRef((props, ref) => {
                   type="text"
                   maxLength={10}
                   onKeyPress={handleKeyPress}
-                  name="restaurantNumber"
+                  name="phone"
                   className="phonenumberinput"
                   onBlur={validatePhone}
                   placeholder="Enter Mobile Number"
-                  value={form.restaurantNumber}
+                  value={form.phone}
                   onChange={handleChange}
                   style={{ borderColor: reserror.restaurantNumber ? "red" : "#B3B3B3" }}
                 />
 
               </div>
               <div>
-                 {reserror.restaurantNumber && (
-                <div className="error_Res">{reserror.restaurantNumber}</div>
+                 {reserror.phone && (
+                <div className="error_Res">{reserror.phone}</div>
               )}
               </div>
               </>
@@ -737,7 +752,10 @@ const Restaurant = forwardRef((props, ref) => {
 
               
             </div>
-            {form.phone!=='Landline' && <>  <div className="labelinput-divres">
+
+            {numbertype==="Mobile"  && <>
+
+              <div className="labelinput-divres">
               <label
                 htmlFor="whatsappNumber"
                 className="labelres"
@@ -783,7 +801,11 @@ const Restaurant = forwardRef((props, ref) => {
               {reserror.whatsappNumber && (
                 <div className="error_Res">{reserror.whatsappNumber}</div>
               )}
-            </div></>}
+            </div>
+            
+            
+            </>}
+        
 
           
 

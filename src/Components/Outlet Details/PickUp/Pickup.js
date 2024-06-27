@@ -55,6 +55,11 @@ const Pickup = React.forwardRef((props,ref) => {
         const PickUp = attributes.PickUpDetails || {};
         console.log(PickUp)
 
+        if(attributes.PickUpDetails )
+          {
+            setIsEnabled(true);
+          }
+
         setForm({
             locationId:data2 && data2||data[0].location.id,
           serviceTimeFrom: PickUp.serviceTimeFrom || "",
@@ -146,7 +151,7 @@ return isValid;
                         </div>
                         <div className='from_to'>
                         <h5 className='Pickup_heading6'>From</h5>
-                        <h5 className='Pickup_heading6'>To</h5>
+                        <h5 className='Pickup_heading6 Pickup_heading6to'>To</h5>
                         </div>
                         <div className='from_to_input'>
                         <input type="time"  value={form.serviceTimeFrom}className='textbox1' placeholder='11:00 AM' style={{
@@ -161,10 +166,10 @@ return isValid;
                         <h5 className='Pickup_heading7'>Pick up Payment</h5> 
                         <h5 className='Pickup_heading10'>Please mention the payment methods</h5>
                         <div style={{display:'flex'}}>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'0px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
-                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
-                        <input type='checkbox'  style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
-                        <input type='checkbox' style={{width:"20px",marginLeft:'10px'}} className='Pickcheck'  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
+                        <input type='checkbox' style={{marginLeft:'0px'}} value="Cards" className='Pickcheck' onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px' }}>Cards</label>
+                        <input type='checkbox'  style={{marginLeft:'30px'}} className='Pickcheck'  value="Pay at store" onChange={handlecheckedchange} ></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Pay at store</label>
+                        <input type='checkbox'  style={{marginLeft:'30px'}} className='Pickcheck'  value="Apple Pay" onChange={handlecheckedchange}></input><label style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Apple Pay</label>
+                        <input type='checkbox' style={{marginLeft:'30px'}} className='Pickcheck'  value="Google Pay" onChange={handlecheckedchange}></input><label  style={{fontSize:"16px" , marginTop:"20px",marginLeft:'10px'}}>Google Pay</label>
                        
                         </div>
                         <div >
@@ -182,7 +187,8 @@ return isValid;
                         <h5 className='Pickup_heading12'>Scheduled Pick up time Duration </h5> 
                         <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
                         <div className='pickupduration'>
-                            <input type="number" style={{
+                            <input type="number"     style={{
+                           
                           borderColor: pickuperror.scheduleDuration ? "red" : "#B3B3B3",
                         }} placeholder='EOD' className='updown' min="0" onChange={(e)=>setForm({...form,"scheduleDuration":e.target.value})}></input>
                         </div>

@@ -689,7 +689,7 @@ const Dinein = React.forwardRef((props,ref) => {
           setOutletdetails({
             locationId:data2 && data2||data[0].location.id,
             dineIn: dineInDetails.dineIn || "",
-            highChair: "No",
+            highChair: dineInDetails.highChair||"no",
 
             checkIn: {
               maximumPeopleAllowedOnline: checkInDetails.maximumPeopleAllowedOnline || "",

@@ -901,9 +901,12 @@ const Location = forwardRef((props, ref) => {
 
                
               />
-              
+                {locationError.address && (
+                <div className="error-message1" style={{marginTop:"-20px"}}>{locationError.address}</div>
+              )}
 {textboxes.map((textbox, index) => {
   return (
+    <>
     <div className="labelinput-divloc1" key={index}>
       <label htmlFor={`BusinessLegalName${index}`} className="labelloc1" >Line {index+1}</label>
       <input
@@ -911,19 +914,19 @@ const Location = forwardRef((props, ref) => {
         className="inputboxloc"
         placeholder="Name"
         
-        style={{
-          borderColor: locationError.address ? "red" : "#B3B3B3",
-          marginBottom: "30px",
-        }}
+       
       />
-      {locationError.address && (
-                <div className="error-message1" style={{marginTop:"-20px"}}>{locationError.address}</div>
-              )}
-      {textboxes.length < 2 && (
-        <button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>
-      )}
+    
       
     </div>
+    <div style={{marginLeft:'260px',marginTop:'40px'}}>
+    {textboxes.length < 2 && (
+        <button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>
+      )}
+    </div>
+    
+    </>
+    
   );
 })} 
             </div>
