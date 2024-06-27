@@ -51,14 +51,15 @@ const PostDataForm = () => {
     if (data && data[0] && data[0].location) {
       const location = data[0].location;
       const attributes = JSON.parse(location.attributes || "{}");
+      console.log("ttt",attributes)
 
       setRegistrationform({
         locationId: location.id || null,
-        restaurantName: location.restaurantName || "",
+        restaurantName: attributes.restaurantName || "",
         name: location.name || "",
         phone:location.phone || "",
         email: location.email || "",
-        designation: location.designation || "",
+        designation: attributes.designation || "",
         gstNumber: attributes.gstNumber || "",
         base64Image: null,
       });
@@ -66,6 +67,8 @@ const PostDataForm = () => {
       setImagePreview(null);
     }
   }, [data]);
+
+  console.log(Registrationform)
 
   const registrationpagerrors = {};
 
