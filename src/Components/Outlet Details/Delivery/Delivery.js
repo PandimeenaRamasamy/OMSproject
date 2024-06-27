@@ -22,25 +22,23 @@ const Delivery = React.forwardRef((props, ref) => {
   const [openingTime, setOpeningTime] = useState("00:00");
   const [closingTime, setClosingTime] = useState("00:00");
 
-  // const [timeSlots, setTimeSlots] = useState([
-  //   {
-  //     deliveryServiceTimeFrom: "",
-  //     deliveryServiceTimeTo: "",
-  //   },
-  // ]);
-  const [timeSlots, setTimeSlots] = useState([{ deliveryServiceTimeFrom: '00.00', deliveryServiceTimeTo: '00.00' }]);
+  const [timeSlots, setTimeSlots] = useState([
+    {
+      deliveryServiceTimeFrom: "",
+      deliveryServiceTimeTo: "",
+    },
+  ]);
 
-console.log("time slotssssssss",timeSlots)
-  // useEffect(() => {
-  //   if (timeSlots.length === 0) {
-  //     setTimeSlots([
-  //       {
-  //         deliveryServiceTimeFrom: "",
-  //         deliveryServiceTimeTo: "",
-  //       },
-  //     ]);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (timeSlots.length === 0) {
+      setTimeSlots([
+        {
+          deliveryServiceTimeFrom: "",
+          deliveryServiceTimeTo: "",
+        },
+      ]);
+    }
+  }, []);
 
   //Delivery payment method
   const [selectedMethods, setSelectedMethods] = useState([]);
@@ -191,9 +189,6 @@ console.log("time slotssssssss",timeSlots)
   //   console.log("eod",deliveryDetails.scheduledDeliveryDuration,"index",index)
   //   console.log("delivery time",deliveryDetails.deliverySettingTime)
   // }, []);
-  useEffect(() => {
-    console.log("useffect  time slotssssssss", timeSlots);
-  }, [timeSlots]);
 
   useEffect(() => {
     const deliveryDetails = JSON.parse(
@@ -211,13 +206,14 @@ console.log("time slotssssssss",timeSlots)
     setMinPriceValue(deliveryDetails.minimumOrderPrice.replace("$", "") || "");
     setDeliveryOption(deliveryDetails.scheduledDelivery);
     setShowScheduledDelivery(deliveryDetails.scheduledDelivery === "yes");
-    if( deliveryDetails.deliverySettingTime)
-      {
-        setTimeSlots(deliveryDetails.deliverySettingTime)
-      }
-
-
-   
+    setTimeSlots(
+      deliveryDetails.deliverySettingTime || [
+        {
+          deliveryServiceTimeFrom: "00:00AM",
+          deliveryServiceTimeTo: "00:00PM",
+        },
+      ]
+    );
     setThirdParty(deliveryDetails.thirdParty.isEnabled);
 
     const updatedScheduledDay = [...scheduledDay];
@@ -490,26 +486,38 @@ console.log("time slotssssssss",timeSlots)
             </label>
           </div>
           <div className="addTime">
-
-          {timeSlots.map((slot, index) => (
-        <div key={index}>
-          <input
-            type="time"
-            value={slot.deliveryServiceTimeFrom}
-            onChange={(e) => handleTimeChange(index, 'deliveryServiceTimeFrom', e.target.value)}
-            placeholder="From"
-          />
-          <input
-            type="time"
-            value={slot.deliveryServiceTimeTo}
-            onChange={(e) => handleTimeChange(index, 'deliveryServiceTimeTo', e.target.value)}
-            placeholder="To"
-          />
-        </div>
-      ))}
-
-
-            
+            {timeSlots.map((slot, index) => (
+              <div key={index}>
+                <input
+                  type="time"
+                  value={
+                    slot.deliveryServiceTimeFrom &&
+                    convertTo24HourFormat(slot.deliveryServiceTimeFrom)
+                  }
+                  onChange={(e) =>
+                    handleTimeChange(
+                      index,
+                      "deliveryServiceTimeFrom",
+                      e.target.value
+                    )
+                  }
+                />
+                <input
+                  type="time"
+                  value={
+                    slot.deliveryServiceTimeTo &&
+                    convertTo24HourFormat(slot.deliveryServiceTimeTo)
+                  }
+                  onChange={(e) =>
+                    handleTimeChange(
+                      index,
+                      "deliveryServiceTimeTo",
+                      e.target.value
+                    )
+                  }
+                />
+              </div>
+            ))}
             {/* <AddTime
                 key={index}
                 timeSlot={slot}
@@ -720,7 +728,7 @@ console.log("time slotssssssss",timeSlots)
 
           <div
             className="inHousedeliveryoption"
-            style={{ height: showInHouse ? "850px" : "100px" }}
+            style={{ height: showInHouse ? "900px" : "20vh" }}
           >
             {inHouse && (
               <div className="inhouse">
