@@ -53,6 +53,9 @@
     
    
   }
+  .icon .invalid{
+    background-color: red;
+  }
   
   .visited {
     background-color: rgba(0, 183, 29, 1) ;
@@ -246,6 +249,27 @@
    }
 
    @media(max-width:1080px)
+   {
+    .Stepperformcontainer {
+      margin-top:190px;
+        transform: translateX(250px);
+        height:200px;
+      
+      
+        
+      }
+    .sub-container {
+      width:760px;
+     top:10px;
+      left: -40px;
+    }
+    .stepper-progress{
+      width: 680px;
+    }
+    
+   }
+
+   @media(max-width:900px)
    {
     .Stepperformcontainer {
       margin-top:190px;
