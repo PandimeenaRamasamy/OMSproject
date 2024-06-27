@@ -11,9 +11,10 @@ const Kitchen = React.forwardRef((props,ref) => {
     const LocationId = dispatch(getLocationId(locationId));
     const datafromapi = useSelector((state) => state.postData.data);
     const Locid = LocationId.payload;
+    const data2 = useSelector((state) => state.registration.data);
     const [form,setForm]=useState({
 
-        locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+      locationId:data2 && data2||"",
 
         LastorderTime:"",
         KDSAlert:""
@@ -62,6 +63,7 @@ const Kitchen = React.forwardRef((props,ref) => {
                 console.log(kitchenDetails)
 
                 setForm({
+                  locationId:data2 && data2||data[0].location.id,
                   LastorderTime: kitchenDetails.lastOrderTime || "",
                   KDSAlert: kitchenDetails.kdsAlert || "",
                 

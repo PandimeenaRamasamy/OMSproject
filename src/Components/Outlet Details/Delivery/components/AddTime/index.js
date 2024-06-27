@@ -3,32 +3,29 @@ import "./style.scss";
 import Time from "../Time";
 
 const AddTime = ({ timeSlot, setTimeSlot }) => {
-  const { deliveryServiceTimeFrom, deliveryServiceTimeTo } = timeSlot;
-
-  console.log("Add time ,Timeslotssss",deliveryServiceTimeFrom
-    );
+  const { openingTime, closingTime } = timeSlot;
 
   return (
     <div className="AddTime">
       <div className="time">
         <div className="timeContainer">
-          <div className="nameBox">From</div>
+          <div className="nameBox">Opening Time</div>
           <div className="timeBox">
             <Time
-              selectedTime={timeSlot}
+              selectedTime={openingTime}
               setSelectedTime={(time) =>
-                setTimeSlot({ ...timeSlot, deliveryServiceTimeFrom: time })
+                setTimeSlot({ ...timeSlot, openingTime: time })
               }
             />
           </div>
         </div>
         <div className="timeContainer">
-          <div className="nameBox">To</div>
+          <div className="nameBox">Closing Time</div>
           <div className="timeBox">
             <Time
-              selectedTime={timeSlot}
+              selectedTime={closingTime}
               setSelectedTime={(time) =>
-                setTimeSlot({ ...timeSlot, deliveryServiceTimeTo: time })
+                setTimeSlot({ ...timeSlot, closingTime: time })
               }
             />
           </div>

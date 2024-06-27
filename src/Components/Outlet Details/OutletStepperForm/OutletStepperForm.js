@@ -1,5 +1,5 @@
 import "./OutletStepperForm.scss";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef ,useContext} from 'react';
 import './OutletStepperForm.scss';
 import { CiUser } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
@@ -18,6 +18,7 @@ import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LocationContext } from "../../LocationProvider";
 
 function Reciept() {
   return <h2>Reciept</h2>;
@@ -39,7 +40,7 @@ function Stepform() {
   const [dineInForm, setDineInForm] = useState("");
   const [deliveryform, setDeliveryForm] = useState("");
   const [basicDetailsForm, setBasicDetailsForm] = useState('');
-
+  const { locationBtn, setLocationBtn } = useContext(LocationContext);
   const outletsteps = [
     {
       title: "Basic Details",
@@ -147,6 +148,10 @@ function Stepform() {
           setKitchenForm(newFormData1);
           dispatch(PostKitchenDataRequest(newFormData1));
           toast.success("Data submitted successfully!");
+
+          setLocationBtn(false)
+
+
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }

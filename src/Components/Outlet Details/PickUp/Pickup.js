@@ -64,11 +64,13 @@ const Pickup = React.forwardRef((props,ref) => {
             locationId:data2 && data2||data[0].location.id,
           serviceTimeFrom: PickUp.serviceTimeFrom || "",
           serviceTimeTo: PickUp.serviceTimeTo || "",
-          Payment: PickUp.Payment || [],
+          Payment: PickUp.payment || [],
           scheduleDuration: PickUp.scheduleDuration || "",
           packagingCharge: PickUp.packagingCharge || "",
-          ETA: PickUp.ETA || "",
+          ETA: PickUp.eta || "",
         });
+
+        console.log("payment",form.Payment);
       } catch (error) {
         console.error("Failed to parse attributes", error);
       }
