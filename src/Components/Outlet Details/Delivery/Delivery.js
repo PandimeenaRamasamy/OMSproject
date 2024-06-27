@@ -1254,14 +1254,27 @@ const Delivery = React.forwardRef((props,ref) => {
 
 
   useEffect(() => {
+   
+
+
+    if (Array.isArray(data) && data.length > 0 && data[0].location) {
+
+      if (data[0].location.attributes) {
+
     const deliveryDetails = JSON.parse(
-      data.location.attributes
+      data[0].location.attributes
     ).DeliveryDetails;
+
+
+
     if (deliveryDetails) {
       setShowDelivery(true);
       setIsEnable(true);
+      
     }
+    if(deliveryDetails.deliveryPayment){
     setSelectedMethods(deliveryDetails.deliveryPayment || []);
+      }
     setPackageCharge(deliveryDetails.packagingCharge || "");
     setInHouse(deliveryDetails.inHouse.isEnabled);
     setShowInHouse(deliveryDetails.isInHouseEnabled);
@@ -1309,8 +1322,11 @@ const Delivery = React.forwardRef((props,ref) => {
       setShowDunzo(!!deliveryDetails.thirdParty.dunzoId);
       setShowUberEats(!!deliveryDetails.thirdParty.uberEatsId);
     }
+  }}
     console.log("inhouse", inHouse);
+
   }, [])
+
 
   const enableClick = () => {
     setShowDelivery(true);
