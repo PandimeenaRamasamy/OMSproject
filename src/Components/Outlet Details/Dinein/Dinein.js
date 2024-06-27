@@ -117,31 +117,109 @@ const Dinein = React.forwardRef((props,ref) => {
     Sunday: false,
   });
 
+  // useEffect(() => {
+    
+  //   if (Array.isArray(data) && data.length > 0 && data[0].location) {
+      
+  //     if (data[0].location.attributes) {
+  //       try {
+  //         const attributes = JSON.parse(data[0].location.attributes);
+  //         const dineInDetails = attributes.DineInDetails || {};
+  //         const checkInDetails = dineInDetails.checkIn || {};
+  //         const reservationDetails = dineInDetails.reservation || {};
+  //         console.log("checkInDetails", checkInDetails);
+
+  //         setOutletdetails({
+  //           locationId:data2 && data2||data[0].location.id,
+  //           dineIn: dineInDetails.dineIn || "",
+  //           highChair: dineInDetails.highChair||"no",
+          
+
+  //           checkIn: {
+  //             maximumPeopleAllowedOnline: checkInDetails.maximumPeopleAllowedOnline || "",
+  //             maximumPeopleAllowedOffline: checkInDetails.maximumPeopleAllowedOffline || "",
+  //             lateShowTime: checkInDetails.lateShowTime || "",
+  //             autoCancelTime: checkInDetails.autoCancelTime || "",
+  //             abandonTime: checkInDetails.abandonTime || "",
+  //             autoAssign: checkInDetails.autoAssign || "no",
+  //           },
+  //           reservation: {
+  //             minimumPeopleAllowed: reservationDetails.minimumPeopleAllowed || "",
+  //             maximumPeopleAllowed: reservationDetails.maximumPeopleAllowed || "",
+  //             reservationServiceTimeFrom: reservationDetails.reservationServiceTimeFrom || "",
+  //             reservationServiceTimeTo: reservationDetails.reservationServiceTimeTo || "",
+  //             days: reservationDetails.days || [],
+  //             bufferDays: reservationDetails.bufferDays || "",
+  //           },
+  //         });
+  //         setDineinselectedButton(!!dineInDetails.dineIn);
+  //         setInteractiveselectedButton(dineInDetails.interactiveDineIn ? "yes" : "no");
+  //         if(dineInDetails.merchant4DigitValidation)
+  //           {
+  //             setMergentdigitvaliadtion("yes")
+              
+  //             setMergentdigitvaliadtion("yes");
+  //           }
+
+  //           if(dineInDetails.highChair)
+  //             {
+  //               setDineinselectedButton(true);
+  //             }
+  //         setCheckinselectedButton(!!dineInDetails.checkIn);
+  //         setReservationinselectedButton(!!dineInDetails.reservation);
+  //         setCheckedDays(
+  //           (reservationDetails.days || []).reduce((acc, day) => {
+  //             acc[day.toLowerCase()] = true;
+  //             return acc;
+  //           }, {})
+  //         );
+  //       } catch (error) {
+  //         console.error("Failed to parse attributes", error);
+  //       }
+  //     }
+  //   } else {
+  //     console.log("Location data not present");
+  //   }
+  // }, [data]);
+     
   useEffect(() => {
-    // Ensure data is an array and has at least one element
     if (Array.isArray(data) && data.length > 0 && data[0].location) {
-      // Check if location attributes exist
       if (data[0].location.attributes) {
         try {
           const attributes = JSON.parse(data[0].location.attributes);
           const dineInDetails = attributes.DineInDetails || {};
-          const checkInDetails = dineInDetails.checkIn || {};
           const reservationDetails = dineInDetails.reservation || {};
-          console.log("checkInDetails", checkInDetails);
+          const days = reservationDetails.days || [];
+
+          const newCheckedDays = {
+            Monday: false,
+            Tuesday: false,
+            Wednesday: false,
+            Thursday: false,
+            Friday: false,
+            Saturday: false,
+            Sunday: false,
+          };
+
+          days.forEach((day) => {
+            newCheckedDays[day] = true;
+          });
+
+          setCheckedDays(newCheckedDays);
 
           setOutletdetails({
-            locationId:data2 && data2||data[0].location.id,
+            locationId: data2 || data[0].location.id,
             dineIn: dineInDetails.dineIn || "",
-            highChair: dineInDetails.highChair||"no",
-          
-
+            highChair: dineInDetails.highChair || "no",
+            interactiveDineIn: dineInDetails.interactiveDineIn || "",
+            merchant4DigitValidation: dineInDetails.merchant4DigitValidation || "no",
             checkIn: {
-              maximumPeopleAllowedOnline: checkInDetails.maximumPeopleAllowedOnline || "",
-              maximumPeopleAllowedOffline: checkInDetails.maximumPeopleAllowedOffline || "",
-              lateShowTime: checkInDetails.lateShowTime || "",
-              autoCancelTime: checkInDetails.autoCancelTime || "",
-              abandonTime: checkInDetails.abandonTime || "",
-              autoAssign: checkInDetails.autoAssign || "no",
+              maximumPeopleAllowedOnline: dineInDetails.checkIn?.maximumPeopleAllowedOnline || "",
+              maximumPeopleAllowedOffline: dineInDetails.checkIn?.maximumPeopleAllowedOffline || "",
+              lateShowTime: dineInDetails.checkIn?.lateShowTime || "",
+              autoCancelTime: dineInDetails.checkIn?.autoCancelTime || "",
+              abandonTime: dineInDetails.checkIn?.abandonTime || "",
+              autoAssign: dineInDetails.checkIn?.autoAssign || "no",
             },
             reservation: {
               minimumPeopleAllowed: reservationDetails.minimumPeopleAllowed || "",
@@ -152,27 +230,6 @@ const Dinein = React.forwardRef((props,ref) => {
               bufferDays: reservationDetails.bufferDays || "",
             },
           });
-          setDineinselectedButton(!!dineInDetails.dineIn);
-          setInteractiveselectedButton(dineInDetails.interactiveDineIn ? "yes" : "no");
-          if(dineInDetails.merchant4DigitValidation)
-            {
-              setMergentdigitvaliadtion("yes")
-              
-              setMergentdigitvaliadtion("yes");
-            }
-
-            if(dineInDetails.highChair)
-              {
-                setDineinselectedButton(true);
-              }
-          setCheckinselectedButton(!!dineInDetails.checkIn);
-          setReservationinselectedButton(!!dineInDetails.reservation);
-          setCheckedDays(
-            (reservationDetails.days || []).reduce((acc, day) => {
-              acc[day.toLowerCase()] = true;
-              return acc;
-            }, {})
-          );
         } catch (error) {
           console.error("Failed to parse attributes", error);
         }
@@ -180,14 +237,27 @@ const Dinein = React.forwardRef((props,ref) => {
     } else {
       console.log("Location data not present");
     }
-  }, [data]);
-     
-           
-          
+  }, [data, data2]);
+  // const handleDayChange = (day) => {
+  //   const updatedDays = Outletdetails.reservation.days.includes(day)
+  //     ? Outletdetails.reservation.days.filter((d) => d !== day)
+  //     : [...Outletdetails.reservation.days, day];
+  //   setOutletdetails({
+  //     ...Outletdetails,
+  //     reservation: {
+  //       ...Outletdetails.reservation,
+  //       days: updatedDays,
+  //     },
+  //   });
+  // };
+
+
+
   const handleDayChange = (day) => {
-    const updatedDays = Outletdetails.reservation.days.includes(day)
-      ? Outletdetails.reservation.days.filter((d) => d !== day)
-      : [...Outletdetails.reservation.days, day];
+    const currentDays = Outletdetails.reservation.days || [];
+    const updatedDays = currentDays.includes(day)
+      ? currentDays.filter((d) => d !== day)
+      : [...currentDays, day];
     setOutletdetails({
       ...Outletdetails,
       reservation: {
@@ -195,8 +265,14 @@ const Dinein = React.forwardRef((props,ref) => {
         days: updatedDays,
       },
     });
+
+    setCheckedDays((prev) => ({
+      ...prev,
+      [day]: !prev[day],
+    }));
   };
 
+   
   const handleDineinEnable = (e) => {
     e.preventDefault();
     setDineinselectedButton(true);
@@ -885,7 +961,7 @@ const validate=()=>{
                     Reservation available days
                   </label>
 
-                  <div className="reservecheckbox">
+                  {/* <div className="reservecheckbox">
                     {Object.keys(checkedDays).map((day) => (
                       <div key={day} className="checkbox-container">
                         <input
@@ -899,8 +975,22 @@ const validate=()=>{
                         <label style={{ fontSize: "16px",marginTop:'8px' }}>{day}</label>
                       </div>
                     ))}
-                  </div>
-                  </div>
+                  </div> */}
+                    <div className="reservecheckbox">
+      {Object.keys(checkedDays).map((day) => (
+        <div key={day} className="checkbox-container">
+          <input
+            type="checkbox"
+            style={{ marginLeft: day === "Monday" ? "-10px" : "8px" }}
+            name={day}
+            checked={checkedDays[day]}
+            onChange={() => handleDayChange(day)}
+            className="radioStylecheckbox"
+          />
+          <label style={{ fontSize: "16px", marginTop: "8px" }}>{day}</label>
+        </div>
+      ))}
+    </div>       </div>
                   
                  <div style={{marginTop:'20px'}}>
                  <label htmlFor="BusinessLegalName" className="lablesforreservation">
