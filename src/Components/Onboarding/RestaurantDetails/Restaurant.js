@@ -460,7 +460,7 @@ const Restaurant = forwardRef((props, ref) => {
       setForm({
         locationId: data2 && data2||data[0].location.id,
         businessLegalName: data[0].location.restaurantName || "",
-        phone: data[0].phone  || "",
+        phone: data[0].location.phone  || "",
         email:data[0].location.email || "",
         website: data[0].location.website || "",
         instagramLink: data[0].location.instagramLink || "",

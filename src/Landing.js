@@ -10,7 +10,7 @@ import PostDataForm from './Components/Registration/PostData'
 import Stepform from './Components/Onboarding/Steperform/Stepform';
 import Updateoutlet from './Components/UpdateOutlet/Updateoutlet';
 import OutletStepperForm from './Components/Outlet Details/OutletStepperForm/OutletStepperForm' 
-
+import { LocationProvider } from './Components/LocationProvider';
 function Landing() {
 
   const MIN_WIDTH = 800; 
@@ -38,7 +38,10 @@ function Landing() {
          </div>
          
      ) : (<div className='Appcontainer'>
-      <Sidenavbar />
+<LocationProvider>
+<Sidenavbar />
+
+    
       
       <Routes>
       <Route path="/" element={ <Home/> } />
@@ -54,7 +57,8 @@ function Landing() {
 
        
         {/* <Route path="/contact" element={<Contact />} /> */}
-      </Routes></div>
+      </Routes>
+      </LocationProvider></div>
      )}
 
 

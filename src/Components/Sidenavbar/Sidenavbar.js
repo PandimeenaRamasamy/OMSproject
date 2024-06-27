@@ -11,18 +11,19 @@ import pay from "../../assets/images/pay.png";
 import printing from "../../assets/images/printing.png";
 import statistics from "../../assets/images/statistics.png";
 import userimg from "../../assets/images/userimg.png";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import Merchants from "../Merchants/Merchants";
 import { getDataRequest } from "../../redux/Actions/PostDataAction";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationRequest } from "../../redux/Actions/PostDataAction";
-
+import { LocationContext } from "../LocationProvider";
 // import Registration from '../Registration/Registration'
 
 const Sidenavbar = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const { locationBtn, setLocationBtn } = useContext(LocationContext);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isopen, setisopen] = useState(false);
@@ -112,8 +113,13 @@ const Sidenavbar = () => {
                     <div key={index}>
                       <button
                         className="btnlocation"
+                        disabled={locationBtn}
                         onClick={() =>
-                          goToupdate(datafromapi[index].locationId)
+                          {
+                            goToupdate(datafromapi[index].locationId)
+                            setLocationBtn(true);
+                          }
+                          
                         }
                       >
                         {datafromapi[index].restaurantName}

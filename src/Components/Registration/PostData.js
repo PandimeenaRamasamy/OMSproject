@@ -98,6 +98,11 @@ const PostDataForm = () => {
       registrationpagerrors.nameerror = "Name must only contain letters and spaces";
     }
 
+    if(!/^\d{15}$/.test(Registrationform.gstNumber))
+      {
+        registrationpagerrors.gstNumbererror="Please enter a valid email address."
+      }
+
 
     if (!Registrationform.phone) {
       isValid = false;
@@ -204,6 +209,17 @@ const PostDataForm = () => {
       setError({ ...error , emailerror: 'Please enter a valid email address.'});
     }
      else {
+      setError('');
+    }
+  };
+
+  const validateGST = () => {
+     
+    const phonePattern = /^\d{15}$/; 
+   
+     if (!phonePattern.test(Registrationform.gstNumber)) {
+      setError({...error,gstNumbererror:'Please enter a valid GST number'});
+    } else {
       setError('');
     }
   };
@@ -316,11 +332,14 @@ const PostDataForm = () => {
               placeholder=""
                onPaste={handlePaste}
                autoComplete="off"
+             onBlur={validateGST}
+
               maxLength={15}
               onKeyPress={handleKeyPress}
               value={Registrationform.gstNumber}
               onChange={(e) => setRegistrationform({ ...Registrationform, gstNumber: e.target.value })}
             />
+             {error.gstNumbererror && <div className="invaliddata">{error.gstNumbererror}</div>}
           </div>
           <div className="labelinput-divreg">
             <label className="labelreg">Restaurant Logo</label>
