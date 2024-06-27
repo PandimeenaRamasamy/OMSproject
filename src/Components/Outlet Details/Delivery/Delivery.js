@@ -1272,16 +1272,17 @@ const Delivery = React.forwardRef((props,ref) => {
       setIsEnable(true);
       
     }
-    if(deliveryDetails.deliveryPayment){
+    if(deliveryDetails?.deliveryPayment){
     setSelectedMethods(deliveryDetails.deliveryPayment || []);
+    console.log(deliveryDetails.deliveryPayment)
       }
-    setPackageCharge(deliveryDetails.packagingCharge || "");
-    setInHouse(deliveryDetails.inHouse.isEnabled);
-    setShowInHouse(deliveryDetails.isInHouseEnabled);
-    setMaxPriceValue(deliveryDetails.maximumOrderPrice.replace("$", "") || "");
-    setMinPriceValue(deliveryDetails.minimumOrderPrice.replace("$", "") || "");
-    setDeliveryOption(deliveryDetails.scheduledDelivery);
-    setShowScheduledDelivery(deliveryDetails.scheduledDelivery === "yes");
+    setPackageCharge(deliveryDetails?.packagingCharge || "");
+    setInHouse(deliveryDetails?.inHouse.isEnabled);
+    setShowInHouse(deliveryDetails?.isInHouseEnabled);
+    setMaxPriceValue(deliveryDetails?.maximumOrderPrice.replace("$", "") || "");
+    setMinPriceValue(deliveryDetails?.minimumOrderPrice.replace("$", "") || "");
+    setDeliveryOption(deliveryDetails?.scheduledDelivery);
+    setShowScheduledDelivery(deliveryDetails?.scheduledDelivery === "yes");
     // if( deliveryDetails.deliverySettingTime)
     //   {
     //     setTimeSlots(deliveryDetails.deliverySettingTime)
@@ -1289,20 +1290,20 @@ const Delivery = React.forwardRef((props,ref) => {
  
  
    
-    setThirdParty(deliveryDetails.thirdParty.isEnabled);
+    setThirdParty(deliveryDetails?.thirdParty.isEnabled);
  
     const updatedScheduledDay = [...scheduledDay];
-    updatedScheduledDay[0] = deliveryDetails.scheduledDeliveryDuration;
+    updatedScheduledDay[0] = deliveryDetails?.scheduledDeliveryDuration;
     setScheduledDay(updatedScheduledDay);
  
     const index = updatedScheduledDay.indexOf(
-      deliveryDetails.scheduledDeliveryDuration
+      deliveryDetails?.scheduledDeliveryDuration
     );
     setCurrentIndex(index);
  
     // Setting additional states for third-party delivery services
  
-    if (deliveryDetails.inHouse.isEnabled) {
+    if (deliveryDetails?.inHouse.isEnabled) {
       setFlatFee(deliveryDetails.inHouse.flatFee);
       setDefaultMile(deliveryDetails.inHouse.initial2MileAmount);
       setAdditionalMile(deliveryDetails.inHouse.additional1MileAmount);
@@ -1313,7 +1314,7 @@ const Delivery = React.forwardRef((props,ref) => {
       setMaxRadius(deliveryDetails.inHouse.maximumRadius);
     }
  
-    if (deliveryDetails.thirdParty.isEnabled) {
+    if (deliveryDetails?.thirdParty.isEnabled) {
       setDoorDash(deliveryDetails.thirdParty.doorDashId || "");
       setDunzo(deliveryDetails.thirdParty.dunzoId || "");
       setUberEats(deliveryDetails.thirdParty.uberEatsId || "");

@@ -18,19 +18,19 @@ const Pickup = React.forwardRef((props,ref) => {
 
         serviceTimeFrom:"",
         serviceTimeTo:"",
-        Payment:[],
+        payment:[],
         scheduleDuration:"",
         packagingCharge:"",
-        ETA:""
+        eta:""
 
     })
     const[pickuperror,setPickUpError]=useState({
         serviceTimeFrom:"",
         serviceTimeTo:"",
-        Payment:[],
+        payment:[],
         scheduleDuration:"",
         packagingCharge:"",
-        ETA:""
+        eta:""
     })
    
     const handlecheckedchange=(e)=>{
@@ -38,7 +38,7 @@ const Pickup = React.forwardRef((props,ref) => {
          const ischecked=e.target.checked;
          if(ischecked)
             {
-                setForm({...form,Payment:[...form.Payment,value]})
+                setForm({...form,payment:[...form.payment,value]})
             }        
     }
     const [isEnabled, setIsEnabled] = useState(false);
@@ -64,10 +64,10 @@ const Pickup = React.forwardRef((props,ref) => {
             locationId:data2 && data2||data[0].location.id,
           serviceTimeFrom: PickUp.serviceTimeFrom || "",
           serviceTimeTo: PickUp.serviceTimeTo || "",
-          Payment: PickUp.payment || [],
+          payment: PickUp.payment || [],
           scheduleDuration: PickUp.scheduleDuration || "",
           packagingCharge: PickUp.packagingCharge || "",
-          ETA: PickUp.eta || "",
+          eta: PickUp.eta || "",
         });
 
         console.log("payment",form.Payment);
@@ -125,8 +125,8 @@ if(!form.serviceTimeTo && isEnabled)
         isValid=false
 
     }
-    if(!form.ETA && isEnabled){
-        errors.ETA="Please fill this field"
+    if(!form.eta && isEnabled){
+        errors.eta="Please fill this field"
         isValid=false
 
     }
@@ -208,10 +208,10 @@ return isValid;
                         <div className='picketa'>
                         <h5 className='Pickup_heading7'>Pick up ETA </h5> 
                         <h5 className='Pickup_heading3'>Please mention the Estimated time of arrival for Pick up</h5>
-                        <input type="text" style={{
+                        <input type="text" value={form.eta} style={{
                           borderColor: pickuperror.ETA ? "red" : "#B3B3B3",
-                        }} className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"ETA":e.target.value})}></input>
-                        {pickuperror.ETA && <div className='error_pickup'>{pickuperror.ETA}</div>}
+                        }} className='ETA_type' placeholder='30 mins' onChange={(e)=>setForm({...form,"eta":e.target.value})}></input>
+                        {pickuperror.eta && <div className='error_pickup'>{pickuperror.eta}</div>}
                         </div>
                       
                       

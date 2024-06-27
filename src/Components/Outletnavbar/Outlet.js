@@ -126,7 +126,7 @@ const Outlet = () => {
   const locationid="876"
   const handleCategoryClick = (category) => {
     const path = category.toLowerCase().replace(' ', '-');
-    if( !(data && data[0]  && data[0].location.id))
+   
     navigate(`/outlet/${path}`);
   };
 
