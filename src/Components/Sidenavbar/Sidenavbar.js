@@ -23,6 +23,7 @@ import { getLocationRequest } from "../../redux/Actions/PostDataAction";
 const Sidenavbar = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const [locaionbtn,setlocaionbtn]=useState(true);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isopen, setisopen] = useState(false);
@@ -112,10 +113,16 @@ const Sidenavbar = () => {
                     <div key={index}>
                       <button
                         className="btnlocation"
+                        disabled={locaionbtn}
                         onClick={() =>
-                          goToupdate(datafromapi[index].locationId)
+                          {
+                            goToupdate(datafromapi[index].locationId)
+                            setlocaionbtn(false);
+                          }
+                          
                         }
                       >
+                        
                         {datafromapi[index].restaurantName}
                       </button>
                     </div>
