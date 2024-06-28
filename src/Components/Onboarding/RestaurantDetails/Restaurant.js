@@ -599,7 +599,10 @@ const Restaurant = forwardRef((props, ref) => {
     }
   };
   const validatewhatsapp= () => {
-    const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
+    const phonePattern = /^\d{10}$/;
+    
+    // Adjust the regex pattern based on your requirements
+    if(numbertype!=='Landline'){
     if (form.whatsappNumber  === '') {
       setResError({  ...reserror,whatsappNumber :'Enter whatsapp number'});}
     else if (!phonePattern.test(form.whatsappNumber)) {
@@ -607,6 +610,7 @@ const Restaurant = forwardRef((props, ref) => {
     } else {
       setResError('');
     }
+  }
   };
 
 
