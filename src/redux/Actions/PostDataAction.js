@@ -215,3 +215,7 @@ export const PostKitchenDataFailure=(error)=>({
   payload:error
 })
 
+export const setName = (name) => ({
+  type: 'SET_NAME',
+  payload: name
+})

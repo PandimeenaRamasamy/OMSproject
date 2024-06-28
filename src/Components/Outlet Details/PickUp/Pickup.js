@@ -9,7 +9,7 @@ const Pickup = React.forwardRef((props,ref) => {
       // const data = useSelector((state) => state.getlocationdata.data);
     const datafromapi = useSelector((state) => state.postData.data);
     const data = useSelector((state) => state.getlocationdata.data);
-
+    const loactiondata = useSelector((state) => state.locationiddata.locationId);
     const data2 = useSelector((state) => state.registration.data);
     const[form,setForm]=useState({
 
@@ -61,7 +61,7 @@ const Pickup = React.forwardRef((props,ref) => {
           }
 
         setForm({
-            locationId:data2 && data2||data[0].location.id,
+          locationId: loactiondata&& loactiondata||null,
           serviceTimeFrom: PickUp.serviceTimeFrom || "",
           serviceTimeTo: PickUp.serviceTimeTo || "",
           payment: PickUp.payment || [],

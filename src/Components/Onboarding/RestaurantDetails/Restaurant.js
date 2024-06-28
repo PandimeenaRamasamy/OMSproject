@@ -450,6 +450,8 @@ const Restaurant = forwardRef((props, ref) => {
   ];
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
 
+  const loactiondata = useSelector((state) => state.locationiddata.locationId);
+
   useEffect(() => {
     if (data && data[0]) {
       console.log("id", datafromapi && datafromapi[0] ?datafromapi[0].locationId:"")
@@ -458,7 +460,7 @@ const Restaurant = forwardRef((props, ref) => {
 
      
       setForm({
-        locationId: data2 && data2||data[0].location.id,
+        locationId: loactiondata&& loactiondata||null,
         businessLegalName:  attributes.BusinessLegalName || "",
         phone: data[0].location.phone  || "",
         email:data[0].location.email || "",

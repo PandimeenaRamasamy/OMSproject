@@ -171,6 +171,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationRequest } from "../../redux/Actions/PostDataAction";
 import { LocationContext } from "../LocationProvider";
+import {setName } from '../../redux/Actions/PostDataAction'
 // import Registration from '../Registration/Registration'
  
 const Sidenavbar = () => {
@@ -221,9 +222,9 @@ const Sidenavbar = () => {
 
   
  
-const handlelocalstorage=(locationdata)=>{
+  const handlelocalstorage=(locationdata)=>{
   console.log('location data',locationdata);
-  localStorage.setItem('locationId', locationdata);
+  dispatch(setName(locationdata));
 
 
   

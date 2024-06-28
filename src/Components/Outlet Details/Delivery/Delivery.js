@@ -1122,6 +1122,7 @@ const Delivery = React.forwardRef((props,ref) => {
   const [showdelivery, setShowDelivery] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
     const data = useSelector((state) => state.getlocationdata.data);
+    const loactiondata = useSelector((state) => state.locationiddata.locationId);
 
   const dispatch = useDispatch();
   const reducer = useSelector((state) => state.deliveryDataReducer);
@@ -1259,7 +1260,7 @@ const  [locationId,setlocationId]=useState();
 
     if (Array.isArray(data) && data.length > 0 && data[0].location) {
 
-      setlocationId(data[0].location.id)
+      setlocationId(loactiondata&& loactiondata)
 
       if (data[0].location.attributes) {
 

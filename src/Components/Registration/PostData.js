@@ -7,11 +7,19 @@ import { useLocation } from 'react-router-dom';
 import Success from './Success';
 import Outlet from "../Outletnavbar/Outlet";
 
+
+
 const PostDataForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const data2 = useSelector((state) => state.registration.data);
   console.log("data2",data2);
+  const loactiondata = useSelector((state) => state.locationiddata.locationId);
+
+  const printing=()=>{
+    console.log("data loaction id",loactiondata)
+
+  }
 
 
   const data = useSelector((state) => state.getlocationdata.data);
@@ -54,7 +62,8 @@ const PostDataForm = () => {
       console.log("ttt",attributes)
 
       setRegistrationform({
-        locationId: location.id || null,
+        
+        locationId: loactiondata&& loactiondata||null,
         restaurantName: attributes.restaurantName || "",
         name: location.name || "",
         phone:location.phone || "",
@@ -233,6 +242,9 @@ const PostDataForm = () => {
       <div className="submain-divreg">
         <div className="headingreg">
           <h5>Registration</h5>
+
+
+      
         </div>
         <div className="form-divreg">
           <div className="labelinput-divreg">
