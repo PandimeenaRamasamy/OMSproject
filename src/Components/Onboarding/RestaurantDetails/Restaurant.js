@@ -448,6 +448,7 @@ const Restaurant = forwardRef((props, ref) => {
     { name: "United States", dial_code: "+1" },
     { name: "India", dial_code: "+91" }
   ];
+  
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
 
   const loactiondata = useSelector((state) => state.locationiddata.locationId);

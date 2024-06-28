@@ -224,11 +224,9 @@ const Sidenavbar = () => {
  
   const handlelocalstorage=(locationdata)=>{
   console.log('location data',locationdata);
-  dispatch(setName(locationdata));
-
-
-  
+  dispatch(setName(locationdata));  
 }
+
 const goToNew = () => {
   navigate('/outlet/Registration',{ state: { pagename: "Registration" ,Id:"null"} });
   window.location.reload();
