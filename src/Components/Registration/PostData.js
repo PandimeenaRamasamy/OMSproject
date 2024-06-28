@@ -12,6 +12,7 @@ import Outlet from "../Outletnavbar/Outlet";
 const PostDataForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const { pagename, Id } = location.state || {};
   const data2 = useSelector((state) => state.registration.data);
   console.log("data2",data2);
   const loactiondata = useSelector((state) => state.locationiddata.locationId);
@@ -20,6 +21,7 @@ const PostDataForm = () => {
     console.log("data loaction id",loactiondata)
 
   }
+  console.log("Id from home page",Id );
 
 
   const data = useSelector((state) => state.getlocationdata.data);
@@ -44,6 +46,10 @@ const PostDataForm = () => {
     gstNumber: "",
     base64Image: null,
   });
+
+
+  
+ 
 
   const [error, setError] = useState({
     restaurantNameerror: "",

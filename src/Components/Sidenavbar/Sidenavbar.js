@@ -230,7 +230,9 @@ const Sidenavbar = () => {
   
 }
 const goToNew = () => {
-  navigate('/outlet/Registration',{ state: { pagename: "Registration" } });
+  navigate('/outlet/Registration',{ state: { pagename: "Registration" ,Id:"null"} });
+  window.location.reload();
+  
 };
  
   return (
