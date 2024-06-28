@@ -777,6 +777,7 @@ const Location = forwardRef((props, ref) => {
       });
     }
   }, [data]);
+  console.log(data)
 
   const handleTextBoxes = (e) => {
     e.preventDefault();
@@ -901,7 +902,7 @@ const Location = forwardRef((props, ref) => {
                 className="inputboxloc"
                 placeholder="Name"
                 name="address"
-               
+               value={form.address}
                 onChange={(e) => handleAddressChange(0, e.target.value)}
 
                 onBlur={handleBlur}
