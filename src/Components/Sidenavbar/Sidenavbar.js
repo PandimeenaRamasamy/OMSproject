@@ -216,7 +216,18 @@ const Sidenavbar = () => {
   };
  
   const [currentIndex,setCurrentIndex]=useState();
+
+  const [locationdata,setlocationdata]= useState();
+
+  
  
+const handlelocalstorage=(locationdata)=>{
+  console.log('location data',locationdata);
+  localStorage.setItem('locationId', locationdata);
+
+
+  
+}
  
  
   return (
@@ -267,13 +278,14 @@ const Sidenavbar = () => {
                     <div key={index}>
                       <button
                         className="btnlocation"
-                        disabled={locationBtn}
+                       
                         style={{backgroundColor:index!==currentIndex?'white':'#67833e',color:index!==currentIndex?'#67833e':'white',opacity:index!==currentIndex?'0.7':'1.0'}}
                         onClick={() =>
                           {
                             goToupdate(datafromapi[index].locationId)
                             setLocationBtn(true);
                             setCurrentIndex(index);
+                            handlelocalstorage(datafromapi[index].locationId);
                           }
                          
                         }
