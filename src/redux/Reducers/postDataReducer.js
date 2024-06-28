@@ -318,3 +318,21 @@ export const deliveryDataReducer = (state = deliveryInitialState, action) => {
       return state;
   }
 };
+
+
+const initialStatelocationId = {
+  locationId: ''
+};
+
+export const nameReducer = (state = initialStatelocationId, action) => {
+  switch (action.type) {
+    case 'SET_NAME':
+      return {
+        ...state,
+        locationId: action.payload
+      };
+    default:
+      return state;
+  }
+};
+

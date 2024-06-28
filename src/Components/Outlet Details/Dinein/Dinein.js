@@ -17,6 +17,7 @@ const Dinein = React.forwardRef((props,ref) => {
   const [Mergentdigitvaliadtion, setMergentdigitvaliadtion] = useState("no");
 
   const data = useSelector((state) => state.getlocationdata.data);  
+  const loactiondata = useSelector((state) => state.locationiddata.locationId);
 
   const datafromapi = useSelector((state) => state.postData.data);
   const data2 = useSelector((state) => state.registration.data);
@@ -212,7 +213,7 @@ const Dinein = React.forwardRef((props,ref) => {
             }
 
           setOutletdetails({
-            locationId: data2 || data[0].location.id,
+            locationId: loactiondata&& loactiondata||null,
             dineIn: dineInDetails.dineIn || "",
             highChair: dineInDetails.highChair || "no",
             interactiveDineIn: dineInDetails.interactiveDineIn || "",

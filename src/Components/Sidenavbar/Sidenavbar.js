@@ -171,6 +171,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationRequest } from "../../redux/Actions/PostDataAction";
 import { LocationContext } from "../LocationProvider";
+import {setName } from '../../redux/Actions/PostDataAction'
 // import Registration from '../Registration/Registration'
  
 const Sidenavbar = () => {
@@ -216,8 +217,21 @@ const Sidenavbar = () => {
   };
  
   const [currentIndex,setCurrentIndex]=useState();
+
+  const [locationdata,setlocationdata]= useState();
+
+  
  
- 
+  const handlelocalstorage=(locationdata)=>{
+  console.log('location data',locationdata);
+  dispatch(setName(locationdata));
+
+
+  
+}
+const goToNew = () => {
+  navigate('/outlet/Registration',{ state: { pagename: "Registration" } });
+};
  
   return (
     <>
@@ -267,13 +281,14 @@ const Sidenavbar = () => {
                     <div key={index}>
                       <button
                         className="btnlocation"
-                        disabled={locationBtn}
+                       
                         style={{backgroundColor:index!==currentIndex?'white':'#67833e',color:index!==currentIndex?'#67833e':'white',opacity:index!==currentIndex?'0.7':'1.0'}}
                         onClick={() =>
                           {
                             goToupdate(datafromapi[index].locationId)
                             setLocationBtn(true);
                             setCurrentIndex(index);
+                            handlelocalstorage(datafromapi[index].locationId);
                           }
                          
                         }
@@ -283,8 +298,14 @@ const Sidenavbar = () => {
                       </button>
                     </div>
                   ))}
+                 
               </div>
+              
             </div>
+            <div className="Addoutletbtn">
+                  <button onClick={goToNew} className='Addoutlet'>+ Add outlet</button>
+
+                  </div>
           </div>
         </div>
       </div>

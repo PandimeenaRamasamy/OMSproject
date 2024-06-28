@@ -8,7 +8,8 @@ import {
   deliveryDataReducer,
   postDataReducer,
   registrationReducer,
-  postDataReducergetLocation
+  postDataReducergetLocation,
+  nameReducer
 
 } from "./redux/Reducers/postDataReducer";
 import { basicDetailsReducer } from "./redux/Reducers/postDataReducer";
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   basicDetails: basicDetailsReducer,
   deliveryDetails: deliveryDataReducer,
   registration:registrationReducer,
-  getlocationdata:postDataReducergetLocation
+  getlocationdata:postDataReducergetLocation,
+  locationiddata:nameReducer
   // Add other reducers here if necessary
 });
 

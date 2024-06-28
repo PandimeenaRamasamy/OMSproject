@@ -12,7 +12,28 @@
   box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
   height: 200vh;
   border-bottom-style: none;
+  
+
 }
+
+.Addoutletbtn
+{
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.Addoutlet
+{
+  width: 250px;
+  height: 50px;
+  background-color: #67833e;
+  color: #f9f9f9;
+  border: none;
+  
+}
+
+
+
 
 .resnamelocation {
   display: flex;
@@ -38,6 +59,7 @@
 .resname {
   font-size: 14px;
   color: black;
+
 }
 
 .reslocation {
@@ -141,7 +163,7 @@
     position: fixed;
     left: 22px;
     width: 300px;
-    margin-top: -200px;
+    margin-top: 100px;
   
   }
   .pagelinks {
