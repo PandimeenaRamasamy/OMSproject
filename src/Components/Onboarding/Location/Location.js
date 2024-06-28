@@ -876,6 +876,9 @@ const Location = forwardRef((props, ref) => {
       country: "",
     });
   };
+  const halfLength=Math.ceil(form.address.length/2);
+  const addressPart1 = form.address.slice(0, halfLength);
+  const addressPart2 = form.address.slice(halfLength);
 
   console.log(form)
 
@@ -902,7 +905,7 @@ const Location = forwardRef((props, ref) => {
                 className="inputboxloc"
                 placeholder="Name"
                 name="address"
-               value={form.address}
+               value={addressPart1}
                 onChange={(e) => handleAddressChange(0, e.target.value)}
 
                 onBlur={handleBlur}
@@ -923,6 +926,7 @@ const Location = forwardRef((props, ref) => {
         className="inputboxloc"
         placeholder="Name"
         onChange={(e) => handleAddressChange2(1, e.target.value)}
+        value={addressPart2}
 
         
        
