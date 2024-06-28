@@ -13,11 +13,11 @@ const AddTime = ({
     <div className="AddTime">
       <div className="time">
         <div className="timeContainerOpen">
-          <div className="nameBox"> From </div>
+          <div className="nameBox"> Opening Time </div>
           <Time time={openingTime} setTime={setOpeningTime} index={index} />
         </div>
         <div className="timeContainerClose">
-          <div className="nameBox"> To </div>
+          <div className="nameBox"> Closing Time </div>
           <Time time={closingTime} setTime={setClosingTime} index={index} />
         </div>
       </div>
