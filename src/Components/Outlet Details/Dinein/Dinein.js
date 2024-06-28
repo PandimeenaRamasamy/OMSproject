@@ -206,6 +206,10 @@ const Dinein = React.forwardRef((props,ref) => {
           });
 
           setCheckedDays(newCheckedDays);
+          if(dineInDetails?.merchant4DigitValidation)
+            {
+              setMergentdigitvaliadtion("yes");
+            }
 
           setOutletdetails({
             locationId: data2 || data[0].location.id,
@@ -213,6 +217,10 @@ const Dinein = React.forwardRef((props,ref) => {
             highChair: dineInDetails.highChair || "no",
             interactiveDineIn: dineInDetails.interactiveDineIn || "",
             merchant4DigitValidation: dineInDetails.merchant4DigitValidation || "no",
+           
+
+
+
             checkIn: {
               maximumPeopleAllowedOnline: dineInDetails.checkIn?.maximumPeopleAllowedOnline || "",
               maximumPeopleAllowedOffline: dineInDetails.checkIn?.maximumPeopleAllowedOffline || "",
@@ -230,6 +238,30 @@ const Dinein = React.forwardRef((props,ref) => {
               bufferDays: reservationDetails.bufferDays || "",
             },
           });
+
+
+          if(dineInDetails?.highChair==="yes"||dineInDetails?.highChair==="Yes")
+            {
+              setDineinselectedButton(true);
+            }
+
+          if(Mergentdigitvaliadtion==="yes")  
+            {
+              setInteractiveselectedButton(true);
+            }
+
+           if( dineInDetails?.checkIn)
+            {
+              setCheckinselectedButton(true);
+            } 
+           if(dineInDetails?.reservation)
+            {
+              setReservationinselectedButton(true);
+            } 
+
+
+
+
         } catch (error) {
           console.error("Failed to parse attributes", error);
         }

@@ -459,12 +459,12 @@ const Restaurant = forwardRef((props, ref) => {
      
       setForm({
         locationId: data2 && data2||data[0].location.id,
-        businessLegalName: data[0].location.restaurantName || "",
+        businessLegalName:  attributes.BusinessLegalName || "",
         phone: data[0].location.phone  || "",
         email:data[0].location.email || "",
-        website: data[0].location.website || "",
-        instagramLink: data[0].location.instagramLink || "",
-        facebookLink: data[0].location.facebookLink || "",
+        website: attributes.websiteLink || "",
+        instagramLink: attributes.instagramLink || "",
+        facebookLink: attributes.FaceBookLink || "",
         restaurantNumber: attributes.RestaurantNumber || "",
         whatsappNumber:data[0].location.whatsappNumber || ""
       });

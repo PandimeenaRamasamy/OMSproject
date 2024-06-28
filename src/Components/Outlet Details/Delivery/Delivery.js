@@ -1279,7 +1279,7 @@ const  [locationId,setlocationId]=useState();
     console.log(deliveryDetails.deliveryPayment)
       }
     setPackageCharge(deliveryDetails?.packagingCharge || "");
-    setInHouse(deliveryDetails?.inHouse.isEnabled);
+    setInHouse(deliveryDetails?.inHouse?.isEnabled);
     setShowInHouse(deliveryDetails?.isInHouseEnabled);
     setMaxPriceValue(deliveryDetails?.maximumOrderPrice.replace("$", "") || "");
     setMinPriceValue(deliveryDetails?.minimumOrderPrice.replace("$", "") || "");
