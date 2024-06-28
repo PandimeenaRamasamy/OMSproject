@@ -108,7 +108,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     /* border-radius: 5px; */
-    
+    margin-top: -11px;
     color: rgba(0, 0, 0, 0.5);
   }
   
@@ -209,11 +209,13 @@
     /* border-radius: 5px; */
     
     color: rgba(0, 0, 0, 0.5);
+   
+    margin-top: -3px;
   }
   
   /* Active category styles */
   .nav-item.active {
-    height: 22px;
+    height: 20px;
     border-bottom: 2px solid rgba(104, 132, 64, 1);
     color: #67833e;
    
@@ -232,9 +234,9 @@
   
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .outletnavorg {
-    margin-left: 230px;
+    margin-left: 250px;
     position: absolute;
     top: 34px;
     width: 70%;
@@ -271,7 +273,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     /* border-radius: 5px; */
-    
+    margin-top: 2px;
     color: rgba(0, 0, 0, 0.5);
   }
   

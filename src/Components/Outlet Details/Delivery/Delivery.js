@@ -1171,11 +1171,11 @@ const Delivery = React.forwardRef((props,ref) => {
   const [maxRadius, setMaxRadius] = useState();
   const [brachCount, setbrachCount] = useState();
 
-  const [batchOrder, setBatchOrder] = useState("");
+  const [batchOrder, setBatchOrder] = useState("no");
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("no");
 
-  const [feesStructure, setFeesStructure] = useState("");
+  const [feesStructure, setFeesStructure] = useState("based on distance");
 
   //BOD
   const [defaultMile, setDefaultMile] = useState();
@@ -1251,13 +1251,15 @@ const Delivery = React.forwardRef((props,ref) => {
         ],
       };
 
-
+const  [locationId,setlocationId]=useState();
 
   useEffect(() => {
    
 
 
     if (Array.isArray(data) && data.length > 0 && data[0].location) {
+
+      setlocationId(data[0].location.id)
 
       if (data[0].location.attributes) {
 
@@ -1290,7 +1292,7 @@ const Delivery = React.forwardRef((props,ref) => {
  
  
    
-    setThirdParty(deliveryDetails?.thirdParty.isEnabled);
+    setThirdParty(deliveryDetails?.thirdParty?.isEnabled);
  
     const updatedScheduledDay = [...scheduledDay];
     updatedScheduledDay[0] = deliveryDetails?.scheduledDeliveryDuration;
@@ -1303,7 +1305,7 @@ const Delivery = React.forwardRef((props,ref) => {
  
     // Setting additional states for third-party delivery services
  
-    if (deliveryDetails?.inHouse.isEnabled) {
+    if (deliveryDetails?.inHouse?.isEnabled) {
       setFlatFee(deliveryDetails.inHouse.flatFee);
       setDefaultMile(deliveryDetails.inHouse.initial2MileAmount);
       setAdditionalMile(deliveryDetails.inHouse.additional1MileAmount);
@@ -1314,7 +1316,7 @@ const Delivery = React.forwardRef((props,ref) => {
       setMaxRadius(deliveryDetails.inHouse.maximumRadius);
     }
  
-    if (deliveryDetails?.thirdParty.isEnabled) {
+    if (deliveryDetails?.thirdParty?.isEnabled) {
       setDoorDash(deliveryDetails.thirdParty.doorDashId || "");
       setDunzo(deliveryDetails.thirdParty.dunzoId || "");
       setUberEats(deliveryDetails.thirdParty.uberEatsId || "");
@@ -1328,7 +1330,7 @@ const Delivery = React.forwardRef((props,ref) => {
 
   }, [])
 
-
+  const data2 = useSelector((state) => state.registration.data);
   const enableClick = () => {
     setShowDelivery(true);
     if (isEnable === false) {
@@ -1443,10 +1445,7 @@ const Delivery = React.forwardRef((props,ref) => {
 
     const payloadData = {
 
-      locationId:datafromapi && datafromapi[0] ?datafromapi[0].locationId:"" ,
-
-     
-
+      locationId:locationId||data2 && data2,
       deliverySettingTime,
       deliveryPayment: selectedMethods,
       scheduledDelivery: deliveryOption,
@@ -1571,6 +1570,7 @@ const Delivery = React.forwardRef((props,ref) => {
               </p>
             )}
             <p onClick={addDayAndTime} className="Addtimeslot">+ Add Time slots</p>
+            
           </div>
           {/* <p className="deleteTime" onClick={handleDelete}>
               - Delete Session
@@ -2008,7 +2008,7 @@ const Delivery = React.forwardRef((props,ref) => {
 
           {/* 3rd party */}
 
-          <div className="thirdpartydeliveryoption" style={{height: showThirdParty ? '30vh' : '20vh'}}>
+          <div className="thirdpartydeliveryoption" style={{height: showThirdParty ? '30vh' : '20vh',marginTop:!inHouse?'-800px':''}}>
 
 
           {thirdParty && (

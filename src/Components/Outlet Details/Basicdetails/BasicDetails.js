@@ -7,23 +7,24 @@ import RestaurantSession from "./Components/RestaurantSession";
 import Alcohol from "./Components/Alcohol";
 import RestaurantCategory from "./Components/RestauantCategory";
 import AlcoholModal from "./Components/AlcoholModal";
-import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
+// import { saveBasicDetailsRequest } from "../../../redux/Actions/PostDataAction";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocationId } from "../../../redux/Actions/PostDataAction";
-import { getLocationRequest } from "../../../redux/Actions/PostDataAction";
+// import { getLocationId } from "../../../redux/Actions/PostDataAction";
+// import { GetLocationData } from "../../../redux/Api";
+
 
 const BasicDetails = React.forwardRef((props,ref) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const basicDetailsReducer = useSelector((state) => state.basicDetailsReducer);
   // console.log("basicDetailsReducer", basicDetailsReducer);
 
   const uid = useMemo(() => uuidv4(), []);
-    const data = useSelector((state) => state.getlocationdata.data);
+    // const data = useSelector((state) => state.getlocationdata.data);
 
-  const locationId = useSelector((state) => state.postData.data);
+  // const locationId = useSelector((state) => state.postData.data);
   
-  const LocationId = dispatch(getLocationId(locationId));
-  const Locid = LocationId.payload;
+  // const LocationId = dispatch(getLocationId(locationId));
+  // const Locid = LocationId.payload;
   
   const [isAlcoholModalOpen, setIsAlcoholModalOpen] = useState(false);
   const [selectedAlcoholOption, setSelectedAlcoholOption] = useState("");
@@ -88,11 +89,64 @@ const BasicDetails = React.forwardRef((props,ref) => {
   // console.log([timeSlots])
 
   // {[id]: string}
-  const basicDetailsFromRedux = useSelector((state) => state.basicDetails);
+  // const basicDetailsFromRedux = useSelector((state) => state.basicDetails);
+  // console.log("basicDetailsFromRedux from (0_-)", basicDetailsFromRedux)
+
   const [mealsMap, setMealsMap] = useState({ [uid]: "breakfast" });
 
+  const basicDetailsFromRedux = useSelector((state)=>state.getlocationdata)
+  // console.log("basicDetailsFromRedux",basicDetailsFromRedux);
+
+  const attributes = basicDetailsFromRedux?.data?.[0]?.location?.attributes && JSON.parse(basicDetailsFromRedux?.data?.[0]?.location?.attributes)
+  // console.log({attributes})
+
+  const restaurantSessionDto = basicDetailsFromRedux?.data?.[0]?.availabilityDtos 
+  // console.log({restaurantSessionDto})
+
+  const getDayName = (weekday) => {
+    const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    return days[weekday - 1];
+};
+
+
+const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
+  let { name, startTime, endTime, weekday } = curr;
+  startTime = startTime.slice(0, 5);
+  endTime = endTime.slice(0, 5);
+
+  // Find the group by name
+  let nameGroup = acc.find(group => group.name === name);
+  if (!nameGroup) {
+      nameGroup = { name, basicTime: [] };
+      acc.push(nameGroup);
+  }
+
+  // Find the basicTime group by startTime and endTime
+  let timeGroup = nameGroup.basicTime.find(time => time.start_time === startTime && time.end_time === endTime);
+  if (!timeGroup) {
+      timeGroup = { start_time: startTime, end_time: endTime, weekday: [] };
+      nameGroup.basicTime.push(timeGroup);
+  }
+
+  // Add the day name to the weekday array if it's not already present
+  if (weekday) {
+      const dayName = getDayName(parseInt(weekday));
+      console.log({dayName, bul:timeGroup.weekday.includes(dayName), timeGroup})
+      if (!timeGroup.weekday.includes(dayName) && dayName) {
+          timeGroup.weekday.push(dayName);
+      }
+  }
+
+  return acc;
+}, []);
+// console.log({resultDto});
+
   useEffect(() => {
-    retrieveData(basicDetailsFromRedux)
+    if(attributes || resultDto) {
+    const payload = {...attributes, restaurantSessionDto: resultDto}
+    console.log("useretrieveData",payload)
+    retrieveData(payload)
+  }
   },[])
 
   const handleTimeChange = (time, id, type, index) => {
@@ -259,97 +313,174 @@ const BasicDetails = React.forwardRef((props,ref) => {
     },
   ]);
 
-  const handleClearAll = () => {
-    const unid = uuidv4();
-    setTimeSlots({
-      [unid]: [
-        {
-          openingTime: "00:00",
-          closingTime: "00:00",
-          isContainWeeks: false,
-          checkedDays: {
-            monday: true,
-            tuesday: false,
-            wednesday: false,
-            thursday: false,
-            friday: false,
-            saturday: false,
-            sunday: false,
-          },
-        },
-      ],
-    });
-    setService([
-      {
-        id: unid,
-        component: (
-          <RestaurantSession
-            timeSlots={timeSlots}
-            setTimeSlots={setTimeSlots}
-            setOpeningTime={(time, index) =>
-              handleTimeChange(time, unid, "opening", index)
-            }
-            setClosingTime={(time, index) =>
-              handleTimeChange(time, unid, "closing", index)
-            }
-            key={unid}
-            restaurantSessionid={unid}
-            deleteRestaurantSession={deleteRestaurantSession}
-            onMealsChange={(unid, name) => handleMealsChange(unid, name)}
-            meals={mealsMap[unid]}
-          />
-        ),
-      },
-    ]);
-    setMealsMap({ [unid]: "breakfast" });
-    setCModalText([
-      "Biriyani",
-      "Dosa",
-      "Vada",
-      "Soup",
-      "Paniyaram",
-      "Naan",
-      "Chappathi",
-    ]);
-    setAModalText([
-      "Free Wifi",
-      "Suite Room",
-      "Park",
-      "GameRoom",
-      "AC",
-      "Butler",
-      "Hall",
-    ]);
-    setPModalText(["Two Wheeler", "Four Wheeler", "Heavy Vechicle"]);
-    setCPillsText([]);
-    setAPillsText([]);
-    setPPillsText([]);
-    setSafetyMeasures("");
-    setSelectedAlcoholOption("");
-  };
+  // Clear All Fields Function :
+  // const handleClearAll = () => {
+  //   const unid = uuidv4();
+  //   setTimeSlots({
+  //     [unid]: [
+  //       {
+  //         openingTime: "00:00",
+  //         closingTime: "00:00",
+  //         isContainWeeks: false,
+  //         checkedDays: {
+  //           monday: true,
+  //           tuesday: false,
+  //           wednesday: false,
+  //           thursday: false,
+  //           friday: false,
+  //           saturday: false,
+  //           sunday: false,
+  //         },
+  //       },
+  //     ],
+  //   });
+  //   setService([
+  //     {
+  //       id: unid,
+  //       component: (
+  //         <RestaurantSession
+  //           timeSlots={timeSlots}
+  //           setTimeSlots={setTimeSlots}
+  //           setOpeningTime={(time, index) =>
+  //             handleTimeChange(time, unid, "opening", index)
+  //           }
+  //           setClosingTime={(time, index) =>
+  //             handleTimeChange(time, unid, "closing", index)
+  //           }
+  //           key={unid}
+  //           restaurantSessionid={unid}
+  //           deleteRestaurantSession={deleteRestaurantSession}
+  //           onMealsChange={(unid, name) => handleMealsChange(unid, name)}
+  //           meals={mealsMap[unid]}
+  //         />
+  //       ),
+  //     },
+  //   ]);
+  //   setMealsMap({ [unid]: "breakfast" });
+  //   setCModalText([
+  //     "Biriyani",
+  //     "Dosa",
+  //     "Vada",
+  //     "Soup",
+  //     "Paniyaram",
+  //     "Naan",
+  //     "Chappathi",
+  //   ]);
+  //   setAModalText([
+  //     "Free Wifi",
+  //     "Suite Room",
+  //     "Park",
+  //     "GameRoom",
+  //     "AC",
+  //     "Butler",
+  //     "Hall",
+  //   ]);
+  //   setPModalText(["Two Wheeler", "Four Wheeler", "Heavy Vechicle"]);
+  //   setCPillsText([]);
+  //   setAPillsText([]);
+  //   setPPillsText([]);
+  //   setSafetyMeasures("");
+  //   setSelectedAlcoholOption("");
+  // };
 
  
     const RestaurantSessions = service.map((serv) => {
       const sessionTimes =
         timeSlots[serv.id]?.map((slot) => ({
-          start_time: slot.openingTime,
-          end_time: slot.closingTime,
+          start_time: slot.openingTime + ":00",
+          end_time: slot.closingTime + ":00",
           weekday: slot.isContainWeeks
             ? Object.keys(slot.checkedDays).filter(
                 (day) => slot.checkedDays[day]
               )
-            : [],
-        })) || [];
+            : [null],
+        })) || [null]; 
 
       return {
         name: mealsMap[serv.id],
         basicTime: sessionTimes,
       };
     });
-    const datafromapi = useSelector((state) => state.postData.data);
-    const data2 = useSelector((state) => state.registration.data);
-    const payload = {
 
+    
+    const datafromapi = useSelector((state) => state.postData.data);
+    // console.log("list of location ID",datafromapi);
+
+    const dataForbasicDetails = useSelector((state)=>state.postDataReducergetLocation)
+    // console.log("dataForbasicDetails",dataForbasicDetails);
+    
+    const data2 = useSelector((state) => state.registration.data);
+    // console.log("current location ID",data2);
+
+
+
+  
+
+    // console.log("restaurant session data",Full_X_X.data[0].availabilityDtos)
+    // console.log("restaurant category",Full_X_X.data[0].location.attributes.parking)
+    // Full_X_X.map((item)=>setPPillsText(...item, item.data.locationattributes.parking))
+
+
+    // const getAPI = useSelector((state) => state.get)
+    // console.log("data2 from basic details -_-", data2);
+
+    // useEffect(()=>{
+    //   console.log("aksnkalfnla",dataForbasicDetails);
+    // },[])
+
+    // const mockbasicDetailsData =
+    // [
+    //     {
+    //         "location": {
+    //             "id": "c43f3a9c-60c7-4443-b1da-477c2ad3c97c",
+    //             "merchantId": "8dfe7674-709d-431c-a233-628e839ecc76",
+    //             "restaurantName": "A2B",
+    //             "name": "aruna",
+    //             "phone": "+91 587283487r2",
+    //             "email": "fdyu1@gmail.com",
+    //             "addressLine1": "71,amarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
+    //             "addressLine2": null,
+    //             "addressLine3": null,
+    //             "city": "Madurai",
+    //             "state": "TamilNadu",
+    //             "pinCode": "625009",
+    //             "country": "India",
+    //             "attributes": "{\"parking\": [\"four wheeler\", \"two wheeler\"], \"cuisines\": [\"fast Food\", \"North Indian\"], \"amenities\": [\"free-wifi\"], \"gstNumber\": \"erts4639\", \"BankDetails\": {\"ifscCode\": \"SBI4365\", \"accountNumber\": \"12334578938999\", \"AccountHolderName\": \"arun\"}, \"websiteLink\": \"www.rest.com\", \"FaceBookLink\": \"rest.fb.com\", \"DineInDetails\": {\"dineIn\": \"disabled\", \"checkIn\": {\"autoAssign\": \"no\", \"abandonTime\": \"00:15Am\", \"lateShowTime\": \"10:24\", \"autoCancelTime\": \"12:45\", \"maximumPeopleAllowedOnline\": \"25\", \"maximumPeopleAllowedOffline\": null}, \"highChair\": \"yes\", \"reservation\": {\"days\": [\"wednesday\", \"sunday\"], \"bufferDays\": 3, \"maximumPeopleAllowed\": \"25\", \"minimumPeopleAllowed\": \"3\", \"reservationServiceTimeTo\": \"00:00PM\", \"reservationServiceTimeFrom\": \"00:00AM\"}, \"interactiveDineIn\": \"enabled\", \"merchant4DigitValidation\": \"enabled\"}, \"PickUpDetails\": {\"eta\": \"40mins\", \"payment\": [\"card\", \"applePay\"], \"serviceTimeTo\": \"00:00PM\", \"packagingCharge\": \"3\", \"serviceTimeFrom\": \"00:00AM\", \"scheduledDuration\": \"Eta\"}, \"instagramLink\": \"rest_insta\", \"KitchenDetails\": {\"kdsAlert\": \"15mins\", \"lastOrderTime\": \"00:00AM\"}, \"SafetyMeasures\": \"We sanitize all  tables and chairs after every use\", \"WhatsappNumber\": \"6578740562764958\", \"DeliveryDetails\": {\"deliveryPayment\": [\"pay at store\", \"apple pay\"], \"packagingCharge\": \"5\", \"isInHouseEnabled\": false, \"maximumOrderPrice\": \"$1000\", \"minimumOrderPrice\": \"$100\", \"scheduledDelivery\": \"yes\", \"deliverySettingTime\": [{\"deliveryServiceTimeTo\": \"11:00PM\", \"deliveryServiceTimeFrom\": \"08:00AM\"}, {\"deliveryServiceTimeTo\": \"10:00PM\", \"deliveryServiceTimeFrom\": \"06:00PM\"}], \"isThirdPartyEnabled\": false, \"scheduledDeliveryDuration\": \"EOD\"}, \"RestaurantNumber\": \"436789908295\"}"
+    //         },
+    //         "media": [],
+    //         "availabilityDtos": [
+    //             {
+    //                 "createdTime": null,
+    //                 "endTime": "07:00",
+    //                 "name": "HappyHours",
+    //                 "startTime": "05:00",
+    //                 "weekDay": "5"
+    //             },
+    //             {
+    //                 "createdTime": null,
+    //                 "endTime": "12:00PM",
+    //                 "name": "lunch",
+    //                 "startTime": "08:00AM",
+    //                 "weekDay": "4"
+    //             },
+    //             {
+    //                 "createdTime": null,
+    //                 "endTime": "12:00PM",
+    //                 "name": "lunch",
+    //                 "startTime": "08:00AM",
+    //                 "weekDay": "5"
+    //             }
+    //         ]
+    //     }
+    // ]
+
+    // console.log("mockbasicDetailsDataParsed",JSON.parse(mockbasicDetailsData[0].location.attributes));
+
+     
+    const payload = {
+      // locationId: datafromapi && datafromapi[0] ?datafromapi[0].locationId:"",
+      // locationId: data2 && data2||"",
+      // locationId: "bfffa7b7-33ed-4ea6-b3f8-be95b11d70dc", 
       locationId: data2 && data2||"",
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
@@ -359,23 +490,19 @@ const BasicDetails = React.forwardRef((props,ref) => {
       alcohol: selectedAlcoholOption,
     };
 
-
-
-
-
-    console.log("payload from basic details button", payload);
-  
+    // console.log("payload from basic details button", payload);
+    
+    
  
 
   const getFormData=()=>{
     return payload;
-
-
 }
 
 const retrieveData = (tempPayload) => {
+
   setSelectedAlcoholOption(tempPayload?.alcohol ?? '')
-  setSafetyMeasures(tempPayload?.safetyMeasures ?? '')
+  setSafetyMeasures(tempPayload?.SafetyMeasures ?? '')
   setPPillsText(tempPayload?.parking ?? [])
   setAPillsText(tempPayload?.amenities ?? [])
   setCPillsText(tempPayload?.cuisines ?? [])
@@ -443,15 +570,11 @@ const retrieveData = (tempPayload) => {
 
   useImperativeHandle(ref,()=>({
     getFormData,
-
-
 }))
 
   return (
     <div className="basic-details-container">
       <div className="basicDetails">
-
-        <button onClick={()=>{dispatch(getLocationRequest("bfffa7b7-33ed-4ea6-b3f8-be95b11d70dc"))}}>Get data</button>
         <p className="heading">Basic Details</p>
         <div className="serviceStyle">
           {service.map((serv) => serv.component)}

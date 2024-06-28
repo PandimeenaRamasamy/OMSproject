@@ -62,6 +62,7 @@ const Sidenavbar = () => {
     }
   };
  
+  const [currentIndex,setCurrentIndex]=useState();
 
  
 
@@ -114,13 +115,16 @@ const Sidenavbar = () => {
                       <button
                         className="btnlocation"
                         disabled={locationBtn}
+                        style={{backgroundColor:index!==currentIndex?'white':'#67833e',color:index!==currentIndex?'#67833e':'white',opacity:index!==currentIndex?'0.7':'1.0'}}
                         onClick={() =>
                           {
                             goToupdate(datafromapi[index].locationId)
                             setLocationBtn(true);
+                            setCurrentIndex(index);
                           }
                           
                         }
+
                       >
                         {datafromapi[index].restaurantName}
                       </button>
