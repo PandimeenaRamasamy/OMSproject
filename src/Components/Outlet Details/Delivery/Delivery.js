@@ -1306,14 +1306,14 @@ const  [locationId,setlocationId]=useState();
     // Setting additional states for third-party delivery services
  
     if (deliveryDetails?.inHouse?.isEnabled) {
-      setFlatFee(deliveryDetails.inHouse.flatFee);
-      setDefaultMile(deliveryDetails.inHouse.initial2MileAmount);
-      setAdditionalMile(deliveryDetails.inHouse.additional1MileAmount);
-      setSelectedOption(deliveryDetails.inHouse.cashOnDelivery);
-      setBatchOrder(deliveryDetails.inHouse.batchOrder);
-      setbrachCount(deliveryDetails.inHouse.defaultCountOfBatchOrder);
-      setFeesStructure(deliveryDetails.inHouse.feesStructure);
-      setMaxRadius(deliveryDetails.inHouse.maximumRadius);
+      setFlatFee(deliveryDetails?.inHouse?.flatFee);
+      setDefaultMile(deliveryDetails?.inHouse?.initial2MileAmount);
+      setAdditionalMile(deliveryDetails?.inHouse?.additional1MileAmount);
+      setSelectedOption(deliveryDetails?.inHouse?.cashOnDelivery);
+      setBatchOrder(deliveryDetails?.inHouse?.batchOrder);
+      setbrachCount(deliveryDetails?.inHouse?.defaultCountOfBatchOrder);
+      setFeesStructure(deliveryDetails?.inHouse?.feesStructure);
+      setMaxRadius(deliveryDetails?.inHouse?.maximumRadius);
     }
  
     if (deliveryDetails?.thirdParty?.isEnabled) {

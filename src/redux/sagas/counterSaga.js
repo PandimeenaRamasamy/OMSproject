@@ -185,8 +185,10 @@ export function* PostPickupSaga(action) {
 
     const payload = action.payload;
     const response = yield call(PostPickup, payload);
+
     if (response.status === 200) {
       yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
+      
       console.log("Posted Successfully");
     }
   } catch (error) {
@@ -199,10 +201,12 @@ export function* PostKitchenSaga(action) {
   try {
     const payload = action.payload;
     const response = yield call(PostKitchen, payload);
-    if (response.status === 200) {
-      yield put(POST_RESTAURANTIMAGE_DATA_SUCCESS(response.data));
+    console.log(response.data)
+
+ 
+      yield put({type:"POST_RESTAURANTIMAGE_DATA_SUCCESS", payload: response.data});
       console.log("Posted Successfully");
-    }
+   
   } catch (error) {
   }
 }

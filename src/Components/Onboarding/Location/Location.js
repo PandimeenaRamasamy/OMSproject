@@ -747,7 +747,8 @@ import { useSelector } from "react-redux";
 
 const Location = forwardRef((props, ref) => {
   const [form, setForm] = useState({
-    address: "",
+   addressLine1: "",
+   addressLine2: "",
     pinCode: "",
     city: "",
     state: "",
@@ -755,7 +756,8 @@ const Location = forwardRef((props, ref) => {
   });
   const data = useSelector((state) => state.getlocationdata.data);
   const [locationError, setLocationError] = useState({
-    address: "",
+    addressLine1: "",
+    addressLine2: "",
     pinCode: "",
     city: "",
     state: "",
@@ -769,7 +771,9 @@ const Location = forwardRef((props, ref) => {
   useEffect(() => {
     if (data && data[0]) {
       setForm({
-        address: data[0].location.addressLine1 || "",
+        addressLine1: data[0].location.addressLine1 || "",
+        addressLine2: data[0].location.addressLine2 || "",
+
         pinCode: data[0].location.pinCode || "",
         city: data[0].location.city || "",
         state: data[0].location.state || "",
@@ -794,18 +798,7 @@ const Location = forwardRef((props, ref) => {
     resetForm,
   }));
 
-  const handleAddressChange = (index, value) => {
-    const newTextBoxes = [...textboxes];
-    newTextBoxes[index] = value;
-    setTextboxes(newTextBoxes);
-    setForm({ ...form, address: newTextBoxes.join(", ") });
-  };
-  const handleAddressChange2 = (index, value) => {
-    const newTextBoxes = [...textboxes];
-    newTextBoxes[1] = value;
-    setTextboxes(newTextBoxes);
-    setForm({ ...form, address: newTextBoxes.join(", ") });
-  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -831,9 +824,13 @@ const Location = forwardRef((props, ref) => {
   const getValidate = () => {
     let isValid = true;
 
-    if (!form.address) {
+    if (!form. addressLine1) {
       isValid = false;
-      errors.address = "Please Enter Address";
+      errors. addressLine1 = "Please Enter Address";
+    }
+    if (!form. addressLine2) {
+      isValid = false;
+      errors. addressLine2 = "Please Enter Address";
     }
     if (!form.pinCode) {
       isValid = false;
@@ -861,7 +858,9 @@ const Location = forwardRef((props, ref) => {
 
   const resetForm = () => {
     setForm({
-      address: "",
+      addressLine1: "",
+      addressLine2: "",
+
       pinCode: "",
       city: "",
       state: "",
@@ -869,13 +868,15 @@ const Location = forwardRef((props, ref) => {
     });
 
     setLocationError({
-      address: "",
+      addressLine1: "",
+      addressLine2: "",
       pinCode: "",
       city: "",
       state: "",
       country: "",
     });
   };
+
 
   console.log(form)
 
@@ -902,8 +903,8 @@ const Location = forwardRef((props, ref) => {
                 className="inputboxloc"
                 placeholder="Name"
                 name="address"
-               value={form.address}
-                onChange={(e) => handleAddressChange(0, e.target.value)}
+               value={form.addressLine1}
+                onChange={(e) => setForm({...form , addressLine1 :e.target.value})}
 
                 onBlur={handleBlur}
                 style={{ borderColor: locationError.address ? "red" : "#B3B3B3", marginBottom: "30px" }}
@@ -922,7 +923,8 @@ const Location = forwardRef((props, ref) => {
         type="text"
         className="inputboxloc"
         placeholder="Name"
-        onChange={(e) => handleAddressChange2(1, e.target.value)}
+        value={form.addressLine2}
+        onChange={(e) => setForm({...form , addressLine2 :e.target.value})}
 
         
        
