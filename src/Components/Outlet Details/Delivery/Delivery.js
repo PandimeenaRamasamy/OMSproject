@@ -1570,6 +1570,7 @@ const  [locationId,setlocationId]=useState();
               </p>
             )}
             <p onClick={addDayAndTime} className="Addtimeslot">+ Add Time slots</p>
+            
           </div>
           {/* <p className="deleteTime" onClick={handleDelete}>
               - Delete Session
