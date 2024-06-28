@@ -229,7 +229,9 @@ const Sidenavbar = () => {
 
   
 }
- 
+const goToNew = () => {
+  navigate('/outlet/Registration',{ state: { pagename: "Registration" } });
+};
  
   return (
     <>
@@ -296,8 +298,14 @@ const Sidenavbar = () => {
                       </button>
                     </div>
                   ))}
+                 
               </div>
+              
             </div>
+            <div className="Addoutletbtn">
+                  <button onClick={goToNew} className='Addoutlet'>+ Add outlet</button>
+
+                  </div>
           </div>
         </div>
       </div>

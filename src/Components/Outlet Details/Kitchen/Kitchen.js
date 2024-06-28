@@ -66,7 +66,7 @@ const Kitchen = React.forwardRef((props,ref) => {
                 console.log(kitchenDetails)
 
                 setForm({
-                  locationId:loactiondata&& loactiondata||null,
+                  locationId:loactiondata && loactiondata||null,
                   lastOrderTime: kitchenDetails.lastOrderTime || "",
                   kdsAlert: kitchenDetails.kdsAlert || "",
                 

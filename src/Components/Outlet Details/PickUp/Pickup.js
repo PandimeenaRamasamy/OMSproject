@@ -70,7 +70,7 @@ const Pickup = React.forwardRef((props,ref) => {
           eta: PickUp.eta || "",
         });
 
-        console.log("payment",form.Payment);
+       
       } catch (error) {
         console.error("Failed to parse attributes", error);
       }
