@@ -746,9 +746,12 @@ import "../Location/Location.scss";
 import { useSelector } from "react-redux";
 
 const Location = forwardRef((props, ref) => {
+
+  const[validTextBox,setValidTextBox]=useState(false)
   const [form, setForm] = useState({
    addressLine1: "",
    addressLine2: "",
+   addressLine3: "",
     pinCode: "",
     city: "",
     state: "",
@@ -758,6 +761,7 @@ const Location = forwardRef((props, ref) => {
   const [locationError, setLocationError] = useState({
     addressLine1: "",
     addressLine2: "",
+    addressLine3: "",
     pinCode: "",
     city: "",
     state: "",
@@ -773,6 +777,8 @@ const Location = forwardRef((props, ref) => {
       setForm({
         addressLine1: data[0].location.addressLine1 || "",
         addressLine2: data[0].location.addressLine2 || "",
+        addressLine3: data[0].location.addressLine3 || "",
+
 
         pinCode: data[0].location.pinCode || "",
         city: data[0].location.city || "",
@@ -785,7 +791,9 @@ const Location = forwardRef((props, ref) => {
 
   const handleTextBoxes = (e) => {
     e.preventDefault();
-    setTextboxes([...textboxes, ""]);
+    setValidTextBox(true)
+
+  
   };
   
 
@@ -833,10 +841,17 @@ const Location = forwardRef((props, ref) => {
       isValid = false;
       errors. addressLine2 = "Please Enter Address";
     }
+
+    if (!form. addressLine3) {
+      isValid = false;
+      errors. addressLine2 = "Please Enter Address";
+    }
     if (!form.pinCode) {
       isValid = false;
       errors.pinCode = "Please Enter Pincode";
-    } else if (!/^\d{6}$/.test(form.pinCode)) {
+    }
+    
+    else if (!/^\d{6}$/.test(form.pinCode)) {
       isValid = false;
       errors.pinCode = "Please Enter a valid 6-digit Pincode";
     }
@@ -871,6 +886,7 @@ const Location = forwardRef((props, ref) => {
     setLocationError({
       addressLine1: "",
       addressLine2: "",
+      addressLine3: "",
       pinCode: "",
       city: "",
       state: "",
@@ -915,17 +931,18 @@ const Location = forwardRef((props, ref) => {
                 {locationError.address && (
                 <div className="error-message1" style={{marginTop:"-20px"}}>{locationError.address}</div>
               )}
-{textboxes.map((textbox, index) => {
-  return (
-    <>
-    <div className="labelinput-divloc1" key={index}>
-      <label htmlFor={`BusinessLegalName${index}`} className="labelloc1" >Line {index+1}</label>
+
+
+    
+    <div className="labelinput-divloc1" >
+      <label htmlFor={`BusinessLegalName`} className="labelloc1" >Line 1</label>
       <input
         type="text"
         className="inputboxloc"
         placeholder="Name"
         value={form.addressLine2}
         onChange={(e) => setForm({...form , addressLine2 :e.target.value})}
+        style={{marginBottom:"30px"}}
 
         
        
@@ -933,16 +950,44 @@ const Location = forwardRef((props, ref) => {
     
       
     </div>
-    <div style={{marginLeft:'260px',marginTop:'40px'}}>
-    {textboxes.length < 2 && (
-        <button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>
-      )}
+
+   
+    
+      
+   
+    {validTextBox?
+    <div className="labelinput-divloc1" >
+    <label htmlFor={`BusinessLegalName`} className="labelloc1" >Line 2</label>
+      <input
+        type="text"
+        className="inputboxloc"
+        placeholder="Name"
+        value={form.addressLine3}
+        onChange={(e) => setForm({...form , addressLine3 :e.target.value})}
+        style={{marginBottom:"30px"}}
+
+        
+       
+      />
+    
+
+    
     </div>
+
     
-    </>
+    :""}
+
+
+    {!validTextBox?<button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>:""}
+
+
+
     
-  );
-})} 
+        
+    
+    
+    
+
             </div>
 
             <div

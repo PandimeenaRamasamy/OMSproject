@@ -88,15 +88,25 @@ function Stepform() {
   }, [outletactiveStep]);
 
   const handleStepClick = (index) => {
-    if (index !== outletactiveStep) {
-      const updatedVisitedSteps = [...outletvisitedSteps];
-      for (let i = index + 1; i < outletsteps.length; i++) {
-        updatedVisitedSteps[i] = false;
-      }
-      setOutletVisitedSteps(updatedVisitedSteps);
+    if (outletactiveStep === outletsteps.length - 1) {
+      // Allow clicking on any step if on the last step
       setOutletActiveStep(index);
+    } else {
+      // Default behavior for other steps
+      if (index <= outletactiveStep) {
+        if (index !== outletactiveStep) {
+          const updatedVisitedSteps = [...outletvisitedSteps];
+          for (let i = index + 1; i < outletsteps.length; i++) {
+            updatedVisitedSteps[i] = false;
+          }
+          setOutletVisitedSteps(updatedVisitedSteps);
+          setOutletActiveStep(index);
+        }
+      };
+      }
     }
-  };
+    
+  
 
   const handleSaveandNext = async () => {
     let newFormData1 = {};
@@ -234,6 +244,7 @@ function Stepform() {
                   className={`step ${completedSteps[index] ? "completed" : ""} ${validSteps[index] ? "valid" : ""} ${
                     outletvisitedSteps[index] ? "visited" : ""
                   } ${index === outletactiveStep ? "active" : ""}`}
+  
                   onClick={() => handleStepClick(index)}
                 >
                   {step.icon}
