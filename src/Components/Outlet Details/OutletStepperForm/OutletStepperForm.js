@@ -19,7 +19,7 @@ import Delivery from "../Delivery/Delivery";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LocationContext } from "../../LocationProvider";
-
+import { useSelector } from "react-redux";
 function Reciept() {
   return <h2>Reciept</h2>;
 }
@@ -171,6 +171,9 @@ function Stepform() {
       setOutletActiveStep(outletactiveStep + 1);
     }
   };
+
+  const success=useSelector((state)=>state.postData.data)
+  console.log("hi",success)
 
   const progress = (outletvisitedSteps.filter((step) => step).length / outletsteps.length) * 100;
 
