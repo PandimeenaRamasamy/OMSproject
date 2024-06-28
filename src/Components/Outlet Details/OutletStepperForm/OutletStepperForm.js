@@ -20,8 +20,11 @@ import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LocationContext } from "../../LocationProvider";
 import { useSelector } from "react-redux";
+
+
+
 function Reciept() {
-  return <h2></h2>;
+  return <h2>Receipt</h2>;
 }
 
 function Stepform() {
@@ -149,7 +152,7 @@ function Stepform() {
           dispatch(PostKitchenDataRequest(newFormData1));
           toast.success("Data submitted successfully!");
 
-          setLocationBtn(false)
+          // setLocationBtn(false)
 
 
         } else {
