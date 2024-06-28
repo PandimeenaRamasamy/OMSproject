@@ -1,6 +1,5 @@
 import "./OutletStepperForm.scss";
-import React, { useState, useEffect, useRef ,useContext} from 'react';
-import './OutletStepperForm.scss';
+import React, { useState, useEffect, useRef } from 'react';
 import { CiUser } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
 import { GiPressureCooker } from "react-icons/gi";
@@ -18,17 +17,15 @@ import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { LocationContext } from "../../LocationProvider";
-import { useSelector } from "react-redux";
 
-
-
-function Reciept() {
+function Receipt() {
   return <h2>Receipt</h2>;
 }
 
 function Stepform() {
   const [outletactiveStep, setOutletActiveStep] = useState(0);
+  const [completedSteps, setCompletedSteps] = useState(new Array(7).fill(false));
+  const [validSteps, setValidSteps] = useState(new Array(7).fill(false)); // State to track valid steps
   const dispatch = useDispatch();
   const pickUpformRef = useRef();
   const kitchenformRef = useRef();
@@ -43,7 +40,7 @@ function Stepform() {
   const [dineInForm, setDineInForm] = useState("");
   const [deliveryform, setDeliveryForm] = useState("");
   const [basicDetailsForm, setBasicDetailsForm] = useState('');
-  const { locationBtn, setLocationBtn } = useContext(LocationContext);
+
   const outletsteps = [
     {
       title: "Basic Details",
@@ -76,8 +73,8 @@ function Stepform() {
       icon: <GiPressureCooker className="image" />,
     },
     {
-      title: "Reciept",
-      component: <Reciept />,
+      title: "Receipt",
+      component: <Receipt />,
       icon: <BiReceipt className="image" />,
     },
   ];
@@ -93,7 +90,6 @@ function Stepform() {
   const handleStepClick = (index) => {
     if (index !== outletactiveStep) {
       const updatedVisitedSteps = [...outletvisitedSteps];
-      // Mark all steps after the clicked step as not visited
       for (let i = index + 1; i < outletsteps.length; i++) {
         updatedVisitedSteps[i] = false;
       }
@@ -110,12 +106,22 @@ function Stepform() {
         newFormData1 = basicDetailsref.current.getFormData();
         setBasicDetailsForm(newFormData1);
         dispatch(saveBasicDetailsRequest(newFormData1));
+        setValidSteps((prev) => {
+          const updated = [...prev];
+          updated[outletactiveStep] = true;
+          return updated;
+        });
         toast.success("Data submitted successfully!");
         break;
       case 1:
         newFormData1 = restrauntimageref.current.getFormData();
         setrestrauntImageForm(newFormData1);
         dispatch(PostRestaurantImageDataRequest(newFormData1));
+        setValidSteps((prev) => {
+          const updated = [...prev];
+          updated[outletactiveStep] = true;
+          return updated;
+        });
         toast.success("Data submitted successfully!");
         break;
       case 2:
@@ -124,8 +130,18 @@ function Stepform() {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
           dispatch(postDineinDataRequest(newFormData1));
+          setCompletedSteps((prev) => {
+            const updated = [...prev];
+            updated[outletactiveStep] = true;
+            return updated;
+          });
+          setValidSteps((prev) => {
+            const updated = [...prev];
+            updated[outletactiveStep] = true;
+            return updated;
+          });
+          toast.success("Data submitted successfully!");
         }
-        toast.success("Data submitted successfully!");
         break;
       case 3:
         isValid = pickUpformRef.current.validate();
@@ -133,6 +149,16 @@ function Stepform() {
           newFormData1 = pickUpformRef.current.getFormData();
           setPickupForm(newFormData1);
           dispatch(PostPickupDataRequest(newFormData1));
+          setCompletedSteps((prev) => {
+            const updated = [...prev];
+            updated[outletactiveStep] = true;
+            return updated;
+          });
+          setValidSteps((prev) => {
+            const updated = [...prev];
+            updated[outletactiveStep] = true;
+            return updated;
+          });
           toast.success("Data submitted successfully!");
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
@@ -142,6 +168,16 @@ function Stepform() {
         newFormData1 = deliveryref.current.getFormData();
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1));
+        setCompletedSteps((prev) => {
+          const updated = [...prev];
+          updated[outletactiveStep] = true;
+          return updated;
+        });
+        setValidSteps((prev) => {
+          const updated = [...prev];
+          updated[outletactiveStep] = true;
+          return updated;
+        });
         toast.success("Data submitted successfully!");
         break;
       case 5:
@@ -150,23 +186,28 @@ function Stepform() {
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
           dispatch(PostKitchenDataRequest(newFormData1));
+          setCompletedSteps((prev) => {
+            const updated = [...prev];
+            updated[outletactiveStep] = true;
+            return updated;
+          });
+          setValidSteps((prev) => {
+            const updated = [...prev];
+            updated[outletactiveStep] = true;
+            return updated;
+          });
           toast.success("Data submitted successfully!");
-
-          // setLocationBtn(false)
-
-
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
         break;
       default:
-        console.log(" There is no Api call");
+        console.log("There is no Api call");
         break;
     }
 
-    if (isValid) {
+  
       handleNextStep();
-    }
   };
 
   const handleNextStep = () => {
@@ -175,8 +216,6 @@ function Stepform() {
     }
   };
 
-  const success=useSelector((state)=>state.postData.data)
-  console.log("hi",success)
 
   const progress = (outletvisitedSteps.filter((step) => step).length / outletsteps.length) * 100;
 
@@ -192,9 +231,9 @@ function Stepform() {
               {outletsteps.map((step, index) => (
                 <div
                   key={index}
-                  className={`step ${index === outletactiveStep ? "active" : ""} ${
+                  className={`step ${completedSteps[index] ? "completed" : ""} ${validSteps[index] ? "valid" : ""} ${
                     outletvisitedSteps[index] ? "visited" : ""
-                  }`}
+                  } ${index === outletactiveStep ? "active" : ""}`}
                   onClick={() => handleStepClick(index)}
                 >
                   {step.icon}
@@ -204,31 +243,19 @@ function Stepform() {
             </div>
           </div>
         </div>
-        <div className="component-container">{outletsteps[outletactiveStep].component}</div>
-      </div>
-      <div className="btn-container">
-        <div className="btn-footer">
-          <div>
-            <button className="clear_all">Clear ALL</button>
-          </div>
-          <div>
-            <button className='save_next' onClick={handleSaveandNext}>Save & Next</button>
-          </div>
+        <div className="component-container">
+          {outletsteps[outletactiveStep].component}
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={1600}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Flip}
-      />
+      <div className="btn-footer">
+        <button className="save_next" onClick={handleSaveandNext}>
+          Save & Next
+        </button>
+        <button className="clear_all" >
+          Clear All
+        </button>
+        <ToastContainer position="top-center" transition={Flip} />
+      </div>
     </div>
   );
 }

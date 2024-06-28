@@ -1,291 +1,203 @@
 .Stepperformcontainer {
-  margin-top:90px;
-    transform: translateX(250px);
-    height:139px;
-  
-  
-    
+  margin-top: 90px;
+  transform: translateX(250px);
+  height: 139px;
+}
+
+.sub-container {
+  width: 1330px;
+  position: absolute;
+  left: 20px;
+  height: 139px;
+  border: 2px solid #979797;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
+  transform: scale(0.85);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.stepper-container {
+  display: flex;
+  transform: translateY(25px);
+  justify-content: space-between;
+}
+
+.step.completed {
+  background-color: orange;
+}
+
+.image {
+  position: absolute;
+  top: -2px;
+  height: 44px;
+  width: 24px;
+  color: black;
+}
+
+.step.valid {
+  background-color: green;
+}
+
+.step {
+  cursor: pointer;
+  width: 45px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 100px;
+  background-color: #c7c8cc;
+}
+
+.component-container {
+  width: 90%;
+}
+
+.icon .invalid {
+  background-color: red;
+}
+
+.visited {
+  background-color: orange;
+  color: white;
+}
+
+.visited.icon {
+  color: white !important;
+}
+
+.step.active {
+  background-color: rgba(182, 210, 140, 1);
+  color: #fff;
+}
+
+.btn-footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.save_next {
+  width: 120px;
+  height: 35px;
+  margin-left: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 4px;
+  background-color: #67833e;
+  border: 1px solid #67833e;
+}
+
+.clear_all {
+  width: 120px;
+  height: 35px;
+  color: #67833e;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #67833e;
+  background: none;
+}
+
+.btn-container {
+  position: absolute;
+  top: 1080px;
+  left: 1100px;
+}
+
+.icon-text {
+  color: black;
+  margin-right: 20px;
+  margin-top: 40px;
+  margin-left: -15px;
+  text-align: center;
+}
+
+.stepper-progress {
+  position: absolute;
+  top: 45px;
+  z-index: -1;
+  width: 1240px;
+  height: 2px;
+  background-color: #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: rgba(0, 183, 29, 1);
+  border-radius: 5px;
+}
+
+/* Media Queries */
+
+@media (max-width: 1500px) {
+  .sub-container {
+    width: 1050px;
+    left: 40px;
+  }
+  .stepper-progress {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .Stepperformcontainer {
+    margin-top: 190px;
+    height: 200px;
+    width: 900px;
   }
   .sub-container {
-    width:1330px;
-    position: absolute;
-    left:20px;
-    height:139px;
-    border:2px solid #979797;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
-    transform: scale(0.85) ;
-    border:2px solid #979797;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow properties as needed */
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 830px;
+    left: 40px;
   }
-  
-  .stepper-container {
-      display: flex;
-      transform: translateY(25px);
-      justify-content: space-between;
-      
-    
-      
-    }
-  
-  .image {
-    position: absolute;
-    top:-2px;
-    height: 44px;
-    width: 24px;
-    color: black;
-  }
-  
-  .step {
-    cursor: pointer;
-    width: 45px;
-    height: 44px;
-   padding: 10px;
-    border-radius: 100px;
-    
-    background-color: #C7C8CC;
-    
-  }
-  .component-container{
-    
-    width:90%
-    
-   
-  }
-  .icon .invalid{
-    background-color: red;
-  }
-  
-  .visited {
-    background-color: rgba(0, 183, 29, 1) ;
-    color:white;
-  }
-  .visited.icon {
-    color:white !important;
-  }
-  .step.active {
-    background-color: rgba(182, 210, 140, 1);
-    color:#fff;
-  }
-  
-  .btn-footer{
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    
-    display: flex;
-    flex-direction: row;
-  }
-  .save_next{
-    width: 120px;
-    height: 35px;
-   margin-left: 10px;
-   color: white;
-   font-size: 16px;
-   font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 4px;
-    background-color:  #67833E;
-    border: 1px solid #67833E
-  }
-  .clear_all{
-    width: 120px;
-    height: 35px;
-    color: #67833E;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
-    border: 1px solid #67833E;
-    background:none;
-  }
-  .btn-container{
-    position:absolute;
-    top:1080px;
-    left:1100px
-    
-  }
-  .icon-text{
-    color:black;
-    margin-right: 20px;
-    margin-top:40px;
-    margin-left:-15px;
-    text-align: center;
-    
-  }
-  
   .stepper-progress {
-    position: absolute;
-    top: 45px;
-    z-index: -1;
-    width: 1240px;
-    height: 2px;
-    background-color: #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-   
+    width: 750px;
   }
-  
-  .progress-bar {
-    height: 100%;
-    background-color: rgba(0, 183, 29, 1);
-    border-radius: 5px;
+}
+
+@media (max-width: 1270px) {
+  .sub-container {
+    width: 820px;
+    left: 60px;
   }
-  
- 
-
-  
-  /* @media (max-width:1280px) {
-    .sub-container{
-      width: 1280px;
-    }
-    .container{
-      padding-top: 100px;
-    }
-    .stepper-progress {
-      width:850px;  
-    }
+  .stepper-progress {
+    width: 740px;
   }
-  @media (max-width: 1080px) {
-    .stepper-progress {
-      width:700px;  
-    }
-    .container {
-     
-      margin-left: 360px;
-      margin-bottom: 150px;
-    }
-    .sub-container {
-      transform: scale(1);
-      width: 1150px;
-    }
-  }
-  
-  @media (max-width: 1100px) {
-    .stepper-progress {
-      width:1000px;  
-    }
-    .container {
-     
-      margin-left: 360px;
-      margin-bottom: 150px;
-    }
-    .sub-container {
-      transform: scale(1);
-      width: 1150px;
-    }
-  }
-  @media (max-width: 1200px) {
-    .stepper-progress {
-      width:1000px;  
-    }
-    .container {
-     
-      margin-left: 360px;
-      margin-bottom: 150px;
-    }
-    .sub-container {
-      transform: scale(1);
-      width: 1150px;
-    }
-  }
-  
- 
-  
-  
-   */
+}
 
-
-   @media(max-width:1500px)
-   {
-   
-
-    .sub-container {
-      width:1050px;
-      // top: 100px;
-      left:40px;
-      
-    }
-    .stepper-progress{
-      width: 1000px;
-    }
-  
-   }
-
-
-   @media(max-width:1280px)
-   {
-    .Stepperformcontainer {
-      margin-top:190px;
-        // transform: translateX(250px);
+@media (max-width: 1080px) {
+  .Stepperformcontainer {
+    margin-top: 190px;
+    transform: translateX(250px);
     height: 200px;
-    width:900px;
-       
-        
-      }
+  }
+  .sub-container {
+    width: 760px;
+    top: 10px;
+    left: -40px;
+  }
+  .stepper-progress {
+    width: 680px;
+  }
+}
 
-    .sub-container {
-      width:830px;
-      // top: 100px;
-      left:40px;
-      
-    }
-    .stepper-progress{
-      width: 750px;
-    }
-    
-   }
-   @media(max-width:1270px)
-   {
-    .sub-container {
-      width:820px;
-      left:60px;
-    }
-    .stepper-progress{
-      width: 740px;
-    }
-    
-   }
-
-   @media(max-width:1080px)
-   {
-    .Stepperformcontainer {
-      margin-top:190px;
-        transform: translateX(250px);
-        height:200px;
-      
-      
-        
-      }
-    .sub-container {
-      width:760px;
-     top:10px;
-      left: -40px;
-    }
-    .stepper-progress{
-      width: 680px;
-    }
-    
-   }
-
-   @media(max-width:900px)
-   {
-    .Stepperformcontainer {
-      margin-top:190px;
-        transform: translateX(250px);
-        height:200px;
-      
-      
-        
-      }
-    .sub-container {
-      width:760px;
-     top:10px;
-      left: -40px;
-    }
-    .stepper-progress{
-      width: 680px;
-    }
-    
-   }
+@media (max-width: 900px) {
+  .Stepperformcontainer {
+    margin-top: 190px;
+    transform: translateX(250px);
+    height: 200px;
+  }
+  .sub-container {
+    width: 760px;
+    top: 10px;
+    left: -40px;
+  }
+  .stepper-progress {
+    width: 680px;
+  }
+}
