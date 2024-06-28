@@ -109,7 +109,7 @@ const Sidenavbar = () => {
               <div>
                 
 
-                {datafromapi.length > 0 &&
+                { Array.isArray(datafromapi) && datafromapi.length > 0 &&
                   datafromapi.map((location, index) => (
                     <div key={index}>
                       <button
