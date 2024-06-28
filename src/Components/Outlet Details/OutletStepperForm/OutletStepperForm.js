@@ -21,7 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { LocationContext } from "../../LocationProvider";
 
 function Reciept() {
-  return <h2>Reciept</h2>;
+  return <h2></h2>;
 }
 
 function Stepform() {
