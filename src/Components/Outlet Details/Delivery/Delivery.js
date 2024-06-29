@@ -29,7 +29,7 @@
 //   //   },
 //   // ]);
 //   const [timeSlots, setTimeSlots] = useState([
-    
+
 //     { deliveryServiceTimeFrom: '00.00', deliveryServiceTimeTo: '00.00' }
 // ]);
 
@@ -202,8 +202,6 @@
 //   useEffect(() => {
 //     console.log("useffect  time slotssssssss", timeSlots);
 //   }, [timeSlots]);
-
- 
 
 //   const enableClick = () => {
 //     setShowDelivery(true);
@@ -442,15 +440,11 @@
 //           </div>
 //           <div className="addTime">
 
-
 //            <div>
 //             <input type="time" onChange={(e)=>setTimeSlots(convertTo12HourFormat(e.target.value))}/>
 //             <input type="time" onChange={(e)=>setTimeSlots(convertTo12HourFormat(e.target.value))} />
 //            </div>
 
-
-
-            
 //             {/* <AddTime
 //                 key={index}
 //                 timeSlot={slot}
@@ -458,7 +452,7 @@
 //                   const newSlots = [...timeSlots];
 //                   newSlots[index] = newSlot;
 //                   setTimeSlots(newSlots);
-                 
+
 //                 }}
 //               /> */}
 
@@ -963,7 +957,7 @@
 //                   onClick={() => setShowTHirdParty((tp) => !tp)}
 //                 >
 //                   <h3>3rd Party</h3>
-                  
+
 //                   <img
 //                     className={showThirdParty ? "arrowUp" : "arrowDown"}
 //                     onClick={() => setShowTHirdParty(!showThirdParty)}
@@ -1074,39 +1068,7 @@
 
 // export default Delivery;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React, {  useState ,useImperativeHandle,useEffect} from "react";
+import React, { useState, useImperativeHandle, useEffect } from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
@@ -1117,12 +1079,12 @@ import vector from "../../../assets/images/Vector.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
-const Delivery = React.forwardRef((props,ref) => {
+const Delivery = React.forwardRef((props, ref) => {
   const [isEnable, setIsEnable] = useState(false);
   const [showdelivery, setShowDelivery] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
-    const data = useSelector((state) => state.getlocationdata.data);
-    const loactiondata = useSelector((state) => state.locationiddata.locationId);
+  const data = useSelector((state) => state.getlocationdata.data);
+  const loactiondata = useSelector((state) => state.locationiddata.locationId);
 
   const dispatch = useDispatch();
   const reducer = useSelector((state) => state.deliveryDataReducer);
@@ -1206,130 +1168,223 @@ const Delivery = React.forwardRef((props,ref) => {
   const [selectedThirdParties, setSelectedThirdParties] = useState([]);
   const [deliveryOption, setDeliveryOption] = useState("no");
 
-  const data4 = {
-        location: {
-          id: "c43f3a9c-60c7-4443-b1da-477c2ad3c97c",
-          merchantId: "8dfe7674-709d-431c-a233-628e839ecc76",
-          restaurantName: "A2B",
-          name: "aruna",
-          phone: "+91 587283487r2",
-          email: "fdyu1@gmail.com",
-          addressLine1:
-            "71,amarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
-          addressLine2: null,
-          addressLine3: null,
-          city: "Madurai",
-          state: "TamilNadu",
-          pinCode: "625009",
-          country: "India",
-          attributes:
-            '{"gstNumber": "seconddata12334", "DeliveryDetails": {"inHouse": {"flatFee": "enabled", "maximumRadius": "7","isEnabled": true, "batchOrder": "Yes", "feesStructure": "based on distance", "cashOnDelivery": "yes", "initial2MileAmount": "$5", "additional1MileAmount": "$1", "defaultCountOfBatchOrder": "3"}, "thirdParty": {"isEnabled": true, "doorDashId": "545238i874", "uberEatsId": "694925"}, "deliveryPayment": ["pay at store", "apple pay"], "packagingCharge": "5", "maximumOrderPrice": "$1000", "minimumOrderPrice": "$100", "scheduledDelivery": "yes", "deliverySettingTime": [], "scheduledDeliveryDuration": "EOD"}}',
-        },
-        // {\"deliveryServiceTimeTo\": \"11:00PM\", \"deliveryServiceTimeFrom\": \"08:00AM\"}, {\"deliveryServiceTimeTo\": \"10:00PM\", \"deliveryServiceTimeFrom\": \"06:00PM\"}
-        media: [],
-        availabilityDtos: [
-          {
-            createdTime: null,
-            endTime: "07:00",
-            name: "HappyHours",
-            startTime: "05:00",
-            weekDay: "5",
-          },
-          {
-            createdTime: null,
-            endTime: "12:00PM",
-            name: "lunch",
-            startTime: "08:00AM",
-            weekDay: "4",
-          },
-          {
-            createdTime: null,
-            endTime: "12:00PM",
-            name: "lunch",
-            startTime: "08:00AM",
-            weekDay: "5",
-          },
-        ],
-      };
+  const [time2, settime2] = useState(false);
+  const [time3, settime3] = useState(false);
 
-const  [locationId,setlocationId]=useState();
+  const [timeSlot, setTimeSlot] = useState([
+    { openingTime: "", closingTime: "" },
+    { openingTime: "", closingTime: "" },
+    { openingTime: "", closingTime: "" }
+
+  ]);
+  
+
+  const data4 = {
+    location: {
+      id: "c43f3a9c-60c7-4443-b1da-477c2ad3c97c",
+      merchantId: "8dfe7674-709d-431c-a233-628e839ecc76",
+      restaurantName: "A2B",
+      name: "aruna",
+      phone: "+91 587283487r2",
+      email: "fdyu1@gmail.com",
+      addressLine1:
+        "71,amarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
+      addressLine2: null,
+      addressLine3: null,
+      city: "Madurai",
+      state: "TamilNadu",
+      pinCode: "625009",
+      country: "India",
+      attributes:
+        '{"gstNumber": "seconddata12334", "DeliveryDetails": {"inHouse": {"flatFee": "enabled", "maximumRadius": "7","isEnabled": true, "batchOrder": "Yes", "feesStructure": "based on distance", "cashOnDelivery": "yes", "initial2MileAmount": "$5", "additional1MileAmount": "$1", "defaultCountOfBatchOrder": "3"}, "thirdParty": {"isEnabled": true, "doorDashId": "545238i874", "uberEatsId": "694925"}, "deliveryPayment": ["pay at store", "apple pay"], "packagingCharge": "5", "maximumOrderPrice": "$1000", "minimumOrderPrice": "$100", "scheduledDelivery": "yes", "deliverySettingTime": [{\"deliveryServiceTimeTo\": \"11:00PM\", \"deliveryServiceTimeFrom\": \"08:00AM\"}, {\"deliveryServiceTimeTo\": \"10:00PM\", \"deliveryServiceTimeFrom\": \"06:00PM\"}], "scheduledDeliveryDuration": "EOD"}}',
+    },
+         
+
+    media: [],
+    availabilityDtos: [
+      {
+        createdTime: null,
+        endTime: "07:00",
+        name: "HappyHours",
+        startTime: "05:00",
+        weekDay: "5",
+      },
+      {
+        createdTime: null,
+        endTime: "12:00PM",
+        name: "lunch",
+        startTime: "08:00AM",
+        weekDay: "4",
+      },
+      {
+        createdTime: null,
+        endTime: "12:00PM",
+        name: "lunch",
+        startTime: "08:00AM",
+        weekDay: "5",
+      },
+    ],
+  };
+
+
+  const addtime = (index) => {
+    if (index === "second") {
+      settime2(true);
+    }
+    if (index === "third") {
+      settime3(true);
+    }
+  };
+
+  const deletetime = (slot) => {
+    const newTimeSlot = [...timeSlot];
+    if (slot === "second") {
+      settime2(false);
+      newTimeSlot[1] = { openingTime: "", closingTime: "" };
+    }
+    if (slot === "third") {
+      settime3(false);
+      newTimeSlot[2] = { openingTime: "", closingTime: "" };
+    }
+    setTimeSlot(newTimeSlot);
+  };
+  const handleTimeChange = (index, field, value) => {
+    const newTimeSlot = [...timeSlot];
+    newTimeSlot[index][field] = value;
+    setTimeSlot(newTimeSlot);
+  };
+  const deliverySetting = timeSlot
+  .filter(slot => slot.openingTime && slot.closingTime)  // Filter out incomplete time slots
+  .map(slot => ({
+    deliveryServiceTimeFrom: slot.openingTime,
+    deliveryServiceTimeTo: slot.closingTime,
+  }));
+const print=()=>{
+  console.log("timeeee slotsssss",timeSlot)
+  console.log("deliverySetting",deliverySetting)
+
+}
+
+const convertTo24Hour = (time) => {
+  const [timePart, modifier] = time.split(/(AM|PM)/i);
+  let [hours, minutes] = timePart.split(':');
+  if (modifier.toUpperCase() === 'PM' && hours !== '12') {
+    hours = (parseInt(hours, 10) + 12).toString().padStart(2, '0');
+  }
+  if (modifier.toUpperCase() === 'AM' && hours === '12') {
+    hours = '00';
+  }
+  return `${hours}:${minutes}`;
+};
+
+// useEffect(() => {
+//   // Simulate API call
+//   const fetchDeliverySettings = async () => {
+//     const deliverySettingTime = [
+//       { deliveryServiceTimeFrom: "08:00AM", deliveryServiceTimeTo: "11:00PM" },
+//       { deliveryServiceTimeFrom: "06:00PM", deliveryServiceTimeTo: "10:00PM" }
+//     ];
+
+//     const initialTimeSlot = deliverySettingTime.map(slot => ({
+//       openingTime: convertTo24Hour(slot.deliveryServiceTimeFrom),
+//       closingTime: convertTo24Hour(slot.deliveryServiceTimeTo),
+//     }));
+
+//     setTimeSlot(prevTimeSlot => [
+//       ...initialTimeSlot,
+//       ...prevTimeSlot.slice(initialTimeSlot.length)
+//     ]);
+
+//     if (initialTimeSlot.length > 1) settime2(true);
+//     if (initialTimeSlot.length > 2) settime3(true);
+//   };
+
+//   fetchDeliverySettings();
+// }, []);
+
+  const [locationId, setlocationId] = useState();
 
   useEffect(() => {
-   
-
-
     if (Array.isArray(data) && data.length > 0 && data[0].location) {
-
-      setlocationId(loactiondata&& loactiondata)
+      setlocationId(loactiondata && loactiondata);
 
       if (data[0].location.attributes) {
+        const deliveryDetails = JSON.parse(
+          data[0].location.attributes
+        ).DeliveryDetails;
 
-    const deliveryDetails = JSON.parse(
-      data[0].location.attributes
-    ).DeliveryDetails;
+        if (deliveryDetails) {
+          setShowDelivery(true);
+          setIsEnable(true);
+        }
+        if (deliveryDetails?.deliveryPayment) {
+          setSelectedMethods(deliveryDetails.deliveryPayment || []);
+          console.log(deliveryDetails.deliveryPayment);
+        }
+        setPackageCharge(deliveryDetails?.packagingCharge || "");
+        setInHouse(deliveryDetails?.inHouse?.isEnabled);
+        setShowInHouse(deliveryDetails?.isInHouseEnabled);
+        setMaxPriceValue(
+          deliveryDetails?.maximumOrderPrice.replace("$", "") || ""
+        );
+        setMinPriceValue(
+          deliveryDetails?.minimumOrderPrice.replace("$", "") || ""
+        );
+        setDeliveryOption(deliveryDetails?.scheduledDelivery);
+        setShowScheduledDelivery(deliveryDetails?.scheduledDelivery === "yes");
+        if( deliveryDetails.deliverySettingTime)
+          {
+            const initialTimeSlot = deliverySettingTime.map(slot => ({
+              openingTime: convertTo24Hour(slot.deliveryServiceTimeFrom),
+              closingTime: convertTo24Hour(slot.deliveryServiceTimeTo),
+            }));
+        
+            setTimeSlot(prevTimeSlot => [
+              ...initialTimeSlot,
+              ...prevTimeSlot.slice(initialTimeSlot.length)
+            ]);
+        
+            if (initialTimeSlot.length > 1) settime2(true);
+            if (initialTimeSlot.length > 2) settime3(true);
+          }
 
+        setThirdParty(deliveryDetails?.thirdParty?.isEnabled);
 
+        const updatedScheduledDay = [...scheduledDay];
+        updatedScheduledDay[0] = deliveryDetails?.scheduledDeliveryDuration;
+        setScheduledDay(updatedScheduledDay);
 
-    if (deliveryDetails) {
-      setShowDelivery(true);
-      setIsEnable(true);
-      
-    }
-    if(deliveryDetails?.deliveryPayment){
-    setSelectedMethods(deliveryDetails.deliveryPayment || []);
-    console.log(deliveryDetails.deliveryPayment)
+        const index = updatedScheduledDay.indexOf(
+          deliveryDetails?.scheduledDeliveryDuration
+        );
+        setCurrentIndex(index);
+
+        // Setting additional states for third-party delivery services
+
+        if (deliveryDetails?.inHouse?.isEnabled) {
+          setFlatFee(deliveryDetails?.inHouse?.flatFee);
+          setDefaultMile(deliveryDetails?.inHouse?.initial2MileAmount);
+          setAdditionalMile(deliveryDetails?.inHouse?.additional1MileAmount);
+          setSelectedOption(deliveryDetails?.inHouse?.cashOnDelivery);
+          setBatchOrder(deliveryDetails?.inHouse?.batchOrder);
+          setbrachCount(deliveryDetails?.inHouse?.defaultCountOfBatchOrder);
+          setFeesStructure(deliveryDetails?.inHouse?.feesStructure);
+          setMaxRadius(deliveryDetails?.inHouse?.maximumRadius);
+        }
+
+        if (deliveryDetails?.thirdParty?.isEnabled) {
+          setDoorDash(deliveryDetails.thirdParty.doorDashId || "");
+          setDunzo(deliveryDetails.thirdParty.dunzoId || "");
+          setUberEats(deliveryDetails.thirdParty.uberEatsId || "");
+
+          setShowDoorDash(!!deliveryDetails.thirdParty.doorDashId);
+          setShowDunzo(!!deliveryDetails.thirdParty.dunzoId);
+          setShowUberEats(!!deliveryDetails.thirdParty.uberEatsId);
+        }
       }
-    setPackageCharge(deliveryDetails?.packagingCharge || "");
-    setInHouse(deliveryDetails?.inHouse?.isEnabled);
-    setShowInHouse(deliveryDetails?.isInHouseEnabled);
-    setMaxPriceValue(deliveryDetails?.maximumOrderPrice.replace("$", "") || "");
-    setMinPriceValue(deliveryDetails?.minimumOrderPrice.replace("$", "") || "");
-    setDeliveryOption(deliveryDetails?.scheduledDelivery);
-    setShowScheduledDelivery(deliveryDetails?.scheduledDelivery === "yes");
-    // if( deliveryDetails.deliverySettingTime)
-    //   {
-    //     setTimeSlots(deliveryDetails.deliverySettingTime)
-    //   }
- 
- 
-   
-    setThirdParty(deliveryDetails?.thirdParty?.isEnabled);
- 
-    const updatedScheduledDay = [...scheduledDay];
-    updatedScheduledDay[0] = deliveryDetails?.scheduledDeliveryDuration;
-    setScheduledDay(updatedScheduledDay);
- 
-    const index = updatedScheduledDay.indexOf(
-      deliveryDetails?.scheduledDeliveryDuration
-    );
-    setCurrentIndex(index);
- 
-    // Setting additional states for third-party delivery services
- 
-    if (deliveryDetails?.inHouse?.isEnabled) {
-      setFlatFee(deliveryDetails?.inHouse?.flatFee);
-      setDefaultMile(deliveryDetails?.inHouse?.initial2MileAmount);
-      setAdditionalMile(deliveryDetails?.inHouse?.additional1MileAmount);
-      setSelectedOption(deliveryDetails?.inHouse?.cashOnDelivery);
-      setBatchOrder(deliveryDetails?.inHouse?.batchOrder);
-      setbrachCount(deliveryDetails?.inHouse?.defaultCountOfBatchOrder);
-      setFeesStructure(deliveryDetails?.inHouse?.feesStructure);
-      setMaxRadius(deliveryDetails?.inHouse?.maximumRadius);
     }
- 
-    if (deliveryDetails?.thirdParty?.isEnabled) {
-      setDoorDash(deliveryDetails.thirdParty.doorDashId || "");
-      setDunzo(deliveryDetails.thirdParty.dunzoId || "");
-      setUberEats(deliveryDetails.thirdParty.uberEatsId || "");
- 
-      setShowDoorDash(!!deliveryDetails.thirdParty.doorDashId);
-      setShowDunzo(!!deliveryDetails.thirdParty.dunzoId);
-      setShowUberEats(!!deliveryDetails.thirdParty.uberEatsId);
-    }
-  }}
     console.log("inhouse", inHouse);
-
-  }, [])
+  }, []);
 
   const data2 = useSelector((state) => state.registration.data);
   const enableClick = () => {
@@ -1344,7 +1399,6 @@ const  [locationId,setlocationId]=useState();
     if (isEnable === true) {
       setIsEnable(false);
     }
-    
   };
 
   const handleCheckboxChange = (event) => {
@@ -1435,61 +1489,54 @@ const  [locationId,setlocationId]=useState();
     });
   };
 
- 
-    const deliverySettingTime = timeSlots.map((slot) => ({
-      deliveryServiceTimeFrom: slot.openingTime,
-      deliveryServiceTimeTo: slot.closingTime,
-    }));
+  const deliverySettingTime = timeSlots.map((slot) => ({
+    deliveryServiceTimeFrom: slot.openingTime,
+    deliveryServiceTimeTo: slot.closingTime,
+  }));
 
+  const datafromapi = useSelector((state) => state.postData.data);
 
-    const datafromapi = useSelector((state) => state.postData.data);
+  const payloadData = {
+    locationId: locationId || (data2 && data2),
+    deliverySettingTime:deliverySetting,
+    deliveryPayment: selectedMethods,
+    scheduledDelivery: deliveryOption,
+    minimumOrderPrice: minPriceValue,
+    maximumOrderPrice: maxPriceValue,
+    scheduledDeliveryDuration: scheduledDay[currentIndex],
+    packagingCharge: packageCharge,
+    deliveryOption: {},
+  };
 
-    const payloadData = {
-
-      locationId:locationId||data2 && data2,
-      deliverySettingTime,
-      deliveryPayment: selectedMethods,
-      scheduledDelivery: deliveryOption,
-      minimumOrderPrice: minPriceValue,
-      maximumOrderPrice: maxPriceValue,
-      scheduledDeliveryDuration: scheduledDay[currentIndex],
-      packagingCharge: packageCharge,
-      deliveryOption: {},
+  if (inHouse) {
+    payloadData.deliveryOption.inHouse = {
+      isEnabled: inHouse,
+      maximumRadius: maxRadius,
+      cashInDelivery: selectedOption,
+      batchOrder: batchOrder,
+      defaultCountBatchOrder: brachCount,
+      feesStructure: feesStructure,
+      initialMileAmount: defaultMile,
+      additional1MileAmount: additionalMile,
+      flatFee: flatFee,
     };
+    payloadData.deliveryOption.thirdParty = {
+      isEnabled: thirdParty,
+    };
+  }
 
-
-
-    if (inHouse) {
-      payloadData.deliveryOption.inHouse = {
-        isEnabled: inHouse,
-        maximumRadius: maxRadius,
-        cashInDelivery: selectedOption,
-        batchOrder: batchOrder,
-        defaultCountBatchOrder: brachCount,
-        feesStructure: feesStructure,
-        initialMileAmount: defaultMile,
-        additional1MileAmount: additionalMile,
-        flatFee: flatFee,
-      };
-      payloadData.deliveryOption.thirdParty = {
-        isEnabled: thirdParty,
-      };
-    }
-
-    if (thirdParty) {
-      payloadData.deliveryOption.thirdParty = {
-        isEnabled: thirdParty,
-        thirdParty: selectedThirdParties,
-        dunzoId: dunzo,
-        doorDashId: doorDash,
-        uberEatsId: uberEats,
-      };
-      payloadData.deliveryOption.inhouse = {
-        isEnabled: inHouse,
-      };
-    }
-
-  
+  if (thirdParty) {
+    payloadData.deliveryOption.thirdParty = {
+      isEnabled: thirdParty,
+      thirdParty: selectedThirdParties,
+      dunzoId: dunzo,
+      doorDashId: doorDash,
+      uberEatsId: uberEats,
+    };
+    payloadData.deliveryOption.inhouse = {
+      isEnabled: inHouse,
+    };
+  }
 
   const handleClearAllButton = () => {
     setTimeSlots([{ openingTime: "00:00", closingTime: "00:00" }]);
@@ -1509,19 +1556,15 @@ const  [locationId,setlocationId]=useState();
     setDoorDash("");
   };
 
-  const getFormData=()=>{
+  const getFormData = () => {
     return payloadData;
+  };
 
-
-}
-
-  useImperativeHandle(ref,()=>({
+  useImperativeHandle(ref, () => ({
     getFormData,
+  }));
 
-
-}))
-
- 
+  
 
   return (
     <div className="delivery">
@@ -1553,6 +1596,51 @@ const  [locationId,setlocationId]=useState();
               <p className="cPname">Same as restaurant working time</p>
             </label>
           </div>
+          <div className="timslot">
+            <button onClick={print}>print</button>
+
+
+            <div>
+              <input type="time" value={timeSlot[0].openingTime}
+          onChange={(e) => handleTimeChange(0, "openingTime", e.target.value)} />
+              <input type="time"  value={timeSlot[0].closingTime}
+          onChange={(e) => handleTimeChange(0, "closingTime", e.target.value)}/>
+              <p onClick={() => addtime("second")} className="Addtimeslot">
+                + Add Time slots
+              </p>
+            </div>
+            {time2 && (
+              <div>
+                <input type="time" value={timeSlot[1].openingTime}
+            onChange={(e) => handleTimeChange(1, "openingTime", e.target.value)}/>
+                <input type="time" value={timeSlot[1].closingTime}
+            onChange={(e) => handleTimeChange(1, "closingTime", e.target.value)}/>
+                <p onClick={() => addtime("third")} className="Addtimeslot">
+                  + Add Time slots
+                </p>
+                <p className="deleteTime" onClick={() => deletetime('second')}>
+                  - Delete Session
+                </p>
+              </div>
+            )}
+            {time3 && (
+              <div>
+                <input type="time" value={timeSlot[2].openingTime}
+            onChange={(e) => handleTimeChange(2, "openingTime", e.target.value)}/>
+                <input type="time" value={timeSlot[2].closingTime}
+            onChange={(e) => handleTimeChange(2, "closingTime", e.target.value)}/>
+                <p className="deleteTime" onClick={() => deletetime('third')}>
+                  - Delete Session
+                </p>
+              </div>
+            )}
+          </div>
+
+
+
+
+
+
           <div className="addTime">
             {timeSlots.map((slot, index) => (
               <AddTime
@@ -1565,13 +1653,14 @@ const  [locationId,setlocationId]=useState();
                 }}
               />
             ))}
-                    {timeSlots.length > 1 && (
+            {timeSlots.length > 1 && (
               <p className="deleteTime" onClick={handleDelete}>
                 - Delete Session
               </p>
             )}
-            <p onClick={addDayAndTime} className="Addtimeslot">+ Add Time slots</p>
-            
+            <p onClick={addDayAndTime} className="Addtimeslot">
+              + Add Time slots
+            </p>
           </div>
           {/* <p className="deleteTime" onClick={handleDelete}>
               - Delete Session
@@ -1661,59 +1750,59 @@ const  [locationId,setlocationId]=useState();
           </div>
           {showScheduledDelivery && (
             <>
-            <div className="priceDetails">
-              <h3>Price Detail</h3>
-              <div className="input-container">
-                <p>Minimum order price</p>
-                <span className="symbol">$</span>
-                <input
-                  type="text"
-                  value={minPriceValue}
-                  placeholder="0 - 100"
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (!isNaN(val) && val >= 0 && val <= 100) {
-                      setMinPriceValue(val);
-                    }
-                  }}
-                  className="input"
-                />
-              </div>
-              <div className="input-container">
-                <p>Maximum order price</p>
-                <span className="symbol">$</span>
-                <input
-                  type="text"
-                  value={maxPriceValue}
-                  placeholder="Upto 1000"
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (!isNaN(val) && val <= 1000) {
-                      setMaxPriceValue(val);
-                    }
-                  }}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="deliveryInfo">
-              <h3>Scheduled Delivery Duration</h3>
-              <p>Please mention the Scheduled delivery duration</p>
-              <div className="scheduleContainer">
-                <div className="scheduledContent">
-                  <p>{scheduledDay[currentIndex]}</p>
+              <div className="priceDetails">
+                <h3>Price Detail</h3>
+                <div className="input-container">
+                  <p>Minimum order price</p>
+                  <span className="symbol">$</span>
+                  <input
+                    type="text"
+                    value={minPriceValue}
+                    placeholder="0 - 100"
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (!isNaN(val) && val >= 0 && val <= 100) {
+                        setMinPriceValue(val);
+                      }
+                    }}
+                    className="input"
+                  />
                 </div>
-                <div className="arrow">
-                  <div className="downsideArrow" onClick={handleDownClick}>
-                    <img src={vector} alt=""/>
-                  </div>
-                  <div className="upsideArrow" onClick={handleUpClick}>
-                    <img src={vector} alt=""/>
-                  </div>
+                <div className="input-container">
+                  <p>Maximum order price</p>
+                  <span className="symbol">$</span>
+                  <input
+                    type="text"
+                    value={maxPriceValue}
+                    placeholder="Upto 1000"
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (!isNaN(val) && val <= 1000) {
+                        setMaxPriceValue(val);
+                      }
+                    }}
+                    className="input"
+                  />
                 </div>
               </div>
-            </div></>
-            
+              <div className="deliveryInfo">
+                <h3>Scheduled Delivery Duration</h3>
+                <p>Please mention the Scheduled delivery duration</p>
+                <div className="scheduleContainer">
+                  <div className="scheduledContent">
+                    <p>{scheduledDay[currentIndex]}</p>
+                  </div>
+                  <div className="arrow">
+                    <div className="downsideArrow" onClick={handleDownClick}>
+                      <img src={vector} alt="" />
+                    </div>
+                    <div className="upsideArrow" onClick={handleUpClick}>
+                      <img src={vector} alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
           <div className="packageCharge">
@@ -1758,165 +1847,173 @@ const  [locationId,setlocationId]=useState();
                 <p className="cPname">3rd party</p>
               </label>
             </div>
-
           </div>
 
           {/* Inhouse */}
 
-          <div className="inHousedeliveryoption" style={{height: showInHouse ? '850px' : '70px'}} >
-          {inHouse && (
-            <div className="inhouse">
-              <div className="header" onClick={() => setShowInHouse((inho) => !inho)}>
-                <h3>Inhouse</h3>
-                <img
-                  className={showInHouse ? "arrowUp" : "arrowDown"}
-                  onClick={() => setShowInHouse(!showInHouse)}
-                  src={vector} alt=""
-                />
-              </div>
-              {showInHouse && (
-                <div className="body">
-                  <p>Use restaurant person to deliver the food</p>
+          <div
+            className="inHousedeliveryoption"
+            style={{ height: showInHouse ? "850px" : "70px" }}
+          >
+            {inHouse && (
+              <div className="inhouse">
+                <div
+                  className="header"
+                  onClick={() => setShowInHouse((inho) => !inho)}
+                >
+                  <h3>Inhouse</h3>
+                  <img
+                    className={showInHouse ? "arrowUp" : "arrowDown"}
+                    onClick={() => setShowInHouse(!showInHouse)}
+                    src={vector}
+                    alt=""
+                  />
+                </div>
+                {showInHouse && (
+                  <div className="body">
+                    <p>Use restaurant person to deliver the food</p>
 
-                  <div className="distance">
-                    <h5>Maximum Radius</h5>
-                    <input
-                      type="text"
-                      placeholder="in miles(Upto 100)"
-                      value={maxRadius}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        if (!isNaN(val) && val <= 100) {
-                          setMaxRadius(val);
-                        }
-                      }}
-                    />
-                  </div>
-
-                  <div className="cod">
-                    <h3>Cash On Delivery</h3>
-                    <p>Collect order bill amount from cutomer offline</p>
-                    <div className="radioBtn">
-                      <div className="sessionContainer">
-                        <label>
-                          <input
-                            type="radio"
-                            id="yes"
-                            name="cod"
-                            value="yes"
-                            checked={selectedOption === "yes"}
-                            onChange={handleRadioChange}
-                          />
-                          <p className="sessionName">Yes</p>
-                        </label>
-                      </div>
-                      <div className="sessionContainer">
-                        <label>
-                          <input
-                            type="radio"
-                            id="no"
-                            name="cod"
-                            value="no"
-                            checked={selectedOption === "no"}
-                            onChange={handleRadioChange}
-                          />
-                          <p className="sessionName">No</p>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="batchOrder">
-                    <h3>Batch Order</h3>
-                    <p>Allow multiple order delivery in single ride</p>
-                    <div className="radioBtn">
-                      <div className="sessionContainer">
-                        <label>
-                          <input
-                            type="radio"
-                            id="yes"
-                            name="batchOrder"
-                            value="yes"
-                            checked={batchOrder === "yes" ||batchOrder === "Yes"}
-                            onChange={handlebatchOrder}
-                          />
-                          <p className="sessionName">Yes</p>
-                        </label>
-                      </div>
-                      <div className="sessionContainer">
-                        <label>
-                          <input
-                            type="radio"
-                            id="no"
-                            name="batchOrder"
-                            value="no"
-                            checked={batchOrder === "no"||batchOrder === "No"}
-                            onChange={handlebatchOrder}
-                          />
-                          <p className="sessionName">No</p>
-                        </label>
-                      </div>
-                    </div>
-                    <div className="defaultCount">
-                      <p>Default count of branch order</p>
+                    <div className="distance">
+                      <h5>Maximum Radius</h5>
                       <input
                         type="text"
-                        placeholder="Upto 30"
-                        value={brachCount}
+                        placeholder="in miles(Upto 100)"
+                        value={maxRadius}
                         onChange={(e) => {
                           const val = e.target.value;
-                          if (!isNaN(val) && val <= 30) {
-                            setbrachCount(val);
+                          if (!isNaN(val) && val <= 100) {
+                            setMaxRadius(val);
                           }
                         }}
                       />
                     </div>
-                  </div>
 
-                  <div className="feesStructure">
-                    <h3>Fees Structure</h3>
-                    <p>Please maintain a fees structure</p>
-
-                    <div className="radioBtn">
-                      <div className="sessionContainer">
-                        <label>
-                          <input
-                            type="radio"
-                            id="based on distance"
-                            name="feesStructure"
-                            checked={feesStructure === "based on distance"}
-                            value="based on distance"
-                            onClick={() => {
-                              setIsBOD(true);
-                              setIsFlatFee(false);
-                            }}
-                            onChange={handleFeesStructure}
-                          />
-                          <p className="sessionName">Based on distance</p>
-                        </label>
-                      </div>
-                      <div className="sessionContainer">
-                        <label>
-                          <input
-                            type="radio"
-                            id="flat fee"
-                            name="feesStructure"
-                            checked={feesStructure === "flat fee"}
-                            value="flat fee"
-                            onClick={() => {
-                              setIsFlatFee(true);
-                              setIsBOD(false);
-                            }}
-                            onChange={handleFeesStructure}
-                          />
-                          <p className="sessionName">Flat Fee</p>
-                        </label>
+                    <div className="cod">
+                      <h3>Cash On Delivery</h3>
+                      <p>Collect order bill amount from cutomer offline</p>
+                      <div className="radioBtn">
+                        <div className="sessionContainer">
+                          <label>
+                            <input
+                              type="radio"
+                              id="yes"
+                              name="cod"
+                              value="yes"
+                              checked={selectedOption === "yes"}
+                              onChange={handleRadioChange}
+                            />
+                            <p className="sessionName">Yes</p>
+                          </label>
+                        </div>
+                        <div className="sessionContainer">
+                          <label>
+                            <input
+                              type="radio"
+                              id="no"
+                              name="cod"
+                              value="no"
+                              checked={selectedOption === "no"}
+                              onChange={handleRadioChange}
+                            />
+                            <p className="sessionName">No</p>
+                          </label>
+                        </div>
                       </div>
                     </div>
 
+                    <div className="batchOrder">
+                      <h3>Batch Order</h3>
+                      <p>Allow multiple order delivery in single ride</p>
+                      <div className="radioBtn">
+                        <div className="sessionContainer">
+                          <label>
+                            <input
+                              type="radio"
+                              id="yes"
+                              name="batchOrder"
+                              value="yes"
+                              checked={
+                                batchOrder === "yes" || batchOrder === "Yes"
+                              }
+                              onChange={handlebatchOrder}
+                            />
+                            <p className="sessionName">Yes</p>
+                          </label>
+                        </div>
+                        <div className="sessionContainer">
+                          <label>
+                            <input
+                              type="radio"
+                              id="no"
+                              name="batchOrder"
+                              value="no"
+                              checked={
+                                batchOrder === "no" || batchOrder === "No"
+                              }
+                              onChange={handlebatchOrder}
+                            />
+                            <p className="sessionName">No</p>
+                          </label>
+                        </div>
+                      </div>
+                      <div className="defaultCount">
+                        <p>Default count of branch order</p>
+                        <input
+                          type="text"
+                          placeholder="Upto 30"
+                          value={brachCount}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            if (!isNaN(val) && val <= 30) {
+                              setbrachCount(val);
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
 
+                    <div className="feesStructure">
+                      <h3>Fees Structure</h3>
+                      <p>Please maintain a fees structure</p>
 
-                    {feesStructure === "based on distance" && (
+                      <div className="radioBtn">
+                        <div className="sessionContainer">
+                          <label>
+                            <input
+                              type="radio"
+                              id="based on distance"
+                              name="feesStructure"
+                              checked={feesStructure === "based on distance"}
+                              value="based on distance"
+                              onClick={() => {
+                                setIsBOD(true);
+                                setIsFlatFee(false);
+                              }}
+                              onChange={handleFeesStructure}
+                            />
+                            <p className="sessionName">Based on distance</p>
+                          </label>
+                        </div>
+                        <div className="sessionContainer">
+                          <label>
+                            <input
+                              type="radio"
+                              id="flat fee"
+                              name="feesStructure"
+                              checked={feesStructure === "flat fee"}
+                              value="flat fee"
+                              onClick={() => {
+                                setIsFlatFee(true);
+                                setIsBOD(false);
+                              }}
+                              onChange={handleFeesStructure}
+                            />
+                            <p className="sessionName">Flat Fee</p>
+                          </label>
+                        </div>
+                      </div>
+
+                      {feesStructure === "based on distance" && (
                         <div className="basedOnDistance">
                           <h3
                             style={{
@@ -1963,8 +2060,7 @@ const  [locationId,setlocationId]=useState();
                         </div>
                       )}
 
-
-                {feesStructure === "flat fee" && (
+                      {feesStructure === "flat fee" && (
                         <div className="flatfee">
                           <h3
                             style={{
@@ -1995,137 +2091,132 @@ const  [locationId,setlocationId]=useState();
                           </div>
                         </div>
                       )}
-
-
-                  
+                    </div>
                   </div>
-                </div>
-              )}
-
-
-            </div>
-          )}
+                )}
+              </div>
+            )}
           </div>
 
           {/* 3rd party */}
 
-          <div className="thirdpartydeliveryoption" style={{height: showThirdParty ? '30vh' : '20vh',marginTop:!inHouse?'-800px':''}}>
-
-
-          {thirdParty && (
-            <div className="thirdParty"      >
-              <div className="header"  onClick={() => setShowTHirdParty((tp) => !tp)}>
-                <h3>3rd Party</h3>
-                <img
-                  className={showThirdParty ? "arrowUp" : "arrowDown"}
-                  onClick={() => setShowTHirdParty(!showThirdParty)}
-                  src={vector} alt=""
-                />
-              </div>
-              {showThirdParty && (
-                <div className="body">
-                  <div className="thirdPartyCheckBox">
-                    <label>
-                      <input
-                        className="checkbox"
-                        value="all"
-                        type="checkbox"
-                        checked={allChecked}
-                        onClick={toggleAll}
-                      />
-                      <p className="cPname">All</p>
-                    </label>
-                    <label>
-                      <input
-                        className="checkbox"
-                        value="doordash"
-                        type="checkbox"
-                        checked={showDoorDash}
-                        onClick={() =>
-                          handleCheckboxChanges("doordash", setShowDoorDash)
-                        }
-                      />
-                      <p className="cPname">Doordash</p>
-                    </label>
-                    <label>
-                      <input
-                        className="checkbox"
-                        value="dunzo"
-                        type="checkbox"
-                        checked={showDunzo}
-                        onClick={() =>
-                          handleCheckboxChanges("dunzo", setShowDunzo)
-                        }
-                      />
-                      <p className="cPname">Dunzo</p>
-                    </label>
-                    <label>
-                      <input
-                        className="checkbox"
-                        value="uberEats"
-                        type="checkbox"
-                        checked={showUberEats}
-                        onClick={() =>
-                          handleCheckboxChanges("uberEats", setShowUberEats)
-                        }
-                      />
-                      <p className="cPname">Uber Eats</p>
-                    </label>
-                  </div>
-
-                  <div className="thirdPartyInputContaianer">
-                    {showDoorDash && (
-                      <div className="thirdPartyInput">
-                        <p>Doordash ID</p>
-                        <input
-                          type="text"
-                          value={doorDash}
-                          onChange={(e) => {
-                            setDoorDash(e.target.value);
-                          }}
-                        />
-                      </div>
-                    )}
-                    {showDunzo && (
-                      <div className="thirdPartyInput">
-                        <p>Dunzo ID</p>
-                        <input
-                          type="text"
-                          value={dunzo}
-                          onChange={(e) => {
-                            setDunzo(e.target.value);
-                          }}
-                        />
-                      </div>
-                    )}
-                    {showUberEats && (
-                      <div className="thirdPartyInput">
-                        <p>UberEats ID</p>
-                        <input
-                          type="text"
-                          value={uberEats}
-                          onChange={(e) => {
-                            setUberEats(e.target.value);
-                          }}
-
-                        />
-                       
-                      </div>
-                    )}
-                    
-                  </div>
-                
+          <div
+            className="thirdpartydeliveryoption"
+            style={{
+              height: showThirdParty ? "30vh" : "20vh",
+              marginTop: !inHouse ? "-800px" : "",
+            }}
+          >
+            {thirdParty && (
+              <div className="thirdParty">
+                <div
+                  className="header"
+                  onClick={() => setShowTHirdParty((tp) => !tp)}
+                >
+                  <h3>3rd Party</h3>
+                  <img
+                    className={showThirdParty ? "arrowUp" : "arrowDown"}
+                    onClick={() => setShowTHirdParty(!showThirdParty)}
+                    src={vector}
+                    alt=""
+                  />
                 </div>
-              )}
-            </div>
-          )}
-        </div>
-        </div>
+                {showThirdParty && (
+                  <div className="body">
+                    <div className="thirdPartyCheckBox">
+                      <label>
+                        <input
+                          className="checkbox"
+                          value="all"
+                          type="checkbox"
+                          checked={allChecked}
+                          onClick={toggleAll}
+                        />
+                        <p className="cPname">All</p>
+                      </label>
+                      <label>
+                        <input
+                          className="checkbox"
+                          value="doordash"
+                          type="checkbox"
+                          checked={showDoorDash}
+                          onClick={() =>
+                            handleCheckboxChanges("doordash", setShowDoorDash)
+                          }
+                        />
+                        <p className="cPname">Doordash</p>
+                      </label>
+                      <label>
+                        <input
+                          className="checkbox"
+                          value="dunzo"
+                          type="checkbox"
+                          checked={showDunzo}
+                          onClick={() =>
+                            handleCheckboxChanges("dunzo", setShowDunzo)
+                          }
+                        />
+                        <p className="cPname">Dunzo</p>
+                      </label>
+                      <label>
+                        <input
+                          className="checkbox"
+                          value="uberEats"
+                          type="checkbox"
+                          checked={showUberEats}
+                          onClick={() =>
+                            handleCheckboxChanges("uberEats", setShowUberEats)
+                          }
+                        />
+                        <p className="cPname">Uber Eats</p>
+                      </label>
+                    </div>
 
+                    <div className="thirdPartyInputContaianer">
+                      {showDoorDash && (
+                        <div className="thirdPartyInput">
+                          <p>Doordash ID</p>
+                          <input
+                            type="text"
+                            value={doorDash}
+                            onChange={(e) => {
+                              setDoorDash(e.target.value);
+                            }}
+                          />
+                        </div>
+                      )}
+                      {showDunzo && (
+                        <div className="thirdPartyInput">
+                          <p>Dunzo ID</p>
+                          <input
+                            type="text"
+                            value={dunzo}
+                            onChange={(e) => {
+                              setDunzo(e.target.value);
+                            }}
+                          />
+                        </div>
+                      )}
+                      {showUberEats && (
+                        <div className="thirdPartyInput">
+                          <p>UberEats ID</p>
+                          <input
+                            type="text"
+                            value={uberEats}
+                            onChange={(e) => {
+                              setUberEats(e.target.value);
+                            }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
       )}
-      
-
-     
     </div>
   );
 });
