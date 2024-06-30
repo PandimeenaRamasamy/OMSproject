@@ -9,7 +9,7 @@ import Fssai from "../../Onboarding/Fssai/Fssai";
 import BankDetails from "../BankDetails/BankDetails";
 import Location from "../Location/Location";
 import { useDispatch } from "react-redux";
-import { postOnBoardingDataRequest } from "../../../redux/Actions/PostDataAction";
+import { postOnBoardingDataRequest,setOnboardingForm } from "../../../redux/Actions/PostDataAction";
 import Success from '../../Registration/Success'
 import { useNavigate } from 'react-router-dom';
 import Outlet from '../../Outletnavbar/Outlet.scss'
@@ -80,6 +80,8 @@ function Stepform({data}) {
             ...newFormData,
             restaurant_details: restaurantDetailsRef.current.getFormData(),
           };
+          dispatch(setOnboardingForm(newFormData));
+
         }
         break;
       case 1:
@@ -88,7 +90,9 @@ function Stepform({data}) {
           newFormData = {
             ...newFormData,
             location_Details: locationRef.current.getFormData(),
+      
           };
+          dispatch(setOnboardingForm(newFormData));
         }
         break;
       case 2:
@@ -98,6 +102,8 @@ function Stepform({data}) {
             ...newFormData,
             fssai_details: fssaiRef.current.getFormData(),
           };
+          dispatch(setOnboardingForm(newFormData));
+
         }
         break;
       case 3:
@@ -107,6 +113,7 @@ function Stepform({data}) {
             ...newFormData,
             bank_details: bankRef.current.getFormData(),
           };
+
         }
 
         // toast.success("All yor Data submitted successfully!");
