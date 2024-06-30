@@ -140,6 +140,9 @@ const Fssai = forwardRef((props, ref) => {
       documents: "",
     });
   };
+  const formData=useSelector((state)=>state.OnBoardForm.data)
+  console.log("aaaaa",formData);
+
 
   return (
     <div className="main-divfss">

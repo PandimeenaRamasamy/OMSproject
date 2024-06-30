@@ -775,7 +775,7 @@ const Location = forwardRef((props, ref) => {
   useEffect(() => {
     if (data && data[0]) {
       setForm({
-        addressLine1: data[0].location.addressLine1 || "",
+        addressLine1: data[0].location.addressLine1 || formData.location.addressLine1||"",
         addressLine2: data[0].location.addressLine2 || "",
         addressLine3: data[0].location.addressLine3 || "",
 
@@ -894,8 +894,10 @@ const Location = forwardRef((props, ref) => {
     });
   };
 
+  const formData=useSelector((state)=>state.OnBoardForm.data)
+  console.log("aaaaa",formData);
 
-  console.log(form)
+
 
   return (
     <div className="main-divloc">

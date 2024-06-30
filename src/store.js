@@ -9,7 +9,8 @@ import {
   postDataReducer,
   registrationReducer,
   postDataReducergetLocation,
-  nameReducer
+  nameReducer,
+  onBoardingForm
 
 } from "./redux/Reducers/postDataReducer";
 import { basicDetailsReducer } from "./redux/Reducers/postDataReducer";
@@ -23,7 +24,9 @@ const rootReducer = combineReducers({
   deliveryDetails: deliveryDataReducer,
   registration:registrationReducer,
   getlocationdata:postDataReducergetLocation,
-  locationiddata:nameReducer
+  locationiddata:nameReducer,
+ OnBoardForm: onBoardingForm
+
   // Add other reducers here if necessary
 });
 
