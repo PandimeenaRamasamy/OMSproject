@@ -182,8 +182,8 @@ function Stepform({data}) {
   const [activeCategory, setActiveCategory] = useState('Registration');
 
   
-  const handleCategoryClick = (category) => {
-      setActiveCategory(category);
+  const handleStepClick = (index) => {
+      setActiveStep(index);
     
   };
   const Registarionnavigation = () => {
@@ -215,7 +215,7 @@ function Stepform({data}) {
                   className={`steponboard ${
                     index === activeStep ? "activeonboard" : ""
                   } ${visitedSteps[index] ? "visitedonboard" : ""}`}
-                                  >
+                   onClick={()=>handleStepClick(index)}               >
                   {step.icon}
                   <div className="icon-textonboard">{step.title}</div>
                 </div>
