@@ -1060,7 +1060,7 @@ const convertTo24Hour = (time) => {
             className="thirdpartydeliveryoption"
             style={{
               height: showThirdParty ? "30vh" : "20vh",
-              marginTop: !inHouse ? "-70px" : "10px",
+              marginTop: !inHouse ? "-70px" : "0px",
             }}
           >
             {thirdParty && (
