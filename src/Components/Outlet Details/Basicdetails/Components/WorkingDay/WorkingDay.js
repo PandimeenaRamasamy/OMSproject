@@ -14,6 +14,23 @@ const WorkingDay = ({
   setClosingTime,
   restaurantSessionid,
 }) => {
+  const getDisabledDays = () => {
+    const disabledDays = {};
+    Object.keys(timeSlots).forEach((id) => {
+      if (id !== restaurantSessionid) { // Avoid current session
+        timeSlots[id].forEach((slot) => {
+          Object.keys(slot.checkedDays).forEach((day) => {
+            if (slot.checkedDays[day]) {
+              disabledDays[day] = true; // Mark days as disabled if selected in other sessions
+            }
+          });
+        });
+      }
+    });
+    return disabledDays;
+  };
+
+  const disabledDays = getDisabledDays(); // Get the disabled days
   return (
     <div className="workingDay">
       <div className="session">
@@ -100,6 +117,7 @@ const WorkingDay = ({
       <div className="addDayAndTimeWor">
         {timeSlots?.[restaurantSessionid]?.map((slots, index) => (
           <AddDayAndTime
+            timeSlots={timeSlots}
             slots={slots}
             setTimeSlots={setTimeSlots}
             index={index}
@@ -107,6 +125,7 @@ const WorkingDay = ({
             restaurantSessionid={restaurantSessionid}
             setOpeningTime={setOpeningTime}
             setClosingTime={setClosingTime}
+            disabledDays={disabledDays}
           />
         ))}
       </div>

@@ -81,10 +81,6 @@ function Stepform({data}) {
             restaurant_details: restaurantDetailsRef.current.getFormData(),
           };
         }
-
-
-
-
         break;
       case 1:
         isValid = locationRef.current.getValidate();

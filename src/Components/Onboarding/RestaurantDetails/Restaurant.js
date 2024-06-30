@@ -448,7 +448,7 @@ const Restaurant = forwardRef((props, ref) => {
     { name: "United States", dial_code: "+1" },
     { name: "India", dial_code: "+91" }
   ];
-  
+
   const [selectedCode, setSelectedCode] = useState(countryCodes[0].dial_code);
 
   const loactiondata = useSelector((state) => state.locationiddata.locationId);
@@ -592,7 +592,7 @@ const Restaurant = forwardRef((props, ref) => {
     }
   };
   const validatePhone = () => {
-    const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
+    const phonePattern = /^\d{10}$/; 
     if (form.phone  === '') {
       setResError({  ...reserror,phone :'Enter phone number'});}
     else if (!phonePattern.test(form.phone)) {
