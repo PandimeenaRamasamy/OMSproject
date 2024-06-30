@@ -10,6 +10,7 @@ import AddTime from "../AddTime/AddTime";
 // }
 
 const AddDayAndTime = ({
+  timeSlots,
   slots,
   index,
   setTimeSlots,
@@ -17,6 +18,7 @@ const AddDayAndTime = ({
   restaurantSessionid,
   setOpeningTime,
   setClosingTime,
+  disabledDays, // Receive disabledDays as a prop
 }) => {
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -69,6 +71,7 @@ const AddDayAndTime = ({
   return (
     <div className="addDayAndTime">
       <AddTime
+        timeSlots={timeSlots}
         openingTime={slots.openingTime}
         setOpeningTime={setOpeningTime}
         closingTime={slots.closingTime}
@@ -103,6 +106,7 @@ const AddDayAndTime = ({
                   name={day}
                   checked={slots.checkedDays[day]}
                   onChange={handleCheckboxChange}
+                  disabled={disabledDays[day]} // Disable checkbox if the day is already selected in other sessions
                 />
                 <p className="cPname">
                   {day.charAt(0).toUpperCase() + day.slice(1)}

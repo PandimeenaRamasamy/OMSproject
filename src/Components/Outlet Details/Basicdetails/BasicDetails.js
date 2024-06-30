@@ -409,8 +409,11 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     const dataForbasicDetails = useSelector((state)=>state.postDataReducergetLocation)
     // console.log("dataForbasicDetails",dataForbasicDetails);
     
-    const data2 = useSelector((state) => state.registration.data);
+    // const data2 = useSelector((state) => state.registration.data);
     // console.log("current location ID",data2);
+
+    const data2 = useSelector((state) => state.locationiddata.locationId);
+    console.log("list of location IDs :",data2)
 
 
 
