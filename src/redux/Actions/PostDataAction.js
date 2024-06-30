@@ -31,6 +31,7 @@ import {
   POST_KITCHEN_DATA_REQUEST,
   POST_KITCHEN_SUCCESS,
   POST_KITCHEN_FALIURE,
+  SET_ONBOARDING_FORM
 
 
 } from "../constants";
@@ -218,4 +219,8 @@ export const PostKitchenDataFailure=(error)=>({
 export const setName = (name) => ({
   type: 'SET_NAME',
   payload: name
+})
+export const setOnboardingForm=(data)=>({
+  type:"SET_ONBOARDING_FORM",
+  payload:data
 })
