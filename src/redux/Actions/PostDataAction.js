@@ -31,6 +31,7 @@ import {
   POST_KITCHEN_DATA_REQUEST,
   POST_KITCHEN_SUCCESS,
   POST_KITCHEN_FALIURE,
+  CLEAR_DATA
 
 
 } from "../constants";
@@ -219,3 +220,8 @@ export const setName = (name) => ({
   type: 'SET_NAME',
   payload: name
 })
+
+
+export const clearData = () => ({
+  type: CLEAR_DATA,
+});

@@ -31,45 +31,49 @@ import {
   POST_KITCHEN_DATA_REQUEST,
   POST_KITCHEN_SUCCESS,
   POST_KITCHEN_FALIURE,
+  CLEAR_DATA
+
 } from "../constants";
 
 const initialState = {
   loading: false,
-  data:[],
+  data: [],
   error: null,
 };
 
 const registrationinitialstate = {
   data: [],
   loading: false,
-  error: null
+  error: null,
 };
 
- export const registrationReducer = (state = registrationinitialstate, action) => {
+export const registrationReducer = (
+  state = registrationinitialstate,
+  action
+) => {
   switch (action.type) {
     case POST_DATA_REQUEST:
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     case POST_DATA_SUCCESS:
       return {
         ...state,
         loading: false,
-        data: action.payload
+        data: action.payload,
       };
     case POST_DATA_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;
   }
 };
-
 
 // const  = {
 //   restaurantData: {
@@ -92,14 +96,14 @@ const registrationinitialstate = {
 //   switch (action.type) {
 //     case POST_DATA_REQUEST:
 //       return {
-       
+
 //         restaurantData: action.payload,
 //         loading: true,
 //         error: null,
 //       };
 //     case POST_DATA_SUCCESS:
 //       return {
-        
+
 //         ...action.payload,
 //         loading: false,
 //         error: null,
@@ -117,43 +121,37 @@ const registrationinitialstate = {
 
 const initialStategetlocation = {
   loading: false,
-  data:[],
+  data: [],
   error: null,
 };
 
-
-export const postDataReducergetLocation = (state = initialStategetlocation, action) => {
+export const postDataReducergetLocation = (
+  state = initialStategetlocation,
+  action
+) => {
   switch (action.type) {
-
     case GET_DATA_LOCATION_REQUEST:
-        return {...state, loading: true, error: null };
+      return { ...state, loading: true, error: null };
     case GET_DATA_LOCATION_SUCCESS:
-        return { ...state, loading: false, data: action.payload };
+      return { ...state, loading: false, data: action.payload };
     case GET_DATA_LOCATION_FAILURE:
-        return { ...state, loading: false, error: action.payload };
-    
+      return { ...state, loading: false, error: action.payload };
+    case CLEAR_DATA:
+      return initialStategetlocation;
+
     default:
       return state;
   }
 };
 
-
-
-
-
-
-
 export const postDataReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case GET_DATA_REQUEST:
       return { ...state, loading: true, error: null };
     case GET_DATA_SUCCESS:
       return { ...state, loading: false, data: action.payload };
     case GET_DATA_FAILURE:
       return { ...state, loading: false, error: action.payload };
-
-
 
     case POST_ONBOARDING_DATA_REQUEST:
       return { ...state, loading: true, error: null };
@@ -319,20 +317,18 @@ export const deliveryDataReducer = (state = deliveryInitialState, action) => {
   }
 };
 
-
 const initialStatelocationId = {
-  locationId: ''
+  locationId: "",
 };
 
 export const nameReducer = (state = initialStatelocationId, action) => {
   switch (action.type) {
-    case 'SET_NAME':
+    case "SET_NAME":
       return {
         ...state,
-        locationId: action.payload
+        locationId: action.payload,
       };
     default:
       return state;
   }
 };
-

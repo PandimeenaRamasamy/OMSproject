@@ -2,7 +2,8 @@
 import React, { useState,useImperativeHandle,useEffect } from "react";
 
 import "./Dinein.scss";
-
+import { FaExclamation } from 'react-icons/fa';
+import Tooltip from '../../Tooltip/Tooltip';
 import { useDispatch,useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
 
@@ -402,7 +403,16 @@ const validate=()=>{
     <div className="main-divdine">
       <div className="submain-divdine">
         <div className="headingdine">
-          <h5>Dine in Details</h5>
+          <h5>Dine in Details 
+             <Tooltip message="dining in">
+                    <div className="icon-background">
+                        <FaExclamation color="black" size={5} />
+                    </div>
+                </Tooltip>
+         
+
+          </h5>
+         
         </div>
 
   {/* dine in details */}
@@ -412,7 +422,7 @@ const validate=()=>{
             <div className="">
               <div className="lables1">
                 <label htmlFor="BusinessLegalName" className="label">
-                  Dine in
+                  Dine in 
                 </label>
               </div>
               <div className="lablesdine">
@@ -517,7 +527,13 @@ const validate=()=>{
 
         <div className="Interactive2">
           <div className="headingdine">
-            <h5>Interactive Dine-in Details</h5>
+            <h5>Interactive Dine-in Details
+            <Tooltip message="Interactive Dine-in Details">
+                    <div className="icon-background" >
+                        <FaExclamation color="black" size={5} fontSize={20}/>
+                    </div>
+                </Tooltip>
+            </h5>
           </div>
 
           <div className="">
@@ -571,6 +587,11 @@ const validate=()=>{
 
                     <label htmlFor="BusinessLegalName" className="labelInter">
                       Merchant 4 digit Validation
+                      <Tooltip message="Merchant 4 digit Validation">
+                    <div className="icon-background">
+                        <FaExclamation color="black" size={7} />
+                    </div>
+                </Tooltip>
                     </label>
                   </div>
                   <div className="merchantlable2">
@@ -711,6 +732,11 @@ const validate=()=>{
                           <div className="check2">
                             <label htmlFor="Lateshowtime" id="maximuminon">
                               Late show time
+                              <Tooltip message=" Late show time">
+                    <div className="icon-background">
+                        <FaExclamation color="black" size={5} />
+                    </div>
+                </Tooltip>
                             </label>
                               <input
                                 type="time"
@@ -731,6 +757,11 @@ const validate=()=>{
                           <div className="check2">
                             <label htmlFor="AutocancelTime" id="maximuminoff">
                               Auto cancel Time
+                              <Tooltip message=" Auto cancel Time">
+                    <div className="icon-background">
+                        <FaExclamation color="black" size={5} />
+                    </div>
+                </Tooltip>
                             </label>
                             <input
                               type="time"
@@ -751,6 +782,11 @@ const validate=()=>{
                           <div className="check2">
                             <label htmlFor="Abandontime" id="maximuminoff">
                               Abandon time
+                              <Tooltip message=" Abandon time">
+                    <div className="icon-background">
+                        <FaExclamation color="black" size={5} />
+                    </div>
+                </Tooltip>
                             </label>
                             <input
                               type="time"
