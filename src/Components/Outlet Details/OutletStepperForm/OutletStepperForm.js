@@ -88,7 +88,8 @@ function Stepform() {
   }, [outletactiveStep]);
 
   const handleStepClick = (index) => {
-    if (outletactiveStep === outletsteps.length - 1 || !validSteps[index]) {
+    // Only allow navigation to steps that have not been validated if on the last step
+    if (!validSteps[index] || outletactiveStep === outletsteps.length - 1) {
       setOutletActiveStep(index);
     }
   };
@@ -101,23 +102,11 @@ function Stepform() {
         newFormData1 = basicDetailsref.current.getFormData();
         setBasicDetailsForm(newFormData1);
         dispatch(saveBasicDetailsRequest(newFormData1));
-        setValidSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        toast.success("Data submitted successfully!");
         break;
       case 1:
         newFormData1 = restrauntimageref.current.getFormData();
         setrestrauntImageForm(newFormData1);
         dispatch(PostRestaurantImageDataRequest(newFormData1));
-        setValidSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        toast.success("Data submitted successfully!");
         break;
       case 2:
         isValid = dineinref.current.validate();
@@ -125,17 +114,6 @@ function Stepform() {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
           dispatch(postDineinDataRequest(newFormData1));
-          setCompletedSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          setValidSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          toast.success("Data submitted successfully!");
         }
         break;
       case 3:
@@ -144,17 +122,6 @@ function Stepform() {
           newFormData1 = pickUpformRef.current.getFormData();
           setPickupForm(newFormData1);
           dispatch(PostPickupDataRequest(newFormData1));
-          setCompletedSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          setValidSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          toast.success("Data submitted successfully!");
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
@@ -163,17 +130,6 @@ function Stepform() {
         newFormData1 = deliveryref.current.getFormData();
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1));
-        setCompletedSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        setValidSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        toast.success("Data submitted successfully!");
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
@@ -181,17 +137,6 @@ function Stepform() {
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
           dispatch(PostKitchenDataRequest(newFormData1));
-          setCompletedSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          setValidSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          toast.success("Data submitted successfully!");
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
@@ -201,6 +146,15 @@ function Stepform() {
         break;
     }
 
+    if (isValid) {
+      setValidSteps((prev) => {
+        const updated = [...prev];
+        updated[outletactiveStep] = true;
+        return updated;
+      });
+
+      
+    }
     handleNextStep();
   };
 
