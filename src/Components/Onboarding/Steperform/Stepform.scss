@@ -37,7 +37,7 @@
   .steponboard {
     cursor: pointer;
     width: 40px;
-    height: 40px;
+    height: 42px;
     padding: 7px;
     border-radius: 50%;
     background-color: #C7C8CC;
@@ -52,6 +52,7 @@
   .visitedonboard {
     background-color: rgba(0, 183, 29, 1) ;
     color:white;
+    
   }
   .visitedonboard.icononboard {
     color:white !important;
@@ -119,7 +120,9 @@
       /* Maximum width */
       width:990px;
 
-    height: 2px;
+      border-bottom: 1px dotted ;
+      height: 2px;
+
     background-color: #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
