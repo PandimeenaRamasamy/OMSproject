@@ -303,7 +303,8 @@ margin-top: 20px;
     display: flex;
     cursor: pointer;
     justify-content: space-between;
-    background-color: #f6f6f6; /* Background for the switch */
+    background-color:rgba(249, 249, 249, 1)
+    ; /* Background for the switch */
     border-radius: 25px; /* Rounded corners for the background */
     padding: 5px; /* Some padding around the buttons */
     width: 170px; /* Adjust to content width */
@@ -312,9 +313,10 @@ margin-top: 20px;
   }
   .hello{
    font-size: 14px;
+   border-radius: 30px;   
     outline: none;
     border:none;
-    width:84px;
+    width:109px;
     cursor: pointer;
    
     
