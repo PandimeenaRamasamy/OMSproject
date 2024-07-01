@@ -182,24 +182,13 @@ function Stepform({data}) {
   const handleNextStep = (formData) => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
-      if(success==="Success"){
+     
       toast.success("Data has been stored successfully!");
-      }
-      else{
-        toast.error("Data Not Send .", {
-          style: {
-            backgroundColor: '', // Background color
-            color: 'red', // Text color
-            fontFamily: 'Arial, sans-serif', // Font family
-            fontSize: '14px', // Font size
-            padding: '12px', // Padding,
-            position: "top",
-            
+      
+    
   
-          },
-        });
 
-      }
+      
 
     } else {
       dispatch(postOnBoardingDataRequest(formData));
