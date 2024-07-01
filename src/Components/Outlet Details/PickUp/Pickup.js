@@ -120,7 +120,7 @@ if(!form.serviceTimeTo && isEnabled)
         isValid=false
 
     }
-    if(!form.scheduledDuration && isEnabled){
+    if(!form.scheduledDuration && isEnabled &&schedulepick){
         errors.scheduledDuration="Please fill this field"
         isValid=false
 
