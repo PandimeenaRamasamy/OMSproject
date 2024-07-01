@@ -19,13 +19,13 @@ import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Receipt() {
-  return <h2>Receipt</h2>;
+  return <h2></h2>;
 }
 
 function Stepform() {
   const [outletactiveStep, setOutletActiveStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Array(7).fill(false));
-  const [validSteps, setValidSteps] = useState(new Array(7).fill(false)); // State to track valid steps
+  const [validSteps, setValidSteps] = useState(new Array(7).fill(false));
   const dispatch = useDispatch();
   const pickUpformRef = useRef();
   const kitchenformRef = useRef();
@@ -88,25 +88,10 @@ function Stepform() {
   }, [outletactiveStep]);
 
   const handleStepClick = (index) => {
-    if (outletactiveStep === outletsteps.length - 1) {
-      // Allow clicking on any step if on the last step
+    if (outletactiveStep === outletsteps.length - 1 || !validSteps[index]) {
       setOutletActiveStep(index);
-    } else {
-      // Default behavior for other steps
-      if (index <= outletactiveStep) {
-        if (index !== outletactiveStep) {
-          const updatedVisitedSteps = [...outletvisitedSteps];
-          for (let i = index + 1; i < outletsteps.length; i++) {
-            updatedVisitedSteps[i] = false;
-          }
-          setOutletVisitedSteps(updatedVisitedSteps);
-          setOutletActiveStep(index);
-        }
-      };
-      }
     }
-    
-  
+  };
 
   const handleSaveandNext = async () => {
     let newFormData1 = {};
@@ -216,8 +201,7 @@ function Stepform() {
         break;
     }
 
-  
-      handleNextStep();
+    handleNextStep();
   };
 
   const handleNextStep = () => {
@@ -225,7 +209,6 @@ function Stepform() {
       setOutletActiveStep(outletactiveStep + 1);
     }
   };
-
 
   const progress = (outletvisitedSteps.filter((step) => step).length / outletsteps.length) * 100;
 
@@ -244,7 +227,7 @@ function Stepform() {
                   className={`step ${completedSteps[index] ? "completed" : ""} ${validSteps[index] ? "valid" : ""} ${
                     outletvisitedSteps[index] ? "visited" : ""
                   } ${index === outletactiveStep ? "active" : ""}`}
-  
+                  disabled={!outletvisitedSteps[index] && outletactiveStep !== outletsteps.length - 1}
                   onClick={() => handleStepClick(index)}
                 >
                   {step.icon}
@@ -262,7 +245,7 @@ function Stepform() {
         <button className="save_next" onClick={handleSaveandNext}>
           Save & Next
         </button>
-        <button className="clear_all" >
+        <button className="clear_all">
           Clear All
         </button>
         <ToastContainer position="top-center" transition={Flip} />
