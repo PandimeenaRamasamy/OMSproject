@@ -104,9 +104,9 @@ const Delivery = React.forwardRef((props, ref) => {
   const [time3, settime3] = useState(false);
 
   const [timeSlot, setTimeSlot] = useState([
-    { openingTime: "08:00", closingTime: "07:00" },
-    { openingTime: "08:00", closingTime: "07:00" },
-    { openingTime: "08:00", closingTime: "07:00" }
+    { openingTime: "", closingTime: "" },
+    { openingTime: "", closingTime: "" },
+    { openingTime: "", closingTime: "" }
 
   ]);
   
@@ -188,8 +188,8 @@ const Delivery = React.forwardRef((props, ref) => {
   const deliverySetting = timeSlot
   .filter(slot => slot.openingTime && slot.closingTime)  // Filter out incomplete time slots
   .map(slot => ({
-    deliveryServiceTimeFrom: slot.openingTime,
-    deliveryServiceTimeTo: slot.closingTime,
+    deliveryServiceTimeFrom: slot.openingTime+":00",
+    deliveryServiceTimeTo: slot.closingTime+":00",
   }));
 const print=()=>{
   console.log("timeeee slotsssss",timeSlot)
@@ -197,17 +197,42 @@ const print=()=>{
 
 }
 
+// const convertTo24Hour = (time) => {
+//   const [timePart, modifier] = time.split(/(AM|PM)/i);
+//   let [hours, minutes] = timePart.split(':');
+//   if (modifier.toUpperCase() === 'PM' && hours !== '12') {
+//     hours = (parseInt(hours, 10) + 12).toString().padStart(2, '0');
+//   }
+//   if (modifier.toUpperCase() === 'AM' && hours === '12') {
+//     hours = '00';
+//   }
+//   return `${hours}:${minutes}`;
+// };
+
 const convertTo24Hour = (time) => {
-  const [timePart, modifier] = time.split(/(AM|PM)/i);
-  let [hours, minutes] = timePart.split(':');
-  if (modifier.toUpperCase() === 'PM' && hours !== '12') {
-    hours = (parseInt(hours, 10) + 12).toString().padStart(2, '0');
+  const timeParts = time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  
+  if (!timeParts) {
+    throw new Error('Invalid time format');
   }
-  if (modifier.toUpperCase() === 'AM' && hours === '12') {
+
+  let [ , hours, minutes, modifier] = timeParts;
+  
+  hours = parseInt(hours, 10);
+  
+  if (modifier.toUpperCase() === 'PM' && hours !== 12) {
+    hours = (hours + 12).toString().padStart(2, '0');
+  } else if (modifier.toUpperCase() === 'AM' && hours === 12) {
     hours = '00';
+  } else {
+    hours = hours.toString().padStart(2, '0');
   }
+  
   return `${hours}:${minutes}`;
 };
+
+// Example usage
+
 
 // useEffect(() => {
 //   // Simulate API call
@@ -267,8 +292,8 @@ const convertTo24Hour = (time) => {
         if( deliveryDetails.deliverySettingTime)
           {
             const initialTimeSlot = deliverySettingTime.map(slot => ({
-              openingTime: convertTo24Hour(slot.deliveryServiceTimeFrom),
-              closingTime: convertTo24Hour(slot.deliveryServiceTimeTo),
+              openingTime: slot.deliveryServiceTimeFrom,
+              closingTime: slot.deliveryServiceTimeTo,
             }));
         
             setTimeSlot(prevTimeSlot => [
@@ -505,16 +530,16 @@ const convertTo24Hour = (time) => {
         <h3>Delivery</h3>
         <p>Please mention the delivery service</p>
       </div>
-      <div className="button">
+      <div className='switchButtonStyles'>
         <input
           type="submit"
-          className={isEnable ? "enableBtn" : "disableBtn"}
+          className={isEnable ? "blue" : "hello"}
           value="Enable"
           onClick={enableClick}
         />
         <input
           type="submit"
-          className={isEnable ? "disableBtn" : "enableBtn"}
+          className={isEnable ? "hello" : "blue"}
           value="Disable"
           onClick={disableClick}
         />

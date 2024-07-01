@@ -22,9 +22,7 @@
   justify-content: space-between;
 }
 
-.step.completed {
-  background-color: orange;
-}
+
 
 .image {
   position: absolute;
@@ -35,7 +33,7 @@
 }
 
 .step.valid {
-  background-color: green;
+  background-color: rgba(0, 183, 29, 1);
 }
 
 .step {
