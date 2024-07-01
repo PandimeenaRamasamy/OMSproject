@@ -8,7 +8,7 @@ import Restaurant from "../RestaurantDetails/Restaurant";
 import Fssai from "../../Onboarding/Fssai/Fssai";
 import BankDetails from "../BankDetails/BankDetails";
 import Location from "../Location/Location";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postOnBoardingDataRequest,setOnboardingForm } from "../../../redux/Actions/PostDataAction";
 import Success from '../../Registration/Success'
 import { useNavigate } from 'react-router-dom';
@@ -29,6 +29,7 @@ function Stepform({data}) {
 
   {data && data.map((location, index) => (
     console.log("datasteperform",location.location.id)) )}
+    const success=useSelector((state)=>state.onBoard.data)
 
 
 
@@ -174,7 +175,24 @@ function Stepform({data}) {
   const handleNextStep = (formData) => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
+      if(success==="Success"){
       toast.success("Data has been stored successfully!");
+      }
+      else{
+        toast.error("Data Not Send .", {
+          style: {
+            backgroundColor: '', // Background color
+            color: 'red', // Text color
+            fontFamily: 'Arial, sans-serif', // Font family
+            fontSize: '14px', // Font size
+            padding: '12px', // Padding,
+            position: "top",
+            
+  
+          },
+        });
+
+      }
 
     } else {
       dispatch(postOnBoardingDataRequest(formData));
@@ -204,6 +222,8 @@ function Stepform({data}) {
       navigate('/Stepform')}
 
   const progress =(visitedSteps.filter((step) => step).length / steps.length) * 100;
+  console.log("hello",success)
+
 
   return (
     <>

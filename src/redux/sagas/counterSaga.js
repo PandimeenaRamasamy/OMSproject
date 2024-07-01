@@ -109,17 +109,15 @@ function* getLocationData(action) {
 
 
 function* postOnBoardingData(action) {
-  try {
+  
     const response = yield call(PostOnboardingData, action.payload);
 
-    if (response.status === 200) {
-      yield put(POST_ONBOARDING_DATA_SUCCESS(response.data));
-    } else {
-      yield put(POST_ONBOARDING_DATA_FAILURE(response.statusText));
+   
+      yield put({type:"POST_ONBOARDING_DATA_SUCCESS",payload:response.data});
+   
+      
     }
-  } catch (error) {
-  }
-}
+ 
 
 
 
