@@ -172,6 +172,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLocationRequest } from "../../redux/Actions/PostDataAction";
 import { LocationContext } from "../LocationProvider";
 import {setName } from '../../redux/Actions/PostDataAction'
+import { clearData } from "../../redux/Actions/PostDataAction";
+
+
 // import Registration from '../Registration/Registration'
  
 const Sidenavbar = () => {
@@ -229,7 +232,7 @@ const Sidenavbar = () => {
 
 const goToNew = () => {
   navigate('/outlet/Registration',{ state: { pagename: "Registration" ,Id:"null"} });
-  window.location.reload();
+  dispatch(clearData());
   
 };
  

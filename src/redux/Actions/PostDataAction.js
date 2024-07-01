@@ -119,6 +119,12 @@ export const postOnBoardingDataRequest = (data) => {
     payload: data,
   };
 };
+export const setOnboardingForm = (data) => {
+  return {
+    type: "SET_ONBOARDING_DATA_REQUEST",
+    payload: data,
+  };
+};
 
 export const postOnBoardingDataSuccess = (response) => {
   return {
