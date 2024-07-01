@@ -153,13 +153,7 @@ export const postDataReducer = (state = initialState, action) => {
     case GET_DATA_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
-    case POST_ONBOARDING_DATA_REQUEST:
-      return { ...state, loading: true, error: null };
-    case POST_ONBOARDING_DATA_SUCCESS:
-      return { ...state, loading: false, data: action.payload };
-    case POST_ONBOARDING_DATA_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
+    
     case POST_DINEIN_DATA_REQUEST:
       return { ...state, loading: true, error: null };
     case POST_DINEIN_DATA_SUCCESS:
@@ -328,6 +322,28 @@ export const nameReducer = (state = initialStatelocationId, action) => {
         ...state,
         locationId: action.payload,
       };
+    default:
+      return state;
+  }
+};
+
+
+
+const onBoardingS = {
+  loading: false,
+  data: [],
+  error: null,
+};
+
+export const onBoarding = (state = onBoardingS, action) => {
+  switch (action.type) {
+    case POST_ONBOARDING_DATA_REQUEST:
+      return { ...state, loading: true, error: null };
+    case POST_ONBOARDING_DATA_SUCCESS:
+      return { ...state, loading: false, data: action.payload };
+    case POST_ONBOARDING_DATA_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+
     default:
       return state;
   }

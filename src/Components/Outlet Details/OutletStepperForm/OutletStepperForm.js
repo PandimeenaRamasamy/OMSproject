@@ -89,9 +89,8 @@ function Stepform() {
 
   const handleStepClick = (index) => {
     // Only allow navigation to steps that have not been validated if on the last step
-    if (!validSteps[index] || outletactiveStep === outletsteps.length - 1) {
+     
       setOutletActiveStep(index);
-    }
   };
 
   const handleSaveandNext = async () => {
@@ -181,7 +180,7 @@ function Stepform() {
                   className={`step  ${validSteps[index] ? "valid" : ""} ${
                     outletvisitedSteps[index] ? "visited" : ""
                   } ${index === outletactiveStep ? "active" : ""}`}
-                  disabled={!outletvisitedSteps[index] && outletactiveStep !== outletsteps.length - 1}
+                  
                   onClick={() => handleStepClick(index)}
                 >
                   {step.icon}

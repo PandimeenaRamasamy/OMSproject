@@ -530,16 +530,16 @@ const convertTo24Hour = (time) => {
         <h3>Delivery</h3>
         <p>Please mention the delivery service</p>
       </div>
-      <div className="button">
+      <div className='switchButtonStyles'>
         <input
           type="submit"
-          className={isEnable ? "enableBtn" : "disableBtn"}
+          className={isEnable ? "blue" : "hello"}
           value="Enable"
           onClick={enableClick}
         />
         <input
           type="submit"
-          className={isEnable ? "disableBtn" : "enableBtn"}
+          className={isEnable ? "hello" : "blue"}
           value="Disable"
           onClick={disableClick}
         />
