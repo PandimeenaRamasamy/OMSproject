@@ -15,6 +15,45 @@
     font-weight: 500;
     margin-top: -5px;
   }
+  .switchButtonStyles{
+     
+      display: flex;
+      cursor: pointer;
+      justify-content: space-between;
+      background-color: transparent;
+       /* Background for the switch */
+      border-radius: 25px; /* Rounded corners for the background */
+      padding: 5px; /* Some padding around the buttons */
+      width: 170px; /* Adjust to content width */
+      overflow: hidden; /* Ensures that the rounded corners are maintained */
+      margin-left: -8px;
+    
+  }
+  .hello{
+    font-size: 14px;
+     outline: none;
+     border-radius: 30px;
+     border:none;
+     
+     cursor: pointer;
+     border:0.1px;
+     width:109px;   
+     height: 34px;
+
+    
+}
+.blue {
+  width:109px;   
+  padding: 4px, 16px, 4px, 16px;
+  height: 34px;
+  border:0.1px;
+  border-radius: 30px;   
+  font-size: 14px;
+  border-color: rgba(13, 121, 220, 1);
+ background-color: rgba(13, 121, 220, 1);
+ color: white; 
+ } 
+
  
   .delivery-header
   {
@@ -103,7 +142,7 @@ margin-top: -10px;
  
   .deliveryContent
   {
-    margin-top: -70px;
+    margin-top: 10px;
     h3{
       font-family: Poppins;
 font-size: 18px;
