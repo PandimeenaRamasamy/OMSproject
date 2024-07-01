@@ -842,10 +842,7 @@ const Location = forwardRef((props, ref) => {
       errors. addressLine2 = "Please Enter Address";
     }
 
-    if (!form. addressLine3) {
-      isValid = false;
-      errors. addressLine2 = "Please Enter Address";
-    }
+   
     if (!form.pinCode) {
       isValid = false;
       errors.pinCode = "Please Enter Pincode";
