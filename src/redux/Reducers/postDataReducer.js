@@ -336,18 +336,4 @@ export const nameReducer = (state = initialStatelocationId, action) => {
 
 
 
-const formData = {
-  data: []
-};
 
-export const onBoardingForm = (state = formData, action) => {
-  switch (action.type) {
-    case 'SET_ONBOARDING_FORM':
-      return {
-        ...state,
-        data: action.payload
-      };
-    default:
-      return state;
-  }
-};

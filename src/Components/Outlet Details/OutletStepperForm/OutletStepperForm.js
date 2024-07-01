@@ -19,13 +19,13 @@ import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Receipt() {
-  return <h2>Receipt</h2>;
+  return <h2></h2>;
 }
 
 function Stepform() {
   const [outletactiveStep, setOutletActiveStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(new Array(7).fill(false));
-  const [validSteps, setValidSteps] = useState(new Array(7).fill(false)); // State to track valid steps
+  const [validSteps, setValidSteps] = useState(new Array(7).fill(false));
   const dispatch = useDispatch();
   const pickUpformRef = useRef();
   const kitchenformRef = useRef();
@@ -88,25 +88,11 @@ function Stepform() {
   }, [outletactiveStep]);
 
   const handleStepClick = (index) => {
-    if (outletactiveStep === outletsteps.length - 1) {
-      // Allow clicking on any step if on the last step
+    // Only allow navigation to steps that have not been validated if on the last step
+    if (!validSteps[index] || outletactiveStep === outletsteps.length - 1) {
       setOutletActiveStep(index);
-    } else {
-      // Default behavior for other steps
-      if (index <= outletactiveStep) {
-        if (index !== outletactiveStep) {
-          const updatedVisitedSteps = [...outletvisitedSteps];
-          for (let i = index + 1; i < outletsteps.length; i++) {
-            updatedVisitedSteps[i] = false;
-          }
-          setOutletVisitedSteps(updatedVisitedSteps);
-          setOutletActiveStep(index);
-        }
-      };
-      }
     }
-    
-  
+  };
 
   const handleSaveandNext = async () => {
     let newFormData1 = {};
@@ -116,23 +102,11 @@ function Stepform() {
         newFormData1 = basicDetailsref.current.getFormData();
         setBasicDetailsForm(newFormData1);
         dispatch(saveBasicDetailsRequest(newFormData1));
-        setValidSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        toast.success("Data submitted successfully!");
         break;
       case 1:
         newFormData1 = restrauntimageref.current.getFormData();
         setrestrauntImageForm(newFormData1);
         dispatch(PostRestaurantImageDataRequest(newFormData1));
-        setValidSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        toast.success("Data submitted successfully!");
         break;
       case 2:
         isValid = dineinref.current.validate();
@@ -140,17 +114,6 @@ function Stepform() {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
           dispatch(postDineinDataRequest(newFormData1));
-          setCompletedSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          setValidSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          toast.success("Data submitted successfully!");
         }
         break;
       case 3:
@@ -159,17 +122,6 @@ function Stepform() {
           newFormData1 = pickUpformRef.current.getFormData();
           setPickupForm(newFormData1);
           dispatch(PostPickupDataRequest(newFormData1));
-          setCompletedSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          setValidSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          toast.success("Data submitted successfully!");
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
@@ -178,17 +130,6 @@ function Stepform() {
         newFormData1 = deliveryref.current.getFormData();
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1));
-        setCompletedSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        setValidSteps((prev) => {
-          const updated = [...prev];
-          updated[outletactiveStep] = true;
-          return updated;
-        });
-        toast.success("Data submitted successfully!");
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
@@ -196,17 +137,6 @@ function Stepform() {
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
           dispatch(PostKitchenDataRequest(newFormData1));
-          setCompletedSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          setValidSteps((prev) => {
-            const updated = [...prev];
-            updated[outletactiveStep] = true;
-            return updated;
-          });
-          toast.success("Data submitted successfully!");
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
@@ -216,8 +146,16 @@ function Stepform() {
         break;
     }
 
-  
-      handleNextStep();
+    if (isValid) {
+      setValidSteps((prev) => {
+        const updated = [...prev];
+        updated[outletactiveStep] = true;
+        return updated;
+      });
+
+      
+    }
+    handleNextStep();
   };
 
   const handleNextStep = () => {
@@ -225,7 +163,6 @@ function Stepform() {
       setOutletActiveStep(outletactiveStep + 1);
     }
   };
-
 
   const progress = (outletvisitedSteps.filter((step) => step).length / outletsteps.length) * 100;
 
@@ -241,10 +178,10 @@ function Stepform() {
               {outletsteps.map((step, index) => (
                 <div
                   key={index}
-                  className={`step ${completedSteps[index] ? "completed" : ""} ${validSteps[index] ? "valid" : ""} ${
+                  className={`step  ${validSteps[index] ? "valid" : ""} ${
                     outletvisitedSteps[index] ? "visited" : ""
                   } ${index === outletactiveStep ? "active" : ""}`}
-  
+                  disabled={!outletvisitedSteps[index] && outletactiveStep !== outletsteps.length - 1}
                   onClick={() => handleStepClick(index)}
                 >
                   {step.icon}
@@ -262,7 +199,7 @@ function Stepform() {
         <button className="save_next" onClick={handleSaveandNext}>
           Save & Next
         </button>
-        <button className="clear_all" >
+        <button className="clear_all">
           Clear All
         </button>
         <ToastContainer position="top-center" transition={Flip} />
