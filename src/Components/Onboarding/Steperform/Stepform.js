@@ -80,6 +80,8 @@ function Stepform({data}) {
             ...newFormData,
             restaurant_details: restaurantDetailsRef.current.getFormData(),
           };
+          dispatch(postOnBoardingDataRequest(newFormData));
+
 
         }
         break;
@@ -91,6 +93,7 @@ function Stepform({data}) {
             location_Details: locationRef.current.getFormData(),
       
           };
+          dispatch(postOnBoardingDataRequest(newFormData));
         }
         break;
       case 2:
@@ -100,6 +103,7 @@ function Stepform({data}) {
             ...newFormData,
             fssai_details: fssaiRef.current.getFormData(),
           };
+          dispatch(postOnBoardingDataRequest(newFormData));
 
         }
         break;
