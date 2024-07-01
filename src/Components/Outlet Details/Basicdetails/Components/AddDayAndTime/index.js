@@ -18,10 +18,12 @@ const AddDayAndTime = ({
   restaurantSessionid,
   setOpeningTime,
   setClosingTime,
-  disabledDays, // Receive disabledDays as a prop
+  disabledDays, // Received disabledDays as a prop
 }) => {
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
+    console.log("name :",name, "checked :", checked )
+    if(checked && disabledDays[name]) return
     setTimeSlots((prevTime) => {
       const timeSlot = prevTime[restaurantSessionid];
       timeSlot[index].checkedDays[name] = checked;
@@ -39,7 +41,7 @@ const AddDayAndTime = ({
         closingTime: "00:00",
         isContainWeeks: false,
         checkedDays: {
-          monday: true,
+          monday: false, // changed for checkbox validation
           tuesday: false,
           wednesday: false,
           thursday: false,
@@ -68,6 +70,12 @@ const AddDayAndTime = ({
     });
   };
 
+
+  // console.log("Slots:", slots); // Log slots for debugging
+  // console.log("Disabled Days in AddDayAndTime:", disabledDays); // Log disabled days for debugging
+
+
+
   return (
     <div className="addDayAndTime">
       <AddTime
@@ -81,11 +89,11 @@ const AddDayAndTime = ({
       />
       <span>
         {isLastIndex && (
-          <div className="addDayAndTime">
+          // <div className="addDayAndTimeOne">
             <p onClick={addDayAndTime} className="pAdd">
               + Add Time
             </p>
-          </div>
+          // </div>
         )}
         {!isLastIndex && (
           // <div className="deleteDayAndTime">
@@ -106,7 +114,7 @@ const AddDayAndTime = ({
                   name={day}
                   checked={slots.checkedDays[day]}
                   onChange={handleCheckboxChange}
-                  disabled={disabledDays[day]} // Disable checkbox if the day is already selected in other sessions
+                  // disabled={disabledDays[day]} // Disable checkbox if the day is already selected in other sessions for checkbox validation
                 />
                 <p className="cPname">
                   {day.charAt(0).toUpperCase() + day.slice(1)}

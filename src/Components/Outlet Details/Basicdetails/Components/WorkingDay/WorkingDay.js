@@ -15,26 +15,47 @@ const WorkingDay = ({
   restaurantSessionid,
 }) => {
   const getDisabledDays = () => {
+    // for checkbox validation ------------------------------------
     const disabledDays = {};
-    Object.keys(timeSlots).forEach((id) => {
-      if (id !== restaurantSessionid) { // Avoid current session
-        timeSlots[id].forEach((slot) => {
+
+        timeSlots[restaurantSessionid].forEach((slot) => {
+          // console.log(`Checking time slot with id: ${id}`); // Log for debugging
+          // console.log(`Slot:`, slot); // Log each slot for debugging
           Object.keys(slot.checkedDays).forEach((day) => {
             if (slot.checkedDays[day]) {
+              // console.log(`Disabling day: ${day}`); // Log which days are being disabled
               disabledDays[day] = true; // Mark days as disabled if selected in other sessions
             }
           });
         });
-      }
-    });
+    // console.log("Final disabledDays:", disabledDays); // Log the final disabledDays object
     return disabledDays;
   };
 
   const disabledDays = getDisabledDays(); // Get the disabled days
+  // console.log("disabled Days :",disabledDays);
+  // for checkbox validation --------------------------------------
   return (
     <div className="workingDay">
       <div className="session">
-        <div className="sessionContainer">
+      {/* for checkbox validation  ----------------------------------------------------*/}
+      {["breakfast", "lunch", "dinner", "cafe", "snacks", "happyHours"].map((meal) => (
+          <div className="sessionContainer" key={meal}>
+            <label>
+              <input
+                type="radio"
+                id={meal}
+                name={namePrefix}
+                value={meal}
+                onChange={() => activeMeals(restaurantSessionid, meal)}
+                checked={meals === meal}
+              />
+              <p className="sessionName">{meal.charAt(0).toUpperCase() + meal.slice(1)}</p>
+            </label>
+          </div>
+        ))}
+        {/* for checkbox validation -----------------------------------------------------*/}
+        {/* <div className="sessionContainer">
           <label>
             <input
               type="radio"
@@ -111,12 +132,13 @@ const WorkingDay = ({
             />
             <p className="sessionName">Happy Hours</p>
           </label>
-        </div>
+        </div> */}
       </div>
 
       <div className="addDayAndTimeWor">
         {timeSlots?.[restaurantSessionid]?.map((slots, index) => (
-          <AddDayAndTime
+          <AddDayAndTime 
+            key={index} // Add a key prop for checkbox validation
             timeSlots={timeSlots}
             slots={slots}
             setTimeSlots={setTimeSlots}
@@ -125,7 +147,7 @@ const WorkingDay = ({
             restaurantSessionid={restaurantSessionid}
             setOpeningTime={setOpeningTime}
             setClosingTime={setClosingTime}
-            disabledDays={disabledDays}
+            disabledDays={disabledDays} // Pass disabledDays to AddDayAndTime checkbox validation
           />
         ))}
       </div>

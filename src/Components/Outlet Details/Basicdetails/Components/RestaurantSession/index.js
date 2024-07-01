@@ -40,7 +40,7 @@ const RestaurantSession = ({
             closingTime: "00:00",
             isContainWeeks: true,
             checkedDays: {
-              monday: true,
+              monday: false, // changed for checkbox validation
               tuesday: false,
               wednesday: false,
               thursday: false,

@@ -1,6 +1,13 @@
 .addDayAndTime {
+  // padding-top: -10rem;
+  height: 100px;
+  margin-top: 5px;
   display: grid;
-  // background-color: orchid;
+  // margin-top: 60px;
+  // background-color: burlywood;
+  // border: 2px solid red;
+  // gap: 5px;
+
 
   span {
     // background-color: orangered;
@@ -9,7 +16,6 @@
   }
   p{
     font-size: 14px;
-
   };
   // .pAdd {
   //   font-size: medium;
@@ -30,12 +36,14 @@
   gap: 20px;
   width: 700px;
   // background-color: deeppink;
+  margin-top: -25px;
 }
 .checkBoxContainer {
   width: 100%;
   width: auto;
   display: flex;
-  //   background-color: antiquewhite;
+  // margin-top: -15px;
+    // background-color: antiquewhite;
   .cPname {
     color: #2f2f2f;
     font-size: 13px;

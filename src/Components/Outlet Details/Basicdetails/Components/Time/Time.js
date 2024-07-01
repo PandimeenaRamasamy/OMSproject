@@ -17,6 +17,8 @@ const Time = ({ time, setTime, index, restaurantSessionid, timeSlots}) => {
       alert("Selected time slot overlaps with an existing slot.");
     }
   };
+
+  
   return (
     <div className="time">
       <input type="time" value={time} onChange={handleTimeChange} />
