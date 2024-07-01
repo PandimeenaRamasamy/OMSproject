@@ -115,11 +115,18 @@ function Stepform({data}) {
             ...newFormData,
             bank_details: bankRef.current.getFormData(),
           };
+           
+        toast.success("Data has been stored successfully!");
+        setTimeout(() => {
+          navigate('/outlet/Outlet-Details',  { state: { pagename: "Outlet Details" } });
+        }, 3000);
 
         }
 
         // toast.success("All yor Data submitted successfully!");
-        setsuccessmgs(true);
+       
+
+
 
 
 
@@ -170,7 +177,7 @@ function Stepform({data}) {
     setMainForm({});
   };
 
-  
+
 
   const handleNextStep = (formData) => {
     if (activeStep < steps.length - 1) {

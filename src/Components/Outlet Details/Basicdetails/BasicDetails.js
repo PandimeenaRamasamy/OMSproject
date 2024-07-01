@@ -400,11 +400,11 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     // const data2 = useSelector((state) => state.registration.data);
     // console.log("current location ID",data2);
 
-    const data2 = useSelector((state) => state.locationiddata.locationId);
+    const locationId = useSelector((state) => state.locationiddata.locationId);
     // console.log("list of location IDs :",data2)
-     
+    const data2 = useSelector((state) => state.registration.data);
     const payload = {
-      locationId: data2 && data2||"",
+      locationId:  locationId || (data2 && data2),
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,

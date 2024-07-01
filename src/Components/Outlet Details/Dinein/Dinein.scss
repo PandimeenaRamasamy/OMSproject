@@ -298,10 +298,10 @@ color: #666666;
   display: flex;
     cursor: pointer;
     justify-content: space-between;
-    background-color: #f6f6f6; /* Background for the switch */
+    background-color:rgba(249, 249, 249, 1); /* Background for the switch */
     border-radius: 25px; /* Rounded corners for the background */
     padding: 5px; /* Some padding around the buttons */
-    width: 170px; /* Adjust to content width */
+    width: 190px; /* Adjust to content width */
     overflow: hidden;
 }
 
@@ -582,7 +582,9 @@ background-color: rgba(13, 121, 220, 1);
 color: #979797; 
 }
 .inactive{
+  width:119px;
   font-size: 14px;
+  border-radius: 20px;
   outline: none;
   border:none;
   width:84px;

@@ -6,6 +6,9 @@ import { postDataRequest, getLocationId, getDataRequest, getLocationRequest } fr
 import { useLocation } from 'react-router-dom';
 import Success from './Success';
 import Outlet from "../Outletnavbar/Outlet";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -113,10 +116,10 @@ const PostDataForm = () => {
       registrationpagerrors.nameerror = "Name must only contain letters and spaces";
     }
 
-    if(!/^\d{15}$/.test(Registrationform.gstNumber))
-      {
-        registrationpagerrors.gstNumbererror="Please enter a valid email address."
-      }
+    // if(!/^\d{15}$/.test(Registrationform.gstNumber))
+    //   {
+    //     registrationpagerrors.gstNumbererror="Please enter a valid email address."
+    //   }
 
 
     if (!Registrationform.phone) {
@@ -126,6 +129,7 @@ const PostDataForm = () => {
     setError(registrationpagerrors);
     return isValid;
   };
+  let navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -133,6 +137,12 @@ const PostDataForm = () => {
     if (isValid) {
       dispatch(postDataRequest(Registrationform));
       setsuccessmgs(true);
+    }
+    if (data2) {
+      toast.success("Data has been stored successfully!");
+      setTimeout(() => {
+        navigate('/outlet/Onboaring', { state: { pagename: "Onboaring" } });
+      }, 3000); // 3000 milliseconds = 3 seconds
     }
   };
 
@@ -404,11 +414,24 @@ const PostDataForm = () => {
               Clear All
             </button>
           </div>
-          {successmgs && data2 && validationofregistrationform && (
+          {/* {successmgs && data2 && validationofregistrationform && (
             <div className="alcoholModalOverlaysuccess">
               <Success onCloseRequest={handleCloseSuccessModal} pathname="Registraion" />
             </div>
-          )}
+          )} */}
+           <ToastContainer
+position="top-center"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+
+/>
         </div>
       </div>
     </div>
