@@ -178,7 +178,7 @@ function Stepform() {
               {outletsteps.map((step, index) => (
                 <div
                   key={index}
-                  className={`step ${completedSteps[index] ? "completed" : ""} ${validSteps[index] ? "valid" : ""} ${
+                  className={`step  ${validSteps[index] ? "valid" : ""} ${
                     outletvisitedSteps[index] ? "visited" : ""
                   } ${index === outletactiveStep ? "active" : ""}`}
                   disabled={!outletvisitedSteps[index] && outletactiveStep !== outletsteps.length - 1}
