@@ -750,7 +750,7 @@ const Restaurant = forwardRef((props, ref) => {
                       name="phone"
                       className="phonenumberinput"
                       onBlur={validatePhone}
-                      placeholder="Enter Mobile Number"
+                      placeholder="47656 65655"
                       value={form.phone}
                       onChange={handleChange}
                       style={{
@@ -792,7 +792,7 @@ const Restaurant = forwardRef((props, ref) => {
                       name="phone"
                       className="phonenumberinput"
                       onBlur={validatePhone}
-                      placeholder="Enter Mobile Number"
+                      placeholder="Enter STD Number"
                       value={form.phone}
                       onChange={handleChange}
                       style={{
@@ -854,7 +854,7 @@ const Restaurant = forwardRef((props, ref) => {
                       name="whatsappNumber"
                       onKeyPress={handleKeyPress}
                       className="phonenumberinput"
-                      placeholder="Enter WhatsApp Number"
+                      placeholder="47656 65655"
                       value={form.whatsappNumber}
                       onBlur={validatewhatsapp}
                       onChange={handleChange}
