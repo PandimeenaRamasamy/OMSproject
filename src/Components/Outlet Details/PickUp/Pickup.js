@@ -201,11 +201,11 @@ const handleUpClick = () => {
             </div>
             <h5 className='Pickup_heading7'>Pick up Payment</h5>
             <h5 className='Pickup_heading10'>Please mention the payment methods</h5>
-            <div style={{ display: 'flex' }}>
-              <input type='checkbox' style={{ marginLeft: '0px' }} value="Cards" className='Pickcheck' onChange={handlecheckedchange} checked={form.payment.includes("Cards")}></input><label style={{ fontSize: "16px", marginTop: "20px", marginLeft: '10px' }}>Cards</label>
-              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Pay at store" onChange={handlecheckedchange} checked={form.payment.includes("Pay at store")}></input><label style={{ fontSize: "16px", marginTop: "20px", marginLeft: '10px' }}>Pay at store</label>
-              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Apple Pay" onChange={handlecheckedchange} checked={form.payment.includes("Apple Pay")}></input><label style={{ fontSize: "16px", marginTop: "20px", marginLeft: '10px' }}>Apple Pay</label>
-              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Google Pay" onChange={handlecheckedchange} checked={form.payment.includes("Google Pay")}></input><label style={{ fontSize: "16px", marginTop: "20px", marginLeft: '10px' }}>Google Pay</label>
+            <div>
+              <input type='checkbox' style={{ marginLeft: '0px',}} value="Cards" className='Pickcheck' onChange={handlecheckedchange} checked={form.payment.includes("Cards")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Cards</label>
+              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Pay at store" onChange={handlecheckedchange} checked={form.payment.includes("Pay at store")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Pay at store</label>
+              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Apple Pay" onChange={handlecheckedchange} checked={form.payment.includes("Apple Pay")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Apple Pay</label>
+              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Google Pay" onChange={handlecheckedchange} checked={form.payment.includes("Google Pay")}></input><label style={{ fontSize: "16px",  marginLeft: '10px' }}>Google Pay</label>
             </div>
             <div>
               <h5 className='Pickup_heading13'>Schedule Pick Up</h5>
