@@ -143,10 +143,14 @@ const Pickup = React.forwardRef((props, ref) => {
   };
 
   const handleDownClick = () => {
-    if (currentIndex > 0) {
+    if (currentIndex > 1) {
       const newIndex = currentIndex - 1;
       setCurrentIndex(newIndex);
       setForm({ ...form, scheduledDuration: newIndex });
+    }
+    else{
+      const a1="EOD";
+      setForm({ ...form, scheduledDuration:a1 });
     }
   };
   
