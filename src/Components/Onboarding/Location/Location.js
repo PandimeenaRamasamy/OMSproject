@@ -1006,7 +1006,7 @@ const Location = forwardRef((props, ref) => {
               style={{ display: "flex", justifyContent: "space-evenly", marginTop:"-40px" }}
               className="personal-detailsloc"
             >
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column",marginTop:"16px" }}>
 
                
 
@@ -1034,7 +1034,7 @@ const Location = forwardRef((props, ref) => {
               </div>
 
               <div
-                style={{ display: "flex", flexDirection: "column" }}
+                style={{ display: "flex", flexDirection: "column", marginTop:"16px" }}
                 className="personal-detailsloc"
               >
                 <label htmlFor="city" className="labelloc">
