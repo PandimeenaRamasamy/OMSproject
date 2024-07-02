@@ -143,16 +143,18 @@ const Pickup = React.forwardRef((props, ref) => {
   };
 
   const handleDownClick = () => {
-    if(currentIndex>=0){
-    setCurrentIndex(currentIndex-1);
-    setForm({ ...form, scheduledDuration: currentIndex });
+    if (currentIndex > 0) {
+      const newIndex = currentIndex - 1;
+      setCurrentIndex(newIndex);
+      setForm({ ...form, scheduledDuration: newIndex });
+    }
   };
-}
-
-  const handleUpClick = () => {
-    setCurrentIndex(currentIndex+ 1);
-    setForm({ ...form, scheduledDuration: currentIndex });
-  };
+  
+const handleUpClick = () => {
+  const newIndex = currentIndex + 1;
+  setCurrentIndex(newIndex);
+  setForm({ ...form, scheduledDuration: newIndex });
+};
 
   const handlecheckedchange = (e) => {
     const value = e.target.value;
