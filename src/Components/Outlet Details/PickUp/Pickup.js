@@ -143,7 +143,7 @@ const Pickup = React.forwardRef((props, ref) => {
   };
 
   const handleDownClick = () => {
-    if(currentIndex>0){
+    if(currentIndex>=0){
     setCurrentIndex(currentIndex-1);
     setForm({ ...form, scheduledDuration: currentIndex });
   };
@@ -218,7 +218,7 @@ const Pickup = React.forwardRef((props, ref) => {
                     borderColor: pickuperror.scheduledDuration ? "red" : "#B3B3B3",
                   }} placeholder='EOD' className='updown' min="0" onChange={(e) => setForm({ ...form, "scheduledDuration": e.target.value })}></input>
                 </div>
-                <div className="arrow">
+                <div className="arrow1">
                   <div className="downsideArrow" onClick={handleUpClick}>
                     <img src={vector} alt="" />
                   </div>
