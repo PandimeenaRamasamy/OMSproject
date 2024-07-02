@@ -75,7 +75,7 @@ color: #666666;
   top: 10px;
   width: 600px;
   height: 252px;
-  border: 2px dotted gray;
+  border: 1px dotted #979797 ;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
@@ -93,7 +93,7 @@ color: #666666;
   width: 600px;
   height: 252px;
 
-  border: 2px dotted gray;
+  border: 1px dotted #979797 ;
 
   margin-top: 30px;
 
@@ -102,17 +102,19 @@ color: #666666;
   cursor: pointer;
 
   text-align: center;
+  overflow-x: hidden;
 }
 
 
 
 
+
   .img2 {
-    display: flex;
-    justify-content: start;
-    width:120px;
+ 
+    width:100px;
     height: 200px;
     margin-top: 20px;
+    overflow-x: none;
 
     
 
@@ -121,6 +123,8 @@ color: #666666;
     border-radius: 5px;
 
     padding: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
   p {
