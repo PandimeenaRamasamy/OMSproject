@@ -10,18 +10,41 @@ const AddTime = ({
   setClosingTime,
   index,
   restaurantSessionid,
+  isLastIndex,
+  addDayAndTime,
+  deleteCurrentTime
 }) => {
+  const hasContainWeeks = timeSlots[restaurantSessionid]?.some(
+    (slot) => slot.isContainWeeks
+  );
   return (
-    <div className="AddTime">
-      <div className="time">
+    <div className="AddTime2" >
+      <div className="time2">
         <div className="timeContainerOpen">
           <div className="nameBox"> Opening Time </div>
-          <Time time={openingTime} setTime={setOpeningTime} index={index} restaurantSessionid={restaurantSessionid} timeSlots={timeSlots}/>
+          <Time time={openingTime} setTime={setOpeningTime} index={index} restaurantSessionid={restaurantSessionid} timeSlots={timeSlots} type="opening"/>
         </div>
         <div className="timeContainerClose">
           <div className="nameBox"> Closing Time </div>
-          <Time time={closingTime} setTime={setClosingTime} index={index} restaurantSessionid={restaurantSessionid} timeSlots={timeSlots}/>
+          <Time time={closingTime} setTime={setClosingTime} index={index} restaurantSessionid={restaurantSessionid} timeSlots={timeSlots} type="closing"/>
         </div>
+        {/* <div className="handle-add-del"> */}
+        {/* <div>Sample</div> */}
+        {isLastIndex && (
+          // <div className="addDayAndTimeOne">
+            <p onClick={addDayAndTime} className="pAdd" >
+              + Add Time
+            </p>
+          // </div>
+        )}
+        {!isLastIndex && (
+          // <div className="deleteDayAndTime">
+          <p onClick={deleteCurrentTime} className="delete-day-time">
+            - Delete Time
+          </p>
+          // </div>
+        )}
+        {/* </div> */}
       </div>
     </div>
   );

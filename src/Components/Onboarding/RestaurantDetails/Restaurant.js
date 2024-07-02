@@ -457,12 +457,21 @@ const Restaurant = forwardRef((props, ref) => {
 
   useEffect(() => {
     const savedData = JSON.parse(sessionStorage.getItem("Restaurantdata"));
-    setForm({
-      locationId: (loactiondata && loactiondata) || null,
-    });
+   
 
     if (savedData) {
-      setForm(savedData);
+      setForm({
+        locationId: (data2 && data2) || "",
+        businessLegalName: savedData.BusinessLegalName || "",
+        phone: savedData.phone || "",
+        email: savedData.email || "",
+        website: savedData.websiteLink || "",
+        instagramLink: savedData.instagramLink || "",
+        facebookLink: savedData.FaceBookLink || "",
+        restaurantNumber: savedData.RestaurantNumber || "",
+        // whatsappNumber: data[0].location.whatsappNumber || "",
+
+      });
     }
     const handleBeforeUnload = () => {
       sessionStorage.removeItem("Restaurantdata");

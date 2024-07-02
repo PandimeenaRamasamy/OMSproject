@@ -86,9 +86,12 @@ const AddDayAndTime = ({
         setClosingTime={setClosingTime}
         restaurantSessionid={restaurantSessionid}
         index={index}
+        isLastIndex={isLastIndex}
+        addDayAndTime={addDayAndTime}
+        deleteCurrentTime={deleteCurrentTime}
       />
-      <span>
-        {isLastIndex && (
+      {/* <span> */}
+        {/* {isLastIndex && (
           // <div className="addDayAndTimeOne">
             <p onClick={addDayAndTime} className="pAdd">
               + Add Time
@@ -101,8 +104,8 @@ const AddDayAndTime = ({
             - Delete Time
           </p>
           // </div>
-        )}
-      </span>
+        )} */}
+      {/* </span> */}
       {slots?.isContainWeeks && (
         <div className="checkboxWrapper">
           {Object.keys(slots?.checkedDays).map((day) => (

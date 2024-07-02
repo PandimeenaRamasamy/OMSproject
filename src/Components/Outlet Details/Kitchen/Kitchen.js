@@ -56,6 +56,28 @@ const Kitchen = React.forwardRef((props,ref) => {
             setKitchenError(errors);
             return isValid;
         }
+
+
+        useEffect(() => {
+          const savedData = JSON.parse(sessionStorage.getItem("Kitchen"));
+          if (savedData) {
+            setForm({
+              locationId:data2 && data2||"",
+
+              lastOrderTime: savedData.lastOrderTime || "",
+                  kdsAlert: savedData.kdsAlert || "",
+            });
+          }
+          // Clear sessionStorage on page refresh
+          const handleBeforeUnload = () => {
+            sessionStorage.removeItem("Kitchen");
+          };
+          window.addEventListener("beforeunload", handleBeforeUnload);
+          return() => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+          };
+        }, []);
+     
         const data = useSelector((state) => state.getlocationdata.data);
         useEffect(() => {
             if (data && data[0] && data[0].location && data[0].location.attributes) {

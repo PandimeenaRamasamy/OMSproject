@@ -15,6 +15,7 @@ const RestaurantSession = ({
   meals,
 }) => {
   const [openSession, setOpenSession] = useState(false);
+  const [isDayTimeAdded, setIsDayTimeAdded] = useState(false);
 
   const handleOpenSession = () => {
     setOpenSession((isOpen) => !isOpen);
@@ -52,14 +53,19 @@ const RestaurantSession = ({
         ],
       }));
     }
+    setIsDayTimeAdded(true);
   };
+
+  const hasContainWeeks = timeSlots[restaurantSessionid]?.some(
+    (slot) => slot.isContainWeeks
+  );
 
   return (
     <div className="restaurantSessionContainer">
       <div className="sessionHeaderRes">
       <p style={{ cursor: "pointer" }} onClick={() => setOpenSession((sess) => !sess)}>
     Restaurant Session - {meals}
-</p>
+      </p>
         <img
           src={vector}
           alt="drop-down"
@@ -85,10 +91,18 @@ const RestaurantSession = ({
             namePrefix={`meal-${restaurantSessionid}`}
             restaurantSessionid={restaurantSessionid}
           />
-          <div className="addBtn">
-            <p>
-              Setup for specific days?{" "}
-              <span onClick={handleAddDayandTime}>+ Add Day/Time</span>
+          <div className="addBtn" style={ 
+              hasContainWeeks
+                ? { marginTop: "10px", marginBottom: "10px" }
+                : {}
+            }>
+            <p className="specific-days-setup">
+            {!isDayTimeAdded && <p>Setup for specific days?{" "}</p>}
+              <span onClick={handleAddDayandTime} style={ 
+              hasContainWeeks
+                ? { marginTop: "20px" }
+                : {}
+            }>+ Add Day/Time</span>
             </p>
           </div>
         </div>

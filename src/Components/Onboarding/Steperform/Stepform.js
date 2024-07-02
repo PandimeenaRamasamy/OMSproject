@@ -145,7 +145,7 @@ function Stepform({data}) {
         }
         Fssaidata=fssaiRef.current.getFormData();
         sessionStorage.setItem(
-          "Fssai",
+          "Fssai",   
           JSON.stringify(Fssaidata)
         );
         break;

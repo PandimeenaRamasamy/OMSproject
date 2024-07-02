@@ -444,6 +444,7 @@ const convertTo24Hour = (time) => {
         setAllChecked(false);
       }
 
+
       return newState;
     });
   };
@@ -455,7 +456,7 @@ const convertTo24Hour = (time) => {
 
   const datafromapi = useSelector((state) => state.postData.data);
 
-  const payloadData = {
+  let payloadData = {
     locationId: locationId || (data2 && data2),
     deliverySettingTime:deliverySetting,
     deliveryPayment: selectedMethods,
@@ -466,6 +467,94 @@ const convertTo24Hour = (time) => {
     packagingCharge: packageCharge,
     deliveryOption: {},
   };
+
+  useEffect(() => {
+    const savedData = JSON.parse(sessionStorage.getItem("Delivery"));
+  //   if (savedData) {
+  //  payloadData = savedData
+      
+  //   }
+    if (savedData) {
+      setShowDelivery(true);
+      setIsEnable(true);
+    }
+    if (savedData?.deliveryPayment) {
+      setSelectedMethods(savedData.deliveryPayment || []);
+      console.log(savedData.deliveryPayment);
+    }
+    setPackageCharge(savedData?.packagingCharge || "");
+    setInHouse(savedData?.inHouse?.isEnabled);
+    setShowInHouse(savedData?.isInHouseEnabled);
+    setMaxPriceValue(
+      savedData?.maximumOrderPrice || ""
+    );
+    setMinPriceValue(
+      savedData?.minimumOrderPrice || ""
+    );
+
+    setDeliveryOption(savedData?.scheduledDelivery);
+    setShowScheduledDelivery(savedData?.scheduledDelivery === "yes");
+    if( savedData.deliverySettingTime)
+      {
+        const mappedTimeSlot = savedData.deliverySettingTime.map((time, index) => ({
+          openingTime: time.deliveryServiceTimeFrom,
+          closingTime: time.deliveryServiceTimeTo
+        }));
+    
+        setTimeSlot(mappedTimeSlot);
+        if (mappedTimeSlot.length > 1) settime2(true);
+        if (mappedTimeSlot.length > 2) settime3(true);
+      }
+
+      setThirdParty(savedData?.thirdParty?.isEnabled);
+
+      const updatedScheduledDay = [...scheduledDay];
+      updatedScheduledDay[0] = savedData?.scheduledDeliveryDuration;
+      setScheduledDay(updatedScheduledDay);
+
+      const index = updatedScheduledDay.indexOf(
+        savedData?.scheduledDeliveryDuration
+      );
+      setCurrentIndex(index);
+
+      if (savedData?.deliveryOption?.inHouse?.isEnabled) {
+
+
+        setInHouse(savedData?.deliveryOption?.inHouse?.isEnabled);
+        setFlatFee(savedData?.deliveryOption?.inHouse?.flatFee);
+        setDefaultMile(savedData?.deliveryOption?.inHouse?.initial2MileAmount);
+        setAdditionalMile(savedData?.deliveryOption?.inHouse?.additional1MileAmount);
+        setSelectedOption(savedData?.deliveryOption?.inHouse?.cashOnDelivery);
+        setBatchOrder(savedData?.deliveryOption?.inHouse?.batchOrder);
+        setbrachCount(savedData?.deliveryOption?.inHouse?.defaultCountOfBatchOrder);
+        setFeesStructure(savedData?.deliveryOption?.inHouse?.feesStructure);
+        setMaxRadius(savedData?.deliveryOption?.inHouse?.maximumRadius);
+      }
+
+      if (savedData?.deliveryOption?.thirdParty?.isEnabled) {
+        setDoorDash(savedData?.deliveryOption?.thirdParty.doorDashId || "");
+        setDunzo(savedData?.deliveryOption?.thirdParty.dunzoId || "");
+        setUberEats(savedData?.deliveryOption?.thirdParty.uberEatsId || "");
+
+        setShowDoorDash(!!savedData?.deliveryOption?.thirdParty.doorDashId);
+        setShowDunzo(!!savedData?.deliveryOption?.thirdParty.dunzoId);
+        setShowUberEats(!!savedData?.deliveryOption?.thirdParty.uberEatsId);
+      }
+
+
+
+
+
+
+
+    const handleBeforeUnload = () => {
+      sessionStorage.removeItem("Kitchen");
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return() => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   if (inHouse) {
     payloadData.deliveryOption.inHouse = {

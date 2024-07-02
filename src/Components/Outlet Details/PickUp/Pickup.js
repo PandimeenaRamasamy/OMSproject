@@ -44,7 +44,40 @@ const Pickup = React.forwardRef((props,ref) => {
     const [isEnabled, setIsEnabled] = useState(false);
   
 
-   
+    useEffect(() => {
+      const savedData = JSON.parse(sessionStorage.getItem("Pickup"));
+      if (savedData) {
+        setForm({
+          locationId:data2 && data2||"",
+          serviceTimeFrom: savedData.serviceTimeFrom || "",
+          serviceTimeTo: savedData.serviceTimeTo || "",
+          payment: savedData.payment || [],
+          scheduledDuration: savedData.scheduledDuration || "",
+          packagingCharge: savedData.packagingCharge || "",
+          eta: savedData.eta || "",
+        });
+        setIsEnabled(true);
+      }
+  
+     
+      
+  
+     
+  
+  
+  
+  
+  
+  
+      // Clear sessionStorage on page refresh
+      const handleBeforeUnload = () => {
+        sessionStorage.removeItem("Pickup");
+      };
+      window.addEventListener("beforeunload", handleBeforeUnload);
+      return() => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
+    }, []);
   useEffect(() => {
     // Ensure data is an array, has at least one element, and location exists
     if (Array.isArray(data) && data.length > 0 && data[0].location) {

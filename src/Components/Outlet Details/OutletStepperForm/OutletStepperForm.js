@@ -155,11 +155,22 @@ function Stepform() {
         newFormData1 = basicDetailsref.current.getFormData();
         setBasicDetailsForm(newFormData1);
         dispatch(saveBasicDetailsRequest(newFormData1));
+
+        let Basicdetail=basicDetailsref.current.getFormData()
+        sessionStorage.setItem(
+          "Basicdetail",   
+          JSON.stringify(Basicdetail)
+        );
         break;
       case 1:
         newFormData1 = restrauntimageref.current.getFormData();
         setrestrauntImageForm(newFormData1);
         dispatch(PostRestaurantImageDataRequest(newFormData1));
+        let resimage=restrauntimageref.current.getFormData()
+        sessionStorage.setItem(
+          "Resimage",   
+          JSON.stringify(resimage)
+        );
         break;
       case 2:
         isValid = dineinref.current.validate();
@@ -167,6 +178,11 @@ function Stepform() {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
           dispatch(postDineinDataRequest(newFormData1));
+          let dinein=dineinref.current.getFormData();
+        sessionStorage.setItem(
+          "Dinein",   
+          JSON.stringify(dinein)
+        );
         }
         break;
       case 3:
@@ -175,6 +191,12 @@ function Stepform() {
           newFormData1 = pickUpformRef.current.getFormData();
           setPickupForm(newFormData1);
           dispatch(PostPickupDataRequest(newFormData1));
+          let pickup=pickUpformRef.current.getFormData();
+          sessionStorage.setItem(
+            "Pickup",   
+            JSON.stringify(pickup)
+          );
+          
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
@@ -183,6 +205,11 @@ function Stepform() {
         newFormData1 = deliveryref.current.getFormData();
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1));
+        let delivery=deliveryref.current.getFormData();
+          sessionStorage.setItem(
+            "Delivery",   
+            JSON.stringify(delivery)
+          );
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
@@ -190,6 +217,11 @@ function Stepform() {
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
           dispatch(PostKitchenDataRequest(newFormData1));
+          let kitchen=kitchenformRef.current.getFormData();
+          sessionStorage.setItem(
+            "Kitchen",   
+            JSON.stringify(kitchen)
+          );
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }

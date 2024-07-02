@@ -183,6 +183,91 @@ const Dinein = React.forwardRef((props,ref) => {
   //     console.log("Location data not present");
   //   }
   // }, [data]);
+  useEffect(() => {
+    const savedData = JSON.parse(sessionStorage.getItem("Dinein"));
+    if (savedData) {
+
+
+      const newCheckedDays = {
+        Monday: false,
+        Tuesday: false,
+        Wednesday: false,
+        Thursday: false,
+        Friday: false,
+        Saturday: false,
+        Sunday: false,
+      };
+
+      savedData?.reservation?.days.forEach((day) => {
+        newCheckedDays[day] = true;
+      });
+      setCheckedDays(newCheckedDays);
+      if(savedData?.merchant4DigitValidation)
+        {
+          setMergentdigitvaliadtion("yes");
+        }
+      setOutletdetails({
+        locationId:data2 && data2||"",
+      
+        dineIn: savedData.dineIn || "",
+        highChair: savedData.highChair || "no",
+        interactiveDineIn: savedData.interactiveDineIn || "",
+        merchant4DigitValidation: savedData.merchant4DigitValidation || "no",
+      
+        checkIn: {
+          maximumPeopleAllowedOnline: savedData.checkIn?.maximumPeopleAllowedOnline || "",
+          maximumPeopleAllowedOffline: savedData.checkIn?.maximumPeopleAllowedOffline || "",
+          lateShowTime: savedData.checkIn?.lateShowTime || "",
+          autoCancelTime: savedData.checkIn?.autoCancelTime || "",
+          abandonTime: savedData.checkIn?.abandonTime || "",
+          autoAssign: savedData.checkIn?.autoAssign || "no",
+        },
+        reservation: {
+          minimumPeopleAllowed: savedData?.reservation?.minimumPeopleAllowed || "",
+          maximumPeopleAllowed: savedData?.reservation?.maximumPeopleAllowed || "",
+          reservationServiceTimeFrom: savedData?.reservation?.reservationServiceTimeFrom || "",
+          reservationServiceTimeTo: savedData?.reservation?.reservationServiceTimeTo || "",
+          days: savedData?.reservation?.days || [],
+          bufferDays: savedData?.reservation?.bufferDays || "",
+        },
+      });
+    }
+     
+
+
+    if(savedData?.highChair==="yes"||savedData?.highChair==="Yes")
+      {
+        setDineinselectedButton(true);
+      }
+
+    if(savedData==="yes")  
+      {
+        setInteractiveselectedButton(true);
+      }
+
+     if( savedData?.checkIn)
+      {
+        setCheckinselectedButton(true);
+      } 
+     if(savedData?.reservation)
+      {
+        setReservationinselectedButton(true);
+      } 
+
+
+
+
+
+
+    // Clear sessionStorage on page refresh
+    const handleBeforeUnload = () => {
+      sessionStorage.removeItem("Dinein");
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return() => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
      
   useEffect(() => {
     if (Array.isArray(data) && data.length > 0 && data[0].location) {
@@ -219,10 +304,7 @@ const Dinein = React.forwardRef((props,ref) => {
             highChair: dineInDetails.highChair || "no",
             interactiveDineIn: dineInDetails.interactiveDineIn || "",
             merchant4DigitValidation: dineInDetails.merchant4DigitValidation || "no",
-           
-
-
-
+          
             checkIn: {
               maximumPeopleAllowedOnline: dineInDetails.checkIn?.maximumPeopleAllowedOnline || "",
               maximumPeopleAllowedOffline: dineInDetails.checkIn?.maximumPeopleAllowedOffline || "",

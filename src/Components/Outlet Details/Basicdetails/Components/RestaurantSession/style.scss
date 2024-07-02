@@ -22,8 +22,12 @@
   }
   .sessionBodyRes {
     .addBtn {
-      margin-top: 40px;
-      
+      margin-top: 10px;
+      // background-color: cadetblue;
+      .specific-days-setup{
+        display: flex;
+        // background-color: #67833e;
+      }
       span {
         color: #67833e;
         font-weight: 500;
@@ -33,8 +37,6 @@
       p {
         color: #000000;
         font-size: 14px;
-        
-
       }
     }
   }
