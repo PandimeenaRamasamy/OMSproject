@@ -750,47 +750,52 @@ const convertTo24Hour = (time) => {
 
           <div className="payment">
             <h3>Delivery Payment</h3>
-            <p>Customer can place delivery order for future/next session</p>
+            <p>Please mention the payment methods</p>
             <div className="paymentMethod">
-              <label>
-                <input
-                  className="checkbox"
+
+            <input
+                  className="inputcheck"
                   value="cards"
                   type="checkbox"
                   checked={selectedMethods.includes("cards")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Cards</p>
-              </label>
               <label>
-                <input
-                  className="checkbox"
+                
+                <p className="cPname1">Cards</p>
+              </label>
+              <input
+                  className="inputcheck"
                   value="pay at store"
                   type="checkbox"
                   checked={selectedMethods.includes("pay at store")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Pay at store</p>
-              </label>
               <label>
-                <input
-                  className="checkbox"
+               
+                <p className="cPname2">Pay at store</p>
+              </label>
+              <input
+                  className="inputcheck"
                   value="apple pay"
                   type="checkbox"
                   checked={selectedMethods.includes("apple pay")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Apple Pay</p>
-              </label>
               <label>
-                <input
-                  className="checkbox"
+               
+                <p className="cPname3">Apple Pay</p>
+              </label>
+              <input
+                  className="inputcheck"
                   value="google pay"
                   type="checkbox"
                   checked={selectedMethods.includes("google pay")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Google Pay</p>
+              <label className="payname">
+               
+                <p className="cPname4">Google Pay</p>
               </label>
             </div>
           </div>
@@ -913,8 +918,8 @@ const convertTo24Hour = (time) => {
                   className="checkbox"
                   value="in house"
                   type="checkbox"
-                  checked={inHouse === true}
-                  onClick={() => setInHouse(!inHouse)}
+                  checked={showInHouse === true}
+                  onClick={() => setShowInHouse(!showInHouse)}
                 />
                 <p className="cPname">Inhouse</p>
               </label>
@@ -923,8 +928,8 @@ const convertTo24Hour = (time) => {
                   className="checkbox"
                   value="3rd party"
                   type="checkbox"
-                  checked={thirdParty === true}
-                  onClick={() => setThirdParty(!thirdParty)}
+                  checked={showThirdParty === true}
+                  onClick={() => setShowTHirdParty(!showThirdParty)}
                 />
                 <p className="cPname">3rd party</p>
               </label>
@@ -937,28 +942,29 @@ const convertTo24Hour = (time) => {
             className="inHousedeliveryoption"
             style={{ height: showInHouse ? "850px" : "70px" }}
           >
-            {inHouse && (
+            {showInHouse && (
               <div className="inhouse">
                 <div
                   className="header"
                   onClick={() => setShowInHouse((inho) => !inho)}
                 >
                   <h3>Inhouse</h3>
-                  <img
+                  {/* <img
                     className={showInHouse ? "arrowUp" : "arrowDown"}
                     onClick={() => setShowInHouse(!showInHouse)}
                     src={vector}
                     alt=""
-                  />
+                  /> */}
                 </div>
                 {showInHouse && (
                   <div className="body">
                     <p>Use restaurant person to deliver the food</p>
 
                     <div className="distance">
-                      <h5>Maximum Radius</h5>
+                      <h5 className="h5distance">Maximum Radius</h5>
                       <input
                         type="text"
+                        className="inputfiled"
                         placeholder="in miles(Upto 100)"
                         value={maxRadius}
                         onChange={(e) => {
@@ -1038,10 +1044,11 @@ const convertTo24Hour = (time) => {
                           </label>
                         </div>
                       </div>
-                      <div className="defaultCount">
+                      <div className="defaultCountt">
                         <p>Default count of branch order</p>
                         <input
                           type="text"
+                          className="defaultinput"
                           placeholder="Upto 30"
                           value={brachCount}
                           onChange={(e) => {
@@ -1113,6 +1120,7 @@ const convertTo24Hour = (time) => {
                               <span className="symbol"></span>
                               <input
                                 type="text"
+                                placeholder="$5"
                                 value={defaultMile}
                                 onChange={(e) => {
                                   const val = e.target.value;
@@ -1128,6 +1136,7 @@ const convertTo24Hour = (time) => {
                               <span className="symbol"></span>
                               <input
                                 type="text"
+                                 placeholder="$1"
                                 value={additionalMile}
                                 onChange={(e) => {
                                   const val = e.target.value;
@@ -1157,10 +1166,12 @@ const convertTo24Hour = (time) => {
                           <div className="flatfeeInput">
                             <div className="input-container">
                               <p>Amount</p>
-                              <span className="symbol">$</span>
+                              <span className="symbol"></span>
                               <input
                                 type="text"
+                                placeholder="$1"
                                 value={flatFee}
+
                                 onChange={(e) => {
                                   const val = e.target.value;
                                   if (!isNaN(val)) {
@@ -1189,19 +1200,19 @@ const convertTo24Hour = (time) => {
               marginTop: !inHouse ? "-70px" : "0px",
             }}
           >
-            {thirdParty && (
+            {showThirdParty && (
               <div className="thirdParty">
                 <div
                   className="header"
                   onClick={() => setShowTHirdParty((tp) => !tp)}
                 >
                   <h3>3rd Party</h3>
-                  <img
+                  {/* <img
                     className={showThirdParty ? "arrowUp" : "arrowDown"}
                     onClick={() => setShowTHirdParty(!showThirdParty)}
                     src={vector}
                     alt=""
-                  />
+                  /> */}
                 </div>
                 {showThirdParty && (
                   <div className="body">
