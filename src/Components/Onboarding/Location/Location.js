@@ -771,6 +771,21 @@ const Location = forwardRef((props, ref) => {
   let errors = {};
 
   const [textboxes, setTextboxes] = useState([""]);
+  useEffect(() => {
+    const savedData = JSON.parse(sessionStorage.getItem("Location"));
+   
+
+    if (savedData) {
+      setForm(savedData);
+    }
+    const handleBeforeUnload = () => {
+      sessionStorage.removeItem("Location");
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   useEffect(() => {
     if (data && data[0]) {

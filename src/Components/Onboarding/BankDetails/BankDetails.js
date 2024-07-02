@@ -197,7 +197,21 @@ const BankDetails = forwardRef((props, ref) => {
   });
 
   const data = useSelector((state) => state.getlocationdata.data);
-
+  useEffect(() => {
+    const savedData = JSON.parse(sessionStorage.getItem("Bankdetails"));
+    if (savedData) {
+      setBankform(savedData);
+   
+    }
+    // Clear sessionStorage on page refresh
+    const handleBeforeUnload = () => {
+      sessionStorage.removeItem("Bankdetails");
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return() => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
   useEffect(() => {
     console.log("Data from Redux:", data);
     if (data && data[0] && data[0].location && data[0].location.attributes) {

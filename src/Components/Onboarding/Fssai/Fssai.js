@@ -126,6 +126,24 @@ const Fssai = forwardRef((props, ref) => {
     }
   };
 
+  useEffect(() => {
+    const savedData = JSON.parse(sessionStorage.getItem("Fssai"));
+    if (savedData) {
+      setfssaiform(savedData);
+   
+    }
+    // Clear sessionStorage on page refresh
+    const handleBeforeUnload = () => {
+      sessionStorage.removeItem("Fssai");
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return() => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+
+
   const resetForm = () => {
     setfssaiform({
       isEnabled: "",

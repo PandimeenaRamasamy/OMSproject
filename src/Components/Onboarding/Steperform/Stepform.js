@@ -67,7 +67,10 @@ function Stepform({data}) {
     setVisitedSteps(updatedVisitedSteps);
   }, [activeStep]);
 
-  
+  let restaurantdata={}
+  let locationdata={}
+  let Fssaidata={}
+  let Bankdetailsdata={}
 
   const handleSaveAndNext = () => {
     let isValid = true;
@@ -80,11 +83,20 @@ function Stepform({data}) {
           newFormData = {
             ...newFormData,
             restaurant_details: restaurantDetailsRef.current.getFormData(),
+             
           };
+          
           dispatch(postOnBoardingDataRequest(newFormData));
+
+         
 
 
         }
+        restaurantdata=restaurantDetailsRef.current.getFormData();
+        sessionStorage.setItem(
+          "Restaurantdata",
+          JSON.stringify(restaurantdata)
+        );
         break;
       case 1:
         isValid = locationRef.current.getValidate();
@@ -95,7 +107,13 @@ function Stepform({data}) {
       
           };
           dispatch(postOnBoardingDataRequest(newFormData));
+         
         }
+        locationdata=locationRef.current.getFormData();
+        sessionStorage.setItem(
+          "Location",
+          JSON.stringify(locationdata)
+        );
         break;
       case 2:
         isValid = fssaiRef.current.validate();
@@ -105,8 +123,13 @@ function Stepform({data}) {
             fssai_details: fssaiRef.current.getFormData(),
           };
           dispatch(postOnBoardingDataRequest(newFormData));
-
+         
         }
+        Fssaidata=fssaiRef.current.getFormData();
+        sessionStorage.setItem(
+          "Fssai",
+          JSON.stringify(Fssaidata)
+        );
         break;
       case 3:
         isValid = bankRef.current.validate();
@@ -115,6 +138,9 @@ function Stepform({data}) {
             ...newFormData,
             bank_details: bankRef.current.getFormData(),
           };
+          dispatch(postOnBoardingDataRequest(newFormData));
+
+         
            
         toast.success("Data has been stored successfully!");
         setTimeout(() => {
@@ -122,6 +148,11 @@ function Stepform({data}) {
         }, 3000);
 
         }
+        Bankdetailsdata=bankRef.current.getFormData();
+        sessionStorage.setItem(
+          "Bankdetails",
+          JSON.stringify(Bankdetailsdata)
+        );
 
         // toast.success("All yor Data submitted successfully!");
        
@@ -191,7 +222,7 @@ function Stepform({data}) {
       
 
     } else {
-      dispatch(postOnBoardingDataRequest(formData));
+      
 
       
     }

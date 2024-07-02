@@ -181,15 +181,21 @@ const Delivery = React.forwardRef((props, ref) => {
     setTimeSlot(newTimeSlot);
   };
   const handleTimeChange = (index, field, value) => {
-    const newTimeSlot = [...timeSlot];
-    newTimeSlot[index][field] = value;
-    setTimeSlot(newTimeSlot);
+    setTimeSlot(prevState => {
+      const newTimeSlot = [...prevState];
+      if (!newTimeSlot[index]) {
+        newTimeSlot[index] = { openingTime: "", closingTime: "" };
+      }
+      newTimeSlot[index][field] = value;
+      return newTimeSlot;
+    });
   };
+
   const deliverySetting = timeSlot
   .filter(slot => slot.openingTime && slot.closingTime)  // Filter out incomplete time slots
   .map(slot => ({
-    deliveryServiceTimeFrom: slot.openingTime+":00",
-    deliveryServiceTimeTo: slot.closingTime+":00",
+    deliveryServiceTimeFrom: slot.openingTime,
+    deliveryServiceTimeTo: slot.closingTime,
   }));
 const print=()=>{
   console.log("timeeee slotsssss",timeSlot)
@@ -291,18 +297,14 @@ const convertTo24Hour = (time) => {
         setShowScheduledDelivery(deliveryDetails?.scheduledDelivery === "yes");
         if( deliveryDetails.deliverySettingTime)
           {
-            const initialTimeSlot = deliverySettingTime.map(slot => ({
-              openingTime: slot.deliveryServiceTimeFrom,
-              closingTime: slot.deliveryServiceTimeTo,
+            const mappedTimeSlot = deliveryDetails.deliverySettingTime.map((time, index) => ({
+              openingTime: time.deliveryServiceTimeFrom,
+              closingTime: time.deliveryServiceTimeTo
             }));
         
-            setTimeSlot(prevTimeSlot => [
-              ...initialTimeSlot,
-              ...prevTimeSlot.slice(initialTimeSlot.length)
-            ]);
-        
-            if (initialTimeSlot.length > 1) settime2(true);
-            if (initialTimeSlot.length > 2) settime3(true);
+            setTimeSlot(mappedTimeSlot);
+            if (mappedTimeSlot.length > 1) settime2(true);
+            if (mappedTimeSlot.length > 2) settime3(true);
           }
 
         setThirdParty(deliveryDetails?.thirdParty?.isEnabled);
@@ -446,7 +448,7 @@ const convertTo24Hour = (time) => {
     });
   };
 
-  const deliverySettingTime = timeSlots.map((slot) => ({
+  const deliverySettingTim = timeSlots.map((slot) => ({
     deliveryServiceTimeFrom: slot.openingTime,
     deliveryServiceTimeTo: slot.closingTime,
   }));
@@ -561,10 +563,10 @@ const convertTo24Hour = (time) => {
               <label htmlFor="" className="label1">From</label>
               <label htmlFor="" className="label2">To</label>
               <div className="inputs">
-              <input type="time"  className="input1" value={timeSlot[0].openingTime} 
+              <input type="time"  className="input1" value={timeSlot[0]?.openingTime} 
           onChange={(e) => handleTimeChange(0, "openingTime", e.target.value)} />
            
-              <input type="time" className="input2" value={timeSlot[0].closingTime}
+              <input type="time" className="input2" value={timeSlot[0]?.closingTime}
           onChange={(e) => handleTimeChange(0, "closingTime", e.target.value)}/>
               </div>
               {
@@ -581,10 +583,10 @@ const convertTo24Hour = (time) => {
                 <label htmlFor="" className="label1">From</label>
                 <label htmlFor="" className="label2">To</label>
                 <div className="inputs">
-                <input type="time" className="input1" value={timeSlot[1].openingTime}
+                <input type="time" className="input1" value={timeSlot[1]?.openingTime}
             onChange={(e) => handleTimeChange(1, "openingTime", e.target.value)}/>
           
-                <input type="time" className="input2" value={timeSlot[1].closingTime}
+                <input type="time" className="input2" value={timeSlot[1]?.closingTime}
             onChange={(e) => handleTimeChange(1, "closingTime", e.target.value)}/>
                 </div>
                 <p className="timeslotdelbtn" onClick={() => deletetime('second')} >
@@ -604,9 +606,9 @@ const convertTo24Hour = (time) => {
                 <label htmlFor="" className="label1">From</label>
                 <label htmlFor="" className="label2">To</label>
                 <div className="inputs">
-                <input type="time" className="input1" value={timeSlot[2].openingTime}
+                <input type="time" className="input1" value={timeSlot[2]?.openingTime}
             onChange={(e) => handleTimeChange(2, "openingTime", e.target.value)}/>
-                <input type="time" className="input2" value={timeSlot[2].closingTime}
+                <input type="time" className="input2" value={timeSlot[2]?.closingTime}
             onChange={(e) => handleTimeChange(2, "closingTime", e.target.value)}/>
                 </div>
                
