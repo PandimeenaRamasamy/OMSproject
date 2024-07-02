@@ -5,7 +5,11 @@ import "./Dinein.scss";
 import { FaExclamation } from 'react-icons/fa';
 import Tooltip from '../../Tooltip/Tooltip';
 import { useDispatch,useSelector } from "react-redux";
+import info from "../../../assets/images/info.png";
+
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
+import addphoto from "../../../assets/images/Addphotos.png";
+
 
 const Dinein = React.forwardRef((props,ref) => {
   const dispatch = useDispatch();
@@ -498,7 +502,8 @@ const validate=()=>{
           <h5>Dine in Details 
              <Tooltip message="dining in">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                      <img src={info} alt="" />
+                        {/* <FaExclamation color="black" size={5} /> */}
                     </div>
                 </Tooltip>
          
@@ -622,7 +627,8 @@ const validate=()=>{
             <h5>Interactive Dine-in Details
             <Tooltip message="Interactive Dine-in Details">
                     <div className="icon-background" >
-                        <FaExclamation color="black" size={5} fontSize={20}/>
+                        {/* <FaExclamation color="black" size={5} fontSize={20}/> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
             </h5>
@@ -826,7 +832,8 @@ const validate=()=>{
                               Late show time
                               <Tooltip message=" Late show time">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
                             </label>
@@ -851,7 +858,8 @@ const validate=()=>{
                               Auto cancel Time
                               <Tooltip message=" Auto cancel Time">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
                             </label>
@@ -876,7 +884,8 @@ const validate=()=>{
                               Abandon time
                               <Tooltip message=" Abandon time">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
                             </label>
@@ -907,7 +916,7 @@ const validate=()=>{
                           Auto Assign option
                         </label>
                       </div>
-                      <div className="lables2">
+                      <div className="auto">
                         <label
                           htmlFor="BusinessLegalName"
                           className="labelcheckin2"
@@ -985,8 +994,8 @@ const validate=()=>{
           </div>
           <div className="">
             <div className="">
-              <div className="lables1">
-                <label htmlFor="" className="label">
+              <div className="reservation">
+                <label htmlFor="" className="reservarionlabel">
                   Reservation
                 </label>
               </div>

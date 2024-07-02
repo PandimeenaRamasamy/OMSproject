@@ -8,13 +8,14 @@
 
 .tooltip-message {
     visibility: hidden;
-    width: 120px;
-    background-color: none; /* Tooltip background color */
+    // width: 120px;
+    background-color: white; /* Tooltip background color */
     color:  #67833e;
     text-align: center;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 400;
+    border: 1px solid  #67833e;
    
     padding: 5px;
     position: absolute;
@@ -38,6 +39,7 @@
     padding: 5px; 
     display: inline-flex;
     position: relative;
-    top: -5px;
-    border: 1px solid black; 
+    top: 1px;
+   left: -7px;
+    // border: 1px solid black; 
 }

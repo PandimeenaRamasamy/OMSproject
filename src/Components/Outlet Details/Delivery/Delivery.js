@@ -494,7 +494,7 @@ const convertTo24Hour = (time) => {
 
     setDeliveryOption(savedData?.scheduledDelivery);
     setShowScheduledDelivery(savedData?.scheduledDelivery === "yes");
-    if( savedData.deliverySettingTime)
+    if( savedData?.deliverySettingTime)
       {
         const mappedTimeSlot = savedData.deliverySettingTime.map((time, index) => ({
           openingTime: time.deliveryServiceTimeFrom,
