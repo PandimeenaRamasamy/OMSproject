@@ -400,7 +400,7 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     // const data2 = useSelector((state) => state.registration.data);
     // console.log("current location ID",data2);
 
-    const data2 = useSelector((state) => state.locationiddata.locationId);
+    const data2 = useSelector((state) => state.registration.data);
     // console.log("list of location IDs :",data2)
     
      
@@ -418,7 +418,10 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     
     useEffect(() => {
       const savedData = JSON.parse(sessionStorage.getItem("Basicdetail"));
+      
       if (savedData) {
+        payload.locationId=data2 && data2||"";
+
         setSelectedAlcoholOption(savedData?.alcohol ?? '')
         setSafetyMeasures(savedData?.SafetyMeasures ?? '')
         setPPillsText(savedData?.parking ?? [])
@@ -496,7 +499,17 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
 
       // Clear sessionStorage on page refresh
       const handleBeforeUnload = () => {
+        sessionStorage.removeItem("registrationform");
+        sessionStorage.removeItem("Restaurantdata");
+        sessionStorage.removeItem("Location");
+        sessionStorage.removeItem("Fssai");
+        sessionStorage.removeItem("Bankdetails");
         sessionStorage.removeItem("Basicdetail");
+        sessionStorage.removeItem("Resimage");
+        sessionStorage.removeItem("Dinein");
+        sessionStorage.removeItem("Pickup");
+        sessionStorage.removeItem("Delivery");
+        sessionStorage.removeItem("Kitchen");
       };
 
 
