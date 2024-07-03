@@ -18,6 +18,7 @@ function Stepform({data}) {
   const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [mainForm, setMainForm] = useState({});
+  const [validSteps, setValidSteps] = useState(new Array(7).fill(false));
   const restaurantDetailsRef = useRef();
   const locationRef = useRef();
   const fssaiRef = useRef();
@@ -89,10 +90,10 @@ function Stepform({data}) {
   let locationdata={}
   let Fssaidata={}
   let Bankdetailsdata={}
-
+  let newFormData = { ...mainForm };
   const handleSaveAndNext = () => {
     let isValid = true;
-    let newFormData = { ...mainForm };
+   
 
     switch (activeStep) {
       case 0:
@@ -105,7 +106,7 @@ function Stepform({data}) {
           };
           
           dispatch(postOnBoardingDataRequest(newFormData));
-
+          toast.success("Data has been stored successfully!");
          
 
 
@@ -125,7 +126,7 @@ function Stepform({data}) {
       
           };
           dispatch(postOnBoardingDataRequest(newFormData));
-         
+          toast.success("Data has been stored successfully!");
         }
         locationdata=locationRef.current.getFormData();
         sessionStorage.setItem(
@@ -141,6 +142,7 @@ function Stepform({data}) {
             fssai_details: fssaiRef.current.getFormData(),
           };
           dispatch(postOnBoardingDataRequest(newFormData));
+          toast.success("Data has been stored successfully!");
          
         }
         Fssaidata=fssaiRef.current.getFormData();
@@ -157,7 +159,7 @@ function Stepform({data}) {
             bank_details: bankRef.current.getFormData(),
           };
           dispatch(postOnBoardingDataRequest(newFormData));
-
+          
          
            
         toast.success("Data has been stored successfully!");
@@ -189,9 +191,16 @@ function Stepform({data}) {
     }
 
     if (isValid) {
+      setValidSteps((prev) => {
+        const updated = [...prev];
+        updated[activeStep] = true;
+        return updated;
+      });
       setMainForm(newFormData);
-      handleNextStep(newFormData);
-    } else {
+      
+    }
+    
+     else {
       toast.error("Please fill out the required fields.", {
         style: {
           backgroundColor: '', // Background color
@@ -203,8 +212,11 @@ function Stepform({data}) {
           
 
         },
+        
+        
       });
     }
+    handleNextStep(newFormData);
   };
 
   const clearAll = () => {
@@ -232,7 +244,7 @@ function Stepform({data}) {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
      
-      toast.success("Data has been stored successfully!");
+      
       
     
   
@@ -287,9 +299,9 @@ function Stepform({data}) {
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className={`steponboard ${
-                    index === activeStep ? "activeonboard" : ""
-                  } ${visitedSteps[index] ? "visitedonboard" : ""}`}
+                  className={`steponboard  ${validSteps[index] ? "valid" : ""} ${
+                    visitedSteps[index] ? "visitedonboard" : ""
+                  } ${index === activeStep ? "activeonboard" : ""}`}
                    onClick={()=>handleStepClick(index)}               >
                   {step.icon}
                   <div className="icon-textonboard">{step.title}</div>
