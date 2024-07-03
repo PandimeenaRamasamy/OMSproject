@@ -820,6 +820,12 @@ const Location = forwardRef((props, ref) => {
 
   
   };
+  const handleTextBoxesDelete = (e) => {
+    e.preventDefault();
+    setValidTextBox(false)
+
+  
+  };
   
 
   const getFormData = () => {
@@ -1000,7 +1006,7 @@ const Location = forwardRef((props, ref) => {
     :""}
 
 
-    {!validTextBox?<button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>:""}
+    {!validTextBox?<button className="btn" onClick={handleTextBoxes} style={{marginLeft:'-18px'}}>+ Add Line </button>:<button className="btndel" onClick={handleTextBoxesDelete} style={{marginLeft:'-18px'}}>- Delete Line </button>}
 
 
 

@@ -18,8 +18,8 @@ const AddTime = ({
     (slot) => slot.isContainWeeks
   );
   return (
-    <div className="AddTime2" >
-      <div className="time2">
+    <div className="AddTime22" >
+      <div className="time22">
         <div className="timeContainerOpen">
           <div className="nameBox"> Opening Time </div>
           <Time time={openingTime} setTime={setOpeningTime} index={index} restaurantSessionid={restaurantSessionid} timeSlots={timeSlots} type="opening"/>
@@ -32,14 +32,14 @@ const AddTime = ({
         {/* <div>Sample</div> */}
         {isLastIndex && (
           // <div className="addDayAndTimeOne">
-            <p onClick={addDayAndTime} className="pAdd" >
+            <p onClick={addDayAndTime} className="pAddd" >
               + Add Time
             </p>
           // </div>
         )}
         {!isLastIndex && (
           // <div className="deleteDayAndTime">
-          <p onClick={deleteCurrentTime} className="delete-day-time">
+          <p onClick={deleteCurrentTime} className="delete-day-timee">
             - Delete Time
           </p>
           // </div>

@@ -632,7 +632,17 @@ const convertTo24Hour = (time) => {
   useImperativeHandle(ref, () => ({
     getFormData,
   }));
+  const basicdetail = useSelector((state) => state.basicDetails.Details);
 
+
+  const restauarantstartingtime=basicdetail?.restaurantSessionDto[0]?.basicTime[0]?.start_time;
+  const restauarantendingtime=basicdetail?.restaurantSessionDto[0]?.basicTime[0]?.end_time;
+  console.log("badicssss start",restauarantstartingtime
+    )
+    console.log("badicssss end",restauarantendingtime
+
+      )
+      const [sametime,setsametime]=useState(false);
   
 
   return (
@@ -661,7 +671,11 @@ const convertTo24Hour = (time) => {
           <h3>Delivery service time</h3>
           <div className="checkBoxContainerdel">
             <label>
-              <input className="checkboxdel" type="checkbox" />
+              <input className="checkboxdel" type="checkbox" onClick={()=>{
+                setsametime(!sametime)
+                console.log(true)
+
+              }}/>
               <p className="cPname">Same as restaurant working time</p>
             </label>
           </div>
@@ -673,10 +687,10 @@ const convertTo24Hour = (time) => {
               <label htmlFor="" className="label1">From</label>
               <label htmlFor="" className="label2">To</label>
               <div className="inputs">
-              <input type="time"  className="input1" value={timeSlot[0]?.openingTime} 
+              <input type="time"  className="input1" value={   sametime && restauarantstartingtime||timeSlot[0]?.openingTime} 
           onChange={(e) => handleTimeChange(0, "openingTime", e.target.value)} />
            
-              <input type="time" className="input2" value={timeSlot[0]?.closingTime}
+              <input type="time" className="input2" value={  sametime && restauarantendingtime|| timeSlot[0]?.closingTime}
           onChange={(e) => handleTimeChange(0, "closingTime", e.target.value)}/>
          
           
