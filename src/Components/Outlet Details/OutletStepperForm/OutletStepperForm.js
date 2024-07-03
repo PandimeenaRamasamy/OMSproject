@@ -257,8 +257,8 @@ function Stepform() {
     <div className="page-content">
       <div className="stepform">
         <div className="Stepperformcontainer">
-          <div className="sub-container">
-            <div className="stepper-progress">
+          <div className="sub-containerdetail">
+            <div className="stepper-progressdetail">
               <div className="progress-bar" style={{ width: `${progress}%` }}></div>
             </div>
             <div className="stepper-container">
@@ -282,6 +282,7 @@ function Stepform() {
           {outletsteps[outletactiveStep].component}
         </div>
       </div>
+      <footer>
       <div className="btn-footer">
         <button className="save_next" onClick={handleSaveandNext}>
           Save & Next
@@ -291,6 +292,8 @@ function Stepform() {
         </button>
         <ToastContainer position="top-center" transition={Flip} />
       </div>
+      </footer>
+     
     </div>
   );
 }

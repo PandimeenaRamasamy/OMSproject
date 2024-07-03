@@ -1,13 +1,14 @@
 .Stepperformcontainer {
   margin-top: 70px;
-  transform: translateX(250px);
+  transform: translateX(230px);
   height: 139px;
 }
 
-.sub-container {
-  width: 110%;
+.sub-containerdetail {
+  width: 97%;
   position: absolute;
-  left: 100px;
+  left: 80px;
+  margin-left: 40px;
   height: 139px;
   border: 0.5px solid #979797;
  
@@ -71,13 +72,15 @@
 .btn-footer {
   position: relative;
   bottom: 10px;
+ 
+  margin-bottom: 20px;
   width: 1200px;
   // top: 70px;
  
 
 left:320px;
-height: 108px;
-right: 30px;
+// height: 108px;
+// right: 30px;
 
 padding: 32px 32px 32px 817px;
 
@@ -113,7 +116,7 @@ padding: 32px 32px 32px 817px;
 }
 
 .btn-container {
-  position: absolute;
+  position: relative;
   top: 1080px;
   left: 1100px;
 }
@@ -126,11 +129,11 @@ padding: 32px 32px 32px 817px;
   text-align: center;
 }
 
-.stepper-progress {
+.stepper-progressdetail {
   position: absolute;
   top: 45px;
   z-index: -1;
-  width: 95%;
+  width: 96%;
   height: 2px;
   background-color: #ccc;
   border-radius: 5px;
@@ -145,18 +148,18 @@ padding: 32px 32px 32px 817px;
 
 /* Media Queries */
 
-@media (max-width: 1600px) {
-  .sub-container {
-    width: 1050px;
-    left: 120px;
-  }
-  .stepper-progress {
-    width: 1000px;
-  }
-}
+// @media (max-width: 1600px) {
+//  .sub-containerdetail {
+//     width: 1050px;
+//     left: 120px;
+//   }
+//   .stepper-progress {
+//     width: 1000px;
+//   }
+// }
 
 @media (max-width: 1500px) {
-  .sub-container {
+ .sub-containerdetail {
     width: 1050px;
     left: 120px;
   }
@@ -166,7 +169,7 @@ padding: 32px 32px 32px 817px;
 }
 
 @media (max-width: 1450px) {
-  .sub-container {
+ .sub-containerdetail {
     width: 1020px;
     left: 120px;
   }
@@ -177,7 +180,7 @@ padding: 32px 32px 32px 817px;
 
 
 @media (max-width: 1450px) {
-  .sub-container {
+ .sub-containerdetail {
     width: 900px;
     left: 120px;
   }
@@ -191,11 +194,11 @@ padding: 32px 32px 32px 817px;
     height: 200px;
     width: 900px;
   }
-  .sub-container {
+ .sub-containerdetail {
     width: 830px;
     left: 120px;
   }
-  .stepper-progress {
+  .stepper-progressdetail {
     width: 750px;
   }
   .btn-footer
@@ -206,7 +209,7 @@ padding: 32px 32px 32px 817px;
 }
 
 @media (max-width: 1270px) {
-  .sub-container {
+ .sub-containerdetail {
     width: 820px;
     left: 120px;
   }
@@ -221,7 +224,7 @@ padding: 32px 32px 32px 817px;
     transform: translateX(250px);
     height: 200px;
   }
-  .sub-container {
+ .sub-containerdetail {
     width: 700px;
     top: 10px;
     left: 100px;
@@ -237,7 +240,7 @@ padding: 32px 32px 32px 817px;
     transform: translateX(250px);
     height: 200px;
   }
-  .sub-container {
+ .sub-containerdetail {
     width: 760px;
     top: 10px;
     left: 20px;
@@ -252,7 +255,7 @@ padding: 32px 32px 32px 817px;
     transform: translateX(250px);
     height: 200px;
   }
-  .sub-container {
+ .sub-containerdetail {
     width: 650px;
     top: 10px;
    
@@ -279,7 +282,7 @@ padding: 32px 32px 32px 817px;
     transform: translateX(250px);
     height: 200px;
   }
-  .sub-container {
+ .sub-containerdetail {
     width: 650px;
     top: 10px;
    

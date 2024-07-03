@@ -1,15 +1,15 @@
-.AddTime2 {
+.AddTime22 {
   text-align: center;
   width: 70%;
   margin-left: -30px;
   margin-bottom: 20px;
   margin-top:10px ;
 }
-.time2 {
+.time22 {
   display: flex;
   gap: 10px;
   width: 100%;
-  .pAdd {
+  .pAddd {
     min-height: 69px;
     display: flex;
     flex-direction: column;
@@ -27,13 +27,13 @@ margin-top: 10px;
 
   }
 
-  .delete-day-time {
+  .delete-day-timee {
     margin-top: 10px;
     margin-left: -14px;
     color: #f23d3d;
     min-height: 69px;
     display: flex;
-    min-width: 100px;
+    min-width: 200px;
     font-size: 14px;
     flex-direction: column;
     justify-content: flex-end;
@@ -83,23 +83,27 @@ text-align: left;
 }
 
 @media (max-width: 1280px) {
-  .AddTime {
+  .AddTime22 {
     text-align: center;
     width: 70%;
     margin-bottom: 30px;
     margin-top: 5px;
+    position: relative;
+    left: -10px;
     // background-color: red;
   }
-  .time {
+  .time22 {
     display: flex;
     // gap: 5px;
-    // background-color: red;
+    margin-left: -10px;
+   
     .timeContainerOpen {
       // background-color: burlywood;
       display: flex;
       flex-direction: column;
       width: 300px;
       height: 75px;
+  
     }
     .timeContainerClose {
       // background-color: burlywood;
@@ -107,8 +111,10 @@ text-align: left;
       flex-direction: column;
       width: 300px;
       height: 75px;
-      margin-right: 250px;
+      margin-right: 300px;
     }
+
+   
   }
   .nameBox {
     width: 100px;
@@ -116,6 +122,45 @@ text-align: left;
     left: 200px;
     // background-color: red;
     font-size: 30;
+  }
+  .delete-day-timee {
+    margin-top: 10px;
+    position: relative;
+    left: -350px;
+    color: #f23d3d;
+    min-height: 69px;
+   
+    display: flex;
+    width: 300px;
+    font-size: 14px;
+    flex-direction: row;
+    justify-content: flex-end;
+    cursor: pointer;
+   
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: right;
+
+  }
+  .pAddd {
+    min-height: 69px;
+    display: flex;
+    flex-direction: column;
+    color: #67833e;
+    cursor: pointer;
+    position: relative;
+    left: -255px;
+    width: 300px;
+    font-size: 14px;
+    justify-content: flex-end;
+   margin-left: -20px;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: right;
+margin-top: 10px;
+
   }
 }
 
