@@ -186,6 +186,9 @@ function Stepform() {
           JSON.stringify(dinein)
         );
         }
+        else{
+          toast.error("what")
+        }
         break;
       case 3:
         isValid = pickUpformRef.current.validate();

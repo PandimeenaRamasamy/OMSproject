@@ -479,13 +479,35 @@ const Dinein = React.forwardRef((props,ref) => {
 
 }))
 const validate=()=>{
-  const errors={};
+  const errors={
+    checkIn:{},
+  };
   let isValid=true;
-  if(!Outletdetails.highChair && DineinselectedButton)
+  if(CheckinselectedButton && !Outletdetails.checkIn.maximumPeopleAllowedOnline)
     {
-      errors.highChair="Please Click Yes or No"
+      errors.checkIn.maximumPeopleAllowedOnline="Please Fill this Field"
       isValid=false;
     }
+    if(CheckinselectedButton && !Outletdetails.checkIn.maximumPeopleAllowedOffline)
+      {
+        errors.checkIn.maximumPeopleAllowedOffline="Please Fill this Field"
+        isValid=false;
+      }
+      if(CheckinselectedButton && !Outletdetails.checkIn.lateShowTime)
+        {
+          errors.checkIn.lateShowTime="Please Fill this Field"
+          isValid=false;
+        }
+        if(CheckinselectedButton && !Outletdetails.checkIn.autoCancelTime)
+          {
+            errors.checkIn.autoCancelTime="Please Fill this Field"
+            isValid=false;
+          }
+          if(CheckinselectedButton && !Outletdetails.checkIn.abandonTime)
+            {
+              errors.checkIn.autoCancelTime="Please Fill this Field"
+              isValid=false;
+            }
     
     setDineInErrors(errors);
     return isValid;
@@ -817,8 +839,10 @@ const handleBlur = (event, field) => {
                               id="maximuminoffline"
                               style={{fontSize:'14px',padding:'10px'}}
                               maxLength={3}
-                              onKeyPress={handleKeyPress}
                               onBlur={(event) => handleBlur(event, 'Maximum People allowed offline')}
+
+                              onKeyPress={handleKeyPress}
+                              
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
