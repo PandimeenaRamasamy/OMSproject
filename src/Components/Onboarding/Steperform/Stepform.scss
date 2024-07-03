@@ -192,12 +192,11 @@ opacity: 0px;
       width:900px;  
       top: 100px;
     }
-    .btn-containeronboard
-    {
-      position: relative;
-      top: 450px;
-    }
-   
+      .btn-containeronboard {
+        position: relative;
+        top: 292px;
+        left: -16px;
+      }
   }
   
   @media (max-width: 1080px) {
@@ -212,7 +211,12 @@ opacity: 0px;
     .stepper-progressonboard
     {
       width: 630px;
-      border: 1px solid red;
+      
+    }
+    .btn-containeronboard {
+      position: relative;
+      top: 292px;
+      left: -86px;
     }
   }
 
@@ -276,6 +280,16 @@ opacity: 0px;
     {
       width: 450px;
     }
+  }
+
+  @media (max-width: 900px) {
+    .btn-containeronboard {
+      position: relative;
+      top: 292px;
+      left: -300px;
+    }
+
+
   }
   
   

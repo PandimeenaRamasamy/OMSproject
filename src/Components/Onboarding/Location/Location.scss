@@ -274,9 +274,17 @@ color: red;
   }
   
   /* Media query for max-width 500px */
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 900px) {
+
+    .inputboxloc{
+      width: 400px;
+    }
     
-   
+    
+    .inputbox2loc {
+      width: 400px;
+    }
+    
   
   }
   
