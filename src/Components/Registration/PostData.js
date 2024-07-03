@@ -408,6 +408,7 @@ const PostDataForm = () => {
               name="desig"
               id="desig"
               className="inputbox"
+              style={{paddingRight:'30px'}}
               value={Registrationform.designation}
               onChange={(e) =>
                 setRegistrationform({

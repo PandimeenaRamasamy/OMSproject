@@ -125,9 +125,13 @@ const Outlet = () => {
   const data = useSelector((state) => state.getlocationdata.data);
   const locationid="876"
   const handleCategoryClick = (category) => {
-    const path = category.toLowerCase().replace(' ', '-');
+    if(category!=='Subscription'){
+      const path = category.toLowerCase().replace(' ', '-');
    
-    navigate(`/outlet/${path}`);
+      navigate(`/outlet/${path}`);
+
+    }
+   
   };
 
   return (

@@ -193,6 +193,53 @@ color: #2F2F2F;
     line-height: 15px;
   }
  
+  .checkBoxContainerdel {
+    width: 100%;
+    // margin-left: 80px;
+    margin-top: 20px;
+    width: auto;
+    display: flex;
+    padding: 5px;
+ 
+    .cPname {
+      // color: #2F2F2F;
+    //styleName: Subtitle/Text 16;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #2F2F2F;
+    }
+  }
+ 
+  .checkboxdel {
+    display: none;
+  }
+ 
+  .checkboxdel + p::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #979797;
+   
+    margin-right: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+ 
+  .checkboxdel:checked + p::before {
+    background-color: #67833e;
+    border-color: #67833e;
+    content: "✔";
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    line-height: 15px;
+  }
+ 
   //Add Time component\
   .timslot
   {
@@ -225,6 +272,18 @@ color: #666666;
 
     .inputs{
       margin-top: -3px;
+      // display: flex;
+      // flex-direction: row;
+
+      .deletesession
+      {
+        position: relative;
+        top: -30px;
+        left: 150px;
+      }
+
+
+
       .input1{
         width: 292px;
 height: 44px;
@@ -260,8 +319,9 @@ line-height: 24px;
 text-align: left;
 color:#67833e;
 cursor: pointer;
-margin-top: 3px;
+margin-top: 2px;
 margin-left: 470px;
+// border: 1px solid red;
   }
   .timeslotdelbtn
   {
@@ -324,9 +384,46 @@ margin-top: -10px;
 
     }
     .paymentMethod {
-      margin-top: -5px;
+      margin-top: -10px;
       display: flex;
       gap: 20px;
+    
+
+
+
+      .inputcheck {
+        accent-color:rgba(103, 131, 62, 1);
+        width: 18px;
+    height: 18px;
+    
+    
+    border: 2px solid #979797;
+        
+      }
+     
+      // .inputcheck + p::before {
+      //   content: "";
+      //   display: inline-block;
+      //   width: 18px;
+      //   height: 18px;
+      //   border-radius: 4px;
+      //   border: 2px solid #979797;
+       
+      //   margin-right: 5px;
+      //   vertical-align: middle;
+      //   cursor: pointer;
+      // }
+     
+      // .inputcheck:checked + p::before {
+      //   background-color: #67833e;
+      //   border-color: #67833e;
+      //   content: "✔";
+      //   color: white;
+      //   font-size: 10px;
+      //   text-align: center;
+      //   line-height: 15px;
+      // }
+     
      
     }
 
@@ -356,12 +453,11 @@ color: #2F2F2F;
     }
   }
  
- .inputcheck
- {
-  width:18px ;
-  height:18px ;
-  
- }
+ 
+
+
+
+ 
   //radio-btn
   .radioBtn {
     display: flex;
@@ -541,13 +637,10 @@ line-height: 24px;
 
 
        
-       padding-left: 50px;
+       padding-left: 40px;
        padding-top: 20px;
        
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-text-align: center;
+
 
       }
     }
@@ -613,9 +706,35 @@ color: #2F2F2F;
       display: flex;
       margin-top: 20px;
       gap: 20px;
+
+      .checkbox {
+        width: 24px;
+        height: 24px;
+        
+      }
+   
+      .checkbox + p::before {
+        width: 18px;
+        height: 18px;
+      }
+      .checkbox:checked + p::before {
+        background-color: #67833e;
+        border-color: #67833e;
+        content: "✔";
+        color: white;
+        font-size: 15px;
+        text-align: center;
+        line-height: 15px;
+      }
  
       p {
-        color: black;
+        //styleName: Subtitle/Text 16;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #2F2F2F;
       }
       input
       {
@@ -637,25 +756,7 @@ border-radius: 3px;
   .deliveryOption
     {
 
-      .checkbox {
-        width: 24px;
-        height: 24px;
-        
-      }
-   
-      .checkbox + p::before {
-        width: 12px;
-        height: 12px;
-      }
-      .checkbox:checked + p::before {
-        background-color: #67833e;
-        border-color: #67833e;
-        content: "✔";
-        color: white;
-        font-size: 10px;
-        text-align: center;
-        line-height: 15px;
-      }
+     
 
     }
 
@@ -736,23 +837,34 @@ font-weight: 400;
 line-height: 24px;
 text-align: left;
 color: #666666;
+margin-bottom: 3px;
+        }
+        .symbol {
+          position: absolute;
+          top: 59px;
+          left: 10px;
+          transform: translateY(-50%);
+          pointer-events: none;
+        }
+        .input {
+          padding-left: 10px;
+          box-sizing: border-box;
+          border-width: 1px;
+          margin-top: 2px;
+          width: 292px;
+height: 44px;
+padding: 10px 20.37px 10px 16px;
+
+border-radius: 4px;
+border: 1px solid #B3B3B3;
+
+
         }
       }
  
-      .symbol {
-        position: absolute;
-        top: 59px;
-        left: 10px;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
+      
  
-      .input {
-        padding-left: 10px;
-        box-sizing: border-box;
-        border-width: 1px;
-        margin-top: -10px;
-      }
+      
     }
   }
   .flatfee {
@@ -780,10 +892,10 @@ height: 44px;
 position: relative;
 top: -25px;
 padding: 10px 20.37px 10px 16px;
-gap: 0px;
-border-radius: 4px 0px 0px 0px;
+
+border-radius: 4px ;
 border: 1px solid #B3B3B3;
-opacity: 0px;
+
 
         
       }
@@ -839,9 +951,9 @@ margin-top: 1px;
   .inhouse {
     margin-top: 30px;
    
-    width: 750px;
+    width:Hug (664px);
     border: 1px solid #979797;
-    padding: 0 40px 20px 40px;
+    padding: 0 40px 20px 20px;
     border-radius: 8px;
    
  
@@ -886,7 +998,7 @@ text-align: left;
   }
  
   .thirdParty {
-    margin-top: 30px;
+    margin-top: 10px;
     width: 880px;
     border: 1px solid #979797;
     padding: 0 40px 20px 40px;
@@ -938,9 +1050,19 @@ color: #2F2F2F;
       display: flex;
       gap: 20px;
       margin-bottom: 15px;
+    
+      label{
+       
+
+        input{
+          margin-right: 23px;
+        }
+
+      }
       p {
         margin-top: 15px;
         margin-bottom: -5px;
+        
         //styleName: Subtitle/Text 16;
 
 font-size: 16px;
@@ -985,8 +1107,8 @@ color: #2F2F2F;
         .checkbox + p::before {
           content: "";
           display: inline-block;
-          width: 15px;
-          height: 15px;
+          width: 18px;
+          height: 18px;
           border: 2px solid #979797;
           border-radius: 4px;
           margin-right: 5px;
@@ -999,7 +1121,7 @@ color: #2F2F2F;
           border-color: #67833e;
           content: "✔";
           color: white;
-          font-size: 10px;
+          font-size: 15px;
           text-align: center;
           line-height: 15px;
         }

@@ -491,7 +491,11 @@ const validate=()=>{
     return isValid;
 }
 
-
+const handleBlur = (event, field) => {
+  if (event.target.value.trim() === '') {
+    alert(`${field} must not be empty`);
+  }
+};
 
  
 
@@ -788,6 +792,7 @@ const validate=()=>{
                               value={Outletdetails.checkIn.maximumPeopleAllowedOnline}
                               maxLength={3}
                               onKeyPress={handleKeyPress}
+                              onBlur={(event) => handleBlur(event, 'Maximum People allowed online')}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -813,6 +818,7 @@ const validate=()=>{
                               style={{fontSize:'14px',padding:'10px'}}
                               maxLength={3}
                               onKeyPress={handleKeyPress}
+                              onBlur={(event) => handleBlur(event, 'Maximum People allowed offline')}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -842,6 +848,7 @@ const validate=()=>{
                                 id="maximuminonline"
                                 value={Outletdetails.checkIn.lateShowTime}
                                 style={{fontSize:'12px'}}
+                                onBlur={(event) => handleBlur(event, 'Late show time')}
                                 onChange={(event) => {
                                   setOutletdetails({
                                     ...Outletdetails,
@@ -866,6 +873,7 @@ const validate=()=>{
                             <input
                               type="time"
                               id="maximuminoffline"
+                              onBlur={(event) => handleBlur(event, 'Auto cancel Time')}
                               value={Outletdetails.checkIn.autoCancelTime}
                               style={{fontSize:'12px'}}
                               onChange={(event) => {
@@ -894,6 +902,7 @@ const validate=()=>{
                               id="maximuminoffline"
                               value={Outletdetails.checkIn.abandonTime}
                               style={{fontSize:'12px'}}
+                              onBlur={(event) => handleBlur(event, 'Abandon time')}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,

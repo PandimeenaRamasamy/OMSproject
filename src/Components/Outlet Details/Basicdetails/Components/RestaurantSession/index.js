@@ -63,7 +63,7 @@ const RestaurantSession = ({
   return (
     <div className="restaurantSessionContainer">
       <div className="sessionHeaderRes">
-      <p style={{ cursor: "pointer" }} onClick={() => setOpenSession((sess) => !sess)}>
+      <p style={{ cursor: "pointer" }} className="ressession" onClick={() => setOpenSession((sess) => !sess)}>
     Restaurant Session - {meals}
       </p>
         <img

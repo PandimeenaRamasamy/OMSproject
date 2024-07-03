@@ -64,9 +64,22 @@
       font-size: 14px;
       padding: 0.5rem;
       border-style: none;
-      border-radius: 0.5rem;
+      font-family: Poppins;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+
       margin-top: 1rem;
       margin-bottom: 1rem;
+      width: 161px;
+height: 34px;
+top: 385px;
+padding: 5px 5px 5px 6px;
+gap: 0px;
+border-radius: 10px;
+opacity: 0px;
+
       &:hover {
         box-shadow: 1px 1px 1px 1px gray;
       }
@@ -95,7 +108,7 @@
       margin-top: 1rem;
       margin-bottom: 0.7rem;
       height: 2px;
-      width: 90%;
+      width: 92%;
       background-color: #e0e0e0;
     }
   }

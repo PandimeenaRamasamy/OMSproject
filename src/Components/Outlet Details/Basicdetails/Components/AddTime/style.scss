@@ -2,6 +2,8 @@
   text-align: center;
   width: 70%;
   margin-left: -30px;
+  margin-bottom: 20px;
+  margin-top:10px ;
 }
 .time2 {
   display: flex;
@@ -16,9 +18,18 @@
     min-width: 100px;
     font-size: 14px;
     justify-content: flex-end;
+   margin-left: -20px;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: right;
+margin-top: 10px;
+
   }
 
   .delete-day-time {
+    margin-top: 10px;
+    margin-left: -14px;
     color: #f23d3d;
     min-height: 69px;
     display: flex;
@@ -27,6 +38,12 @@
     flex-direction: column;
     justify-content: flex-end;
     cursor: pointer;
+   
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: right;
+
   }
 
   .timeContainerOpen {
@@ -52,10 +69,16 @@
   width: 125px;
   height: 20px;
   position: relative;
-  left: 180px;
+  left: 190px;
   color: #666666;
-  // background-color: aqua;
-  font-size: 14px;
+ margin-bottom: 10px;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+
+
   
 }
 
