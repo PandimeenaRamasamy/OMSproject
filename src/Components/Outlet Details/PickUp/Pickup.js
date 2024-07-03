@@ -170,7 +170,7 @@ const handleUpClick = () => {
 
   return (
     <div className='Pickup_container'>
-      <div className='Pickup_form'>
+      <div className='Pickup_form' style={{marginBottom:isEnabled?'70px':'500px'}}>
         <div><h5 className='Pickup_heading1'>Pick Up Details</h5></div>
         <div><h5 className='Pickup_heading2'>Pick Up</h5></div>
         <div><h5 className='Pickup_heading3'>Please Mention The Pick Up Service</h5></div>

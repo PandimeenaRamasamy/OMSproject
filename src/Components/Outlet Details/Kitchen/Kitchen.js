@@ -112,7 +112,7 @@ const Kitchen = React.forwardRef((props,ref) => {
         
         
   return (
-    <div className='main-kitchen-div'>
+    <div className='main-kitchen-div' style={{marginBottom:'200px'}}>
         <div className='submain-kitchen-div'>
             <div>
                 <h1 className='heading-kitchen'>Kitchen Details</h1>
