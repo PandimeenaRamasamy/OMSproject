@@ -35,7 +35,7 @@ const Delivery = React.forwardRef((props, ref) => {
   const [selectedMethods, setSelectedMethods] = useState([]);
 
   //price details
-  const [minPriceValue, setMinPriceValue] = useState(100);
+  const [minPriceValue, setMinPriceValue] = useState(0);
   const [maxPriceValue, setMaxPriceValue] = useState("");
 
   const [dayAndTimeComp, setDayAndTimeComp] = useState([
@@ -169,6 +169,53 @@ const Delivery = React.forwardRef((props, ref) => {
       settime3(true);
     }
   };
+  const deliverypagerrors = {};
+
+  const checkIfAnyTimeSlotIsEmpty = () => {
+
+    return timeSlot.some(slot => slot.openingTime === "" || slot.closingTime === "");
+  };
+let valid=true;
+const deliveyvalidation=()=>{
+
+
+  if(checkIfAnyTimeSlotIsEmpty())
+    {
+     console.log(checkIfAnyTimeSlotIsEmpty())
+      deliverypagerrors.timsslot="One or more time slots are empty"
+      valid=false;
+    }
+    // if(selectedMethods?.length===0)
+    //   {
+    //     deliverypagerrors.payment="Select payment method"
+    //     valid=false;
+    //   }
+
+      if(showScheduledDelivery)
+        {
+          if(minPriceValue===0)
+            {
+              deliverypagerrors.minprice="enter minimum price"
+        valid=false;
+
+            }
+            if(maxPriceValue==="")
+              {
+                deliverypagerrors.maxPriceValue="enter maximum price"
+          valid=false;
+  
+              }
+            
+          
+        }
+
+
+        return valid;
+
+
+
+}
+
 
   const deletetime = (slot) => {
     const newTimeSlot = [...timeSlot];
@@ -650,6 +697,7 @@ const convertTo24Hour = (time) => {
       <div className="delivery-header">
         <h2>Delivery Details</h2>
         <h3>Delivery</h3>
+        
         <p>Please mention the delivery service</p>
       </div>
       <div className='switchButtonStyles'>
