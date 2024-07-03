@@ -161,6 +161,7 @@ const PostDataForm = () => {
     return isValid;
   };
   let navigate = useNavigate();
+  let validation=false;
   const locatioonid =
     (Registrationform.locationId && Registrationform.locationId) ||
     (data2 && data2);
@@ -176,7 +177,7 @@ const PostDataForm = () => {
         JSON.stringify(Registrationform)
       );
     }
-    if (data2) {
+    if (data2 && isValid && !validation) {
       toast.success("Data has been stored successfully!");
       dispatch(getDataRequest());
       setTimeout(() => {
@@ -246,11 +247,13 @@ const PostDataForm = () => {
     const namePattern = /^[a-zA-Z\s]+$/; // Pattern for only letters and spaces
     if (Registrationform.name.trim() === "") {
       setError({ ...error, nameerror: "Enter your Name" });
+      validation=true;
     } else if (!namePattern.test(Registrationform.name)) {
       setError({
         ...error,
         nameerror: "Name can only contain letters and spaces.",
       });
+      validation=true;
     } else {
       setError("");
     }
@@ -259,8 +262,10 @@ const PostDataForm = () => {
     const phonePattern = /^\d{10}$/; // Adjust the regex pattern based on your requirements
     if (Registrationform.phone === "") {
       setError({ ...error, phoneerror: "Enter phone number" });
+      validation=true;
     } else if (!phonePattern.test(Registrationform.phone)) {
       setError({ ...error, phoneerror: "Please enter a valid phone number" });
+      validation=true;
     } else {
       setError("");
     }
@@ -271,8 +276,10 @@ const PostDataForm = () => {
     // Adjust the regex pattern based on your requirements
     if (Registrationform.email === "") {
       setError({ ...error, emailerror: "Enter valid email " });
+      validation=true;
     } else if (!emailPattern.test(Registrationform.email)) {
       setError({ ...error, emailerror: "Please enter a valid email address." });
+      validation=true;
     } else {
       setError("");
     }
@@ -283,6 +290,7 @@ const PostDataForm = () => {
 
     if (!phonePattern.test(Registrationform.gstNumber)) {
       setError({ ...error, gstNumbererror: "Please enter a valid GST number" });
+      validation=true;
     } else {
       setError("");
     }
