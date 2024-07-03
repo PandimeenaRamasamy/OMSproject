@@ -168,15 +168,6 @@ padding: 32px 32px 32px 817px;
   }
 }
 
-@media (max-width: 1450px) {
- .sub-containerdetail {
-    width: 1020px;
-    left: 120px;
-  }
-  .stepper-progress {
-    width: 950px;
-  }
-}
 
 
 @media (max-width: 1450px) {
@@ -184,7 +175,7 @@ padding: 32px 32px 32px 817px;
     width: 900px;
     left: 120px;
   }
-  .stepper-progress {
+  .stepper-progressdetail{
     width: 850px;
   }
 }
@@ -208,31 +199,67 @@ padding: 32px 32px 32px 817px;
   }
 }
 
-@media (max-width: 1270px) {
- .sub-containerdetail {
-    width: 820px;
-    left: 120px;
+
+@media (max-width: 1250px) {
+  .Stepperformcontainer {
+    margin-top: 190px;
+    height: 200px;
+    width: 900px;
   }
-  .stepper-progress {
-    width: 740px;
+ .sub-containerdetail {
+    width: 850px;
+    left: 100px;
+  }
+  .stepper-progressdetail {
+    width: 800px;
+  }
+  .btn-footer
+  {
+    position: relative;
+    top:160px
   }
 }
 
-@media (max-width: 1210px) {
-  .Stepperformcontainer {
+@media (max-width: 1240px) {
+  .Stepperformcontainerdetail {
     margin-top: 190px;
-    transform: translateX(250px);
     height: 200px;
+    width: 900px;
   }
  .sub-containerdetail {
-    width: 700px;
-    top: 10px;
+    width: 800px;
     left: 100px;
   }
-  .stepper-progress {
-    width: 640px;
+  .stepper-progressdetail {
+    width: 750px;
+  }
+  .btn-footer
+  {
+    position: relative;
+    top:160px
   }
 }
+@media (max-width: 1180px) {
+  .Stepperformcontainerdetail {
+    margin-top: 190px;
+    height: 200px;
+    width: 900px;
+  }
+ .sub-containerdetail {
+    width: 650px;
+    left: 100px;
+  }
+  .stepper-progressdetail {
+    width: 600px;
+  }
+  .btn-footer
+  {
+    position: relative;
+    top:160px
+  }
+}
+
+
 
 @media (max-width: 1080px) {
   .Stepperformcontainer {
@@ -241,53 +268,32 @@ padding: 32px 32px 32px 817px;
     height: 200px;
   }
  .sub-containerdetail {
-    width: 760px;
+    width: 670px;
     top: 10px;
     left: 20px;
   }
-  .stepper-progress {
-    width: 680px;
-  }
-}
-@media (max-width: 1050px) {
-  .Stepperformcontainer {
-    margin-top: 190px;
-    transform: translateX(250px);
-    height: 200px;
-  }
- .sub-containerdetail {
-    width: 650px;
-    top: 10px;
-   
-  }
-  .stepper-progress {
+  .stepper-progressdetail {
     width: 600px;
   }
-  .icon-text {
-    color: black;
-    margin-right: 20px;
-    margin-top: 8px;
-    margin-left: -16px;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .Stepperformcontainer {
     margin-top: 190px;
     transform: translateX(250px);
     height: 200px;
   }
  .sub-containerdetail {
-    width: 650px;
+    width: 575px;
     top: 10px;
    
   }
-  .stepper-progress {
-    width: 680px;
+  .stepper-progressdetail {
+    width: 500px;
   }
+  .icon-text{
+    font-size: 12px;
+  }
+  
 }
