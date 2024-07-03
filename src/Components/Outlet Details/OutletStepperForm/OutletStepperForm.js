@@ -193,7 +193,7 @@ function Stepform() {
         toast.success("Data Has Been Stored Successfully .");
         }
         else{
-          toast.error("what")
+          toast.error("Please fill out the required fields before moving to the next step")
         }
         break;
       case 3:
