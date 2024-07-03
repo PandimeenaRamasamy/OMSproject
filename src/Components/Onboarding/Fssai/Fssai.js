@@ -176,7 +176,7 @@ const Fssai = forwardRef((props, ref) => {
         <div className="heading-divfss">
           <h5>Fssai</h5>
         </div>
-        <div className="form-divfss">
+        <div className="form-divfss"  style={{marginBottom:selectedButton?'':'400px'}}>
           <form onSubmit={handleSubmit}>
             <div className="labelinput-divfss">
               <label htmlFor="BusinessLegalName" className="labelfss">
@@ -194,6 +194,7 @@ const Fssai = forwardRef((props, ref) => {
                 <button
                   type="button"
                   onClick={handleButtonClickno}
+                 
                   className={`${!selectedButton?"bluefssai":"hellofssai"}`}
                 >
                   No
