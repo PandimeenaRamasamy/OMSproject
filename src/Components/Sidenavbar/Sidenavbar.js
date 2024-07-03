@@ -192,7 +192,7 @@ const Sidenavbar = () => {
  
   useEffect(() => {
     dispatch(getDataRequest());
-  }, []);
+  }, [dispatch]);
  
   const getLocationhangle = () => {
     console.log("clicking");

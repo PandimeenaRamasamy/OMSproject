@@ -167,6 +167,11 @@ box-shadow: 3px 0px 10px 0px #00000040;
   .stepper-progress {
     width: 750px;
   }
+  .btn-footer
+  {
+    position: relative;
+    top:160px
+  }
 }
 
 @media (max-width: 1270px) {
