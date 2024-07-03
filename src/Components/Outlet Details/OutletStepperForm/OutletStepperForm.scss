@@ -144,16 +144,46 @@ box-shadow: 3px 0px 10px 0px #00000040;
 
 /* Media Queries */
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
   .sub-container {
     width: 1050px;
-    left: 40px;
+    left: 120px;
   }
   .stepper-progress {
     width: 1000px;
   }
 }
 
+@media (max-width: 1500px) {
+  .sub-container {
+    width: 1050px;
+    left: 120px;
+  }
+  .stepper-progress {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .sub-container {
+    width: 1020px;
+    left: 120px;
+  }
+  .stepper-progress {
+    width: 950px;
+  }
+}
+
+
+@media (max-width: 1450px) {
+  .sub-container {
+    width: 900px;
+    left: 120px;
+  }
+  .stepper-progress {
+    width: 850px;
+  }
+}
 @media (max-width: 1280px) {
   .Stepperformcontainer {
     margin-top: 190px;
@@ -162,7 +192,7 @@ box-shadow: 3px 0px 10px 0px #00000040;
   }
   .sub-container {
     width: 830px;
-    left: 40px;
+    left: 120px;
   }
   .stepper-progress {
     width: 750px;
@@ -177,10 +207,26 @@ box-shadow: 3px 0px 10px 0px #00000040;
 @media (max-width: 1270px) {
   .sub-container {
     width: 820px;
-    left: 60px;
+    left: 120px;
   }
   .stepper-progress {
     width: 740px;
+  }
+}
+
+@media (max-width: 1210px) {
+  .Stepperformcontainer {
+    margin-top: 190px;
+    transform: translateX(250px);
+    height: 200px;
+  }
+  .sub-container {
+    width: 700px;
+    top: 10px;
+    left: 100px;
+  }
+  .stepper-progress {
+    width: 640px;
   }
 }
 
@@ -193,12 +239,28 @@ box-shadow: 3px 0px 10px 0px #00000040;
   .sub-container {
     width: 760px;
     top: 10px;
-    left: -40px;
+    left: 20px;
   }
   .stepper-progress {
     width: 680px;
   }
 }
+@media (max-width: 1050px) {
+  .Stepperformcontainer {
+    margin-top: 190px;
+    transform: translateX(250px);
+    height: 200px;
+  }
+  .sub-container {
+    width: 650px;
+    top: 10px;
+   
+  }
+  .stepper-progress {
+    width: 600px;
+  }
+}
+
 
 @media (max-width: 900px) {
   .Stepperformcontainer {
@@ -207,9 +269,9 @@ box-shadow: 3px 0px 10px 0px #00000040;
     height: 200px;
   }
   .sub-container {
-    width: 760px;
+    width: 650px;
     top: 10px;
-    left: -40px;
+   
   }
   .stepper-progress {
     width: 680px;
