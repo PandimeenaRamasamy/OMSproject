@@ -5,7 +5,11 @@ import "./Dinein.scss";
 import { FaExclamation } from 'react-icons/fa';
 import Tooltip from '../../Tooltip/Tooltip';
 import { useDispatch,useSelector } from "react-redux";
+import info from "../../../assets/images/info.png";
+
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
+import addphoto from "../../../assets/images/Addphotos.png";
+
 
 const Dinein = React.forwardRef((props,ref) => {
   const dispatch = useDispatch();
@@ -261,7 +265,17 @@ const Dinein = React.forwardRef((props,ref) => {
 
     // Clear sessionStorage on page refresh
     const handleBeforeUnload = () => {
+      sessionStorage.removeItem("registrationform");
+      sessionStorage.removeItem("Restaurantdata");
+      sessionStorage.removeItem("Location");
+      sessionStorage.removeItem("Fssai");
+      sessionStorage.removeItem("Bankdetails");
+      sessionStorage.removeItem("Basicdetail");
+      sessionStorage.removeItem("Resimage");
       sessionStorage.removeItem("Dinein");
+      sessionStorage.removeItem("Pickup");
+      sessionStorage.removeItem("Delivery");
+      sessionStorage.removeItem("Kitchen");
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return() => {
@@ -477,7 +491,11 @@ const validate=()=>{
     return isValid;
 }
 
-
+const handleBlur = (event, field) => {
+  if (event.target.value.trim() === '') {
+    alert(`${field} must not be empty`);
+  }
+};
 
  
 
@@ -488,7 +506,8 @@ const validate=()=>{
           <h5>Dine in Details 
              <Tooltip message="dining in">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                      <img src={info} alt="" />
+                        {/* <FaExclamation color="black" size={5} /> */}
                     </div>
                 </Tooltip>
          
@@ -612,7 +631,8 @@ const validate=()=>{
             <h5>Interactive Dine-in Details
             <Tooltip message="Interactive Dine-in Details">
                     <div className="icon-background" >
-                        <FaExclamation color="black" size={5} fontSize={20}/>
+                        {/* <FaExclamation color="black" size={5} fontSize={20}/> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
             </h5>
@@ -772,6 +792,7 @@ const validate=()=>{
                               value={Outletdetails.checkIn.maximumPeopleAllowedOnline}
                               maxLength={3}
                               onKeyPress={handleKeyPress}
+                              onBlur={(event) => handleBlur(event, 'Maximum People allowed online')}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -797,6 +818,7 @@ const validate=()=>{
                               style={{fontSize:'14px',padding:'10px'}}
                               maxLength={3}
                               onKeyPress={handleKeyPress}
+                              onBlur={(event) => handleBlur(event, 'Maximum People allowed offline')}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -816,7 +838,8 @@ const validate=()=>{
                               Late show time
                               <Tooltip message=" Late show time">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
                             </label>
@@ -825,6 +848,7 @@ const validate=()=>{
                                 id="maximuminonline"
                                 value={Outletdetails.checkIn.lateShowTime}
                                 style={{fontSize:'12px'}}
+                                onBlur={(event) => handleBlur(event, 'Late show time')}
                                 onChange={(event) => {
                                   setOutletdetails({
                                     ...Outletdetails,
@@ -841,13 +865,15 @@ const validate=()=>{
                               Auto cancel Time
                               <Tooltip message=" Auto cancel Time">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
                             </label>
                             <input
                               type="time"
                               id="maximuminoffline"
+                              onBlur={(event) => handleBlur(event, 'Auto cancel Time')}
                               value={Outletdetails.checkIn.autoCancelTime}
                               style={{fontSize:'12px'}}
                               onChange={(event) => {
@@ -866,7 +892,8 @@ const validate=()=>{
                               Abandon time
                               <Tooltip message=" Abandon time">
                     <div className="icon-background">
-                        <FaExclamation color="black" size={5} />
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
                     </div>
                 </Tooltip>
                             </label>
@@ -875,6 +902,7 @@ const validate=()=>{
                               id="maximuminoffline"
                               value={Outletdetails.checkIn.abandonTime}
                               style={{fontSize:'12px'}}
+                              onBlur={(event) => handleBlur(event, 'Abandon time')}
                               onChange={(event) => {
                                 setOutletdetails({
                                   ...Outletdetails,
@@ -897,7 +925,7 @@ const validate=()=>{
                           Auto Assign option
                         </label>
                       </div>
-                      <div className="lables2">
+                      <div className="auto">
                         <label
                           htmlFor="BusinessLegalName"
                           className="labelcheckin2"
@@ -975,8 +1003,8 @@ const validate=()=>{
           </div>
           <div className="">
             <div className="">
-              <div className="lables1">
-                <label htmlFor="" className="label">
+              <div className="reservation">
+                <label htmlFor="" className="reservarionlabel">
                   Reservation
                 </label>
               </div>

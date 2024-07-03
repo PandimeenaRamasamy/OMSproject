@@ -4,6 +4,8 @@ import React, { useState, useImperativeHandle, useEffect } from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
+import Tooltip from '../../Tooltip/Tooltip';
+import info from "../../../assets/images/info.png";
 
 import { PostDeliveryDataRequest } from "../../../redux/Actions/PostDataAction";
 import AddTime from "../Delivery/components/AddTime";
@@ -295,7 +297,7 @@ const convertTo24Hour = (time) => {
         );
         setDeliveryOption(deliveryDetails?.scheduledDelivery);
         setShowScheduledDelivery(deliveryDetails?.scheduledDelivery === "yes");
-        if( deliveryDetails.deliverySettingTime)
+        if( deliveryDetails?.deliverySettingTime)
           {
             const mappedTimeSlot = deliveryDetails.deliverySettingTime.map((time, index) => ({
               openingTime: time.deliveryServiceTimeFrom,
@@ -399,12 +401,21 @@ const convertTo24Hour = (time) => {
   };
 
   const handleUpClick = () => {
+
+
+
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     }
   };
 
   const handleDownClick = () => {
+    if(currentIndex===0)
+      {
+        setCurrentIndex(currentIndex);
+      }
+
+
     if (currentIndex < scheduledDay.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
@@ -494,7 +505,7 @@ const convertTo24Hour = (time) => {
 
     setDeliveryOption(savedData?.scheduledDelivery);
     setShowScheduledDelivery(savedData?.scheduledDelivery === "yes");
-    if( savedData.deliverySettingTime)
+    if( savedData?.deliverySettingTime)
       {
         const mappedTimeSlot = savedData.deliverySettingTime.map((time, index) => ({
           openingTime: time.deliveryServiceTimeFrom,
@@ -548,6 +559,16 @@ const convertTo24Hour = (time) => {
 
 
     const handleBeforeUnload = () => {
+      sessionStorage.removeItem("registrationform");
+      sessionStorage.removeItem("Restaurantdata");
+      sessionStorage.removeItem("Location");
+      sessionStorage.removeItem("Fssai");
+      sessionStorage.removeItem("Bankdetails");
+      sessionStorage.removeItem("Basicdetail");
+      sessionStorage.removeItem("Resimage");
+      sessionStorage.removeItem("Dinein");
+      sessionStorage.removeItem("Pickup");
+      sessionStorage.removeItem("Delivery");
       sessionStorage.removeItem("Kitchen");
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -615,7 +636,7 @@ const convertTo24Hour = (time) => {
   
 
   return (
-    <div className="delivery">
+    <div className="delivery" style={{marginBottom:showdelivery?'70px':'500px'}}>
       <div className="delivery-header">
         <h2>Delivery Details</h2>
         <h3>Delivery</h3>
@@ -638,9 +659,9 @@ const convertTo24Hour = (time) => {
       {showdelivery && (
         <div className="deliveryContent">
           <h3>Delivery service time</h3>
-          <div className="checkBoxContainer">
+          <div className="checkBoxContainerdel">
             <label>
-              <input className="checkbox" type="checkbox" />
+              <input className="checkboxdel" type="checkbox" />
               <p className="cPname">Same as restaurant working time</p>
             </label>
           </div>
@@ -657,7 +678,10 @@ const convertTo24Hour = (time) => {
            
               <input type="time" className="input2" value={timeSlot[0]?.closingTime}
           onChange={(e) => handleTimeChange(0, "closingTime", e.target.value)}/>
+         
+          
               </div>
+             
               {
                 !time2 &&
                 <p onClick={() => addtime("second")} className="timeslotaddbtn">
@@ -677,12 +701,15 @@ const convertTo24Hour = (time) => {
           
                 <input type="time" className="input2" value={timeSlot[1]?.closingTime}
             onChange={(e) => handleTimeChange(1, "closingTime", e.target.value)}/>
+             <div className="deletesession"> {
+                time2 &&  <p className="timeslotdelbtn" onClick={() => deletetime('second')} >
+                - Delete Session
+              </p>
+              }</div>
                 </div>
-                <p className="timeslotdelbtn" onClick={() => deletetime('second')} >
-                  - Delete Session
-                </p>
+               
                 {
-                  !time3 && <p onClick={() => addtime("third")} className="timeslotaddbtn">
+                  !time3 && <p onClick={() => addtime("third")} className="timeslotaddbtn" style={{marginTop:'-25px'}}>
                   + Add Time slots
                 </p>
                 }
@@ -691,19 +718,22 @@ const convertTo24Hour = (time) => {
               </div>
             )}
             {time3 && (
-              <div className="timethird">
+              <div className="timethird" style={{marginTop:'-30px'}}>
                 <label htmlFor="" className="label1">From</label>
                 <label htmlFor="" className="label2">To</label>
-                <div className="inputs">
+                <div className="inputs" >
                 <input type="time" className="input1" value={timeSlot[2]?.openingTime}
             onChange={(e) => handleTimeChange(2, "openingTime", e.target.value)}/>
                 <input type="time" className="input2" value={timeSlot[2]?.closingTime}
             onChange={(e) => handleTimeChange(2, "closingTime", e.target.value)}/>
-                </div>
+            <div className="deletesession">
                
-                <p className="timeslotdelbtn" onClick={() => deletetime('third')}>
+            <p className="timeslotdelbtn" onClick={() => deletetime('third')}>
                   - Delete Session
                 </p>
+            </div>
+                </div>
+              
               </div>
             )}
           </div>
@@ -740,47 +770,52 @@ const convertTo24Hour = (time) => {
 
           <div className="payment">
             <h3>Delivery Payment</h3>
-            <p>Customer can place delivery order for future/next session</p>
+            <p>Please mention the payment methods</p>
             <div className="paymentMethod">
-              <label>
-                <input
-                  className="checkbox"
+
+            <input
+                  className="inputcheck"
                   value="cards"
                   type="checkbox"
                   checked={selectedMethods.includes("cards")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Cards</p>
-              </label>
               <label>
-                <input
-                  className="checkbox"
+                
+                <p className="cPname1">Cards</p>
+              </label>
+              <input
+                  className="inputcheck"
                   value="pay at store"
                   type="checkbox"
                   checked={selectedMethods.includes("pay at store")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Pay at store</p>
-              </label>
               <label>
-                <input
-                  className="checkbox"
+               
+                <p className="cPname2">Pay at store</p>
+              </label>
+              <input
+                  className="inputcheck"
                   value="apple pay"
                   type="checkbox"
                   checked={selectedMethods.includes("apple pay")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Apple Pay</p>
-              </label>
               <label>
-                <input
-                  className="checkbox"
+               
+                <p className="cPname3">Apple Pay</p>
+              </label>
+              <input
+                  className="inputcheck"
                   value="google pay"
                   type="checkbox"
                   checked={selectedMethods.includes("google pay")}
                   onChange={handleCheckboxChange}
                 />
-                <p className="cPname">Google Pay</p>
+              <label className="payname">
+               
+                <p className="cPname4">Google Pay</p>
               </label>
             </div>
           </div>
@@ -862,8 +897,12 @@ const convertTo24Hour = (time) => {
                 <p>Please mention the Scheduled delivery duration</p>
                 <div className="scheduleContainer">
                   <div className="scheduledContent">
-                    <p>{scheduledDay[currentIndex]}</p>
+                    <p > { currentIndex===0? "EOD":scheduledDay[currentIndex]}</p>
+                    
                   </div>
+                  {/* <button onClick={()=>{
+                    console.log("current index",currentIndex)
+                  }}>click</button> */}
                   <div className="arrow">
                     <div className="downsideArrow" onClick={handleDownClick}>
                       <img src={vector} alt="" />
@@ -903,8 +942,8 @@ const convertTo24Hour = (time) => {
                   className="checkbox"
                   value="in house"
                   type="checkbox"
-                  checked={inHouse === true}
-                  onClick={() => setInHouse(!inHouse)}
+                  checked={showInHouse === true}
+                  onClick={() => setShowInHouse(!showInHouse)}
                 />
                 <p className="cPname">Inhouse</p>
               </label>
@@ -913,8 +952,8 @@ const convertTo24Hour = (time) => {
                   className="checkbox"
                   value="3rd party"
                   type="checkbox"
-                  checked={thirdParty === true}
-                  onClick={() => setThirdParty(!thirdParty)}
+                  checked={showThirdParty === true}
+                  onClick={() => setShowTHirdParty(!showThirdParty)}
                 />
                 <p className="cPname">3rd party</p>
               </label>
@@ -927,29 +966,30 @@ const convertTo24Hour = (time) => {
             className="inHousedeliveryoption"
             style={{ height: showInHouse ? "850px" : "70px" }}
           >
-            {inHouse && (
+            {showInHouse && (
               <div className="inhouse">
                 <div
                   className="header"
                   onClick={() => setShowInHouse((inho) => !inho)}
                 >
                   <h3>Inhouse</h3>
-                  <img
+                  {/* <img
                     className={showInHouse ? "arrowUp" : "arrowDown"}
                     onClick={() => setShowInHouse(!showInHouse)}
                     src={vector}
                     alt=""
-                  />
+                  /> */}
                 </div>
                 {showInHouse && (
                   <div className="body">
                     <p>Use restaurant person to deliver the food</p>
 
                     <div className="distance">
-                      <h5>Maximum Radius</h5>
+                      <h5 className="h5distance">Maximum Radius</h5>
                       <input
                         type="text"
-                        placeholder="in miles(Upto 100)"
+                        className="inputfiled"
+                        placeholder="7 Miles"
                         value={maxRadius}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -1028,11 +1068,12 @@ const convertTo24Hour = (time) => {
                           </label>
                         </div>
                       </div>
-                      <div className="defaultCount">
+                      <div className="defaultCountt">
                         <p>Default count of branch order</p>
                         <input
                           type="text"
-                          placeholder="Upto 30"
+                          className="defaultinput"
+                          placeholder="3"
                           value={brachCount}
                           onChange={(e) => {
                             const val = e.target.value;
@@ -1103,6 +1144,7 @@ const convertTo24Hour = (time) => {
                               <span className="symbol"></span>
                               <input
                                 type="text"
+                                placeholder="$5"
                                 value={defaultMile}
                                 onChange={(e) => {
                                   const val = e.target.value;
@@ -1118,6 +1160,7 @@ const convertTo24Hour = (time) => {
                               <span className="symbol"></span>
                               <input
                                 type="text"
+                                 placeholder="$1"
                                 value={additionalMile}
                                 onChange={(e) => {
                                   const val = e.target.value;
@@ -1147,10 +1190,12 @@ const convertTo24Hour = (time) => {
                           <div className="flatfeeInput">
                             <div className="input-container">
                               <p>Amount</p>
-                              <span className="symbol">$</span>
+                              <span className="symbol"></span>
                               <input
                                 type="text"
+                                placeholder="$1"
                                 value={flatFee}
+
                                 onChange={(e) => {
                                   const val = e.target.value;
                                   if (!isNaN(val)) {
@@ -1176,22 +1221,22 @@ const convertTo24Hour = (time) => {
             className="thirdpartydeliveryoption"
             style={{
               height: showThirdParty ? "30vh" : "20vh",
-              marginTop: !inHouse ? "-70px" : "0px",
+              marginTop: !inHouse ? "-70px" : "-10px",
             }}
           >
-            {thirdParty && (
+            {showThirdParty && (
               <div className="thirdParty">
                 <div
                   className="header"
                   onClick={() => setShowTHirdParty((tp) => !tp)}
                 >
                   <h3>3rd Party</h3>
-                  <img
+                  {/* <img
                     className={showThirdParty ? "arrowUp" : "arrowDown"}
                     onClick={() => setShowTHirdParty(!showThirdParty)}
                     src={vector}
                     alt=""
-                  />
+                  /> */}
                 </div>
                 {showThirdParty && (
                   <div className="body">
@@ -1216,7 +1261,8 @@ const convertTo24Hour = (time) => {
                             handleCheckboxChanges("doordash", setShowDoorDash)
                           }
                         />
-                        <p className="cPname">Doordash</p>
+                        <p className="cPname">Doordash 
+                          </p>
                       </label>
                       <label>
                         <input
@@ -1228,7 +1274,7 @@ const convertTo24Hour = (time) => {
                             handleCheckboxChanges("dunzo", setShowDunzo)
                           }
                         />
-                        <p className="cPname">Dunzo</p>
+                        <p className="cPname">Dunzo </p>
                       </label>
                       <label>
                         <input
@@ -1240,14 +1286,19 @@ const convertTo24Hour = (time) => {
                             handleCheckboxChanges("uberEats", setShowUberEats)
                           }
                         />
-                        <p className="cPname">Uber Eats</p>
+                        <p className="cPname">Uber Eats </p>
                       </label>
                     </div>
 
                     <div className="thirdPartyInputContaianer">
                       {showDoorDash && (
                         <div className="thirdPartyInput">
-                          <p>Doordash ID</p>
+                          <p>Doordash ID <Tooltip message="Doordash">
+                    <div className="icon-backgrounddel">
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
+                    </div>
+                </Tooltip></p>
                           <input
                             type="text"
                             value={doorDash}
@@ -1259,7 +1310,12 @@ const convertTo24Hour = (time) => {
                       )}
                       {showDunzo && (
                         <div className="thirdPartyInput">
-                          <p>Dunzo ID</p>
+                          <p>Dunzo ID <Tooltip message="Dunzo">
+                    <div className="icon-backgrounddel">
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
+                    </div>
+                </Tooltip></p>
                           <input
                             type="text"
                             value={dunzo}
@@ -1271,7 +1327,12 @@ const convertTo24Hour = (time) => {
                       )}
                       {showUberEats && (
                         <div className="thirdPartyInput">
-                          <p>UberEats ID</p>
+                          <p>UberEats ID<Tooltip message="Uber Eats ">
+                    <div className="icon-backgrounddel">
+                        {/* <FaExclamation color="black" size={5} /> */}
+                        <img src={info} alt="" />
+                    </div>
+                </Tooltip></p>
                           <input
                             type="text"
                             value={uberEats}

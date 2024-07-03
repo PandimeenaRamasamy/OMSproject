@@ -9,6 +9,7 @@
     width:700px;
     position: relative;
     top: -125px;
+   
 }
 .Pickup_heading1{
     
@@ -202,12 +203,15 @@ font-size: 16px;
    
 }
 .updown{
+    margin-left:20px;
     width:133px;
     height:44px;
-    font-size: 14px;
+
+
 
 
 }
+
 .Pack_type{
     margin-top: 20px;
     width:292px;
@@ -218,6 +222,22 @@ font-size: 16px;
     height:44px;
     font-size: 16px;
 }
+.arrow1 {
+    transform: translateX(110px);
+    margin-top: -55px;
+    .upsideArrow {
+      img {
+        transform: rotate(180deg);
+        cursor: pointer;
+      }
+    }
+    .downsideArrow {
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
 
 .picketa
 {
@@ -247,7 +267,7 @@ font-size: 16px;
         font-family: Poppins;
         font-weight: 400;
         line-height: 24px;
-        padding-left: 3px;
+        padding-left: 42px;
         margin: 4px;
         margin-left: -2px;
 
@@ -261,13 +281,18 @@ font-size: 16px;
        
         border-radius: 4px;
         border: 1px solid #B3B3B3;
-        font-size: 16px;
+        font-size: 16.5px;
         font-family: Poppins;
         font-weight: 400;
         line-height: 24px;
-        padding-left: 3px;
+        padding-left: 12px;
         margin-left: -2px;
 
+    }
+}
+.picketa{
+    input{
+        padding-left: 12px;
     }
 }
 
@@ -288,13 +313,13 @@ font-size: 16px;
     font-size: 14px;
 }
 .Pickcheck{
+   
     accent-color:rgba(103, 131, 62, 1);
     width: 18px;
 height: 18px;
 
 
 border: 2px solid #979797;
-margin-top: 20px;
 
 
 

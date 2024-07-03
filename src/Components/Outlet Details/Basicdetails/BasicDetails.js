@@ -26,18 +26,18 @@ const BasicDetails = React.forwardRef((props,ref) => {
     "Dosa",
     "Vada",
     "Soup",
-    "Paniyaram",
-    "Naan",
-    "Chappathi",
+    // "Paniyaram",
+    // "Naan",
+    // "Chappathi",
   ]);
   const [aModalText, setAModalText] = useState([
     "Free Wifi",
     "Suite Room",
     "Park",
-    "GameRoom",
-    "AC",
-    "Butler",
-    "Hall",
+    // "GameRoom",
+    // "AC",
+    // "Butler",
+    // "Hall",
   ]);
   const [pModalText, setPModalText] = useState([
     "Two Wheeler",
@@ -400,12 +400,12 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     // const data2 = useSelector((state) => state.registration.data);
     // console.log("current location ID",data2);
 
-    const data2 = useSelector((state) => state.locationiddata.locationId);
+     const locationdata = useSelector((state) => state.locationiddata.locationId);
+    const data2 = useSelector((state) => state.registration.data);
     // console.log("list of location IDs :",data2)
-    
      
-    let payload = {
-      locationId: data2 && data2||"",
+    const payload = {
+      locationId:locationdata&&locationdata|| data2 && data2,
       restaurantSessionDto: RestaurantSessions,
       cuisines: cPillsText,
       amenities: aPillsText,
@@ -415,108 +415,113 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     };
 
     // console.log("payload from basic details button", payload);
-    
     useEffect(() => {
       const savedData = JSON.parse(sessionStorage.getItem("Basicdetail"));
       if (savedData) {
+
+
+
         setSelectedAlcoholOption(savedData?.alcohol ?? '')
-        setSafetyMeasures(savedData?.SafetyMeasures ?? '')
-        setPPillsText(savedData?.parking ?? [])
-        setAPillsText(savedData?.amenities ?? [])
-        setCPillsText(savedData?.cuisines ?? [])
-      
-        setPModalText(prev => prev.filter(p => !pPillsText.includes(p)))
-        setAModalText(prev => prev.filter(p => !aPillsText.includes(p)))
-        setCModalText(prev => prev.filter(p => !cPillsText.includes(p)))
-      
-      
-      
-        const tempService = [];
-        const tempMealsMap = {};
-        const tempTimeSlots = {};
-      
-        //restaurantSesssionDto change name after checking be's response
-        savedData?.restaurantSessionDto?.forEach(restaurantSessions => {
-          let tempId = uuidv4();
-          tempMealsMap[tempId] = restaurantSessions?.name ?? 'breakfast'
-          tempService.push({
-            id: tempId,
-            component: (
-              <RestaurantSession
-                timeSlots={timeSlots}
-                setTimeSlots={setTimeSlots}
-                setOpeningTime={(time, index) =>
-                  handleTimeChange(time, tempId, "opening", index)
-                }
-                setClosingTime={(time, index) =>
-                  handleTimeChange(time, tempId, "closing", index)
-                }
-                key={tempId}
-                restaurantSessionid={tempId}
-                deleteRestaurantSession={deleteRestaurantSession}
-                onMealsChange={(tempId, name) => handleMealsChange(tempId, name)}
-                meals={mealsMap[tempId]}
-              />
-            ),
-          },)
-      
-          const currentRestaurantSlot = [];
-          restaurantSessions?.basicTime?.forEach(time => {
-            currentRestaurantSlot.push({
-              openingTime: time?.start_time ?? "00:00",
-              closingTime: time?.end_time ?? "00:00",
-              isContainWeeks: time.weekday.length === 0 ?false : true,
-              checkedDays: {
-                monday: time.weekday.includes('monday'),
-                tuesday: time.weekday.includes('tuesday'),
-                wednesday: time.weekday.includes('wednesday'),
-                thursday: time.weekday.includes('thursday'),
-                friday: time.weekday.includes('friday'),
-                saturday: time.weekday.includes('saturday'),
-                sunday: time.weekday.includes('sunday'),
-              },
-            })
-          })
-      
-          tempTimeSlots[tempId] = currentRestaurantSlot
-      
-        })
-        setService(tempService)
-        setMealsMap(tempMealsMap)
-        setTimeSlots(tempTimeSlots)
+  setSafetyMeasures(savedData?.SafetyMeasures ?? '')
+  setPPillsText(savedData?.parking ?? [])
+  setAPillsText(savedData?.amenities ?? [])
+  setCPillsText(savedData?.cuisines ?? [])
+
+  setPModalText(prev => prev.filter(p => !pPillsText.includes(p)))
+  setAModalText(prev => prev.filter(p => !aPillsText.includes(p)))
+  setCModalText(prev => prev.filter(p => !cPillsText.includes(p)))
+
+
+
+  const tempService = [];
+  const tempMealsMap = {};
+  const tempTimeSlots = {};
+
+  //restaurantSesssionDto change name after checking be's response
+  savedData?.restaurantSessionDto?.forEach(restaurantSessions => {
+    let tempId = uuidv4();
+    tempMealsMap[tempId] = restaurantSessions?.name ?? 'breakfast'
+    tempService.push({
+      id: tempId,
+      component: (
+        <RestaurantSession
+          timeSlots={timeSlots}
+          setTimeSlots={setTimeSlots}
+          setOpeningTime={(time, index) =>
+            handleTimeChange(time, tempId, "opening", index)
+          }
+          setClosingTime={(time, index) =>
+            handleTimeChange(time, tempId, "closing", index)
+          }
+          key={tempId}
+          restaurantSessionid={tempId}
+          deleteRestaurantSession={deleteRestaurantSession}
+          onMealsChange={(tempId, name) => handleMealsChange(tempId, name)}
+          meals={mealsMap[tempId]}
+        />
+      ),
+    },)
+
+    const currentRestaurantSlot = [];
+    restaurantSessions?.basicTime?.forEach(time => {
+      currentRestaurantSlot.push({
+        openingTime: time?.start_time ?? "00:00",
+        closingTime: time?.end_time ?? "00:00",
+        isContainWeeks: time.weekday.length === 0 ?false : true,
+        checkedDays: {
+          monday: time.weekday.includes('monday'),
+          tuesday: time.weekday.includes('tuesday'),
+          wednesday: time.weekday.includes('wednesday'),
+          thursday: time.weekday.includes('thursday'),
+          friday: time.weekday.includes('friday'),
+          saturday: time.weekday.includes('saturday'),
+          sunday: time.weekday.includes('sunday'),
+        },
+      })
+    })
+
+    tempTimeSlots[tempId] = currentRestaurantSlot
+
+  })
+  setService(tempService)
+  setMealsMap(tempMealsMap)
+  setTimeSlots(tempTimeSlots)
+  
+  
+        
+       
       }
-
-      
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
       // Clear sessionStorage on page refresh
       const handleBeforeUnload = () => {
+        sessionStorage.removeItem("registrationform");
+        sessionStorage.removeItem("Restaurantdata");
+        sessionStorage.removeItem("Location");
+        sessionStorage.removeItem("Fssai");
+        sessionStorage.removeItem("Bankdetails");
         sessionStorage.removeItem("Basicdetail");
+        sessionStorage.removeItem("Resimage");
+        sessionStorage.removeItem("Dinein");
+        sessionStorage.removeItem("Pickup");
+        sessionStorage.removeItem("Delivery");
+        sessionStorage.removeItem("Kitchen");
       };
-
-
-
-
-
-
-
-
       window.addEventListener("beforeunload", handleBeforeUnload);
       return() => {
         window.removeEventListener("beforeunload", handleBeforeUnload);
       };
     }, []);
+    
  
 
   const getFormData=()=>{
     return payload;
 }
-
 
 const retrieveData = (tempPayload) => {
 

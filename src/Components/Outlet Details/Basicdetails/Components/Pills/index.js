@@ -48,6 +48,18 @@ const Pills = ({
   const handlePillsContainerClick = () => {
     setShowModal((mo) => !mo);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+        
+      if (inputValue.trim()) {
+        addPillsText(inputValue.trim());
+        setInputValue("");
+      }
+      setShowInputBox(false);
+    
+  
+    }
+  };
 
   return (
     <div className="pills">
@@ -87,17 +99,21 @@ const Pills = ({
                       value={inputValue}
                       onChange={handleInputValueChange}
                       className="inputText"
+                      onKeyDown={handleKeyDown}
                     />
                     <button
                       onClick={handleAddNewPill}
                       className="addInputButton"
+                      
+                      
                     >
                       + Add
                     </button>
                   </div>
                 )}
                 {!showInputBox && (
-                  <button className="addNewButton" onClick={handleShowInputBox}>
+                  <button className="addNewButton"  onClick={handleShowInputBox}>
+                    
                     + Add New
                   </button>
                 )}

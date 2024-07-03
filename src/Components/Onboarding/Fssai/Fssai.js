@@ -134,7 +134,17 @@ const Fssai = forwardRef((props, ref) => {
     }
     // Clear sessionStorage on page refresh
     const handleBeforeUnload = () => {
+      sessionStorage.removeItem("registrationform");
+      sessionStorage.removeItem("Restaurantdata");
+      sessionStorage.removeItem("Location");
       sessionStorage.removeItem("Fssai");
+      sessionStorage.removeItem("Bankdetails");
+      sessionStorage.removeItem("Basicdetail");
+      sessionStorage.removeItem("Resimage");
+      sessionStorage.removeItem("Dinein");
+      sessionStorage.removeItem("Pickup");
+      sessionStorage.removeItem("Delivery");
+      sessionStorage.removeItem("Kitchen");
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return() => {

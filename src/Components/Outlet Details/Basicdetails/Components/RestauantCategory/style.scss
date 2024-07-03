@@ -1,26 +1,60 @@
 .restaurantCategory {
-  p {
-    color: #666666;
-    font-size: 14px;
-  }
+ 
   .header {
     margin-bottom: 1rem;
     h4 {
       color: #2f2f2f;
-      font-weight: 600;
-      font-size: 16px;
+      font-family: Poppins;
+font-size: 18px;
+font-weight: 500;
+line-height: 27px;
+text-align: left;
+
+    }
+    p{
+      //styleName: Subtitle/Text 14;
+      margin-top: 2px;
+font-family: Poppins;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color: #666666;
     }
   }
   .pillBox {
     margin-bottom: 1rem;
+
+
+    p{
+      //styleName: Subtitle/Text 16;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #666666;
+    }
   }
 }
 .description {
+  p{
+    //styleName: Subtitle/Text 16;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #666666;
+  }
   textArea {
-    width: 605px;
-    height: 130px;
+   
+    width: 600px;
+height: 94px;
+
+
     border-width: 1px;
-    border-radius: 10px;
+    border-radius: 4px;
     border-color: #b3b3b3;
     padding: 10px;
     resize: none;

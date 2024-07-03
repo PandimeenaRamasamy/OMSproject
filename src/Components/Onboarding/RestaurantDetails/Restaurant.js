@@ -462,7 +462,7 @@ const Restaurant = forwardRef((props, ref) => {
     if (savedData) {
       setForm({
         locationId: (data2 && data2) || "",
-        businessLegalName: savedData.BusinessLegalName || "",
+        businessLegalName: savedData.businessLegalName|| "",
         phone: savedData.phone || "",
         email: savedData.email || "",
         website: savedData.websiteLink || "",
@@ -474,7 +474,18 @@ const Restaurant = forwardRef((props, ref) => {
       });
     }
     const handleBeforeUnload = () => {
+      sessionStorage.removeItem("registrationform");
       sessionStorage.removeItem("Restaurantdata");
+      sessionStorage.removeItem("Location");
+      sessionStorage.removeItem("Fssai");
+      sessionStorage.removeItem("Bankdetails");
+      sessionStorage.removeItem("Basicdetail");
+      sessionStorage.removeItem("Resimage");
+      sessionStorage.removeItem("Dinein");
+      sessionStorage.removeItem("Pickup");
+      sessionStorage.removeItem("Delivery");
+      sessionStorage.removeItem("Kitchen");
+
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => {
@@ -739,7 +750,7 @@ const Restaurant = forwardRef((props, ref) => {
                       name="phone"
                       className="phonenumberinput"
                       onBlur={validatePhone}
-                      placeholder="Enter Mobile Number"
+                      placeholder="47656 65655"
                       value={form.phone}
                       onChange={handleChange}
                       style={{
@@ -781,7 +792,7 @@ const Restaurant = forwardRef((props, ref) => {
                       name="phone"
                       className="phonenumberinput"
                       onBlur={validatePhone}
-                      placeholder="Enter Mobile Number"
+                      placeholder="Enter STD Number"
                       value={form.phone}
                       onChange={handleChange}
                       style={{
@@ -843,7 +854,7 @@ const Restaurant = forwardRef((props, ref) => {
                       name="whatsappNumber"
                       onKeyPress={handleKeyPress}
                       className="phonenumberinput"
-                      placeholder="Enter WhatsApp Number"
+                      placeholder="47656 65655"
                       value={form.whatsappNumber}
                       onBlur={validatewhatsapp}
                       onChange={handleChange}
