@@ -171,8 +171,11 @@ function Stepform() {
         let resimage=restrauntimageref.current.getFormData()
         sessionStorage.setItem(
           "Resimage",   
-          JSON.stringify(resimage)
+          JSON.stringify(resimage),
+         
+
         );
+        toast.success("Data Has Been Stored Successfully .");
         break;
       case 2:
         isValid = dineinref.current.validate();
@@ -185,6 +188,7 @@ function Stepform() {
           "Dinein",   
           JSON.stringify(dinein)
         );
+        toast.success("Data Has Been Stored Successfully .");
         }
         break;
       case 3:
@@ -198,6 +202,7 @@ function Stepform() {
             "Pickup",   
             JSON.stringify(pickup)
           );
+          toast.success("Data Has Been Stored Successfully .");
           
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
@@ -212,6 +217,7 @@ function Stepform() {
             "Delivery",   
             JSON.stringify(delivery)
           );
+          toast.success("Data Has Been Stored Successfully .");
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
@@ -224,6 +230,7 @@ function Stepform() {
             "Kitchen",   
             JSON.stringify(kitchen)
           );
+          toast.success("Data Has Been Stored Successfully .");
         } else {
           toast.error("Please fill out the required fields before moving to the next step.");
         }
