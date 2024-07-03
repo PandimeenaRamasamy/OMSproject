@@ -178,6 +178,7 @@ const PostDataForm = () => {
     }
     if (data2) {
       toast.success("Data has been stored successfully!");
+      dispatch(getDataRequest());
       setTimeout(() => {
         navigate("/outlet/Onboaring", { state: { pagename: "Onboaring" } });
       }, 3000); // 3000 milliseconds = 3 seconds

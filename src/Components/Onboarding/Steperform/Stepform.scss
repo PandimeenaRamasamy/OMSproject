@@ -111,7 +111,7 @@
 
   .btn-containeronboard{
     position:relative;
-   right: -10px;
+   right: 10px;
     width: 1555px;
 height: 108px;
 // top: 1034px;
@@ -188,6 +188,11 @@ box-shadow: 3px 0px 10px 0px #00000040;
     .sub-containeronboard {
       width:900px;  
       top: 100px;
+    }
+    .btn-containeronboard
+    {
+      position: relative;
+      top: 450px;
     }
    
   }
