@@ -387,7 +387,7 @@ import React, {
   useImperativeHandle,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocationId } from "../../../redux/Actions/PostDataAction";
+import { getDataRequest, getLocationId } from "../../../redux/Actions/PostDataAction";
 import "./Restaurant.scss";
 
 const Restaurant = forwardRef((props, ref) => {
@@ -406,6 +406,11 @@ const Restaurant = forwardRef((props, ref) => {
   const data = useSelector((state) => state.getlocationdata.data);
   const data2 = useSelector((state) => state.registration.data);
   console.log(data2);
+
+
+  useEffect(() => {
+    dispatch(getDataRequest());
+  }, []);
 
   let initialFormState = {
     locationId: (data2 && data2) || "",
