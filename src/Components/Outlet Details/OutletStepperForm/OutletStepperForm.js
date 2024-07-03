@@ -163,6 +163,8 @@ function Stepform() {
           "Basicdetail",   
           JSON.stringify(Basicdetail)
         );
+        toast.success("Data Has Been Stored Successfully .");
+
         break;
       case 1:
         newFormData1 = restrauntimageref.current.getFormData();
