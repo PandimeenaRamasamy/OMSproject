@@ -214,6 +214,9 @@ function Stepform() {
         }
         break;
       case 4:
+        isValid=deliveryref.current.validateDeliverySetting();
+        if(isValid)
+          {
         newFormData1 = deliveryref.current.getFormData();
         setDeliveryForm(newFormData1);
         dispatch(PostDeliveryDataRequest(newFormData1));
@@ -223,6 +226,7 @@ function Stepform() {
             JSON.stringify(delivery)
           );
           toast.success("Data Has Been Stored Successfully .");
+        }
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
