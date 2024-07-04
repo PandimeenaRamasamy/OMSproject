@@ -200,8 +200,8 @@ const Sidenavbar = () => {
     dispatch(getDataRequest());
   };
  
-  const datafromapi = useSelector((state) => state.postData.data);
-  console.log("data api api ", datafromapi);
+  const locationandname = useSelector((state) => state.postData.data);
+ 
  
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -279,8 +279,8 @@ const goToNew = () => {
               <div>
                
  
-                { Array.isArray(datafromapi) && datafromapi.length > 0 &&
-                  datafromapi.map((location, index) => (
+                { Array.isArray(locationandname) && locationandname.length > 0 &&
+                  locationandname.map((location, index) => (
                     <div key={index}>
                       <button
                         className="btnlocation"
@@ -288,16 +288,16 @@ const goToNew = () => {
                         style={{backgroundColor:index!==currentIndex?'white':'#67833e',color:index!==currentIndex?'#67833e':'white',opacity:index!==currentIndex?'0.7':'1.0'}}
                         onClick={() =>
                           {
-                            goToupdate(datafromapi[index].locationId)
-                            setLocationBtn(true);
+                            goToupdate(locationandname[index].locationId)
+                            // setLocationBtn(true);
                             setCurrentIndex(index);
-                            handlelocalstorage(datafromapi[index].locationId);
+                            handlelocalstorage(locationandname[index].locationId);
                           }
                          
                         }
  
                       >
-                        {datafromapi[index].restaurantName}
+                        {locationandname[index].restaurantName}
                       </button>
                     </div>
                   ))}

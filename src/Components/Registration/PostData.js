@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { ImCross } from "react-icons/im";
 import "./Registration.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { LocationContext } from "../LocationProvider";
 import {
   postDataRequest,
   getLocationId,
@@ -29,6 +30,7 @@ const PostDataForm = () => {
   console.log("Id from home page", Id);
 
   const data = useSelector((state) => state.getlocationdata.data);
+  const { showoutlets, setshowoutlets } = useContext(LocationContext);
 
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
@@ -180,6 +182,7 @@ const PostDataForm = () => {
     if (data2 && isValid && !validation) {
       toast.success("Data has been stored successfully!");
       dispatch(getDataRequest());
+      setshowoutlets(true);
       setTimeout(() => {
         navigate("/outlet/Onboaring", { state: { pagename: "Onboaring" } });
       }, 3000); // 3000 milliseconds = 3 seconds

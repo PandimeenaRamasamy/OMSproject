@@ -3,9 +3,13 @@
     display: flex;
     /* justify-content: center; */
     margin-left: 350px;
+    flex-direction: column;
 }
 
+.linkitems
+{
 
+}
 
 .Addoutlet
 {
@@ -22,6 +26,49 @@
     font-weight: initial;
     margin-top: 20px;
 }
+.nav-listts {
+    list-style: none;
+    display: flex;
+    
+    margin-top: 50px;
+  }
+  
+  /* List item styles */
+  .nav-items {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* border-radius: 5px; */
+  margin-left: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: Poppins;
+font-size: 18px;
+font-weight: 600;
+line-height: 24px;
+text-align: left;
+
+  }
+  
+  /* Active category styles */
+  .nav-items.activee {
+    
+   
+    height: 30px;
+   
+    border-bottom: 2px solid rgba(104, 132, 64, 1);
+    color: #67833e;
+    font-weight: 600;
+    
+  
+    
+    
+    /* Change text color if desired */
+  }
+  .nav1,
+  .nav2,
+  .nav3 {
+    margin-left: 25px;
+  }
+  
 
 .homeimg{
    

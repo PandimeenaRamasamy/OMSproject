@@ -6,6 +6,7 @@ export const postOutletRegistration = async (payload) => {
       "http://192.168.1.16:5000/outlets/outlet/registration",
       payload
     );
+    console.log("payload",payload);
     return response;
   } catch (error) {
     throw error;

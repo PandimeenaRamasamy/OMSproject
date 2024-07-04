@@ -11,6 +11,7 @@ import Stepform from './Components/Onboarding/Steperform/Stepform';
 import Updateoutlet from './Components/UpdateOutlet/Updateoutlet';
 import OutletStepperForm from './Components/Outlet Details/OutletStepperForm/OutletStepperForm' 
 import { LocationProvider } from './Components/LocationProvider';
+import Pendingoutlet from './Components/PendingOutlet/PendingOutlet'
 function Landing() {
 
   const MIN_WIDTH = 800; 
@@ -45,6 +46,7 @@ function Landing() {
       
       <Routes>
       <Route path="/" element={ <Home/> } />
+      <Route path="/PendingRequest" element={ <Pendingoutlet/> } />
       <Route path="/outlet" element={<Outlet />}>
 
        
@@ -54,6 +56,7 @@ function Landing() {
         <Route path="Outlet-Details" element={  <OutletStepperForm />} />
      
           </Route>
+
 
        
         {/* <Route path="/contact" element={<Contact />} /> */}

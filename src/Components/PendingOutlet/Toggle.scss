@@ -1,0 +1,41 @@
+.togglemain{
+    position: relative;
+    top: 5px;
+  }
+   
+   
+  .toggleBtn {
+      background-color: #979797;
+      width: 30px;
+      height: 14px;
+      border-radius: 99px;
+      border: 1px solid #979797;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.749);
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+      display: flex;
+      align-items: center;
+    }
+   
+    .thumb {
+      border-radius: 99px;
+      width: 10px;
+      height: 10px;
+      background-color: #ffffff;
+      position: absolute;
+      left: 3px;
+      transition: left 0.2s;
+    }
+   
+    .toggleBtn.Toggled {
+      background-color: #00B71D
+      ;
+      border-color: #00B71D
+   
+    }
+   
+    .toggleBtn.Toggled .thumb {
+      left: calc(100% - 13px);
+    }
