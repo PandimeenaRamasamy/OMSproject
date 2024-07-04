@@ -713,6 +713,7 @@ const convertTo24Hour = (time) => {
 
   useImperativeHandle(ref, () => ({
     getFormData,
+    validateDeliverySetting,
   }));
   const basicdetail = useSelector((state) => state.basicDetails.Details);
 
