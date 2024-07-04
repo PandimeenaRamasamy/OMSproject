@@ -7,24 +7,24 @@
     border-radius: 8px;
     border: 0.55px solid #979797 ;
    
-
+ 
 }
-
+ 
 .pendingimg{
     width: 523px;
     height: 140px;
 }
-
+ 
 .pendingcontent{
     width: 523px;
     height: 105px;
  
     display: flex;
     flex-direction: column;
-
+ 
 }
 .pendingcontent1{
-
+ 
     display: flex;
     justify-content: start;
     gap: 120px;
@@ -36,33 +36,32 @@
     font-size: 24px;
     line-height: 36px;
 }
-
+ 
 .pendingcontent2{
-
+ 
     display: flex;
     justify-content: start;
     gap: 70px;
 }
-
+ 
 .btnpend{
     width: 106px;
     height:  44px;
     border-radius: 4px;
     padding: 10px, 14px, 10px, 14px;
-    gap: 20px;
-
+    gap: 10px;
     background-color: #67833E;
     font-family: poppins;
-    right: 30px;
     color: white;
+    right: 20px;
     font-size: 16px;
     line-height: 24px;
-   border: none;
+    border: none;
     position: relative;
     top: 3px;
     cursor: pointer;
 }
-
+ 
 .pendingtoggle{
     width:  332px;
     height:  49px;
@@ -71,12 +70,12 @@
     justify-content: start;
     gap: 25px;
 }
-
+ 
 .DineinToggle{
     display: flex;
     flex-direction:column ;
 }
-
+ 
 .labelpending{
     font-family: Poppins;
     font-weight: 500;
@@ -84,7 +83,7 @@
     line-height: 21px;
     color: #666666;
 }
-
+ 
 .completedheading{
     color: #00B71D;
     position: relative;

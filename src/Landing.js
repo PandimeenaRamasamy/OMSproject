@@ -11,7 +11,7 @@ import Stepform from './Components/Onboarding/Steperform/Stepform';
 import Updateoutlet from './Components/UpdateOutlet/Updateoutlet';
 import OutletStepperForm from './Components/Outlet Details/OutletStepperForm/OutletStepperForm' 
 import { LocationProvider } from './Components/LocationProvider';
-import Pendingoutlet from './Components/PendingOutlet/PendingOutlet'
+import Pendingoutlet from './Components/Pendingpage/Pendingpage'
 function Landing() {
 
   const MIN_WIDTH = 800; 

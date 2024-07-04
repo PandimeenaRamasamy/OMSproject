@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Toggle.scss';
+import "./Toggle.scss";
  
 const Toggle = () => {
   const [togglebutton, setToggleButton] = useState(false);

@@ -4,7 +4,7 @@ import Homeimg from '../../assets/images/Home.png'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { LocationContext } from "../LocationProvider";
-import Pending from '../PendingOutlet/PendingOutlet'
+import Pending from '../Pendingpage/Pendingpage'
 
 const Home = () => {
 
