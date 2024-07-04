@@ -111,6 +111,13 @@ const Delivery = React.forwardRef((props, ref) => {
     { openingTime: "", closingTime: "" }
 
   ]);
+  const [deliverySettingError, setDeliverySettingError] = useState("");
+  const [selectedMethodsError, setSelectedMethodsError] = useState("");
+  const [deliveryOptionError, setDeliveryOptionError] = useState("");
+  const [minPriceValueError, setMinPriceValueError] = useState("");
+  const [maxPriceValueError, setMaxPriceValueError] = useState("");
+  const [scheduledDeliveryDurationError, setScheduledDeliveryDurationError] = useState("");
+  const [packagingChargeError, setPackagingChargeError] = useState("");
   
 
   const data4 = {
@@ -169,52 +176,80 @@ const Delivery = React.forwardRef((props, ref) => {
       settime3(true);
     }
   };
-  const deliverypagerrors = {};
+ 
 
-  const checkIfAnyTimeSlotIsEmpty = () => {
+  const validateDeliverySetting = () => {
+    let isValid = true;
 
-    return timeSlot.some(slot => slot.openingTime === "" || slot.closingTime === "");
-  };
-let valid=true;
-const deliveyvalidation=()=>{
-
-
-  if(checkIfAnyTimeSlotIsEmpty())
-    {
-     console.log(checkIfAnyTimeSlotIsEmpty())
-      deliverypagerrors.timsslot="One or more time slots are empty"
-      valid=false;
+    if (!timeSlot.some((slot) => slot.openingTime && slot.closingTime)) {
+      setDeliverySettingError("Please fill out all delivery setting time slots.");
+      isValid = false;
+    } else {
+      setDeliverySettingError("");
     }
-    // if(selectedMethods?.length===0)
-    //   {
-    //     deliverypagerrors.payment="Select payment method"
-    //     valid=false;
-    //   }
 
-      if(showScheduledDelivery)
-        {
-          if(minPriceValue===0)
-            {
-              deliverypagerrors.minprice="enter minimum price"
-        valid=false;
+    if (selectedMethods.length === 0) {
+      setSelectedMethodsError("Please select at least one delivery method.");
+      isValid = false;
+    } else {
+      setSelectedMethodsError("");
+    }
 
-            }
-            if(maxPriceValue==="")
-              {
-                deliverypagerrors.maxPriceValue="enter maximum price"
-          valid=false;
-  
-              }
-            
-          
-        }
+    if (!deliveryOption) {
+      setDeliveryOptionError("Please select a delivery option.");
+      isValid = false;
+    } else {
+      setDeliveryOptionError("");
+    }
+
+    if (!minPriceValue) {
+      setMinPriceValueError("Please enter a minimum price value.");
+      isValid = false;
+    } else {
+      setMinPriceValueError("");
+    }
+
+    if (!maxPriceValue) {
+      setMaxPriceValueError("Please enter a maximum price value.");
+      isValid = false;
+    } else {
+      setMaxPriceValueError("");
+    }
+
+    if (scheduledDay.length === 0 || scheduledDay[0] === "") {
+      setScheduledDeliveryDurationError("Please select a scheduled delivery duration.");
+      isValid = false;
+    } else {
+      setScheduledDeliveryDurationError("");
+    }
+
+    if (!packageCharge) {
+      setPackagingChargeError("Please enter a packaging charge.");
+      isValid = false;
+    } else {
+      setPackagingChargeError("");
+    }
+
+    return isValid;
+  };
 
 
-        return valid;
 
 
 
-}
+
+
+const handleeclick=()=>
+  {
+    console.log("hellooooo",validateDeliverySetting())
+  }
+
+
+
+
+
+
+      
 
 
   const deletetime = (slot) => {
@@ -697,6 +732,8 @@ const convertTo24Hour = (time) => {
       <div className="delivery-header">
         <h2>Delivery Details</h2>
         <h3>Delivery</h3>
+        <button onClick={()=>handleeclick()
+        }>click</button>
         
         <p>Please mention the delivery service</p>
       </div>
@@ -805,30 +842,7 @@ const convertTo24Hour = (time) => {
 
 
 
-          {/* <div className="addTime">
-            {timeSlots.map((slot, index) => (
-              <AddTime
-                key={index}
-                timeSlot={slot}
-                setTimeSlot={(newSlot) => {
-                  const newSlots = [...timeSlots];
-                  newSlots[index] = newSlot;
-                  setTimeSlots(newSlots);
-                }}
-              />
-            ))}
-            {timeSlots.length > 1 && (
-              <p className="deleteTime" onClick={handleDelete}>
-                - Delete Session
-              </p>
-            )}
-            <p onClick={addDayAndTime} className="Addtimeslot">
-              + Add Time slots
-            </p>
-          </div> */}
-          {/* <p className="deleteTime" onClick={handleDelete}>
-              - Delete Session
-            </p> */}
+          
 
           <div className="payment">
             <h3>Delivery Payment</h3>
@@ -1035,12 +1049,7 @@ const convertTo24Hour = (time) => {
                   onClick={() => setShowInHouse((inho) => !inho)}
                 >
                   <h3>Inhouse</h3>
-                  {/* <img
-                    className={showInHouse ? "arrowUp" : "arrowDown"}
-                    onClick={() => setShowInHouse(!showInHouse)}
-                    src={vector}
-                    alt=""
-                  /> */}
+                 
                 </div>
                 {showInHouse && (
                   <div className="body">
@@ -1293,12 +1302,7 @@ const convertTo24Hour = (time) => {
                   onClick={() => setShowTHirdParty((tp) => !tp)}
                 >
                   <h3>3rd Party</h3>
-                  {/* <img
-                    className={showThirdParty ? "arrowUp" : "arrowDown"}
-                    onClick={() => setShowTHirdParty(!showThirdParty)}
-                    src={vector}
-                    alt=""
-                  /> */}
+                 
                 </div>
                 {showThirdParty && (
                   <div className="body">

@@ -286,6 +286,7 @@ function Stepform() {
                   {step.icon}
                   <div className="icon-text">{step.title}</div>
                 </div>
+                
               ))}
             </div>
           </div>

@@ -215,7 +215,7 @@ const Sidenavbar = () => {
     dispatch(getLocationRequest(locationIddata));
  
     if (AAlocationdata) {
-      navigate("/outlet/Registration", { state: { APidata: AAlocationdata } });
+      navigate("/outlet/Registration", { state: { APidata: AAlocationdata ,pagename: "Registration"} });
     }
   };
  

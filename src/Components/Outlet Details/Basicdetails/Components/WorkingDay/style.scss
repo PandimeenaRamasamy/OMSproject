@@ -3,13 +3,156 @@
   display: flex;
   flex-direction: column;
 }
+
 .session {
   display: flex;
+  align-items: center;
   margin-bottom: 10px;
-  // background-color: #f23d3d;
+  margin-top: 10px;
 }
+
+.sessionName
+{
+  //styleName: Subtitle/Text 16;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+
+text-align: left;
+color: #2F2F2F;
+
+}
+
+.dele {
+  border: 1px solid black;
+  // width: 150px;
+ 
+}
+
+.addnewfield {
+  width: 120px;
+  height: 30px;
+  border: 1px solid #67833e;
+  border-top-left-radius: 10px;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.Additembutton {
+  width: 50px;
+  height: 30px;
+  position: relative;
+  top: 1px;
+  color: white;
+  margin-right: 20px;
+  margin-left: -2px;
+  background-color: #67833e;
+  border: 1px solid #67833e;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.addnewbutton {
+  width: 100px;
+  height: 33px;
+  padding: 5px;
+  background-color: #67833e;
+  color: white;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #67833e;
+  border-radius: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.deletebutton {
+  width: 100px;
+  padding: 5px;
+  padding-left: 7px;
+  height: 33px;
+  background-color: #f23d3d;
+  color: white;
+  border: 1px solid #f23d3d;
+  border-radius: 10px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+
+.donebutton {
+  width: 100px;
+  padding: 5px;
+  padding-left: 25px;
+  height: 33px;
+  background-color: #3A76DB;
+  color: white;
+  border: 1px solid #3A76DB;
+  border-radius: 10px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+
+
+
+
+.sessionLabel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+   border: 1px solid #000000;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.dele .deleteButton {
+  display: block;
+  margin-top: -55px;
+}
+
+.nodele .deleteButton {
+  display: none;
+}
+
+.deleteButton {
+  position: absolute;
+ justify-content: center;
+ align-items: center;
+  right: -6px;
+ text-align: center;
+ background-color:#979797 ;
+  border: 1px solid #979797 ;
+  border-radius: 50%;
+  cursor: pointer;
+
+  width: 20px;
+  height: 20px;
+}
+
+.crossIcon {
+  font-size: 7px;
+  color: black;
+  text-align: center;
+  font-weight: 800;
+ position: relative;
+ top: -7px;
+}
+
 .sessionContainer {
   margin-right: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
 
   input[type="radio"] {
     display: none;
@@ -41,14 +184,12 @@
 
   p {
     margin-top: 18px;
-    //styleName: Subtitle/Text 16;
-font-family: Poppins;
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-text-align: left;
-color: #2F2F2F;
-
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #2F2F2F;
   }
 }
 
@@ -58,16 +199,25 @@ color: #2F2F2F;
   gap: 17px;
 }
 
+.imcross {
+  margin-left: 5px;
+  margin-top: 18px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 @media (max-width: 1280px) {
   .workingDay {
     width: 100%;
   }
+
   .session {
-    display: flex;
     width: 700px;
   }
+
   .sessionContainer {
     margin-right: 15px;
+    width: 200px;
 
     input[type="radio"] {
       display: none;
@@ -102,47 +252,10 @@ color: #2F2F2F;
       color: #2f2f2f;
     }
   }
-
-  .addDayAndTimeWor {
-    // border: 1px solid black;
-    // height: 80px;
-    // background-color: salmon;
-    .pAdd {
-      color: #67833e;
-      margin-top: -55px;
-      margin-left: 630px;
-      margin-right: 480px;
-      margin-bottom: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      text-align: center;
-      // background-color: brown;
-      width: 100px;
-      height: 25px;
-      font-size: medium;
-    }
-
-    .delete-day-time {
-      color: #f23d3d;
-      width: 110px;
-      height: 25px;
-      position: relative;
-      left: 628px;
-      bottom: 52px;
-      display: flex;
-      justify-content: flex-end;
-      cursor: pointer;
-      font-weight: 600;
-      text-align: center;
-      // background-color: brown;
-      font-size: medium;
-    }
-  }
 }
 
 @media (max-width: 800px) {
   .sessionContainer {
-    // margin-right: 15px;
     width: 200px;
 
     input[type="radio"] {
@@ -150,7 +263,6 @@ color: #2F2F2F;
     }
 
     label {
-      // width: 20px;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -178,16 +290,16 @@ color: #2F2F2F;
       margin-top: 18px;
     }
   }
+
   .session {
     width: 350px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    // background-color: aqua;
   }
+
   .addDayAndTime {
     .pAdd {
       color: #67833e;
-      // margin-top: -30px;
       padding-top: 5px;
       margin-left: 130px;
       margin-right: 480px;
@@ -195,7 +307,6 @@ color: #2F2F2F;
       cursor: pointer;
       font-weight: 600;
       text-align: center;
-      // background-color: brown;
       width: 65px;
     }
 
@@ -210,7 +321,6 @@ color: #2F2F2F;
       cursor: pointer;
       font-weight: 600;
       text-align: center;
-      // background-color: brown;
     }
   }
 }

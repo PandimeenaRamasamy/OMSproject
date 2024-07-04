@@ -110,6 +110,9 @@ const Outlet = () => {
   const categories = ['Registration', 'Onboaring', 'Outlet Details', 'Subscription'];
   const navigate = useNavigate();
   const location = useLocation();
+  
+
+
   const datamap = location.state;
   const { pagename } = location.state || {};
 
