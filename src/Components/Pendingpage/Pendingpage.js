@@ -36,12 +36,12 @@ const Pendingpage = () => {
 
             </div>
 
-           
-             <div className="DineinToggle">
-              <label className="labelpending">Delivery</label>
-              <Toggle/>
+            
+                <div className="DineinToggle">
+                <label className="labelpending">Delivery</label>
+                <Toggle/>
 
-            </div>
+                </div>
 
             <div className="DineinToggle">
               <label className="labelpending">Completed</label>
