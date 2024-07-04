@@ -47,6 +47,7 @@ const Home = () => {
   //   setshowoutlets(true);
   // }
 
+
   return (
     <div className='main'>
 
@@ -77,8 +78,7 @@ const Home = () => {
                 ))}
                 </div>
           </ul>
-        </nav>
-        
+        </nav>    
         </div>  
         {activeCategory === 'LiveOutlets' && <div className='homeimg'>
                 <img src={Homeimg} alt="" />
