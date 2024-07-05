@@ -47,7 +47,7 @@ function Stepform() {
   const dineincount=5;
   // const pickupcount=14.5;
   const deliverycount=6;
-  const kitchencount=2;
+  // const kitchencount=2;
 
   const outletsteps = [
     {
@@ -256,6 +256,8 @@ function Stepform() {
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
+      let  kitchencount = kitchenformRef.current.getkitchenCount();
+
         if (isValid) {
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
@@ -267,6 +269,7 @@ function Stepform() {
             JSON.stringify(kitchen)
           );
           toast.success("Data Has Been Stored Successfully .");
+          console.log(kitchencount)
         } else {
           const updatecount=count-kitchencount;
           setcount(updatecount)
