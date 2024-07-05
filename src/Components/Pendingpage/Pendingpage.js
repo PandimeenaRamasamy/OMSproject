@@ -7,10 +7,8 @@ import { LocationContext } from "../LocationProvider";
 const Pendingpage = () => {
 
   const { showoutlets, setshowoutlets,count,setcount} = useContext(LocationContext);
-  if(count>=100)
-  {
-    setcount(99);
-  }
+
+
   const {  togglebutton1,
     setToggleButton1,
     togglebutton2,
@@ -64,11 +62,16 @@ const Pendingpage = () => {
  
              <div className="DineinToggle">
                <label className="labelpending">Completed</label>
-               <h1 className="completedheading">{
+               {/* {
+                count *2.9 >=100? setcount(99):setcount(count*2.9)
+               } */}
+               <h1 className="completedheading">
 
-                Math.floor(count)
+              {count}
+
                 
-                }%</h1>
+                
+                %</h1>
  
              </div>
  

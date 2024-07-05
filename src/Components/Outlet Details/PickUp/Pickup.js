@@ -8,6 +8,7 @@ import { LocationContext } from "../../LocationProvider";
 const Pickup = React.forwardRef((props, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
+  let pickcount=5;
   const [schedulepick, setSchedulePick] = useState(true);
   const datafromapi = useSelector((state) => state.postData.data);
   const data = useSelector((state) => state.getlocationdata.data);
@@ -135,7 +136,15 @@ const Pickup = React.forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     getFormData,
     validate,
+    getpickupcount,
   }));
+
+
+  const getpickupcount=()=>{
+    return pickcount;
+  }
+
+
 
   const validate = () => {
     let isValid = true;
@@ -143,22 +152,28 @@ const Pickup = React.forwardRef((props, ref) => {
     if (!form.serviceTimeFrom && isEnabled) {
       errors.serviceTimeFrom = "Please fill this field";
       isValid = false;
+      pickcount=pickcount-1;
+
     }
     if (!form.serviceTimeTo && isEnabled) {
       errors.serviceTimeTo = "Please fill this field";
       isValid = false;
+      pickcount=pickcount-1;
     }
     if (!form.packagingCharge && isEnabled) {
       errors.packagingCharge = "Please fill this field";
       isValid = false;
+      pickcount=pickcount-1;
     }
     if (!form.scheduledDuration && isEnabled && schedulepick) {
       errors.scheduledDuration = "Please fill this field";
       isValid = false;
+      pickcount=pickcount-1;
     }
     if (!form.eta && isEnabled) {
       errors.eta = "Please fill this field";
       isValid = false;
+      pickcount=pickcount-1;
     }
     setPickUpError(errors);
     return isValid;
@@ -210,7 +225,7 @@ const handleUpClick = () => {
       )
       const [sametime,setsametime]=useState(false);
 
-      
+
 
 
  return (
