@@ -13,7 +13,7 @@ const Kitchen = React.forwardRef((props,ref) => {
     const Locid = LocationId.payload;
     const data2 = useSelector((state) => state.registration.data);
     const loactiondata = useSelector((state) => state.locationiddata.locationId);
-    const kitchenCount=2
+    let kitchenCount=2
 
 
     const [form,setForm]=useState({

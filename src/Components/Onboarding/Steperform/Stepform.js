@@ -96,7 +96,7 @@ function Stepform({data}) {
   let newFormData = { ...mainForm };
   const handleSaveAndNext = () => {
     let isValid = true;
-    const restaurantcount=0;
+    let restaurantcount=0;
    
 
     switch (activeStep) {
