@@ -177,22 +177,24 @@ const Delivery = React.forwardRef((props, ref) => {
     }
   };
  
-  
+  let deliveycounting=deliveryOption ==='yes'||deliveryOption==='Yes'?6:4;
 
   const validateDeliverySetting = () => {
     let isValid = true;
 
-    
+
 
     if (!timeSlot.some((slot) => slot.openingTime && slot.closingTime)) {
       setDeliverySettingError("Please fill out all delivery setting time slots.");
       isValid = false;
+      deliveycounting=deliveycounting-2;
     } else {
       setDeliverySettingError("");
     }
 
     if (selectedMethods.length === 0) {
       setSelectedMethodsError("Please select at least one delivery method.");
+      deliveycounting=deliveycounting-1;
       isValid = false;
     } else {
       setSelectedMethodsError("");
@@ -200,6 +202,7 @@ const Delivery = React.forwardRef((props, ref) => {
 
     if (!deliveryOption) {
       setDeliveryOptionError("Please select a delivery option.");
+
       isValid = false;
     } else {
       setDeliveryOptionError("");
@@ -215,6 +218,10 @@ const Delivery = React.forwardRef((props, ref) => {
     if (!maxPriceValue) {
       setMaxPriceValueError("Please enter a maximum price value.");
       isValid = false;
+      if(deliveycounting===6)
+      {
+        deliveycounting=deliveycounting-1;
+      }
     } else {
       setMaxPriceValueError("");
     }
@@ -222,6 +229,10 @@ const Delivery = React.forwardRef((props, ref) => {
     if (scheduledDay.length === 0 || scheduledDay[0] === "") {
       setScheduledDeliveryDurationError("Please select a scheduled delivery duration.");
       isValid = false;
+      if(deliveycounting===6)
+        {
+          deliveycounting=deliveycounting-1;
+        }
     } else {
       setScheduledDeliveryDurationError("");
     }
@@ -229,6 +240,7 @@ const Delivery = React.forwardRef((props, ref) => {
     if (!packageCharge) {
       setPackagingChargeError("Please enter a packaging charge.");
       isValid = false;
+      deliveycounting=deliveycounting-1;
     } else {
       setPackagingChargeError("");
     }
@@ -238,7 +250,9 @@ const Delivery = React.forwardRef((props, ref) => {
 
 
 
-
+  const getdeliverycount=()=>{
+    return deliveycounting;
+  }
 
 
 
@@ -717,6 +731,7 @@ const convertTo24Hour = (time) => {
   useImperativeHandle(ref, () => ({
     getFormData,
     validateDeliverySetting,
+    getdeliverycount
   }));
   const basicdetail = useSelector((state) => state.basicDetails.Details);
 
@@ -758,13 +773,13 @@ const convertTo24Hour = (time) => {
       {showdelivery && (
         <div className="deliveryContent">
           <h3>Delivery service time</h3>
-          <div className="checkBoxContainerdel">
-            <label>
-              <input className="checkboxdel" type="checkbox" onClick={()=>{
-                setsametime(!sametime)
-                console.log(true)
+        <div className="checkBoxContainerdel">
+          <label>
+            <input className="checkboxdel" type="checkbox" onClick={()=>{
+              setsametime(!sametime)
+              console.log(true)
 
-              }}/>
+            }}/>
               <p className="cPname">Same as restaurant working time</p>
             </label>
           </div>
