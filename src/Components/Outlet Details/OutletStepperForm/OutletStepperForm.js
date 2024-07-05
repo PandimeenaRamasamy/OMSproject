@@ -49,10 +49,10 @@ function Stepform() {
     setToggleButton3,} = useContext(LocationContext);
 
   const Basicdeatil=2;
-  const dineincount=5;
+  // const dineincount=5;
   // const pickupcount=14.5;
   const deliverycount=6;
-  const kitchencount=2;
+  // const kitchencount=2;
 
   const outletsteps = [
     {
@@ -197,9 +197,11 @@ function Stepform() {
         break;
       case 2:
         isValid = dineinref.current.validate();
+        let dineincount=dineinref.current.dineincount();
         if (isValid) {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
+        
           setcount(count+dineincount)
           dispatch(postDineinDataRequest(newFormData1));
           let dinein=dineinref.current.getFormData();
@@ -208,6 +210,7 @@ function Stepform() {
           JSON.stringify(dinein)
         );
         toast.success("Data Has Been Stored Successfully .");
+        console.log(dineincount)
         }
         else{
           const updatecount=count-dineincount;
@@ -265,17 +268,21 @@ function Stepform() {
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
+      let  kitchencount = kitchenformRef.current.getkitchenCount();
+
         if (isValid) {
+             let kitchen=kitchenformRef.current.getFormData();
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
           setcount(count+kitchencount)
           dispatch(PostKitchenDataRequest(newFormData1));
-          let kitchen=kitchenformRef.current.getFormData();
+       
           sessionStorage.setItem(
             "Kitchen",   
             JSON.stringify(kitchen)
           );
           toast.success("Data Has Been Stored Successfully .");
+          console.log(kitchencount) 
         } else {
           const updatecount=count-kitchencount;
           setcount(updatecount)
