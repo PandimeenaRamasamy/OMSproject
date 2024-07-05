@@ -231,7 +231,7 @@ const Sidenavbar = () => {
 }
 
 const goToNew = () => {
-  navigate('/',{ state: { pagename: "Registration" ,Id:"null"} });
+  navigate('/');
 
   
 };
