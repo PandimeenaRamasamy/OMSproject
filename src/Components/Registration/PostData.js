@@ -64,7 +64,7 @@ const PostDataForm = () => {
   });
 
 
-  const registration=8.7;
+  const registration=3;
 
 
 

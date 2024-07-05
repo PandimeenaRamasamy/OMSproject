@@ -757,6 +757,10 @@ const Location = forwardRef((props, ref) => {
     state: "",
     country: "",
   });
+
+  let locationdatacount=6;
+
+
   const data = useSelector((state) => state.getlocationdata.data);
   const [locationError, setLocationError] = useState({
     addressLine1: "",
@@ -861,6 +865,8 @@ const Location = forwardRef((props, ref) => {
     }));
   };
 
+
+
   const getValidate = () => {
     let isValid = true;
 
@@ -868,10 +874,10 @@ const Location = forwardRef((props, ref) => {
       isValid = false;
       errors. addressLine1 = "Please Enter Address";
     }
-    if (!form. addressLine2) {
-      isValid = false;
-      errors. addressLine2 = "Please Enter Address";
-    }
+    // if (!form. addressLine2) {
+    //   isValid = false;
+    //   errors. addressLine2 = "Please Enter Address";
+    // }
 
    
     if (!form.pinCode) {

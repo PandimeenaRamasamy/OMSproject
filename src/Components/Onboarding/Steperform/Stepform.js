@@ -86,9 +86,9 @@ function Stepform({data}) {
     setVisitedSteps(updatedVisitedSteps);
   }, [activeStep]);
 
-  const restaurantcount=11.6;
-  const Locationcount=14.5;
-  const Bankdetailscount=11.6;
+  // const restaurantcount=4;
+  const Locationcount=5;
+  const Bankdetailscount=4;
   let restaurantdata={}
   let locationdata={}
   let Fssaidata={}
@@ -96,11 +96,13 @@ function Stepform({data}) {
   let newFormData = { ...mainForm };
   const handleSaveAndNext = () => {
     let isValid = true;
+    const restaurantcount=0;
    
 
     switch (activeStep) {
       case 0:
         isValid = restaurantDetailsRef.current.validate();
+        restaurantcount=restaurantDetailsRef.current.getrestaurantcount();
         console.log()
         if (isValid) {
           newFormData = {

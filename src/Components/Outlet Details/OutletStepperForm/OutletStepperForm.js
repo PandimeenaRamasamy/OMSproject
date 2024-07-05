@@ -43,11 +43,11 @@ function Stepform() {
   const [basicDetailsForm, setBasicDetailsForm] = useState('');
   const { count,setcount} = useContext(LocationContext);
 
-  const Basicdeatil=5.8;
-  const dineincount=14.5;
-  const pickupcount=14.5;
-  const deliverycount=17.4;
-  const kitchencount=5.8;
+  const Basicdeatil=2;
+  const dineincount=5;
+  // const pickupcount=14.5;
+  const deliverycount=6;
+  const kitchencount=2;
 
   const outletsteps = [
     {
@@ -158,6 +158,7 @@ function Stepform() {
   const handleSaveandNext = async () => {
     let newFormData1 = {};
     let isValid = true;
+    let pickupcount=0;
     switch (outletactiveStep) {
       case 0:
         newFormData1 = basicDetailsref.current.getFormData();
@@ -210,8 +211,11 @@ function Stepform() {
         break;
       case 3:
         isValid = pickUpformRef.current.validate();
+        
         if (isValid) {
           newFormData1 = pickUpformRef.current.getFormData();
+          pickupcount=pickUpformRef.current.getpickupcount();
+
           setPickupForm(newFormData1);
           setcount(count+pickupcount)
           dispatch(PostPickupDataRequest(newFormData1));
