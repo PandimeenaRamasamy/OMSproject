@@ -9,6 +9,8 @@ import info from "../../../assets/images/info.png";
 
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
 import addphoto from "../../../assets/images/Addphotos.png";
+import { useContext } from "react";
+import { LocationContext } from "../../LocationProvider";
 
 
 const Dinein = React.forwardRef((props,ref) => {
@@ -51,6 +53,24 @@ const Dinein = React.forwardRef((props,ref) => {
       bufferDays: "",
     },
   });
+  const {  togglebutton1,
+    setToggleButton1,
+    togglebutton2,
+    setToggleButton2,
+    togglebutton3,
+    setToggleButton3,
+
+  
+  } = useContext(LocationContext);
+  
+  useEffect(()=>{
+    if(togglebutton1)
+    {
+      setDineinselectedButton(true)    
+    }
+
+  },[])
+
 
 
 
@@ -407,22 +427,29 @@ const Dinein = React.forwardRef((props,ref) => {
     e.preventDefault();
     setDineinselectedButton(true);
     setOutletdetails({ ...Outletdetails, dineIn: e.target.value });
+    setToggleButton1(!togglebutton1)
+    
+    
   };
 
   const handleDineinDisable = (e) => {
     e.preventDefault();
     setDineinselectedButton(false);
     setOutletdetails({ ...Outletdetails, dineIn: e.target.value });
+    setToggleButton1(!togglebutton1)
   };
 
   const handleInteractiveEnable = (e) => {
     e.preventDefault();
     setInteractiveselectedButton(true);
+   
   };
 
   const handleInteractiveDisable = (e) => {
     e.preventDefault();
     setInteractiveselectedButton(false);
+       
+
   };
   const handleCheckinEnable = (e) => {
     e.preventDefault();
