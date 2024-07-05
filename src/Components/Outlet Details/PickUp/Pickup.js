@@ -115,6 +115,8 @@ const Pickup = React.forwardRef((props, ref) => {
 
   const handleDisable = () => {
     setIsEnabled(false);
+    setToggleButton2(!togglebutton2);
+
   };
 
   const getFormData = () => {
@@ -190,7 +192,7 @@ const handleUpClick = () => {
 
 
 
-  
+
   
 
 
@@ -242,6 +244,7 @@ const handleUpClick = () => {
               {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}
               {pickuperror.serviceTimeTo && <div className='error-flex'>{pickuperror.serviceTimeTo}</div>}
             </div>
+
             <h5 className='Pickup_heading7'>Pick up Payment</h5>
             <h5 className='Pickup_heading10'>Please mention the payment methods</h5>
             <div>
