@@ -111,6 +111,7 @@ const Pickup = React.forwardRef((props, ref) => {
 
   const handleEnable = () => {
     setIsEnabled(true);
+    setToggleButton2(!togglebutton2);
   };
 
   const handleDisable = () => {
@@ -209,7 +210,10 @@ const handleUpClick = () => {
       )
       const [sametime,setsametime]=useState(false);
 
-  return (
+      
+
+
+ return (
     <div className='Pickup_container'>
       <div className='Pickup_form' id={isEnabled?'pickupContainer':'pickupcontain'} style={{marginBottom:isEnabled?'70px':'500px',}}>
         <div><h5 className='Pickup_heading1'>Pick Up Details</h5></div>
