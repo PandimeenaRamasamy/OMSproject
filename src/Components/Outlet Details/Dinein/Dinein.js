@@ -471,47 +471,59 @@ const Dinein = React.forwardRef((props,ref) => {
 
 
 }
+const dineincount=()=>{
+  return dinecount
+}
 
   useImperativeHandle(ref,()=>({
     getFormData,
     validate,
+    dineincount,
 
 
 }))
+let dinecount=5;
 const validate=()=>{
   const errors={
     checkIn:{},
   };
   let isValid=true;
+  
   if(CheckinselectedButton && !Outletdetails.checkIn.maximumPeopleAllowedOnline)
     {
       errors.checkIn.maximumPeopleAllowedOnline="Please Fill this Field"
       isValid=false;
+      dinecount=dinecount-1
     }
     if(CheckinselectedButton && !Outletdetails.checkIn.maximumPeopleAllowedOffline)
       {
         errors.checkIn.maximumPeopleAllowedOffline="Please Fill this Field"
         isValid=false;
+        dinecount=dinecount-1
       }
       if(CheckinselectedButton && !Outletdetails.checkIn.lateShowTime)
         {
           errors.checkIn.lateShowTime="Please Fill this Field"
           isValid=false;
+          dinecount=dinecount-1
         }
         if(CheckinselectedButton && !Outletdetails.checkIn.autoCancelTime)
           {
             errors.checkIn.autoCancelTime="Please Fill this Field"
             isValid=false;
+            dinecount=dinecount-1
           }
           if(CheckinselectedButton && !Outletdetails.checkIn.abandonTime)
             {
               errors.checkIn.autoCancelTime="Please Fill this Field"
               isValid=false;
+              dinecount=dinecount-1
             }
     
     setDineInErrors(errors);
     return isValid;
 }
+
 
 const handleBlur = (event, field) => {
   if (event.target.value.trim() === '') {

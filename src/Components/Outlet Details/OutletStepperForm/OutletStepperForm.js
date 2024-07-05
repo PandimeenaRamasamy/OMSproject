@@ -194,6 +194,7 @@ function Stepform() {
         if (isValid) {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
+          dineincount=dineinref.current.dineincount();
           setcount(count+dineincount)
           dispatch(postDineinDataRequest(newFormData1));
           let dinein=dineinref.current.getFormData();
