@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useImperativeHandle } from 'react';
+import React, { useState, useEffect, useImperativeHandle ,useContext} from 'react';
 import "./Pickup.scss";
 import vector from "../../../assets/images/Vector.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
+import { LocationContext } from "../../LocationProvider";
 
 const Pickup = React.forwardRef((props, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,6 +31,24 @@ const Pickup = React.forwardRef((props, ref) => {
     eta: ""
   });
   const [isEnabled, setIsEnabled] = useState(false);
+  const {  togglebutton1,
+    setToggleButton1,
+    togglebutton2,
+    setToggleButton2,
+    togglebutton3,
+    setToggleButton3,
+
+  
+  } = useContext(LocationContext);
+
+
+  useEffect(()=>{
+    if(togglebutton2)
+    {
+      setIsEnabled(true);
+    }
+
+  },[])
 
   useEffect(() => {
     const savedData = JSON.parse(sessionStorage.getItem("Pickup"));
@@ -167,6 +186,12 @@ const handleUpClick = () => {
       setForm({ ...form, payment: [...form.payment, value] });
     }
   };
+
+
+  
+  
+
+
 
   const basicdetail = useSelector((state) => state.basicDetails.Details);
 

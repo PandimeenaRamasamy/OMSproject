@@ -1,5 +1,5 @@
 import "./OutletStepperForm.scss";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef,useContext } from 'react';
 import { CiUser } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
 import { GiPressureCooker } from "react-icons/gi";
@@ -17,6 +17,7 @@ import BasicDetails from "../Basicdetails/BasicDetails";
 import Delivery from "../Delivery/Delivery";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LocationContext } from "../../LocationProvider";
 
 function Receipt() {
   return <h2></h2>;
@@ -40,6 +41,13 @@ function Stepform() {
   const [dineInForm, setDineInForm] = useState("");
   const [deliveryform, setDeliveryForm] = useState("");
   const [basicDetailsForm, setBasicDetailsForm] = useState('');
+  const { count,setcount} = useContext(LocationContext);
+
+  const Basicdeatil=5.8;
+  const dineincount=14.5;
+  const pickupcount=14.5;
+  const deliverycount=17.4;
+  const kitchencount=5.8;
 
   const outletsteps = [
     {
@@ -154,6 +162,7 @@ function Stepform() {
       case 0:
         newFormData1 = basicDetailsref.current.getFormData();
         setBasicDetailsForm(newFormData1);
+        setcount(count+Basicdeatil)
         dispatch(saveBasicDetailsRequest(newFormData1));
 
 
@@ -184,6 +193,7 @@ function Stepform() {
         if (isValid) {
           newFormData1 = dineinref.current.getFormData();
           setDineInForm(newFormData1);
+          setcount(count+dineincount)
           dispatch(postDineinDataRequest(newFormData1));
           let dinein=dineinref.current.getFormData();
         sessionStorage.setItem(
@@ -193,6 +203,8 @@ function Stepform() {
         toast.success("Data Has Been Stored Successfully .");
         }
         else{
+          const updatecount=count-dineincount;
+          setcount(updatecount)
           toast.error("Please fill out the required fields before moving to the next step")
         }
         break;
@@ -201,6 +213,7 @@ function Stepform() {
         if (isValid) {
           newFormData1 = pickUpformRef.current.getFormData();
           setPickupForm(newFormData1);
+          setcount(count+pickupcount)
           dispatch(PostPickupDataRequest(newFormData1));
           let pickup=pickUpformRef.current.getFormData();
           sessionStorage.setItem(
@@ -210,6 +223,8 @@ function Stepform() {
           toast.success("Data Has Been Stored Successfully .");
           
         } else {
+          const updatecount=count-pickupcount;
+          setcount(updatecount)
           toast.error("Please fill out the required fields before moving to the next step.");
         }
         break;
@@ -219,6 +234,7 @@ function Stepform() {
           {
         newFormData1 = deliveryref.current.getFormData();
         setDeliveryForm(newFormData1);
+        setcount(count+deliverycount)
         dispatch(PostDeliveryDataRequest(newFormData1));
         let delivery=deliveryref.current.getFormData();
           sessionStorage.setItem(
@@ -227,12 +243,19 @@ function Stepform() {
           );
           toast.success("Data Has Been Stored Successfully .");
         }
+
+        else {
+          const updatecount=count-deliverycount;
+          setcount(updatecount)
+          toast.error("Please fill out the required fields before moving to the next step.");
+        }
         break;
       case 5:
         isValid = kitchenformRef.current.validate();
         if (isValid) {
           newFormData1 = kitchenformRef.current.getFormData();
           setKitchenForm(newFormData1);
+          setcount(count+kitchencount)
           dispatch(PostKitchenDataRequest(newFormData1));
           let kitchen=kitchenformRef.current.getFormData();
           sessionStorage.setItem(
@@ -241,6 +264,8 @@ function Stepform() {
           );
           toast.success("Data Has Been Stored Successfully .");
         } else {
+          const updatecount=count-kitchencount;
+          setcount(updatecount)
           toast.error("Please fill out the required fields before moving to the next step.");
         }
         break;

@@ -66,6 +66,7 @@ const Home = () => {
                 {category}
               </li>
             ))} */}
+
             <div className='linkitems' style={{width:'400px',height:'30px',display:"flex",flexDirection:"row"}}>
             {categories.map((category) => (
                     <li
@@ -76,7 +77,7 @@ const Home = () => {
                         {category}
                     </li>
                 ))}
-                </div>
+                </div>  
           </ul>
         </nav>    
         </div>  
@@ -85,7 +86,7 @@ const Home = () => {
                 <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
             </div>
 }
-        {activeCategory === 'PendingRequest' && <Pending/>}
+{activeCategory === 'PendingRequest'  && <Pending/>}
        
 
         

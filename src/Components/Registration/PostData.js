@@ -23,14 +23,14 @@ const PostDataForm = () => {
   const data2 = useSelector((state) => state.registration.data);
   console.log("data2", data2);
   const loactiondata = useSelector((state) => state.locationiddata.locationId);
-
+  
   const printing = () => {
     console.log("data loaction id", loactiondata);
   };
   console.log("Id from home page", Id);
 
   const data = useSelector((state) => state.getlocationdata.data);
-  const { showoutlets, setshowoutlets } = useContext(LocationContext);
+  const { showoutlets, setshowoutlets ,count,setcount} = useContext(LocationContext);
 
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
@@ -62,6 +62,9 @@ const PostDataForm = () => {
     gstNumbererror: "",
     base64Imageerror: "",
   });
+
+
+  const registration=8.7;
 
 
 
@@ -183,6 +186,8 @@ const PostDataForm = () => {
       toast.success("Data has been stored successfully!");
       dispatch(getDataRequest());
       setshowoutlets(true);
+      setcount(count + registration);
+      console.log("counting",count);
       setTimeout(() => {
         navigate("/outlet/Onboaring", { state: { pagename: "Onboaring" } });
       }, 3000); // 3000 milliseconds = 3 seconds

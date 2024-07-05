@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef ,useContext} from "react";
 import "./Stepform.scss";
-
+import { LocationContext } from "../../LocationProvider";
 import Restaurant from "../RestaurantDetails/Restaurant";
 import Fssai from "../../Onboarding/Fssai/Fssai";
 import BankDetails from "../BankDetails/BankDetails";
@@ -28,7 +28,7 @@ function Stepform({data}) {
   {data && data.map((location, index) => (
     console.log("datasteperform",location.location.id)) )}
     const success=useSelector((state)=>state.onBoard.data)
-
+    const { count,setcount} = useContext(LocationContext);
 
 
   const steps = [
@@ -86,6 +86,9 @@ function Stepform({data}) {
     setVisitedSteps(updatedVisitedSteps);
   }, [activeStep]);
 
+  const restaurantcount=11.6;
+  const Locationcount=14.5;
+  const Bankdetailscount=11.6;
   let restaurantdata={}
   let locationdata={}
   let Fssaidata={}
@@ -98,19 +101,32 @@ function Stepform({data}) {
     switch (activeStep) {
       case 0:
         isValid = restaurantDetailsRef.current.validate();
+        console.log()
         if (isValid) {
           newFormData = {
             ...newFormData,
             restaurant_details: restaurantDetailsRef.current.getFormData(),
              
           };
-          
+          setcount(count+restaurantcount)
+
+
+
+
+
           dispatch(postOnBoardingDataRequest(newFormData));
           toast.success("Data has been stored successfully!");
          
 
 
         }
+        else{
+          const updatecount=count-restaurantcount;
+          setcount(updatecount);
+
+        }
+
+
         restaurantdata=restaurantDetailsRef.current.getFormData();
         sessionStorage.setItem(
           "Restaurantdata",
@@ -125,8 +141,14 @@ function Stepform({data}) {
             location_Details: locationRef.current.getFormData(),
       
           };
+          setcount(count+Locationcount)
           dispatch(postOnBoardingDataRequest(newFormData));
           toast.success("Data has been stored successfully!");
+        }
+        else{
+          const updatecount=count-Locationcount;
+          setcount(updatecount);
+
         }
         locationdata=locationRef.current.getFormData();
         sessionStorage.setItem(
@@ -158,6 +180,8 @@ function Stepform({data}) {
             ...newFormData,
             bank_details: bankRef.current.getFormData(),
           };
+
+          setcount(count+Bankdetailscount)
           dispatch(postOnBoardingDataRequest(newFormData));
           
          
@@ -166,6 +190,11 @@ function Stepform({data}) {
         setTimeout(() => {
           navigate('/outlet/Outlet-Details',  { state: { pagename: "Outlet Details" } });
         }, 3000);
+
+        }
+        else{
+          const updatecount=count-Bankdetailscount;
+          setcount(updatecount);
 
         }
         Bankdetailsdata=bankRef.current.getFormData();
