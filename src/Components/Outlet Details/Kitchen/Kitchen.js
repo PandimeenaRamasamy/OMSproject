@@ -13,6 +13,7 @@ const Kitchen = React.forwardRef((props,ref) => {
     const Locid = LocationId.payload;
     const data2 = useSelector((state) => state.registration.data);
     const loactiondata = useSelector((state) => state.locationiddata.locationId);
+    const kitchenCount=2
 
 
     const [form,setForm]=useState({
@@ -35,10 +36,16 @@ const Kitchen = React.forwardRef((props,ref) => {
     }
     useImperativeHandle(ref,()=>({
         getFormData,
-        validate
+        validate,
+        getkitchenCount
 
      
     }))
+
+    const getkitchenCount=()=>{
+      return kitchenCount;
+
+    }
     const validate=()=>{
         let isValid=true;
 
@@ -47,11 +54,14 @@ const Kitchen = React.forwardRef((props,ref) => {
             {
           errors.lastOrderTime="Please Enter The Details"
           isValid=false;
+          kitchenCount=kitchenCount-1
         }
         if(!form.kdsAlert)
             {
           errors.kdsAlert="Please Enter The Details"
           isValid=false;
+          kitchenCount=kitchenCount-1
+
         }
             setKitchenError(errors);
             return isValid;
