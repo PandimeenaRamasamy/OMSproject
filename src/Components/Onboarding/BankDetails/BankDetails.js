@@ -188,6 +188,7 @@ const BankDetails = forwardRef((props, ref) => {
     AccountHolderName: "",
     reAccountNumber: ""
   });
+  let bankcount=4;
 
   const [bankError, setBankError] = useState({
     accountNumber: "",
@@ -268,6 +269,8 @@ const BankDetails = forwardRef((props, ref) => {
     getFormData,
     resetForm,
     validate,
+    getbankcount
+    
   }));
 
   const handleKeyPress = (event) => {
@@ -302,8 +305,10 @@ const BankDetails = forwardRef((props, ref) => {
       case 'accountNumber':
         if (!value) {
           error.accountNumber = "Please Enter Account Number";
+          bankcount=bankcount-1;
         } else if (value !== bankform.reAccountNumber && bankform.reAccountNumber !== "") {
           error.reAccountNumber = "Account Number does not match";
+          bankcount=bankcount-1;
         } else {
           error.accountNumber = "";
           error.reAccountNumber = "";
@@ -312,8 +317,10 @@ const BankDetails = forwardRef((props, ref) => {
       case 'reAccountNumber':
         if (!value) {
           error.reAccountNumber = "Please Re-enter Account Number";
+          bankcount=bankcount-1;
         } else if (value !== bankform.accountNumber) {
           error.reAccountNumber = "Account Number does not match";
+          bankcount=bankcount-1;
         } else {
           error.reAccountNumber = "";
           error.accountNumber = "";
@@ -322,6 +329,7 @@ const BankDetails = forwardRef((props, ref) => {
       case 'ifscCode':
         if (!value) {
           error.ifscCode = "Please Enter IFSC code";
+          bankcount=bankcount-1;
         } else {
           error.ifscCode = "";
         }
@@ -329,6 +337,7 @@ const BankDetails = forwardRef((props, ref) => {
       case 'AccountHolderName':
         if (!value) {
           error.AccountHolderName = "Please Enter Account Holder Name";
+          bankcount=bankcount-1;
         } else {
           error.AccountHolderName = "";
         }
@@ -338,6 +347,10 @@ const BankDetails = forwardRef((props, ref) => {
     }
     setBankError((prevErrors) => ({ ...prevErrors, ...error }));
   };
+
+  const getbankcount=()=>{
+    return bankcount;
+  }
 
   const validate = () => {
     let isValid = true;

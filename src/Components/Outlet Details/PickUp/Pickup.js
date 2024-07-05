@@ -118,6 +118,12 @@ const Pickup = React.forwardRef((props, ref) => {
   const handleDisable = () => {
     setIsEnabled(false);
     setToggleButton2(!togglebutton2);
+    pickcount=0;
+   
+      sessionStorage.removeItem("Pickup");
+  
+
+
 
   };
 

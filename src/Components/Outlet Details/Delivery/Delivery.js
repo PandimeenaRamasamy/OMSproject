@@ -177,9 +177,12 @@ const Delivery = React.forwardRef((props, ref) => {
     }
   };
  
+  
 
   const validateDeliverySetting = () => {
     let isValid = true;
+
+    
 
     if (!timeSlot.some((slot) => slot.openingTime && slot.closingTime)) {
       setDeliverySettingError("Please fill out all delivery setting time slots.");

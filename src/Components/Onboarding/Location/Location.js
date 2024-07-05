@@ -838,6 +838,7 @@ const Location = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     getFormData,
+    getlocationcount,
     getValidate,
     resetForm,
   }));
@@ -873,6 +874,7 @@ const Location = forwardRef((props, ref) => {
     if (!form. addressLine1) {
       isValid = false;
       errors. addressLine1 = "Please Enter Address";
+      locationdatacount=locationdatacount-1;
     }
     // if (!form. addressLine2) {
     //   isValid = false;
@@ -883,28 +885,36 @@ const Location = forwardRef((props, ref) => {
     if (!form.pinCode) {
       isValid = false;
       errors.pinCode = "Please Enter Pincode";
+      locationdatacount=locationdatacount-1;
     }
     
     else if (!/^\d{6}$/.test(form.pinCode)) {
       isValid = false;
       errors.pinCode = "Please Enter a valid 6-digit Pincode";
+      locationdatacount=locationdatacount-1;
     }
     if (!form.city) {
       isValid = false;
       errors.city = "Please Enter City";
+      locationdatacount=locationdatacount-1;
     }
     if (!form.state) {
       isValid = false;
       errors.state = "Please Enter State";
+      locationdatacount=locationdatacount-1;
     }
     if (!form.country) {
       isValid = false;
       errors.country = "Please Enter Country";
+      locationdatacount=locationdatacount-1;
     }
 
     setLocationError(errors);
     return isValid;
   };
+  const getlocationcount=()=>{
+    return locationdatacount;
+  }
 
   const resetForm = () => {
     setForm({

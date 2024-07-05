@@ -41,7 +41,12 @@ function Stepform() {
   const [dineInForm, setDineInForm] = useState("");
   const [deliveryform, setDeliveryForm] = useState("");
   const [basicDetailsForm, setBasicDetailsForm] = useState('');
-  const { count,setcount} = useContext(LocationContext);
+  const { count,setcount,togglebutton1,
+    setToggleButton1,
+    togglebutton2,
+    setToggleButton2,
+    togglebutton3,
+    setToggleButton3,} = useContext(LocationContext);
 
   const Basicdeatil=2;
   const dineincount=5;
@@ -143,6 +148,7 @@ function Stepform() {
 
   const [outletvisitedSteps, setOutletVisitedSteps] = useState(new Array(outletsteps.length).fill(false));
 
+ 
   useEffect(() => {
     const updatedVisitedSteps = [...outletvisitedSteps];
     updatedVisitedSteps[outletactiveStep] = true;
@@ -211,6 +217,9 @@ function Stepform() {
         break;
       case 3:
         isValid = pickUpformRef.current.validate();
+        if(!togglebutton2){
+          sessionStorage.removeItem("Pickup");
+        }
         
         if (isValid) {
           newFormData1 = pickUpformRef.current.getFormData();
