@@ -18,6 +18,14 @@ const Pendingpage = () => {
 
   
   } = useContext(LocationContext);
+
+  // if(togglebutton2)
+  // {
+  //   count=count*
+  // }
+
+
+
   return (
     <>
     {showoutlets&&

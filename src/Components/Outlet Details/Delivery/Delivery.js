@@ -1,6 +1,6 @@
 
 
-import React, { useState, useImperativeHandle, useEffect } from "react";
+import React, { useState, useImperativeHandle, useEffect,useContext } from "react";
 import "./style.scss";
 import DayAndTime from "../Delivery/components/AddTime";
 // import  from "../../Assests/Image/Vector.svg";
@@ -12,6 +12,7 @@ import AddTime from "../Delivery/components/AddTime";
 import vector from "../../../assets/images/Vector.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationId } from "../../../redux/Actions/PostDataAction";
+import {LocationContext} from '../../LocationProvider'
 
 const Delivery = React.forwardRef((props, ref) => {
   const [isEnable, setIsEnable] = useState(false);
@@ -19,6 +20,25 @@ const Delivery = React.forwardRef((props, ref) => {
   const [allChecked, setAllChecked] = useState(false);
   const data = useSelector((state) => state.getlocationdata.data);
   const loactiondata = useSelector((state) => state.locationiddata.locationId);
+
+  const {  togglebutton1,
+    setToggleButton1,
+    togglebutton2,
+    setToggleButton2,
+    togglebutton3,
+    setToggleButton3,
+
+  
+  } = useContext(LocationContext);
+  
+  useEffect(()=>{
+    if(togglebutton3)
+    {
+      setShowDelivery(true)    
+    }
+
+  },[])
+
 
   const dispatch = useDispatch();
   const reducer = useSelector((state) => state.deliveryDataReducer);
@@ -187,7 +207,7 @@ const Delivery = React.forwardRef((props, ref) => {
     if (!timeSlot.some((slot) => slot.openingTime && slot.closingTime)) {
       setDeliverySettingError("Please fill out all delivery setting time slots.");
       isValid = false;
-      deliveycounting=deliveycounting-2;
+      deliveycounting=deliveycounting-1;
     } else {
       setDeliverySettingError("");
     }
@@ -449,16 +469,21 @@ const convertTo24Hour = (time) => {
   const data2 = useSelector((state) => state.registration.data);
   const enableClick = () => {
     setShowDelivery(true);
-    if (isEnable === false) {
-      setIsEnable(true);
-    }
+    setIsEnable(true);
+    // if (isEnable === false) {
+     
+      setToggleButton3(true)
+    // }
   };
 
   const disableClick = () => {
     setShowDelivery(false);
-    if (isEnable === true) {
-      setIsEnable(false);
-    }
+    setIsEnable(false);
+    setToggleButton3(false)
+    // if (isEnable === true) {
+     
+     
+    // }
   };
 
   const handleCheckboxChange = (event) => {
@@ -751,21 +776,21 @@ const convertTo24Hour = (time) => {
       <div className="delivery-header">
         <h2>Delivery Details</h2>
         <h3>Delivery</h3>
-        <button onClick={()=>handleeclick()
+        {/* <button onClick={()=>handleeclick()
         }>click</button>
-        
+         */}
         <p>Please mention the delivery service</p>
       </div>
       <div className='switchButtonStyles'>
         <input
           type="submit"
-          className={isEnable ? "blue" : "hello"}
+          className={showdelivery ? "blue" : "hello"}
           value="Enable"
           onClick={enableClick}
         />
         <input
           type="submit"
-          className={isEnable ? "hello" : "blue"}
+          className={!showdelivery ? "blue" : "hello"}
           value="Disable"
           onClick={disableClick}
         />

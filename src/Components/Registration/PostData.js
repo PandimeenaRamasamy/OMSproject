@@ -171,7 +171,12 @@ const PostDataForm = () => {
     (Registrationform.locationId && Registrationform.locationId) ||
     (data2 && data2);
 
+
+
+
   const handleSubmit = (event) => {
+
+
     event.preventDefault();
     const isValid = validationofregistrationform();
     if (isValid) {

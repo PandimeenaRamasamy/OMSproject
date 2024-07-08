@@ -28,6 +28,7 @@ const Dinein = React.forwardRef((props,ref) => {
 
   const datafromapi = useSelector((state) => state.postData.data);
   const data2 = useSelector((state) => state.registration.data);
+  
 
   const [Outletdetails, setOutletdetails] = useState({
 
@@ -66,7 +67,7 @@ const Dinein = React.forwardRef((props,ref) => {
   useEffect(()=>{
     if(togglebutton1)
     {
-      setDineinselectedButton(true)    
+      setCheckinselectedButton(true)    
     }
 
   },[])
@@ -427,7 +428,7 @@ const Dinein = React.forwardRef((props,ref) => {
     e.preventDefault();
     setDineinselectedButton(true);
     setOutletdetails({ ...Outletdetails, dineIn: e.target.value });
-    setToggleButton1(!togglebutton1)
+  
     
     
   };
@@ -436,7 +437,7 @@ const Dinein = React.forwardRef((props,ref) => {
     e.preventDefault();
     setDineinselectedButton(false);
     setOutletdetails({ ...Outletdetails, dineIn: e.target.value });
-    setToggleButton1(!togglebutton1)
+  
   };
 
   const handleInteractiveEnable = (e) => {
@@ -454,11 +455,13 @@ const Dinein = React.forwardRef((props,ref) => {
   const handleCheckinEnable = (e) => {
     e.preventDefault();
     setCheckinselectedButton(true);
+    setToggleButton1(!togglebutton1)
   };
 
   const handleCheckinDisable = (e) => {
     e.preventDefault();
     setCheckinselectedButton(false);
+    setToggleButton1(!togglebutton1)
   };
   const handleReservationEnable = (e) => {
     e.preventDefault();

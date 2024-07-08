@@ -1,4 +1,3 @@
-
 import React, {
   useState,
   useEffect,
@@ -6,7 +5,10 @@ import React, {
   useImperativeHandle,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataRequest, getLocationId } from "../../../redux/Actions/PostDataAction";
+import {
+  getDataRequest,
+  getLocationId,
+} from "../../../redux/Actions/PostDataAction";
 import "./Restaurant.scss";
 
 const Restaurant = forwardRef((props, ref) => {
@@ -26,7 +28,6 @@ const Restaurant = forwardRef((props, ref) => {
   const data2 = useSelector((state) => state.registration.data);
   console.log(data2);
 
-
   useEffect(() => {
     dispatch(getDataRequest());
   }, []);
@@ -42,7 +43,6 @@ const Restaurant = forwardRef((props, ref) => {
     restaurantNumber: "",
     whatsappNumber: "",
   };
-  let restaurantcounting=4;
 
   const [form, setForm] = useState(initialFormState);
   const [reserror, setResError] = useState({
@@ -82,12 +82,11 @@ const Restaurant = forwardRef((props, ref) => {
 
   useEffect(() => {
     const savedData = JSON.parse(sessionStorage.getItem("Restaurantdata"));
-   
 
     if (savedData) {
       setForm({
         locationId: (data2 && data2) || "",
-        businessLegalName: savedData.businessLegalName|| "",
+        businessLegalName: savedData.businessLegalName || "",
         phone: savedData.phone || "",
         email: savedData.email || "",
         website: savedData.websiteLink || "",
@@ -95,7 +94,6 @@ const Restaurant = forwardRef((props, ref) => {
         facebookLink: savedData.FaceBookLink || "",
         restaurantNumber: savedData.RestaurantNumber || "",
         // whatsappNumber: data[0].location.whatsappNumber || "",
-
       });
     }
     const handleBeforeUnload = () => {
@@ -110,7 +108,6 @@ const Restaurant = forwardRef((props, ref) => {
       sessionStorage.removeItem("Pickup");
       sessionStorage.removeItem("Delivery");
       sessionStorage.removeItem("Kitchen");
-
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => {
@@ -200,7 +197,6 @@ const Restaurant = forwardRef((props, ref) => {
     const errors = {};
     let isValid = true;
 
-
     // if (!form.businessLegalName) {
     //   errors.businessLegalName = "Please Enter The Name";
     //   isValid = false;
@@ -219,7 +215,6 @@ const Restaurant = forwardRef((props, ref) => {
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(form.email)) {
       errors.email = "Enter valid email";
     }
-    
 
     if (numbertype == "Mobile") {
       if (!form.whatsappNumber) {
@@ -242,11 +237,7 @@ const Restaurant = forwardRef((props, ref) => {
     const namePattern = /^[a-zA-Z\s]+$/; // Pattern for only letters and spaces
     if (form.businessLegalName.trim() === "") {
       setResError({ ...reserror, businessLegalName: "Enter your Name" });
-
-      restaurantcounting=restaurantcounting-1;
     } else if (!namePattern.test(form.businessLegalName)) {
-      
-      restaurantcounting=restaurantcounting-1;
       setResError({
         ...reserror,
         businessLegalName: "Name can only contain letters and spaces.",
@@ -260,11 +251,7 @@ const Restaurant = forwardRef((props, ref) => {
     // Adjust the regex pattern based on your requirements
     if (form.email === "") {
       setResError({ ...reserror, email: "Enter valid email " });
-      
-      restaurantcounting=restaurantcounting-1;
     } else if (!emailPattern.test(form.email)) {
-      
-      restaurantcounting=restaurantcounting-1;
       setResError({
         ...reserror,
         email: "Please enter a valid email address.",
@@ -276,12 +263,8 @@ const Restaurant = forwardRef((props, ref) => {
   const validatePhone = () => {
     const phonePattern = /^\d{10}$/;
     if (form.phone === "") {
-      
-      restaurantcounting=restaurantcounting-1;
       setResError({ ...reserror, phone: "Enter phone number" });
     } else if (!phonePattern.test(form.phone)) {
-      
-      restaurantcounting=restaurantcounting-1;
       setResError({ ...reserror, phone: "Please enter a valid phone number" });
     } else {
       setResError("");
@@ -294,11 +277,7 @@ const Restaurant = forwardRef((props, ref) => {
     if (numbertype !== "Landline") {
       if (form.whatsappNumber === "") {
         setResError({ ...reserror, whatsappNumber: "Enter whatsapp number" });
-        
-      restaurantcounting=restaurantcounting-1;
       } else if (!phonePattern.test(form.whatsappNumber)) {
-        
-      restaurantcounting=restaurantcounting-1;
         setResError({
           ...reserror,
           whatsappNumber: "Please enter a valid whatsapp number",
@@ -308,10 +287,26 @@ const Restaurant = forwardRef((props, ref) => {
       }
     }
   };
-  const getrestaurantcount=()=>{
-    return restaurantcounting;
-  }
+  const countingresfields = () => {};
 
+  let rescount = 0;
+
+  const getrestaurantcount = () => {
+    if (form.businessLegalName) {
+      rescount = rescount + 1;
+    }
+    if (form.phone) {
+      rescount = rescount + 1;
+    }
+    if (form.whatsappNumber) {
+      rescount = rescount + 1;
+    }
+
+    if (form.email) {
+      rescount = rescount + 1;
+    }
+    return rescount;
+  };
 
   const [numbertype, setnumbertype] = useState("Mobile");
 
