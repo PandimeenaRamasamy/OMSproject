@@ -509,6 +509,7 @@ const dineincount=()=>{
     getFormData,
     validate,
     dineincount,
+    getdineincount,
 
 
 }))
@@ -560,6 +561,29 @@ const handleBlur = (event, field) => {
     alert(`${field} must not be empty`);
   }
 };
+
+let rescount = 0;
+
+  const getdineincount = () => {
+    if (CheckinselectedButton && Outletdetails.checkIn.maximumPeopleAllowedOnline) {
+      rescount = rescount + 1;
+    }
+    if (CheckinselectedButton && Outletdetails.checkIn.maximumPeopleAllowedOffline) {
+      rescount = rescount + 1;
+    }
+    if (CheckinselectedButton && Outletdetails.checkIn.lateShowTime) {
+      rescount = rescount + 1;
+    }
+
+    if (CheckinselectedButton && Outletdetails.checkIn.autoCancelTime) {
+      rescount = rescount + 1;
+    }
+    if (CheckinselectedButton && !Outletdetails.checkIn.abandonTime) {
+      rescount = rescount + 1;
+    }
+    return rescount;
+  };
+
 
  
 
