@@ -38,6 +38,8 @@ const Pickup = React.forwardRef((props, ref) => {
     setToggleButton2,
     togglebutton3,
     setToggleButton3,
+    pagecounts,
+    setpagecounts
 
   
   } = useContext(LocationContext);
@@ -48,6 +50,19 @@ const Pickup = React.forwardRef((props, ref) => {
     {
       setIsEnabled(true);
     }
+    else if(!togglebutton2)
+      {
+        setIsEnabled(false)  
+        sessionStorage.removeItem("Pickup");  
+        setForm({...form,  serviceTimeFrom: "",
+          serviceTimeTo: "",
+          payment: [],
+          scheduledDuration: "",
+          packagingCharge: "",
+          eta: ""
+  
+        })
+      }
 
   },[])
 
@@ -119,8 +134,22 @@ const Pickup = React.forwardRef((props, ref) => {
     setIsEnabled(false);
     setToggleButton2(!togglebutton2);
     pickcount=0;
+    sessionStorage.removeItem("Pickup");
+    setForm({
+     
+     
+      serviceTimeFrom:  "",
+      serviceTimeTo:  "",
+      payment:  [],
+      scheduledDuration:  "",
+      packagingCharge:  "",
+      eta: "", 
+    });
+    
+
+    setpagecounts({ ...pagecounts, pickupc: 0 });
    
-      sessionStorage.removeItem("Pickup");
+   
   
 
 
@@ -154,6 +183,7 @@ const Pickup = React.forwardRef((props, ref) => {
 
   const validate = () => {
     let isValid = true;
+    
     const errors = {};
     if (!form.serviceTimeFrom && isEnabled) {
       errors.serviceTimeFrom = "Please fill this field";
@@ -182,6 +212,10 @@ const Pickup = React.forwardRef((props, ref) => {
       pickcount=pickcount-1;
     }
     setPickUpError(errors);
+    if(!isValid)
+    {
+      setpagecounts({ ...pagecounts, pickupc: 0 });
+    }
     return isValid;
   };
 

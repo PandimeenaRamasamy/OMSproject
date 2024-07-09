@@ -30,7 +30,7 @@ const PostDataForm = () => {
   console.log("Id from home page", Id);
 
   const data = useSelector((state) => state.getlocationdata.data);
-  const { showoutlets, setshowoutlets ,count,setcount} = useContext(LocationContext);
+  const { showoutlets, setshowoutlets ,count,setcount, wholecount,setwholecount,pagecounts,setpagecounts} = useContext(LocationContext);
 
   const [imagePreview, setImagePreview] = useState(null);
   const [file, setFile] = useState(null);
@@ -192,6 +192,9 @@ const PostDataForm = () => {
       dispatch(getDataRequest());
       setshowoutlets(true);
       setcount(count + registration);
+
+      setpagecounts({...pagecounts,Registrationc:3})
+      setwholecount(wholecount+1);
       console.log("counting",count);
       setTimeout(() => {
         navigate("/outlet/Onboaring", { state: { pagename: "Onboaring" } });

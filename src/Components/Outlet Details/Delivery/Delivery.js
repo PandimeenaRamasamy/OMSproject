@@ -140,53 +140,6 @@ const Delivery = React.forwardRef((props, ref) => {
   const [packagingChargeError, setPackagingChargeError] = useState("");
   
 
-  const data4 = {
-    location: {
-      id: "c43f3a9c-60c7-4443-b1da-477c2ad3c97c",
-      merchantId: "8dfe7674-709d-431c-a233-628e839ecc76",
-      restaurantName: "A2B",
-      name: "aruna",
-      phone: "+91 587283487r2",
-      email: "fdyu1@gmail.com",
-      addressLine1:
-        "71,amarajar st,New Meenakshi Nagar,New Ramnad Road Madurai.",
-      addressLine2: null,
-      addressLine3: null,
-      city: "Madurai",
-      state: "TamilNadu",
-      pinCode: "625009",
-      country: "India",
-      attributes:
-        '{"gstNumber": "seconddata12334", "DeliveryDetails": {"inHouse": {"flatFee": "enabled", "maximumRadius": "7","isEnabled": true, "batchOrder": "Yes", "feesStructure": "based on distance", "cashOnDelivery": "yes", "initial2MileAmount": "$5", "additional1MileAmount": "$1", "defaultCountOfBatchOrder": "3"}, "thirdParty": {"isEnabled": true, "doorDashId": "545238i874", "uberEatsId": "694925"}, "deliveryPayment": ["pay at store", "apple pay"], "packagingCharge": "5", "maximumOrderPrice": "$1000", "minimumOrderPrice": "$100", "scheduledDelivery": "yes", "deliverySettingTime": [{\"deliveryServiceTimeTo\": \"11:00PM\", \"deliveryServiceTimeFrom\": \"08:00AM\"}, {\"deliveryServiceTimeTo\": \"10:00PM\", \"deliveryServiceTimeFrom\": \"06:00PM\"}], "scheduledDeliveryDuration": "EOD"}}',
-    },
-         
-
-    media: [],
-    availabilityDtos: [
-      {
-        createdTime: null,
-        endTime: "07:00",
-        name: "HappyHours",
-        startTime: "05:00",
-        weekDay: "5",
-      },
-      {
-        createdTime: null,
-        endTime: "12:00PM",
-        name: "lunch",
-        startTime: "08:00AM",
-        weekDay: "4",
-      },
-      {
-        createdTime: null,
-        endTime: "12:00PM",
-        name: "lunch",
-        startTime: "08:00AM",
-        weekDay: "5",
-      },
-    ],
-  };
-
 
   const addtime = (index) => {
     if (index === "second") {
@@ -197,7 +150,7 @@ const Delivery = React.forwardRef((props, ref) => {
     }
   };
  
-  let deliveycounting=deliveryOption ==='yes'||deliveryOption==='Yes'?6:4;
+  let deliveycounting=0;
 
   const validateDeliverySetting = () => {
     let isValid = true;
@@ -207,14 +160,14 @@ const Delivery = React.forwardRef((props, ref) => {
     if (!timeSlot.some((slot) => slot.openingTime && slot.closingTime)) {
       setDeliverySettingError("Please fill out all delivery setting time slots.");
       isValid = false;
-      deliveycounting=deliveycounting-1;
+     
     } else {
       setDeliverySettingError("");
     }
 
     if (selectedMethods.length === 0) {
       setSelectedMethodsError("Please select at least one delivery method.");
-      deliveycounting=deliveycounting-1;
+      
       isValid = false;
     } else {
       setSelectedMethodsError("");
@@ -238,10 +191,7 @@ const Delivery = React.forwardRef((props, ref) => {
     if (!maxPriceValue) {
       setMaxPriceValueError("Please enter a maximum price value.");
       isValid = false;
-      if(deliveycounting===6)
-      {
-        deliveycounting=deliveycounting-1;
-      }
+     
     } else {
       setMaxPriceValueError("");
     }
@@ -249,10 +199,7 @@ const Delivery = React.forwardRef((props, ref) => {
     if (scheduledDay.length === 0 || scheduledDay[0] === "") {
       setScheduledDeliveryDurationError("Please select a scheduled delivery duration.");
       isValid = false;
-      if(deliveycounting===6)
-        {
-          deliveycounting=deliveycounting-1;
-        }
+     
     } else {
       setScheduledDeliveryDurationError("");
     }
@@ -260,7 +207,7 @@ const Delivery = React.forwardRef((props, ref) => {
     if (!packageCharge) {
       setPackagingChargeError("Please enter a packaging charge.");
       isValid = false;
-      deliveycounting=deliveycounting-1;
+     
     } else {
       setPackagingChargeError("");
     }
@@ -271,6 +218,36 @@ const Delivery = React.forwardRef((props, ref) => {
 
 
   const getdeliverycount=()=>{
+    if (timeSlot.some((slot) => slot.openingTime && slot.closingTime)){
+      deliveycounting=deliveycounting+1;
+
+    }
+    if(selectedMethods.length >0)
+    {
+      deliveycounting=deliveycounting+1;
+    }
+    if(deliveryOption==="yes"||deliveryOption==="Yes")
+    {
+      if(minPriceValue)
+      {
+        deliveycounting=deliveycounting+1;
+      }
+      if(maxPriceValue)
+      {
+        deliveycounting=deliveycounting+1;
+      }
+    }
+    if(scheduledDay.length >0 || scheduledDay[0] !== "")
+    {
+      deliveycounting=deliveycounting+1;
+
+    }
+    if(packageCharge)
+    {
+      deliveycounting=deliveycounting+1;
+    }
+
+
     return deliveycounting;
   }
 
@@ -324,67 +301,12 @@ const print=()=>{
 
 }
 
-// const convertTo24Hour = (time) => {
-//   const [timePart, modifier] = time.split(/(AM|PM)/i);
-//   let [hours, minutes] = timePart.split(':');
-//   if (modifier.toUpperCase() === 'PM' && hours !== '12') {
-//     hours = (parseInt(hours, 10) + 12).toString().padStart(2, '0');
-//   }
-//   if (modifier.toUpperCase() === 'AM' && hours === '12') {
-//     hours = '00';
-//   }
-//   return `${hours}:${minutes}`;
-// };
-
-const convertTo24Hour = (time) => {
-  const timeParts = time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-  
-  if (!timeParts) {
-    throw new Error('Invalid time format');
-  }
-
-  let [ , hours, minutes, modifier] = timeParts;
-  
-  hours = parseInt(hours, 10);
-  
-  if (modifier.toUpperCase() === 'PM' && hours !== 12) {
-    hours = (hours + 12).toString().padStart(2, '0');
-  } else if (modifier.toUpperCase() === 'AM' && hours === 12) {
-    hours = '00';
-  } else {
-    hours = hours.toString().padStart(2, '0');
-  }
-  
-  return `${hours}:${minutes}`;
-};
-
-// Example usage
 
 
-// useEffect(() => {
-//   // Simulate API call
-//   const fetchDeliverySettings = async () => {
-//     const deliverySettingTime = [
-//       { deliveryServiceTimeFrom: "08:00AM", deliveryServiceTimeTo: "11:00PM" },
-//       { deliveryServiceTimeFrom: "06:00PM", deliveryServiceTimeTo: "10:00PM" }
-//     ];
 
-//     const initialTimeSlot = deliverySettingTime.map(slot => ({
-//       openingTime: convertTo24Hour(slot.deliveryServiceTimeFrom),
-//       closingTime: convertTo24Hour(slot.deliveryServiceTimeTo),
-//     }));
 
-//     setTimeSlot(prevTimeSlot => [
-//       ...initialTimeSlot,
-//       ...prevTimeSlot.slice(initialTimeSlot.length)
-//     ]);
 
-//     if (initialTimeSlot.length > 1) settime2(true);
-//     if (initialTimeSlot.length > 2) settime3(true);
-//   };
 
-//   fetchDeliverySettings();
-// }, []);
 
   const [locationId, setlocationId] = useState();
 
