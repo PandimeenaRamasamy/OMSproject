@@ -60,6 +60,7 @@ const Dinein = React.forwardRef((props,ref) => {
     setToggleButton2,
     togglebutton3,
     setToggleButton3,
+    pagecounts,setpagecounts
 
   
   } = useContext(LocationContext);
@@ -68,6 +69,21 @@ const Dinein = React.forwardRef((props,ref) => {
     if(togglebutton1)
     {
       setCheckinselectedButton(true)    
+    }
+    else if(!togglebutton1)
+    {
+      setCheckinselectedButton(false)  
+      sessionStorage.removeItem("Dinein");  
+      setOutletdetails({...Outletdetails, checkIn: {
+        maximumPeopleAllowedOnline: "",
+        maximumPeopleAllowedOffline: "",
+        lateShowTime:"",
+        autoCancelTime: "",
+        abandonTime: "",
+        autoAssign: "no",
+      }
+
+      })
     }
 
   },[])
@@ -462,6 +478,23 @@ const Dinein = React.forwardRef((props,ref) => {
     e.preventDefault();
     setCheckinselectedButton(false);
     setToggleButton1(!togglebutton1)
+    setpagecounts({ ...pagecounts, dineinc: 0 });
+    setOutletdetails({
+
+     ...Outletdetails,
+      
+      checkIn: {
+        maximumPeopleAllowedOnline: "",
+        maximumPeopleAllowedOffline: "",
+        lateShowTime:"",
+        autoCancelTime: "",
+        abandonTime: "",
+        autoAssign: "no",
+      },
+      
+    })
+
+
   };
   const handleReservationEnable = (e) => {
     e.preventDefault();

@@ -28,7 +28,7 @@ function Stepform({data}) {
   {data && data.map((location, index) => (
     console.log("datasteperform",location.location.id)) )}
     const success=useSelector((state)=>state.onBoard.data)
-    const { count,setcount} = useContext(LocationContext);
+    const { count,setcount, wholecount,setwholecount,pagecounts,setpagecounts} = useContext(LocationContext);
 
 
   const steps = [
@@ -113,6 +113,10 @@ function Stepform({data}) {
              
           };
           setcount(count+restaurantcount)
+          setwholecount(wholecount+1)
+          setpagecounts({...pagecounts,Restaurantc:4})
+
+          
 
 
 
@@ -127,6 +131,7 @@ function Stepform({data}) {
         else{
           const updatecount=count-restaurantcount;
           setcount(updatecount);
+          setpagecounts({...pagecounts,Restaurantc:0})
 
         }
 
@@ -147,12 +152,16 @@ function Stepform({data}) {
       
           };
           setcount(count+Locationcount)
+          setwholecount(wholecount+1)
+          setpagecounts({...pagecounts,locationc:5})
           dispatch(postOnBoardingDataRequest(newFormData));
           toast.success("Data has been stored successfully!");
         }
         else{
           const updatecount=count-Locationcount;
           setcount(updatecount);
+          setpagecounts({...pagecounts,locationc:0})
+        
 
         }
         locationdata=locationRef.current.getFormData();
@@ -188,6 +197,8 @@ function Stepform({data}) {
           };
 
           setcount(count+Bankdetailscount)
+          setwholecount(wholecount+1)
+          setpagecounts({...pagecounts,Bankdetailsc:4})
           dispatch(postOnBoardingDataRequest(newFormData));
           
          
@@ -201,6 +212,7 @@ function Stepform({data}) {
         else{
           const updatecount=count-Bankdetailscount;
           setcount(updatecount);
+          setpagecounts({...pagecounts,Bankdetailsc:0})
 
         }
         Bankdetailsdata=bankRef.current.getFormData();
