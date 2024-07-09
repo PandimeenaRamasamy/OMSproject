@@ -10,7 +10,7 @@
     
     position: absolute; /* Position it absolutely relative to the button */
     top:150px;
-   left:850px;
+   left:820px;
     /* Align with the button */
     padding: 10px; /* Optional: padding inside the container */
     border-radius: 5px; /* Optional: rounded corners */
@@ -18,9 +18,8 @@
 }
 
 .dots {
-    position: fixed; /* Makes the button fixed */
     top:290px;
-    left: 870px;
+    left: 830px;
      /* Adjust this value to position the button from the right */
     background-color: transparent; /* Optional: to make the button background transparent */
     border: none; /* Optional: to remove the default border */

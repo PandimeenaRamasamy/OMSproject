@@ -124,16 +124,12 @@ const Home = () => {
 }
 
 
-{activeCategory === 'PendingRequest'  && 
-<div style={{display:'flex',flexDirection:'row',}}>
-{pages.map(page => (
-  <div style={{display:'flex',flexDirection:'row',}}>
-  <h1>hello</h1>
-    <Pending key={page.id} pagenaming="PendingRequest" />
+{activeCategory === 'PendingRequest' && 
+  <div style={{ width: "1200px", height: "auto", display: 'flex', flexWrap: "wrap", flexDirection: 'row', gap:"80px" }}>
+    {pages.map(page => (
+      <Pending key={page.id} pagenaming="PendingRequest" />
+    ))}
   </div>
-  
-))}
-</div>
 }
        
 
