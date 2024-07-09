@@ -325,6 +325,8 @@ const Pendingpage = ({ pagenaming }) => {
                 <div className="DineinToggle">
                   <label className="labelpending">Dine In</label>
                   <Toggle toggle={togglebutton1} settaggle={setToggleButton1} page="dinein" />
+                  {!togglebutton1 && <ModalDinein />}
+
                 </div>
                 <div className="DineinToggle">
                   <label className="labelpending">Pick Up</label>
@@ -334,6 +336,7 @@ const Pendingpage = ({ pagenaming }) => {
                 <div className="DineinToggle">
                   <label className="labelpending">Delivery</label>
                   <Toggle toggle={togglebutton3} settaggle={setToggleButton3} page="delivery" />
+                  {!togglebutton3  && <ModalDelivery />}
                 </div>
                 <div className="DineinToggle">
                   <label className="labelpending">Completed</label>

@@ -39,14 +39,14 @@ const Modal = () => {
   return (
     <>
     { showModal?
-    <div className="main-componentDinein">
-    <div className="simple-componentDinein">
-        <button className='btncrossDinein' onClick={handleCross} >X</button>
-        <img className='imgmodalDinein' src={Modal2}></img>
+    <div className="main-componentDelivery">
+    <div className="simple-componentDelivery">
+        <button className='btncrossDelivery' onClick={handleCross} >X</button>
+        <img className='imgmodalDelivery' src={Modal2}></img>
         <p>Are you sure you want to turn off Delivery ?</p>
-    <div className='btndivpendingDinein'>
-        <button className='btnnopendingDinein 'onClick={handleCross}>No</button>
-        <button className='btnyespendingDinein' onClick={handleCrossYes} >Yes</button>
+    <div className='btndivpendingDelivery'>
+        <button className='btnyesDelivery 'onClick={handleCross}>No</button>
+        <button className='btnnoDelivery' onClick={handleCrossYes} >Yes</button>
 
         </div>
    
