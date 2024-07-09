@@ -15,6 +15,8 @@ const Modal = ({setshowmodal,showmodal}) => {
     }
 
     
+
+
   return (
     <div className="main-component">
     <div className="simple-component">

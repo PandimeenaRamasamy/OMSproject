@@ -26,7 +26,7 @@ const Home = () => {
       
     };
 
-  const {publish,deleteoutlet,setdeleteoutlet } = useContext(LocationContext);
+  const {publish,deleteoutlet,setdeleteoutlet,duplicatePage ,pages} = useContext(LocationContext);
 
 
   let navigate = useNavigate();
@@ -122,7 +122,19 @@ const Home = () => {
   <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
 </div>
 }
-{activeCategory === 'PendingRequest'  && <Pending pagenaming="PendingRequest"/>}
+
+
+{activeCategory === 'PendingRequest'  && 
+<div style={{display:'flex',flexDirection:'row',}}>
+{pages.map(page => (
+  <div style={{display:'flex',flexDirection:'row',}}>
+  <h1>hello</h1>
+    <Pending key={page.id} pagenaming="PendingRequest" />
+  </div>
+  
+))}
+</div>
+}
        
 
         

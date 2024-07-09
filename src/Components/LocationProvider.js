@@ -13,6 +13,17 @@ export const LocationProvider = ({ children }) => {
   const [togglebutton2, setToggleButton2] = useState(true);
   const [togglebutton3, setToggleButton3] = useState(true);
   const [wholecount,setwholecount]=useState(0);
+  const [pages, setPages] = useState([{ id: 1 }]); // Initial state with one page
+
+  const duplicatePage = () => {
+    setPages([...pages, { id: pages.length + 1 }]); 
+
+    
+
+    console.log("duplication");
+    
+    // Add a new page with a unique id
+  };
   const [pagecounts,setpagecounts]=useState({
 
     Registrationc:0,
@@ -37,6 +48,9 @@ export const LocationProvider = ({ children }) => {
 
   return (
     <LocationContext.Provider value={{ 
+      pages, setPages,
+      duplicatePage,
+
       
       locationBtn,
        setLocationBtn,
