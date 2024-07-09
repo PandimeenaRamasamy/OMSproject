@@ -10,6 +10,8 @@ import ThreeDots from './ThreeDots';
 
 import Modal from './Modal';
 import ModalPickup from './ModalPickup';
+import ModalDinein from './ModalDinein';
+
 
 
 
@@ -174,6 +176,7 @@ const Pendingpage = ({pagenaming}) => {
              <div className="DineinToggle">
                <label className="labelpending">Dine In</label>
                <Toggle toggle={togglebutton1} settaggle={setToggleButton1} page="dinein"/>
+               {!togglebutton1 && <ModalDinein />}
  
              </div>
               <div className="DineinToggle">
@@ -187,6 +190,7 @@ const Pendingpage = ({pagenaming}) => {
                  <div className="DineinToggle">
                  <label className="labelpending">Delivery</label>
                  <Toggle toggle={togglebutton3} settaggle={setToggleButton3} page="delivery"/>
+               
  
                  </div> 
              <div className="DineinToggle">
