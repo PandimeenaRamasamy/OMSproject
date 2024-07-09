@@ -3,9 +3,9 @@ import './ModalPickup.scss'
 import ModelPickup from './ModalPickup.png'
 
 
-const Modal = ({setshowmodal,showmodal}) => {
+const Modal = ({}) => {
     const handleCross=()=>{
-        setshowmodal(false)
+      
 
     }
   return (
