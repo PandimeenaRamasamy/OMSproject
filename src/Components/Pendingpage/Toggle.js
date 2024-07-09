@@ -130,7 +130,6 @@ const Toggle = ({toggle,settaggle,page}) => {
       
       </button>
       </div>
-      {togglebutton2?<ModalPickup/>:""}
     </div>
   );
 };

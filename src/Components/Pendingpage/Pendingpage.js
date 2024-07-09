@@ -61,17 +61,13 @@ const Pendingpage = ({pagenaming}) => {
     {
       setinitialcounts(((intialcalc)/25)*100)
       console.log("button enabled")
-      toast.error(
-        "Please fill out the required fields for pickup details"
-      );
+    
     }
      if( pagecounts.pickupc>0 && !togglebutton2 )
       {
         setinitialcounts(((intialcalc-5)/20)*100)
         console.log("button enabled dd")
-        toast.error(
-          "Please fill out the required fields for pickup details"
-        );
+       
       }
 
 
@@ -85,9 +81,7 @@ const Pendingpage = ({pagenaming}) => {
       else if(togglebutton1 && pagecounts.dineinc===0 )
         {
           setinitialcounts(((intialcalc)/25)*100)
-          toast.error(
-            "Please fill out the required fields for dinein details"
-          );
+         
       
         }
       if(pagecounts.delivery>0)
@@ -98,9 +92,7 @@ const Pendingpage = ({pagenaming}) => {
         else if(togglebutton3 && pagecounts.delivery===0 )
           {
             setinitialcounts(((intialcalc)/25)*100)
-            toast.error(
-              "Please fill out the required fields for delivery details"
-            );
+          ;
             
           }
         if(pagecounts.pickupc>0 &&pagecounts.dineinc>0)
@@ -111,9 +103,7 @@ const Pendingpage = ({pagenaming}) => {
           else if(togglebutton1 && togglebutton2 &&  pagecounts.pickupc===0  && pagecounts.dineinc===0 )
             {
               setinitialcounts(((intialcalc)/30)*100)
-              toast.error(
-                "Please fill out the required fields for pickup and  dinein details"
-              );
+            
               
             }
 
@@ -126,9 +116,6 @@ const Pendingpage = ({pagenaming}) => {
             else if(togglebutton1 && togglebutton3 &&  pagecounts.delivery===0  && pagecounts.dineinc===0 )
               {
                 setinitialcounts(((intialcalc)/31)*100)
-                toast.error(
-                  "Please fill out the required fields for delivery and  dinein details"
-                );
                 
               }
              if(pagecounts.delivery>0 && pagecounts.pickupc)
@@ -139,10 +126,7 @@ const Pendingpage = ({pagenaming}) => {
               else if(togglebutton2 && togglebutton3 &&  pagecounts.delivery===0  && pagecounts.pickupc===0 )
                 {
                   setinitialcounts(((intialcalc)/31)*100)
-                  toast.error(
-                    "Please fill out the required fields for delivery and  pickup details"
-                  );
-                  
+                 
                 }
                if(pagecounts.delivery>0 && pagecounts.pickupc>0 && pagecounts.dineinc>0)
                 {
@@ -152,9 +136,7 @@ const Pendingpage = ({pagenaming}) => {
                 else if(togglebutton1 && togglebutton2 && togglebutton3 && pagecounts.dineinc===0&& pagecounts.delivery===0  && pagecounts.pickupc===0 )
                   {
                     setinitialcounts(((intialcalc)/36)*100)
-                    toast.error(
-                      "Please fill out the required fields of enabled details"
-                    );
+                    
                     
                   }
 
@@ -197,6 +179,7 @@ const Pendingpage = ({pagenaming}) => {
               <div className="DineinToggle">
                <label className="labelpending">Pick Up</label>
                <Toggle toggle={togglebutton2} settaggle={setToggleButton2} page="pickup"/>
+               {!togglebutton2 && <ModalPickup />}
               
  
              </div>
