@@ -1,20 +1,34 @@
 // src/SimpleComponent.scss
 
 .main-component{
-    width: 170%;
+    position: absolute;
+    top: -210px;
+    right: 0px;
+    left: -880px;
+    bottom: 0px;
+    
+    width: 105vw;
+    height: 105vh;
+    background-color: rgba(49,49,49,0.8);
+    z-index: 1099;
 }
 .simple-component {
+    position: absolute;
+    top: 300px;
+    left: 700px;
+
+   
+    
+    width: 600px;
     
    
-    background-color: FFFFFF;
+    background-color: #FFFFFF;
     
-    z-index: 999;
+
    
     padding: 20px;
-    height: 339px;
     border-radius: 10px;
     text-align: center;
-    width: 600px;
     box-shadow: 4px #FFFFFF;
     h1 {
       color: #333;
@@ -70,5 +84,18 @@
     background-color: gray;
     color: white;
 
+
+  }
+
+  .btncross{
+    padding: 3px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: -100px;
+    left: 300px;
+    cursor: pointer;
 
   }
