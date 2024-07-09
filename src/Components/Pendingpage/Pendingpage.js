@@ -233,6 +233,9 @@ import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ThreeDots from './ThreeDots';
 import ModalPickup from './ModalPickup';
+import ModalDinein from './ModalDinein';
+import ModalDelivery from './Modaldelivery'
+
 
 const Pendingpage = ({ pagenaming }) => {
   const { showoutlets, initialcounts, setinitialcounts } = useContext(LocationContext);

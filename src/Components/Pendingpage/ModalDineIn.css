@@ -1,0 +1,105 @@
+
+
+ 
+.main-componentDinein{
+    position: absolute;
+    top: -250px;
+    left: -350px;
+   
+    right: 0px;
+    bottom: 0px;
+   
+    width: 105vw;
+    height: 105vh;
+    background-color: rgba(49,49,49,0.8);
+    z-index: 1099;
+}
+.simple-componentDinein {
+    position: absolute;
+    top: 300px;
+    left: 600px;
+ 
+   
+   
+    width: 600px;
+   
+   
+    background-color: #FFFFFF;
+   
+ 
+   
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 4px #FFFFFF;
+    h1 {
+      color: #333;
+    }
+ 
+    p {
+        color: black;
+    }
+  }
+  .imgmodalDinein{
+    margin-bottom: 2px;
+    width: 109px;
+    height: 109px;
+  }
+ 
+  .btndivpendingDinein{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 15px;
+  }
+ 
+  .btnnopendingDinein{
+ 
+        width: 100px;
+        height:  44px;
+        border-radius: 4px;
+        padding: 10px, 14px, 10px, 14px;
+        cursor: pointer;
+  }
+ 
+  .btnyespendingDinein{
+ 
+    width: 100px;
+    height:  44px;
+    border-radius: 4px;
+    border: 1px soild;
+    padding: 10px, 14px, 10px, 14px;
+ 
+    background-color: #67833E;
+    color: white;
+    cursor: pointer;
+ 
+ 
+  }
+ 
+  .btnyespendingDinein:hover{
+    background-color: green;
+ 
+   
+  }
+ 
+  .btnnopendingDinein:hover{
+    background-color: gray;
+    color: white;
+ 
+ 
+  }
+ 
+  .btncrossDinein{
+    padding: 3px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: -100px;
+    left: 300px;
+    cursor: pointer;
+ 
+  }
+ 
