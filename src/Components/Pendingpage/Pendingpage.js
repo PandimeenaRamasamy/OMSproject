@@ -5,7 +5,11 @@ import Toggle from "./Toggle";
 import { LocationContext } from "../LocationProvider";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import ThreeDots from './ThreeDots';
+
+import Modal from './Modal';
+
 
 const Pendingpage = ({pagenaming}) => {
 
@@ -159,9 +163,13 @@ const Pendingpage = ({pagenaming}) => {
 
   },[togglebutton1,togglebutton2,togglebutton3])
 
- 
+  if(Modal){
+    return <Modal/>
+  }
+
 
   return (
+
     <>
     {showoutlets&&
 
@@ -224,7 +232,9 @@ const Pendingpage = ({pagenaming}) => {
            
             </div>    
        </div>
+
      </div>
+
 }</>
    
   );
