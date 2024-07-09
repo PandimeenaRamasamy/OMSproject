@@ -5,7 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { LocationContext } from "../LocationProvider";
 import Pending from '../Pendingpage/Pendingpage'
+import imagerest from "../../assets/images/Pendingimage.png";
+import Toggle from "../../Components/Pendingpage/Toggle";
 
+import { Flip, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
 
 
@@ -22,7 +26,7 @@ const Home = () => {
       
     };
 
-  const { showoutlets, setshowoutlets } = useContext(LocationContext);
+  const { showoutlets, setshowoutlets,publish } = useContext(LocationContext);
 
 
   let navigate = useNavigate();
@@ -45,11 +49,28 @@ const Home = () => {
   // if(data2)
   // {
   //   setshowoutlets(true);
+  const {  togglebutton1,
+    setToggleButton1,
+    togglebutton2,
+    setToggleButton2,
+    togglebutton3,
+    setToggleButton3,
+  
+    initialcounts
+  
+  } = useContext(LocationContext);
   // }
 
 
   return (
+
+    <>
+   
+
+
     <div className='main'>
+
+
 
      
      <p className='homeoutlet'>Outlet Management</p> 
@@ -81,12 +102,27 @@ const Home = () => {
           </ul>
         </nav>    
         </div>  
-        {activeCategory === 'LiveOutlets' && <div className='homeimg'>
-                <img src={Homeimg} alt="" />
-                <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
-            </div>
+
+
+
+        {activeCategory === 'LiveOutlets' && publish&& 
+        <Pending pagenaming="Liveproject"/>
+
+
+
+
+        
+        
+        
+        
 }
-{activeCategory === 'PendingRequest'  && <Pending/>}
+{
+  activeCategory==='LiveOutlets' && !publish && <div className='homeimg'>
+  <img src={Homeimg} alt="" />
+  <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
+</div>
+}
+{activeCategory === 'PendingRequest'  && <Pending pagenaming="PendingRequest"/>}
        
 
         
@@ -96,6 +132,7 @@ const Home = () => {
         
             
     </div>
+  </>
   )
 }
 
