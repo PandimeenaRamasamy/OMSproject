@@ -22,7 +22,7 @@ const Modal = ({setshowmodal,showmodal}) => {
         <img className='imgmodal' src={Model1}></img>
         <p>Are you sure you want to delete this Outlet ?</p>
     <div className='btndivpending'>
-        <button className='btnnopending'>No</button>
+        <button className='btnnopending ' onClick={handleCross}>No</button>
         <button className='btnyespending'  onClick={()=>{
           setdeleteoutlet(true)
         }}>Yes</button>

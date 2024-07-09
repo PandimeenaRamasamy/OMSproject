@@ -1,6 +1,7 @@
 import React, { useState,useContext, useEffect } from 'react';
 import "./Toggle.scss";
 import { LocationContext } from "../LocationProvider";
+import ModalPickup from './ModalPickup'
  
 const Toggle = ({toggle,settaggle,page}) => {
   const {  togglebutton1,
@@ -23,12 +24,15 @@ const Toggle = ({toggle,settaggle,page}) => {
           {
         console.log("pivv")
         sessionStorage.removeItem("Pickup");
-            setpagecounts({ ...pagecounts, pickupc: 0 });
+            setpagecounts({ ...pagecounts, pickupc : 0 });
+
             
         
+
         
         
           }
+
 
     }
     if(page==="dinein")
@@ -59,7 +63,7 @@ const Toggle = ({toggle,settaggle,page}) => {
         }
 
   },[])
-  
+
 //  if(toggle==='toggle1')
 //  {
 
@@ -126,6 +130,7 @@ const Toggle = ({toggle,settaggle,page}) => {
       
       </button>
       </div>
+      {togglebutton2?<ModalPickup/>:""}
     </div>
   );
 };

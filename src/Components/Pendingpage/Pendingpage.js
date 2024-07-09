@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ThreeDots from './ThreeDots';
 
 import Modal from './Modal';
+import ModalPickup from './ModalPickup';
+
 
 
 const Pendingpage = ({pagenaming}) => {
@@ -195,6 +197,7 @@ const Pendingpage = ({pagenaming}) => {
               <div className="DineinToggle">
                <label className="labelpending">Pick Up</label>
                <Toggle toggle={togglebutton2} settaggle={setToggleButton2} page="pickup"/>
+              
  
              </div>
              
