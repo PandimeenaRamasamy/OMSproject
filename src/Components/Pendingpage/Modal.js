@@ -1,9 +1,14 @@
-import React from 'react'
+
 import './Modal.scss'
 import Model1 from './Modal1.png'
-
+import React, { useContext } from 'react'
+import { LocationContext } from "../LocationProvider";
 
 const Modal = ({setshowmodal,showmodal}) => {
+  const {  
+    deleteoutlet,setdeleteoutlet
+  
+  } = useContext(LocationContext);
     const handleCross=()=>{
         setshowmodal(false)
 
@@ -16,12 +21,16 @@ const Modal = ({setshowmodal,showmodal}) => {
         <p>Are you sure you want to delete this Outlet ?</p>
     <div className='btndivpending'>
         <button className='btnnopending'>No</button>
-        <button className='btnyespending'>Yes</button>
+        <button className='btnyespending'  onClick={()=>{
+          setdeleteoutlet(true)
+        }}>Yes</button>
 
         </div>
    
   </div>
   </div>
+
+
   )
 }
 
