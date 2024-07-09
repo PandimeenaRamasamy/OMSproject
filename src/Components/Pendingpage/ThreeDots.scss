@@ -9,8 +9,8 @@
     gap: 15px;
     
     position: absolute; /* Position it absolutely relative to the button */
-    top:-1px;
-    right: 10px;
+    top:150px;
+   left:850px;
     /* Align with the button */
     padding: 10px; /* Optional: padding inside the container */
     border-radius: 5px; /* Optional: rounded corners */
@@ -19,8 +19,8 @@
 
 .dots {
     position: fixed; /* Makes the button fixed */
-    top:370px;
-    left: 810px;
+    top:290px;
+    left: 870px;
      /* Adjust this value to position the button from the right */
     background-color: transparent; /* Optional: to make the button background transparent */
     border: none; /* Optional: to remove the default border */
@@ -30,11 +30,14 @@
 .dots img {
     width: 24px; /* Adjust the size of the image as needed */
     height: 24px;
+
 }
 
 .copy {
     color: white;
+    
     width: 24px;
     height: 24px;
     cursor: pointer;
+  
 }
