@@ -5,6 +5,7 @@ import Toggle from "./Toggle";
 import { LocationContext } from "../LocationProvider";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ThreeDots from './ThreeDots';
 
 const Pendingpage = ({pagenaming}) => {
 
@@ -174,7 +175,7 @@ const Pendingpage = ({pagenaming}) => {
              <h1 className="pendingheading">Thalapakatti Biriyani (Adyar)</h1>
            </div>
            <div className="pendingbtndot">
-            ...
+            <ThreeDots/>
  
            </div>
           </div>
