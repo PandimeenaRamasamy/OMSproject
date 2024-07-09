@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import "./ThreeDots.scss";
 import morevertical from "../../assets/images/more-vertical.jpg"
 import { LuCopyPlus } from "react-icons/lu";
@@ -9,6 +9,7 @@ import Modal from './Modal';
 
 
 const ThreeDots = () => {
+  
     const[threedots,setThreeDots]=useState(false)
     const[showmodal,setshowmodal]=useState(false)
     const handleDelete=()=>{
@@ -20,8 +21,8 @@ const ThreeDots = () => {
     <>
     {threedots?(
     <div className='ThreeDots-container'>
-        <LuCopyPlus className='copy' />
-    <FaRegEdit className='copy'/>
+        <LuCopyPlus className='copy'  />
+    <FaRegEdit className='copy' />
     
     <ImBin className='copy' onClick={handleDelete} />
     {showmodal?<Modal setshowmodal={setshowmodal} showmodal={showmodal}  />:""}
