@@ -193,7 +193,6 @@ const PostDataForm = () => {
       setshowoutlets(true);
       setcount(count + registration);
       setdeleteoutlet(false);
-
       setpagecounts({...pagecounts,Registrationc:3})
       setwholecount(wholecount+1);
       console.log("counting",count);
