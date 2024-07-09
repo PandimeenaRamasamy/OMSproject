@@ -37,7 +37,8 @@ const Kitchen = React.forwardRef((props,ref) => {
     useImperativeHandle(ref,()=>({
         getFormData,
         validate,
-        getkitchenCount
+        getkitchenCount,
+        getLocationIncrementCount
 
      
     }))
@@ -119,7 +120,20 @@ const Kitchen = React.forwardRef((props,ref) => {
             }
           }, [data]);
           console.log(form)
+
+          let locationIncrementAccount = 0;
+
+
+          const getLocationIncrementCount = () => {
+            if (form.lastOrderTime) {
+              locationIncrementAccount = locationIncrementAccount + 1;
+            }
+            if (form.kdsAlert) {
+              locationIncrementAccount = locationIncrementAccount + 1;
+            }
         
+            return locationIncrementAccount;
+          };
         
   return (
     <div className='main-kitchen-div' style={{marginBottom:'200px'}}>

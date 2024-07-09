@@ -269,7 +269,8 @@ const BankDetails = forwardRef((props, ref) => {
     getFormData,
     resetForm,
     validate,
-    getbankcount
+    getbankcount,
+    getBankcount
     
   }));
 
@@ -382,6 +383,25 @@ const BankDetails = forwardRef((props, ref) => {
     if (/^\d$/.test(event.key)) {
       event.preventDefault();
     }
+  };
+   
+  let rescount = 0;
+
+  const getBankcount = () => {
+    if (bankform.accountNumber) {
+      rescount = rescount + 1;
+    }
+    if (bankform.reAccountNumber) {
+      rescount = rescount + 1;
+    }
+    if (bankform.ifscCode) {
+      rescount = rescount + 1;
+    }
+
+    if (bankform.AccountHolderName) {
+      rescount = rescount + 1;
+    }
+    return rescount;
   };
 
   return (
