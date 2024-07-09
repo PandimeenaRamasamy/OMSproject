@@ -32,9 +32,12 @@ export const LocationProvider = ({ children }) => {
   console.log("counts",pagecounts);
   const [initialcounts,setinitialcounts]=useState(0);
   const [deleteoutlet,setdeleteoutlet]=useState(false);
+  
+
 
   return (
     <LocationContext.Provider value={{ 
+      
       locationBtn,
        setLocationBtn,
        showoutlets,
