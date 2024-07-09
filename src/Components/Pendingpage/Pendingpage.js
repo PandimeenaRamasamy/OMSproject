@@ -163,10 +163,6 @@ const Pendingpage = ({pagenaming}) => {
 
   },[togglebutton1,togglebutton2,togglebutton3])
 
-  if(Modal){
-    return <Modal/>
-  }
-
 
   return (
 
