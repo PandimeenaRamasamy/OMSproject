@@ -6,16 +6,24 @@ import { FaRegEdit } from "react-icons/fa";
 import { ImBin } from "react-icons/im";
 import Modal from './Modal';
 import { useNavigate } from 'react-router-dom';
-
+import { LocationContext } from "../LocationProvider";
 
 
 const ThreeDots = () => {
   const navigate=useNavigate();
   
+  const {  
+    deleteoutlet,setdeleteoutlet
+  
+  } = useContext(LocationContext);
+
+  
     const[threedots,setThreeDots]=useState(false)
     const[showmodal,setshowmodal]=useState(false)
     const handleDelete=()=>{
       setshowmodal(!showmodal)
+      
+
 
 
     }
