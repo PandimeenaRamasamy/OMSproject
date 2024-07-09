@@ -1,0 +1,74 @@
+// src/SimpleComponent.scss
+
+.main-component{
+    width: 170%;
+}
+.simple-component {
+    
+   
+    background-color: FFFFFF;
+    
+    z-index: 999;
+   
+    padding: 20px;
+    height: 339px;
+    border-radius: 10px;
+    text-align: center;
+    width: 600px;
+    box-shadow: 4px #FFFFFF;
+    h1 {
+      color: #333;
+    }
+  
+    p {
+        color: black;
+    }
+  }
+  .imgmodal{
+    width: 175.75px;
+    height: 125.54px;
+  }
+
+  .btndivpending{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 15px;
+  }
+
+  .btnnopending{
+
+        width: 100px;
+        height:  44px;
+        border-radius: 4px;
+        padding: 10px, 14px, 10px, 14px;
+        cursor: pointer;
+  }
+
+  .btnyespending{
+
+    width: 100px;
+    height:  44px;
+    border-radius: 4px;
+    border: 1px soild;
+    padding: 10px, 14px, 10px, 14px;
+
+    background-color: #67833E;
+    color: white;
+    cursor: pointer;
+
+
+  }
+
+  .btnyespending:hover{
+    background-color: green;
+
+    
+  }
+
+  .btnnopending:hover{
+    background-color: gray;
+    color: white;
+
+
+  }

@@ -5,6 +5,7 @@ import Toggle from "./Toggle";
 import { LocationContext } from "../LocationProvider";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from './Modal';
 
 const Pendingpage = () => {
 
@@ -157,8 +158,13 @@ const Pendingpage = () => {
 
   },[togglebutton1,togglebutton2,togglebutton3])
 
+  if(Modal){
+    return <Modal/>
+  }
+
 
   return (
+
     <>
     {showoutlets&&
 
@@ -213,7 +219,9 @@ const Pendingpage = () => {
            </div>
             </div>    
        </div>
+
      </div>
+
 }</>
    
   );
