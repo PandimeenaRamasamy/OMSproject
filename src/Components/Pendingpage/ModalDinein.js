@@ -43,7 +43,7 @@ const Modal = () => {
     <div className="simple-componentDinein">
         <button className='btncrossDinein' onClick={handleCross} >X</button>
         <img className='imgmodalDinein' src={Modal2}></img>
-        <p>Are you sure you want to turn Dine In ?</p>
+        <p>Are you sure you want to turn off Dine In ?</p>
     <div className='btndivpendingDinein'>
         <button className='btnnopendingDinein 'onClick={handleCross}>No</button>
         <button className='btnyespendingDinein' onClick={handleCrossYes} >Yes</button>
