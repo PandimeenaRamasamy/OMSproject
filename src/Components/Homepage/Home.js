@@ -26,7 +26,7 @@ const Home = () => {
       
     };
 
-  const { showoutlets, setshowoutlets,publish } = useContext(LocationContext);
+  const {publish,deleteoutlet,setdeleteoutlet } = useContext(LocationContext);
 
 
   let navigate = useNavigate();

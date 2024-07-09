@@ -31,13 +31,14 @@ export const LocationProvider = ({ children }) => {
   const [publish,setpublish]=useState(false)
   console.log("counts",pagecounts);
   const [initialcounts,setinitialcounts]=useState(0);
+  const [deleteoutlet,setdeleteoutlet]=useState(false);
 
   return (
     <LocationContext.Provider value={{ 
       locationBtn,
        setLocationBtn,
        showoutlets,
-       initialcounts,setinitialcounts,
+       initialcounts,setinitialcounts,deleteoutlet,setdeleteoutlet,
        setshowoutlets,
        count,
        setcount,

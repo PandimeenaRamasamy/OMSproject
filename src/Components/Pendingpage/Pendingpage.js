@@ -23,7 +23,8 @@ const Pendingpage = ({pagenaming}) => {
     togglebutton3,
     setToggleButton3,
     pagecounts,setpagecounts
-    ,publish,setpublish
+    ,publish,setpublish,
+    deleteoutlet
   
   } = useContext(LocationContext);
 
@@ -163,11 +164,11 @@ const Pendingpage = ({pagenaming}) => {
 
   },[togglebutton1,togglebutton2,togglebutton3])
 
-
+ 
   return (
 
     <>
-    {showoutlets&&
+    {showoutlets&& !deleteoutlet &&
 
        <div className="pendingmain">
        <div className="pendingimg">
