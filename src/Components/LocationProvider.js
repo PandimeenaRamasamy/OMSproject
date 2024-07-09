@@ -9,9 +9,9 @@ export const LocationProvider = ({ children }) => {
   const [locationBtn, setLocationBtn] = useState(false);
   const [showoutlets,setshowoutlets]=useState(false);
   const [count,setcount]=useState(0);
-  const [togglebutton1, setToggleButton1] = useState(false);
-  const [togglebutton2, setToggleButton2] = useState(false);
-  const [togglebutton3, setToggleButton3] = useState(false);
+  const [togglebutton1, setToggleButton1] = useState(true);
+  const [togglebutton2, setToggleButton2] = useState(true);
+  const [togglebutton3, setToggleButton3] = useState(true);
   const [wholecount,setwholecount]=useState(0);
   const [pagecounts,setpagecounts]=useState({
 

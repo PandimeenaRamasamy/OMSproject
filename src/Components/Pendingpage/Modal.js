@@ -13,6 +13,8 @@ const Modal = ({setshowmodal,showmodal}) => {
         setshowmodal(false)
 
     }
+
+    
   return (
     <div className="main-component">
     <div className="simple-component">
@@ -26,6 +28,8 @@ const Modal = ({setshowmodal,showmodal}) => {
         }}>Yes</button>
 
         </div>
+
+
    
   </div>
   </div>
