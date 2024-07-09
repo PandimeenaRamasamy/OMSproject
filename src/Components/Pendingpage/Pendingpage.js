@@ -6,9 +6,9 @@ import { LocationContext } from "../LocationProvider";
 import { Flip, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Pendingpage = () => {
+const Pendingpage = ({pagenaming}) => {
 
-  const { showoutlets, setshowoutlets,count,setcount, wholecount,setwholecount} = useContext(LocationContext);
+  const { showoutlets, initialcounts,setinitialcounts} = useContext(LocationContext);
 
 
   const {  togglebutton1,
@@ -18,6 +18,7 @@ const Pendingpage = () => {
     togglebutton3,
     setToggleButton3,
     pagecounts,setpagecounts
+    ,publish,setpublish
   
   } = useContext(LocationContext);
 
@@ -31,7 +32,7 @@ const Pendingpage = () => {
     pagecounts.Bankdetailsc+
     pagecounts.Basicdetailsc+pagecounts.kithen)
 
-    const [initialcounts,setinitialcounts]=useState(0);
+  
 
   
   useEffect(()=>{
@@ -157,6 +158,7 @@ const Pendingpage = () => {
 
   },[togglebutton1,togglebutton2,togglebutton3])
 
+ 
 
   return (
     <>
@@ -207,10 +209,18 @@ const Pendingpage = () => {
                   {Math.round(initialcounts)}%</h1> 
              </div>
            </div>
-           <div className="btnpending">
-             <button className="btnpend">Publish</button>
+           {
+            pagenaming==="PendingRequest" && 
+            <div className="btnpending">
+             <button className="btnpend" onClick={()=>{
+              if(initialcounts>=90){
+                setpublish(true);
+
+              console.log("above 90")}}}>Publish</button>
              <ToastContainer position="top-center" transition={Flip} />
            </div>
+           }
+           
             </div>    
        </div>
      </div>
