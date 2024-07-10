@@ -231,11 +231,11 @@ const Pickup = React.forwardRef((props, ref) => {
     }
   };
   
-const handleUpClick = () => {
-  const newIndex = currentIndex + 1;
-  setCurrentIndex(newIndex);
-  setForm({ ...form, scheduledDuration: newIndex });
-};
+  const handleUpClick = (e) => {
+    const newIndex = parseInt(form.scheduledDuration) + 1; // Convert the value to an integer
+    setCurrentIndex(newIndex);
+    setForm({ ...form, scheduledDuration: newIndex });
+  };
 
   const handlecheckedchange = (e) => {
     const value = e.target.value;
