@@ -294,10 +294,10 @@ const Pickup = React.forwardRef((props, ref) => {
               <h5 className='Pickup_heading6 Pickup_heading6to'>To</h5>
             </div>
             <div className='from_to_input'>
-              <input type="time" value={ sametime && restauarantstartingtime|| form.serviceTimeFrom} className='textbox1' placeholder='11:00 AM' style={{
+              <input type="time" value={ sametime &&restauarantstartingtime && restauarantstartingtime|| form.serviceTimeFrom} className='textbox1' placeholder='11:00 AM' style={{
                 borderColor: pickuperror.serviceTimeFrom ? "red" : "#B3B3B3",
               }} onChange={(e) => setForm({ ...form, "serviceTimeFrom": e.target.value })}></input>
-              <input type="time" value={  sametime && restauarantendingtime|| form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e) => setForm({ ...form, "serviceTimeTo": e.target.value })} style={{
+              <input type="time" value={  sametime  && restauarantendingtime&& restauarantendingtime|| form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e) => setForm({ ...form, "serviceTimeTo": e.target.value })} style={{
                 borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
               }}></input>
               {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}
