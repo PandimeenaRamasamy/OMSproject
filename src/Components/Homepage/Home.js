@@ -15,10 +15,10 @@ const Home = () => {
 
  
 
-  const categories = ['LiveOutlets', 'PendingRequest'];
+  const categories = ['Live Outlets', 'Pending Request'];
 
   
-    const [activeCategory, setActiveCategory] = useState('LiveOutlets');
+    const [activeCategory, setActiveCategory] = useState('Live Outlets');
 
     
     const handleCategoryClick = (category) => {
@@ -106,7 +106,7 @@ const Home = () => {
 
 
 
-        {activeCategory === 'LiveOutlets' && publish&& 
+        {activeCategory === 'Live Outlets' && publish&& 
         <Pending pagenaming="Liveproject"/>
 
 
@@ -118,14 +118,14 @@ const Home = () => {
         
 }
 {
-  activeCategory==='LiveOutlets' && !publish && <div className='homeimg'>
+  activeCategory==='Live Outlets' && !publish && <div className='homeimg'>
   <img src={Homeimg} alt="" />
   <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
 </div>
 }
 
 
-{activeCategory === 'PendingRequest' && 
+{activeCategory === 'Pending Request' && 
   <div style={{ width: "1200px", height: "auto", display: 'flex', flexWrap: "wrap", flexDirection: 'row', gap:"80px" }}>
     {pages.map(page => (
       <Pending key={page.id} pagenaming="PendingRequest" />
