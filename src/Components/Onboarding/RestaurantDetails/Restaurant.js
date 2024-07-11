@@ -312,6 +312,13 @@ const Restaurant = forwardRef((props, ref) => {
 
   const typechange = (phonretype) => {
     setnumbertype(phonretype);
+    if(phonretype=="Landline")
+    {
+      setForm((prevForm) => ({
+        ...prevForm,
+        phone: "",
+      }));
+    }
   };
 
   return (

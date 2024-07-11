@@ -208,7 +208,7 @@ const basicDetailsInitialState = {
       ],
     },
   ],
-  cuisines: [],
+  // cuisines: [],
   amenities: [],
   parking: [],
   safetyMeasures: "",

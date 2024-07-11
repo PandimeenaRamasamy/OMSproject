@@ -724,6 +724,7 @@ const print=()=>{
           <label>
             <input className="checkboxdel" type="checkbox" onClick={()=>{
               setsametime(!sametime)
+              
               console.log(true)
 
             }}/>

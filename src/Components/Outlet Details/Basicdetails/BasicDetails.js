@@ -15,7 +15,7 @@ const BasicDetails = React.forwardRef((props,ref) => {
   const uid = useMemo(() => uuidv4(), []);
   
   const [isAlcoholModalOpen, setIsAlcoholModalOpen] = useState(false);
-  const [selectedAlcoholOption, setSelectedAlcoholOption] = useState("");
+  const [selectedAlcoholOption, setSelectedAlcoholOption] = useState("Doesn't Serve Alcohol");
 
   const [cPillsText, setCPillsText] = useState([]);
   const [aPillsText, setAPillsText] = useState([]);
@@ -401,7 +401,7 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
     const payload = {
       locationId:locationdata&&locationdata|| data2 && data2,
       restaurantSessionDto: RestaurantSessions,
-      cuisines: cPillsText,
+      // cuisines: cPillsText,
       amenities: aPillsText,
       parking: pPillsText,
       safetyMeasures,

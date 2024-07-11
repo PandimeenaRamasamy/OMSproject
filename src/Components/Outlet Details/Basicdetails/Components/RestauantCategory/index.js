@@ -32,7 +32,7 @@ const RestaurantCategory = ({
         <h4>Establishment Type</h4>
         <p>Select most relevant category of your restaurant type</p>
       </div>
-      <div className="pillBox">
+      {/* <div className="pillBox">
         <p>Cuisines</p>
         <Pills
           pillsText={cPillsText}
@@ -43,7 +43,7 @@ const RestaurantCategory = ({
           setInputValue={setCInputValue}
           handleInputValueChange={handleCInputValueChange}
         />
-      </div>
+      </div> */}
       <div className="pillBox">
         <p>Amenities</p>
         <Pills

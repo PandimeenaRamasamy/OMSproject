@@ -100,7 +100,7 @@ const RestaurantSession = ({
             {!isDayTimeAdded && <p>Setup for specific days?{" "}</p>}
               <span onClick={handleAddDayandTime} style={ 
               hasContainWeeks
-                ? { marginTop: "20px" }
+                ? { marginTop: "0px" }
                 : {}
             }>+ Add Day/Time</span>
             </p>

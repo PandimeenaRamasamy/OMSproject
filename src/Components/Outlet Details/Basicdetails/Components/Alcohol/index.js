@@ -19,6 +19,7 @@ const Alcohol = ({ onRadioChange, selectedOption }) => {
         </label>
         <label>
           <input
+           
             type="radio"
             id="doesntServeAlcoholfast"
             name="alcohol-radio-btn"
