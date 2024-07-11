@@ -738,10 +738,10 @@ const print=()=>{
               <label htmlFor="" className="label1">From</label>
               <label htmlFor="" className="label2">To</label>
               <div className="inputs">
-              <input type="time"  className="input1" value={   sametime && restauarantstartingtime||timeSlot[0]?.openingTime} 
+              <input type="time"  className="input1" value={   sametime && restauarantstartingtime && restauarantstartingtime ||timeSlot[0]?.openingTime} 
           onChange={(e) => handleTimeChange(0, "openingTime", e.target.value)} />
            
-              <input type="time" className="input2" value={  sametime && restauarantendingtime|| timeSlot[0]?.closingTime}
+              <input type="time" className="input2" value={ sametime && restauarantendingtime  && restauarantendingtime|| timeSlot[0]?.closingTime}
           onChange={(e) => handleTimeChange(0, "closingTime", e.target.value)}/>
 
               </div>

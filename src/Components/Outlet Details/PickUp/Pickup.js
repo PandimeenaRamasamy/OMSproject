@@ -220,22 +220,40 @@ const Pickup = React.forwardRef((props, ref) => {
   };
 
   const handleDownClick = () => {
-    if (currentIndex > 1) {
-      const newIndex = currentIndex - 1;
+    if (currentIndex >= 1) {
+      const newIndex = parseInt(form.scheduledDuration) - 1;
       setCurrentIndex(newIndex);
       setForm({ ...form, scheduledDuration: newIndex });
     }
-    else{
+
+    else if(currentIndex==0){
       const a1="EOD";
       setForm({ ...form, scheduledDuration:a1 });
+  
+    }
+    else{
+      const a1="EOD";
+      setForm({ ...form, scheduledDuration:0 });
     }
   };
   
   const handleUpClick = (e) => {
     const newIndex = parseInt(form.scheduledDuration) + 1; // Convert the value to an integer
+    if(newIndex){
     setCurrentIndex(newIndex);
     setForm({ ...form, scheduledDuration: newIndex });
-  };
+  }
+
+  else if(newIndex==0){
+    const a1="EOD";
+    setForm({ ...form, scheduledDuration:a1 });
+
+  }
+  else{
+    const a1="EOD";
+    setForm({ ...form, scheduledDuration:0 });
+  }
+}
 
   const handlecheckedchange = (e) => {
     const value = e.target.value;
@@ -294,10 +312,10 @@ const Pickup = React.forwardRef((props, ref) => {
               <h5 className='Pickup_heading6 Pickup_heading6to'>To</h5>
             </div>
             <div className='from_to_input'>
-              <input type="time" value={ sametime && restauarantstartingtime|| form.serviceTimeFrom} className='textbox1' placeholder='11:00 AM' style={{
+              <input type="time" value={ sametime &&restauarantstartingtime && restauarantstartingtime|| form.serviceTimeFrom} className='textbox1' placeholder='11:00 AM' style={{
                 borderColor: pickuperror.serviceTimeFrom ? "red" : "#B3B3B3",
               }} onChange={(e) => setForm({ ...form, "serviceTimeFrom": e.target.value })}></input>
-              <input type="time" value={  sametime && restauarantendingtime|| form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e) => setForm({ ...form, "serviceTimeTo": e.target.value })} style={{
+              <input type="time" value={  sametime  && restauarantendingtime&& restauarantendingtime|| form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e) => setForm({ ...form, "serviceTimeTo": e.target.value })} style={{
                 borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
               }}></input>
               {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}

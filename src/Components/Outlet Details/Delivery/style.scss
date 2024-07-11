@@ -773,8 +773,8 @@ color: #2F2F2F;
       }
    
       .checkbox + p::before {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
       .checkbox:checked + p::before {
         background-color: #67833e;
@@ -782,6 +782,8 @@ color: #2F2F2F;
         content: "✔";
         color: white;
         font-size: 15px;
+        padding: 2px;
+      
         text-align: center;
         line-height: 15px;
       }
@@ -801,8 +803,8 @@ color: #2F2F2F;
 height: 24px;
 top: 2px;
 left: 2px;
-padding: 6px 4px 6px 4px;
-gap: 0px;
+padding: 6px 6px 6px 6px;
+gap: 10px;
 border-radius: 3px;
 
 
