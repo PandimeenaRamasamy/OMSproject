@@ -211,8 +211,15 @@ const WorkingDay = ({
   };
 
   const disabledDays = getDisabledDays();
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     handleAddnew();
+    if(e.target.value==="")
+    {
+      setaddnewenable(false);
+
+    }
+
+  
   };
 
   return (
@@ -224,9 +231,9 @@ const WorkingDay = ({
           {deleteenble && (
             <button
               className="deleteButton"
-              onClick={() => handledelete(meal)}
+             
             >
-              <ImCross className="crossIcon" />
+              <ImCross className="crossIcon"  onClick={() => handledelete(meal)}/>
             </button>
           )}
           <input
@@ -251,7 +258,7 @@ const WorkingDay = ({
               value={newitem}
               onChange={(e) => setnewitem(e.target.value)}
               className="addnewfield"
-              onBlur={handleBlur}
+              onBlur={(e)=>handleBlur(e)}
             />
             <button onClick={handleAddnew} className="Additembutton">Add</button>
           </div>

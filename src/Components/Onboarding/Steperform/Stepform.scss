@@ -18,9 +18,10 @@
 
   .stepper-containeronboard {
       display: flex;
-      transform: translateY(20px);
+      transform: translateY(5px);
       justify-content: space-between;   
       padding-right: 15px;
+
     
 
      
@@ -140,7 +141,7 @@ opacity: 0px;
   
   .stepper-progressonboard {
     position: relative;
-    top: 60px;
+    top: 50px;
     z-index: -1;
     /* border: 1px solid red; */
       

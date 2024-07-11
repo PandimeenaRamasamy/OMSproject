@@ -107,7 +107,7 @@ import './Outlet.scss';
 import { useNavigate, useLocation, Outlet as RouterOutlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const Outlet = () => {
-  const categories = ['Registration', 'Onboaring', 'Outlet Details', 'Subscription'];
+  const categories = ['Registration', 'Onboaring', 'Outlet Details'];
   const navigate = useNavigate();
   const location = useLocation();
   

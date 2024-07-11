@@ -389,21 +389,15 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
         basicTime: sessionTimes,
       };
     });
-
-    
-    // const datafromapi = useSelector((state) => state.postData.data);
-    // console.log("list of location ID",datafromapi);
-
-    // const dataForbasicDetails = useSelector((state)=>state.postDataReducergetLocation)
-    // console.log("dataForbasicDetails",dataForbasicDetails);
-    
-    // const data2 = useSelector((state) => state.registration.data);
-    // console.log("current location ID",data2);
-
-     const locationdata = useSelector((state) => state.locationiddata.locationId);
+    const locationdata = useSelector((state) => state.locationiddata.locationId);
     const data2 = useSelector((state) => state.registration.data);
-    // console.log("list of location IDs :",data2)
-     
+    const hasValidTimeData = RestaurantSessions.some(session => {
+      return session.basicTime.some(time => {
+          return time.start_time && time.end_time;
+      });
+  });
+
+      
     const payload = {
       locationId:locationdata&&locationdata|| data2 && data2,
       restaurantSessionDto: RestaurantSessions,
@@ -413,6 +407,36 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
       safetyMeasures,
       alcohol: selectedAlcoholOption,
     };
+   
+
+    
+  const [basicstimwsloterror, setbasicstimwsloterror] = useState("");
+   
+    const validateDeliverySetting = () => {
+      let isValid = true;
+  if(!hasValidTimeData)
+  {
+    setbasicstimwsloterror("Please fill out required time slots")
+    isValid = false;
+
+  }
+  
+  
+      // if (!timeSlot.some((slot) => slot.openingTime && slot.closingTime)) {
+      //   setDeliverySettingError("Please fill out all delivery setting time slots.");
+      //   isValid = false;
+       
+      // }
+
+
+     
+  
+     
+  
+      return isValid;
+    };
+  
+  
 
     // console.log("payload from basic details button", payload);
     useEffect(() => {
@@ -521,6 +545,7 @@ const resultDto = restaurantSessionDto?.reduce((acc, curr) => {
 
   const getFormData=()=>{
     return payload;
+
 }
 
 const retrieveData = (tempPayload) => {
@@ -593,6 +618,7 @@ const retrieveData = (tempPayload) => {
 }
 
   useImperativeHandle(ref,()=>({
+    validateDeliverySetting,
     getFormData,
 }))
 

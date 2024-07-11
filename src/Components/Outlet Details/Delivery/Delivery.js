@@ -253,10 +253,6 @@ const Delivery = React.forwardRef((props, ref) => {
 
 
 
-const handleeclick=()=>
-  {
-    console.log("hellooooo",validateDeliverySetting())
-  }
 
 
 
@@ -433,6 +429,10 @@ const print=()=>{
       ]);
     }
   };
+
+
+
+
 
   const handleDelete = () => {
     if (timeSlots.length > 1) {
@@ -743,8 +743,7 @@ const print=()=>{
            
               <input type="time" className="input2" value={  sametime && restauarantendingtime|| timeSlot[0]?.closingTime}
           onChange={(e) => handleTimeChange(0, "closingTime", e.target.value)}/>
-         
-          
+
               </div>
              
               {
@@ -772,6 +771,10 @@ const print=()=>{
               </p>
               }</div>
                 </div>
+
+                
+
+
                
                 {
                   !time3 && <p onClick={() => addtime("third")} className="timeslotaddbtn" style={{marginTop:'-25px'}}>
@@ -865,7 +868,7 @@ const print=()=>{
           <div className="schedule">
             <h3>Scheduled Delivery</h3>
             <p>Customer can place delivery order for future/next session</p>
-            <div className="radioBtn">
+            <div className="radioBtnschedule">
               <div className="sessionContainer">
                 <label>
                   <input

@@ -32,6 +32,7 @@ const Home = () => {
   let navigate = useNavigate();
   const goToAbout = () => {
     navigate('/outlet/Registration',{ state: { pagename: "Registration" } });
+    // window.location.reload()
   };
   // const handleCategoryClick = (category) => {
    
@@ -122,6 +123,7 @@ const Home = () => {
   <button onClick={goToAbout} className='Addoutlet'>+ Add outlet</button>
 </div>
 }
+
 
 
 {activeCategory === 'PendingRequest'  && 

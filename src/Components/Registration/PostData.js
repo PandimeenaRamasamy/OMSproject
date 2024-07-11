@@ -370,10 +370,11 @@ const PostDataForm = () => {
 
           <div className="labelinput-divreg">
             <label className="labelreg">Contact Person Number</label>
-            <div className="numberfield">
+            <div className="numberfield"   style={{ borderColor: error.phoneerror ? "red" : "#B3B3B3" }}>
               <select
                 id="country-code"
                 value={selectedCode}
+                
                 className="phonenumbercode"
                 onChange={handleCodeChange}
               >
@@ -390,6 +391,7 @@ const PostDataForm = () => {
               <input
                 id="phone-number"
                 type="text"
+                style={{ borderColor: error.phoneerror ? "red" : "#B3B3B3" }}
                 className="phonenumberinput"
                 value={Registrationform.phone}
                 onBlur={validatePhone}

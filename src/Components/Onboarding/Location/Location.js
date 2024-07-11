@@ -1089,7 +1089,7 @@ const Location = forwardRef((props, ref) => {
               </div>
 
               <div
-                style={{ display: "flex", flexDirection: "column", marginTop:"16px" }}
+                style={{ display: "flex", flexDirection: "column", marginTop:"16px",marginLeft:"20px" }}
                 className="personal-detailsloc"
               >
                 <label htmlFor="city" className="labelloc">
@@ -1138,7 +1138,7 @@ const Location = forwardRef((props, ref) => {
                   <div className="error-message">{locationError.state}</div>
                 )}
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column" ,marginLeft:"20px"}}>
                 <label htmlFor="country" className="labelloc">
                   Country
                 </label>
