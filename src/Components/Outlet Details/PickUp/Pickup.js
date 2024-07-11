@@ -220,22 +220,40 @@ const Pickup = React.forwardRef((props, ref) => {
   };
 
   const handleDownClick = () => {
-    if (currentIndex > 1) {
-      const newIndex = currentIndex - 1;
+    if (currentIndex >= 1) {
+      const newIndex = parseInt(form.scheduledDuration) - 1;
       setCurrentIndex(newIndex);
       setForm({ ...form, scheduledDuration: newIndex });
     }
-    else{
+
+    else if(currentIndex==0){
       const a1="EOD";
       setForm({ ...form, scheduledDuration:a1 });
+  
+    }
+    else{
+      const a1="EOD";
+      setForm({ ...form, scheduledDuration:0 });
     }
   };
   
   const handleUpClick = (e) => {
     const newIndex = parseInt(form.scheduledDuration) + 1; // Convert the value to an integer
+    if(newIndex){
     setCurrentIndex(newIndex);
     setForm({ ...form, scheduledDuration: newIndex });
-  };
+  }
+
+  else if(newIndex==0){
+    const a1="EOD";
+    setForm({ ...form, scheduledDuration:a1 });
+
+  }
+  else{
+    const a1="EOD";
+    setForm({ ...form, scheduledDuration:0 });
+  }
+}
 
   const handlecheckedchange = (e) => {
     const value = e.target.value;
