@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useImperativeHandle ,useContext} from 'react';
+import React, { useState, useEffect, useImperativeHandle, useContext } from 'react';
 import "./Pickup.scss";
 import vector from "../../../assets/images/Vector.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { LocationContext } from "../../LocationProvider";
 const Pickup = React.forwardRef((props, ref) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
-  let pickcount=5;
+  let pickcount = 5;
   const [schedulepick, setSchedulePick] = useState(true);
   const datafromapi = useSelector((state) => state.postData.data);
   const data = useSelector((state) => state.getlocationdata.data);
@@ -32,7 +32,7 @@ const Pickup = React.forwardRef((props, ref) => {
     eta: ""
   });
   const [isEnabled, setIsEnabled] = useState(false);
-  const {  togglebutton1,
+  const { togglebutton1,
     setToggleButton1,
     togglebutton2,
     setToggleButton2,
@@ -41,30 +41,29 @@ const Pickup = React.forwardRef((props, ref) => {
     pagecounts,
     setpagecounts
 
-  
+
   } = useContext(LocationContext);
 
 
-  useEffect(()=>{
-    if(togglebutton2)
-    {
+  useEffect(() => {
+    if (togglebutton2) {
       setIsEnabled(true);
     }
-    else if(!togglebutton2)
-      {
-        setIsEnabled(false)  
-        sessionStorage.removeItem("Pickup");  
-        setForm({...form,  serviceTimeFrom: "",
-          serviceTimeTo: "",
-          payment: [],
-          scheduledDuration: "",
-          packagingCharge: "",
-          eta: ""
-  
-        })
-      }
+    else if (!togglebutton2) {
+      setIsEnabled(false)
+      sessionStorage.removeItem("Pickup");
+      setForm({
+        ...form, serviceTimeFrom: "",
+        serviceTimeTo: "",
+        payment: [],
+        scheduledDuration: "",
+        packagingCharge: "",
+        eta: ""
 
-  },[])
+      })
+    }
+
+  }, [])
 
   useEffect(() => {
     const savedData = JSON.parse(sessionStorage.getItem("Pickup"));
@@ -133,24 +132,24 @@ const Pickup = React.forwardRef((props, ref) => {
   const handleDisable = () => {
     setIsEnabled(false);
     setToggleButton2(!togglebutton2);
-    pickcount=0;
+    pickcount = 0;
     sessionStorage.removeItem("Pickup");
     setForm({
-     
-     
-      serviceTimeFrom:  "",
-      serviceTimeTo:  "",
-      payment:  [],
-      scheduledDuration:  "",
-      packagingCharge:  "",
-      eta: "", 
+
+
+      serviceTimeFrom: "",
+      serviceTimeTo: "",
+      payment: [],
+      scheduledDuration: "",
+      packagingCharge: "",
+      eta: "",
     });
-    
+
 
     setpagecounts({ ...pagecounts, pickupc: 0 });
-   
-   
-  
+
+
+
 
 
 
@@ -175,7 +174,7 @@ const Pickup = React.forwardRef((props, ref) => {
   }));
 
 
-  const getpickupcount=()=>{
+  const getpickupcount = () => {
     return pickcount;
   }
 
@@ -183,37 +182,36 @@ const Pickup = React.forwardRef((props, ref) => {
 
   const validate = () => {
     let isValid = true;
-    
+
     const errors = {};
     if (!form.serviceTimeFrom && isEnabled) {
       errors.serviceTimeFrom = "Please fill this field";
       isValid = false;
-      pickcount=pickcount-1;
+      pickcount = pickcount - 1;
 
     }
     if (!form.serviceTimeTo && isEnabled) {
       errors.serviceTimeTo = "Please fill this field";
       isValid = false;
-      pickcount=pickcount-1;
+      pickcount = pickcount - 1;
     }
     if (!form.packagingCharge && isEnabled) {
       errors.packagingCharge = "Please fill this field";
       isValid = false;
-      pickcount=pickcount-1;
+      pickcount = pickcount - 1;
     }
     if (!form.scheduledDuration && isEnabled && schedulepick) {
       errors.scheduledDuration = "Please fill this field";
       isValid = false;
-      pickcount=pickcount-1;
+      pickcount = pickcount - 1;
     }
     if (!form.eta && isEnabled) {
       errors.eta = "Please fill this field";
       isValid = false;
-      pickcount=pickcount-1;
+      pickcount = pickcount - 1;
     }
     setPickUpError(errors);
-    if(!isValid)
-    {
+    if (!isValid) {
       setpagecounts({ ...pagecounts, pickupc: 0 });
     }
     return isValid;
@@ -226,34 +224,34 @@ const Pickup = React.forwardRef((props, ref) => {
       setForm({ ...form, scheduledDuration: newIndex });
     }
 
-    else if(currentIndex==0){
-      const a1="EOD";
-      setForm({ ...form, scheduledDuration:a1 });
-  
+    else if (currentIndex == 0) {
+      const a1 = "EOD";
+      setForm({ ...form, scheduledDuration: a1 });
+
     }
-    else{
-      const a1="EOD";
-      setForm({ ...form, scheduledDuration:0 });
+    else {
+      const a1 = "EOD";
+      setForm({ ...form, scheduledDuration: 0 });
     }
   };
-  
+
   const handleUpClick = (e) => {
     const newIndex = parseInt(form.scheduledDuration) + 1; // Convert the value to an integer
-    if(newIndex){
-    setCurrentIndex(newIndex);
-    setForm({ ...form, scheduledDuration: newIndex });
-  }
+    if (newIndex) {
+      setCurrentIndex(newIndex);
+      setForm({ ...form, scheduledDuration: newIndex });
+    }
 
-  else if(newIndex==0){
-    const a1="EOD";
-    setForm({ ...form, scheduledDuration:a1 });
+    else if (newIndex == 0) {
+      const a1 = "EOD";
+      setForm({ ...form, scheduledDuration: a1 });
 
+    }
+    else {
+      const a1 = "EOD";
+      setForm({ ...form, scheduledDuration: 0 });
+    }
   }
-  else{
-    const a1="EOD";
-    setForm({ ...form, scheduledDuration:0 });
-  }
-}
 
   const handlecheckedchange = (e) => {
     const value = e.target.value;
@@ -267,28 +265,28 @@ const Pickup = React.forwardRef((props, ref) => {
 
 
 
-  
+
 
 
 
   const basicdetail = useSelector((state) => state.basicDetails.Details);
 
 
-  const restauarantstartingtime=basicdetail?.restaurantSessionDto[0]?.basicTime[0]?.start_time;
-  const restauarantendingtime=basicdetail?.restaurantSessionDto[0]?.basicTime[0]?.end_time;
-  console.log("badicssss start",restauarantstartingtime
-    )
-    console.log("badicssss end",restauarantendingtime
+  const restauarantstartingtime = basicdetail?.restaurantSessionDto[0]?.basicTime[0]?.start_time;
+  const restauarantendingtime = basicdetail?.restaurantSessionDto[0]?.basicTime[0]?.end_time;
+  console.log("badicssss start", restauarantstartingtime
+  )
+  console.log("badicssss end", restauarantendingtime
 
-      )
-      const [sametime,setsametime]=useState(false);
-
-
+  )
+  const [sametime, setsametime] = useState(false);
 
 
- return (
+
+
+  return (
     <div className='Pickup_container'>
-      <div className='Pickup_form' id={isEnabled?'pickupContainer':'pickupcontain'} style={{marginBottom:isEnabled?'70px':'500px',}}>
+      <div className='Pickup_form' id={isEnabled ? 'pickupContainer' : 'pickupcontain'} style={{ marginBottom: isEnabled ? '70px' : '500px', }}>
         <div><h5 className='Pickup_heading1'>Pick Up Details</h5></div>
         <div><h5 className='Pickup_heading2'>Pick Up</h5></div>
         <div><h5 className='Pickup_heading3'>Please Mention The Pick Up Service</h5></div>
@@ -300,7 +298,7 @@ const Pickup = React.forwardRef((props, ref) => {
           <>
             <div><h5 className='Pickup_heading4'>Pick up service time</h5></div>
             <div className='checkbox_class'>
-              <input type="checkbox" className='checkbox1' onClick={()=>{
+              <input type="checkbox" className='checkbox1' onClick={() => {
                 setsametime(!sametime)
                 console.log(true)
 
@@ -312,10 +310,10 @@ const Pickup = React.forwardRef((props, ref) => {
               <h5 className='Pickup_heading6 Pickup_heading6to'>To</h5>
             </div>
             <div className='from_to_input'>
-              <input type="time" value={ sametime &&restauarantstartingtime && restauarantstartingtime|| form.serviceTimeFrom} className='textbox1' placeholder='11:00 AM' style={{
+              <input type="time" value={sametime && restauarantstartingtime && restauarantstartingtime || form.serviceTimeFrom} className='textbox1' placeholder='11:00 AM' style={{
                 borderColor: pickuperror.serviceTimeFrom ? "red" : "#B3B3B3",
               }} onChange={(e) => setForm({ ...form, "serviceTimeFrom": e.target.value })}></input>
-              <input type="time" value={  sametime  && restauarantendingtime&& restauarantendingtime|| form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e) => setForm({ ...form, "serviceTimeTo": e.target.value })} style={{
+              <input type="time" value={sametime && restauarantendingtime && restauarantendingtime || form.serviceTimeTo} className='textbox2' placeholder='8:00 PM' onChange={(e) => setForm({ ...form, "serviceTimeTo": e.target.value })} style={{
                 borderColor: pickuperror.serviceTimeTo ? "red" : "#B3B3B3",
               }}></input>
               {pickuperror.serviceTimeFrom && <div className='error_pickup'>{pickuperror.serviceTimeFrom}</div>}
@@ -325,10 +323,10 @@ const Pickup = React.forwardRef((props, ref) => {
             <h5 className='Pickup_heading7'>Pick up Payment</h5>
             <h5 className='Pickup_heading10'>Please mention the payment methods</h5>
             <div>
-              <input type='checkbox' style={{ marginLeft: '0px',}} value="Cards" className='Pickcheck' onChange={handlecheckedchange} checked={form.payment.includes("Cards")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Cards</label>
+              <input type='checkbox' style={{ marginLeft: '0px', }} value="Cards" className='Pickcheck' onChange={handlecheckedchange} checked={form.payment.includes("Cards")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Cards</label>
               <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Pay at store" onChange={handlecheckedchange} checked={form.payment.includes("Pay at store")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Pay at store</label>
               <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Apple Pay" onChange={handlecheckedchange} checked={form.payment.includes("Apple Pay")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Apple Pay</label>
-              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Google Pay" onChange={handlecheckedchange} checked={form.payment.includes("Google Pay")}></input><label style={{ fontSize: "16px",  marginLeft: '10px' }}>Google Pay</label>
+              <input type='checkbox' style={{ marginLeft: '30px' }} className='Pickcheck' value="Google Pay" onChange={handlecheckedchange} checked={form.payment.includes("Google Pay")}></input><label style={{ fontSize: "16px", marginLeft: '10px' }}>Google Pay</label>
             </div>
             <div>
               <h5 className='Pickup_heading13'>Schedule Pick Up</h5>
@@ -343,7 +341,7 @@ const Pickup = React.forwardRef((props, ref) => {
                 <h5 className='Pickup_heading12'>Scheduled Pick up time Duration </h5>
                 <h5 className='Pickup_heading3'>Please mention the scheduled pick up time duration</h5>
                 <div className='pickupduration'>
-                  <input type="text" value={form.scheduledDuration} style={{
+                  <input type="number" value={form.scheduledDuration} style={{
                     borderColor: pickuperror.scheduledDuration ? "red" : "#B3B3B3",
                   }} placeholder='EOD' className='updown' min="0" onChange={(e) => setForm({ ...form, "scheduledDuration": e.target.value })}></input>
                 </div>

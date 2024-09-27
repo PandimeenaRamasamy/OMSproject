@@ -35,7 +35,7 @@
 }
 
 .step.valid {
-  background-color: rgba(0, 183, 29, 1);
+  background-color: #00b71d;
 }
 
 .step {
@@ -56,16 +56,16 @@
 }
 
 .visited {
-  background-color: orange;
+  background-color: #f9b86b;
   color: white;
 }
 
 .visited.icon {
-  color: white !important;
+  color: white;
 }
 
 .step.active {
-  background-color: rgba(182, 210, 140, 1);
+  background-color: #b6d28c;
   color: #fff;
 }
 

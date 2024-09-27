@@ -245,11 +245,12 @@ line-height: 24px;
     margin-top: -55px;
    position: relative;
    right: 10px;
+   height: fit-content;
+   width: fit-content;
     .upsideArrow {
       img {
         transform: rotate(180deg);
         cursor: pointer;
-
       }
     }
     .downsideArrow {
@@ -291,9 +292,24 @@ line-height: 24px;
         padding-left: 42px;
         margin: 4px;
         margin-left: -2px;
+        // background-color: red;
+
 
 
     }
+}
+
+
+.pickupduration input[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: none; /* Chrome, Safari, Edge */
+    /* Hide the up and down arrows in all browsers */
+}
+
+.pickupduration input[type='number']::-webkit-inner-spin-button,
+.pickupduration input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari */
+    margin: 0; /* Remove default margin */
 }
 
 .PackagingCharge
@@ -366,6 +382,7 @@ border: 3px solid #979797;
     border:none;
     width:119px;
     cursor: pointer;
+    background-color: #f9f9f9;
    
     
   }
